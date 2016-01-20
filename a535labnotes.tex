@@ -1,0 +1,133 @@
+\documentclass[12pt]{article}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{hyperref}
+
+\title{ASTR 535 Lab notes}
+\author{Jon Holtzman}
+\date{Spring 2016}
+
+\addtolength{\oddsidemargin}{-0.875in}
+\addtolength{\evensidemargin}{-0.875in}
+\addtolength{\textwidth}{1.75in}
+\addtolength{\topmargin}{-0.875in}
+\addtolength{\textheight}{1.75in}
+
+\begin{document}
+\maketitle
+
+%\begin{enumerate}[I.]
+\section*{Time, coordinate systems, observability tools}
+\subsection*{Time Systems}
+Systems of time: see \textcolor{blue}{\href{tycho.usno.navy.mil/systime.html}
+        {Naval observatory reference}}
+        for a full listing of different types of time.
+    \subsubsection*{Solar Time}
+        \begin{itemize}
+            \item Time tied to position of Sun. Note the distinction
+                between \textit{mean} solar time and \textit{apparent}
+                solar time (the ``equation of time'' and the analemma).
+            \item Most used solar time is Universal time.
+                UT = local mean solar time at Greenwich = ``Zulu''.
+                Tied to location of Sun, but average to ``mean sun''.
+            \item Local time: accounts for longitude of observer.
+                For practicality, legal time is split into time zones.
+            \item In detail, official time is kept by atomic clocks
+                (International Atomic Time, or TAI), and coordinated UT
+                (UTC) is atomic time with leap seconds added to compensate
+                for changes in earth's roation, where these are added to
+                keep UTC wihin a second of solar time (UT1).
+                See \textcolor{blue}
+                %{\url{https://en.wikipedia.org/wiki/Universal_Time}}
+                {\href{https://en.wikipedia.org/wiki/Universal_Time}
+                {here}}
+                for some details.
+        \end{itemize}
+    \subsubsection*{Sidereal time}
+        \begin{itemize}
+            \item Times based on position of stars, i.e. Earth's sidereal
+                rotation period ~ 23h 56m 4s. Local sidereal time is GMST
+                (Greenwich mean sidereal time) minus longitude. At the vernal
+                equinox (time in sky when Sun crosses the celestial equator
+                as its declination is increasing), sidereal time = UT.
+                Difference between UT and GMST is one rotation (day) over
+                the course of a year, so about 2 hours per month.
+            \item Sideral is relevant for position of stars: stars come back
+                to the same position every sidereal day.
+        \end{itemize}
+    \subsubsection*{Calendars}
+        \begin{itemize}
+            \item Standard calendar is Gregorian, with leap years, etc.
+            \item For astronomy, it is simpler to keep track of days rather
+                then year/month/day. Most dates given by the
+                \url{Julian date} (number of days since UT noon, Monday,
+                January 1, 4713 BC). Variations include modified Julian
+                data (JD - 2400000.5 fewer digits and starts at midnight),
+                heliocentric Julian date (JD adjusted to the frame of
+                reference of the Sun, so can differ by up to 8.3 minutes).
+            \item Note that repeating events are often described as an event
+                \textit{ephemeris:} $t_i(event) = t_0 + i(period)$.
+            \item The term \textit{ephemeris} is also used to describe how the
+                position of an object changes over time, e.g. planetary
+                ephemerides.
+        \end{itemize}
+
+\subsection*{Coordinate systems}
+LPL website on \textcolor{blue}
+{\href{http://spider.seds.org/spider/ScholarX/coords.html}
+{astronomical coordinate systems}}
+\subsubsection*{Celestial coordinate systems}
+\textcolor{blue}
+{\href{http://csep10.phys.utk.edu/astr161/lect/time/coordinates.html}{(diagram)}}
+\begin{itemize}
+    \item RA-DEC: tied to Earth rotation, longitude and latitude.
+        Zero RA at vernal equinox
+    \item ecliptic: tied to plane of Earth rotation around the Sun.
+        Zero ecliptic longitude tied to vernal equinox.
+    \item galactic: tied to plane of the Milky Way
+\end{itemize}
+
+\noindent At vernal equinox, RA = 12h crosses the meridian at midnight.\\
+
+\noindent Note that for a celestial coordinate system tied to the Earth's rotation,
+coordinates of an object change over time because of the changing direction
+of the Earth's axis: precession and notation. Because of this, coordinates are
+always specified for some reference equinox: J2000/FK5, B1950, etc.; if using
+coordinates to point a telescope, you need to account for this (but generally,
+telescope software does this on its own). Note distinction between equinox and
+epoch, where the latter is relevant for objects that move (which everything does
+at some level).\\
+
+\noindent Transformations between systems straightforward from spherical
+trigonometry.\\
+
+\noindent Note the common usage of an Aitoff projection of the sky in celestial
+coordinates, with location of ecliptic and galactic plane.
+
+\subsubsection*{Local coordinate systems}
+\begin{itemize}
+    \item Equatorial: HA-dec. $HA=LST - \alpha. LST=GMST - longitude$.
+        Note normal convention for HA is to get larger to the west, i.e.
+        opposite of RA. Objects at zenith have $\delta=$ latitude of observer.
+    \item Horizon: alt-az or zd-az
+\end{itemize}
+Local coordinates are important for pointing telescopes. Note that there are
+various other effects that one has to consider for pointing a telescope at a
+source of known celestial position: proper motion, precession, nutation,
+``aberration of light'', parallax, atmosphereic refraction.
+
+\subsection*{Finding positions of celestial objects}
+\subsection*{Orientations of objects in the sky}
+\subsection*{Observability}
+\subsection*{Tools}
+\subsection*{Exercises}
+
+\newpage
+\section*{Next Section}
+
+%\end{enumerate}
+
+
+
+
+\end{document}
