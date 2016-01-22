@@ -1,0 +1,30 @@
+\documentclass[12pt]{article}
+\usepackage{color}
+\usepackage{hyperref} % \url{link} or \hrf{link}{text}
+\usepackage{titlesec}
+\titleformat{\section}%
+  [hang]% <shape>
+  {\normalfont\bfseries\Large}% <format>
+  {}% <label>
+  {0pt}% <sep>
+  {}% <before code>
+  \renewcommand{\thesection}{}% Remove section references...
+  \renewcommand{\thesubsection}{\arabic{subsection}}%... from subsections
+  \renewcommand{\thesubsubsection}{\arabic{subsubsection}}%... from subsections
+
+\begin{document}
+
+\section*{Homework 4}
+\subsection*{Magnitudes}
+\subsubsection{Two objects from the SDSS survey have g=17 and g=19.5,
+respectively. Which is brighter, and by how much?}
+
+\subsubsection{Star A has V=12, star B has V=14.5. Which is brighter,
+and by how much?}
+
+\subsubsection{A star has B-V=0. What does that imply about the slope of its
+spectrum? Is the slope independent of whether $F_{\nu}$ or $F_{\lambda}$
+is being plotted? If not, how do they differ?}
+
+
+\end{document}
