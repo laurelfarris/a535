@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  22 JAN 2016 11:11
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  23 JAN 2016 20:09
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -161,107 +161,190 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip43
 )
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amsmath.sty
+Package: amsmath 2013/01/14 v2.14 AMS math features
+\@mathmargin=\skip44
+
+For additional information on amsmath, use the `?' option.
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amstext.sty
+Package: amstext 2000/06/29 v2.01
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amsgen.sty
+File: amsgen.sty 1999/11/30 v2.0
+\@emptytoks=\toks15
+\ex@=\dimen107
+))
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amsbsy.sty
+Package: amsbsy 1999/11/29 v1.2d
+\pmbraise@=\dimen108
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amsopn.sty
+Package: amsopn 1999/12/14 v2.01 operator names
+)
+\inf@bad=\count98
+LaTeX Info: Redefining \frac on input line 210.
+\uproot@=\count99
+\leftroot@=\count100
+LaTeX Info: Redefining \overline on input line 306.
+\classnum@=\count101
+\DOTSCASE@=\count102
+LaTeX Info: Redefining \ldots on input line 378.
+LaTeX Info: Redefining \dots on input line 381.
+LaTeX Info: Redefining \cdots on input line 466.
+\Mathstrutbox@=\box26
+\strutbox@=\box27
+\big@size=\dimen109
+LaTeX Font Info:    Redeclaring font encoding OML on input line 566.
+LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
+\macc@depth=\count103
+\c@MaxMatrixCols=\count104
+\dotsspace@=\muskip11
+\c@parentequation=\count105
+\dspbrk@lvl=\count106
+\tag@help=\toks16
+\row@=\count107
+\column@=\count108
+\maxfields@=\count109
+\andhelp@=\toks17
+\eqnshift@=\dimen110
+\alignsep@=\dimen111
+\tagshift@=\dimen112
+\tagwidth@=\dimen113
+\totwidth@=\dimen114
+\lineht@=\dimen115
+\@envbody=\toks18
+\multlinegap=\skip45
+\multlinetaggap=\skip46
+\mathdisplay@stack=\toks19
+LaTeX Info: Redefining \[ on input line 2665.
+LaTeX Info: Redefining \] on input line 2666.
+)
 (./a535lecturenotes.aux)
 \openout1 = `a535lecturenotes.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 16.
-LaTeX Font Info:    ... okay on input line 16.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 17.
+LaTeX Font Info:    ... okay on input line 17.
 
 (/usr/local/texlive/2015/texmf-dist/tex/context/base/supp-pdf.mkii
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count98
-\scratchdimen=\dimen107
-\scratchbox=\box26
-\nofMPsegments=\count99
-\nofMParguments=\count100
-\everyMPshowfont=\toks15
-\MPscratchCnt=\count101
-\MPscratchDim=\dimen108
-\MPnumerator=\count102
-\makeMPintoPDFobject=\count103
-\everyMPtoPDFconversion=\toks16
+\scratchcounter=\count110
+\scratchdimen=\dimen116
+\scratchbox=\box28
+\nofMPsegments=\count111
+\nofMParguments=\count112
+\everyMPshowfont=\toks20
+\MPscratchCnt=\count113
+\MPscratchDim=\dimen117
+\MPnumerator=\count114
+\makeMPintoPDFobject=\count115
+\everyMPtoPDFconversion=\toks21
 )
-\AtBeginShipoutBox=\box27
-Package hyperref Info: Link coloring OFF on input line 16.
+\AtBeginShipoutBox=\box29
+Package hyperref Info: Link coloring OFF on input line 17.
  (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 
 (/usr/local/texlive/2015/texmf-dist/tex/generic/oberdiek/gettitlestring.sty
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count104
+\c@section@level=\count116
 )
-LaTeX Info: Redefining \ref on input line 16.
-LaTeX Info: Redefining \pageref on input line 16.
-LaTeX Info: Redefining \nameref on input line 16.
+LaTeX Info: Redefining \ref on input line 17.
+LaTeX Info: Redefining \pageref on input line 17.
+LaTeX Info: Redefining \nameref on input line 17.
 
 (./a535lecturenotes.out) (./a535lecturenotes.out)
 \@outlinefile=\write3
 \openout3 = `a535lecturenotes.out'.
 
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 18.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 18.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 19.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 19.
-LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 19.
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 26.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 27.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 26.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 27.
  [1
 
 {/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 66.
- [2]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 66.
+Underfull \hbox (badness 10000) in paragraph at lines 96--103
 
-(./a535lecturenotes.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 66.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 66.
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--103
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 96--103
+
+ []
+
+[2]
+Underfull \hbox (badness 10000) in paragraph at lines 137--140
+
+ []
+
+[3]
+Underfull \hbox (badness 10000) in paragraph at lines 156--157
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 158--163
+
+ []
+
+
+Underfull \hbox (badness 10000) in paragraph at lines 170--172
+
+ []
+
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 188.
+[4]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 188.
+ (./a535lecturenotes.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 188.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 188.
 Package rerunfilecheck Info: File `a535lecturenotes.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 66.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 188.
  ) 
 Here is how much of TeX's memory you used:
- 4858 strings out of 493089
- 72473 string characters out of 6134842
- 157102 words of memory out of 5000000
- 8331 multiletter control sequences out of 15000+600000
- 8977 words of font info for 32 fonts, out of 8000000 for 9000
+ 5447 strings out of 493089
+ 79186 string characters out of 6134842
+ 169499 words of memory out of 5000000
+ 8895 multiletter control sequences out of 15000+600000
+ 10102 words of font info for 37 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 29i,6n,21p,228b,382s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 29i,10n,21p,228b,387s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
-></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb>
-</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></
-usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></us
-r/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/l
-ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/lo
-cal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/loca
-l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on a535lecturenotes.pdf (2 pages, 80911 bytes).
+></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb>
+</usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi12.pfb><
+/usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmmi8.pfb></u
+sr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr12.pfb></usr
+/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr17.pfb></usr/l
+ocal/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmr8.pfb></usr/loca
+l/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy10.pfb></usr/local
+/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/t
+exlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
+Output written on a535lecturenotes.pdf (4 pages, 113246 bytes).
 PDF statistics:
- 61 PDF objects out of 1000 (max. 8388607)
- 48 compressed objects within 1 object stream
- 12 named destinations out of 1000 (max. 500000)
+ 84 PDF objects out of 1000 (max. 8388607)
+ 67 compressed objects within 1 object stream
+ 19 named destinations out of 1000 (max. 500000)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

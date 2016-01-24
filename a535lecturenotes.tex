@@ -1,6 +1,7 @@
 \documentclass[12pt]{article}
 \usepackage{color}
 \usepackage{hyperref}
+\usepackage{amsmath}
 
 \title{ASTR 535 Lecture Notes}
 \author{Jon Holtzman}
@@ -50,12 +51,133 @@ Wavelength regimes:
 Quantities of light:
 \begin{itemize}
     \item Intensity (I) [erg $s^{-1}$ $\Omega^{-1}$ $\nu^{-1}$]
-    \item Surface Brightness (SB)
-    \item Flux (F)
-    \item Luminosity (L)
+    \item Surface Brightness (SB): amount of energy $received$ in a unit surface
+        element per unit time per unit frequency (or wavelength) from a unit
+        solid angle in the direction ($\theta,\phi$), where $\theta$ is the angle
+        away from the normal to the surface element, and $\phi$ is the azimuthal
+        angle.
+    \item Flux (F): amount of energy passing through a unit surface element
+        in all directions, defined by
+        \begin{equation}
+            F_{\nu} = \int I_{\nu}\cos(\theta)\textrm{d}\Omega
+        \end{equation}
+        where d$\Omega$ is the solid angle element, and the integration is
+        over the entire solid angle.
+    \item Luminosity (L): $intrinsic$ energy emitted by the source per
+        second ($\sim$ power). For an isotropically emitting source,
+        \begin{equation}
+            L = 4 \pi d^2 F
+        \end{equation}
+        where $d$ = distance to source.
 \end{itemize}
+What to measure for sources:
+\begin{itemize}
+    \item Resolved: directly measure surface brightness (intensity)
+        distribution on the sky, usually over some bandpass or wavelength
+        interval.
+    \item Unresolved: measure the flux.
+\end{itemize}
+Questions:
+\begin{itemize}
+    \item What are the dimensions of the three quantities: luminosity,
+        surface brightness (intensity), and flux?
+    \item How do the three quantities depend on distance to the source?
+    \item To what quantity is apparent magnitude of a star related?
+    \item To what quantity is the absolute magnitude related?
+\end{itemize}
+Amount of light emitted is a function of wavelength, so we are often interested
+in e.g.\ flux per unit wavelength or frequency, also known as $specific$
+flux.
+\begin{align*}
+    \int F_{\nu} \textrm{d} \nu &= -\int F_{\lambda} \textrm{d} \lambda\\
+    F_{\nu} &= -F_{\lambda} \textrm{d} \lambda\\
+    &= F_{\lambda} \frac{c}{\nu^2}\\
+    &= F_{\lambda} \frac{\lambda^2}{c}\\
+\end{align*}
+Note that a constant $F_{\lambda}$ implies a $non$-constant $F_{\nu}$
+and vice versa.\\\\
+\noindent Units: often cgs, magnitudes, Jansky (a flux density unit
+corresponding to 10$^{-26}$ W m$^{-2}$ Hz$^{-1}$)\\\\
+\noindent There are often variations in terminology\\\\
+\noindent Terminology of measurements:
+\begin{itemize}
+    \item photometry (broad-band flux measurement)
+    \item spectroscopy (relative measurement of fluxes at different wavelengths)
+    \item Spectrophotomoetry (absolute measuremnet of fluxes at different wavelengths)
+    \item astrometry (concerned with positions of observed flux)
+    \item morphology (intensity as a function of position;
+        often, absolute measurements are unimportant)
+\end{itemize}
+Generally, measure flux with photometry, and flux density with spectroscopy
+(down to the resolution of the spectrograph). In pracetice, with most detectors,
+measure photon flux (photon counting device), rather than every flux (bolometers).
+The photon flux is given by
+\begin{align*}
+    photon flux &= flux photon^{-1} or\\
+                &= energy photon^{-1}\\
+                &= \int F_{\lambda} \frac{\lambda}{hc} \textrm{d} \lambda
+\end{align*}
 
 \subsection*{Magnitudes and photometric systems}
+Magnitudes are related to flux (and SB and L) by
+\begin{align*}
+    m &= -2.5 \log \frac{F}{F_0}\\
+      &= -2.5 \log F + 2.5 \log F_0
+\end{align*}
+where the coefficient of proportionality, $F_0$, depends on the definition
+of photometric system; the quantity $-2.5 \log F_0$ may be referred to as
+the photometric system zeropoint. Inverting, one gets:
+\begin{equation*}
+    F = F_0 \times 10^{-0.4\textrm{m}}
+\end{equation*}
+Just as fluxes can be represented in magnitude units, flux densities can be
+specified by monochromatic magnitudes:
+\begin{equation*}
+    F_{\lambda} = F_0 (\lambda) \times 10^{-0.4 \textrm{m}(\lambda)}
+\end{equation*}
+although spectra are more often given in flux units than in magnitude units.
+Note that it is possible that $F_0$ is a function of wavelength.\\
+
+\noindent Since magnitudes are logarithmic, the $difference$ between
+magnitudes corresponds to a ratio of fluxes; ratios of magnitudes are
+generally unphysical. If one is just doing relative measurements of
+brightness between objects, this can be done without knowledge of $F_0$
+(or, equivalently, the system zeropoint); objects that differ in brightness
+by $\Delta$M have the same ratio of brightness (10$^{-0.4 \Delta M}$)
+regardless of what photometric system they are in. The photometric system
+definitions and zeropoints are only needed when converting between calibrated
+magnitudes and fluxes. Note that this means that if one references the
+brightness of one object relative to that of another, a magnitude system
+can be set up relative the brightness of the reference source. However, the
+utility of a system when doing astrophysics generally requires an
+understanding of the actual fluxes.
+
+\newpage
+\noindent \textcolor{magenta}{Monday, January 25}\\
+
+\noindent There are three main types of magnitude systems in use in astronomy.
+We start by describing the two simpler ones: the STMAG and the ABNU mag system.
+In these simple systems, the reference flux is just a constant value in
+$F_{\lambda}$ or $F_{\nu}$. However, these are not always the most widely used
+systems in astronomy, because no natural source exists with a flat spectrum.\\
+
+\noindent In the STMAG system, $F_{0,\lambda} = 3.60 \times 10^{-9}$
+erg cm$^{-2}$ s$^{-1}$ \AA{}$^{-1}$, which is the flux of Vega at
+5500 \AA{}; hence a star of Vega's brightness at 5500 \AA{} is defined to
+have m=0. Alternatively, we can write
+\begin{equation*}
+    m_{STMAG} = -2.5 \log F_{\lambda} - 21.1
+\end{equation*}
+for $F_{\lambda}$ in cgs units.\\
+
+\noindent In the ABNU system, things are defined for $F_{\nu}$ instead of
+$F_{\lambda}$, and we have
+\begin{equation*}
+    F_{0,\nu} = 3.63
+\end{equation*}
+
+
+
 \subsection*{Observed fluxes and the count equation}
 \subsection*{Errors in photon rates}
 \subsubsection*{Noise equation: how do we predict expected errors?}
@@ -64,3 +186,17 @@ Quantities of light:
 \subsubsection*{Random errors vs systematic errors}
 
 \end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
