@@ -1,5 +1,6 @@
 \documentclass[12pt]{article}
 \usepackage{color}
+\usepackage{amsmath}
 \usepackage{hyperref} % \url{link} or \hrf{link}{text}
 \usepackage{titlesec}
 \titleformat{\section}%
@@ -19,12 +20,29 @@
 \subsubsection{Two objects from the SDSS survey have g=17 and g=19.5,
 respectively. Which is brighter, and by how much?}
 
+The difference in magnitude between the two stars is 2.5, which corresponds
+to a brightness difference of a factor of 10, using the relationship
+\begin{equation*}
+    m_1 - m_2 = -2.5 \log \Bigg(\frac{b_1}{b_2}\Bigg)
+\end{equation*}
+Since objects with numerically higher magnitude values are fainter,
+the object with g=17 is 10 times brighter than the object with g=19.5.
+
 \subsubsection{Star A has V=12, star B has V=14.5. Which is brighter,
 and by how much?}
+
+Using the same reasoning as in question 1,
+star A is 10 times brighter than star B.
 
 \subsubsection{A star has B-V=0. What does that imply about the slope of its
 spectrum? Is the slope independent of whether $F_{\nu}$ or $F_{\lambda}$
 is being plotted? If not, how do they differ?}
 
+If B-V=0, then B=V. In other words, the magnitude in the `blue' part of
+the spectrum is the same as the magnitude in the `green', or visual
+part of the spectrum. Since the UBV system is a broad-band photometric
+system, B and V both cover a relatively wide range of wavelengths, so
+while the $F_{\lambda}$ spectrum may be flat, the $F_{\nu}$ won't
+necessarily be.
 
 \end{document}

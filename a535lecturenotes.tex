@@ -17,8 +17,10 @@
 \begin{document}
 \maketitle
 
-\noindent course website: \textcolor{blue}{\url{http://astronomy.nmsu.edu/holtz/a535}}
+\noindent course website: \textcolor{blue}
+{\url{http://astronomy.nmsu.edu/holtz/a535}}\\
 
+\noindent \textcolor{magenta}{Friday, January 22}
 \section*{Properties of light, magnitudes, errors, and error analysis}
 
 \subsection*{Light}
@@ -50,34 +52,48 @@ Wavelength regimes:
 \end{itemize}
 Quantities of light:
 \begin{itemize}
-    \item Intensity (I) [erg $s^{-1}$ $\Omega^{-1}$ $\nu^{-1}$]
-    \item Surface Brightness (SB): amount of energy $received$ in a unit surface
+    \item Intensity $I(\theta,\phi)$ [erg $s^{-1}$ $\Omega^{-1}$ $\nu^{-1}$]
+        Encapsulates $direction$ light is coming from.
+        Also known as radiance.
+    \item Surface Brightness (SB)
+        [erg s$^{-1}$ cm$^{-2}$ $\nu^{-1}$ sterradian$^{-1}$]
+        amount of energy $received$ in a unit surface
         element per unit time per unit frequency (or wavelength) from a unit
         solid angle in the direction ($\theta,\phi$), where $\theta$ is the angle
         away from the normal to the surface element, and $\phi$ is the azimuthal
-        angle.
+        angle. SB is independent of distance unless considering cosmological
+        scales, where the curvature of spacetime has an effect.
     \item Flux (F): amount of energy passing through a unit surface element
         in all directions, defined by
         \begin{equation}
             F_{\nu} = \int I_{\nu}\cos(\theta)\textrm{d}\Omega
         \end{equation}
         where d$\Omega$ is the solid angle element, and the integration is
-        over the entire solid angle.
-    \item Luminosity (L): $intrinsic$ energy emitted by the source per
+        over the entire solid angle. The $\cos(\theta)$ factor is important
+        for, e.g., ISM where light is coming from all directions, but for
+        tiny objects, $\theta$ is negligibally small and can be dropped.
+        Integrates over $all$ directions.
+        Also known as irradiance.
+    \item Luminosity (L): [erg s$^{-1}$]
+        $intrinsic$ energy emitted by the source per
         second ($\sim$ power). For an isotropically emitting source,
         \begin{equation}
             L = 4 \pi d^2 F
         \end{equation}
-        where $d$ = distance to source.
+        where $d$ = distance to source. Also known as radiant flux.
 \end{itemize}
 What to measure for sources:
 \begin{itemize}
     \item Resolved: directly measure surface brightness (intensity)
         distribution on the sky, usually over some bandpass or wavelength
         interval.
-    \item Unresolved: measure the flux.
+    \item Unresolved: measure the flux. Diffraction is the reason stellar
+        surfaces cannot be resolved. Because of this, we cannot measure
+        SB, so we measure flux, integrated over the entire object.
 \end{itemize}
-Questions:
+Note that Luminosity can only be calculated if the distance is known.\\
+
+\noindent Questions:
 \begin{itemize}
     \item What are the dimensions of the three quantities: luminosity,
         surface brightness (intensity), and flux?
@@ -87,39 +103,53 @@ Questions:
 \end{itemize}
 Amount of light emitted is a function of wavelength, so we are often interested
 in e.g.\ flux per unit wavelength or frequency, also known as $specific$
-flux.
+flux. Using $\lambda=\frac{c}{\nu} \rightarrow
+\frac{\textrm{d}\lambda}{\textrm{d}\nu} = \frac{-c}{\nu^2}$
 \begin{align*}
-    \int F_{\nu} \textrm{d} \nu &= -\int F_{\lambda} \textrm{d} \lambda\\
-    F_{\nu} &= -F_{\lambda} \textrm{d} \lambda\\
-    &= F_{\lambda} \frac{c}{\nu^2}\\
-    &= F_{\lambda} \frac{\lambda^2}{c}\\
+    \int F_{\nu} \textrm{d} \nu &= \int F_{\lambda} \textrm{d} \lambda\\
+    F_{\nu} \textrm{d} \nu &= F_{\lambda} \textrm{d} \lambda\\
+    F_{\nu} &= F_{\lambda} \frac{\textrm{d} \lambda}{\textrm{d}\nu}\\
+    &= -F_{\lambda} \frac{c}{\nu^2}\\
+    &= -F_{\lambda} \frac{\lambda^2}{c}\\
 \end{align*}
 Note that a constant $F_{\lambda}$ implies a $non$-constant $F_{\nu}$
-and vice versa.\\\\
+and vice versa. Depending on where you are, a constant chunk of 1 Hz is
+not the same wavelength range, depending on where you are.\\
+
 \noindent Units: often cgs, magnitudes, Jansky (a flux density unit
 corresponding to 10$^{-26}$ W m$^{-2}$ Hz$^{-1}$)\\\\
 \noindent There are often variations in terminology\\\\
 \noindent Terminology of measurements:
 \begin{itemize}
-    \item photometry (broad-band flux measurement)
+    \item photometry (broad-band flux measurement) SB or flux, integrated
+        over some wavelength range.
     \item spectroscopy (relative measurement of fluxes at different wavelengths)
-    \item Spectrophotomoetry (absolute measuremnet of fluxes at different wavelengths)
-    \item astrometry (concerned with positions of observed flux)
-    \item morphology (intensity as a function of position;
-        often, absolute measurements are unimportant)
+        $f(\lambda)$
+    \item Spectrophotometry (absolute measuremnet of fluxes at different wavelengths)
+        $f(\lambda)$
+    \item astrometry: concerned with positions of observed flux, not brightness,
+        but direction.
+    \item morphology: intensity as a function of position;
+        often, absolute measurements are unimportant. Deals with $resolved$
+        objects, intensity as function of position.
 \end{itemize}
-Generally, measure flux with photometry, and flux density with spectroscopy
-(down to the resolution of the spectrograph). In pracetice, with most detectors,
-measure photon flux (photon counting device), rather than every flux (bolometers).
-The photon flux is given by
-\begin{align*}
-    photon flux &= flux photon^{-1} or\\
-                &= energy photon^{-1}\\
-                &= \int F_{\lambda} \frac{\lambda}{hc} \textrm{d} \lambda
-\end{align*}
+Generally, measure $flux$ with photometry, and flux $density$ with spectroscopy
+(down to the resolution of the spectrograph). In practice, with most detectors,
+we measure photon flux [photons cm$^{-2}$ s$^{-1}$] with a photon counting device,
+rather than energy flux (which is done with bolometers).
+The monochromatic photon flux is given by the energy flux ($F_{\lambda}$)
+divided by the energy per photon ($E_{photon} = \frac{hc}{\lambda}$),
+or
+\begin{equation*}
+    \textrm{photon\ flux} = \int F_{\lambda} \frac{\lambda}{hc} \textrm{d} \lambda
+\end{equation*}
 
 \subsection*{Magnitudes and photometric systems}
-Magnitudes are related to flux (and SB and L) by
+Magnitudes are related to flux (and SB and L) by:
+\begin{equation*}
+    m_1 - m_2 = -2.5 \log \frac{b_1}{b_2}
+\end{equation*}
+or for a single object:
 \begin{align*}
     m &= -2.5 \log \frac{F}{F_0}\\
       &= -2.5 \log F + 2.5 \log F_0

@@ -1,6 +1,11 @@
-# Instructions: Determine the frequency and energy at
-# 5500 Angstroms, as well as the conversion factor between
-# Flux_lambda and Flux_frequency at 3000, 5500, and 8000 Angstroms.
+# Instructions:
+    # Write functions that convert bewteen
+    # wavelength, frequency, and energy;
+    # and between F_lambda and F_nu, using Angstroms and Hertz.
+    #
+    # Using the functions, determine the frequency and energy at
+    # 5500 Angstroms, as well as the conversion factor between
+    # Flux_lambda and Flux_frequency at 3000, 5500, and 8000 Angstroms.
 
 
 import numpy as np
