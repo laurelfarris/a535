@@ -1,6 +1,16 @@
 \documentclass[12pt]{article}
 \usepackage{color}
 \usepackage{hyperref} % \url{link} or \hrf{link}{text}
+\usepackage{titlesec}
+\titleformat{\section}%
+  [hang]% <shape>
+  {\normalfont\bfseries\Large}% <format>
+  {}% <label>
+  {0pt}% <sep>
+  {}% <before code>
+  \renewcommand{\thesection}{}% Remove section references...
+  \renewcommand{\thesubsection}{\arabic{subsection}}%... from subsections
+  \renewcommand{\thesubsubsection}{\arabic{subsubsection}}%... from subsections
 
 \begin{document}
 

@@ -156,7 +156,8 @@ or for a single object:
 \end{align*}
 where the coefficient of proportionality, $F_0$, depends on the definition
 of photometric system; the quantity $-2.5 \log F_0$ may be referred to as
-the photometric system zeropoint. Inverting, one gets:
+the photometric system zeropoint. Note that this relationship holds
+regardless of what photometric system you are using. Inverting, one gets:
 \begin{equation*}
     F = F_0 \times 10^{-0.4\textrm{m}}
 \end{equation*}
@@ -180,9 +181,8 @@ magnitudes and fluxes. Note that this means that if one references the
 brightness of one object relative to that of another, a magnitude system
 can be set up relative the brightness of the reference source. However, the
 utility of a system when doing astrophysics generally requires an
-understanding of the actual fluxes.
+understanding of the actual fluxes.\\
 
-\newpage
 \noindent \textcolor{magenta}{Monday, January 25}\\
 
 \noindent There are three main types of magnitude systems in use in astronomy.
@@ -191,7 +191,8 @@ In these simple systems, the reference flux is just a constant value in
 $F_{\lambda}$ or $F_{\nu}$. However, these are not always the most widely used
 systems in astronomy, because no natural source exists with a flat spectrum.\\
 
-\noindent In the STMAG system, $F_{0,\lambda} = 3.60 \times 10^{-9}$
+\noindent The STMAG (Space Telescope Mag) is relative to a source of
+constant $F_{\lambda}$. In this system, $F_{0,\lambda} = 3.60 \times 10^{-9}$
 erg cm$^{-2}$ s$^{-1}$ \AA{}$^{-1}$, which is the flux of Vega at
 5500 \AA{}; hence a star of Vega's brightness at 5500 \AA{} is defined to
 have m=0. Alternatively, we can write
@@ -200,13 +201,153 @@ have m=0. Alternatively, we can write
 \end{equation*}
 for $F_{\lambda}$ in cgs units.\\
 
-\noindent In the ABNU system, things are defined for $F_{\nu}$ instead of
-$F_{\lambda}$, and we have
+\noindent In the ABNU system, things are defined relative to a source
+of constant $F_{\nu}$ and we have
 \begin{equation*}
-    F_{0,\nu} = 3.63
+    F_{0,\nu} = 3.63 \times 10^{-20} erg\ s^{-1}\ cm^{-2}\
+    Hz^{-1}\ 10^{-0.4 \textrm{m}_{\nu}}
 \end{equation*}
+or
+\begin{equation*}
+    m_{ABNU} = -2.5 \log F_{nu} - 48.6
+\end{equation*}
+for $F_{\nu}$ in cgs units. Again, the constant comes from the flux of
+Vega.\\
 
+\noindent Magnitudes usually refer to the flux integrated over a
+spectral bandpass. In this case, $F$ and $F_0$ refer to fluxes
+integrated over the bandpass. The STMAG and ABMAG integrated systems
+are defined relative to sources of constant $F_{\lambda}$ and
+$F_{\nu}$ systems, respectively.
+\begin{align*}
+    m_{STMAG} &= -2.5 \log \frac{\int F_{\lambda} \lambda
+    \textrm{d}\lambda}{\int3.6\times10^{-9}\lambda\textrm{d}\lambda}\\
+    m_{ABNU} &= -2.5 \log \frac{\int F_{\nu}/ \nu
+    \textrm{d}\nu}{\int 3.6 \times 10^{-20}/ \nu\textrm{d}\nu}
+\end{align*}
+These should have the same value at 5500 \AA{}.
+The factors of $\lambda$ and $\nu$ come from the conversion factor
+$hc/\lambda$, where the constants, $h$ and $c$, cancel out in the
+fractions in each equation.\\
 
+\noindent Note that these systems differ by more than a constant,
+because one is defined by units of $F_{\lambda}$ and the other by
+$F_{\nu}$, so the difference betwen the systems is a function of
+wavelength. They are defined to be the same at 5500 \AA{}. (Question:
+what's the relations between $m_{STMAG}$ and $m_{ABNU}$?)\\
+
+\noindent Note also that, using magnitudes, the measured magnitude is
+nearly independent of bandpass width, so a broader bandpass does not
+imply a brighter (smaller) magnitude, which is not the case for
+fluxes. The reference is being integrated as well, so they cancel.\\
+
+\noindent The standard UBVRI broadband photometric system, as well as
+several other magnitude systems, however, are not defined for a
+constant (flat) $F_{\lambda}$ or $F_{\nu}$ spectrum; rather, they are defined
+relative to the spectrum of an A0V star. Most systems are defined (or
+at least were originally) to have the magnitude of Vega be zero in all
+bandpasses (VEGAMAGS); if you ever get into this in detail, note that
+this is not exactly true for the UBVRI system.\\
+
+\noindent For the broadband UBVRI system, we have
+\begin{equation*}
+    m_{UBVRI} \approx -2.5 \log
+    \frac{\int_{UBVRI}F_{\lambda}(object)\lambda\textrm{d}\lambda}
+    {\int_{UBVRI}F_{\lambda}(Vega)\lambda\textrm{d}\lambda}
+\end{equation*}
+(as above, the factor of $\lambda$ comes in for photon counting
+detectors). This gives the magnitude in U, B, V, R, \emph{or} I,
+by integrating over that same bandpass.
+The UBVRI filter set had overlapping bandpasses, so
+there was a switch to interference filter: the ugriz system used
+by SDSS (explained below... I think).\\
+
+\noindent Here is a
+\href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/mag.htm}
+{\textcolor{blue}{plot}}
+to demonstrate the difference between the different systems.\\
+
+\noindent While it seems that STMAG and ABNU systems are more
+straightforward, in practice it is difficult to measure absolute
+fluxes, and much easier to measure relative fluxes between objects.
+Hence, historically observations were tied to observations of Vega (or
+to stars which themselves were tied to Vega), so VEGAMAGs made sense,
+and the issue of determining physical fluxes boiled down to measuring
+the physical flux of Vega. Today, in some cases, it may be more
+accurate to measure the absolute throughput of an instrumental system,
+and using STMAG or ABNU makes more sense.
+
+\subsubsection*{Colors}
+Working in magnitudes, the difference in magnitudes between different
+bandpasses (called the color index, or simply, color) is related to
+the flux ratio between the bandpasses, i.e., the color.
+In the UBVRI
+system, the \emph{difference between magnitudes}, e.g. B-V,
+gives the ratio of the fluxes in different bandpasses
+\emph{relative to the ratio of the fluxes of
+an A0V star in the different bandpasses (for VEGAMAG)}.
+Note the typical colors of astronomical objects,
+which are different for the different photometric systems.\\
+\emph{A} stars have color 0, have same SED as Vega. \emph{O} stars
+have color less than 0, while coolor stars have color greater than 0.
+In sloan system, have  g-r (ugriz). g-r=0 indicates constant
+$F_{\nu}$.
+\begin{equation*}
+    m = -2.5\log\frac{\int_B F_{\lambda}\textrm{d}\lambda}
+    {\int_V F_{\lambda}\textrm{d}\lambda}
+\end{equation*}
+if B-V=0, then (B/V)$_{object}$ is the same as (B/V)$_{Vega}$.\\
+
+\noindent What would the flux be from an object with some magnitude,
+x? Need this to know how much observing time I need. E.g., convert the
+spectrum of an elliptical galaxy to color; if you know F in one
+filter, you can get F in another filter.
+
+\noindent Which is closer to the UBVRI system, STMAG or ABNU?\\
+\noindent What would typical colors be in a STMAG or ABNU system?
+
+\newpage
+\noindent \textcolor{magenta}{Wednesday, January 27}\\
+
+\subsubsection*{UBVRI magnitudes-flux conversion}
+To convert Vega-based magnitudes to fluxes, look up the flux of Vega
+at the center of the passband; however, if the spectrum of the object
+differes from that of Vega, this won't be perfectly accurate. Given
+UBVRI magnitudes of an object in the desired band, filter profiles
+(e.g. Bessell 1990, PASP 102,1181), and absolute spectrophotometry of
+Vega (e.g., \href{http://adsabs.harvard.edu/abs/2004AJ....127.3508B}
+{Bohlin & Gilliland 2004, AJ 127, 3508}, one can determine
+the flux.\\
+
+\noindent If one wanted to estimate the flux of some object in
+arbitrary bandpass given just the V magnitude of an object (a common
+situation used when trying to predict exposures times, see below),
+this can be done if an estimate of the spectral energy distribution
+(SED) can be made; given the filter profiles, one can compute the
+integral of the SED over the V bandpass, determine the scaling by
+comparing with the integral of the Vega spectrum over the same
+bandpass, then use the normalized SED to compute the flux in any
+desired bandpass. Some possibly useful references for SEDs are:
+Bruzual, Persson, Gunn, & Stryker; Hunter, Christian, & Jacoby;
+Kurucz).\\
+
+\noindentngs Things are certainly simpler in the ABNU or STMAG system, and
+there has been some movement in this direction: the STScI gives STMAG
+calibrations for HST instruments, and the SDSS photometric system is
+close to an ABNU system.\\
+
+\noindent Note, however, that even when the systems are conceptually
+well defined, determining the absolute calibration of any photometric
+system is very difficult in reality, and determining absolute fluxes
+to the 1\% level is very challenging. 
+
+\noindent As a separate note on magnitudes themselves, note that some
+people, in particular, the SDSS, have adopted a modified type of
+magnitudes, called asinh magnitudes, which behave like normal (also
+known as Pogson) magnitude for brighter objects, but have different
+behavior for very faint objects (near the detection threshold); see
+\href{http://adsabs.harvard.edu/abs/1999AJ....118.1406L}
+{Lupton, Gunn, & Szalay 1999 AJ 118, 1406} for details.
 
 \subsection*{Observed fluxes and the count equation}
 \subsection*{Errors in photon rates}

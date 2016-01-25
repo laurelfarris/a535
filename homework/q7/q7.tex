@@ -1,0 +1,47 @@
+\documentclass[12pt]{article}
+\usepackage{color}
+\usepackage{hyperref} % \url{link} or \hrf{link}{text}
+\usepackage{titlesec}
+\titleformat{\section}%
+  [hang]% <shape>
+  {\normalfont\bfseries\Large}% <format>
+  {}% <label>
+  {0pt}% <sep>
+  {}% <before code>
+  \renewcommand{\thesection}{}% Remove section references...
+  \renewcommand{\thesubsection}{\arabic{subsection}}%... from subsections
+  \renewcommand{\thesubsubsection}{\arabic{subsubsection}}%... from subsections
+
+\begin{document}
+
+%\bibliographystyle{plain}
+
+\section*{Homework 7}
+\date{01/29/2016}
+\subsection*{Astronomers use several different units to measure
+brightnesses: fluxes per unit wavelength ($F_{\lambda}$),
+fluxes per unit frequency ($F_{\nu}$), and magnitudes, both
+integrated and per unit wavelength and frequency (m = -2.5logF).
+Since magnitudes are logarithimic units, differences in magnitude
+correspond to ratios in fluxes.}
+
+\subsubsection{A Jansky is a unit used to measure flux density,
+most often in the radio; one Jansky is 10$^{-26}$ W m$^{-2}$ Hz$^{-1}$
+(note that this is an F$_{\nu}$ quantity).
+How bright is Vega at 5500 \AA{} in Janskys, using the fact that the
+flux density of Vega at 5500 \AA{}
+is 3.6 $\times 10^{-9}$ erg cm$^{-2}$ s$^{-1}$ \AA{}$^{-1}$
+(note that this is an F$_{\lambda}$ quantity)?}
+
+\subsubsection{If a star has a flux density of 3.6 x
+10-9ergs/cm2/sec/\AA{} at
+8500 \AA{} how bright is it in Janskys?}
+
+\subsubsection{If a star has a flux density of 7.2 x
+10-14ergs/cm2/sec/\AA{} at 5500 \AA{}, how much fainter is it
+than Vega in magnitudes? }
+
+
+%\bibliography{reffile}
+
+\end{document}
