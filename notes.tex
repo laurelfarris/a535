@@ -316,7 +316,7 @@ differes from that of Vega, this won't be perfectly accurate. Given
 UBVRI magnitudes of an object in the desired band, filter profiles
 (e.g. Bessell 1990, PASP 102,1181), and absolute spectrophotometry of
 Vega (e.g., \href{http://adsabs.harvard.edu/abs/2004AJ....127.3508B}
-{Bohlin & Gilliland 2004, AJ 127, 3508}, one can determine
+{Bohlin \& Gilliland 2004, AJ 127, 3508}, one can determine
 the flux.\\
 
 \noindent If one wanted to estimate the flux of some object in
@@ -328,10 +328,10 @@ integral of the SED over the V bandpass, determine the scaling by
 comparing with the integral of the Vega spectrum over the same
 bandpass, then use the normalized SED to compute the flux in any
 desired bandpass. Some possibly useful references for SEDs are:
-Bruzual, Persson, Gunn, & Stryker; Hunter, Christian, & Jacoby;
+Bruzual, Persson, Gunn, \& Stryker; Hunter, Christian, \& Jacoby;
 Kurucz).\\
 
-\noindentngs Things are certainly simpler in the ABNU or STMAG system, and
+\noindent Things are certainly simpler in the ABNU or STMAG system, and
 there has been some movement in this direction: the STScI gives STMAG
 calibrations for HST instruments, and the SDSS photometric system is
 close to an ABNU system.\\
@@ -339,7 +339,7 @@ close to an ABNU system.\\
 \noindent Note, however, that even when the systems are conceptually
 well defined, determining the absolute calibration of any photometric
 system is very difficult in reality, and determining absolute fluxes
-to the 1\% level is very challenging. 
+to the 1\% level is very challenging.\\
 
 \noindent As a separate note on magnitudes themselves, note that some
 people, in particular, the SDSS, have adopted a modified type of
@@ -347,10 +347,121 @@ magnitudes, called asinh magnitudes, which behave like normal (also
 known as Pogson) magnitude for brighter objects, but have different
 behavior for very faint objects (near the detection threshold); see
 \href{http://adsabs.harvard.edu/abs/1999AJ....118.1406L}
-{Lupton, Gunn, & Szalay 1999 AJ 118, 1406} for details.
+{Lupton, Gunn, \& Szalay 1999 AJ 118, 1406} for details.
 
 \subsection*{Observed fluxes and the count equation}
+What if you are measuring flux with an actual instrument, i.e.
+counting photons? The intrinsic photon flux from the source is not
+trivial to determine from the number of photons that you count. To get
+the number of photons that you count in an observation, you need to
+take into account the area of your photon collector (telescope),
+photon losses and gains from the Earth's atmosphere (which changes
+with conditions), and the efficiency of your collection/detection
+apparatus (which can change with time). Generally, the astronomical
+signal (which might be a flux or a surface brightness, depending on
+whether the object is resolved) can be written
+\begin{equation*}
+    S = Tt \int \frac{F_{\lambda}}{\frac{hc}{\lambda}}q_{\lambda}
+    a_{\lambda}\textrm{d}\lambda \equiv TtS'
+\end{equation*}
+where $S$ is the observed photon flux (the ``signal"), $T$ is the
+telescope collecting area, $t$ is the integration time, $a_{\lambda}$
+is the atmospheric transmission (more later) and
+$q_{\lambda}$ is the system efficiency (which includes
+telescope, filters, optics, detector, etc.); $S'$ is an observed flux
+rate, i.e. with all of the real details of the observing system
+included. I refer to this as the \emph{count equation}.\\
+
+\noindent Usually, however, one doesn't use this information to go
+backward from $S$ to $F_{\lambda}$ because it is very
+difficult to measure all of the terms precisely, and some of them
+(e.g. $a$, and perhaps $q$) are time-variable; $a$ is also spatially
+variable. Instead, most observations are performed differentially to a
+set of other stars of known brightness. If the stars of known
+brightness are observed in the same observation, then the atmospheric
+term is (approximately) the same for all stars; this is known as
+\emph{differential photometry}. From the photon flux of the object with known
+brightness, one could determine an ``exposure efficiency'' for this
+exposure. Equivalently, and more commonly, one can calculate an
+\emph{instrumental magnitude}:
+\begin{equation*}
+    m = -2.5 \log \frac{S}{t}
+\end{equation*}
+(i.e., normalize by the exposure time to get counts/sec, although this
+is not strictly necessary) and then determine the \emph{zeropoint} that needs
+to be added to give the calibrated magnitude ($M$, make sure you
+recognize that this is still an apparent magnitude):
+\begin{equation*}
+    M = m + z
+\end{equation*}
+Note that in the real world, one has to also consider possible
+differences between a given experimental setup and the setup used to
+measure the reference brightnesses, so this is only a first
+approximation (i.e., the zeropoint may be different for different
+stars with different spectral properties)! If using instrumental mags
+including exposure time normalization, the zeropoint gives the
+magnitude of a star that will give 1 count/second.\\
+
+\noindent If there are no stars of known brightness in the same
+observation, then calibration must be done against stars in other
+observations. This then requires that the different effects of the
+Earth's atmosphere in different locations in the sky be accounted for.
+This is known as all-sky, or absolute, photometry. To do this requires
+that the sky is ``well-behaved", i.e. one can accurately predict the
+atmospheric throughput as a function of position. This requires that
+there be no clouds, i.e. photometric weather. Differential photometry
+can be done in non-photometric weather, hence it is much simpler! Of
+course, it is always possible to obtain differential photometry and
+then go back later and obtain absolute photometry of the reference
+stars. It is also common to stop with differential photometry if one
+is studying variable objects, i.e. where one is just interested in the
+change in brightness of an object, not the absolute flux level.\\
+
+\noindent Of course, at some point, someone needs to figure out what
+the fluxes of the calibrating stars really are, and this requires
+understanding all of the terms in the count equation. It is
+challenging, and often, absolute calibration of a system is uncertain
+to a couple of percent.\\
+
+\noindent While the count equation isn't usually used for calibration,
+it is very commonly used for computing the approximate number of
+photons you will receive from a given source in a given amount of time
+for a given observational setup. This number is critical to know in
+order to estimate your expected errors and exposure times in observing
+proposals, observing runs, etc. Understanding errors in absolutely
+critical in all sciences, and maybe even more so in astronomy, where
+objects are faint, photons are scarce, and errors are not at all
+insignificant. The count equation provides the basis for exposure time
+calculator (ETC) programs, because it gives an expectation of the
+number of photons that will be received by a given instrument as a
+function of exposure time. As we will see shortly, this provides the
+information we need to calculate the uncertainty in the measurement as
+a function of exposure time.
+
 \subsection*{Errors in photon rates}
+For a given rate of emitted photons, there's a probability function
+which gives the number of photons we detect, even assuming 100\%
+detection efficiency, because of statistical uncertainties. In
+addition, there may also be instrumental uncertainties. Consequently,
+we now turn to the concepts of probability distributions, with
+particular interest in the distribution which applies to the detection
+of photons.\\
+
+\noindent \emph{Distributions and characteristics thereof}
+\begin{itemize}
+    \item concept of a distribution: define $p(x)dx$ as probability of
+    event occuring in $x + dx$:
+    \begin{equation*}
+        \int p(x)\textrm{d}x = 1
+    \end{equation*}
+\end{itemize}
+Some definitions relating to values which characterize a distribution:
+\begin{align*}
+    mean \equiv \mu &= \int xp(x)\textrm{d}x \\
+    variance \equiv \sigma^2 &= \int (x-\mu)^2 p(x)\textrm{d}x \\
+    standard\ deviation \equiv \sigma &= \sqrt{variance}
+\end{align*}
+
 \subsubsection*{Noise equation: how do we predict expected errors?}
 \subsubsection*{Error propagation}
 \subsubsection*{Determining sample parameters: averaging measurements}

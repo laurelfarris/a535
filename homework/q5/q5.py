@@ -1,5 +1,5 @@
 # Instructions:
-    # Write functions that convert bewteen
+    # Write functions that convert between
     # wavelength, frequency, and energy;
     # and between F_lambda and F_nu, using Angstroms and Hertz.
     #
@@ -10,24 +10,35 @@
 
 import numpy as np
 import math
+import pdb
+from astropy import constants as const
 
-def WaveToFreq:
-    return 0
+# Constants needed for conversion [cgs]
+c = const.c.cgs.value # speed of light
+h = const.h.cgs.value # Plank's constant
 
-def FreqToWave:
-    return 0
+# Functions for converting between wavelength, frequency, and energy
 
-def EnergyToWave:
-    return 0
+def WaveToFreq(wave):
+    return c/wave
 
-def WaveToEnergy:
-    return 0
+def FreqToWave(freq):
+    return c/freq
 
-def EnergyToFreq:
-    return 0
+def EnergyToWave(energy):
+    return (h*c)/energy
 
-def FreqToEnergy:
-    return 0
+def WaveToEnergy(wave):
+    return (h*c)/wave
+
+def EnergyToFreq(energy):
+    return energy/h
+
+def FreqToEnergy(freq):
+    return h*freq
+
+# Functions for converting between Flux as a function of frequency and
+# of wavelength
 
 def Flux_FreqToWave:
     return 0
@@ -38,3 +49,7 @@ def Flux_WaveToFreq:
 wave1 = 3000.0
 wave2 = 5500.0
 wave3 = 8000.0
+
+freq = WaveToFreq(21.0)
+print freq
+
