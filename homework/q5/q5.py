@@ -17,16 +17,18 @@ from astropy import constants as const
 c = const.c.cgs.value # speed of light
 h = const.h.cgs.value # Plank's constant
 
-# Functions for converting between wavelength, frequency, and energy
+# Functions for converting between wavelength, frequency, and energy,
+# INPUT wavelengths must be in cgs units [cm], but OUTPUT wavelengths
+# are in Angstroms.
 
 def WaveToFreq(wave):
     return c/wave
 
 def FreqToWave(freq):
-    return c/freq
+    return (c/freq)*1e8
 
 def EnergyToWave(energy):
-    return (h*c)/energy
+    return (h*c)/energy*1e8
 
 def WaveToEnergy(wave):
     return (h*c)/wave
@@ -38,18 +40,26 @@ def FreqToEnergy(freq):
     return h*freq
 
 # Functions for converting between Flux as a function of frequency and
-# of wavelength
+# of wavelength (not completed yet).
 
-def Flux_FreqToWave:
-    return 0
+def Flux_FreqToWave(freq,F_freq):
+    return -F_freq(freq**2/c)
 
-def Flux_WaveToFreq:
-    return 0
+def Flux_WaveToFreq(wave,F_wave):
+    return -F_wave(wave**2/c)
+
+## Homework (need to review syntax for python output formatting).
 
 wave1 = 3000.0
 wave2 = 5500.0
 wave3 = 8000.0
 
-freq = WaveToFreq(21.0)
-print freq
+# Problem 1: determine the frequency and energy at 5500 Angstroms.
+frequency = WaveToFreq(wave2*1e-8)
+print "The frequency of a 5500 Angstrom wave is:", frequency, "Hz."
+energy = WaveToEnergy(wave2*1e-8)
+print "The energy of a 5500 Angstrom wave is:", energy, "erg."
+
+
+
 
