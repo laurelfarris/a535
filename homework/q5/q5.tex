@@ -1,0 +1,40 @@
+\documentclass[12pt]{article}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{hyperref} % \url{link} or \hrf{link}{text}
+\usepackage{titlesec}
+\titleformat{\section}%
+  [hang]% <shape>
+  {\normalfont\bfseries\Large}% <format>
+  {}% <label>
+  {0pt}% <sep>
+  {}% <before code>
+  \renewcommand{\thesection}{}% Remove section references...
+  \renewcommand{\thesubsection}{\arabic{subsection}}%... from subsections
+  \renewcommand{\thesubsubsection}{\arabic{subsubsection}}%... from subsections
+
+\begin{document}
+
+\section*{Homework 5}
+\subsubsection{(1/27, 30 mins) Write a program that includes functions
+that convert between wavelength, frequency, and energy, and between
+F$\scriptstyle \lambda$ (in ergs/cm$^2$/s/\AA{}) and F$\scriptstyle \nu$
+(in ergs/cm$^2$/s/Hz). All of these functions should exist in a single
+file in Python (preferred), IDL, C, C++, or Fortran file. Use the
+routines to determine frequency and energy at 5500 \AA{} as well as the
+conversion factor between F$\scriptstyle \lambda$ and F$\scriptstyle
+\nu$ at 3000 \AA{}, 5500 \AA{}, and 8000 \AA{}. }
+
+Using
+\begin{align*}
+    F_{\nu} &= -F_{\lambda}\frac{\lambda^2}{c} \\
+    \frac{F_{\nu}}{F_{\lambda}} &= \frac{-\lambda^2}{c}
+\end{align*}
+the conversion factor is $\frac{-\lambda^2}{c}$. This produces a
+conversion factor of
+-3.002$\times10^{-20}$ for $\lambda$ = 3000 \AA{},
+-1.009$\times10^{-19}$ for $\lambda$ = 5500 \AA{}, and
+-2.135$\times10^{-19}$ for $\lambda$ = 8000 \AA{}.
+
+
+\end{document}

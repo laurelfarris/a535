@@ -1,0 +1,28 @@
+\documentclass[12pt]{article}
+\usepackage{color}
+\usepackage{amsmath}
+\usepackage{hyperref} % \url{link} or \hrf{link}{text}
+\usepackage{titlesec}
+\titleformat{\section}%
+  [hang]% <shape>
+  {\normalfont\bfseries\Large}% <format>
+  {}% <label>
+  {0pt}% <sep>
+  {}% <before code>
+  \renewcommand{\thesection}{}% Remove section references...
+  \renewcommand{\thesubsection}{\arabic{subsection}}%... from subsections
+  \renewcommand{\thesubsubsection}{\arabic{subsubsection}}%... from subsections
+
+\begin{document}
+
+\section*{Homework 6}
+\subsubsection{(1/27, 30 mins) Derive the relation between
+monochromatic magnitudes in the STMAG and the ABNU systems. Add a
+function to your module (from homework 5) that does this conversion.}
+
+Derivations are written out by hand. See module `conversions.py' under
+homework/q5.
+
+
+
+\end{document}

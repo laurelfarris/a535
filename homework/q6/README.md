@@ -1,4 +1,4 @@
 homework 6 (1/27, 30 mins)
-Derive the relation between monochromatic magnitudes
-in the STMAG and the ABNU systems.
-Add a function to your module that does this conversion.
+
+1/27/2016
+See q6.pdf for homework instructions, questions, and answers.

@@ -52,18 +52,23 @@ Wavelength regimes:
 \end{itemize}
 Quantities of light:
 \begin{itemize}
-    \item Intensity $I(\theta,\phi)$ [erg $s^{-1}$ $\Omega^{-1}$ $\nu^{-1}$]
+    \item Intensity $I(\theta,\phi)$ [erg s$^{-1}\ \nu^{-1}\ \Omega^{-1}$]:
         Encapsulates $direction$ light is coming from.
         Also known as radiance.
     \item Surface Brightness (SB)
-        [erg s$^{-1}$ cm$^{-2}$ $\nu^{-1}$ sterradian$^{-1}$]
+        [erg s$^{-1}$ cm$^{-2}$ $\nu^{-1}$ sterradian$^{-1}$]:
         amount of energy $received$ in a unit surface
         element per unit time per unit frequency (or wavelength) from a unit
         solid angle in the direction ($\theta,\phi$), where $\theta$ is the angle
         away from the normal to the surface element, and $\phi$ is the azimuthal
-        angle. SB is independent of distance unless considering cosmological
+        angle.
+        To calculate SB, just divide the flux by the angle subtended
+        by the object [rad$^2$]. At a larger distance, the flux will
+        be smaller, but so will the angle subtended by the object, so
+        SB is independent of distance unless considering cosmological
         scales, where the curvature of spacetime has an effect.
-    \item Flux (F): amount of energy passing through a unit surface element
+    \item Flux (F) [erg s$^{-1}$ cm$^{-2}\ \nu^{-1}$]: 
+        amount of energy passing through a unit surface element
         in all directions, defined by
         \begin{equation}
             F_{\nu} = \int I_{\nu}\cos(\theta)\textrm{d}\Omega
@@ -74,13 +79,14 @@ Quantities of light:
         tiny objects, $\theta$ is negligibally small and can be dropped.
         Integrates over $all$ directions.
         Also known as irradiance.
-    \item Luminosity (L): [erg s$^{-1}$]
+    \item Luminosity (L) [erg s$^{-1}$]:
         $intrinsic$ energy emitted by the source per
         second ($\sim$ power). For an isotropically emitting source,
         \begin{equation}
             L = 4 \pi d^2 F
         \end{equation}
-        where $d$ = distance to source. Also known as radiant flux.
+        where $d$ = distance to source (so L can only be calculated if
+        the distance is known). Also known as radiant flux.
 \end{itemize}
 What to measure for sources:
 \begin{itemize}
@@ -91,9 +97,8 @@ What to measure for sources:
         surfaces cannot be resolved. Because of this, we cannot measure
         SB, so we measure flux, integrated over the entire object.
 \end{itemize}
-Note that Luminosity can only be calculated if the distance is known.\\
 
-\noindent Questions:
+Questions:
 \begin{itemize}
     \item What are the dimensions of the three quantities: luminosity,
         surface brightness (intensity), and flux?
@@ -102,7 +107,7 @@ Note that Luminosity can only be calculated if the distance is known.\\
     \item To what quantity is the absolute magnitude related?
 \end{itemize}
 Amount of light emitted is a function of wavelength, so we are often interested
-in e.g.\ flux per unit wavelength or frequency, also known as $specific$
+in e.g.\ flux per unit wavelength (or frequency), also known as $specific$
 flux. Using $\lambda=\frac{c}{\nu} \rightarrow
 \frac{\textrm{d}\lambda}{\textrm{d}\nu} = \frac{-c}{\nu^2}$
 \begin{align*}
@@ -114,18 +119,22 @@ flux. Using $\lambda=\frac{c}{\nu} \rightarrow
 \end{align*}
 Note that a constant $F_{\lambda}$ implies a $non$-constant $F_{\nu}$
 and vice versa. Depending on where you are, a constant chunk of 1 Hz is
-not the same wavelength range, depending on where you are.\\
+not the same wavelength range.\\
 
 \noindent Units: often cgs, magnitudes, Jansky (a flux density unit
-corresponding to 10$^{-26}$ W m$^{-2}$ Hz$^{-1}$)\\\\
-\noindent There are often variations in terminology\\\\
+corresponding to 10$^{-26}$ W m$^{-2}$ Hz$^{-1}$)\\
+
+\noindent There are often variations in terminology\\
+
 \noindent Terminology of measurements:
 \begin{itemize}
-    \item photometry (broad-band flux measurement) SB or flux, integrated
+    \item photometry (broad-band flux measurement): SB or flux, integrated
         over some wavelength range.
-    \item spectroscopy (relative measurement of fluxes at different wavelengths)
+    \item spectroscopy (\emph{relative} measurement of fluxes at
+        different wavelengths):
         $f(\lambda)$
-    \item Spectrophotometry (absolute measuremnet of fluxes at different wavelengths)
+    \item spectrophotometry (\emph{absolute} measurement of fluxes at
+        different wavelengths):
         $f(\lambda)$
     \item astrometry: concerned with positions of observed flux, not brightness,
         but direction.
@@ -133,7 +142,8 @@ corresponding to 10$^{-26}$ W m$^{-2}$ Hz$^{-1}$)\\\\
         often, absolute measurements are unimportant. Deals with $resolved$
         objects, intensity as function of position.
 \end{itemize}
-Generally, measure $flux$ with photometry, and flux $density$ with spectroscopy
+Generally, measure \emph{flux} with photometry, and flux
+\emph{density} (per unit wavelength)  with spectroscopy
 (down to the resolution of the spectrograph). In practice, with most detectors,
 we measure photon flux [photons cm$^{-2}$ s$^{-1}$] with a photon counting device,
 rather than energy flux (which is done with bolometers).
@@ -143,6 +153,9 @@ or
 \begin{equation*}
     \textrm{photon\ flux} = \int F_{\lambda} \frac{\lambda}{hc} \textrm{d} \lambda
 \end{equation*}
+
+
+% Magnitudes and photometric systems
 
 \subsection*{Magnitudes and photometric systems}
 Magnitudes are related to flux (and SB and L) by:
@@ -155,7 +168,7 @@ or for a single object:
       &= -2.5 \log F + 2.5 \log F_0
 \end{align*}
 where the coefficient of proportionality, $F_0$, depends on the definition
-of photometric system; the quantity $-2.5 \log F_0$ may be referred to as
+of photometric system; the quantity $2.5 \log F_0$ may be referred to as
 the photometric system zeropoint. Note that this relationship holds
 regardless of what photometric system you are using. Inverting, one gets:
 \begin{equation*}
@@ -179,7 +192,7 @@ regardless of what photometric system they are in. The photometric system
 definitions and zeropoints are only needed when converting between calibrated
 magnitudes and fluxes. Note that this means that if one references the
 brightness of one object relative to that of another, a magnitude system
-can be set up relative the brightness of the reference source. However, the
+can be set up relative to the brightness of the reference source. However, the
 utility of a system when doing astrophysics generally requires an
 understanding of the actual fluxes.\\
 
@@ -191,7 +204,7 @@ In these simple systems, the reference flux is just a constant value in
 $F_{\lambda}$ or $F_{\nu}$. However, these are not always the most widely used
 systems in astronomy, because no natural source exists with a flat spectrum.\\
 
-\noindent The STMAG (Space Telescope Mag) is relative to a source of
+\noindent The STMAG (Space Telescope MAGnitude) is relative to a source of
 constant $F_{\lambda}$. In this system, $F_{0,\lambda} = 3.60 \times 10^{-9}$
 erg cm$^{-2}$ s$^{-1}$ \AA{}$^{-1}$, which is the flux of Vega at
 5500 \AA{}; hence a star of Vega's brightness at 5500 \AA{} is defined to
@@ -204,12 +217,12 @@ for $F_{\lambda}$ in cgs units.\\
 \noindent In the ABNU system, things are defined relative to a source
 of constant $F_{\nu}$ and we have
 \begin{equation*}
-    F_{0,\nu} = 3.63 \times 10^{-20} erg\ s^{-1}\ cm^{-2}\
-    Hz^{-1}\ 10^{-0.4 \textrm{m}_{\nu}}
+    F_{0,\nu} = 3.63 \times 10^{-20}\ \textrm{erg\ s}^{-1}\
+    \textrm{cm}^{-2}\ \textrm{Hz}^{-1}\ 10^{-0.4 \textrm{m}_{\nu}}
 \end{equation*}
 or
 \begin{equation*}
-    m_{ABNU} = -2.5 \log F_{nu} - 48.6
+    m_{ABNU} = -2.5 \log F_{\nu} - 48.6
 \end{equation*}
 for $F_{\nu}$ in cgs units. Again, the constant comes from the flux of
 Vega.\\
@@ -304,9 +317,8 @@ spectrum of an elliptical galaxy to color; if you know F in one
 filter, you can get F in another filter.
 
 \noindent Which is closer to the UBVRI system, STMAG or ABNU?\\
-\noindent What would typical colors be in a STMAG or ABNU system?
+\noindent What would typical colors be in a STMAG or ABNU system?\\
 
-\newpage
 \noindent \textcolor{magenta}{Wednesday, January 27}\\
 
 \subsubsection*{UBVRI magnitudes-flux conversion}
@@ -461,6 +473,16 @@ Some definitions relating to values which characterize a distribution:
     variance \equiv \sigma^2 &= \int (x-\mu)^2 p(x)\textrm{d}x \\
     standard\ deviation \equiv \sigma &= \sqrt{variance}
 \end{align*}
+median: mid-point value.
+\begin{align*}
+    \frac{ \int_{-\infty}^{x_{median}} p(x)\textrm{d}x }
+    { \int_{-\infty}^{\infty} p(x)\textrm{d}x }
+    &= \frac{1}{2}
+\end{align*}
+mode: most probable value (peak in plot).
+
+\newpage
+\noindent \textcolor{magenta}{Wednesday, January 27}\\
 
 \subsubsection*{Noise equation: how do we predict expected errors?}
 \subsubsection*{Error propagation}
