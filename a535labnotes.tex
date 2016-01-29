@@ -96,9 +96,7 @@ always specified for some reference equinox: J2000/FK5, B1950, etc.; if using
 coordinates to point a telescope, you need to account for this (but generally,
 telescope software does this on its own). Note distinction between equinox and
 epoch, where the latter is relevant for objects that move (which everything does
-at some level).\\
-
-\noindent Transformations between systems straightforward from spherical
+at some level).\\ \noindent Transformations between systems straightforward from spherical
 trigonometry.\\
 
 \noindent Note the common usage of an Aitoff projection of the sky in celestial
@@ -117,15 +115,147 @@ source of known celestial position: proper motion, precession, nutation,
 ``aberration of light'', parallax, atmosphereic refraction.
 
 \subsection*{Finding positions of celestial objects}
+\begin{itemize}
+    \item \href{http://simbad.u-strasbg.fr/simbad/}{SIMBAD}:
+        look up coordinates of many objects outside solar system by name, etc.,
+        also provides much other reference information.
+    \item \href{http://ned.ipac.caltech.edu}{NED}:
+        NASA extragalactic database: galaxies, etc.
+    \item solar system ephemerides: JPL
+        \href{http://ssd.jpl.nasa.gov/horizons.cgi}{HORIZONS}
+\end{itemize}
+
 \subsection*{Orientations of objects in the sky}
+Usually specified by position angle: angle of object in degrees from NS line,
+measured counterclockwise.\\
+
+\noindent An important observational position angle for spectroscopy:
+\emph{parallactic angle}, the position angle of the line from zenith to
+horizon.
+
 \subsection*{Observability}
+Obviously, to observe an object, one requires that it is visible above the
+horizon. In general, one would liek to observe objects through the shortest
+possible through Earth's atmosphere, i.e., when they are \emph{transiting}
+(crossing the meridian, HA=0). The more atmosphere the light goes through,
+the more losses due to atmospheric absorption/scattering (more severe at
+shorter wavelengths), and the more image degradation from atmospheric seeing.
+Of course, it doesn't make sense to wait for an object to transit if you
+don't have anything else to do in the meantime; efficient use of telescope time
+is the primary concern.
+One \emph{airmass} is the amount of air directly above an observer.
+If you are looking at the zenith, you are looking through one airmass.
+Generally, most observers attempt to observe at airmasses
+less than 2, i.e.\ within 60 degrees of zenith. Once you hit an airmass
+of 3, the object is rapidly setting (except at very high declination).
+Of course, for some solar system objects (objects near the sun), one has no
+choice but to observe at high airmass.\\
+
+\noindent Note that HA gives some indication of observability, but that
+higher declination objects can be observed to higher HA than lower
+declination objects. Roughly, at the celestial equator, an HA of 3 hours
+is about an airmass of 2, and in many cases, one doesn't want to go much
+lower in the sky.\\
+
+\noindent Another issue with observability has to do with the Moon,
+since it is harder to see fainter objects when the sky is brighter.
+Moon brightness is related to its phase, and to a lesser extent, to
+distance from your object. Of course, if the Moon is below the horizon,
+it does not have an effect. So for planning observations of faint objects,
+one also has to consider Moon phase and rise/set times. Note that the
+sky brightness from the Moon is a function of wavelength, and at IR
+wavelengths, it is not a very significant contributor to the total sky
+brightness; so often, telescopes spend bright time working in the IR.
+
 \subsection*{Tools}
+Here are some useful software tools to do tasks related to coordinate systems
+and observability, though there are others out there. Anything that
+accomplishes the desired tasks adequately is fine to use; just make sure
+you're not limited by the tools that you choose.
+\begin{itemize}
+    \item \href{}{\textcolor{blue}{skycalc/skycalendar}}:
+        text based programs; skycalendar gives daily almanac, position of moon,
+        etc.\ skycalc allows you to enter coordinates of an object and obtain
+        observability information for any specified date. Other features included
+        as well: coordinate transformation, position of planets.
+    \item \href{}{\textcolor{blue}{JSkyCalc}}:
+        (java-jar /home/local/java/JSkyCalc.jar): JAVA implementation
+        of skycalc.
+    \item \href{}{\textcolor{blue}{WCSTOOLS}}: full set of useful coordinate
+        system programs, e.g.\ coordinate system transformation (command skycoor).
+        Largely useful for use with coordinate system information in image
+        headers (more later).
+\end{itemize}
+
 \subsection*{Exercises}
+\begin{enumerate}[1.]
+    \item Predict the RA at midnight for the first of every month.
+        Try the command \texttt{skycalendar}
+        (give yourself a wide terminal window first)
+        to see how well you did.
+    \item What time is it now? What is the sidereal time? What coordinates would
+        it be most optimal to observe right now?
+    \item When are the dark (no moon above horizon) first half nights in fourth
+        quarter?
+    \item APO schedules the 3.5m in half-night blocks (A and B), split at midnight
+        (or 1am during daylight savings). What are the best half-nights in the next
+        year (month and a half, e.g., Oct A, March B, etc.) to request to observe:
+        \begin{itemize}
+            \item Virgo cluster of galaxies (note central galaxy is M87,
+                look up the coordinates).
+            \item Galactic center (galactic coordinates are\ldots). Use command
+                \texttt{skycoor} to convert galactic to equatorial
+                (\texttt{skycoor} with no arguments gives syntax).
+            \item Jupiter (look up its position using JPL HORIZONS).
+        \end{itemize}
+    \item Run \texttt{skycalc} (choose observatory A for APO.
+        `?' gives list of command
+        help. Look at r, d, y, and h commands). For the galactic center, what is
+        the maximum amount of time it can be observed at an airmass of less than
+        2.5? How about the Virgo cluster? Why are these different?
+    \item Run \texttt{jskycalc}. Play with all of the buttons! What planets will be
+        visible fall 2011, and at what times of night? Note that you can load
+        files with a list of coordinates, and you can make airmass observability
+        charts for them.
+    \item Make a plan for a 3 half-night observing run during early/mid November,
+        A halves, when we are likely to take our APO trip. The plan should
+        include a list of objects for each night with a tentative order of
+        observation, taking into account how much times needs to be spent on
+        each object. Our projects are still TBD, but will likely include:
+        \begin{itemize}
+            \item ARCES (echelle spectrograph) observations of several stars
+                in the Kepler field (look this up if you don't know what it is,
+                or where it is) to monitor velocity of eclipsing binaries
+                (Patrick) and to measure rotation of rapid rotators (Dmitry).
+            \item ARCES observations of bright stars observed by the SDSS-III
+                APOGEE survey; these are located all over the sky.
+            \item DIS observations of a candidate high velocity star from SEGUE
+                (Young Sun) at RA=3h54m DEC=-6d14m.
+            \item SPICAM observation of candidate low mass dwarf galaxies from
+                SDSS (equatorial candidates between 21h and 3h RA).
+            \item If it is clear, we will likely have time for some additional
+                projects. Can you come up with some?
+        \end{itemize}
+    \item Prepare a web page with the plan, including relevant information:
+        coordinates of objects, finder images if necessary, links to tabulated
+        spectra, instrument manuals, etc.
+\end{enumerate}
 
 \newpage
 \section*{Next Section}
 
 %\end{enumerate}
+
+
+
+
+
+
+
+
+
+
+
 
 
 
