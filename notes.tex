@@ -144,14 +144,18 @@ corresponding to 10$^{-26}$ W m$^{-2}$ Hz$^{-1}$)\\
 \end{itemize}
 Generally, measure \emph{flux} with photometry, and flux
 \emph{density} (per unit wavelength)  with spectroscopy
-(down to the resolution of the spectrograph). In practice, with most detectors,
-we measure photon flux [photons cm$^{-2}$ s$^{-1}$] with a photon counting device,
+(down to the resolution of the spectrograph).
+In practice, with most detectors,
+we measure photon flux [photons cm$^{-2}$ s$^{-1}$]
+with a photon counting device,
 rather than energy flux (which is done with bolometers).
-The monochromatic photon flux is given by the energy flux ($F_{\lambda}$)
-divided by the energy per photon ($E_{photon} = \frac{hc}{\lambda}$),
-or
+The monochromatic photon flux is given by the
+energy flux ($F_{\lambda}$)
+divided by the
+energy per photon ($E_{photon} = \frac{hc}{\lambda}$), or
 \begin{equation*}
-    \textrm{photon\ flux} = \int F_{\lambda} \frac{\lambda}{hc} \textrm{d} \lambda
+    \textrm{photon\ flux} = \int F_{\lambda}
+    \frac{\lambda}{hc} \textrm{d} \lambda
 \end{equation*}
 
 
@@ -205,14 +209,18 @@ $F_{\lambda}$ or $F_{\nu}$. However, these are not always the most widely used
 systems in astronomy, because no natural source exists with a flat spectrum.\\
 
 \noindent The STMAG (Space Telescope MAGnitude) is relative to a source of
-constant $F_{\lambda}$. In this system, $F_{0,\lambda} = 3.60 \times 10^{-9}$
-erg cm$^{-2}$ s$^{-1}$ \AA{}$^{-1}$, which is the flux of Vega at
+constant $F_{\lambda}$. In this system,
+\begin{equation*}
+    F_{0,\lambda} = 3.60 \times 10^{-9}
+\end{equation*}
+for $F_{\lambda}$ in cgs units
+[erg cm$^{-2}$ s$^{-1}$ \AA{}$^{-1}$], and the constant is equal to
+the flux of Vega at
 5500 \AA{}; hence a star of Vega's brightness at 5500 \AA{} is defined to
 have m=0. Alternatively, we can write
 \begin{equation*}
     m_{STMAG} = -2.5 \log F_{\lambda} - 21.1
 \end{equation*}
-for $F_{\lambda}$ in cgs units.\\
 
 \noindent In the ABNU system, things are defined relative to a source
 of constant $F_{\nu}$ and we have
@@ -319,7 +327,7 @@ filter, you can get F in another filter.
 \noindent Which is closer to the UBVRI system, STMAG or ABNU?\\
 \noindent What would typical colors be in a STMAG or ABNU system?\\
 
-\noindent \textcolor{magenta}{Wednesday, January 27}\\
+\noindent \textcolor{magenta}{Wednesday, January 27}
 
 \subsubsection*{UBVRI magnitudes-flux conversion}
 To convert Vega-based magnitudes to fluxes, look up the flux of Vega

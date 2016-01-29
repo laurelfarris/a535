@@ -2,6 +2,7 @@
 \usepackage{color}
 \usepackage{hyperref} % \url{link} or \hrf{link}{text}
 \usepackage{titlesec}
+\usepackage{amsmath}
 \titleformat{\section}%
   [hang]% <shape>
   {\normalfont\bfseries\Large}% <format>
@@ -11,6 +12,12 @@
   \renewcommand{\thesection}{}% Remove section references...
   \renewcommand{\thesubsection}{\arabic{subsection}}%... from subsections
   \renewcommand{\thesubsubsection}{\arabic{subsubsection}}%... from subsections
+
+\addtolength{\oddsidemargin}{-0.875in}
+\addtolength{\evensidemargin}{-0.875in}
+\addtolength{\textwidth}{1.75in}
+\addtolength{\topmargin}{-0.875in}
+\addtolength{\textheight}{1.75in}
 
 \begin{document}
 
@@ -33,14 +40,38 @@ flux density of Vega at 5500 \AA{}
 is 3.6 $\times 10^{-9}$ erg cm$^{-2}$ s$^{-1}$ \AA{}$^{-1}$
 (note that this is an F$_{\lambda}$ quantity)?}
 
-\subsubsection{If a star has a flux density of 3.6 x
-10-9ergs/cm2/sec/\AA{} at
-8500 \AA{} how bright is it in Janskys?}
+In cgs units, one Jansky [Jy] is 10$^{-23}$
+erg s$^{-1}$ cm$^{-2}$ Hz$^{-1}$. 
+The flux of Vega at 5500\AA{} is 3.63$\times$10$^{-20}$
+erg s$^{-1}$ cm$^{-2}$ Hz$^{-1}$.
+\begin{align*}
+    F_{Jy} &= \frac{3.63\times10^{-20}}{10^{-23}}\\
+    &= 363.0
+\end{align*}
+So the flux of Vega is 363 Jy.
 
-\subsubsection{If a star has a flux density of 7.2 x
-10-14ergs/cm2/sec/\AA{} at 5500 \AA{}, how much fainter is it
-than Vega in magnitudes? }
 
+\subsubsection{If a star has a flux density of
+3.6$\times$10$^{-9}$ erg cm$^{-2}$ s$^{-1}$ \AA{}$^{-1}$
+at 8500 \AA{} how bright is it in Janskys?}
+Using the function `convert\_flux' from the `conversions.py' module
+from q5,
+$F_{\lambda}$ was converted to $F_{\nu}$.
+Using the same calculation
+as in question 1, the flux of the star came out to be
+$\sim$ 8.676$\times$10$^{-6}$ Jy.
+
+\subsubsection{If a star has a flux density of 7.2$\times$10$^{-14}$
+erg cm$^{-2}$ s$^{-1}$ \AA{}$^{-1}$ at 5500 \AA{},
+how much fainter is it than Vega in magnitudes? }
+\begin{align*}
+    m_* - m_{Vega} &= -2.5 \log \frac{F_*}{F_{Vega}}\\
+    &= -2.5 \log \frac{7.2\times10^{-14}}{3.6\times10^{-9}}\\
+    &= 11.747
+\end{align*}
+So the difference in magnitude between the star and Vega is over 11
+magnitudes, in other words, the star is about 50,000 times fainter
+than Vega.
 
 %\bibliography{reffile}
 

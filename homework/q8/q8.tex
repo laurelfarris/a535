@@ -1,0 +1,60 @@
+\documentclass[12pt]{article}
+\usepackage{color}
+\usepackage{hyperref} % \url{link} or \hrf{link}{text}
+\usepackage{titlesec}
+\usepackage{amsmath}
+\titleformat{\section}%
+  [hang]% <shape>
+  {\normalfont\bfseries\Large}% <format>
+  {}% <label>
+  {0pt}% <sep>
+  {}% <before code>
+  \renewcommand{\thesection}{}% Remove section references...
+  \renewcommand{\thesubsection}{\arabic{subsection}}%... from subsections
+  \renewcommand{\thesubsubsection}{\arabic{subsubsection}}%... from subsections
+
+\addtolength{\oddsidemargin}{-0.875in}
+\addtolength{\evensidemargin}{-0.875in}
+\addtolength{\textwidth}{1.75in}
+\addtolength{\topmargin}{-0.875in}
+\addtolength{\textheight}{1.75in}
+
+\begin{document}
+
+\section*{Homework 8}
+\date{01/29/2016}
+\subsection*{
+(1/29, 30 minutes)A color of a star gives the ratio of fluxes in two
+different wavelength bandpasses. When expressed in magnitude units,
+colors are given by a difference in magnitude between two different
+wavelength bandpasses and areoften defined relative to the colors of
+some other objects. For example, in the VEGAMAG (e.g., UBVRI) system,
+all colors are relative to the color of the star Vega, i.e. in this
+system, the color of Vega is defined to be zero. The spectrum
+(F$\scriptstyle \lambda$) of Vega is (very!) roughly proportional to $
+\lambda^{{-2}}_{}$ (in the optical), i.e. F$\scriptstyle
+\lambda$(Vega) $ \approx$ 3.6 x 10-9$ \left(\vphantom{{\lambda\over
+5500}}\right.$$ {\lambda\over 5500}$$ \left.\vphantom{{\lambda\over
+5500}}\right)^{{-2}}_{}$ergs/cm2/s/Å. 
+}
+
+\subsubsection{
+If you approximate the B bandpass as a square bandpass between 4000
+and 5000 Å, and the V bandpass as a square bandpass between 5000 and
+6000 Å, what is the flux of Vega in both B and V}
+
+\subsubsection{
+If you observe a star that has B - V = 1 and V = 20, what is its flux
+in the B and V bandpasses?}
+
+\subsubsection{
+What does it mean, quantitatively, for an object to have B-V = 1.0 ?}
+
+\subsubsection{
+If a star with a spectral energy distribution like Vega has a
+magnitude of 21 at 4500Å in the VEGAMAG system (i.e. spectrum same
+shape as Vega, but normalized differently), what would its magnitude
+(m(4500)) be in the STMAG system? the ABNU system? What would the
+m(4500) - m(5500) color be in each of the three systems?}
+
+\end{document}
