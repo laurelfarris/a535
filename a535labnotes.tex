@@ -22,55 +22,60 @@
 Systems of time: see \textcolor{blue}{\href{tycho.usno.navy.mil/systime.html}
         {Naval observatory reference}}
         for a full listing of different types of time.
-    \subsubsection*{Solar Time}
-        \begin{itemize}
-            \item Time tied to position of Sun. Note the distinction
-                between \textit{mean} solar time and \textit{apparent}
-                solar time (the ``equation of time'' and the analemma).
-            \item Most used solar time is Universal time.
-                UT = local mean solar time at Greenwich = ``Zulu''.
-                Tied to location of Sun, but average to ``mean sun''.
-            \item Local time: accounts for longitude of observer.
-                For practicality, legal time is split into time zones.
-            \item In detail, official time is kept by atomic clocks
-                (International Atomic Time, or TAI), and coordinated UT
-                (UTC) is atomic time with leap seconds added to compensate
-                for changes in earth's roation, where these are added to
-                keep UTC wihin a second of solar time (UT1).
-                See \textcolor{blue}
-                %{\url{https://en.wikipedia.org/wiki/Universal_Time}}
-                {\href{https://en.wikipedia.org/wiki/Universal_Time}
-                {here}}
-                for some details.
-        \end{itemize}
-    \subsubsection*{Sidereal time}
-        \begin{itemize}
-            \item Times based on position of stars, i.e. Earth's sidereal
-                rotation period ~ 23h 56m 4s. Local sidereal time is GMST
-                (Greenwich mean sidereal time) minus longitude. At the vernal
-                equinox (time in sky when Sun crosses the celestial equator
-                as its declination is increasing), sidereal time = UT.
-                Difference between UT and GMST is one rotation (day) over
-                the course of a year, so about 2 hours per month.
-            \item Sideral is relevant for position of stars: stars come back
-                to the same position every sidereal day.
-        \end{itemize}
-    \subsubsection*{Calendars}
-        \begin{itemize}
-            \item Standard calendar is Gregorian, with leap years, etc.
-            \item For astronomy, it is simpler to keep track of days rather
-                then year/month/day. Most dates given by the
-                \url{Julian date} (number of days since UT noon, Monday,
-                January 1, 4713 BC). Variations include modified Julian
-                data (JD - 2400000.5 fewer digits and starts at midnight),
-                heliocentric Julian date (JD adjusted to the frame of
-                reference of the Sun, so can differ by up to 8.3 minutes).
-            \item Note that repeating events are often described as an event
-                \textit{ephemeris:} $t_i(event) = t_0 + i(period)$.
-            \item The term \textit{ephemeris} is also used to describe how the
-                position of an object changes over time, e.g. planetary
-                ephemerides.
-        \end{itemize}
+\subsubsection*{Solar Time}
+Time tied to position of Sun. Note the distinction
+between \emph{mean} solar time and \emph{apparent}
+solar time (the ``equation of time'' and the analemma).\\
+
+\noindent Most used solar time is Universal time.
+UT = local mean solar time at Greenwich = ``Zulu''.
+Tied to location of Sun, but average to ``mean sun''.\\
+
+\noindent Local time: accounts for longitude of observer.
+For practicality, legal time is split into time zones.\\
+
+\noindent In detail, official time is kept by atomic clocks
+(International Atomic Time, or TAI), and coordinated UT
+(UTC) is atomic time with leap seconds added to compensate
+for changes in earth's roation, where these are added to
+keep UTC within a second of solar time (UT1).
+See \textcolor{blue}
+%{\url{https://en.wikipedia.org/wiki/Universal_Time}}
+{\href{https://en.wikipedia.org/wiki/Universal_Time}
+{here}} for some details.
+
+\subsubsection*{Sidereal time}
+Times based on position of stars, i.e. Earth's sidereal
+rotation period $\sim$ 23h 56m 4s. Local sidereal time is GMST
+(Greenwich mean sidereal time) minus longitude. At the vernal
+equinox (time in sky when Sun crosses the celestial equator
+as its declination is increasing), sidereal time = UT.
+Difference between UT and GMST is one rotation (day) over
+the course of a year, so about 2 hours per month.\\
+
+\noindent Sideral is relevant for position of stars: stars come back
+to the same position every sidereal day. As we'll see
+below, a given star crosses the meridian when the
+local sidereal time equals the right ascension of the
+star.
+
+\subsubsection*{Calendars}
+\noindent Standard calendar is Gregorian, with leap years, etc.\\
+
+\noindent For astronomy, it is simpler to keep track of days rather
+    then year/month/day. Most dates given by the
+    \url{Julian date} (number of days since UT noon, Monday,
+    January 1, 4713 BC). Variations include modified Julian
+    data (JD - 2400000.5 fewer digits and starts at midnight),
+    heliocentric Julian date (JD adjusted to the frame of
+    reference of the Sun, so can differ by up to 8.3 minutes).\\
+
+\noindent Note that repeating events are often described as an event
+    \emph{ephemeris:} $t_i(event) = t_0 + i(period)$.\\
+
+\noindent The term \emph{ephemeris} is also used to describe how the
+    position of an object changes over time, e.g. planetary
+    ephemerides.
 
 \subsection*{Coordinate systems}
 LPL website on \textcolor{blue}
@@ -89,22 +94,28 @@ LPL website on \textcolor{blue}
 
 \noindent At vernal equinox, RA = 12h crosses the meridian at midnight.\\
 
-\noindent Note that for a celestial coordinate system tied to the Earth's rotation,
+\noindent Note that for a celestial coordinate system tied to the
+Earth's rotation,
 coordinates of an object change over time because of the changing direction
 of the Earth's axis: precession and notation. Because of this, coordinates are
 always specified for some reference equinox: J2000/FK5, B1950, etc.; if using
 coordinates to point a telescope, you need to account for this (but generally,
 telescope software does this on its own). Note distinction between equinox and
 epoch, where the latter is relevant for objects that move (which everything does
-at some level).\\ \noindent Transformations between systems straightforward from spherical
+at some level).\\
+
+\noindent Transformations between systems straightforward from spherical
 trigonometry.\\
 
-\noindent Note the common usage of an Aitoff projection of the sky in celestial
+\noindent Note the common usage of an Aitoff projection (equal areas)
+of the sky in celestial
 coordinates, with location of ecliptic and galactic plane.
+Software tools (Python, projection=``aitoff'' in subplot,
+IDL: aitoff and aitoff\_grid in Astronomy users library).
 
 \subsubsection*{Local coordinate systems}
 \begin{itemize}
-    \item Equatorial: HA-dec. $HA=LST - \alpha. LST=GMST - longitude$.
+    \item Equatorial: HA-dec. $HA=LST - \alpha.\ LST=GMST - longitude$.
         Note normal convention for HA is to get larger to the west, i.e.
         opposite of RA. Objects at zenith have $\delta=$ latitude of observer.
     \item Horizon: alt-az or zd-az
@@ -116,13 +127,20 @@ source of known celestial position: proper motion, precession, nutation,
 
 \subsection*{Finding positions of celestial objects}
 \begin{itemize}
-    \item \href{http://simbad.u-strasbg.fr/simbad/}{SIMBAD}:
-        look up coordinates of many objects outside solar system by name, etc.,
-        also provides much other reference information.
-    \item \href{http://ned.ipac.caltech.edu}{NED}:
+    \item \href{http://simbad.u-strasbg.fr/simbad/}
+        {\textcolor{blue}{SIMBAD}}:
+        look up coordinates of many objects outside solar system
+        by name, etc., also provides much other reference information.
+    \item \href{http://vizier.u-strasbg.fr/viz-bin/VizieR}
+        {\textcolor{blue}{VizieR catalog database}}
+        Database of astronomical catalogs, with search and download
+        possibilities.
+    \item \href{http://ned.ipac.caltech.edu}
+        {\textcolor{blue}{NED}}:
         NASA extragalactic database: galaxies, etc.
     \item solar system ephemerides: JPL
-        \href{http://ssd.jpl.nasa.gov/horizons.cgi}{HORIZONS}
+        \href{http://ssd.jpl.nasa.gov/horizons.cgi}
+        {\textcolor{blue}{HORIZONS}}
 \end{itemize}
 
 \subsection*{Orientations of objects in the sky}
@@ -173,15 +191,18 @@ and observability, though there are others out there. Anything that
 accomplishes the desired tasks adequately is fine to use; just make sure
 you're not limited by the tools that you choose.
 \begin{itemize}
-    \item \href{}{\textcolor{blue}{skycalc/skycalendar}}:
+    \item \href{http://physics.dartmouth.edu/}
+        {\textcolor{blue}{skycalc/skycalendar}}:
         text based programs; skycalendar gives daily almanac, position of moon,
         etc.\ skycalc allows you to enter coordinates of an object and obtain
         observability information for any specified date. Other features included
         as well: coordinate transformation, position of planets.
-    \item \href{}{\textcolor{blue}{JSkyCalc}}:
+    \item \href{http://physics.dartmouth.edu/}
+        {\textcolor{blue}{JSkyCalc}}:
         (java-jar /home/local/java/JSkyCalc.jar): JAVA implementation
         of skycalc.
-    \item \href{}{\textcolor{blue}{WCSTOOLS}}: full set of useful coordinate
+    \item \href{http://tdc-www.harvard.edu/wcstools/}
+        {\textcolor{blue}{WCSTOOLS}}: full set of useful coordinate
         system programs, e.g.\ coordinate system transformation (command skycoor).
         Largely useful for use with coordinate system information in image
         headers (more later).
