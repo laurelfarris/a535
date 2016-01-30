@@ -27,34 +27,83 @@
 (1/29, 30 minutes)A color of a star gives the ratio of fluxes in two
 different wavelength bandpasses. When expressed in magnitude units,
 colors are given by a difference in magnitude between two different
-wavelength bandpasses and areoften defined relative to the colors of
+wavelength bandpasses and are often defined relative to the colors of
 some other objects. For example, in the VEGAMAG (e.g., UBVRI) system,
 all colors are relative to the color of the star Vega, i.e. in this
 system, the color of Vega is defined to be zero. The spectrum
 (F$\scriptstyle \lambda$) of Vega is (very!) roughly proportional to $
 \lambda^{{-2}}_{}$ (in the optical), i.e. F$\scriptstyle
-\lambda$(Vega) $ \approx$ 3.6 x 10-9$ \left(\vphantom{{\lambda\over
+\lambda$(Vega) $ \approx$ 3.6$\times10^{-9} \left(\vphantom{{\lambda\over
 5500}}\right.$$ {\lambda\over 5500}$$ \left.\vphantom{{\lambda\over
-5500}}\right)^{{-2}}_{}$ergs/cm2/s/Å. 
-}
+5500}}\right)^{{-2}}_{}$erg cm$^{-2}$ s$^{-1}$ \AA{}$^{-1}$.}
 
 \subsubsection{
 If you approximate the B bandpass as a square bandpass between 4000
-and 5000 Å, and the V bandpass as a square bandpass between 5000 and
-6000 Å, what is the flux of Vega in both B and V}
+and 5000 \AA{}, and the V bandpass as a square bandpass between 5000 and
+6000 \AA{}, what is the flux of Vega in both B and V}
+
+\begin{align*}
+    F &= \int F_{\lambda}\textrm{d}\lambda\\
+    F_B &= \int_{4000}^{5000} 3.6\times10^{-9}
+    \Big(\frac{\lambda}{5500}\Big)^{-2}\lambda\textrm{d}\lambda
+    = \sim2.43\times10^{-18}\\
+    F_V &= \int_{5000}^{6000} 3.6\times10^{-9}
+    \Big(\frac{\lambda}{5500}\Big)^{-2}\lambda\textrm{d}\lambda
+    = \sim1.99\times10^{-18}\\
+\end{align*}
+so $F_B$ and $F_V$ are about $2.43\times10^{-18}$ and $1.99\times10^{-18}$ 
+erg s$^{-1}$ cm$^{-2}$, respectively.
 
 \subsubsection{
-If you observe a star that has B - V = 1 and V = 20, what is its flux
+If you observe a star that has B-V = 1 and V = 20, what is its flux
 in the B and V bandpasses?}
+
+The flux of a star of magnitude
+$m_V$ can be calculated using the relation:
+\begin{align*}
+    m_V &= -2.5 \log \frac{F_V}{F_{V,0}}\\
+\end{align*}
+The flux of Vega ($F_{V,0}$) in the V bandpass is about 3.63$\times10^{-9}$
+erg s$^{-1}$ cm$^{-2}$ \AA{}$^{-1}$.
+For a star with $m_V$=20:
+\begin{align*}
+    20 &= -2.5 \log \frac{F_V}{3.63\times10^{-9}}\\
+    F_V &= [10^{\frac{20}{-2.5}}]3.63\times10^{-9}\\
+    &= \sim6.63\times10^{-17}
+\end{align*}
+Since B-V = 1, $F_B$ for the star can be calculated using the
+relation:
+\begin{align*}
+    B-V &= -2.5 \log \frac{F_B}{F_V}\\
+    1 &= -2.5 \log \frac{F_B}{6.63\times10^{-17}}\\
+    F_B &= [10^{\frac{1}{-2.5}}]6.63\times10^{-17}\\
+    &= \sim2.64\times10^{-17}
+\end{align*}
 
 \subsubsection{
 What does it mean, quantitatively, for an object to have B-V = 1.0 ?}
 
+The object's B-magnitude is higher than its V-magnitude, so it is a
+cooler (redder) star (relative to an A0V star, like Vega).
+This difference in magnitudes
+corresponds to a flux ratio of about 2.51, so the star is about two
+and a half times brighter through the V filter than it is through the
+B filter.
+
 \subsubsection{
 If a star with a spectral energy distribution like Vega has a
-magnitude of 21 at 4500Å in the VEGAMAG system (i.e. spectrum same
+magnitude of 21 at 4500 \AA{} in the VEGAMAG system (i.e. spectrum same
 shape as Vega, but normalized differently), what would its magnitude
 (m(4500)) be in the STMAG system? the ABNU system? What would the
-m(4500) - m(5500) color be in each of the three systems?}
+m(4500) - m(5500) color be in each of the three systems?
+}
+
+\begin{align*}
+    m_{\lambda=4500} &= -2.5 \log \frac{F_{\lambda=4500}}
+    {F_{\lambda=4500,0}}\\
+    21 &= -2.5\log\frac{F_{\lambda=4500}}{3.6\times10^{-9}
+    \Big(\frac{4500}{5500}\Big)^{-2}}\\
+    F_{\lambda=4500} &= 2.14\times10^{-17}
+\end{align*}
 
 \end{document}

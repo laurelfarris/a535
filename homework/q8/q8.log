@@ -1,4 +1,4 @@
-This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2015.11.14)  29 JAN 2016 14:53
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2015.11.14)  29 JAN 2016 19:09
 entering extended mode
  %&-line parsing enabled.
 **q8.tex
@@ -161,8 +161,7 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 568.
 \mathdisplay@stack=\toks21
 LaTeX Info: Redefining \[ on input line 2666.
 LaTeX Info: Redefining \] on input line 2667.
-)
-No file q8.aux.
+) (./q8.aux)
 \openout1 = `q8.aux'.
 
 LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 22.
@@ -180,6 +179,7 @@ LaTeX Font Info:    ... okay on input line 22.
 LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 22.
 LaTeX Font Info:    ... okay on input line 22.
 Package hyperref Info: Link coloring OFF on input line 22.
+
 (/usr/share/texmf/tex/latex/hyperref/nameref.sty
 Package: nameref 2006/12/27 v2.28 Cross-referencing by name of section
 
@@ -190,6 +190,7 @@ Package: refcount 2006/02/20 v3.0 Data extraction from references (HO)
 )
 LaTeX Info: Redefining \ref on input line 22.
 LaTeX Info: Redefining \pageref on input line 22.
+ (./q8.out) (./q8.out)
 \@outlinefile=\write3
 \openout3 = `q8.out'.
 
@@ -197,36 +198,32 @@ LaTeX Info: Redefining \pageref on input line 22.
 
 Package amsmath Warning: Foreign command \over;
 (amsmath)                \frac or \genfrac should be used instead
-(amsmath)                 on input line 39.
+(amsmath)                 on input line 38.
 
-Missing character: There is no Ã in font cmbx12!
-Missing character: There is no … in font cmbx12!
-Missing character: There is no Ã in font cmbx12!
-Missing character: There is no … in font cmbx12!
-Missing character: There is no Ã in font cmbx12!
-Missing character: There is no … in font cmbx12!
-Missing character: There is no Ã in font cmbx12!
-Missing character: There is no … in font cmbx12!
 [1
 
-{/usr/share/texmf/fonts/map/pdftex/updmap/pdftex.map}] (./q8.aux) ) 
+{/usr/share/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] (./q8.aux) ) 
 Here is how much of TeX's memory you used:
- 3141 strings out of 256214
- 41813 string characters out of 1916999
- 101214 words of memory out of 1500000
- 6440 multiletter control sequences out of 10000+200000
- 6223 words of font info for 23 fonts, out of 1200000 for 2000
+ 3172 strings out of 256214
+ 42153 string characters out of 1916999
+ 104363 words of memory out of 1500000
+ 6457 multiletter control sequences out of 10000+200000
+ 9335 words of font info for 34 fonts, out of 1200000 for 2000
  645 hyphenation exceptions out of 8191
- 27i,7n,31p,441b,335s stack positions out of 5000i,500n,6000p,200000b,15000s
-</usr/share/
-texmf/fonts/type1/bluesky/cm/cmbx12.pfb></usr/share/texmf/fonts/type1/bluesky/c
-m/cmex10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi10.pfb></usr/share/te
-xmf/fonts/type1/bluesky/cm/cmmi12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/
-cmr10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr12.pfb></usr/share/texmf/
-fonts/type1/bluesky/cm/cmsy10.pfb>
-Output written on q8.pdf (1 page, 30135 bytes).
+ 27i,13n,31p,447b,347s stack positions out of 5000i,500n,6000p,200000b,15000s
+</usr/sh
+are/texmf/fonts/type1/bluesky/cm/cmbx12.pfb></usr/share/texmf/fonts/type1/blues
+ky/cm/cmex10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi10.pfb></usr/shar
+e/texmf/fonts/type1/bluesky/cm/cmmi12.pfb></usr/share/texmf/fonts/type1/bluesky
+/cm/cmmi6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi8.pfb></usr/share/te
+xmf/fonts/type1/bluesky/cm/cmr10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/c
+mr12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr6.pfb></usr/share/texmf/fo
+nts/type1/bluesky/cm/cmr8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy10.p
+fb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy6.pfb></usr/share/texmf/fonts/t
+ype1/bluesky/cm/cmsy8.pfb>
+Output written on q8.pdf (2 pages, 63363 bytes).
 PDF statistics:
- 47 PDF objects out of 1000 (max. 8388607)
- 6 named destinations out of 1000 (max. 131072)
- 17 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 90 PDF objects out of 1000 (max. 8388607)
+ 7 named destinations out of 1000 (max. 131072)
+ 49 words of extra memory for PDF output out of 10000 (max. 10000000)
 
