@@ -375,6 +375,8 @@ behavior for very faint objects (near the detection threshold); see
 {\textcolor{blue}{Lupton, Gunn, \& Szalay 1999 AJ 118, 1406}}
 for details.
 
+%---------------------------------------------------------------%
+
 \subsection*{Observed fluxes and the count equation}
 What if you are measuring flux with an actual instrument, i.e.\
 counting photons? The intrinsic photon flux from the source is not
@@ -464,6 +466,8 @@ function of exposure time. As we will see shortly, this provides the
 information we need to calculate the uncertainty in the measurement as
 a function of exposure time.
 
+%-----------------------------------------------------------------------%
+
 \subsection*{Errors in photon rates}
 For a given rate of emitted photons, there's a probability function
 which gives the number of photons we detect, even assuming 100\%
@@ -496,6 +500,172 @@ median: mid-point value.
 mode: most probable value (peak in plot).\\
 
 \noindent \textcolor{magenta}{Monday, February 1}\\
+
+\noindent Note that the geometric interpretation of above quantities
+depends on the nature of the distribution; although we all carry
+around the picture of the mean and the variance for a Gaussian
+distribution, these pictures are not applicable to other
+distributions, but the quantities are still well-defined.\\
+
+\noindent Also, note that there is a difference between the sample
+mean, variance, etc. and the population quantities. The latter apply
+to the true distribution, while the former are estimates of the latter
+from some finite sample (N measurements) of the population. The sample
+quantities are derived from:
+\begin{equation*}
+    \textrm{sample\ mean:\ } x \equiv \frac{\sum x_i}{N}\\
+    \textrm{sample\ variance:\ } \equiv \frac{}{} = \frac{}{}
+\end{equation*}
+The sample mean and variance approach the true mean and variance as N
+approaches infinity. But note, especially for small samples, your
+estimate of the mean and variance may differ from their true
+(population) values (more below)!\\
+
+\noindent Now we consider what distribution is appropriate for the
+detection of photons. The photon distribution can be derived from the
+binomial distribution, which gives the probability of observing the
+number, x, of some possible event, given a total number of events n,
+and the probability of observing the particular event (among all other
+possibilities) in any single event, p, under the assumption that all
+events are independent of each other:
+\begin{equation*}
+    P(x,n,p) = 
+\end{equation*}
+For the binomial distribution, one can derive:
+\begin{equation*}
+    \textrm{mean} \equiv \int \\
+    \textrm{variance} \equiv \\
+\end{equation*}
+\emph{The Poisson distribution}\\
+
+\noindent In the case of detecting photons, n is the total number of
+photons emitted, and p is the probability of detecting a photon during
+our observation out of the total emitted. We don't know either of
+these numbers! However, we do know that p < < 1 and we know, or at
+least we can estimate, the mean number detected:
+\begin{equation*}
+    \mu = np
+\end{equation*}
+In this limit, the binomial distribution asymtotically approaches the
+Poisson distribution:
+\begin{equation*}
+    P(x,\mu) = 
+\end{equation*}
+From the expressions for the binomial distribution in this limit, the
+mean of the distribution is $\mu$, and the variance is 
+\begin{equation*}
+    \textrm{variance} = \sum\\
+    \textrm{variance} = np = \mu
+\end{equation*}
+This is an \emph{important result}.\\
+
+\noindent Note that the Poisson distribution is generally the
+appropriate distribution not only for counting photons, but for any
+sort of counting experiment where a series of events occurs with a
+known average rate, and are independent of time since the last
+event.\\
+
+\noindent What does the Poisson distribution look like? Plots for $
+\mu$ = 2,$ \mu$ = 10,$ \mu$ = 10000.\\
+
+\emph{The normal, or Gaussian, distribution}\\
+
+\noindent Note, for large $\mu$, the Poisson distribution is
+well-approximated around the peak by a \emph{Gaussian}, or
+\emph{normal} distribution:
+\begin{equation*}
+    P(x,\mu,\sigma) = 
+\end{equation*}
+This is important because it allows us to use ``simple'' least squares
+techniques to fit observational data, because these generally assume
+normally distributed data. However, beware that in the tails of the
+distribution, and at low mean rates, the Poisson distribution can
+differ significantly from a Gaussian distribution. In these cases,
+least-squares may not be appropriate to model observational data;
+instead, one might need to consider maximum likelihood techniques
+instead.\\
+
+\noindent The normal distribution is also important because many
+physical variables seem to be distributed accordingly. This may not be
+an accident because of the central limit theorem: if a quantity
+depends on a number of independent random variables with ANY
+distribution, the quantity itself will be distributed normally (see
+statistics texts). In observations, we encounter the normal
+distribution because one important source of instrumental noise,
+readout noise, is distributed normally.\\
+
+\noindent \emph{importance of error distribution analysis}\\
+
+\noindent You need to understand the expected uncertainties in your
+observations in order to:
+\begin{itemize}
+    \item predict the amount of observing time you'll need to get
+    uncertainties as small as you need them to do your science
+    \item answer the question: is scatter in observed data consistent
+    with expected uncertainties? If the answer is no, they you know
+    you've either learned some astrophysics or you don't understand
+    something about your observations. This is especially important in
+    astronomy where objects are faint and many projects are pushing
+    down into the noise as far as possible. Really we can usually only
+    answer this probabilistically. Generally, tests compute the
+    probability that the observations are consistent with an expected
+    distribution (the null hypothesis). You can then look to see if
+    this probability is low, and if so, you can reject the null
+    hypothesis.
+    \item interpret your results in the context of a scientific
+    prediction
+\end{itemize}
+\emph{Confidence levels}\\
+
+\noindent For example, say we want to know whether some single point
+is consistent with expectations, e.g., we see a bright point in
+multiple measurements of a star, and want to know whether the star
+flared. Say we have a time sequence with known mean and variance, and
+we obtain a new point, and want to know whether it is consistent with
+known distribution?\\
+
+\noindent If the form of the probability distribution is known, then
+you can calculate the probability of getting a measurement more than
+some observed distance from the mean. In the case where the observed
+distribution is Gaussian (or approximately so), this is done using the
+error function (sometimes called erf(x)), which is the integral of a
+gaussian from some starting value.\\
+
+\noindent Some simple guidelines to keep in mind follow (the actual
+situation often requires more sophisticated statistical tests). First,
+for Gaussian distributions, you can calculate that 68% of the points
+should fall within plus or minus one sigma from the mean, and 95.3%
+between plus or minus two sigma from the mean. Thus, if you have a
+time line of photon fluxes for a star, with N observed points, and a
+photon noise $ \sigma$ on each measurement, you can test whether the
+number of points deviating more than 2$ \sigma$ from the mean is much
+larger than expected. To decide whether any single point is really
+significantly different, you might want to use more stringent
+criterion, e.g., 5$ \sigma$ rather than a 2$ \sigma$ criterion; a 5$
+\sigma$ has much higher level of significance. On the other hand, if
+you have far more points in the range 2 - -4$ \sigma$ brighter or
+fainter than you would expect, you may also have a significant
+detection of intensity variations (provided you really understand your
+uncertainties on the measurements!).\\
+
+\noindent Also, note that your observed distribution should be
+consistent with your uncertainty estimates given the above guidelines.
+If you have a whole set of points, that all fall within 1$ \sigma$ of
+each other, something is wrong with your uncertainty estimates (or
+perhaps your measurements are correlated with each other)!\\
+
+\noindent For a series of measurements, one can calculate the $
+\chi^{2}_{}$ statistic, and determine how probable this value is,
+given the number of points.
+\begin{equation*}
+    \chi^2 =
+\end{equation*}
+A quick estimate of the consistency of the model with the observed
+data points can be made using reduced $ \chi^{2}_{}$, defined as $
+\chi^{2}_{}$ divided by the degrees of freedom (number of data points
+minus number of parameters).
+
+\noindent \textcolor{magenta}{Monday, January 25}\\
 
 \subsubsection*{Noise equation: how do we predict expected errors?}
 \subsubsection*{Error propagation}
