@@ -1,0 +1,57 @@
+\documentclass[12pt]{article}
+\usepackage{color}
+\usepackage{hyperref} % \url{link} or \hrf{link}{text}
+\usepackage{amsmath}
+\usepackage{fancyhdr}
+
+\usepackage{titlesec}
+\titleformat{\section}%
+  [hang]% <shape>
+  {\normalfont\bfseries\Large}% <format>
+  {}% <label>
+  {0pt}% <sep>
+  {}% <before code>
+  \renewcommand{\thesection}{}% Remove section references...
+  \renewcommand{\thesubsection}{\arabic{subsection}}%... from subsections
+  \renewcommand{\thesubsubsection}{\arabic{subsubsection}}%... from subsections
+
+\addtolength{\oddsidemargin}{-0.875in}
+\addtolength{\evensidemargin}{-0.875in}
+\addtolength{\textwidth}{1.75in}
+\addtolength{\topmargin}{-0.875in}
+\addtolength{\textheight}{1.75in}
+\pagestyle{fancy}
+
+\rhead{Laurel Farris\\ 03 February 2016}
+
+\begin{document}
+
+\section{Homework 9}
+\subsection*{(2/3, 15 minutes)
+Imagine you are observing a binary star system,
+but where the stars are so close together that you cannot
+resolve them, and you see them as a single object.}
+
+\subsubsection{If the two stars have magnitudes of 17 and 18
+individually, what is the combined observed magnitude?}
+First, convert each individual magnitude to the corresponding flux,
+using the flux of Vega at 5500\AA{}
+($F_{0,\lambda} = 3.60\times10^{-9}$ erg s$^{-1}$ cm$^{-2}$
+\AA{}$^{-1}$)
+as a reference flux:
+    $$ m = -2.5\log\frac{F_{\lambda}}{F_{0,\lambda}}  $$
+The flux of each star can then be added together to give the total flux
+being received. This will be a monochromatic flux, but this shouldn't
+make a difference once it is converted back to magnitude,
+since magnitudes are nearly independent of bandpass.
+The total flux converted back to magnitude gives the combined
+magnitude from both stars:
+    $$ m_{total} = -2.5\log\frac{F_{total}}{F_{0,\lambda}} $$
+
+\subsubsection{Write a (short!) software function that takes
+as input the apparent magnitude of each of two stars,
+and computes and returns the apparent magnitude of the
+two stars combined.}
+The combined magnitude turns out to be about 16.64 mag
+(see \texttt{q9.py}).
+\end{document}
