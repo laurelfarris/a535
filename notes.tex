@@ -1,26 +1,23 @@
 \documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
 \usepackage{color}
 \usepackage{hyperref}
 \usepackage{amsmath}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.75em}
 
 \title{ASTR 535 Lecture Notes}
 \author{Jon Holtzman}
 \date{Spring 2016}
 
-\addtolength{\oddsidemargin}{-0.875in}
-\addtolength{\evensidemargin}{-0.875in}
-\addtolength{\textwidth}{1.75in}
-\addtolength{\topmargin}{-0.875in}
-\addtolength{\textheight}{1.75in}
-
-
 \begin{document}
 \maketitle
 
-\noindent course website: \textcolor{blue}
-{\url{http://astronomy.nmsu.edu/holtz/a535}}\\
+course website: \textcolor{blue}
+{\url{http://astronomy.nmsu.edu/holtz/a535}}
 
-\noindent \textcolor{magenta}{Friday, January 22}
+\textcolor{magenta}{Friday, January 22}
 \section*{Properties of light, magnitudes, errors, and error analysis}
 
 \subsection*{Light}
@@ -36,7 +33,8 @@ Wavelength regimes:
         The 900 \AA{} break is because of the Lyman limit at 912 \AA{}.
         This is where neutral hydrogen is ionized, so the universe is largely
         opaque to wavelengths shorter than this.
-    \item visual (V): 4000--7000 \AA{} (note that `V' is different from `optical',
+    \item visual (V): 4000--7000 \AA{}
+    (note that `V' is different from `optical',
         which is slightly broader: 3500--10000 \AA{}. The 3500 \AA{} cutoff
         is due to the Earth's atmosphere being opaque to wavelengths shorter
         than this).
@@ -119,14 +117,14 @@ flux. Using $\lambda=\frac{c}{\nu} \rightarrow
 \end{align*}
 Note that a constant $F_{\lambda}$ implies a $non$-constant $F_{\nu}$
 and vice versa. Depending on where you are, a constant chunk of 1 Hz is
-not the same wavelength range.\\
+not the same wavelength range.
 
-\noindent Units: often cgs, magnitudes, Jansky (a flux density unit
-corresponding to 10$^{-26}$ W m$^{-2}$ Hz$^{-1}$)\\
+Units: often cgs, magnitudes, Jansky (a flux density unit
+corresponding to 10$^{-26}$ W m$^{-2}$ Hz$^{-1}$)
 
-\noindent There are often variations in terminology\\
+There are often variations in terminology
 
-\noindent Terminology of measurements:
+Terminology of measurements:
 \begin{itemize}
     \item photometry (broad-band flux measurement): SB or flux, integrated
         over some wavelength range.
@@ -153,19 +151,14 @@ The monochromatic photon flux is given by the
 energy flux ($F_{\lambda}$)
 divided by the
 energy per photon ($E_{photon} = \frac{hc}{\lambda}$), or
-\begin{equation*}
-    \textrm{photon\ flux} = \int F_{\lambda}
-    \frac{\lambda}{hc} \textrm{d} \lambda
-\end{equation*}
-
+$$ \textrm{photon\ flux} = \int F_{\lambda}
+    \frac{\lambda}{hc} \textrm{d} \lambda $$
 
 % Magnitudes and photometric systems
 
 \subsection*{Magnitudes and photometric systems}
 Magnitudes are related to flux (and SB and L) by:
-\begin{equation*}
-    m_1 - m_2 = -2.5 \log \frac{b_1}{b_2}
-\end{equation*}
+    $$    m_1 - m_2 = -2.5 \log \frac{b_1}{b_2} $$
 or for a single object:
 \begin{align*}
     m &= -2.5 \log \frac{F}{F_0}\\
@@ -175,18 +168,16 @@ where the coefficient of proportionality, $F_0$, depends on the definition
 of photometric system; the quantity $2.5 \log F_0$ may be referred to as
 the photometric system zeropoint. Note that this relationship holds
 regardless of what photometric system you are using. Inverting, one gets:
-\begin{equation*}
-    F = F_0 \times 10^{-0.4\textrm{m}}
-\end{equation*}
+    $$ F = F_0 \times 10^{-0.4\textrm{m}} $$
 Just as fluxes can be represented in magnitude units, flux densities can be
 specified by monochromatic magnitudes:
 \begin{equation*}
     F_{\lambda} = F_0 (\lambda) \times 10^{-0.4 \textrm{m}(\lambda)}
 \end{equation*}
 although spectra are more often given in flux units than in magnitude units.
-Note that it is possible that $F_0$ is a function of wavelength.\\
+Note that it is possible that $F_0$ is a function of wavelength.
 
-\noindent Since magnitudes are logarithmic, the $difference$ between
+Since magnitudes are logarithmic, the $difference$ between
 magnitudes corresponds to a ratio of fluxes; ratios of magnitudes are
 generally unphysical. If one is just doing relative measurements of
 brightness between objects, this can be done without knowledge of $F_0$
@@ -493,15 +484,13 @@ of photons.\\
 \begin{itemize}
     \item concept of a distribution: define $p(x)dx$ as probability of
     event occuring in $x + \textrm{d}x$:
-    \begin{equation*}
-        \int p(x)\textrm{d}x = 1
-    \end{equation*}
+        $$ \int p(x)\textrm{d}x = 1 $$
 \end{itemize}
 Some definitions relating to values which characterize a distribution:
 \begin{align*}
     mean \equiv \mu &= \int xp(x)\textrm{d}x \\
     variance \equiv \sigma^2 &= \int (x-\mu)^2 p(x)\textrm{d}x \\
-    standard\ deviation \equiv \sigma &= \sqrt{variance}
+    standard\ deviation \equiv \sigma &= \sqrt{\textrm{variance}}
 \end{align*}
 median: mid-point value.
 \begin{align*}
@@ -525,9 +514,9 @@ mean, variance, etc. and the \emph{population} quantities. The latter apply
 to the true distribution, while the former are estimates of the latter
 from some finite sample ($N$ measurements) of the population. The sample
 quantities are derived from:
-$$\textrm{sample\ mean:\ } x \equiv \frac{\sum x_i}{N}$$
+$$\textrm{sample\ mean:\ } \bar{x} \equiv \frac{\sum x_i}{N}$$
 $$\textrm{sample\ variance:\ } \equiv
-  \frac{\sum (x_i-x)^2}{N-1} = 
+  \frac{\sum (x_i-\bar{x})^2}{N-1} = 
   \frac{\sum x_i^2-(\sum x_i)^2/N}{N-1}$$
 The sample mean and variance approach the true mean and variance as N
 approaches infinity. But note, especially for small samples, your
@@ -651,31 +640,174 @@ a 5$\sigma$ has much higher level of significance. On the other hand, if
 you have far more points in the range $2-4\sigma$ brighter or
 fainter than you would expect, you may also have a significant
 detection of intensity variations (provided you really understand your
-uncertainties on the measurements).\\
+uncertainties on the measurements).
 
-\noindent Also, note that your observed distribution should be
+Also, note that your observed distribution should be
 consistent with your uncertainty estimates given the above guidelines.
 If you have a whole set of points, that all fall within 1$\sigma$ of
 each other, something is wrong with your uncertainty estimates (or
-perhaps your measurements are correlated with each other).\\
+perhaps your measurements are correlated with each other).
 
-\noindent For a series of measurements, one can calculate the
+For a series of measurements, one can calculate the
 $\chi^{2}$ statistic, and determine how probable this value is,
 given the number of points.
-    $$ \chi^2 = \sum [(observed(i)-model(i))^2/\sigma_i^2  $$
+    $$ \chi^2 = \sum [(observed(i)-model(i))^2/\sigma_i^2]  $$
 A quick estimate of the consistency of the model with the observed
 data points can be made using reduced $\chi^{2}$, defined as
 $\chi^{2}$ divided by the \emph{degrees of freedom} (number of data points
 minus number of parameters).
 
-\noindent \textcolor{magenta}{Monday, January 25}\\
+\textcolor{magenta}{Wednesday, February 3}
 
-\subsubsection*{Noise equation: how do we predict expected errors?}
+\subsubsection*{Noise equation: how do we predict expected
+uncertainties?}
+\emph{Signal-to-noise}
+
+Astronomers often describe uncertainties in terms of the fractional
+error, e.g. the amplitude of the uncertainty divided by the amplitude
+of the quantity being measured; often, the inverse of this, referred
+to as the signal-to-noise ratio, is used. Given an estimate the number
+of photons expected from an object in an observation, we can calulate
+the signal-to-noise ratio:
+    $$ \frac{S}{N} = \frac{S}{\sqrt{\sigma^2}} $$
+which is the inverse of the predicted fractional error ($N/S$).
+
+Consider an object with observed photon flux (per unit area and time,
+e.g. from the count equation above), S$^{\prime}$, leading
+to a signal, S = S$^{\prime}$Tt where T is the telescope
+area and t is the exposure time. In the simplest case (i.e. perfect
+instruments), the only noise
+source is Poisson statistics from the source, in which case:
+    $$ \sigma^2 = S = S^{\prime}Tt $$
+    $$ \frac{S}{N} = \sqrt{S} = \sqrt{S^{\prime}Tt} $$
+In other words, $S/N$ increases as the square root of the object
+brightness, telescope area, efficiency, or exposure time. Note that $S$
+is directly observable, so one can calculate $S/N$ for an
+observation without knowing the telescope area or exposure time.
+We've just broken $S$ down so that you can specifically see the dependence on
+telescope area and/or exposure time.
+
+\emph{Background noise}
+
+A more realistic case includes the noise contributed from Poisson
+statistics of ``background'' light, $B^{\prime}$,
+which has units of flux per area
+on the sky (i.e. a surface brightness); note that this is also usually
+given in magnitudes (more on the physical nature of
+this later).
+
+    $$ B^{\prime} = \int \frac{B_{\lambda}}{\frac{hc}{\lambda}}
+       q_{\lambda}\textrm{d}\lambda $$
+
+The amount of background in our measurement depends on how we choose
+to make the measurement (how much sky area we observe). Say we just
+use an aperture with area, $A$, so the total observed background counts
+is
+    $$ AB = AB^{\prime}Tt $$
+
+Again, $B^{\prime}Tt$ is the directly observable quantity,
+but we split it into the quantities on which it depends to understand
+what factors are important in determining $S/N$. 
+
+The total number of photons observed, $O$, is
+    $$ O = S + AB = (S^{\prime} + AB^{\prime})Tt $$
+The variance of the total observed counts, from Poisson statistics,
+is:
+    $$ \sigma^2_O = O =  S + AB = (S^{\prime} + AB^{\prime})Tt $$
+To get the desired signal from the object only, we will need to
+measure separately the total signal and the background signal to
+estimate:
+    $$ S \equiv S^{\prime}Tt = O-A <B> $$
+where $<B>$ is some estimate we have obtained of the background
+surface brightness. The noise in the measurement is
+    $$ \sigma^2_S \approx \sigma^2_O =
+    S + AB = (S^{\prime} + AB^{\prime})Tt $$
+where the approximation is accurate if the background is determined to
+high accuracy, which one can do if one measures the background over a
+large area, thus getting a large number of background counts (with
+correspondingly small fractional error in the measurement).
+
+This leads to a common form of the \emph{noise equation}:
+    $$ \frac{S}{N} = \frac{S}{\sqrt{S+AB}}  $$
+Breaking out the dependence on exposure time and telescope area, this
+is:
+    $$ \frac{S}{N} = \frac{S^{\prime}}
+    {\sqrt{S^{\prime}+AB^{\prime}}}
+    \sqrt{T}\sqrt{t}$$
+
+In the \emph{signal-limited} case, $S^{\prime}\gg B^{\prime}A$,
+we get
+$$ \frac{S}{N} = \sqrt{S} = \sqrt{S^{\prime}tT} $$
+In the \emph{background-limited} case, $B^{\prime}A\gg S^{\prime}$,
+and
+$$ \frac{S}{N} = \frac{S}{\sqrt{B}} =
+   \frac{S^{\prime}}{\sqrt{B^{\prime}A}}\sqrt{tT} $$
+
+As one goes to fainter objects, the S/N drops, and it drops faster
+when you're background limited. This illustrates the importance of
+dark-sky sites, and also the importance of good image quality.
+
+Consider two telescopes of collecting area, $T_1$ and $T_2$.
+If we observe for the same exposure time on each and want to know how
+much fainter we can see with the larger telescope at a given $S/N$, we
+find this for a signal-limited case:
+$$ S_2 = \frac{T_1}{T_2}S_1 $$
+but find \emph{this} for the background-limited case:
+$$ S_2 = \sqrt{\frac{T_1}{T_2}}S_1  $$
+
+\emph{Instrumental noise}
+
+In addition to the errors from Poisson statistics (statistical noise),
+there may be additional terms from instrumental errors. A common
+example of this that is applicable for CCD detectors is readout noise,
+which is additive \emph{noise} (with zero mean) that comes from the detector
+and is independent of signal level. For a detector whose readout noise
+is characterized by $\sigma_{rn}$,
+$$ \frac{S}{N} = \frac{S}{\sqrt{S+BA_{pix}+\sigma^2_{rn}}} $$
+if a measurement is made in a single pixel. If an object is spread
+over $N_{pix}$ pixels, then
+$$ \frac{S}{N} = \frac{S}{\sqrt{S+BA+N_{pix}\sigma^2_{rn}}} $$
+For large $\sigma_{rn}$, the behavior is the same as the
+background-limited case. This makes it clear that if you have readout
+noise, image quality (and/or proper optics to keep an object from
+covering too many pixels) is important for maximizing $S/N$. It is
+also clear that it is critical to have minimum read-noise for low
+background applications (e.g., spectroscopy).
+
+There are other possible additional terms in the noise equation,
+arising from things like dark current, digitization noise, errors in
+sky determination, errors from photometric technique, etc. (we'll
+discuss some of these later on), but in most applications, the three
+sources discussed so far - signal noise, background noise, and readout
+noise - are the dominant noise sources.
+
+Note the applications where one is likely to be signal dominated,
+background dominated, and readout noise dominated.
+
+\textcolor{magenta}{Monday, February 8}
+
 \subsubsection*{Error propagation}
 \subsubsection*{Determining sample parameters: averaging measurements}
 \subsubsection*{Random errors vs systematic errors}
 
 \end{document}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
