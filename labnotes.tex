@@ -1,40 +1,41 @@
 \documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
 \usepackage{enumerate}
 \usepackage{color}
 \usepackage{hyperref}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.5em}
 
 \title{ASTR 535 Lab notes}
 \author{Jon Holtzman}
 \date{Spring 2016}
 
-\addtolength{\oddsidemargin}{-0.875in}
-\addtolength{\evensidemargin}{-0.875in}
-\addtolength{\textwidth}{1.75in}
-\addtolength{\topmargin}{-0.875in}
-\addtolength{\textheight}{1.75in}
-
 \begin{document}
 \maketitle
 
-%\begin{enumerate}[I.]
 \section*{Time, coordinate systems, observability tools}
 \subsection*{Time Systems}
 Systems of time: see \textcolor{blue}{\href{tycho.usno.navy.mil/systime.html}
         {Naval observatory reference}}
         for a full listing of different types of time.
 \subsubsection*{Solar Time}
-Time tied to position of Sun. Note the distinction
-between \emph{mean} solar time and \emph{apparent}
-solar time (the ``equation of time'' and the analemma).\\
+Time tied to position of Sun; based on amount of time it
+takes for the sun to return to the same position in the sky
+(aka days).
+Note the distinction
+between \emph{mean} solar time (clock time)
+and \emph{apparent}
+solar time (sundial, the ``equation of time'' and the analemma).
 
-\noindent Most used solar time is Universal time.
+Most used solar time is Universal time.
 UT = local mean solar time at Greenwich = ``Zulu''.
-Tied to location of Sun, but average to ``mean sun''.\\
+Tied to location of Sun, but average to ``mean sun''.
 
-\noindent Local time: accounts for longitude of observer.
-For practicality, legal time is split into time zones.\\
+Local time: accounts for longitude of observer.
+For practicality, legal time is split into time zones.
 
-\noindent In detail, official time is kept by atomic clocks
+In detail, official time is kept by atomic clocks
 (International Atomic Time, or TAI), and coordinated UT
 (UTC) is atomic time with leap seconds added to compensate
 for changes in earth's roation, where these are added to
@@ -51,29 +52,32 @@ rotation period $\sim$ 23h 56m 4s. Local sidereal time is GMST
 equinox (time in sky when Sun crosses the celestial equator
 as its declination is increasing), sidereal time = UT.
 Difference between UT and GMST is one rotation (day) over
-the course of a year, so about 2 hours per month.\\
+the course of a year, so about 2 hours per month.
 
-\noindent Sideral is relevant for position of stars: stars come back
+Sideral is relevant for position of stars: stars come back
 to the same position every sidereal day. As we'll see
 below, a given star crosses the meridian when the
 local sidereal time equals the right ascension of the
 star.
 
 \subsubsection*{Calendars}
-\noindent Standard calendar is Gregorian, with leap years, etc.\\
 
-\noindent For astronomy, it is simpler to keep track of days rather
+Standard calendar is Gregorian, with leap years, etc.
+
+For astronomy, it is simpler to keep track of days rather
     then year/month/day. Most dates given by the
     \url{Julian date} (number of days since UT noon, Monday,
     January 1, 4713 BC). Variations include modified Julian
     data (JD - 2400000.5 fewer digits and starts at midnight),
     heliocentric Julian date (JD adjusted to the frame of
-    reference of the Sun, so can differ by up to 8.3 minutes).\\
+    reference of the Sun, so can differ by up to 8.3 minutes).
+    Heliocentric JD is the amount of time it would take a
+    pulse of light to arrive at the sun.
 
-\noindent Note that repeating events are often described as an event
-    \emph{ephemeris:} $t_i(event) = t_0 + i(period)$.\\
+Note that repeating events are often described as an event
+    \emph{ephemeris:} $t_i(event) = t_0 + i(period)$.
 
-\noindent The term \emph{ephemeris} is also used to describe how the
+The term \emph{ephemeris} is also used to describe how the
     position of an object changes over time, e.g. planetary
     ephemerides.
 
@@ -92,22 +96,22 @@ LPL website on \textcolor{blue}
     \item galactic: tied to plane of the Milky Way
 \end{itemize}
 
-\noindent At vernal equinox, RA = 12h crosses the meridian at midnight.\\
+At vernal equinox, RA = 12h crosses the meridian at midnight.
 
-\noindent Note that for a celestial coordinate system tied to the
+Note that for a celestial coordinate system tied to the
 Earth's rotation,
 coordinates of an object change over time because of the changing direction
-of the Earth's axis: precession and notation. Because of this, coordinates are
+of the Earth's axis: precession and nutation. Because of this, coordinates are
 always specified for some reference equinox: J2000/FK5, B1950, etc.; if using
 coordinates to point a telescope, you need to account for this (but generally,
 telescope software does this on its own). Note distinction between equinox and
 epoch, where the latter is relevant for objects that move (which everything does
-at some level).\\
+at some level).
 
-\noindent Transformations between systems straightforward from spherical
-trigonometry.\\
+Transformations between systems straightforward from spherical
+trigonometry.
 
-\noindent Note the common usage of an Aitoff projection (equal areas)
+Note the common usage of an Aitoff projection (equal areas)
 of the sky in celestial
 coordinates, with location of ecliptic and galactic plane.
 Software tools (Python, projection=``aitoff'' in subplot,
@@ -145,16 +149,15 @@ source of known celestial position: proper motion, precession, nutation,
 
 \subsection*{Orientations of objects in the sky}
 Usually specified by position angle: angle of object in degrees from NS line,
-measured counterclockwise.\\
+measured counterclockwise.
 
-\noindent An important observational position angle for spectroscopy:
+An important observational position angle for spectroscopy:
 \emph{parallactic angle}, the position angle of the line from zenith to
 horizon.
 
 \subsection*{Observability}
-Obviously, to observe an object, one requires that it is visible above the
-horizon. In general, one would liek to observe objects through the shortest
-possible through Earth's atmosphere, i.e., when they are \emph{transiting}
+In general, one would like to observe objects through the shortest
+possible path through Earth's atmosphere, i.e., when they are \emph{transiting}
 (crossing the meridian, HA=0). The more atmosphere the light goes through,
 the more losses due to atmospheric absorption/scattering (more severe at
 shorter wavelengths), and the more image degradation from atmospheric seeing.
@@ -167,15 +170,15 @@ Generally, most observers attempt to observe at airmasses
 less than 2, i.e.\ within 60 degrees of zenith. Once you hit an airmass
 of 3, the object is rapidly setting (except at very high declination).
 Of course, for some solar system objects (objects near the sun), one has no
-choice but to observe at high airmass.\\
+choice but to observe at high airmass.
 
-\noindent Note that HA gives some indication of observability, but that
+Note that HA gives some indication of observability, but that
 higher declination objects can be observed to higher HA than lower
 declination objects. Roughly, at the celestial equator, an HA of 3 hours
 is about an airmass of 2, and in many cases, one doesn't want to go much
-lower in the sky.\\
+lower in the sky.
 
-\noindent Another issue with observability has to do with the Moon,
+Another issue with observability has to do with the Moon,
 since it is harder to see fainter objects when the sky is brighter.
 Moon brightness is related to its phase, and to a lesser extent, to
 distance from your object. Of course, if the Moon is below the horizon,
@@ -210,13 +213,15 @@ you're not limited by the tools that you choose.
 
 \subsection*{Exercises}
 \begin{enumerate}[1.]
-    \item Predict the RA at midnight for the first of every month.
-        Try the command \texttt{skycalendar}
-        (give yourself a wide terminal window first)
-        to see how well you did.
+    \item Predict the RA crossing the meridian at midnight for the
+        first of every month.
+        Try the command \texttt{skycalendar} (on the cluster, unless you
+        download it yourself for your laptop).
+        Give yourself a wide terminal window, and
+        see how well you did.
     \item What time is it now? What is the sidereal time? What coordinates would
         it be most optimal to observe right now?
-    \item When are the dark (no moon above horizon) first half nights in fourth
+    \item When are the dark (no moon above horizon) first-half nights in first
         quarter?
     \item APO schedules the 3.5m in half-night blocks (A and B), split at midnight
         (or 1am during daylight savings). What are the best half-nights in the next
@@ -225,7 +230,8 @@ you're not limited by the tools that you choose.
             \item Virgo cluster of galaxies (note central galaxy is M87,
                 look up the coordinates).
             \item Galactic center (galactic coordinates are\ldots). Use command
-                \texttt{skycoor} to convert galactic to equatorial
+                \texttt{skycoor} (or python or idl tools)
+                to convert galactic to equatorial
                 (\texttt{skycoor} with no arguments gives syntax).
             \item Jupiter (look up its position using JPL HORIZONS).
         \end{itemize}

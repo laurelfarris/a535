@@ -384,19 +384,17 @@ take into account
 Generally, the astronomical signal (which might be a flux or a
 surface brightness, depending on whether the object is resolved)
 can be written
-\begin{equation*}
-    S = Tt \int \frac{F_{\lambda}}{\frac{hc}{\lambda}}q_{\lambda}
-    a_{\lambda}\textrm{d}\lambda \equiv TtS'
-\end{equation*}
+    $$ S = Tt \int \frac{F_{\lambda}}{\frac{hc}{\lambda}}q_{\lambda}
+    a_{\lambda}\textrm{d}\lambda \equiv TtS' $$
 where $S$ is the observed photon flux (the ``signal"), $T$ is the
 telescope collecting area, $t$ is the integration time, $a_{\lambda}$
 is the atmospheric transmission (more later) and
 $q_{\lambda}$ is the system efficiency (which includes
 telescope, filters, optics, detector, etc.); $S'$ is an observed flux
 rate, i.e. with all of the real details of the observing system
-included. I refer to this as the \emph{count equation}.\\
+included. I refer to this as the \emph{count equation}.
 
-\noindent Usually, however, one doesn't use this information to go
+Usually, however, one doesn't use this information to go
 backward from $S$ to $F_{\lambda}$ because it is very
 difficult to measure all of the terms precisely, and some of them
 (e.g. $a$, and perhaps $q$) are time-variable; $a$ is also spatially
@@ -409,26 +407,22 @@ brightness, one could determine an ``exposure efficiency''
 or an ``effective area'' for this
 exposure. Equivalently, and more commonly, one can calculate an
 \emph{instrumental magnitude}:
-\begin{equation*}
-    m = -2.5 \log \frac{S}{t}
-\end{equation*}
+    $$  m = -2.5 \log \frac{S}{t} $$
 (i.e., normalize by the exposure time to get counts/sec, although this
 is not strictly necessary) and then determine the \emph{zeropoint},
 $z$, that needs
 to be added to give the calibrated magnitude, $M$
 (which is still an \emph{apparent} magnitude).
-\begin{equation*}
-    M = m + z
-\end{equation*}
+    $$ M = m + z $$
 Note that in the real world, one has to also consider possible
 differences between a given experimental setup and the setup used to
 measure the reference brightnesses, so this is only a first
 approximation (i.e., the zeropoint may be different for different
 stars with different spectral properties)! If using instrumental mags
 including exposure time normalization, the zeropoint gives the
-magnitude of a star that will give 1 count/second.\\
+magnitude of a star that will give 1 count/second.
 
-\noindent If there are no stars of known brightness in the same
+If there are no stars of known brightness in the same
 observation, then calibration must be done against stars in other
 observations. This then requires that the different effects of the
 Earth's atmosphere in different locations in the sky be accounted for.
@@ -516,7 +510,7 @@ from some finite sample ($N$ measurements) of the population. The sample
 quantities are derived from:
 $$\textrm{sample\ mean:\ } \bar{x} \equiv \frac{\sum x_i}{N}$$
 $$\textrm{sample\ variance:\ } \equiv
-  \frac{\sum (x_i-\bar{x})^2}{N-1} = 
+  \frac{\sum (x_i-\bar{x})^2}{N-1} =
   \frac{\sum x_i^2-(\sum x_i)^2/N}{N-1}$$
 The sample mean and variance approach the true mean and variance as N
 approaches infinity. But note, especially for small samples, your
@@ -533,7 +527,7 @@ events are independent of each other:
    $$ P(x,n,p) = \frac{n!p^x(1-p)^{n-x}}{x!(n-x)!}  $$
 For the binomial distribution, one can derive:
    $$ \textrm{mean} \equiv \int xp(x)\textrm{d}x = np $$
-   $$ \textrm{variance} \equiv \sigma^2 \equiv 
+   $$ \textrm{variance} \equiv \sigma^2 \equiv
       \int (x-\mu)^2p(x)\textrm{d}x = np(1-p) $$
 \emph{The Poisson distribution}\\
 
@@ -547,13 +541,13 @@ In this limit, the binomial distribution asymtotically approaches the
 \emph{Poisson} distribution:
    $$  P(x,\mu) = \frac{\mu^x e^{-\mu}}{x!} $$
 From the expressions for the binomial distribution in this limit, the
-mean of the distribution is $\mu$, and the variance is 
+mean of the distribution is $\mu$, and the variance is
   $$  \textrm{variance} = \sum_x [(x-\mu)^2p(x,\mu)] $$
   $$  \textrm{variance} = np = \mu  $$
 This is an \emph{important result}.\\
 
 \noindent Note that the Poisson distribution is generally the
-appropriate distribution not only for counting photons, but for 
+appropriate distribution not only for counting photons, but for
 \emph{any} sort of counting experiment where a series of events
 occurs with a known average rate, and are independent of time
 since the last event.\\
@@ -707,7 +701,7 @@ is
 
 Again, $B^{\prime}Tt$ is the directly observable quantity,
 but we split it into the quantities on which it depends to understand
-what factors are important in determining $S/N$. 
+what factors are important in determining $S/N$.
 
 The total number of photons observed, $O$, is
     $$ O = S + AB = (S^{\prime} + AB^{\prime})Tt $$

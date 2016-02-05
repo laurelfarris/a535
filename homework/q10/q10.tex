@@ -10,8 +10,6 @@
 \chead{Homework 10}
 \rhead{05 February 2016}
 
-
-
 \begin{document}
 
 \section*{\normalsize{Count equation and exposure time calculator.}}
@@ -23,9 +21,32 @@ the combined detection efficiency of the telescope and detector is 50
 percent. You can assume that the V bandpass is rectangular with a
 central wavelength of 5500\AA{}, a full width of 1000\AA{}, with an
 in-band transmission of 80 percent.
-    \item something
+    \item What is the zeropoint for the V bandpass for the 1m,
+        using the approximate:
+        $$ \textrm{standard\ mag} = - 2.5\times\log(\textrm{photons}/s)
+        + {\textrm{zeropoint}} $$
+    \item Start to develop a software module that implements the count
+        equation that will eventually be used for an exposure time calculator.
+        The module should include individual functions that return values for
+        each of the terms in the count equation: photon flux given input magnitude,
+        telescope area, atmospheric transmission, system transmission
+        (split into separate routines for each of telescope throughput,
+        instrument throughput, filter throughput, and detector efficiency).
+        Each routine should accept as input a wavelength or array of wavelengths,
+        and return values at all of the specified input wavelengths;
+        for the initial effort you could just return a constant value
+        at all wavelengths, but look forward to building in the capability
+        for wavelength dependence, e.g., interpolating from a list of
+        wavelenth/values from an input file. A higher level function should
+        return the estimated counts integrated over all wavelengths.
+        You should make appropriate use of input keywords and default values.
+        You are strongly encouraged to sketch out the design of the program
+        before starting to write it, considering the eventual use of the
+        program to provide exposure time estimates for all of the APO 3.5m
+        instruments (and perhaps others), where you will have wavelength
+        dependent throughputs for multiple components.
+        Test the program by using it to do the calculation for the NMSU 1m.
 \end{enumerate}
 
-Here is my answer to the question.
 
 \end{document}
