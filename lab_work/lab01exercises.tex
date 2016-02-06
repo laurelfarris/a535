@@ -1,0 +1,91 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{enumerate}
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.5em}
+
+\lhead{05 February 2016}
+\chead{Lab 01}
+\rhead{Laurel Farris}
+
+\begin{document}
+
+\begin{enumerate}[1.]
+    \item \textbf{Predict the RA crossing the meridian at midnight for the
+    first of every month. Try the command skycalendar (on the cluster,
+    unless you download it yourself for your laptop) - give yourself a
+    wide terminal window first - to see how well you did}
+
+    \item \textbf{What time is it now? What is the sidereal time? What
+    coordinates would it be most optimal to observe right now?}
+
+    \item \textbf{When are the dark (no moon above horizon) first half
+    nights in first quarter ? }
+
+    \item \textbf{APO schedules the 3.5m in half-night blocks (A and
+    B), split at midnight (or 1am during daylight savings). What are
+    the best half-nights in the next year (month and half, e.g., Oct
+    A, March B, etc.) to request to observe:}
+        \begin{itemize}
+            \item \textbf{Virgo cluster of galaxies (note central
+            galaxy is M87, look up the coordinates)}
+            \item \textbf{Galactic center (galactic coordinates are
+            .... ask if you don't know!). You can use command skycoor
+            (or Python or IDL tools) to convert galactic to equatorial
+            (skycoor with no arguments gives syntax). }
+            \item \textbf{Jupiter (look up its position using JPL
+            HORIZONS) }
+        \end{itemize}
+
+    \item \textbf{Run skycalc (choose observatory A for APO, ? gives
+    list of command help, look at r, d, y, and h commands). For the
+    galactic center, what is the maximum amount of time it can be
+    observed at an airmass of less than 2.5? How about the Virgo
+    cluster? Why are these different?}
+
+    \item \textbf{Run jskycalc. Play with all of the buttons! What
+    planets will be visible spring 2016, and at what times of night?
+    Note that you can load files with a list of coordinates, and you
+    can make airmass observability charts for them.}
+
+    \item \textbf{Start to outline plan for an 3 half-night observing
+    run during late March A halves, when we are taking our APO trip.
+    Eventually, the plan should include a list of objects for each
+    night with a tentative order of observation, taking into account
+    how much time needs to be spent on each object. Our projects are
+    still TBD, but will likely include observations with multiple
+    instruments.}
+        \begin{itemize}
+            \item \textbf{Determine the approximate range of RAs that
+            we will be able to observe. }
+            \item \textbf{Given the NMSU 1st quarter proposals, which
+            of them might we be able to make some observations for?}
+            \item \textbf{If you have other ideas for projects, start
+            to tabulate them. (Sten/Diane stars for APOGEE
+            calibration/neutron capture calibration, Triplespec RR
+            Lyrae RV curves Drew Be stars)}
+            \item \textbf{Start to prepare a joint web page with the
+            plan, including relevant information: coordinates of
+            objects, finder images if necessary, links to tabulated
+            spectra, instrument manuals, etc. etc. }
+        \end{itemize}
+
+    \item \textbf{Look up the catalog Globular Clusters in the Milky
+    Way in VizieR and download it (make sure to get all of the rows).}
+        \begin{itemize}
+            \item \textbf{Plot the locations in an Aitoff projection
+            of equatorial coordinates. Can you detect Galactic
+            structure?}
+            \item \textbf{What clusters would be possible to observe
+            during our March run? }
+            \item \textbf{Convert coordinates to galactic coordinates
+            and plot in an Aitoff projection.}
+        \end{itemize}
+
+
+\end{enumerate}
+
+
+\end{document}

@@ -1,8 +1,8 @@
-This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2015.11.14)  5 FEB 2016 16:49
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2015.11.14)  5 FEB 2016 12:43
 entering extended mode
  %&-line parsing enabled.
-**q10.tex
-(./q10.tex
+**lab1.tex
+(./lab1.tex
 LaTeX2e <2005/12/01>
 Babel <v3.8h> and hyphenation patterns for english, usenglishmax, dumylang, noh
 yphenation, arabic, basque, bulgarian, coptic, welsh, czech, slovak, german, ng
@@ -44,10 +44,6 @@ Package: keyval 1999/03/16 v1.13 key=value parser (DPC)
 \Gm@even@mp=\dimen106
 \Gm@dimlist=\toks15
 )
-(/usr/share/texmf/tex/latex/tools/enumerate.sty
-Package: enumerate 1999/03/05 v3.00 enumerate extensions (DPC)
-\@enLab=\toks16
-)
 (/usr/share/texmf/tex/latex/fancyhdr/fancyhdr.sty
 \fancy@headwidth=\skip43
 \f@ncyO@elh=\skip44
@@ -59,31 +55,24 @@ Package: enumerate 1999/03/05 v3.00 enumerate extensions (DPC)
 \f@ncyO@olf=\skip50
 \f@ncyO@orf=\skip51
 )
-(/usr/share/texmf/tex/latex/titlesec/titlesec.sty
-Package: titlesec 2005/01/22 v2.6 Sectioning titles
-\ttl@box=\box26
-\beforetitleunit=\skip52
-\aftertitleunit=\skip53
-\ttl@plus=\dimen107
-\ttl@minus=\dimen108
-\titlewidth=\dimen109
-\titlewidthlast=\dimen110
-\titlewidthfirst=\dimen111
-) (./q10.aux)
-\openout1 = `q10.aux'.
+(/usr/share/texmf/tex/latex/tools/enumerate.sty
+Package: enumerate 1999/03/05 v3.00 enumerate extensions (DPC)
+\@enLab=\toks16
+) (./lab1.aux)
+\openout1 = `lab1.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 13.
+LaTeX Font Info:    ... okay on input line 13.
 -------------------- Geometry parameters
 paper: class default
 landscape: --
@@ -124,11 +113,18 @@ driver: pdftex
 (1in=72.27pt, 1cm=28.45pt)
 -----------------------
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 39.
+(Font)              <12> on input line 25.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 39.
+(Font)              <8> on input line 25.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 39.
+(Font)              <6> on input line 25.
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 70.
+
+(/usr/share/texmf/tex/latex/base/omscmr.fd
+File: omscmr.fd 1999/05/25 v2.5h Standard LaTeX font definitions
+)
+LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 70.
 
 
 Package Fancyhdr Warning: \headheight is too small (12.0pt): 
@@ -138,22 +134,23 @@ Package Fancyhdr Warning: \headheight is too small (12.0pt):
 
 [1{/usr/share/texmf/fonts/map/pdftex/updmap/pdftex.map}
 
-] (./q10.aux) ) 
+] [2] (./lab1.aux) ) 
 Here is how much of TeX's memory you used:
- 972 strings out of 256214
- 12071 string characters out of 1916999
- 67290 words of memory out of 1500000
- 4312 multiletter control sequences out of 10000+200000
- 7457 words of font info for 27 fonts, out of 1200000 for 2000
+ 744 strings out of 256214
+ 9270 string characters out of 1916999
+ 61335 words of memory out of 1500000
+ 4086 multiletter control sequences out of 10000+200000
+ 6852 words of font info for 25 fonts, out of 1200000 for 2000
  645 hyphenation exceptions out of 8191
- 24i,10n,43p,1475b,190s stack positions out of 5000i,500n,6000p,200000b,15000s
-</usr/share/texmf/fonts/type1/bluesky/cm/cmbx12.pfb></usr/share/
-texmf/fonts/type1/bluesky/cm/cmmi12.pfb></usr/share/texmf/fonts/type1/bluesky/c
-m/cmr12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy10.pfb></usr/share/tex
-mf/fonts/type1/bluesky/cm/cmtt12.pfb>
-Output written on q10.pdf (1 page, 34209 bytes).
+ 24i,10n,43p,222b,299s stack positions out of 5000i,500n,6000p,200000b,15000s
+</usr/share/texmf/fonts/type1/bluesky/cm/cmbx12.pfb></usr/s
+hare/texmf/fonts/type1/bluesky/cm/cmmi12.pfb></usr/share/texmf/fonts/type1/blue
+sky/cm/cmr12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy10.pfb></usr/shar
+e/texmf/fonts/type1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesky/
+cm/cmtt12.pfb>
+Output written on lab1.pdf (2 pages, 40039 bytes).
 PDF statistics:
- 26 PDF objects out of 1000 (max. 8388607)
+ 33 PDF objects out of 1000 (max. 8388607)
  0 named destinations out of 1000 (max. 131072)
  1 words of extra memory for PDF output out of 10000 (max. 10000000)
 

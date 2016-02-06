@@ -1,0 +1,130 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{enumerate}
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.5em}
+
+\lhead{05 February 2016}
+\chead{Lab 01}
+\rhead{Laurel Farris}
+
+\begin{document}
+
+\begin{enumerate}[1.]
+    \item I estimated the hourly increase in RA by dividing 365 days
+    by 24 hours, which is about 0.0658 hours per day.
+    Since the RA for an object crossing the meridian at midnight
+    is 12 hr on March 21, I used the daily increase to calculate the
+    RA for an object crossing the meridian at midnight on the first of
+    each month. They are listed in table \ref{table:RA}.
+
+        \begin{table}[h]
+        \centering
+        \begin{tabular}{c c}
+        \hline\hline
+        Month & RA at midnight\\
+        \hline
+        April & 12.72\\
+        May & 14.70\\
+        June & 16.73\\
+        July & 18.71\\
+        August & 20.75\\
+        September & 22.78\\
+        October & 0.76\\
+        November & 2.79\\
+        December & 4.77\\
+        January & 6.81\\
+        February & 8.84\\
+        March & 10.68\\
+        \hline
+        \end{tabular}
+        \caption{This table shows the approximate RA of an object
+        crossing the meridian at midnight on the first day of each month.}
+        \label{table:RA}
+        \end{table}
+
+    \item It is about 10am local time right now (solar time).
+    Since the RA of an
+    object crossing the meridian at midnight is about 8hrs, the RA of
+    objects directly overhead right now is about 18 hrs, which is
+    equal to the local sidereal time. The declination overhead is
+    equal to our latitude, which is 32.3$^{\circ}$ North.
+    Observing within 60$^{\circ}$ is ideal, so we would want to
+    observe objects with an RA between 14 and 22 hours (60$^{\circ}$
+    corresponds to four hours) and a declination between -28$^{\circ}$
+    and 88$^{\circ}$ North (on the other side of the North
+    Star$\ldots$ where the RA would actually be 12 hours from
+    88$^{\circ}$ on the other side$\ldots$ I think.
+
+    \item From \texttt{skycalendar} (If I'm reading it correctly),
+        the nights during the first quarter (January, Februaray, and
+        March) that have no moon above the horizon during the
+        first half of the night are 1/31 - 2/5, 2/29 - 3/6, and 3/30 -
+        3/31 (daylight savings starts 3/13, so the first-half night
+        goes until 1am instead of midnight).
+
+    \item  
+        \begin{itemize}
+            \item M87:
+            RA = 12h 30m 49.42s;
+            Dec = 12$^{\circ}$ 23$^{\prime}$ 28.04$^{\prime\prime}$
+            \item Galactic center:
+            RA = 17h 45.6m;
+            Dec = -28.94$^{\circ}$
+            \item Jupiter:
+            RA = 12h 30m 49.42s;
+            Dec = 12$^{\circ}$ 23$^{\prime}$ 28.04$^{\prime\prime}$
+        \end{itemize}
+
+    \item \textbf{Run skycalc (choose observatory A for APO, ? gives
+    list of command help, look at r, d, y, and h commands). For the
+    galactic center, what is the maximum amount of time it can be
+    observed at an airmass of less than 2.5? How about the Virgo
+    cluster? Why are these different?}
+
+    \item \textbf{Run jskycalc. Play with all of the buttons! What
+    planets will be visible spring 2016, and at what times of night?
+    Note that you can load files with a list of coordinates, and you
+    can make airmass observability charts for them.}
+
+    \item \textbf{Start to outline plan for an 3 half-night observing
+    run during late March A halves, when we are taking our APO trip.
+    Eventually, the plan should include a list of objects for each
+    night with a tentative order of observation, taking into account
+    how much time needs to be spent on each object. Our projects are
+    still TBD, but will likely include observations with multiple
+    instruments.}
+        \begin{itemize}
+            \item \textbf{Determine the approximate range of RAs that
+            we will be able to observe.}
+            \item \textbf{Given the NMSU 1st quarter proposals, which
+            of them might we be able to make some observations for?}
+            \item \textbf{If you have other ideas for projects, start
+            to tabulate them. (Sten/Diane stars for APOGEE
+            calibration/neutron capture calibration, Triplespec RR
+            Lyrae RV curves Drew Be stars)}
+            \item \textbf{Start to prepare a joint web page with the
+            plan, including relevant information: coordinates of
+            objects, finder images if necessary, links to tabulated
+            spectra, instrument manuals, etc. etc. }
+        \end{itemize}
+
+    \item \textbf{Look up the catalog Globular Clusters in the Milky
+    Way in VizieR and download it (make sure to get all of the rows).}
+        \begin{itemize}
+            \item \textbf{Plot the locations in an Aitoff projection
+            of equatorial coordinates. Can you detect Galactic
+            structure?}
+            \item \textbf{What clusters would be possible to observe
+            during our March run? }
+            \item \textbf{Convert coordinates to galactic coordinates
+            and plot in an Aitoff projection.}
+        \end{itemize}
+
+
+\end{enumerate}
+
+
+\end{document}

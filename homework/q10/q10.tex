@@ -2,7 +2,7 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{enumerate}
 \setlength{\parindent}{0em}
-\setlength{\parskip}{0.75em}
+\setlength{\parskip}{0.5em}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
 
@@ -10,22 +10,36 @@
 \chead{Homework 10}
 \rhead{05 February 2016}
 
+\usepackage{titlesec}
+\titleformat{\section}%
+[hang]% <shape>
+{\normalfont\bfseries\Large}% <format>
+{}% <label>
+{0pt}% <sep>
+{}% <before code>
+\renewcommand{\thesection}{}
+\renewcommand{\thesubsection}{\arabic{subsection}}
+\renewcommand{\thesubsubsection}{\arabic{subsubsection}}
+
 \begin{document}
 
-\section*{\normalsize{Count equation and exposure time calculator.}}
+\subsection*{Count equation and exposure time calculator.}
 
-\begin{enumerate}[1.]
-    \item (2/5, 2 hours) Estimate the number of photons/second
+\subsubsection{(2/5, 2 hours) Estimate the number of photons/second
 you would receive for a star with V=22 with the NMSU 1m assuming that
 the combined detection efficiency of the telescope and detector is 50
 percent. You can assume that the V bandpass is rectangular with a
 central wavelength of 5500\AA{}, a full width of 1000\AA{}, with an
-in-band transmission of 80 percent.
-    \item What is the zeropoint for the V bandpass for the 1m,
+in-band transmission of 80 percent.}
+The number of photons received would be about 2 billion per second
+(see \texttt{q10.py}).
+\subsubsection{What is the zeropoint for the V bandpass for the 1m,
         using the approximate:
         $$ \textrm{standard\ mag} = - 2.5\times\log(\textrm{photons}/s)
-        + {\textrm{zeropoint}} $$
-    \item Start to develop a software module that implements the count
+        + {\textrm{zeropoint}} $$}
+        The zeropoint is about 21.11
+        (see \texttt{q10.py}).
+\subsubsection{Start to develop a software module that implements the count
         equation that will eventually be used for an exposure time calculator.
         The module should include individual functions that return values for
         each of the terms in the count equation: photon flux given input magnitude,
@@ -45,8 +59,10 @@ in-band transmission of 80 percent.
         program to provide exposure time estimates for all of the APO 3.5m
         instruments (and perhaps others), where you will have wavelength
         dependent throughputs for multiple components.
-        Test the program by using it to do the calculation for the NMSU 1m.
-\end{enumerate}
+        Test the program by using it to do the calculation for the
+        NMSU 1m.}
+
+        See \texttt{exposure\_time\_calc.py} in the current directory.
 
 
 \end{document}

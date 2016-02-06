@@ -1,11 +1,31 @@
 \documentclass[12pt]{article}
 \usepackage[margin=1in]{geometry}
 \usepackage{color}
+\usepackage{xcolor}
 \usepackage{hyperref}
 \usepackage{amsmath}
 
+\usepackage[usenames, dvipsnames]{color}
+ 
+ \definecolor{mypink1}{rgb}{0.858, 0.188, 0.478}
+ \definecolor{mypink2}{RGB}{219, 48, 122}
+ \definecolor{mypink3}{cmyk}{0, 0.7808, 0.4429, 0.1412}
+ \definecolor{mygray}{gray}{0.6}
+  
+%  \begin{document}
+%  User-defined colours with different colour models:
+%   
+%   \begin{enumerate}
+%   \item \textcolor{mypink1}{Pink with rgb}
+%   \item \textcolor{mypink2}{Pink with RGB}
+%   \item \textcolor{mypink3}{Pink with cmyk}
+%   \item \textcolor{mygray}{Gray with gray}
+%   \end{enumerate}
+
+
+
 \setlength{\parindent}{0em}
-\setlength{\parskip}{0.75em}
+\setlength{\parskip}{0.5em}
 
 \title{ASTR 535 Lecture Notes}
 \author{Jon Holtzman}
@@ -56,10 +76,12 @@ Quantities of light:
     \item Surface Brightness (SB)
         [erg s$^{-1}$ cm$^{-2}$ $\nu^{-1}$ sterradian$^{-1}$]:
         amount of energy $received$ in a unit surface
-        element per unit time per unit frequency (or wavelength) from a unit
-        solid angle in the direction ($\theta,\phi$), where $\theta$ is the angle
-        away from the normal to the surface element, and $\phi$ is the azimuthal
-        angle.
+        element per unit time per unit frequency (or wavelength)
+        from a unit
+        solid angle in the direction ($\theta,\phi$), where $\theta$
+        is the angle
+        away from the normal to the surface element, and $\phi$ is the
+        azimuthal angle.
         To calculate SB, just divide the flux by the angle subtended
         by the object [rad$^2$]. At a larger distance, the flux will
         be smaller, but so will the angle subtended by the object, so
@@ -104,17 +126,21 @@ Questions:
     \item To what quantity is apparent magnitude of a star related?
     \item To what quantity is the absolute magnitude related?
 \end{itemize}
-Amount of light emitted is a function of wavelength, so we are often interested
-in e.g.\ flux per unit wavelength (or frequency), also known as $specific$
-flux. Using $\lambda=\frac{c}{\nu} \rightarrow
+Amount of light emitted is a function of wavelength,
+so we are often interested
+in e.g.\ flux per unit wavelength (or frequency),
+also known as $specific$ flux.
+Using $\lambda=\frac{c}{\nu} \rightarrow
 \frac{\textrm{d}\lambda}{\textrm{d}\nu} = \frac{-c}{\nu^2}$
 \begin{align*}
-    \int F_{\nu} \textrm{d} \nu &= \int F_{\lambda} \textrm{d} \lambda\\
-    F_{\nu} \textrm{d} \nu &= F_{\lambda} \textrm{d} \lambda\\
-    F_{\nu} &= F_{\lambda} \frac{\textrm{d} \lambda}{\textrm{d}\nu}\\
-    &= -F_{\lambda} \frac{c}{\nu^2}\\
-    &= -F_{\lambda} \frac{\lambda^2}{c}\\
+    \int F_{\nu} \textrm{d} \nu &= -\int F_{\lambda} \textrm{d} \lambda\\
+    F_{\nu} \textrm{d} \nu &= -F_{\lambda} \textrm{d} \lambda\\
+    F_{\nu} &= -F_{\lambda} \frac{\textrm{d} \lambda}{\textrm{d}\nu}\\
+    &= F_{\lambda} \frac{c}{\nu^2}\\
+    &= F_{\lambda} \frac{\lambda^2}{c}\\
 \end{align*}
+The negative comes from frequency and wavelength increasing in
+opposite directions.
 Note that a constant $F_{\lambda}$ implies a $non$-constant $F_{\nu}$
 and vice versa. Depending on where you are, a constant chunk of 1 Hz is
 not the same wavelength range.
@@ -311,17 +337,20 @@ $F_{\nu}$.
     m = -2.5\log\frac{\int_B F_{\lambda}\textrm{d}\lambda}
     {\int_V F_{\lambda}\textrm{d}\lambda}
 \end{equation*}
-if B-V=0, then (B/V)$_{object}$ is the same as (B/V)$_{Vega}$.\\
+if B-V=0, then (B/V)$_{object}$ is the same as (B/V)$_{Vega}$,
+or $\Big(\frac{\int F_{\nu}}{\int F_{\lambda}}\Big)_{obj} = 
+    \Big(\frac{\int F_{\nu}}{\int F_{\lambda}}\Big)_{Vega} $.
 
-\noindent What would the flux be from an object with some magnitude,
+What would the flux be from an object with some magnitude,
 x? Need this to know how much observing time I need. E.g., convert the
 spectrum of an elliptical galaxy to color; if you know F in one
 filter, you can get F in another filter.
 
-\noindent Which is closer to the UBVRI system, STMAG or ABNU?\\
-\noindent What would typical colors be in a STMAG or ABNU system?\\
+Which is closer to the UBVRI system, STMAG or ABNU?
 
-\noindent \textcolor{magenta}{Wednesday, January 27}
+What would typical colors be in a STMAG or ABNU system?
+
+\textcolor{magenta}{Wednesday, January 27}
 
 \subsubsection*{UBVRI magnitudes-flux conversion
 }
@@ -333,9 +362,9 @@ Given UBVRI magnitudes of an object in the desired band, filter profiles
 (e.g. Bessell 1990, PASP 102,1181), and absolute spectrophotometry of
 Vega (e.g., \href{http://adsabs.harvard.edu/abs/2004AJ....127.3508B}
 {\textcolor{blue}{Bohlin \& Gilliland 2004, AJ 127, 3508}},
-one can determine the flux.\\
+one can determine the flux.
 
-\noindent If one wanted to estimate the flux of some object in
+If one wanted to estimate the flux of some object in
 arbitrary bandpass given just the V magnitude of an object (a common
 situation used when trying to predict exposures times, see below),
 this can be done if an estimate of the spectral energy distribution
@@ -345,19 +374,19 @@ comparing with the integral of the Vega spectrum over the same
 bandpass, then use the normalized SED to compute the flux in any
 desired bandpass. Some possibly useful references for SEDs are:
 Bruzual, Persson, Gunn, \& Stryker; Hunter, Christian, \& Jacoby;
-Kurucz).\\
+Kurucz).
 
-\noindent Things are certainly simpler in the ABNU or STMAG system, and
+Things are certainly simpler in the ABNU or STMAG system, and
 there has been some movement in this direction: the STScI gives STMAG
 calibrations for HST instruments, and the SDSS photometric system is
-close to an ABNU system.\\
+close to an ABNU system.
 
-\noindent Note, however, that even when the systems are conceptually
+Note, however, that even when the systems are conceptually
 well defined, determining the absolute calibration of any photometric
 system is very difficult in reality, and determining absolute fluxes
-to the 1\% level is very challenging.\\
+to the 1\% level is very challenging.
 
-\noindent As a separate note on magnitudes themselves, note that some
+As a separate note on magnitudes themselves, note that some
 people, in particular, the SDSS, have adopted a modified type of
 magnitudes, called asinh magnitudes, which behave like normal (also
 known as Pogson) magnitude for brighter objects, but have different
@@ -383,26 +412,39 @@ take into account
 \end{itemize}
 Generally, the astronomical signal (which might be a flux or a
 surface brightness, depending on whether the object is resolved)
-can be written
+can be written in the form of the \emph{\textbf{count equation:}}
     $$ S = Tt \int \frac{F_{\lambda}}{\frac{hc}{\lambda}}q_{\lambda}
     a_{\lambda}\textrm{d}\lambda \equiv TtS' $$
-where $S$ is the observed photon flux (the ``signal"), $T$ is the
-telescope collecting area, $t$ is the integration time, $a_{\lambda}$
-is the atmospheric transmission (more later) and
-$q_{\lambda}$ is the system efficiency (which includes
-telescope, filters, optics, detector, etc.); $S'$ is an observed flux
-rate, i.e. with all of the real details of the observing system
-included. I refer to this as the \emph{count equation}.
+    \begin{itemize}
+        \item $S$: total number of photons observed (the ``signal")
+        \item $S'$ is an observed flux rate,
+        i.e. with all of the real details of the observing system included.
+        \item $a_{\lambda}$: atmospheric transmission,
+        or \emph{throughput}, which is the fraction of photons that
+        make it through.
+        (a typical value is about 0.9; $\sim$90\% of photons)
+        \item $q_{\lambda}$ is the system efficiency
+        (which includes telescope, filters, optics, detector, etc.),
+        \item $T$: telescope collecting area
+        \item $t$ is the integration time
+        (total amount of time spent collecting photons).
+        \item $F_{\lambda}/\frac{hc}{\lambda}$:
+        flux divided by the energy per photon;
+        gives the number of photons per second per square cm.
+    \end{itemize}
+$T$ and $t$ are the \emph{only} terms that do not depend on
+the wavelength (or frequency).
 
 Usually, however, one doesn't use this information to go
 backward from $S$ to $F_{\lambda}$ because it is very
 difficult to measure all of the terms precisely, and some of them
 (e.g. $a$, and perhaps $q$) are time-variable; $a$ is also spatially
 variable. Instead, most observations are performed differentially to a
-set of other stars of known brightness. If the stars of known
+set of other stars of well known brightness. If the stars of known
 brightness are observed in the same observation, then the atmospheric
 term is (approximately) the same for all stars; this is known as
-\emph{differential photometry}. From the photon flux of the object with known
+\emph{differential photometry}.
+From the photon flux of the object with known
 brightness, one could determine an ``exposure efficiency''
 or an ``effective area'' for this
 exposure. Equivalently, and more commonly, one can calculate an
@@ -422,6 +464,12 @@ stars with different spectral properties)! If using instrumental mags
 including exposure time normalization, the zeropoint gives the
 magnitude of a star that will give 1 count/second.
 
+\textcolor{magenta}{FOV: usually in arcminute scales.
+To go from observed to emitted $\rightarrow$ 2 different observations
+(know flux of one: SDSS has list of stars with known brightness).
+A star that is 10 times fainter than one with g=18 has g=20.5.
+}
+
 If there are no stars of known brightness in the same
 observation, then calibration must be done against stars in other
 observations. This then requires that the different effects of the
@@ -435,20 +483,20 @@ course, it is always possible to obtain differential photometry and
 then go back later and obtain absolute photometry of the reference
 stars.
 
-\noindent Of course, at some point, someone needs to figure out what
+Of course, at some point, someone needs to figure out what
 the fluxes of the calibrating stars really are, and this requires
 understanding all of the terms in the count equation. It is
 challenging, and often, absolute calibration of a system is uncertain
-to a couple of percent.\\
+to a couple of percent.
 
-\noindent It is also common to stop with differential photometry if
+It is also common to stop with differential photometry if
 one is studying variable objects, i.e. where one is just interested in
 the change in brightness of an object, not the absolute flux level. In
 this case, one only has to reference the brightness of the target
 object relative some other object (or ensemble of objects) in the
-field that are non-variable.\\
+field that are non-variable.
 
-\noindent While the count equation isn't usually used for calibration,
+While the count equation isn't usually used for calibration,
 it is very commonly used for computing the approximate number of
 photons you will receive from a given source in a given amount of time
 for a given observational setup. This number is critical to know in
@@ -472,9 +520,9 @@ detection efficiency, because of \emph{statistical} uncertainties. In
 addition, there may also be \emph{instrumental} uncertainties. Consequently,
 we now turn to the concepts of probability distributions, with
 particular interest in the distribution which applies to the detection
-of photons.\\
+of photons.
 
-\noindent \emph{Distributions and characteristics thereof}
+\emph{Distributions and characteristics thereof}
 \begin{itemize}
     \item concept of a distribution: define $p(x)dx$ as probability of
     event occuring in $x + \textrm{d}x$:
@@ -492,17 +540,17 @@ median: mid-point value.
     { \int_{-\infty}^{\infty} p(x)\textrm{d}x }
     &= \frac{1}{2}
 \end{align*}
-mode: most probable value (peak in plot).\\
+mode: most probable value (peak in plot).
 
-\noindent \textcolor{magenta}{Monday, February 1}\\
+\textcolor{magenta}{Monday, February 1}
 
-\noindent Note that the geometric interpretation of above quantities
+Note that the geometric interpretation of above quantities
 depends on the nature of the distribution; although we all carry
 around the picture of the mean and the variance for a Gaussian
 distribution, these pictures are not applicable to other
-distributions, but the quantities are still well-defined.\\
+distributions, but the quantities are still well-defined.
 
-\noindent Also, note that there is a difference between the
+Also, note that there is a difference between the
 \emph{sample}
 mean, variance, etc. and the \emph{population} quantities. The latter apply
 to the true distribution, while the former are estimates of the latter
@@ -515,9 +563,9 @@ $$\textrm{sample\ variance:\ } \equiv
 The sample mean and variance approach the true mean and variance as N
 approaches infinity. But note, especially for small samples, your
 estimate of the mean and variance may differ from their true
-(population) values (more below).\\
+(population) values (more below).
 
-\noindent Now we consider what distribution is appropriate for the
+Now we consider what distribution is appropriate for the
 detection of photons. The photon distribution can be derived from the
 \emph{binomial} distribution, which gives the probability of observing the
 number, $x$, of some possible event, given a total number of events $n$,
@@ -529,9 +577,9 @@ For the binomial distribution, one can derive:
    $$ \textrm{mean} \equiv \int xp(x)\textrm{d}x = np $$
    $$ \textrm{variance} \equiv \sigma^2 \equiv
       \int (x-\mu)^2p(x)\textrm{d}x = np(1-p) $$
-\emph{The Poisson distribution}\\
+\emph{The Poisson distribution}
 
-\noindent In the case of detecting photons, $n$ is the total number of
+In the case of detecting photons, $n$ is the total number of
 photons emitted, and $p$ is the probability of detecting a photon during
 our observation out of the total emitted. We don't know either of
 these numbers. However, we do know that p$<<$1 and we know, or at
@@ -544,9 +592,9 @@ From the expressions for the binomial distribution in this limit, the
 mean of the distribution is $\mu$, and the variance is
   $$  \textrm{variance} = \sum_x [(x-\mu)^2p(x,\mu)] $$
   $$  \textrm{variance} = np = \mu  $$
-This is an \emph{important result}.\\
+This is an \emph{important result}.
 
-\noindent Note that the Poisson distribution is generally the
+Note that the Poisson distribution is generally the
 appropriate distribution not only for counting photons, but for
 \emph{any} sort of counting experiment where a series of events
 occurs with a known average rate, and are independent of time

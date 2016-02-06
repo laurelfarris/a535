@@ -7,7 +7,7 @@
 \setlength{\parindent}{0em}
 \setlength{\parskip}{0.5em}
 
-\title{ASTR 535 Lab notes}
+\title{\vspace{-0.75in}ASTR 535 Lab notes}
 \author{Jon Holtzman}
 \date{Spring 2016}
 
@@ -56,9 +56,9 @@ the course of a year, so about 2 hours per month.
 
 Sideral is relevant for position of stars: stars come back
 to the same position every sidereal day. As we'll see
-below, a given star crosses the meridian when the
+below, \textcolor{red}{a given star crosses the meridian when the
 local sidereal time equals the right ascension of the
-star.
+star.}
 
 \subsubsection*{Calendars}
 
@@ -66,7 +66,9 @@ Standard calendar is Gregorian, with leap years, etc.
 
 For astronomy, it is simpler to keep track of days rather
     then year/month/day. Most dates given by the
-    \url{Julian date} (number of days since UT noon, Monday,
+    \href{https://en.wikipedia.org/wiki/Julian_day}
+    {\textcolor{blue}{Julian date}}
+    (number of days since UT noon, Monday,
     January 1, 4713 BC). Variations include modified Julian
     data (JD - 2400000.5 fewer digits and starts at midnight),
     heliocentric Julian date (JD adjusted to the frame of
@@ -192,99 +194,122 @@ brightness; so often, telescopes spend bright time working in the IR.
 Here are some useful software tools to do tasks related to coordinate systems
 and observability, though there are others out there. Anything that
 accomplishes the desired tasks adequately is fine to use; just make sure
-you're not limited by the tools that you choose.
+you're not limited by the tools that you choose. These are available
+on the Astronomy Linux cluster; you can probably install them on your
+laptop, but they will probably not be there by default.
 \begin{itemize}
     \item \href{http://physics.dartmouth.edu/}
         {\textcolor{blue}{skycalc/skycalendar}}:
-        text based programs; skycalendar gives daily almanac, position of moon,
-        etc.\ skycalc allows you to enter coordinates of an object and obtain
-        observability information for any specified date. Other features included
-        as well: coordinate transformation, position of planets.
+        text based programs, installed on our Linux cluster (link is
+        to source code if you wish to install on your laptop).
+        skycalendar gives daily almanac, position of moon, etc.
+        skycalc allows you to enter coordinates of an object and
+        obtain observability information for any specified date. Other
+        features included as well: coordinate transformation, position
+        of planets.
     \item \href{http://physics.dartmouth.edu/}
         {\textcolor{blue}{JSkyCalc}}:
         (java-jar /home/local/java/JSkyCalc.jar): JAVA implementation
-        of skycalc.
+        of skycalc, also installed on the Astronomy cluster (and
+        available for download).
     \item \href{http://tdc-www.harvard.edu/wcstools/}
         {\textcolor{blue}{WCSTOOLS}}: full set of useful coordinate
-        system programs, e.g.\ coordinate system transformation (command skycoor).
-        Largely useful for use with coordinate system information in image
-        headers (more later).
+        system programs, e.g.\ coordinate system transformation
+        (command skycoor). Largely useful for use with coordinate
+        system information in image
+        headers (more later). Installed on the astronomy cluster.
+    \item Python: \href{http://docs.astropy.org/en/stable/coordinates/}
+        {\textcolor{blue}{astropy.coordinates}},
+        IDL:
+        \href{http://idlastro.gsfc.nasa.gov/ftp/pro/astro/euler.pro}
+        {\textcolor{blue}{euler}} in Astronomy users library.
 \end{itemize}
+
 
 \subsection*{Exercises}
 \begin{enumerate}[1.]
-    \item Predict the RA crossing the meridian at midnight for the
-        first of every month.
-        Try the command \texttt{skycalendar} (on the cluster, unless you
-        download it yourself for your laptop).
-        Give yourself a wide terminal window, and
-        see how well you did.
-    \item What time is it now? What is the sidereal time? What coordinates would
-        it be most optimal to observe right now?
-    \item When are the dark (no moon above horizon) first-half nights in first
-        quarter?
-    \item APO schedules the 3.5m in half-night blocks (A and B), split at midnight
-        (or 1am during daylight savings). What are the best half-nights in the next
-        year (month and a half, e.g., Oct A, March B, etc.) to request to observe:
+    \item \textbf{Predict the RA crossing the meridian at midnight for the
+    first of every month. Try the command skycalendar (on the cluster,
+    unless you download it yourself for your laptop) - give yourself a
+    wide terminal window first - to see how well you did}
+
+    \item \textbf{What time is it now? What is the sidereal time? What
+    coordinates would it be most optimal to observe right now?}
+
+    \item \textbf{When are the dark (no moon above horizon) first half
+    nights in first quarter ? }
+
+    \item \textbf{APO schedules the 3.5m in half-night blocks (A and
+    B), split at midnight (or 1am during daylight savings). What are
+    the best half-nights in the next year (month and half, e.g., Oct
+    A, March B, etc.) to request to observe:}
         \begin{itemize}
-            \item Virgo cluster of galaxies (note central galaxy is M87,
-                look up the coordinates).
-            \item Galactic center (galactic coordinates are\ldots). Use command
-                \texttt{skycoor} (or python or idl tools)
-                to convert galactic to equatorial
-                (\texttt{skycoor} with no arguments gives syntax).
-            \item Jupiter (look up its position using JPL HORIZONS).
+            \item \textbf{Virgo cluster of galaxies (note central
+            galaxy is M87, look up the coordinates)}
+            \item \textbf{Galactic center (galactic coordinates are
+            .... ask if you don't know!). You can use command skycoor
+            (or Python or IDL tools) to convert galactic to equatorial
+            (skycoor with no arguments gives syntax). }
+            \item \textbf{Jupiter (look up its position using JPL
+            HORIZONS) }
         \end{itemize}
-    \item Run \texttt{skycalc} (choose observatory A for APO.
-        `?' gives list of command
-        help. Look at r, d, y, and h commands). For the galactic center, what is
-        the maximum amount of time it can be observed at an airmass of less than
-        2.5? How about the Virgo cluster? Why are these different?
-    \item Run \texttt{jskycalc}. Play with all of the buttons! What planets will be
-        visible fall 2011, and at what times of night? Note that you can load
-        files with a list of coordinates, and you can make airmass observability
-        charts for them.
-    \item Make a plan for a 3 half-night observing run during early/mid November,
-        A halves, when we are likely to take our APO trip. The plan should
-        include a list of objects for each night with a tentative order of
-        observation, taking into account how much times needs to be spent on
-        each object. Our projects are still TBD, but will likely include:
+
+    \item \textbf{Run skycalc (choose observatory A for APO, ? gives
+    list of command help, look at r, d, y, and h commands). For the
+    galactic center, what is the maximum amount of time it can be
+    observed at an airmass of less than 2.5? How about the Virgo
+    cluster? Why are these different?}
+
+    \item \textbf{Run jskycalc. Play with all of the buttons! What
+    planets will be visible spring 2016, and at what times of night?
+    Note that you can load files with a list of coordinates, and you
+    can make airmass observability charts for them.}
+
+    \item \textbf{Start to outline plan for an 3 half-night observing
+    run during late March A halves, when we are taking our APO trip.
+    Eventually, the plan should include a list of objects for each
+    night with a tentative order of observation, taking into account
+    how much time needs to be spent on each object. Our projects are
+    still TBD, but will likely include observations with multiple
+    instruments.}
         \begin{itemize}
-            \item ARCES (echelle spectrograph) observations of several stars
-                in the Kepler field (look this up if you don't know what it is,
-                or where it is) to monitor velocity of eclipsing binaries
-                (Patrick) and to measure rotation of rapid rotators (Dmitry).
-            \item ARCES observations of bright stars observed by the SDSS-III
-                APOGEE survey; these are located all over the sky.
-            \item DIS observations of a candidate high velocity star from SEGUE
-                (Young Sun) at RA=3h54m DEC=-6d14m.
-            \item SPICAM observation of candidate low mass dwarf galaxies from
-                SDSS (equatorial candidates between 21h and 3h RA).
-            \item If it is clear, we will likely have time for some additional
-                projects. Can you come up with some?
+            \item \textbf{Determine the approximate range of RAs that
+            we will be able to observe. }
+            \item \textbf{Given the NMSU 1st quarter proposals, which
+            of them might we be able to make some observations for?}
+            \item \textbf{If you have other ideas for projects, start
+            to tabulate them. (Sten/Diane stars for APOGEE
+            calibration/neutron capture calibration, Triplespec RR
+            Lyrae RV curves Drew Be stars)}
+            \item \textbf{Start to prepare a joint web page with the
+            plan, including relevant information: coordinates of
+            objects, finder images if necessary, links to tabulated
+            spectra, instrument manuals, etc. etc. }
         \end{itemize}
-    \item Prepare a web page with the plan, including relevant information:
-        coordinates of objects, finder images if necessary, links to tabulated
-        spectra, instrument manuals, etc.
+
+    \item \textbf{Look up the catalog Globular Clusters in the Milky
+    Way in VizieR and download it (make sure to get all of the rows).}
+        \begin{itemize}
+            \item \textbf{Plot the locations in an Aitoff projection
+            of equatorial coordinates. Can you detect Galactic
+            structure?}
+            \item \textbf{What clusters would be possible to observe
+            during our March run? }
+            \item \textbf{Convert coordinates to galactic coordinates
+            and plot in an Aitoff projection.}
+        \end{itemize}
+
 \end{enumerate}
 
 \newpage
-\section*{Next Section}
+\textcolor{magenta}{Friday, February 5}
 
-%\end{enumerate}
-
-
-
-
-
-
-
-
-
-
-
-
-
+\section*{Image display and graphical file-based display tools}
+\subsection*{Image Display}
+\subsection*{Quick introduction to astronomical image file format}
+\subsection*{Standalone display tools}
+\subsection*{Basic display operation}
+\subsection*{Exercises}
 
 
 \end{document}

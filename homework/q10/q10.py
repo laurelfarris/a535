@@ -39,4 +39,11 @@ T = math.pi*(diameter/2)**2
 S = S_prime(flux,0.5,1.,5000.,6000.)
 
 count = T*S
-print '{:.2e} photons per second'.format(count)
+print '1. Number of photons received per second: {:.2e}'.format(count)
+#z = Vmag + 2.5*math.log10(count)
+z = -Vmag - 2.5*math.log10(flux)
+print '2. The zeropoint is {:.2f}'.format(z)
+
+
+
+
