@@ -11,6 +11,8 @@
 % \definecolor{mypink3}{cmyk}{0, 0.7808, 0.4429, 0.1412}
 % \definecolor{mygray}{gray}{0.6}
 
+\definecolor{myBlue}{rgb}{0.2,0.2,0.6}
+
 %  \begin{document}
 %  User-defined colours with different colour models:
 %
@@ -346,6 +348,7 @@ if B-V=0, then (B/V)$_{object}$ is the same as (B/V)$_{Vega}$,
 or $\Big(\frac{\int F_{\nu}}{\int F_{\lambda}}\Big)_{obj} =
     \Big(\frac{\int F_{\nu}}{\int F_{\lambda}}\Big)_{Vega} $.
 
+
 What would the flux be from an object with some magnitude,
 x? Need this to know how much observing time I need. E.g., convert the
 spectrum of an elliptical galaxy to color; if you know F in one
@@ -475,6 +478,24 @@ To go from observed to emitted $\rightarrow$ 2 different observations
 A star that is 10 times fainter than one with g=18 has g=20.5.
 }
 
+\textcolor{myBlue}{
+    $$ m = -2.5 \log(qF)$$
+    $$ m = -2.5 \log F - 2.5\log q $$
+the quantity `-2.5\log q' is the zeropoint.
+    $$ m = -2.5 \log \frac{S}{t} $$
+
+No nearby star... $q$ is still the same, but $a$ changes.
+If sky is `well-behaved' atmospheric effects is simple function
+of distance form zenith; slope of variation can change from one
+night to the next.
+
+How did standard stars get measured in the first place?
+Someone had to do some hard work figuring out throughput.
+
+Accuracy depends on number of photons, which will determine
+how much observing time you will need.
+}
+
 If there are no stars of known brightness in the same
 observation, then calibration must be done against stars in other
 observations. This then requires that the different effects of the
@@ -519,6 +540,14 @@ a function of exposure time.
 %-----------------------------------------------------------------------%
 
 \subsection*{Uncertainties in photon rates}
+\textcolor{myBlue}{
+Required accuracy - depends on the science you're doing.
+Uncertainties (more descriptive than `errors') -
+associated with flux measurements.
+For given input rate, what is the probability of observing
+range of all possible input values?
+}
+
 For a given rate of emitted photons, there's a probability function
 which gives the number of photons we detect, even assuming 100\%
 detection efficiency, because of \emph{statistical} uncertainties. In
