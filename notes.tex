@@ -5,16 +5,15 @@
 \usepackage{hyperref}
 \usepackage{amsmath}
 
-\usepackage[usenames, dvipsnames]{color}
- 
- \definecolor{mypink1}{rgb}{0.858, 0.188, 0.478}
- \definecolor{mypink2}{RGB}{219, 48, 122}
- \definecolor{mypink3}{cmyk}{0, 0.7808, 0.4429, 0.1412}
- \definecolor{mygray}{gray}{0.6}
-  
+%\usepackage[usenames, dvipsnames]{color}
+% \definecolor{mypink1}{rgb}{0.858, 0.188, 0.478}
+% \definecolor{mypink2}{RGB}{219, 48, 122}
+% \definecolor{mypink3}{cmyk}{0, 0.7808, 0.4429, 0.1412}
+% \definecolor{mygray}{gray}{0.6}
+
 %  \begin{document}
 %  User-defined colours with different colour models:
-%   
+%
 %   \begin{enumerate}
 %   \item \textcolor{mypink1}{Pink with rgb}
 %   \item \textcolor{mypink2}{Pink with RGB}
@@ -22,12 +21,10 @@
 %   \item \textcolor{mygray}{Gray with gray}
 %   \end{enumerate}
 
-
-
 \setlength{\parindent}{0em}
 \setlength{\parskip}{0.5em}
 
-\title{ASTR 535 Lecture Notes}
+\title{\vspace{-0.75in}ASTR 535 Lecture Notes}
 \author{Jon Holtzman}
 \date{Spring 2016}
 
@@ -195,8 +192,10 @@ of photometric system; the quantity $2.5 \log F_0$ may be referred to as
 the photometric system zeropoint. Note that this relationship holds
 regardless of what photometric system you are using. Inverting, one gets:
     $$ F = F_0 \times 10^{-0.4\textrm{m}} $$
-Just as fluxes can be represented in magnitude units, flux densities can be
-specified by monochromatic magnitudes:
+Just as fluxes can be represented in magnitude units, flux \emph{densities}
+(flux per unit wavelength/frequency, or \emph{monochromatic} flux,
+as opposed to integrated flux)
+can be specified by monochromatic magnitudes:
 \begin{equation*}
     F_{\lambda} = F_0 (\lambda) \times 10^{-0.4 \textrm{m}(\lambda)}
 \end{equation*}
@@ -216,19 +215,19 @@ magnitudes and fluxes}. Note that this means that if one references the
 brightness of one object relative to that of another, a magnitude system
 can be set up relative to the brightness of the reference source. However, the
 utility of a system when doing astrophysics generally requires an
-understanding of the actual fluxes.\\
+understanding of the actual fluxes.
 
-\noindent \textcolor{magenta}{Monday, January 25}\\
+\textcolor{magenta}{Monday, January 25}
 
-\noindent There are three main types of magnitude systems in use in astronomy:
+There are three main types of magnitude systems in use in astronomy:
 STMAG, ABNU, and VEGAMAG.
 We start by describing the two simpler ones: the STMAG and the ABNU mag system.
 In these simple systems, the reference flux is just a constant value in
 $F_{\lambda}$ or $F_{\nu}$. However, these are not always the most widely used
 systems in astronomy, because
-\textcolor{red}{no natural source exists with a flat spectrum}.\\
+\textcolor{red}{no natural source exists with a flat spectrum}.
 
-\noindent The STMAG (Space Telescope MAGnitude) is defined
+The STMAG (Space Telescope MAGnitude) is defined
 relative to a source of constant $F_{\lambda}$. In this system,
 the reference flux is given by
 \begin{equation*}
@@ -241,9 +240,13 @@ Alternatively (using $m = -2.5\log \frac{F}{F_0}$), we can write
 \begin{equation*}
     m_{\textrm{STMAG}} = -2.5 \log F_{\lambda} - 21.1
 \end{equation*}
-for $F_{\lambda}$ in \textcolor{red}{cgs units}.\\
+for $F_{\lambda}$ in \textcolor{red}{cgs units}(using cm$^{-2}$ \AA{}$^{-1}$
+distinguishes between the collecting area and the wavelength, since both are
+units of distance. Be careful with units when doing these conversions; as
+long as the proper flux units come out at the end, the answer should be
+correct).
 
-\noindent The ABNU system is defined relative to a source
+The ABNU system is defined relative to a source
 of constant $F_{\nu}$ and we have
 \begin{equation*}
     F_{0,\nu} = 3.63 \times 10^{-20}\ \textrm{erg\ s}^{-1}\
@@ -254,11 +257,13 @@ or
     m_{\textrm{ABNU}} = -2.5 \log F_{\nu} - 48.6
 \end{equation*}
 for $F_{\nu}$ in \textcolor{red}{cgs units}.
-Again, the constant comes from the flux of Vega.\\
+Again, the constant comes from the flux of Vega.
 
-\noindent Magnitudes usually refer to the flux integrated over a
-spectral bandpass. In this case, $F$ and $F_0$ refer to fluxes
-integrated over the bandpass.
+Magnitudes usually refer to the \emph{integrated} flux (over a
+spectral bandpass, not just a single wavelength).
+In this case, $F$ and $F_0$ refer to such integrated fluxes.
+The STMAG and ABNU integrated systems are defined relative to sources
+of constant $F_{\lambda}$ and $F_{\nu}$, respectively
 \begin{align*}
     m_{\textrm{STMAG}} &= -2.5 \log \frac{\int F_{\lambda} \lambda
     \textrm{d}\lambda}{\int3.6\times10^{-9}\lambda\textrm{d}\lambda}\\
@@ -267,10 +272,10 @@ integrated over the bandpass.
 \end{align*}
 These are defined to be the same at 5500\AA{}.
 The factors of $\lambda$ and $\nu$ come from the conversion factor
-$hc/\lambda$, where $h$ and $c$ cancel out in the
-fractions in each equation.\\
+$hc/\lambda$ for photon-counting detectors, where $h$ and $c$ cancel out in the
+fractions in each equation.
 
-\noindent Note that these systems differ by more than a constant,
+Note that these systems differ by more than a constant,
 because one is defined by units of $F_{\lambda}$ and the other by $F_{\nu}$,
 so the difference betwen the systems is a function of wavelength.
 (Question: what's the relations between $m_{STMAG}$ and $m_{ABNU}$?)\\
@@ -338,7 +343,7 @@ $F_{\nu}$.
     {\int_V F_{\lambda}\textrm{d}\lambda}
 \end{equation*}
 if B-V=0, then (B/V)$_{object}$ is the same as (B/V)$_{Vega}$,
-or $\Big(\frac{\int F_{\nu}}{\int F_{\lambda}}\Big)_{obj} = 
+or $\Big(\frac{\int F_{\nu}}{\int F_{\lambda}}\Big)_{obj} =
     \Big(\frac{\int F_{\nu}}{\int F_{\lambda}}\Big)_{Vega} $.
 
 What would the flux be from an object with some magnitude,
@@ -450,7 +455,7 @@ or an ``effective area'' for this
 exposure. Equivalently, and more commonly, one can calculate an
 \emph{instrumental magnitude}:
     $$  m = -2.5 \log \frac{S}{t} $$
-(i.e., normalize by the exposure time to get counts/sec, although this
+(i.e., normalize by the exposure time, $t$, to get counts/sec, although this
 is not strictly necessary) and then determine the \emph{zeropoint},
 $z$, that needs
 to be added to give the calibrated magnitude, $M$
@@ -460,7 +465,7 @@ Note that in the real world, one has to also consider possible
 differences between a given experimental setup and the setup used to
 measure the reference brightnesses, so this is only a first
 approximation (i.e., the zeropoint may be different for different
-stars with different spectral properties)! If using instrumental mags
+stars with different spectral properties). If using instrumental mags
 including exposure time normalization, the zeropoint gives the
 magnitude of a star that will give 1 count/second.
 
@@ -523,16 +528,15 @@ particular interest in the distribution which applies to the detection
 of photons.
 
 \emph{Distributions and characteristics thereof}
-\begin{itemize}
-    \item concept of a distribution: define $p(x)dx$ as probability of
-    event occuring in $x + \textrm{d}x$:
+
+concept of a distribution: define $p(x)dx$ as probability of
+event occuring in $x + \textrm{d}x$:
         $$ \int p(x)\textrm{d}x = 1 $$
-\end{itemize}
 Some definitions relating to values which characterize a distribution:
 \begin{align*}
-    mean \equiv \mu &= \int xp(x)\textrm{d}x \\
-    variance \equiv \sigma^2 &= \int (x-\mu)^2 p(x)\textrm{d}x \\
-    standard\ deviation \equiv \sigma &= \sqrt{\textrm{variance}}
+    \textrm{mean} \equiv \mu &= \int xp(x)\textrm{d}x \\
+    \textrm{variance} \equiv \sigma^2 &= \int (x-\mu)^2 p(x)\textrm{d}x \\
+    \textrm{standard\ deviation} \equiv \sigma &= \sqrt{\textrm{variance}}
 \end{align*}
 median: mid-point value.
 \begin{align*}
@@ -565,6 +569,12 @@ approaches infinity. But note, especially for small samples, your
 estimate of the mean and variance may differ from their true
 (population) values (more below).
 
+\emph{The binomial distribution}
+
+Given independent events, two parameters, $n$ and $p$, where $n$
+is the total number of observations and $p$ is the probability of
+observing $x$ during each observation.
+
 Now we consider what distribution is appropriate for the
 detection of photons. The photon distribution can be derived from the
 \emph{binomial} distribution, which gives the probability of observing the
@@ -574,15 +584,17 @@ possibilities) in any single event, $p$, under the assumption that all
 events are independent of each other:
    $$ P(x,n,p) = \frac{n!p^x(1-p)^{n-x}}{x!(n-x)!}  $$
 For the binomial distribution, one can derive:
-   $$ \textrm{mean} \equiv \int xp(x)\textrm{d}x = np $$
+   $$ \textrm{mean} \equiv \mu \equiv \int xp(x)\textrm{d}x = np $$
    $$ \textrm{variance} \equiv \sigma^2 \equiv
       \int (x-\mu)^2p(x)\textrm{d}x = np(1-p) $$
+
 \emph{The Poisson distribution}
 
 In the case of detecting photons, $n$ is the total number of
 photons emitted, and $p$ is the probability of detecting a photon during
 our observation out of the total emitted. We don't know either of
-these numbers. However, we do know that p$<<$1 and we know, or at
+these numbers. However, we do know that
+\textcolor{red}{p$<<$1} and we know, or at
 least we can estimate, the mean number detected:
   $$  \mu = np $$
 In this limit, the binomial distribution asymtotically approaches the
@@ -592,47 +604,47 @@ From the expressions for the binomial distribution in this limit, the
 mean of the distribution is $\mu$, and the variance is
   $$  \textrm{variance} = \sum_x [(x-\mu)^2p(x,\mu)] $$
   $$  \textrm{variance} = np = \mu  $$
-This is an \emph{important result}.
+
+\textcolor{red}{\textbf{This is an \emph{important result}}}.
 
 Note that the Poisson distribution is generally the
 appropriate distribution not only for counting photons, but for
 \emph{any} sort of counting experiment where a series of events
 occurs with a known average rate, and are independent of time
-since the last event.\\
+since the last event.
 
-\noindent What does the Poisson distribution look like?
+What does the Poisson distribution look like?
 \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/poisson.htm}
 {\textcolor{blue}{Plots}}
-for $\mu$ = 2, $\mu$ = 10, $\mu$ = 10000.\\
+for $\mu$ = 2, $\mu$ = 10, $\mu$ = 10000.
 
-\noindent \emph{The normal, or Gaussian, distribution}\\
+\emph{The normal, or Gaussian, distribution}
 
-\noindent Note, for large $\mu$, the Poisson distribution is
+Note, for large $\mu$, the Poisson distribution is
 well-approximated around the peak by a \emph{Gaussian}, or
 \emph{normal} distribution:
     $$ P(x,\mu,\sigma) = \frac{1}{\sigma\sqrt{2\pi}}
         e^{ -\frac{1}{2} (\frac{x-\mu}{\sigma})^2 }  $$
 This is important because it allows us to use ``simple'' least squares
 techniques to fit observational data, because these generally assume
-normally distributed data. However, beware that in the tails of the
+normally distributed data. However, in the tails of the
 distribution, and at low mean rates, the Poisson distribution can
 differ significantly from a Gaussian distribution. In these cases,
 least-squares may not be appropriate to model observational data;
-instead, one might need to consider maximum likelihood techniques
-instead.\\
+instead, one might need to consider maximum likelihood techniques.
 
-\noindent The normal distribution is also important because many
+The normal distribution is also important because many
 physical variables seem to be distributed accordingly. This may not be
 an accident because of the \emph{central limit theorem}: if a quantity
 depends on a number of independent random variables with ANY
 distribution, the quantity itself will be distributed normally (see
 statistics texts). In observations, we encounter the normal
-distribution because one important source of \emph{instrumental noise},
-readout noise, is distributed normally.\\
+distribution because \emph{readout} noise is distributed normally.
+(Readout noise is one important source of \emph{instrumental noise}).
 
-\noindent \emph{Importance of error distribution analysis}\\
+\emph{Importance of error distribution analysis}
 
-\noindent You need to understand the expected uncertainties in your
+You need to understand the expected uncertainties in your
 observations in order to:
 \begin{itemize}
     \item predict the amount of observing time you'll need to get
@@ -651,23 +663,23 @@ observations in order to:
     \item interpret your results in the context of a scientific
     prediction
 \end{itemize}
-\emph{Confidence levels}\\
+\emph{Confidence levels}
 
-\noindent For example, say we want to know whether some single point
+For example, say we want to know whether some single point
 is consistent with expectations, e.g., we see a bright point in
 multiple measurements of a star, and want to know whether the star
 flared. Say we have a time sequence with known mean and variance, and
 we obtain a new point, and want to know whether it is consistent with
-known distribution?\\
+known distribution?
 
-\noindent If the form of the probability distribution is known, then
+If the form of the probability distribution is known, then
 you can calculate the probability of getting a measurement more than
 some observed distance from the mean. In the case where the observed
 distribution is Gaussian (or approximately so), this is done using the
 \emph{error function} (sometimes called $erf(x)$), which is the integral of a
-gaussian from some starting value.\\
+gaussian from some starting value.
 
-\noindent Some simple guidelines to keep in mind follow (the actual
+Some simple guidelines to keep in mind follow (the actual
 situation often requires more sophisticated statistical tests). First,
 for Gaussian distributions, you can calculate that 68\% of the points
 should fall within $\pm 1\sigma$ from the mean, and 95.3\%
@@ -697,10 +709,9 @@ given the number of points.
 A quick estimate of the consistency of the model with the observed
 data points can be made using reduced $\chi^{2}$, defined as
 $\chi^{2}$ divided by the \emph{degrees of freedom} (number of data points
-minus number of parameters).
+minus number of parameters).\\
 
 \textcolor{magenta}{Wednesday, February 3}
-
 \subsubsection*{Noise equation: how do we predict expected
 uncertainties?}
 \emph{Signal-to-noise}
@@ -714,10 +725,10 @@ the signal-to-noise ratio:
     $$ \frac{S}{N} = \frac{S}{\sqrt{\sigma^2}} $$
 which is the inverse of the predicted fractional error ($N/S$).
 
-Consider an object with observed photon flux (per unit area and time,
-e.g. from the count equation above), S$^{\prime}$, leading
-to a signal, S = S$^{\prime}$Tt where T is the telescope
-area and t is the exposure time. In the simplest case (i.e. perfect
+Consider an object with observed photon flux, $S^{\prime}$
+[cm$^{-2}$ s$^{-1}$],
+leading to a signal, $S = S^{\prime}Tt$.
+In the simplest case (i.e. perfect
 instruments), the only noise
 source is Poisson statistics from the source, in which case:
     $$ \sigma^2 = S = S^{\prime}Tt $$
@@ -734,15 +745,16 @@ telescope area and/or exposure time.
 A more realistic case includes the noise contributed from Poisson
 statistics of ``background'' light, $B^{\prime}$,
 which has units of flux per area
-on the sky (i.e. a surface brightness); note that this is also usually
+on the \emph{sky}, not the detector
+(i.e. a surface brightness); note that this is also usually
 given in magnitudes (more on the physical nature of
 this later).
 
     $$ B^{\prime} = \int \frac{B_{\lambda}}{\frac{hc}{\lambda}}
        q_{\lambda}\textrm{d}\lambda $$
 
-The amount of background in our measurement depends on how we choose
-to make the measurement (how much sky area we observe). Say we just
+The amount of background in our measurement depends on
+how much sky area we observe. Say we just
 use an aperture with area, $A$, so the total observed background counts
 is
     $$ AB = AB^{\prime}Tt $$
@@ -751,7 +763,8 @@ Again, $B^{\prime}Tt$ is the directly observable quantity,
 but we split it into the quantities on which it depends to understand
 what factors are important in determining $S/N$.
 
-The total number of photons observed, $O$, is
+The total number of photons observed, $O$, is a combination of
+photons from the source ($S$), and phtons from the background ($AB$):
     $$ O = S + AB = (S^{\prime} + AB^{\prime})Tt $$
 The variance of the total observed counts, from Poisson statistics,
 is:
