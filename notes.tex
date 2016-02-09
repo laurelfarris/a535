@@ -432,7 +432,8 @@ can be written in the form of the \emph{\textbf{count equation:}}
         make it through.
         (a typical value is about 0.9; $\sim$90\% of photons)
         \item $q_{\lambda}$ is the system efficiency
-        (which includes telescope, filters, optics, detector, etc.),
+        (which includes telescope efficiency, instrument efficiency,
+        filters, and detector)
         \item $T$: telescope collecting area
         \item $t$ is the integration time
         (total amount of time spent collecting photons).
@@ -472,29 +473,22 @@ stars with different spectral properties). If using instrumental mags
 including exposure time normalization, the zeropoint gives the
 magnitude of a star that will give 1 count/second.
 
-\textcolor{magenta}{FOV: usually in arcminute scales.
+\textcolor{myBlue}{FOV: usually in arcminute scales.
 To go from observed to emitted $\rightarrow$ 2 different observations
 (know flux of one: SDSS has list of stars with known brightness).
 A star that is 10 times fainter than one with g=18 has g=20.5.
-}
-
-\textcolor{myBlue}{
     $$ m = -2.5 \log(qF)$$
     $$ m = -2.5 \log F - 2.5\log q $$
-the quantity `-2.5\log q' is the zeropoint.
+the quantity `-2.5$\log q$' is the zeropoint.
     $$ m = -2.5 \log \frac{S}{t} $$
-
 No nearby star... $q$ is still the same, but $a$ changes.
 If sky is `well-behaved' atmospheric effects is simple function
 of distance form zenith; slope of variation can change from one
-night to the next.
-
+night to the next.\\\\
 How did standard stars get measured in the first place?
 Someone had to do some hard work figuring out throughput.
-
 Accuracy depends on number of photons, which will determine
-how much observing time you will need.
-}
+how much observing time you will need.}
 
 If there are no stars of known brightness in the same
 observation, then calibration must be done against stars in other
@@ -600,9 +594,16 @@ estimate of the mean and variance may differ from their true
 
 \emph{The binomial distribution}
 
-Given independent events, two parameters, $n$ and $p$, where $n$
+\textcolor{myBlue}{Given independent events (e.g. when rolling a set
+of dice, the results of the second roll are independent of the first),
+two parameters, $n$ and $p$, where $n$
 is the total number of observations and $p$ is the probability of
-observing $x$ during each observation.
+observing $x$ during each observation. 
+Observing photons:
+For a binomial distribution $P(x,n,p)$, $x$ is the number of photons
+received, $n$ is the number of
+photons emitted by the source, and $p$ is the probability of detecting
+\emph{each} photon. Integrating this actually simplifies it}
 
 Now we consider what distribution is appropriate for the
 detection of photons. The photon distribution can be derived from the
@@ -618,6 +619,12 @@ For the binomial distribution, one can derive:
       \int (x-\mu)^2p(x)\textrm{d}x = np(1-p) $$
 
 \emph{The Poisson distribution}
+
+\textcolor{myBlue}{Unlike a gaussian, a poisson distribution is not
+symmetric about the mean (you can't detect a negative number of
+photons). It cuts off at zero. THE VARIANCE IS EQUAL TO THE MEAN.
+THEREFORE, THE STANDARD DEVIATION IS THE SQUARE ROOT OF THE MEAN.}
+\textcolor{red}{This is the `key super important result'.}
 
 In the case of detecting photons, $n$ is the total number of
 photons emitted, and $p$ is the probability of detecting a photon during
@@ -648,6 +655,10 @@ What does the Poisson distribution look like?
 for $\mu$ = 2, $\mu$ = 10, $\mu$ = 10000.
 
 \emph{The normal, or Gaussian, distribution}
+
+\textcolor{myBlue}{factor into std. numerical technique (least
+squares), photons not emitted at perfect constant rate, readout
+function, applies to lots of stuff}.
 
 Note, for large $\mu$, the Poisson distribution is
 well-approximated around the peak by a \emph{Gaussian}, or
@@ -738,16 +749,35 @@ given the number of points.
 A quick estimate of the consistency of the model with the observed
 data points can be made using reduced $\chi^{2}$, defined as
 $\chi^{2}$ divided by the \emph{degrees of freedom} (number of data points
-minus number of parameters).\\
+minus number of parameters).
+
+\textcolor{myBlue}{
+    $$  \chi^2 = \sum_N \frac{(y_i-y(x_i))^2}{\sigma_i^2} $$
+for $N$ data points. If every point was 1$\sigma$ off,
+$\chi^2 \sim$ number of data points. Can calculate the probability
+distribution of $\chi^2$. If $\chi^2$ = 98, what's the confidence
+interval? Will only get 98 one in a million times? Not a good model.
+Is the data consistent with the model?
+}
 
 \textcolor{magenta}{Wednesday, February 3}
 \subsubsection*{Noise equation: how do we predict expected
 uncertainties?}
 \emph{Signal-to-noise}
 
+\textcolor{myBlue}{
+Shape parameterized by stddev which = $\sqrt{\mu}$
+$\rightarrow$ Fundamental! e.g. source emitting 1000 photons has
+uncertainty of 100, etc. (telescope, brightness of source, etc. don't
+matter$\ldots$ only number of photons, no matter how you got them).
+    $$ \frac{S}{N} = \frac{S}{\sqrt{S}} = \sqrt{S} $$
+How does $S/N$ change for a given object?
+}
+
 Astronomers often describe uncertainties in terms of the fractional
 error, e.g. the amplitude of the uncertainty divided by the amplitude
-of the quantity being measured; often, the inverse of this, referred
+of the quantity being measured (the signal);
+often, the inverse of this, referred
 to as the signal-to-noise ratio, is used. Given an estimate the number
 of photons expected from an object in an observation, we can calulate
 the signal-to-noise ratio:
@@ -771,6 +801,8 @@ telescope area and/or exposure time.
 
 \emph{Background noise}
 
+\textcolor{myBlue}{Rayleigh scattering}
+
 A more realistic case includes the noise contributed from Poisson
 statistics of ``background'' light, $B^{\prime}$,
 which has units of flux per area
@@ -781,6 +813,11 @@ this later).
 
     $$ B^{\prime} = \int \frac{B_{\lambda}}{\frac{hc}{\lambda}}
        q_{\lambda}\textrm{d}\lambda $$
+
+\textcolor{myBlue}{$B_{\lambda}$ is the sky brightness at $\lambda
+\ldots$? And $B^{\prime}$ is the observed flux from the background.
+So B vs. B' is the same as S vs. S'. Something about adding
+uncertainties in quadrature$\ldots$}
 
 The amount of background in our measurement depends on
 how much sky area we observe. Say we just
@@ -819,13 +856,30 @@ is:
     {\sqrt{S^{\prime}+AB^{\prime}}}
     \sqrt{T}\sqrt{t}$$
 
-In the \emph{signal-limited} case, $S^{\prime}\gg B^{\prime}A$,
-we get
-$$ \frac{S}{N} = \sqrt{S} = \sqrt{S^{\prime}tT} $$
-In the \emph{background-limited} case, $B^{\prime}A\gg S^{\prime}$,
-and
-$$ \frac{S}{N} = \frac{S}{\sqrt{B}} =
-   \frac{S^{\prime}}{\sqrt{B^{\prime}A}}\sqrt{tT} $$
+Limiting regimes:
+\begin{itemize}
+    \item \emph{signal-limited} case: $S^{\prime}\gg B^{\prime}A$,
+        the background goes away and we get
+         $$ \frac{S}{N} = \sqrt{S} = \sqrt{S^{\prime}tT} $$
+    \item \emph{background-limited} case: $B^{\prime}A\gg S^{\prime}$
+        and
+        $$ \frac{S}{N} = \frac{S}{\sqrt{BA}} =
+        \frac{S^{\prime}}{\sqrt{B^{\prime}A}}\sqrt{tT} $$
+\end{itemize}
+
+\textcolor{myBlue}{starlight dominates by factor of 1000 for
+m$_* = 12.5$ and m$_{BG} = 20$ ($\Delta m = 7.5 
+= -2.5\log\frac{b_{BG}}{b_*}
+\rightarrow 10^3$)\\\\
+\large$\odot$: \normalsize little circle around star to reduce sky
+background noise. Depends on how blurry the star is; determined by
+seeing.
+\begin{itemize}
+    \item Dust scattering in the plane of the solar system
+    \item Diffraction limit of space telescope $\sim$ 20th of an
+    arcsecond. ($\sim$ angular resolution).
+\end{itemize}
+}
 
 As one goes to fainter objects, the S/N drops, and it drops faster
 when you're background limited. This illustrates the importance of
@@ -841,6 +895,25 @@ $$ S_2 = \sqrt{\frac{T_1}{T_2}}S_1  $$
 
 \emph{Instrumental noise}
 
+\textcolor{myBlue}{Most common:readout noise. Gaussian, not poisson.
+$\mu$ = 0, $\sigma$ = readout noise (depends on detector, e.g. 10
+electrons ($\sim$ photons create photoelectrons). Get a smear of 10 no
+matter how many photons are coming in. Represented by range around
+zero with no exposure time. Mean is zero, so can't subtract it out, it
+just blurs what you're looking at. B - background per square
+arcsecond, A - square arcsecond. Number of pixels over which it's
+spread:
+\begin{itemize}
+    \item sharper image
+    \item 10 arcsec all in one pixel
+\end{itemize}
+Can change magnification of optics, but there is a balance. Might have
+two stars five arcsec apart. Maxiumum resolution is not always the
+best! readout noise is very important when the background is very low.
+$N_{pix}\sigma_{rn}^2$ compared to $BA$. rn more important for
+spectroscopy applications than imaging.
+}
+
 In addition to the errors from Poisson statistics (statistical noise),
 there may be additional terms from instrumental errors. A common
 example of this that is applicable for CCD detectors is readout noise,
@@ -850,7 +923,10 @@ is characterized by $\sigma_{rn}$,
 $$ \frac{S}{N} = \frac{S}{\sqrt{S+BA_{pix}+\sigma^2_{rn}}} $$
 if a measurement is made in a single pixel. If an object is spread
 over $N_{pix}$ pixels, then
-$$ \frac{S}{N} = \frac{S}{\sqrt{S+BA+N_{pix}\sigma^2_{rn}}} $$
+$$ \boxed{
+ \frac{S}{N} = \frac{S}{\sqrt{S+BA+N_{pix}\sigma^2_{rn}}}
+ } $$
+\textcolor{myBlue}{This is the key equation!}
 For large $\sigma_{rn}$, the behavior is the same as the
 background-limited case. This makes it clear that if you have readout
 noise, image quality (and/or proper optics to keep an object from
@@ -871,8 +947,190 @@ background dominated, and readout noise dominated.
 \textcolor{magenta}{Monday, February 8}
 
 \subsubsection*{Error propagation}
+
+So now we know how to estimate uncertainties of observed count rates.
+Let's say we want to make some calculations (e.g., calibration, unit
+conversion, averaging, conversion to magnitudes, calculation of
+colors, etc.) using these observations: we need to be able to estimate
+the uncertainties in the calculated quantities that depend on our
+measured quantities.
+
+Consider what happens if you have several known quantities with known
+error distributions and you combine these into some new quantity: we
+wish to know what the error is in the new quantity.
+    $$ x = f(u, v, \ldots) $$
+The question is, what is $\sigma_x$ if we know 
+$\sigma_u$, $\sigma_v$, etc.?
+
+As long as errors are small:
+    $$ x_i - <x> \ \sim \ 
+        (u_i - <u>)\Bigg(\frac{\delta x}{\delta u}\Bigg)
+       + (v_i - <v>)\Bigg( \frac{\delta x}{\delta v}  \Bigg)
+       + \ldots  $$
+    $$ \sigma_x^2 = lim(N \rightarrow \infty)\frac{1}{N}
+       \sum(u_i - <u>)(v_i - <v>)^2 $$
+    $$ \sigma_u^2\Bigg(\frac{\delta x}{\delta u}\Bigg)^2
+       + \sigma_v^2\Bigg(\frac{\delta x}{\delta v}\Bigg)^2
+       + 2\sigma_{uv}^2\frac{\delta x}{\delta u}
+         \frac{\delta x}{\delta v} + \ldots $$
+The last term is the \emph{covariance}, which relates to whether
+errors are \emph{correlated}.
+    $$ \sigma_{uv}^2 = lim(N \rightarrow\infty)\frac{1}{N}
+       \sum(u_i - <u>)(v_i - <v>)  $$
+If errors are uncorrelated, then $\sigma_{uv} = 0$ becaues there's
+equal chance of getting opposite signs on $v_i$ for any given $u_i$.
+When working out errors, make sure to consider whether there are
+correlated errors. If there are, you \emph{may} be able to reformulate
+quantities so that they have independent errors: this can be very
+useful.
+
+Examples for \emph{uncorrelated} errrors:
+\begin{itemize}
+    \item addition/subtraction:
+        $$ x = u + v $$
+        $$ \sigma_x^2 = \sigma_u^2 + \sigma_v^2 $$
+        In this case, errors are said to \emph{add in quadrature}.
+    \item multiplication/division:
+        $$ x = uv $$
+        $$ \sigma_x^2 = v^2\sigma_u^2 + u^2\sigma_v^2 $$
+    \item logs:
+        $$ x = \ln u $$
+        $$ \sigma_x^2 = \frac{\sigma_u^2}{u^2} $$
+        Note that when dealing with logarithmic quantities, errors in
+        the log correspond to \emph{fractional} errors in the raw
+        quantity. 
+\end{itemize}
+
+\emph{Distribution of resultant errors}
+
+When propagating errors, even though you can calculate the variances
+in the new variables, the distribution of errors in the new variables
+is not, in general, the same as the distribution of errors in the
+original variables, e.g. if errors in individual variables are
+normally distributed, errors in output variable is not necessarily.
+
+When two variables are added, however, the output is normally
+distributed.
+
 \subsubsection*{Determining sample parameters: averaging measurements}
+We've covered errors in single measurements. Next we turn to averaging
+measurements. Say we have multiple observations and want the best
+estimate of the mean and variance of the population, e.g. multiple
+measurements of stellar brightness. Here we'll define the best
+estimate of the mean as the value which maximizes the likelihood that
+our estimate equals the true parent population mean.
+
+For equal errors, this estimate just gives our normal expression for
+the sample mean:
+    $$ \bar{x} = \frac{\sum x_i}{N} $$
+Using error propagation, the estimate of the error in the sample mean
+is given by:
+    $$ ? $$
+But what if errors on each observation aren't equal, say for example
+we have observations made with several different exposure times? Then
+the optimal determination of the mean is using a:
+    $$ ? $$
+and the estimated error in this value is given by: 
+    $$ ? $$
+where the $\sigma_i$'s are individual weights/errors
+(people often talk about the \emph{weight} of an observation, i.e.
+$\frac{1}{\sigma_i^2}$: large weight means small error.
+
+ This is a standard result for determining sample means from a set of
+ observations with different weights.
+
+However, there can sometimes be a subtlety in applying this formula,
+which has to do with the question: how do we go about choosing the
+weights/errors, $\sigma_{i}$? We know we can \emph{estimate} $\sigma$
+using Poisson statistics for a given count rate, but remember that
+this is a sample variance (which may be based on a single
+observation) not the true population variance. This can lead to
+biases.
+
+Consider observations of a star made on three nights, with
+measurements of 40, 50, and 60 photons. It's clear that the mean
+observation is 50 photons. However, beware of the being trapped by
+your error \emph{estimates}. From each observation alone, you would estimate
+errors of $\sqrt{40}$, $\sqrt{50}$, and $\sqrt{60}$. If you
+plug these error estimates into a computation of the weighted mean,
+you'll get a mean rate of 48.64.
+
+Using the individual estimates of the variances, we'll bias values to
+lower rates, since these will have estimated higher $S/N$.
+
+Note that it's pretty obvious from this example that you should just
+weight all observations equally. However, note that this certainly
+isn't always the right thing to do. For example, consider the
+situation in which you have three exposures of different exposure
+times. Here you probably want to give the longer exposures higher
+weight (at least, if they are signal or background limited). In this
+case, you again don't want to use the individual error estimates or
+you'll introduce a bias. There is a simple solution here also: just
+weight the observations by the exposure time. However, while this
+works fine for Poisson errors (variances proportional to count rate),
+it isn't strictly correct if there are instrumental errors as well
+which don't scale with exposure time. For example, the presence of
+readout noise can have this effect; if all exposures are readout
+noise dominated, then one would want to weight them equally, if
+readout noise dominates the shorter but not the longer exposures,
+once would want to weight the longer exposures even higher than
+expected for the exposure time ratios! The only way to properly
+average measurements in this case is to estimate a sample mean, then
+use this value scaled to the appropriate exposure times as the input
+for the Poisson errors.
+
+Another subtlety: averaging counts and converting to magnitudes is
+not the same as averaging magnitudes.
+
+\emph{Can you split exposures?}
+
+Although from $S/N$ considerations, one can determine the required
+number of counts you need (exposure time) to do your science, when
+observing, one must also consider the question of whether this time
+should be collected in single or in multiple exposures, i.e. how long
+individual exposures should be. There are several reasons why one
+might imagine that it is nicer to have a sequence of shorter
+exposures rather than one single longer exposure (e.g., tracking,
+monitoring of photometric conditions, cosmic ray rejection,
+saturation issues), so we need to consider whether doing this results
+in poorer $S/N$.
+
+Consider the object with photon flux $S'$,
+background surface brightness $B'$, and detector
+with readout noise $\sigma_{rn}$. A single short exposure of
+time $t$ has a variance:
+    $$ \sigma_S^2 = S'Tt + B'ATt + N_{pix}\sigma_{rn}^2 $$
+If $N$ exposures are summed, the resulting variance will be
+    $$ ? $$
+If a single long exposure of length Nt is taken, we get 
+    $$ ? $$
+The ratio of the noises, or the inverse ratio of the S/N (since the
+total signal measured is the same in both cases), is
+    $$ ? $$
+In the signal- or background-limited regimes, exposures can be added
+with no loss of S/N. However, if readout noise is significant, then
+splitting exposures leads to reduced S/N.
+
 \subsubsection*{Random errors vs systematic errors}
+So far, we've been discussing random errors. There is an additional,
+usually more troublesome, type of errors known as systematic errors.
+These don't occur randomly but rather are correlated with some,
+possibly unknown, variable relating to your observations.
+
+EXAMPLE : flat fielding
+
+EXAMPLE : WFPC2 CTE
+
+Note also that in some cases, systematic errors can masquerade as
+random errors in your test observations (or be missing altogether if
+you don't take data in exactly the same way), but actually be
+systematic in your science observations.
+
+EXAMPLE: flat fielding, subpixel QE variations.
+
+Note that error analysis from expected random errors may be the only
+clue you get to discovering systematic errors. To discover systematic
+errors, plot residuals vs. everything
 
 \end{document}
 
