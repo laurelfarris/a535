@@ -964,15 +964,15 @@ $\sigma_u$, $\sigma_v$, etc.?
 
 As long as errors are small:
     $$ x_i - <x> \ \sim \ 
-        (u_i - <u>)\Bigg(\frac{\delta x}{\delta u}\Bigg)
-       + (v_i - <v>)\Bigg( \frac{\delta x}{\delta v}  \Bigg)
+        (u_i - <u>)\Bigg(\frac{\partial x}{\partial u}\Bigg)
+       + (v_i - <v>)\Bigg( \frac{\partial x}{\partial v}  \Bigg)
        + \ldots  $$
     $$ \sigma_x^2 = lim(N \rightarrow \infty)\frac{1}{N}
        \sum(u_i - <u>)(v_i - <v>)^2 $$
-    $$ \sigma_u^2\Bigg(\frac{\delta x}{\delta u}\Bigg)^2
-       + \sigma_v^2\Bigg(\frac{\delta x}{\delta v}\Bigg)^2
-       + 2\sigma_{uv}^2\frac{\delta x}{\delta u}
-         \frac{\delta x}{\delta v} + \ldots $$
+    $$ \sigma_u^2\Bigg(\frac{\partial x}{\partial u}\Bigg)^2
+       + \sigma_v^2\Bigg(\frac{\partial x}{\partial v}\Bigg)^2
+       + 2\sigma_{uv}^2\frac{\partial x}{\partial u}
+         \frac{\partial x}{\partial v} + \ldots $$
 The last term is the \emph{covariance}, which relates to whether
 errors are \emph{correlated}.
     $$ \sigma_{uv}^2 = lim(N \rightarrow\infty)\frac{1}{N}
@@ -1025,23 +1025,27 @@ the sample mean:
     $$ \bar{x} = \frac{\sum x_i}{N} $$
 Using error propagation, the estimate of the error in the sample mean
 is given by:
-    $$ ? $$
+    $$ \sigma_{\bar{x}}^2 = \sum\frac{\sigma_i^2}{N^2} 
+       = \frac{\sigma^2}{N}$$
 But what if errors on each observation aren't equal, say for example
 we have observations made with several different exposure times? Then
 the optimal determination of the mean is using a:
-    $$ ? $$
+    $$ \textrm{weighted\ mean} = \frac{\sum\frac{x_i}{\sigma_i^2}}
+       {\sum\frac{1}{\sigma_i^2}} $$
 and the estimated error in this value is given by: 
-    $$ ? $$
+    $$ \sigma_{\mu}^2 = \sum\frac{\frac{\sigma_i^2}{\sigma_i^4}}
+       {(\sum\frac{1}{\sigma_i^2})^2}
+       = \frac{1}{\sum\frac{1}{\sigma_i^2}}$$
 where the $\sigma_i$'s are individual weights/errors
 (people often talk about the \emph{weight} of an observation, i.e.
 $\frac{1}{\sigma_i^2}$: large weight means small error.
 
- This is a standard result for determining sample means from a set of
- observations with different weights.
+This is a standard result for determining sample means from a set of
+observations with different weights.
 
 However, there can sometimes be a subtlety in applying this formula,
 which has to do with the question: how do we go about choosing the
-weights/errors, $\sigma_{i}$? We know we can \emph{estimate} $\sigma$
+weights/errors, $\sigma_i$? We know we can \emph{estimate} $\sigma$
 using Poisson statistics for a given count rate, but remember that
 this is a sample variance (which may be based on a single
 observation) not the true population variance. This can lead to
@@ -1101,19 +1105,23 @@ with readout noise $\sigma_{rn}$. A single short exposure of
 time $t$ has a variance:
     $$ \sigma_S^2 = S'Tt + B'ATt + N_{pix}\sigma_{rn}^2 $$
 If $N$ exposures are summed, the resulting variance will be
-    $$ ? $$
+    $$ \sigma_N^2 = N\sigma_S^2 $$
 If a single long exposure of length Nt is taken, we get 
-    $$ ? $$
+    $$ \sigma_L^2 = S'TNt + B'ATNt + N_{pix}\sigma_{rn}^2 $$
 The ratio of the noises, or the inverse ratio of the S/N (since the
 total signal measured is the same in both cases), is
-    $$ ? $$
+    $$ \frac{\sigma_N}{\sigma_L} = \sqrt{\frac
+    {S'TNt + B'ATNt + NN_{pix}\sigma_{rn}^2 }
+    {S'TNt + B'ATNt + N_{pix}\sigma_{rn}^2}
+    }$$
 In the signal- or background-limited regimes, exposures can be added
-with no loss of S/N. However, if readout noise is significant, then
-splitting exposures leads to reduced S/N.
+with no loss of $S/N$. However, if readout noise is significant, then
+splitting exposures leads to reduced $S/N$.
 
 \subsubsection*{Random errors vs systematic errors}
-So far, we've been discussing random errors. There is an additional,
-usually more troublesome, type of errors known as systematic errors.
+So far, we've been discussing \emph{random} errors.
+There is an additional,
+usually more troublesome, type of errors known as \emph{systematic} errors.
 These don't occur randomly but rather are correlated with some,
 possibly unknown, variable relating to your observations.
 
@@ -1132,35 +1140,112 @@ Note that error analysis from expected random errors may be the only
 clue you get to discovering systematic errors. To discover systematic
 errors, plot residuals vs. everything
 
+\textcolor{magenta}{Wednesday, February 10}
+\section*{Effects of the earth's atmosphere}
+The earth's atmosphere has several different effects: it emits light,
+it absorbs light, it shifts the apparent direction of incoming light,
+and it degrades the coherence of incoming light, leading to
+degradation of image quality when collecting light over a large
+aperture.
+
+\subsection*{Night sky emission}
+We first consider emission from the sky, which comes from several
+sources:
+\begin{itemize}
+    \item air glow
+    \item zodiacal light
+    \item sunlight
+    \item moonlight
+    \item aurorae
+    \item light pollution
+    \item unresolved stars and galaxies
+    \item thermal emission: sky, telescope, and dome
+\end{itemize}
+Many of these sources are emission line sources, not continuum
+sources, as shown in this
+\href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/skyemiss.htm}
+{\textcolor{blue}{plot}}.
+How bright are these sources?
+\begin{itemize}
+    \item air glow: strong in lines
+    \item zodiacal light: $m_V \sim$ 22.2 - 23.5 depending on ecliptic
+    latitude (and to a lesser degree on ecliptic longitude)
+    \item sunlight: small away from twilight, depending on distance sun
+    is below horizon. Note different definitions of twilight: civil (6
+    degrees), nautical (12 degrees), and astronomical (18 degrees). By
+    astronomical twilight, there is essentially no contribution.
+    However, much useful observing might be done before this.
+    \item moonlight: variable; can be very bright. $\sim$ 10 times
+    brighter at full moon.
+    \item light pollution: strong in distinct lines
+\end{itemize}
+Optical:
+
+For broadband work, for example in the V band, $m_{sky}\sim$ 22
+mag/arcsec at good site so we switch over to background limited around
+m=22 for good image quality, and switch over around m=20 for poorer image
+quality. Consequently, image quality matters for faint objects.
+Moonlight is very significant, hence faint optical imaging requires
+dark time. 
+
+Optical spectroscopy: sky emission generally not much of a problem
+except around lines so long as moon is down (or work on bright
+objects); low dispersion observations can be background-limited for
+long exposures, but at higher dispersion or shorter exposures,
+spectroscopy is often readout-noise limited.
+
+IR:
+
+Most of the emission in the near-IR is from emission lines of OH, the
+so-called ``OH forest.'' For broadband work in H band, $m\sim$ 13.5
+mag/arcsec; in K band, $m\sim$ 12.5 mag/arcsec. So for all except
+bright objects, we're background limited. This leads to some
+fundamental differences in data acquisition and analysis between the
+near-IR and the optical. For infrared spectra, it's harder to estimate
+S/N : depends on where your feature is located. Moonlight is not very
+significant, hence much IR work is done in bright time.
+
+Sky brightness from most sources \emph{varies} with time and position in the
+sky in an \emph{irregular} fashion. Consqeuently, it's essentially impossible
+to estimate the sky \emph{a priori}: sky must be determined from your
+observations, and if your observations don't distinguish object from
+sky, you'd better measure sky close by in location and in time:
+especially critical in the IR. See some
+%\href{}
+{\textcolor{blue}{IR movies}}.
+
+\subsection{Transmission of atmosphere}
+Earth's atmosphere doesn't transmit 100\% of light. Various things
+contribute to the absorption of light:
+\begin{itemize}
+    \item scattering, e.g., Rayleigh scattering off molecules
+    \item aerosols: scattering off larger particles
+    \item variety of molecules:
+    \begin{itemize}
+        \item ozone
+        \item $H_2O$
+        \item $O_2$
+        \item $CO_2$
+        \item $N_2O$
+        \item $CH_4$
+    \end{itemize}
+\end{itemize}
+All are functions of wavelength, time to some extent, and position in
+sky.
+
+\subsubsection{Sources of extinction}
+\subsubsection{Airmass and zenith distance dependence}
+
+\subsection{Atmospheric Refraction}
+\subsection{Seeing: theory and practice}
+\subsubsection{Other sources of seeing}
+\subsubsection{What does seeing cause the image to look like?}
+
+
+
+
+
+
+
+
 \end{document}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
