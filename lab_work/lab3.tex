@@ -1,0 +1,70 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{enumerate}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.50em}
+
+\lhead{Laurel Farris}
+\chead{ASTR 535 - Lab 03}
+\rhead{12 February 2016}
+
+\begin{document}
+
+\begin{enumerate}[1.]
+    \item \textbf{Read in several images: SN17135\_r.0103.fits,
+    flat\_r.0015.fits, bias.0001.fits. Display them from inside a
+    software package (IDL/atv or Python/pyds9/tv/imshow) and get
+    familiar with using that.} 
+    \item \textbf{Construct image histograms for several images:
+    SN17135\_r.0103.fits, flat\_r.0015.fits, bias.0001.fits. See if you
+    can explain where all of the different values are coming from.}
+    \item \textbf{Choose some sky subregions in SN17135\_r.0103.fits,
+    excluding objects in the field. Look at some pixel histograms of
+    these regions. Determine the mean and standard deviation in the
+    regions. What do you expect for the standard deviations? Are the
+    standard deviations what you expect? Is the standard deviation in
+    a region with an object a meaningful/useful quantity to look at?}
+    \item \textbf{Note the overscan region at the right side of the
+    image (look at SN17135\_r.0103.fits or flat\_r.0015.fits). This
+    gives the bias level, a constant that is added to the image to
+    insure that readout noise does not lead to any negative values.
+    Determine the mean in the bias region, as well as the standard
+    deviation, using image statistics. What do you think the standard
+    deviation is giving you information about?}
+    \item \textbf{Using the mean bias level, use image arithmetic to
+    subtract this level off of the entire image. How will this affect
+    the previously calculated means and standard deviations in the
+    image subregions? Are the standard deviations what you expect?}
+    \item \textbf{For many astronomical detectors, the numbers
+    recorded are not the number of photons incident on each pixel, but
+    are related to the number of photons by a multiplicative factor,
+    called the gain. For SPICAM, the gain is about 4, i.e., the number
+    of photons incident on each pixel is given by 4 times the data
+    numbers. Convert the images to photon counts by multiplying the
+    image by this factor. How will this affect the previously
+    calculated means and standard deviations?}
+    \item \textbf{Now that you've subtracted bias level and accounted
+    for gain, are the standard deviations in your subregions closer to
+    your expectations?}
+    \item \textbf{There is still some extra scatter coming from
+    pixel-to-pixel sensitivity variations. Looking at
+    flat\_r.0015.fits, estimate the level of this variation.}
+    \item \textbf{To correct for pixel-to-pixel variation, we divide
+    raw image by a normalized flat field. Normalize the flat field by
+    dividing it by the mean in the central region, then divide the
+    object frame by the normalized flat field. Recalculate the image
+    statistics in the subregion and comment on how they have changed.}
+    \item \textbf{Write a program to loop over ALL images taken on
+    UT061215 and compute and output the mean bias level and the mean
+    sky level ( for Python, check mmm routines (in tv.tv); for IDL,
+    check out Astronomy Users Library sky command). Make a single plot
+    of vertical cross sections in the overscan regions, averaging over
+    the width of the overscan region.}
+
+\end{enumerate}
+
+\end{document}
+
