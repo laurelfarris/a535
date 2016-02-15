@@ -4,6 +4,7 @@
 \setlength{\parskip}{0.75em}
 \usepackage{fancyhdr}
 \pagestyle{fancy}
+\usepackage{amsmath}
 
 \rhead{10 February 2016}
 \chead{ASTR 535 - Homework 12}
@@ -16,12 +17,27 @@ photometric zeropoint of 23.5 in the bandpass where you plan to make
 observations, and you are observing at a site with 1 arcsec seeing, a
 background of 21 magnitudes per square arcsec with a detector with
 readout noise corresponding to 5 electrons/pixel, and a plate scale of
-0.5 arcsec/pixel.
+0.5 arcsec/pixel.}
 \begin{enumerate}
-    \item How long do you need to expose to get a S/N of 100 for a
-    15th magnitude object?
-    \item How long do you need to expose to get a S/N of 50 for a 22nd
-    magnitude object?
-\end{enumerate}}
+    \item \textbf{How long do you need to expose to get a S/N of 100 for a
+        15th magnitude object?}
+
+    The signal-to-noise ratio ($S/N$) is given by
+    $$ \frac{S}{N} = \frac{S}{\sqrt{S+AB+N_{pix}\sigma_{rn}^2}} $$
+    where $B$ = $B'Tt$. With the zeropoint, z, the background can be
+    converted from magnitudes to counts, using
+    $$ m = -2.5\log\frac{counts}{second} + z $$
+    The background was given in magnitudes per square arcsecond, so
+    this is $B'T$. Rearranging, we have
+    $$ B'T = 10^{\frac{21-23.5}{-2.5}} $$
+    $$ B'T = 10 $$
+    Since the seeing is 1 arsec, and a single pixel element covers 0.25
+    arsec$^2$, we need four pixels to cover one resolution element.
+    So $N_{pix}$ = 4, and $A$ = 1.
+
+
+\item \textbf{How long do you need to expose to get a S/N of 50 for a 22nd
+    magnitude object?}
+\end{enumerate}
 
 \end{document}
