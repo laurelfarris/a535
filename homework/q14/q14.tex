@@ -1,0 +1,68 @@
+\documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.5em}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\usepackage{color}
+\usepackage{hyperref}
+
+\lhead{Laurel Farris}
+\chead{ASTR 535 - Homework 14}
+\rhead{19 February 2016}
+
+\begin{document}
+
+\bibliographystyle{plain}
+
+\textbf{Errors and error propagation}\small
+\begin{enumerate}
+    \item\textbf{If you observe a source that emits, on average, 10
+    photons per second, and take a 10 second exposure, how many counts
+    will you observe on average, and what will be expected standard
+    deviation if you make a series of measurements? What is the
+    signal-to-noise of each observation?}
+    \item\textbf{If you combine multiple observations, you need to
+    propogate the errors on each individual observation to get an
+    error estimate on your combined quantity. If you average together
+    10 of the 10s exposures, what is the expected error on this
+    average?}
+    \item\textbf{If you take a single observation and count 1000
+    photons, what is the expected error? What is the expected error
+    (in magnitudes) if you convert the counts into a magnitude?}
+    \item\textbf{If you observe a source in the B passband and get 500
+    photons, and observe it in the V passband and get 1000 photons,
+    what is the expected error in the flux ratio, F(B)/F(V)? What is
+    the expected error in the color difference (in magnitudes), mB -
+    mV?}
+    \item\textbf{In many situations, however, one receives photons not
+    only from the astronomical source, but also ``background'' photons
+    emitted by the night sky. To measure the source brightness, one
+    needs to subtract the background, e.g. by measuring it separately
+    from the source. This is not generally difficult. However, when
+    initially counting photons from source and background combined,
+    both of these contribute to the noise in the measurement.}
+    \begin{enumerate}
+        \item\textbf{If one observes an object that produces 1000
+        photons in a ten minute exposure, and in that same time, the
+        sky produces 500 photons, how many total photons will be
+        measured? What is the expected error on this total from
+        Poisson statistics?}
+        \item\textbf{If you assume that you can subtract the sky
+        perfectly (usually you can come close), then the only effect
+        that the extra background has is in the increased noise. For
+        the 1000 source photons + 500 background photons, what will be
+        your expected signal to noise?}
+        \item\textbf{When the noise from the object is the dominant
+        noise source, this is called signal-limited. When the noise
+        from the background is the dominant noise source. this is
+        called background-limited. Derive how signal-to-noise depends
+        on exposure time for both the signal-limited and
+        background-limited cases.}
+    \end{enumerate}
+
+\end{enumerate}
+
+\bibliography{reffile}
+
+\end{document}

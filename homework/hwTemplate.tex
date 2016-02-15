@@ -1,23 +1,26 @@
 \documentclass[12pt]{article}
+\usepackage[margin=1in]{geometry}
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.5em}
+\usepackage{fancyhdr}
+\pagestyle{fancy}
 \usepackage{color}
-\usepackage{hyperref} % \url{link} or \hrf{link}{text}
-\usepackage{titlesec}
-\titleformat{\section}%
-  [hang]% <shape>
-  {\normalfont\bfseries\Large}% <format>
-  {}% <label>
-  {0pt}% <sep>
-  {}% <before code>
-  \renewcommand{\thesection}{}% Remove section references...
-  \renewcommand{\thesubsection}{\arabic{subsection}}%... from subsections
-  \renewcommand{\thesubsubsection}{\arabic{subsubsection}}%... from subsections
+\usepackage{hyperref}
+
+\lhead{Laurel Farris}
+\chead{ASTR 535 - Homework ##}
+\rhead{DD MM YYYY}
 
 \begin{document}
 
 \bibliographystyle{plain}
 
-\section*{Homework ?}
-\subsubsection*{type first question here}
+\begin{enumerate}
+    \item\textbf{type first question here}
+
+    type answer here
+
+\end{enumerate}
 
 \bibliography{reffile}
 

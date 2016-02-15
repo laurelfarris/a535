@@ -950,8 +950,25 @@ noise - are the dominant noise sources.
 Note the applications where one is likely to be signal dominated,
 background dominated, and readout noise dominated.
 
-\textcolor{magenta}{Monday, February 8}
+\textcolor{myBlue}{\large \underline{Review}}\normalsize
 
+Three sources of uncertainty:
+\begin{enumerate}
+    \item Possion statistics from source: $\sigma^2 = S$;
+        $\sigma = \sqrt{S}$. $S$ is the same as $\mu$.
+    \item Poisson statistics from sky/background:
+        $<B>$ is mean background rate.
+    \item Non-poisson statistics from instrumentation:
+        aka readout noise. $\mu=0$ (no exposure time).
+        Smear around $\mu$. $\sigma = \sigma_{rn}$ per pixel.
+        $\sigma^2 = N_{pix}\sigma_{rn}^2$;
+        $\sigma = \sqrt{N_{pix}\sigma_{rn}^2}$
+\end{enumerate}
+Noise, $N = \sqrt{S+BA+N_{pix}\sigma_{rn}^2}$
+(source + sky + instrument).
+
+
+\textcolor{magenta}{Monday, February 8}
 \subsubsection*{Error propagation}
 
 So now we know how to estimate uncertainties of observed count rates.
@@ -961,18 +978,34 @@ colors, etc.) using these observations: we need to be able to estimate
 the uncertainties in the calculated quantities that depend on our
 measured quantities.
 
-Consider what happens if you have several known quantities with known
+\textcolor{myBlue}{
+Total signal: $ S=S+B-<B>+O $. There are uncertainties from all
+four terms, but $<B> \sim 0$ ($\sigma_{<B>}=0$), so there are
+actually only three. $S+BA$: total \underline{inside} aperture;
+$<B>A$: total \underline{outside} aperture (with mean background).}
+
+Consider what happens if you have several independently measured
+known quantities with known
 error distributions and you combine these into some new quantity: we
 wish to know what the error is in the new quantity.
     $$ x = f(u, v, \ldots) $$
 The question is, what is $\sigma_x$ if we know 
 $\sigma_u$, $\sigma_v$, etc.?
+\textcolor{myBlue}{In other words, how do the individual uncertainties
+\emph{propogate} onto the uncertainty of the resultant quantity?}
 
 As long as errors are small:
     $$ x_i - <x> \ \sim \ 
         (u_i - <u>)\Bigg(\frac{\partial x}{\partial u}\Bigg)
        + (v_i - <v>)\Bigg( \frac{\partial x}{\partial v}  \Bigg)
        + \ldots  $$
+where $var_i - <var>$ is the uncertainty, and the derivatives are the
+amount by which the input quantity depends on other quantities.
+
+\textcolor{myBlue}{
+Possible class example involving
+S=100, B=10, A=10, and $\sigma_{rn}=10\ldots$?
+The \emph{sample variance} (by definition, see above notes) is}
     $$ \sigma_x^2 = lim(N \rightarrow \infty)\frac{1}{N}
        \sum(u_i - <u>)(v_i - <v>)^2 $$
     $$ \sigma_u^2\Bigg(\frac{\partial x}{\partial u}\Bigg)^2
@@ -981,24 +1014,34 @@ As long as errors are small:
          \frac{\partial x}{\partial v} + \ldots $$
 The last term is the \emph{covariance}, which relates to whether
 errors are \emph{correlated}.
+\textcolor{myBlue}{Covarience is the dgree to which the uncertainty
+in one quantity might be correlated (or not) with another quantity}.
     $$ \sigma_{uv}^2 = lim(N \rightarrow\infty)\frac{1}{N}
        \sum(u_i - <u>)(v_i - <v>)  $$
-If errors are uncorrelated, then $\sigma_{uv} = 0$ becaues there's
+If errors are uncorrelated, then $\sigma_{uv} = 0$ because there's
 equal chance of getting opposite signs on $v_i$ for any given $u_i$.
 When working out errors, make sure to consider whether there are
 correlated errors. If there are, you \emph{may} be able to reformulate
 quantities so that they have independent errors: this can be very
 useful.
 
+\textcolor{red}{\textbf{Understanding these terms is very important!}}
+
 Examples for \emph{uncorrelated} errrors:
 \begin{itemize}
     \item addition/subtraction:
         $$ x = u + v $$
+        $$ \sigma_x^2 = \sigma_u^2\left(\frac{\partial x}
+        {\partial u}\right)^2
+        + \sigma_v^2\left(\frac{\partial x}{\partial v}\right)^2 $$ 
+        Both derivaties = 1, so
         $$ \sigma_x^2 = \sigma_u^2 + \sigma_v^2 $$
         In this case, errors are said to \emph{add in quadrature}.
     \item multiplication/division:
         $$ x = uv $$
         $$ \sigma_x^2 = v^2\sigma_u^2 + u^2\sigma_v^2 $$
+        $$ \frac{\sigma_x^2}{v^2u^2} = 
+        \frac{\sigma_u^2}{u^2} + \frac{\sigma_v^2}{v^2}$$
     \item logs:
         $$ x = \ln u $$
         $$ \sigma_x^2 = \frac{\sigma_u^2}{u^2} $$
@@ -1006,6 +1049,14 @@ Examples for \emph{uncorrelated} errrors:
         the log correspond to \emph{fractional} errors in the raw
         quantity. 
 \end{itemize}
+
+\textcolor{myBlue}{E.g. $x=10u \rightarrow \sigma_x=10\sigma_u$}
+
+\textcolor{myBlue}{$N \equiv \sigma_S$}
+
+\textcolor{myBlue}{Reasons for adding in quadrature: important!
+Also don't overestimate errors. This is just as bad as
+underestimating them.}
 
 \emph{Distribution of resultant errors}
 
@@ -1146,7 +1197,7 @@ Note that error analysis from expected random errors may be the only
 clue you get to discovering systematic errors. To discover systematic
 errors, plot residuals vs. everything
 
-\textcolor{magenta}{Wednesday, February 10}
+\textcolor{magenta}{Monday, February 15}
 \section*{Effects of the earth's atmosphere}
 The earth's atmosphere has several different effects: it emits light,
 it absorbs light, it shifts the apparent direction of incoming light,
@@ -1159,12 +1210,13 @@ We first consider emission from the sky, which comes from several
 sources:
 \begin{itemize}
     \item air glow
-    \item zodiacal light
+    \item zodiacal light (outside of our atmosphere)
     \item sunlight
     \item moonlight
     \item aurorae
     \item light pollution
     \item unresolved stars and galaxies
+        (outside of our solar system)
     \item thermal emission: sky, telescope, and dome
 \end{itemize}
 Many of these sources are emission line sources, not continuum
@@ -1176,6 +1228,7 @@ How bright are these sources?
     \item air glow: strong in lines
     \item zodiacal light: $m_V \sim$ 22.2 - 23.5 depending on ecliptic
     latitude (and to a lesser degree on ecliptic longitude)
+    Note that this exists even in Earth orbit.
     \item sunlight: small away from twilight, depending on distance sun
     is below horizon. Note different definitions of twilight: civil (6
     degrees), nautical (12 degrees), and astronomical (18 degrees). By
@@ -1210,6 +1263,8 @@ fundamental differences in data acquisition and analysis between the
 near-IR and the optical. For infrared spectra, it's harder to estimate
 S/N : depends on where your feature is located. Moonlight is not very
 significant, hence much IR work is done in bright time.
+
+\textcolor{magenta}{Wednesday, February 17}
 
 Sky brightness from most sources \emph{varies} with time and position in the
 sky in an \emph{irregular} fashion. Consqeuently, it's essentially impossible
