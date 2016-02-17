@@ -4,6 +4,8 @@
 \usepackage{xcolor}
 \usepackage{hyperref}
 \usepackage{amsmath}
+\usepackage{enumitem}
+\setlist[1]{itemsep=-2pt}
 
 %\usepackage[usenames, dvipsnames]{color}
 % \definecolor{mypink1}{rgb}{0.858, 0.188, 0.478}
@@ -541,6 +543,10 @@ a function of exposure time.
 %-----------------------------------------------------------------------%
 
 \subsection*{Uncertainties in photon rates}
+Useful reference:
+\href{http://users.wfu.edu/ecarlson/skeptic/statistics.pdf}
+{\textcolor{blue}{Statistics}}
+
 \textcolor{myBlue}{
 Required accuracy - depends on the science you're doing.
 Uncertainties (more descriptive than `errors') -
@@ -968,8 +974,8 @@ Noise, $N = \sqrt{S+BA+N_{pix}\sigma_{rn}^2}$
 (source + sky + instrument).
 
 
-\textcolor{magenta}{Monday, February 8}
 \subsubsection*{Error propagation}
+\textcolor{magenta}{Monday, February 8}
 
 So now we know how to estimate uncertainties of observed count rates.
 Let's say we want to make some calculations (e.g., calibration, unit
@@ -996,8 +1002,8 @@ $\sigma_u$, $\sigma_v$, etc.?
 
 As long as errors are small:
     $$ x_i - <x> \ \sim \ 
-        (u_i - <u>)\Bigg(\frac{\partial x}{\partial u}\Bigg)
-       + (v_i - <v>)\Bigg( \frac{\partial x}{\partial v}  \Bigg)
+        (u_i - <u>)\left(\frac{\partial x}{\partial u}\right)
+       + (v_i - <v>)\left( \frac{\partial x}{\partial v}  \right)
        + \ldots  $$
 where $var_i - <var>$ is the uncertainty, and the derivatives are the
 amount by which the input quantity depends on other quantities.
@@ -1007,9 +1013,9 @@ Possible class example involving
 S=100, B=10, A=10, and $\sigma_{rn}=10\ldots$?
 The \emph{sample variance} (by definition, see above notes) is}
     $$ \sigma_x^2 = lim(N \rightarrow \infty)\frac{1}{N}
-       \sum(u_i - <u>)(v_i - <v>)^2 $$
-    $$ \sigma_u^2\Bigg(\frac{\partial x}{\partial u}\Bigg)^2
-       + \sigma_v^2\Bigg(\frac{\partial x}{\partial v}\Bigg)^2
+       \sum(x_i - <x>)^2 $$
+    $$ = \sigma_u^2\left(\frac{\partial x}{\partial u}\right)^2
+       + \sigma_v^2\left(\frac{\partial x}{\partial v}\right)^2
        + 2\sigma_{uv}^2\frac{\partial x}{\partial u}
          \frac{\partial x}{\partial v} + \ldots $$
 The last term is the \emph{covariance}, which relates to whether
@@ -1034,7 +1040,7 @@ Examples for \emph{uncorrelated} errrors:
         $$ \sigma_x^2 = \sigma_u^2\left(\frac{\partial x}
         {\partial u}\right)^2
         + \sigma_v^2\left(\frac{\partial x}{\partial v}\right)^2 $$ 
-        Both derivaties = 1, so
+        Both derivatives = 1, so
         $$ \sigma_x^2 = \sigma_u^2 + \sigma_v^2 $$
         In this case, errors are said to \emph{add in quadrature}.
     \item multiplication/division:
@@ -1070,14 +1076,16 @@ When two variables are added, however, the output is normally
 distributed.
 
 \subsubsection*{Determining sample parameters: averaging measurements}
-We've covered errors in single measurements. Next we turn to averaging
-measurements. Say we have multiple observations and want the best
+We've covered errors in single measurements ($\sigma_i$).
+Next we turn to averaging measurements.
+Say we have multiple observations and want the best
 estimate of the mean and variance of the population, e.g. multiple
 measurements of stellar brightness. Here we'll define the best
 estimate of the mean as the value which maximizes the likelihood that
 our estimate equals the true parent population mean.
 
-For equal errors, this estimate just gives our normal expression for
+For equal errors (simplest case),
+this estimate just gives our normal expression for
 the sample mean:
     $$ \bar{x} = \frac{\sum x_i}{N} $$
 Using error propagation, the estimate of the error in the sample mean
@@ -1089,6 +1097,7 @@ we have observations made with several different exposure times? Then
 the optimal determination of the mean is using a:
     $$ \textrm{weighted\ mean} = \frac{\sum\frac{x_i}{\sigma_i^2}}
        {\sum\frac{1}{\sigma_i^2}} $$
+\textcolor{myBlue}{which can be derived from maximum liklihood},
 and the estimated error in this value is given by: 
     $$ \sigma_{\mu}^2 = \sum\frac{\frac{\sigma_i^2}{\sigma_i^4}}
        {(\sum\frac{1}{\sigma_i^2})^2}
@@ -1114,7 +1123,15 @@ observation is 50 photons. However, beware of the being trapped by
 your error \emph{estimates}. From each observation alone, you would estimate
 errors of $\sqrt{40}$, $\sqrt{50}$, and $\sqrt{60}$. If you
 plug these error estimates into a computation of the weighted mean,
-you'll get a mean rate of 48.64.
+you'll get a mean rate of $<x>=48.64$.
+
+\textcolor{myBlue}{Imagine 10,000 measurements; 50 is the \emph{true}
+population mean. $\sigma$ is really $\sqrt{50}$ for all 3 observations
+above... \underline{estimation} of true uncertainties.
+Avoid by: revised mean: $50 \rightarrow 48.64 \ldots
+\sqrt{48.64}$. Something other than Poisson stats, some measurements
+have more weight than others, same uncertainty across all
+measurements.}
 
 Using the individual estimates of the variances, we'll bias values to
 lower rates, since these will have estimated higher $S/N$.
@@ -1197,27 +1214,32 @@ Note that error analysis from expected random errors may be the only
 clue you get to discovering systematic errors. To discover systematic
 errors, plot residuals vs. everything
 
-\textcolor{magenta}{Monday, February 15}
 \section*{Effects of the earth's atmosphere}
+\textcolor{magenta}{Monday, February 15}
+
 The earth's atmosphere has several different effects: it emits light,
 it absorbs light, it shifts the apparent direction of incoming light,
 and it degrades the coherence of incoming light, leading to
 degradation of image quality when collecting light over a large
-aperture.
+aperture. \textrm{myBlue}{aka emission, absorption, refraction, and
+seeing}.
 
 \subsection*{Night sky emission}
-We first consider emission from the sky, which comes from several
-sources:
+Sources of sky emission (brightness as function of wavelength):
 \begin{itemize}
-    \item air glow
-    \item zodiacal light (outside of our atmosphere)
+    \item air glow: thermally excited molecules (by sunlight).
+    Emission takes time, so this continues into the night.
+    \item zodiacal light (outside of our atmosphere), due to dust in
+    the solar system. Units: mag arcsec$^2$. At 21-22 mag, start
+    becoming background limited.
     \item sunlight
     \item moonlight
-    \item aurorae
+    \item aurorae: line emission
     \item light pollution
     \item unresolved stars and galaxies
         (outside of our solar system)
-    \item thermal emission: sky, telescope, and dome
+    \item thermal emission: IR emission from sky, telescope, and dome.
+    T$_{atm} \rightarrow$ blackbody emission. 
 \end{itemize}
 Many of these sources are emission line sources, not continuum
 sources, as shown in this
@@ -1231,8 +1253,9 @@ How bright are these sources?
     Note that this exists even in Earth orbit.
     \item sunlight: small away from twilight, depending on distance sun
     is below horizon. Note different definitions of twilight: civil (6
-    degrees), nautical (12 degrees), and astronomical (18 degrees). By
-    astronomical twilight, there is essentially no contribution.
+    degrees), nautical (12 degrees; ``pretty dang dark''),
+    and astronomical (18 degrees; ``dark as it's gonna get'').
+    By astronomical twilight, there is essentially no contribution.
     However, much useful observing might be done before this.
     \item moonlight: variable; can be very bright. $\sim$ 10 times
     brighter at full moon.
@@ -1247,6 +1270,11 @@ quality. Consequently, image quality matters for faint objects.
 Moonlight is very significant, hence faint optical imaging requires
 dark time. 
 
+\textcolor{myBlue}{\underline{Optical}:
+zodiacal light ($m_{sky}$) readout noise really
+important. Biggest contributer? Splitting exposures - be careful.. can
+become rn limited. Minimum exposure time:?}
+
 Optical spectroscopy: sky emission generally not much of a problem
 except around lines so long as moon is down (or work on bright
 objects); low dispersion observations can be background-limited for
@@ -1255,14 +1283,19 @@ spectroscopy is often readout-noise limited.
 
 IR:
 
-Most of the emission in the near-IR is from emission lines of OH, the
+Most ($\sim$ 90\%) of the emission in the near-IR is from
+vibrational and rotational transition
+emission lines of the OH molecule, the
 so-called ``OH forest.'' For broadband work in H band, $m\sim$ 13.5
 mag/arcsec; in K band, $m\sim$ 12.5 mag/arcsec. So for all except
 bright objects, we're background limited. This leads to some
 fundamental differences in data acquisition and analysis between the
 near-IR and the optical. For infrared spectra, it's harder to estimate
-S/N : depends on where your feature is located. Moonlight is not very
+$S/N$: depends on where your feature is located. Moonlight is not very
 significant, hence much IR work is done in bright time.
+
+\textcolor{myBlue} IR: m $\sim$ 13 mag arcsec$^{-2}$ ($\sim$ surface
+brightness).
 
 \textcolor{magenta}{Wednesday, February 17}
 
@@ -1273,14 +1306,22 @@ observations, and if your observations don't distinguish object from
 sky, you'd better measure sky close by in location and in time:
 especially critical in the IR. See some
 %\href{}
-{\textcolor{blue}{IR movies}}.
+{\textcolor{blue}{IR movies}} (really important!);
+%\href{}
+{\textcolor{blue}{spectral movie from ESO/Paranal}} see
+\href{https://www.astro.uni-bonn.de/theli/gui/aboutbackground.html}
+{\textcolor{blue}{here}}.
 
+%----------------------------------------------------------------------%
 \subsection{Transmission of atmosphere}
 Earth's atmosphere doesn't transmit 100\% of light. Various things
 contribute to the absorption of light:
 \begin{itemize}
     \item scattering, e.g., Rayleigh scattering off molecules
-    \item aerosols: scattering off larger particles
+    \item aerosols: scattering off larger particles (e.g. natural
+    aerosols like fog, forest exudates, and geyser steam, and
+    artificial aerosols like haze, dust, particulate air pollutants
+    and smoke). Particle size $\sim$ 1 $\mu m$.
     \item variety of molecules:
     \begin{itemize}
         \item ozone
@@ -1295,11 +1336,148 @@ All are functions of wavelength, time to some extent, and position in
 sky.
 
 \subsubsection{Sources of extinction}
+In the optical part of the spectrum, extinction is a roughly smooth
+function of wavelength and arises from a combination of ozone,
+Rayleigh scattering, and aerosols, as shown in
+\href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/extinct.htm}
+{\textcolor{blue}{this plot}}.
+The optical extinction can vary from night to night
+or season to season, as shown in
+\href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/tauvar.htm}
+{\textcolor{blue}{this plot}}.
+Of course, this is showing the variation over a set of
+photometric nights; if there are clouds, then the level of variation
+is much higher. Because of this variation, you must determine the
+amount of extinction on each night separately if you want accuracy
+better than a few percent (even for photometric nights). Generally,
+the \emph{shape} of the extinction curve as a function of wavelength probably
+varies less than the amplitude at any given wavelength. Because of
+this, one commonly uses \emph{mean extinction coefficients} when doing
+spectroscopy where one often only cares about relative fluxes. To
+first order, the extinction from clouds is ``gray'', i.e. not a
+function of wavelength, so relative fluxes can be obtained even with
+some clouds present.
+
+There is significant molecular absorption in the far-red part of the
+optical spectrum, in particular, note the A (7600) and B (6800)
+atmospheric bands from O$_2$.
+(Historical note: The `A' and `B' nomenclature comes from the
+Fraunhofer lines, which were labeled alphabetically with increasing
+(decreasing?) frequency when first
+discovered in the sun's spectrum in the 1800s. Originally they were
+not recognized as absorption lines. C is H$\alpha$, D is the sodium D
+line, CaII H and K lines, etc.
+
+In the infrared, the extinction does not vary so smoothly with
+wavelength because of the effect of molecular absorption. In fact,
+significant absorption bands define the so-called infrared windows
+(yJHKLM), as shown in the near IR in
+\href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/mandbell.htm}
+{\textcolor{blue}{this plot}}.
+At longer wavelengths,
+the broad absoprtion band behavior continues, as shown in
+\href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/allen1.htm}
+{\textcolor{blue}{this plot}}.
+In this figure, \emph{transmission} = $f(b_{\lambda}l$) where $l$
+is path length (units of airmass): 
+
+\begin{table}[h]
+\centering
+\begin{tabular}{c l}
+$b_{\lambda}l$ & $f$\\
+\hline\hline
+-3  & 1\\
+-2  & 0.97\\
+-1  & 0.83\\
+0   & 0.5\\
+1   & 0.111\\
+2   & 0.000\\
+\hline
+\end{tabular}
+\end{table}
+
+The L band is at 3.5 $\mu$, M band at 5 $\mu$.
+
+Note that even within the IR ``windows'', there can still be
+significant telluric (terrestrial) absorption features,
+e.g. from CO$_2$2, H$_2$O, and CH$_4$.
+When doing IR spectroscopy, one needs to be aware of these and
+possibly attempt to correct for them, taking care not to confuse them
+with real stellar features.
+
 \subsubsection{Airmass and zenith distance dependence}
 
+Clearly, if the light has to pass through a larger path in the Earth's
+atmosphere, more light will be scattered/absorbed; hence one expects
+the least amount of absorption directly overhead (zenith), increasing
+as one looks down towards the horizon. 
+
+Definition of airmass: path length that light takes through atmosphere
+relative to length at zenith: X $\equiv$ 1 vertically (at $z$ = 0).
+Given the zenith distance, $z$, which can be computed from: 
+    $$ \sec z = \left(\sin\phi\sin\delta + 
+                 \cos\phi\cos\delta\cos h\right)^{-1} $$
+where $\phi$ is the latitude, $\delta$ is the declination, and $h$ is
+the hour angle ($h$ = local sidereal time - $\alpha$, where $\alpha$ is
+the right ascenstion), we have
+    $$ X \sim \sec z $$
+which is exactly true in the case of a plane parallel atmosphere. Since
+the earth's atmosphere is not a plane, the plane parallel
+approximation breaks down for larger airmasses. For $X>2$, a more
+precise formula is needed, the following gives a higher order
+approximation:
+    $$ X = \sec z - 0.0018167(\sec z-1) 
+                  - 0.002875(\sec z-1)^2
+                  - 0.0008083(\sec z-1)^3 $$
+
+\subsubsection{How much light is lost going through the atmosphere?}
+Consider a thin sheet of atmosphere, with incident flux $F$, and
+outcoming flux $F + \textrm{d}F$.
+Let the thin sheet have opacity $\kappa = N\sigma$,
+where $N$ is the number density of absorbers/scatterers, and
+$\sigma$ is the cross-section/absorber-scatterer.
+    $$ \textrm{d}F = -\kappa F \textrm{d}x $$
+    $$ F = F_{\textrm{top}}e^{-\int\kappa\textrm{d}x}
+         \equiv F_{\textrm{top}}e^{-\tau} $$
+where $\tau$ is the \emph{optical depth} of the atmosphere, which
+parameterizes how much light is lost.
+
+If the optical depth through the atmosphere is just proportional to
+the physical path length (true if same atmospheric structure is
+sampled in different directions), then
+    $$ \tau(X) \sim \tau_0X $$
+where $\tau_0$ is the optical depth at the zenith.
+    $$ F = F_{\textrm{top}}e^{-\tau_0X} $$
+Expressing things in magnitudes, we have:
+    $$ m = m_0 + 1.086\tau_0X $$
+Define the \emph{extinction coefficient} $k_{\lambda}$:
+    $$ m_0 = m + k_{\lambda}X $$
+    $$ k_{\lambda} \equiv -1.086\tau_0 $$
+so the amount of light lost in magnitudes can be specified by a set of
+extinction coefficients. Note by this definition, the extinction
+coefficient will be negative; others may use the opposite sign
+convention (e.g. defining $m_0 = m - k_{\lambda}X$). Of
+course, use of the scaling of $\tau$ or $k$ with airmass assumes
+\emph{photometric weather}.
+
+We will talk later about some details of determining extinction
+coefficient, but the basic idea is that you can determine the
+extinction by monitoring the brightness of a star (or a set of stars
+of known brightness) at a range of different airmasses. This needs to
+be done as a function of wavelength, i.e., for each filter you observe
+in.
+
+%----------------------------------------------------------------------%
 \subsection{Atmospheric Refraction}
+\textcolor{magenta}{Monday, February 22}
+
+
+
+%----------------------------------------------------------------------%
 \subsection{Seeing: theory and practice}
+
 \subsubsection{Other sources of seeing}
+
 \subsubsection{What does seeing cause the image to look like?}
 
 
