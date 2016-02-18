@@ -611,7 +611,7 @@ estimate of the mean and variance may differ from their true
 of dice, the results of the second roll are independent of the first),
 two parameters, $n$ and $p$, where $n$
 is the total number of observations and $p$ is the probability of
-observing $x$ during each observation. 
+observing $x$ during each observation.
 Observing photons:
 For a binomial distribution $P(x,n,p)$, $x$ is the number of photons
 received, $n$ is the number of
@@ -880,7 +880,7 @@ Limiting regimes:
 \end{itemize}
 
 \textcolor{myBlue}{starlight dominates by factor of 1000 for
-m$_* = 12.5$ and m$_{BG} = 20$ ($\Delta m = 7.5 
+m$_* = 12.5$ and m$_{BG} = 20$ ($\Delta m = 7.5
 = -2.5\log\frac{b_{BG}}{b_*}
 \rightarrow 10^3$)\\\\
 \large$\odot$: \normalsize little circle around star to reduce sky
@@ -995,13 +995,13 @@ known quantities with known
 error distributions and you combine these into some new quantity: we
 wish to know what the error is in the new quantity.
     $$ x = f(u, v, \ldots) $$
-The question is, what is $\sigma_x$ if we know 
+The question is, what is $\sigma_x$ if we know
 $\sigma_u$, $\sigma_v$, etc.?
 \textcolor{myBlue}{In other words, how do the individual uncertainties
 \emph{propogate} onto the uncertainty of the resultant quantity?}
 
 As long as errors are small:
-    $$ x_i - <x> \ \sim \ 
+    $$ x_i - <x> \ \sim \
         (u_i - <u>)\left(\frac{\partial x}{\partial u}\right)
        + (v_i - <v>)\left( \frac{\partial x}{\partial v}  \right)
        + \ldots  $$
@@ -1039,21 +1039,21 @@ Examples for \emph{uncorrelated} errrors:
         $$ x = u + v $$
         $$ \sigma_x^2 = \sigma_u^2\left(\frac{\partial x}
         {\partial u}\right)^2
-        + \sigma_v^2\left(\frac{\partial x}{\partial v}\right)^2 $$ 
+        + \sigma_v^2\left(\frac{\partial x}{\partial v}\right)^2 $$
         Both derivatives = 1, so
         $$ \sigma_x^2 = \sigma_u^2 + \sigma_v^2 $$
         In this case, errors are said to \emph{add in quadrature}.
     \item multiplication/division:
         $$ x = uv $$
         $$ \sigma_x^2 = v^2\sigma_u^2 + u^2\sigma_v^2 $$
-        $$ \frac{\sigma_x^2}{v^2u^2} = 
+        $$ \frac{\sigma_x^2}{v^2u^2} =
         \frac{\sigma_u^2}{u^2} + \frac{\sigma_v^2}{v^2}$$
     \item logs:
         $$ x = \ln u $$
         $$ \sigma_x^2 = \frac{\sigma_u^2}{u^2} $$
         Note that when dealing with logarithmic quantities, errors in
         the log correspond to \emph{fractional} errors in the raw
-        quantity. 
+        quantity.
 \end{itemize}
 
 \textcolor{myBlue}{E.g. $x=10u \rightarrow \sigma_x=10\sigma_u$}
@@ -1090,7 +1090,7 @@ the sample mean:
     $$ \bar{x} = \frac{\sum x_i}{N} $$
 Using error propagation, the estimate of the error in the sample mean
 is given by:
-    $$ \sigma_{\bar{x}}^2 = \sum\frac{\sigma_i^2}{N^2} 
+    $$ \sigma_{\bar{x}}^2 = \sum\frac{\sigma_i^2}{N^2}
        = \frac{\sigma^2}{N}$$
 But what if errors on each observation aren't equal, say for example
 we have observations made with several different exposure times? Then
@@ -1098,7 +1098,7 @@ the optimal determination of the mean is using a:
     $$ \textrm{weighted\ mean} = \frac{\sum\frac{x_i}{\sigma_i^2}}
        {\sum\frac{1}{\sigma_i^2}} $$
 \textcolor{myBlue}{which can be derived from maximum liklihood},
-and the estimated error in this value is given by: 
+and the estimated error in this value is given by:
     $$ \sigma_{\mu}^2 = \sum\frac{\frac{\sigma_i^2}{\sigma_i^4}}
        {(\sum\frac{1}{\sigma_i^2})^2}
        = \frac{1}{\sum\frac{1}{\sigma_i^2}}$$
@@ -1180,7 +1180,7 @@ time $t$ has a variance:
     $$ \sigma_S^2 = S'Tt + B'ATt + N_{pix}\sigma_{rn}^2 $$
 If $N$ exposures are summed, the resulting variance will be
     $$ \sigma_N^2 = N\sigma_S^2 $$
-If a single long exposure of length Nt is taken, we get 
+If a single long exposure of length Nt is taken, we get
     $$ \sigma_L^2 = S'TNt + B'ATNt + N_{pix}\sigma_{rn}^2 $$
 The ratio of the noises, or the inverse ratio of the S/N (since the
 total signal measured is the same in both cases), is
@@ -1239,7 +1239,7 @@ Sources of sky emission (brightness as function of wavelength):
     \item unresolved stars and galaxies
         (outside of our solar system)
     \item thermal emission: IR emission from sky, telescope, and dome.
-    T$_{atm} \rightarrow$ blackbody emission. 
+    T$_{atm} \rightarrow$ blackbody emission.
 \end{itemize}
 Many of these sources are emission line sources, not continuum
 sources, as shown in this
@@ -1268,7 +1268,7 @@ mag/arcsec at good site so we switch over to background limited around
 m=22 for good image quality, and switch over around m=20 for poorer image
 quality. Consequently, image quality matters for faint objects.
 Moonlight is very significant, hence faint optical imaging requires
-dark time. 
+dark time.
 
 \textcolor{myBlue}{\underline{Optical}:
 zodiacal light ($m_{sky}$) readout noise really
@@ -1379,7 +1379,7 @@ the broad absoprtion band behavior continues, as shown in
 \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/allen1.htm}
 {\textcolor{blue}{this plot}}.
 In this figure, \emph{transmission} = $f(b_{\lambda}l$) where $l$
-is path length (units of airmass): 
+is path length (units of airmass):
 
 \begin{table}[h]
 \centering
@@ -1410,12 +1410,12 @@ with real stellar features.
 Clearly, if the light has to pass through a larger path in the Earth's
 atmosphere, more light will be scattered/absorbed; hence one expects
 the least amount of absorption directly overhead (zenith), increasing
-as one looks down towards the horizon. 
+as one looks down towards the horizon.
 
 Definition of airmass: path length that light takes through atmosphere
 relative to length at zenith: X $\equiv$ 1 vertically (at $z$ = 0).
-Given the zenith distance, $z$, which can be computed from: 
-    $$ \sec z = \left(\sin\phi\sin\delta + 
+Given the zenith distance, $z$, which can be computed from:
+    $$ \sec z = \left(\sin\phi\sin\delta +
                  \cos\phi\cos\delta\cos h\right)^{-1} $$
 where $\phi$ is the latitude, $\delta$ is the declination, and $h$ is
 the hour angle ($h$ = local sidereal time - $\alpha$, where $\alpha$ is
@@ -1426,7 +1426,7 @@ the earth's atmosphere is not a plane, the plane parallel
 approximation breaks down for larger airmasses. For $X>2$, a more
 precise formula is needed, the following gives a higher order
 approximation:
-    $$ X = \sec z - 0.0018167(\sec z-1) 
+    $$ X = \sec z - 0.0018167(\sec z-1)
                   - 0.002875(\sec z-1)^2
                   - 0.0008083(\sec z-1)^3 $$
 
