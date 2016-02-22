@@ -1543,7 +1543,8 @@ where $\tau_0$ is the optical depth at the zenith.
     $$ F = F_{\textrm{top}}e^{-\tau_0X} $$
 Expressing things in magnitudes, we have:
     $$ m = m_0 + 1.086\tau_0X $$
-Define the \emph{extinction coefficient} $k_{\lambda}$:
+Define the \emph{extinction coefficient} $k_{\lambda}$ [magnitudes of
+absorption per airmass, I think]:
     $$ m_0 = m + k_{\lambda}X $$
     $$ k_{\lambda} \equiv -1.086\tau_0 $$
 (m$_0$ - top of atmosphere)
@@ -1577,13 +1578,167 @@ in.
 \subsection*{Atmospheric Refraction}
 \textcolor{magenta}{Monday, February 22}
 
+The direction of light as it passes through the atmosphere is also
+changed because of refraction since the index of refraction changes
+through the atmosphere. The amount of change is characterized by
+Snell's law:
+    $$ \mu_1\sin\theta_1 = \mu_2\sin\theta_2 $$
+Let $z_0$ be the true zenith distance, $z$ be the observed zenith
+distance, $z_n$ by the observed zenith distance at layer $n$ in the
+atmosphere, $\mu$ be the index of refraction at the surface, and
+$\mu_n$ be the index of refraction at layer $n$. At the top of the
+atmosphere:
+    $$ \frac{\sin z_0}{\sin z_N} = \frac{\mu_N}{1} $$
+At each infinitessimal layer:
+    $$ \frac{\sin z_n}{\sin z_{n-1}} = \frac{\mu_{n-1}}{\mu_n}  $$
+and so on for each layer down to the lowest layer:
+    $$ \frac{\sin z_1}{\sin z} = \frac{\mu}{\mu_1}  $$
+Multiply these to get:
+    $$ \sin z_0 = \mu\sin z  $$
+from which we can see that the refraction depends
+\emph{only on the index of refraction near the earth's surface}.
 
+We define astronomical refraction, $r$, to be the angular amount that
+the object is displaced by the refraction of the Earth's atmosphere: 
+    $$ \sin(z+r) = \mu\sin z $$
+In cases where $r$ is small (pretty much always):
+    $$ \sin z + r\cos z = \mu\sin z $$
+    $$ r = (\mu-1) \tan z $$
+    $$ \approx R\tan z $$
+where we have defined $R$, known as the ``constant of refraction''.
+
+A typical value of the index of rfraction is $\mu \sim 1.00029$, which
+gives $R = 60$ arcsec (red light).
+
+The direction of refraction is that a star apparently moves towards
+the zenith. Consequently in most cases, star moves in both RA and DEC:
+    $$ r_{\alpha} = r\sin q $$
+    $$ r_{\delta} = r\cos q $$
+where $q$ is the \emph{parallactic} angle, the angle between $N$ and
+the zenith:
+    $$ \sin q = \cos\phi\frac{\sin h}{\sin z} $$
+Note that the expression for $r$ is only accurate for small zenith
+distances ($z < \sim 45$). At larger $z$, can't use plane parallel
+approximation. Observers have empirically found: 
+    $$ r = A\tan z + B\tan^3z $$
+    $$ A = (\mu - 1) + B $$
+    $$ B \sim -0.07'' $$
+but these vary with time, so for precise measurements, you would have
+to determine $A$ and $B$ on your specific night of observations.
+
+Why is it important to understand refraction? Clearly, it's relevant
+for pointing a telescope, but this is generally always automatically
+handled in the telescope pointing software. If you're just taking
+images, then the stars are just a tiny bit moved relative to each
+other, but who really cares? One key issue today is the use of
+multiobject spectrographs, where slits or fibers need to be placed on
+objects to accuracies of a fraction of an arcsec. For small fields,
+refraction isn't too much of an issue, but for large fields, it can be
+$\ldots$ note SDSS plates.
+
+The other \emph{extremely} important effect of refraction arises because the
+index of refraction varies with wavelength, so the astronomical
+refraction also depends on wavelength: 
+\begin{table}[h]
+    \centering
+    \begin{tabular}{c c}
+    \hline\hline
+    $\lambda$ & R\\
+    \hline
+    3000 & 63.4\\
+    4000 & 61.4\\
+    5000 & 60.6\\
+    6000 & 60.2\\
+    7000 & 59.9\\
+    10000 & 59.6\\
+    40000 & 59.3\\
+    \hline
+    \end{tabular}
+\end{table}
+This gives rise to the phenomenon of \emph{atmospheric dispersion}, or
+\emph{differential refraction}. Because of the variation of index of
+refraction with wavelenth, every object actually appears as a little
+spectrum with the blue end towards the zenith. The spread in object
+position is proportional to tan $z$.
+
+This effect is critical to understand for spectroscopy when using a
+slit or a fiber, since the location of an object in the sky depends on
+the wavelength. If you point to the location at one wavelength, you
+can miss another wavelength and the relative amount of flux you
+collect will be a function of wavelength, something you may want to
+take into account if you're interested in the relative flux (continuum
+shape) over a broad wavelength range. Note the consequent importance
+of the relation between the orientation slit orientation and the
+parallactic angle: a slit aligned with the parallactic angle will not
+lose light as a function of wavelength, but otherwise it will.
+However, for a slit at the parallactic angle, be careful about
+matching up flux at different wavelengths for extended objects.
 %----------------------------------------------------------------------%
 \subsection*{Seeing: theory and practice}
+References: Coulson, ARAA 23,19; Beckers, ARAA 31, 13; Schroeder
+16.II.
 
-\subsubsection{Other sources of seeing}
+Generally, a perfect astronomical optical system will make a perfect
+(diffraction-limited) image for an incoming plane wavefront of light.
+The Earth's atmosphere is turbulent and variations in the index of
+refraction cause the plane wavefront from distant objects to be
+\href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/seeing.htm}
+{\textcolor{blue}{distorted}}.
+These cause several astronomical effects:
+\begin{itemize*}
+    \item scintillation, which is amplitude variations, which
+    typically vary over scales of cm: generally very small for larger
+    apertures.
+    \item seeing: positional changes and image quality
+    changes. The effect of seeing depends on aperture size: for small
+    apertures, one sees a diffraction pattern moving around, while for
+    large apertures, one sees a set of diffraction patterns (speckles)
+    \href{https://en.wikipedia.org/wiki/Speckle_imaging#/media/File:Eps_aql_movie_not_2000.gif}
+    {\textcolor{blue}{moving around}}
+    on scale of $\sim$ 1 arcsec. These observations
+    imply:
+    \begin{itemize*}
+        \item local wavefront curvatures flat on scales of small
+        apertures
+        \item instantaneous slopes vary by $\sim$ an arcsec
+    \end{itemize*}
+\end{itemize*}
+The time variation scales are several milliseconds and up.
 
-\subsubsection{What does seeing cause the image to look like?}
+\textcolor{magenta}{Wednesday, February 24
+$\ldots$ double check the following notes}
+
+The effect of seeing can be derived from theories of atmospheric
+turbulence, worked out originally by Kolmogorov, Tatarski, Fried.
+Here, I'll quote some pertinent results, without derivation.
+
+ A turbulent field can be described statistically by a \emph{structure
+ function}: 
+    $$ D_N(x) = = <|N(r+x)-N(r)|^2>  $$
+
+\subsubsection*{Other sources of seeing}
+
+\subsubsection*{What does seeing cause the image to look like?}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
