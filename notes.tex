@@ -5,25 +5,10 @@
 \usepackage{hyperref}
 \usepackage{amsmath}
 \usepackage{enumitem}
-\setlist[1]{itemsep=-2pt}
-
-%\usepackage[usenames, dvipsnames]{color}
-% \definecolor{mypink1}{rgb}{0.858, 0.188, 0.478}
-% \definecolor{mypink2}{RGB}{219, 48, 122}
-% \definecolor{mypink3}{cmyk}{0, 0.7808, 0.4429, 0.1412}
-% \definecolor{mygray}{gray}{0.6}
+%\setlist[1]{itemsep=-2pt}
+\usepackage{mdwlist}
 
 \definecolor{myBlue}{rgb}{0.2,0.2,0.6}
-
-%  \begin{document}
-%  User-defined colours with different colour models:
-%
-%   \begin{enumerate}
-%   \item \textcolor{mypink1}{Pink with rgb}
-%   \item \textcolor{mypink2}{Pink with RGB}
-%   \item \textcolor{mypink3}{Pink with cmyk}
-%   \item \textcolor{mygray}{Gray with gray}
-%   \end{enumerate}
 
 \setlength{\parindent}{0em}
 \setlength{\parskip}{0.5em}
@@ -481,6 +466,9 @@ approximation (i.e., the zeropoint may be different for different
 stars with different spectral properties). If using instrumental mags
 including exposure time normalization, the zeropoint gives the
 magnitude of a star that will give 1 count/second.
+\textcolor{myBlue}{The zeropoint describes the \emph{throughput}
+of the system.
+    $$ M = -2.5\log\frac{S}{t}+z $$}
 
 \textcolor{myBlue}{FOV: usually in arcminute scales.
 To go from observed to emitted $\rightarrow$ 2 different observations
@@ -1097,8 +1085,9 @@ we have observations made with several different exposure times? Then
 the optimal determination of the mean is using a:
     $$ \textrm{weighted\ mean} = \frac{\sum\frac{x_i}{\sigma_i^2}}
        {\sum\frac{1}{\sigma_i^2}} $$
-\textcolor{myBlue}{which can be derived from maximum liklihood},
-and the estimated error in this value is given by:
+\textcolor{myBlue}{which can be derived from maximum liklihood.
+large weight means small error}.
+The estimated error in this value is given by:
     $$ \sigma_{\mu}^2 = \sum\frac{\frac{\sigma_i^2}{\sigma_i^4}}
        {(\sum\frac{1}{\sigma_i^2})^2}
        = \frac{1}{\sum\frac{1}{\sigma_i^2}}$$
@@ -1160,6 +1149,8 @@ for the Poisson errors.
 Another subtlety: averaging counts and converting to magnitudes is
 not the same as averaging magnitudes.
 
+\textcolor{magenta}{Wednesday, February 10}
+
 \emph{Can you split exposures?}
 
 Although from $S/N$ considerations, one can determine the required
@@ -1188,9 +1179,36 @@ total signal measured is the same in both cases), is
     {S'TNt + B'ATNt + NN_{pix}\sigma_{rn}^2 }
     {S'TNt + B'ATNt + N_{pix}\sigma_{rn}^2}
     }$$
+The only difference is in the readout noise term.
 In the signal- or background-limited regimes, exposures can be added
 with no loss of $S/N$. However, if readout noise is significant, then
 splitting exposures leads to reduced $S/N$.
+
+\textcolor{myBlue}{If the desired $S/N$ reguires one hour of exposure,
+    is it better to have, e.g.\ 3600 1-second exposure, 1800 2-second
+    exposures, 300 12-second exposures$\ldots$
+    Pros of lots of short exposures:
+    \begin{itemize}
+        \item avoid saturation
+        \item tracking
+        \item cosmic rays
+        \item variable object
+        \item monitor atmospheric throughput variation
+    \end{itemize}
+    cons of lots of exposures:
+    \begin{itemize}
+        \item data processing
+        \item high data quantity
+        \item can't see object
+        \item readout time penalty
+    \end{itemize}
+    If tracking is bad, image can be blurry, and would get more background.
+    If you're signal-limited though, this doesn't matter.
+    How do you figure out the minimum amount of time to expose?
+    Need to be above the readout noise. If [rn?] = 10, then
+    $S_{min}$ = 100 (10$^2$). $\sigma_{rn}$ is not dependent on $t$.
+    ``Readout noise limited''.
+}
 
 \subsubsection*{Random errors vs systematic errors}
 So far, we've been discussing \emph{random} errors.
@@ -1214,14 +1232,41 @@ Note that error analysis from expected random errors may be the only
 clue you get to discovering systematic errors. To discover systematic
 errors, plot residuals vs. everything
 
-\section*{Effects of the earth's atmosphere}
+\textcolor{myBlue}{Important to deal with random errors correctly;
+    don't overestimate error bars.
+    Flat fielding: uniform brightness $\rightarrow$ non-uniformity in
+    sensitivity. To what \% accuracy is something ``flat''?
+}
+
 \textcolor{magenta}{Monday, February 15}
+
+\textcolor{myBlue}{zeropoint, $z$, bundles count equation into one
+    number for a \emph{particular bandpass}. This is an empirical
+    measurement of the count equation [counts]. Use the count
+    equation to derive the zeropoint.
+    If the error bars are smaller than the scatter of the data points
+    themselves, there's a problem. $\chi^2$ would be much [larger?]
+    than one.
+    A possible issue is the pixel senstivity isn't uniform across a
+    ccd. Stars at the bottom of the chip could be fainter than the
+    ones at the top. CCDs in space telescope. (CCDs are read
+    by moving charge through chip $\rightarrow$ \emph{grating}.)
+    Something about charge-transfer efficiency$\ldots$ observation
+    scatter larger than expected scatter.
+    See handwritten notes for diagrams and more on this.
+}
+
+\textcolor{red}{\textbf{Important to know the equation for error
+propagation!}
+}
+
+\section*{Effects of the earth's atmosphere}
 
 The earth's atmosphere has several different effects: it emits light,
 it absorbs light, it shifts the apparent direction of incoming light,
 and it degrades the coherence of incoming light, leading to
 degradation of image quality when collecting light over a large
-aperture. \textrm{myBlue}{aka emission, absorption, refraction, and
+aperture. \textcolor{myBlue}{aka emission, absorption, refraction, and
 seeing}.
 
 \subsection*{Night sky emission}
@@ -1229,9 +1274,10 @@ Sources of sky emission (brightness as function of wavelength):
 \begin{itemize}
     \item air glow: thermally excited molecules (by sunlight).
     Emission takes time, so this continues into the night.
+    OH lines.
     \item zodiacal light (outside of our atmosphere), due to dust in
     the solar system. Units: mag arcsec$^2$. At 21-22 mag, start
-    becoming background limited.
+    becoming background limited. In the optical regime.
     \item sunlight
     \item moonlight
     \item aurorae: line emission
@@ -1266,7 +1312,8 @@ Optical:
 For broadband work, for example in the V band, $m_{sky}\sim$ 22
 mag/arcsec at good site so we switch over to background limited around
 m=22 for good image quality, and switch over around m=20 for poorer image
-quality. Consequently, image quality matters for faint objects.
+quality. \textcolor{red}{huh??}
+Consequently, image quality matters for faint objects.
 Moonlight is very significant, hence faint optical imaging requires
 dark time.
 
@@ -1299,12 +1346,27 @@ brightness).
 
 \textcolor{magenta}{Wednesday, February 17}
 
+\textcolor{myBlue}{\textbf{Unsorted notes}: IR surface brightness
+    $\sim$ 12.13 mag (1000$\times$ brighter than optical).
+    Optical surface brightness $\sim$ 21-22 mag.
+    Surface brightness varies and fluctuates, esp OH lines.
+    Local conditions in atmosphere scales on the order of degrees.
+    Movie: OH lines ``dancing around''.
+    6000\AA{} $\rightarrow$ 9000\AA{} brighter. Floor set by zodiacal
+    light with added stuff by moonlight.
+}
+
+Farther in the IR (5 $\mu$ +), thermal emission from the sky dominates
+and is extremely bright. In fact, when working at wavelengths with thermal
+background, the exposure time is often limited by the time it takes to
+saturate the detector with background (sky) light, in seconds or less.
+
 Sky brightness from most sources \emph{varies} with time and position in the
 sky in an \emph{irregular} fashion. Consqeuently, it's essentially impossible
 to estimate the sky \emph{a priori}: sky must be determined from your
 observations, and if your observations don't distinguish object from
 sky, you'd better measure sky close by in location and in time:
-especially critical in the IR. See some
+especially critical in the IR\@. See some
 %\href{}
 {\textcolor{blue}{IR movies}} (really important!);
 %\href{}
@@ -1313,12 +1375,36 @@ especially critical in the IR. See some
 {\textcolor{blue}{here}}.
 
 %----------------------------------------------------------------------%
-\subsection{Transmission of atmosphere}
+\subsection*{Transmission of atmosphere}
+
+\textcolor{myBlue}{\textbf{More unorganized notes:}
+    Extinction: mostly from scattering and aerosols. SHOULD REVIEW
+    EXTINCTION FROM ISM\@! Mean extinction curve (individual observatories)
+    subtracted for optical spectroscopy. A and B bands (nomenclature
+    from Fraunhofer - discovered solar liens $\sim$ 1800s.
+    Absorption lines were labeled alphabetically in $\nu$. A and B bands
+    were actually from O$_2$. C from H$\alpha$, D from sodium (the
+    ``sodium D line''), and H and K were two lines of ionized calcium
+    (the CaII H and K lines)).
+    Water vapor is the dominant absorber in the IR\@.
+    Windows in Earth's atmosphere: YJHK are the filters that fit inside
+    these windows, which are carved out by water absorption.
+    This defines the bandpasses. But water vapor changes too,
+    so absorption strength changes a lot. The bandpass itself
+    changes! High peaks [from some video or plot?] are oqaque;
+    transparent toward the bottom. Still molecular absorption in
+    these windows that could show up in spectrum, e.g.\ the H-band.
+    Have to correct for this. More atmosphere = more light lost.
+    How much more? Airmass is defined locally:
+    $$ airmass = \frac{amt of air looking at}{amt of air through zenith}$$
+    So looking at zenith, no matter where you are, airmass = 1.
+}
+
 Earth's atmosphere doesn't transmit 100\% of light. Various things
 contribute to the absorption of light:
 \begin{itemize}
-    \item scattering, e.g., Rayleigh scattering off molecules
-    \item aerosols: scattering off larger particles (e.g. natural
+    \item scattering, e.g., Rayleigh scattering off molecules.
+    \item aerosols: scattering off larger particles (e.g.\ natural
     aerosols like fog, forest exudates, and geyser steam, and
     artificial aerosols like haze, dust, particulate air pollutants
     and smoke). Particle size $\sim$ 1 $\mu m$.
@@ -1331,11 +1417,12 @@ contribute to the absorption of light:
         \item $N_2O$
         \item $CH_4$
     \end{itemize}
+    All of these have a $\lambda$ dependency.
 \end{itemize}
 All are functions of wavelength, time to some extent, and position in
 sky.
 
-\subsubsection{Sources of extinction}
+\subsubsection*{Sources of extinction}
 In the optical part of the spectrum, extinction is a roughly smooth
 function of wavelength and arises from a combination of ozone,
 Rayleigh scattering, and aerosols, as shown in
@@ -1400,12 +1487,12 @@ The L band is at 3.5 $\mu$, M band at 5 $\mu$.
 
 Note that even within the IR ``windows'', there can still be
 significant telluric (terrestrial) absorption features,
-e.g. from CO$_2$2, H$_2$O, and CH$_4$.
+e.g.\ from CO$_2$2, H$_2$O, and CH$_4$.
 When doing IR spectroscopy, one needs to be aware of these and
 possibly attempt to correct for them, taking care not to confuse them
 with real stellar features.
 
-\subsubsection{Airmass and zenith distance dependence}
+\subsubsection*{Airmass and zenith distance dependence}
 
 Clearly, if the light has to pass through a larger path in the Earth's
 atmosphere, more light will be scattered/absorbed; hence one expects
@@ -1430,7 +1517,7 @@ approximation:
                   - 0.002875(\sec z-1)^2
                   - 0.0008083(\sec z-1)^3 $$
 
-\subsubsection{How much light is lost going through the atmosphere?}
+\subsubsection*{How much light is lost going through the atmosphere?}
 Consider a thin sheet of atmosphere, with incident flux $F$, and
 outcoming flux $F + \textrm{d}F$.
 Let the thin sheet have opacity $\kappa = N\sigma$,
@@ -1441,6 +1528,12 @@ $\sigma$ is the cross-section/absorber-scatterer.
          \equiv F_{\textrm{top}}e^{-\tau} $$
 where $\tau$ is the \emph{optical depth} of the atmosphere, which
 parameterizes how much light is lost.
+\textcolor{myBlue}{Density and cross-section determine the fraction
+    of light that is lost (opacity). For example, 2$\kappa \rightarrow
+    e^{-\tau}$ more absorption (not twice as much).
+    Light lost $\sim e^{-\tau}$.
+    Total $\tau$ is increased by the airmass.
+}
 
 If the optical depth through the atmosphere is just proportional to
 the physical path length (true if same atmospheric structure is
@@ -1453,10 +1546,11 @@ Expressing things in magnitudes, we have:
 Define the \emph{extinction coefficient} $k_{\lambda}$:
     $$ m_0 = m + k_{\lambda}X $$
     $$ k_{\lambda} \equiv -1.086\tau_0 $$
+(m$_0$ - top of atmosphere)
 so the amount of light lost in magnitudes can be specified by a set of
 extinction coefficients. Note by this definition, the extinction
 coefficient will be negative; others may use the opposite sign
-convention (e.g. defining $m_0 = m - k_{\lambda}X$). Of
+convention (e.g.\ defining $m_0 = m - k_{\lambda}X$). Of
 course, use of the scaling of $\tau$ or $k$ with airmass assumes
 \emph{photometric weather}.
 
@@ -1467,14 +1561,25 @@ of known brightness) at a range of different airmasses. This needs to
 be done as a function of wavelength, i.e., for each filter you observe
 in.
 
+\textcolor{myBlue}{Instrumental mag - what you measure, given
+    equipment, sky conditions, etc. (as opposed to official, recorded
+    magnitude, I think). $k_{\lambda}$ has to be measured in each
+    bandpass as it's $\lambda$-dependent.
+}
+
+\textcolor{myBlue}{Random thoughts: what's the difference between
+    error, standard deviation, uncertainty, etc.?
+    Stddev is a way to ``describe the uncertainty''. Errors are
+    something we ``can control'', like instrumental stuff.
+}
+
 %----------------------------------------------------------------------%
-\subsection{Atmospheric Refraction}
+\subsection*{Atmospheric Refraction}
 \textcolor{magenta}{Monday, February 22}
 
 
-
 %----------------------------------------------------------------------%
-\subsection{Seeing: theory and practice}
+\subsection*{Seeing: theory and practice}
 
 \subsubsection{Other sources of seeing}
 
