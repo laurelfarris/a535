@@ -1396,7 +1396,8 @@ especially critical in the IR\@. See some
     these windows that could show up in spectrum, e.g.\ the H-band.
     Have to correct for this. More atmosphere = more light lost.
     How much more? Airmass is defined locally:
-    $$ airmass = \frac{amt of air looking at}{amt of air through zenith}$$
+    $$ \textrm{airmass} = \frac{\textrm{amt\ of air\ looking\ at}}
+        {\textrm{amt\ of\ air\ through\ zenith}}$$
     So looking at zenith, no matter where you are, airmass = 1.
 }
 
@@ -1440,8 +1441,8 @@ better than a few percent (even for photometric nights). Generally,
 the \emph{shape} of the extinction curve as a function of wavelength probably
 varies less than the amplitude at any given wavelength. Because of
 this, one commonly uses \emph{mean extinction coefficients} when doing
-spectroscopy where one often only cares about relative fluxes. To
-first order, the extinction from clouds is ``gray'', i.e. not a
+spectroscopy where one often only cares about \emph{relative} fluxes. To
+first order, the extinction from clouds is ``gray'', i.e.\ not a
 function of wavelength, so relative fluxes can be obtained even with
 some clouds present.
 
@@ -1487,7 +1488,7 @@ The L band is at 3.5 $\mu$, M band at 5 $\mu$.
 
 Note that even within the IR ``windows'', there can still be
 significant telluric (terrestrial) absorption features,
-e.g.\ from CO$_2$2, H$_2$O, and CH$_4$.
+e.g.\ from CO$_2$, H$_2$O, and CH$_4$.
 When doing IR spectroscopy, one needs to be aware of these and
 possibly attempt to correct for them, taking care not to confuse them
 with real stellar features.
@@ -1519,7 +1520,7 @@ approximation:
 
 \subsubsection*{How much light is lost going through the atmosphere?}
 Consider a thin sheet of atmosphere, with incident flux $F$, and
-outcoming flux $F + \textrm{d}F$.
+outgoing flux $F + \textrm{d}F$.
 Let the thin sheet have opacity $\kappa = N\sigma$,
 where $N$ is the number density of absorbers/scatterers, and
 $\sigma$ is the cross-section/absorber-scatterer.
@@ -1599,7 +1600,7 @@ from which we can see that the refraction depends
 \emph{only on the index of refraction near the earth's surface}.
 
 We define astronomical refraction, $r$, to be the angular amount that
-the object is displaced by the refraction of the Earth's atmosphere: 
+the object is displaced by the refraction of the Earth's atmosphere:
     $$ \sin(z+r) = \mu\sin z $$
 In cases where $r$ is small (pretty much always):
     $$ \sin z + r\cos z = \mu\sin z $$
@@ -1607,10 +1608,11 @@ In cases where $r$ is small (pretty much always):
     $$ \approx R\tan z $$
 where we have defined $R$, known as the ``constant of refraction''.
 
-A typical value of the index of rfraction is $\mu \sim 1.00029$, which
+A typical value of the index of refraction is $\mu \sim 1.00029$, which
 gives $R = 60$ arcsec (red light).
 
-The direction of refraction is that a star apparently moves towards
+The direction of refraction is that a star apparently moves
+\emph{towards}
 the zenith. Consequently in most cases, star moves in both RA and DEC:
     $$ r_{\alpha} = r\sin q $$
     $$ r_{\delta} = r\cos q $$
@@ -1619,7 +1621,7 @@ the zenith:
     $$ \sin q = \cos\phi\frac{\sin h}{\sin z} $$
 Note that the expression for $r$ is only accurate for small zenith
 distances ($z < \sim 45$). At larger $z$, can't use plane parallel
-approximation. Observers have empirically found: 
+approximation. Observers have empirically found:
     $$ r = A\tan z + B\tan^3z $$
     $$ A = (\mu - 1) + B $$
     $$ B \sim -0.07'' $$
@@ -1638,7 +1640,7 @@ $\ldots$ note SDSS plates.
 
 The other \emph{extremely} important effect of refraction arises because the
 index of refraction varies with wavelength, so the astronomical
-refraction also depends on wavelength: 
+refraction also depends on wavelength:
 \begin{table}[h]
     \centering
     \begin{tabular}{c c}
@@ -1713,7 +1715,7 @@ turbulence, worked out originally by Kolmogorov, Tatarski, Fried.
 Here, I'll quote some pertinent results, without derivation.
 
  A turbulent field can be described statistically by a \emph{structure
- function}: 
+ function}:
     $$ D_N(x) = = <|N(r+x)-N(r)|^2>  $$
 
 \subsubsection*{Other sources of seeing}
