@@ -9,6 +9,7 @@
 \usepackage{mdwlist}
 
 \definecolor{myBlue}{rgb}{0.2,0.2,0.6}
+\definecolor{myGreen}{rgb}{0.2,0.6,0.3}
 
 \setlength{\parindent}{0em}
 \setlength{\parskip}{0.5em}
@@ -1310,9 +1311,9 @@ How bright are these sources?
 Optical:
 
 For broadband work, for example in the V band, $m_{sky}\sim$ 22
-mag/arcsec at good site so we switch over to background limited around
-m=22 for good image quality, and switch over around m=20 for poorer image
-quality. \textcolor{red}{huh??}
+mag/arcsec at good site,
+so $S/N$ becomes background limited around m=22 for good image quality,
+and m=20 for poorer image quality.
 Consequently, image quality matters for faint objects.
 Moonlight is very significant, hence faint optical imaging requires
 dark time.
@@ -1682,6 +1683,7 @@ References: Coulson, ARAA 23,19; Beckers, ARAA 31, 13; Schroeder
 
 Generally, a perfect astronomical optical system will make a perfect
 (diffraction-limited) image for an incoming plane wavefront of light.
+The plane will focus to a nice point.
 The Earth's atmosphere is turbulent and variations in the index of
 refraction cause the plane wavefront from distant objects to be
 \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/seeing.htm}
@@ -1705,22 +1707,157 @@ These cause several astronomical effects:
         \item instantaneous slopes vary by $\sim$ an arcsec
     \end{itemize*}
 \end{itemize*}
-The time variation scales are several milliseconds and up.
+The time variation scales are
+\textcolor{myGreen}{several milliseconds} and up.
 
-\textcolor{magenta}{Wednesday, February 24
-$\ldots$ double check the following notes}
+\textcolor{magenta}{Wednesday, February 24}
+
+\textcolor{myBlue}{Cells in the atmosphere each have a different
+index of refraction. All we have are statistical descriptions of
+turbulence. Difference of squares: average over all points.
+E.g.\ at 1 cm rms [something] = x, at 0.5 cm rms = y, etc.}
 
 The effect of seeing can be derived from theories of atmospheric
 turbulence, worked out originally by Kolmogorov, Tatarski, Fried.
-Here, I'll quote some pertinent results, without derivation.
+Here are some pertinent results, without derivation:
 
- A turbulent field can be described statistically by a \emph{structure
- function}:
+A turbulent field can be described statistically by a \emph{structure
+function}:
     $$ D_N(x) = = <|N(r+x)-N(r)|^2>  $$
+where $x$ is the separation of points, $N$ is any variable (e.g.\
+temperature, index of refraction, etc.), and $r$ is position.
+This describes how the ``quantity'' changes as a function of separation
+between the two points.
+\textcolor{myBlue}{Quantity of$\ldots$ turbulence?
+Translate N to phase change of wave (determine image quality).}
+
+The structure function of a velocity field can be described as the
+difference between the values of the flow velocity between two points
+with coordinates $r$ and $r+x$. See
+\href{http://jetp.ac.ru/cgi-bin/dn/e_082_03_0580.pdf}
+{\textcolor{blue}{this paper}}.
+
+Komogorov turbulence gives:
+    $$ D_n(x) = C_n^2x^{2/3} $$
+where $C_n$ is the refractive index structure constant.
+From this, one can derive the phase structure function at the
+telescope aperture:
+    $$ D_{\phi}(x) = 6.88\left(\frac{x}{r_0}\right)^{5/3}   $$
+where the coherence length $r_0$ (also known as the Fried parameter)
+is:
+    $$ r_0 = 0.185\left(\lambda^{6/5}\right)
+             \left(\cos^{3/5}z\right)
+             \left[\int\left(C_n^2\textrm{d}h\right)\right]^{-3/5} $$
+where $z$ is the zenith angle and $\lambda$ is the wavelength.
+Using optics theory, one can convert $D_{\phi}$ into an image shape.
+\textcolor{myBlue}{Bigger $r_0$ is better; integral is over the height
+of the atmosphere. $r_0$ same size as telescope$\ldots$?}
+
+Physically, $r_0$ is (roughly) proportional to the image size from
+seeing:
+    $$ d \sim \lambda/r_0 $$
+as compared with the image size from diffraction-limited images:
+    $$ d \sim \lambda/D $$
+Seeing dominates when $r_0 < D$; a larger $r_0$ means better seeing.
+
+Seeing is more important than diffraction at shorter wavelengths (and
+for larger apertures); diffraction is more important at longer
+wavelengths (and for smaller apertures); the effects of diffraction
+and seeing cross over in the IR for most astronomical-sized telescopes
+($\sim$5 microns for 4m); the crossover falls at a shorter wavelength
+for smaller telescope or better seeing. 
+
+\textcolor{myBlue}{Image size from seeing is almost the same,
+regardless of $\lambda$ (\emph{little} better toward the IR, but not
+much). Diffraction swamps seeing at \emph{really} long wavelengths.
+Bigger telescopes are seeing-limited. $r_0$ has $\lambda$ in it, hence
+the lack of $\lambda$ dependence. Crossover in the micron regime.
+}
+
+The meat of $r_0$ is in $\int\left(C_n^2\textrm{d}h\right)$;
+as you might expect, this varies from site to site and also in time.
+At most sites, there seems to be three regimes of ``surface layer''
+(wind-surface interactions and manmade seeing),
+``planetary boundary layer'' (influenced by diurnal heating), and
+``free atmosphere'' (10 km is tropopause: high wind shears),
+as seen in
+\href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/beckers2.htm}
+{\textcolor{blue}{this plot}}.
+A typical astronomical site has $r_0 \sim$ 10 cm at 5000\AA{}.
+
+We also want to consider the coherence of the same turbulence pattern
+over the sky: this coherence angle is called the
+\emph{isoplanatic angle},
+and the region over which the turbulence pattern is the same is called
+the \emph{isoplanatic patch}. This is relevant to adaptive optics, where we
+will try to correct for the differences across the telescope aperture;
+if we do a single correction, how large a field of view will be
+corrected?
+    $$ \theta \sim 0.314r_0/H $$
+where $H$ is the average distance of the seeing layer:
+    $$ H = \sec z\left[
+    \frac{\int\left(C_n^2h^{5/3}\textrm{d}h\right)}
+    {\int\left(C_n^2\textrm{d}h\right)}
+    \right]^{3/5} $$
+For $r_0$ = 10 cm, $H \sim$ 5000 m, $\theta \sim$ 1.3 arcsec.
+In the IR, $r_0$ = 70 cm, $H \sim$ 5000 m, $\theta \sim$ 9 arcsec.
+
+Note however, that the ``isoplanatic patch for image motion'' (not
+wavefront) is $\sim 0.3 D/H$. For $D$ = 4 m, $H \sim$ 5000 m,
+$\theta_{kin}$ = 50 arcsec. This is relevant for low-order
+atmosphereic correction, i.e.\ tip-tilt, where one is doing
+\emph{partial} correction of the effect of the atmosphere.
+
+\textcolor{myBlue}{Want the isoplanatic patch to be big.
+Area where wiggles, wavefronts are the same. Smaller patch if $H$
+(height in atmosphere) is bigger. $H$ is bigger at top of atm than at
+bottom. Take out seeing entirely: correction in one area doesn't work
+in another area. Space telescopes get wider FOV. Adaptive optics:
+multiple corrections for different angles (complicated). Better in IR
+(bigger $r_0$). 1/2' or 1' patch. Most adaptive optics in NIR.
+Partial correction: coherent over larger angular scale, but not down
+to diffraction-limited. Wobbly wavelength front; can correct
+\emph{some} spatial area. Measure \emph{mean} tilt and correct for
+that $\rightarrow$ \emph{active} optics (or tip-tilt system)}.
 
 \subsubsection*{Other sources of seeing}
+Although the Earth's atmosphere provides a limit on the quality of
+images that can be obtained, at many observatories, there are other
+factors that can dominate the image quality budget. These have been
+recognized over the past several decades to be significant effects.
+\begin{itemize*}
+    \item Dome seeing: arises from turbulence pattern around the
+    dome and the interface between inside the dome and outside the dome.
+    Even small temperature differences can lead to significant
+    image degradataion. \textcolor{myBlue}{$T_{out} = T$, $T_{in} = T
+    + \Delta T$. Could open dome early, climate control during the
+    day, get rid of it completely (roll-off roof!). This tends to be
+    worse for smaller domes.}
+    \item Mirror seeing: arises from turbulence right above the
+    surface of the mirror, which can arise if the mirror temperature
+    differs from that of the air above it. \textcolor{myBlue}{
+    Thinner mirrors are better; less mass, or thermal
+    something-or-other}.
+    \item Wind shake of the telescope. \textcolor{myBlue}{
+    Maybe getting rid of the dome isn't such a good idea$\ldots$
+    Good idea to put telescopes on mountain on edge facing the wind.
+    As the wind goes up over where the telescope is, the turbulence
+    happens later, on the other side, as it flows down the less-steep
+    side of the mountain. Minimizeing turbulence from wind laminar
+    flow, or something like that.}
+    \item Poor telescope tracking.
+    \item Design, quality, and alignment of the telescope
+    optics: (In general, however,
+    telescope design is done such that the image degradation from
+    telescope design is significantly smaller than that arising from
+    seeing).
+    \item (lack of) effect of clouds. \textcolor{myBlue}{Cause
+    decreased \emph{transparency}, but don't actaully make the images
+    blurry. The seeing can atually be better with thin haze.}
+\end{itemize*}
 
 \subsubsection*{What does seeing cause the image to look like?}
+\textcolor{magenta}{Monday, February 29}
 
 
 
