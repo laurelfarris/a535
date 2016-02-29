@@ -2,6 +2,7 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{enumerate}
 \usepackage{color}
+\usepackage{mdwlist}
 \usepackage{hyperref}
 
 \setlength{\parindent}{0em}
@@ -310,6 +311,76 @@ laptop, but they will probably not be there by default.
 \subsection*{Standalone display tools}
 \subsection*{Basic display operation}
 \subsection*{Exercises}
+
+
+\textcolor{magenta}{Friday, February 26}
+
+\section*{Astronomical image processing packages: Introduction and
+IRAF basics}
+
+\subsection*{IRAF/DS9 basic operation}
+\begin{itemize*}
+    \item One time only: run \texttt{mkiraf}, which creates \texttt{login.cl}.
+        This file can be customized at a later time if you have settings you want
+        to start with every time.
+        \begin{itemize*}
+            \item to enable a larger frame buffer for display, uncomment and
+                modify line: \texttt{stdimage = imt2048}
+        \end{itemize*}
+    \item The preferred method of running IRAF in the modern era is using the
+        PYTHON interface, \texttt{pyraf}:
+        \begin{itemize*}
+            \item You can use pyraf via a normal python interface:
+
+                \texttt{from pyraf import iraf}
+
+                You will then need to use standard PYTHON styntax, rather
+                than the old IRAF \texttt{cl} syntax.
+            \item \texttt{pyraf} actually runs a front-end interpreter to
+                emulate the original IRAF command-line interface. This is
+                convenient for previous users and for some tasks, but
+                ``hides'' the Python interpreter and its power.
+        \end{itemize*}
+    \item For displaying images, start an image display tool, i.e.\ DS9,
+        in the background: \texttt{ds9 &}. Be aware that the stdimage that is set
+        in the login.cl file may limit the maximum size of the image that will
+        be displayed.
+    \item help:
+        \begin{itemize*}
+            \item there is an internal \texttt{.help} command.
+            \item IRAF help
+            \item tutorials
+        \end{itemize*}
+    \item basics:
+        \begin{itemize*}
+            \item IRAF contains many programs for astronomical analysis. These
+                are grouped into \emph{packages}, and individual commands are
+        \end{itemize*}
+\end{itemize*}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 \end{document}
