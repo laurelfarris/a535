@@ -1,5 +1,5 @@
 \documentclass[12pt]{article}
-\usepackage[margin=1in]{geometry}
+\usepackage[margin=0.25in]{geometry}
 \usepackage{color}
 \usepackage{xcolor}
 \usepackage{hyperref}
@@ -9,7 +9,7 @@
 \usepackage{mdwlist}
 
 \definecolor{myBlue}{rgb}{0.2,0.2,0.6}
-\definecolor{myGreen}{rgb}{0.2,0.6,0.3}
+\definecolor{myGreen}{rgb}{0.0,0.26,0.15}
 
 \setlength{\parindent}{0em}
 \setlength{\parskip}{0.5em}
@@ -23,6 +23,8 @@
 
 course website: \textcolor{blue}
 {\url{http://astronomy.nmsu.edu/holtz/a535}}
+
+%--------------Part 1--------------------------------------------------%
 
 \textcolor{magenta}{Friday, January 22}
 \section*{Properties of light, magnitudes, errors, and error analysis}
@@ -1261,54 +1263,63 @@ errors, plot residuals vs. everything
 propagation!}
 }
 
+%--------------Part 2--------------------------------------------------%
+\newpage
 \section*{Effects of the earth's atmosphere}
 
-The earth's atmosphere has several different effects: it emits light,
-it absorbs light, it shifts the apparent direction of incoming light,
-and it degrades the coherence of incoming light, leading to
-degradation of image quality when collecting light over a large
-aperture. \textcolor{myBlue}{aka emission, absorption, refraction, and
-seeing}.
+Four effects:
+\begin{enumerate*}
+    \item Emission
+    \item Absorption
+    \item Refraction (shifting apparent direction of incoming light)
+    \item Seeing (degrading the coherence of incoming light,
+        leading to degradation of image quality when collecting light
+        over a large aperture)
+\end{enumerate*}
 
 \subsection*{Night sky emission}
-Sources of sky emission (brightness as function of wavelength):
-\begin{itemize}
-    \item air glow: thermally excited molecules (by sunlight).
-    Emission takes time, so this continues into the night.
-    OH lines.
-    \item zodiacal light (outside of our atmosphere), due to dust in
-    the solar system. Units: mag arcsec$^2$. At 21-22 mag, start
-    becoming background limited. In the optical regime.
-    \item sunlight
-    \item moonlight
-    \item aurorae: line emission
-    \item light pollution
-    \item unresolved stars and galaxies
-        (outside of our solar system)
-    \item thermal emission: IR emission from sky, telescope, and dome.
-    T$_{atm} \rightarrow$ blackbody emission.
-\end{itemize}
-Many of these sources are emission line sources, not continuum
+(brightness as function of wavelength)
+
+Sources
+(many of which are emission line sources, not continuum
 sources, as shown in this
 \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/skyemiss.htm}
-{\textcolor{blue}{plot}}.
-How bright are these sources?
-\begin{itemize}
-    \item air glow: strong in lines
-    \item zodiacal light: $m_V \sim$ 22.2 - 23.5 depending on ecliptic
-    latitude (and to a lesser degree on ecliptic longitude)
-    Note that this exists even in Earth orbit.
-    \item sunlight: small away from twilight, depending on distance sun
-    is below horizon. Note different definitions of twilight: civil (6
-    degrees), nautical (12 degrees; ``pretty dang dark''),
-    and astronomical (18 degrees; ``dark as it's gonna get'').
-    By astronomical twilight, there is essentially no contribution.
-    However, much useful observing might be done before this.
-    \item moonlight: variable; can be very bright. $\sim$ 10 times
-    brighter at full moon.
-    \item light pollution: strong in distinct lines
-\end{itemize}
-Optical:
+{\textcolor{blue}{plot}}):
+\begin{itemize*}
+    \item \textbf{air glow:} thermally excited molecules (by sunlight).
+        Emission takes time, so this continues into the night.
+        OH lines. Lines are pretty bright.
+    \item \textbf{zodiacal light:}
+        (outside of our atmosphere), caused by dust in the solar system,
+        and emits in the optical regime.
+        Brightness: $m_V \sim$ 22.2 - 23.5 [magnitudes arcsec$^{-2}$],
+        depending on ecliptic latitude
+        (and to a lesser degree on ecliptic longitude)
+        Note that this exists even in Earth orbit.
+        When brightness of observed objects drop to 21-22 mag,
+        go from signal-limited to background-limited.
+    \item \textbf{sunlight:} Brightness is
+        small away from twilight, depending on distance sun is below horizon. Note that there are
+        Different definitions of twilight:
+        \begin{itemize*}
+            \item civil (6 degrees)
+            \item nautical (12 degrees; ``pretty dang dark''),
+            \item astronomical (18 degrees; ``dark as it's gonna get'').
+        \end{itemize*}
+        By astronomical twilight, there is essentially no contribution
+        from sunlight, but much useful observing can be done before this.
+    \item \textbf{moonlight:} Brightness is variable; can be very bright.
+        $\sim$ 10 times brighter at full moon (compared to what?).
+    \item \textbf{aurorae:} line emission
+    \item \textbf{light pollution:} Strong (bright) in distinct lines
+    \item \textbf{unresolved stars and galaxies:}
+        (outside of our solar system)
+    \item \textbf{thermal emission:} IR emission from sky,
+        telescope, and dome.
+        T$_{atm} \rightarrow$ blackbody emission.
+\end{itemize*}
+
+\textbf{Optical:}
 
 For broadband work, for example in the V band, $m_{sky}\sim$ 22
 mag/arcsec at good site,
@@ -1317,33 +1328,35 @@ and m=20 for poorer image quality.
 Consequently, image quality matters for faint objects.
 Moonlight is very significant, hence faint optical imaging requires
 dark time.
+\textcolor{myBlue}
+{Readout noise of zodiacal light (m$_{\textrm{sky}}$) really important.
+Be careful when splitting exposures;
+can become readoutnoise limited.
+Consider the minimum exposure time needed (context?)}
 
-\textcolor{myBlue}{\underline{Optical}:
-zodiacal light ($m_{sky}$) readout noise really
-important. Biggest contributer? Splitting exposures - be careful.. can
-become rn limited. Minimum exposure time:?}
-
-Optical spectroscopy: sky emission generally not much of a problem
-except around lines so long as moon is down (or work on bright
-objects); low dispersion observations can be background-limited for
-long exposures, but at higher dispersion or shorter exposures,
+\emph{Optical spectroscopy:} sky emission is generally not much of a problem
+(except around lines) so long as moon is down (or work on bright objects);
+low dispersion observations can be background-limited for long exposures,
+but at higher dispersion or shorter exposures,
 spectroscopy is often readout-noise limited.
 
-IR:
+\textbf{IR:}
 
 Most ($\sim$ 90\%) of the emission in the near-IR is from
-vibrational and rotational transition
-emission lines of the OH molecule, the
-so-called ``OH forest.'' For broadband work in H band, $m\sim$ 13.5
-mag/arcsec; in K band, $m\sim$ 12.5 mag/arcsec. So for all except
-bright objects, we're background limited. This leads to some
+vibrational and rotational transition emission lines of the OH molecule,
+the so-called ``OH forest.''
+For broadband work:
+\begin{itemize*}
+    \item H band: $m\sim$ 13.5 mag arcsec$^{-1}$
+    \item K band: $m\sim$ 12.5 mag arcsec$^{-1}$.
+\end{itemize*}
+($\sim$ surface brightness);
+So for all except bright objects, we're background limited.
+This leads to some
 fundamental differences in data acquisition and analysis between the
 near-IR and the optical. For infrared spectra, it's harder to estimate
 $S/N$: depends on where your feature is located. Moonlight is not very
 significant, hence much IR work is done in bright time.
-
-\textcolor{myBlue} IR: m $\sim$ 13 mag arcsec$^{-2}$ ($\sim$ surface
-brightness).
 
 \textcolor{magenta}{Wednesday, February 17}
 
@@ -1506,7 +1519,8 @@ relative to length at zenith: X $\equiv$ 1 vertically (at $z$ = 0).
 Given the zenith distance, $z$, which can be computed from:
     $$ \sec z = \left(\sin\phi\sin\delta +
                  \cos\phi\cos\delta\cos h\right)^{-1} $$
-where $\phi$ is the latitude, $\delta$ is the declination, and $h$ is
+where $\phi$ is the latitude of the observatory location,
+$\delta$ is the declination, and $h$ is
 the hour angle ($h$ = local sidereal time - $\alpha$, where $\alpha$ is
 the right ascenstion), we have
     $$ X \sim \sec z $$
@@ -1580,12 +1594,16 @@ in.
 \subsection*{Atmospheric Refraction}
 \textcolor{magenta}{Monday, February 22}
 
+\textcolor{myBlue}{Amount of refraction depends on where you're looking
+zenith: = 0}.
+
 The direction of light as it passes through the atmosphere is also
 changed because of refraction since the index of refraction changes
 through the atmosphere. The amount of change is characterized by
 Snell's law:
     $$ \mu_1\sin\theta_1 = \mu_2\sin\theta_2 $$
-Let $z_0$ be the true zenith distance, $z$ be the observed zenith
+Let $z_0$ be the true zenith distance (relative to how much
+star moves), $z$ be the observed zenith
 distance, $z_n$ by the observed zenith distance at layer $n$ in the
 atmosphere, $\mu$ be the index of refraction at the surface, and
 $\mu_n$ be the index of refraction at layer $n$. At the top of the
@@ -1664,10 +1682,24 @@ refraction with wavelenth, every object actually appears as a little
 spectrum with the blue end towards the zenith. The spread in object
 position is proportional to tan $z$.
 
+\textcolor{myBlue}{Measuring rotation curve of galaxy. Not at parallactic
+angle? Not getting all the light, just at wavelength used to
+position the slit (?)
+Instrument: atmospheric dispersion corrector.
+No rainbow straight up above gets bigger as you move down.
+\underline{Two} prisms that move relative to each other
+(APO doesn't have this.)}
+
+\textcolor{myBlue}{1. emission, 2. transmission, 3. refraction,
+4. seeing:theory and practice. Adaptive optics - deformable mirrors
+that move really fast}.
+
 This effect is critical to understand for spectroscopy when using a
 slit or a fiber, since the location of an object in the sky depends on
 the wavelength. If you point to the location at one wavelength, you
-can miss another wavelength and the relative amount of flux you
+can miss another wavelength
+\textcolor{myBlue}{(depending on how big your fiber is)}
+and the relative amount of flux you
 collect will be a function of wavelength, something you may want to
 take into account if you're interested in the relative flux (continuum
 shape) over a broad wavelength range. Note the consequent importance
@@ -1691,24 +1723,35 @@ refraction cause the plane wavefront from distant objects to be
 These cause several astronomical effects:
 \begin{itemize*}
     \item scintillation, which is amplitude variations, which
-    typically vary over scales of cm: generally very small for larger
-    apertures.
+        typically vary over scales of cm: generally very small for larger
+        apertures. \textcolor{myBlue}{``twinkling'', small aperture
+        (e.g.\ eye) prevents from getting below a fraction of a \% in
+        brightness$\ldots$ something. Planets don't twinkle because they're
+        bigger}
     \item seeing: positional changes and image quality
-    changes. The effect of seeing depends on aperture size: for small
-    apertures, one sees a diffraction pattern moving around, while for
-    large apertures, one sees a set of diffraction patterns (speckles)
-    \href{https://en.wikipedia.org/wiki/Speckle_imaging#/media/File:Eps_aql_movie_not_2000.gif}
-    {\textcolor{blue}{moving around}}
-    on scale of $\sim$ 1 arcsec. These observations
-    imply:
-    \begin{itemize*}
-        \item local wavefront curvatures flat on scales of small
-        apertures
-        \item instantaneous slopes vary by $\sim$ an arcsec
-    \end{itemize*}
+        changes. The effect of seeing depends on aperture size: for small
+        apertures, one sees a diffraction pattern moving around, while for
+        large apertures, one sees a set of diffraction patterns (speckles)
+        \href{https://en.wikipedia.org/wiki/Speckle_imaging#/media/File:Eps_aql_movie_not_2000.gif}
+        {\textcolor{blue}{moving around}}
+        on scale of $\sim$ 1 arcsec. These observations
+        imply:
+        \begin{itemize*}
+            \item local wavefront curvatures flat on scales of small apertures
+            \item instantaneous slopes vary by $\sim$ an arcsec
+        \end{itemize*}
 \end{itemize*}
 The time variation scales are
 \textcolor{myGreen}{several milliseconds} and up.
+
+\textcolor{myBlue}{star actually moves around: A/B, where A is the aperture
+size and B is the size of wiggles in the wavefront. Comparing 8'' telescope
+to 4-m telescope (See handwritten diagrams).
+Both telescopes produced the same end resutl, but how it got there is different
+for each one. Difference? Aperture size compared to length of [curve] $\sim$
+6-8 inches (size scale of wavefront pieces) approx. same as waveplane front.}
+
+
 
 \textcolor{magenta}{Wednesday, February 24}
 
@@ -1765,7 +1808,7 @@ for larger apertures); diffraction is more important at longer
 wavelengths (and for smaller apertures); the effects of diffraction
 and seeing cross over in the IR for most astronomical-sized telescopes
 ($\sim$5 microns for 4m); the crossover falls at a shorter wavelength
-for smaller telescope or better seeing. 
+for smaller telescope or better seeing.
 
 \textcolor{myBlue}{Image size from seeing is almost the same,
 regardless of $\lambda$ (\emph{little} better toward the IR, but not
@@ -1860,12 +1903,26 @@ recognized over the past several decades to be significant effects.
 \textcolor{magenta}{Monday, February 29}
 
 
+%--------------Part 3--------------------------------------------------%
 
+% Putting in sections early, so keep in mind that they will
+% probably be changed later...
 
-
-
-
-
+\section*{Astronomical Optics}
+\subsection*{Single surface optics and definitions}
+\subsection*{Multi-surface systems}
+\subsubsection*{a lens (has two surfaces)}
+\subsubsection*{plane-parallel plate}
+\subsubsection*{Two-mirror telescopes}
+\subsubsection*{Definitions for multi-surface system: stops and pupils}
+\subsection*{Aberrations}
+\subsubsection*{Surface requirements for unaberrated images}
+\subsubsection*{Aberrations: gneeral description and low-order aberrations}
+\subsubsection*{Aberration compensation and different telescope types}
+\subsection*{Sources of aberrations}
+\subsection*{Ray tracing}
+\subsection*{Physical (diffraction) optics}
+\subsection*{Adaptive optics}
 
 
 
