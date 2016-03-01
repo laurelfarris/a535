@@ -1902,6 +1902,83 @@ recognized over the past several decades to be significant effects.
 \subsubsection*{What does seeing cause the image to look like?}
 \textcolor{magenta}{Monday, February 29}
 
+The ``quality'' of an image can be described in many different ways.
+The overall shape of the distribution of light from a point source is
+specified by the \emph{point spread function}. Diffraction gives a basic
+limit to the quality of the PSF, but seeing, aberrations, or image
+motion add to structure/broadening of the PSF. For a good ground-based
+telescope, seeing is generally the dominant component of the PSF.
+\textcolor{myBlue}{PSF provides a full description... 2D function}.
+
+Probably the most common way of describing the seeing is by specifying
+the full-width-half-maximum (FWHM) of the image, which may be
+estimated either by direct inspection or by fitting a function
+(usually a Gaussian); note the correspondence of FWHM to $\sigma$ of
+a gaussian: FWHM = 2.354$\sigma$.
+\textcolor{myBlue}{FWHM = $2\sigma\sqrt{2\ln 2}$ }
+However, beware of effects of
+sampling of the PSF: you're really getting the PSF integrated over
+pixels, not the PSF. Remember that the FWHM doesn't fully specify a
+PSF, and one should always consider how applicable the quantity is. 
+
+Another way of describing the quality of an image is to specify its
+\emph{modulation transfer function} (MTF). The MTF and PSF are a Fourier
+transform pair,
+\textcolor{myBlue}
+{thin gaussian $\leftarrow$\small FT\normalsize$\rightarrow$ fat gaussian}
+so the MTF gives the \emph{power} in an image on various
+\emph{spatial} scales. Turbulence theory makes a prediction for the MTF from
+seeing: 
+    $$ MTF(\nu) = exp\left[-3.44\left(\frac{\lambda \nu}{r_o}\right)
+    ^{5/3}\right] $$
+where $\nu$ is the spatial frequency,
+\textcolor{myBlue}{$\xi = \frac{1}{\lambda}$ [cycles per cm].
+(Aside: wavenumber $k = \frac{2\pi}{\lambda} = 2\pi\xi$)
+\begin{itemize*}
+    \item MTF: power as function of spatial frequency
+    \item PSF: intensity as function of position
+\end{itemize*}}
+
+Note that a gaussian goes as $e^{\left(-\nu^2\right)}$,
+so this is close to a gaussian.
+The shape of seeing-limited images is roughly Gaussian in
+core but has more
+\href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/racine2.htm}
+{\textcolor{blue}{extended wings}}.
+This is relevant because the seeing
+is often described by fitting a Gaussian to a stellar profile.
+\textcolor{myBlue}{Note that the stellar profile is the same for all
+stars, and doesn't depend on the brightness of the star.
+They all get lost in the noise eventually$\ldots$ sooner for fainter
+stars, which look smaller.
+In case the wings are needed, fitting to a Gaussian won't work;}
+a potentially better empirical fitting function is a
+\href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/racine3.htm}
+{\textcolor{blue}{Moffat function}}:
+    $$  I=p_1\left[
+    1+\frac{\left(x-p_2\right)^2}{p_4^2} + 
+      \frac{\left(y-p_3\right)^2}{p_5^2}\right]^{-p_6} $$
+``Nothing special, six parameters, more accurate.''
+
+Ways of characterizing the PSF:
+\begin{itemize*}
+    \item \emph{encircled energy} as a function of radius,
+        or at some specified radius. The encircled energy is just the
+        cumulative integral of the PSF. Encircled energy requirements
+        are often used for specifying optical tolerances.
+    \item Strehl ratio: more commonly used in
+        adaptive optics applications \textcolor{myBlue}{not for
+        ``normal observing'')}. The Strehl ratio is
+        the ratio between the peak amplitude of the PSF and the peak amplitude
+        expected in the presence of diffraction only. With normal atmospheric
+        seeing, the Strehl ratio is \emph{very} low. However, the Strehl ratio is
+        often used when discussing the performance of adaptive optics
+        systems. \textcolor{myBlue}{Ratio of how good the actual image is to
+        the best that could be obtained (pure diffraction-limited).
+        A really good adaptive optics system would have a Strehl ratio
+        of about 1/2. Seeing of a big telescope is nowhere close to
+        diffraction-limited$\ldots$ fraction of a \%.}
+\end{itemize*}
 
 %--------------Part 3--------------------------------------------------%
 
@@ -1909,7 +1986,99 @@ recognized over the past several decades to be significant effects.
 % probably be changed later...
 
 \section*{Astronomical Optics}
+Because astronomoical sources are faint, we need to collect light.
+We use telescopes/cameras to make images of astronomical sources.
+Example: a 20th magnitude star gives $\sim$ 0.01photons/s/cm2 at 5000
+A through a 1000 A filter. However, using a 4m telescope gives 1200
+photons/s.
+
+\textcolor{myBlue}{In other words, need a bigger collecting area to
+get lots of photons. The bandpass and wavelength information given
+here is irrelevant}.
+
 \subsection*{Single surface optics and definitions}
+ We will define an optical system as a system which collects light;
+ usually, the system will also make images. This requires the bending
+ of light rays, which is accomplished using lenses (refraction) and/or
+ mirrors (reflection), using \emph{curved surfaces}.
+
+ The operation of refractive optical systems is given by Snell's law
+ of refraction: 
+    $$ n\sin{i} = n'\sin{i'} $$
+where $n$ and $n'$ are the indices of refraction and $i$ and $i'$ are the
+angles of incidence relative to the normal to the surface. For
+reflection:
+    $$ i' = -i $$
+An optical element takes a source at $s$ and makes an image at $s'$.
+The source \textcolor{myBlue}{(actually, the image$\ldots$ the source
+better be real!)} can be \emph{real} or \emph{virtual}.
+A real image exists at some point in
+space; a virtual image is formed where light rays apparently emanate
+from or converge to, but at a location where no light actually
+appears. For example, in a Cassegrain telescope, the image formed by
+the primary is virtual, because the secondary intercepts the light and
+redirects it before light gets to the focus of the primary. 
+
+The image will not necessarily be a perfect image: all rays regardless
+of height at the surface, $y$, might not cross at the same point. This
+is the subject of aberrations, which we will get into in a while. For
+a ``smooth" surface, the amount of aberration will depend on how much
+the different rays differ in $y$, which depends on the shape of the
+surface. We define \emph{paraxial} and \emph{marginal} rays,
+as rays near the center
+of the aperture and those on the edge of the aperture, respectively.
+We define the
+\emph{chief} ray as the ray that passes through the center of the aperture.
+To define nominal (unaberrated) quantities, we consider the
+\emph{paraxial}
+regime, i.e.\ a small region near the optical axis, surrounding the
+chief ray. In this regime, all angles are small, aberrations vanish,
+and a surface can be wholly specified by its radius of curvature $R$.
+
+The \emph{field angle} gives the angle formed between the chief ray from an
+object and the z-axis. Note that paraxial does not necessarily mean a
+field angle of zero; one can have an object at a field angle and
+still consider the paraxial approximation.
+
+Note also that for the time being, we are ignoring \emph{diffraction}. But
+we'll get back to that too. We are considering \emph{geometric} optics,
+which is what you get from diffraction as wavelength tends to 0. For
+nonzero wavelength, geometric optics applies as scales
+$x>\sim\lambda$.
+
+We can derive the basic relation between object and image location as
+a function of a surface where the index of refraction changes
+(Schroeder, chapter 2).
+    $$  \frac{n'}{s'}-\frac{n}{s} = \frac{(n'-n)}{R}  $$
+The points at $s$ and $s'$ are called \emph{conjugate}. If either $s$
+or $s'$ is at infinity (true for astronomical sources for $s$), the
+other distance is defined as the \emph{focal length}, $f$, of the
+optical element. For $s=\infty$, $f=s'$.
+
+We can define the quantity on the right side of the equation, which
+depends only the the surface parameters (not the image or object
+locations), as the \emph{power}, $P$, of the surface: 
+    $$ P \equiv \frac{(n'-n)}{R} = \frac{n'}{f'} = \frac{n}{f} $$
+We can make a similar derivation for the case of reflection:
+    $$ \frac{1}{s'} + \frac{1}{s} = \frac{2}{R}  $$
+This shows that the focal length for a mirror is given by $R/2$.
+
+Note that one can treat reflection by considering refraction with
+$n' = -n$, and get the same result:
+    $$  \frac{n'}{s'}+\frac{n'}{s} = \frac{(n'+n')}{R}  $$
+Given the focal length, we define the \emph{focal ratio} to be the focal
+length divided by the aperture diameter. The focal ratio is also
+called the \emph{F-number} and is denoted by the abbreviation $f /$.
+Note $f /10$
+means a focal ratio of ten; $f$ is not a variable in this. The focal
+ratio gives the beam ``width''; systems with a small focal ratio have
+a short focal length compared with the diameter and hence the imcoming
+beam to the image is wide. Systems with small focal ratios are called
+``fast'' systems; systems with large focal ratios are called ``slow''
+systems.
+
+\textcolor{magenta}{Wednesday, March 2}
+
 \subsection*{Multi-surface systems}
 \subsubsection*{a lens (has two surfaces)}
 \subsubsection*{plane-parallel plate}
