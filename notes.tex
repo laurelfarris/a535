@@ -31,14 +31,14 @@ course website: \textcolor{blue}
 
 \subsection*{Light}
 Wavelength regimes:
-\begin{itemize}
+\begin{itemize*}
     \item gamma rays
     \item x-rays
     \item ultraviolent (UV)
-        \begin{itemize}
+        \begin{itemize*}
             \item near: 900--3500 \AA{}
             \item far: 100--900 \AA{}
-        \end{itemize}
+        \end{itemize*}
         The 900 \AA{} break is because of the Lyman limit at 912 \AA{}.
         This is where neutral hydrogen is ionized, so the universe is largely
         opaque to wavelengths shorter than this.
@@ -48,17 +48,17 @@ Wavelength regimes:
         is due to the Earth's atmosphere being opaque to wavelengths shorter
         than this).
     \item IR
-        \begin{itemize}
+        \begin{itemize*}
             \item near: 1--5 $\mu$ (1--10 $\mu$ in online notes)
             \item mid: (10--100 $\mu$)
             \item far: 5--100 $\mu$ (100--1000 $\mu$)
-        \end{itemize}
+        \end{itemize*}
     \item sub-mm 500--1000 $\mu$
     \item microwave
     \item radio
-\end{itemize}
+\end{itemize*}
 Quantities of light:
-\begin{itemize}
+\begin{itemize*}
     \item Intensity $I(\theta,\phi)$ [erg s$^{-1}\ \nu^{-1}\ \Omega^{-1}$]:
         Encapsulates $direction$ light is coming from.
         Also known as radiance.
@@ -96,25 +96,25 @@ Quantities of light:
         \end{equation}
         where $d$ = distance to source (so L can only be calculated if
         the distance is known). Also known as radiant flux.
-\end{itemize}
+\end{itemize*}
 What to measure for sources:
-\begin{itemize}
+\begin{itemize*}
     \item Resolved: directly measure surface brightness (intensity)
         distribution on the sky, usually over some bandpass or wavelength
         interval.
     \item Unresolved: measure the flux. Diffraction is the reason stellar
         surfaces cannot be resolved. Because of this, we cannot measure
         SB, so we measure flux, integrated over the entire object.
-\end{itemize}
+\end{itemize*}
 
 Questions:
-\begin{itemize}
+\begin{itemize*}
     \item What are the dimensions of the three quantities: luminosity,
         surface brightness (intensity), and flux?
     \item How do the three quantities depend on distance to the source?
     \item To what quantity is apparent magnitude of a star related?
     \item To what quantity is the absolute magnitude related?
-\end{itemize}
+\end{itemize*}
 Amount of light emitted is a function of wavelength,
 so we are often interested
 in e.g.\ flux per unit wavelength (or frequency),
@@ -140,7 +140,7 @@ corresponding to 10$^{-26}$ W m$^{-2}$ Hz$^{-1}$)
 There are often variations in terminology
 
 Terminology of measurements:
-\begin{itemize}
+\begin{itemize*}
     \item photometry (broad-band flux measurement): SB or flux, integrated
         over some wavelength range.
     \item spectroscopy (\emph{relative} measurement of fluxes at
@@ -154,7 +154,7 @@ Terminology of measurements:
     \item morphology: intensity as a function of position;
         often, absolute measurements are unimportant. Deals with $resolved$
         objects, intensity as function of position.
-\end{itemize}
+\end{itemize*}
 Generally, measure \emph{flux} with photometry, and flux
 \emph{density} (per unit wavelength)  with spectroscopy
 (down to the resolution of the spectrograph).
@@ -408,19 +408,19 @@ counting photons? The intrinsic photon flux from the source is not
 trivial to determine from the number of photons that you count. To get
 the number of photons that you count in an observation, you need to
 take into account
-\begin{itemize}
+\begin{itemize*}
     \item The area of your photon collector (telescope)
     \item Photon losses and gains from the Earth's atmosphere
     (which change with conditions)
     \item The efficiency of your collection/detection
     apparatus (which can change with time).
-\end{itemize}
+\end{itemize*}
 Generally, the astronomical signal (which might be a flux or a
 surface brightness, depending on whether the object is resolved)
 can be written in the form of the \emph{\textbf{count equation:}}
     $$ S = Tt \int \frac{F_{\lambda}}{\frac{hc}{\lambda}}q_{\lambda}
     a_{\lambda}\textrm{d}\lambda \equiv TtS' $$
-    \begin{itemize}
+    \begin{itemize*}
         \item $S$: total number of photons observed (the ``signal")
         \item $S'$ is an observed flux rate,
         i.e. with all of the real details of the observing system included.
@@ -437,7 +437,7 @@ can be written in the form of the \emph{\textbf{count equation:}}
         \item $F_{\lambda}/\frac{hc}{\lambda}$:
         flux divided by the energy per photon;
         gives the number of photons per second per square cm.
-    \end{itemize}
+    \end{itemize*}
 $T$ and $t$ are the \emph{only} terms that do not depend on
 the wavelength (or frequency).
 
@@ -690,7 +690,7 @@ distribution because \emph{readout} noise is distributed normally.
 
 You need to understand the expected uncertainties in your
 observations in order to:
-\begin{itemize}
+\begin{itemize*}
     \item predict the amount of observing time you'll need to get
     uncertainties as small as you need them to do your science
     \item answer the question: is scatter in observed data consistent
@@ -706,7 +706,7 @@ observations in order to:
     hypothesis.
     \item interpret your results in the context of a scientific
     prediction
-\end{itemize}
+\end{itemize*}
 \emph{Confidence levels}
 
 For example, say we want to know whether some single point
@@ -860,7 +860,7 @@ is:
     \sqrt{T}\sqrt{t}$$
 
 Limiting regimes:
-\begin{itemize}
+\begin{itemize*}
     \item \emph{signal-limited} case: $S^{\prime}\gg B^{\prime}A$,
         the background goes away and we get
          $$ \frac{S}{N} = \sqrt{S} = \sqrt{S^{\prime}tT} $$
@@ -868,7 +868,7 @@ Limiting regimes:
         and
         $$ \frac{S}{N} = \frac{S}{\sqrt{BA}} =
         \frac{S^{\prime}}{\sqrt{B^{\prime}A}}\sqrt{tT} $$
-\end{itemize}
+\end{itemize*}
 
 \textcolor{myBlue}{starlight dominates by factor of 1000 for
 m$_* = 12.5$ and m$_{BG} = 20$ ($\Delta m = 7.5
@@ -877,11 +877,11 @@ m$_* = 12.5$ and m$_{BG} = 20$ ($\Delta m = 7.5
 \large$\odot$: \normalsize little circle around star to reduce sky
 background noise. Depends on how blurry the star is; determined by
 seeing.
-\begin{itemize}
+\begin{itemize*}
     \item Dust scattering in the plane of the solar system
     \item Diffraction limit of space telescope $\sim$ 20th of an
     arcsecond. ($\sim$ angular resolution).
-\end{itemize}
+\end{itemize*}
 }
 
 As one goes to fainter objects, the S/N drops, and it drops faster
@@ -906,10 +906,10 @@ zero with no exposure time. Mean is zero, so can't subtract it out, it
 just blurs what you're looking at. B - background per square
 arcsecond, A - square arcsecond. Number of pixels over which it's
 spread:
-\begin{itemize}
+\begin{itemize*}
     \item sharper image
     \item 10 arcsec all in one pixel
-\end{itemize}
+\end{itemize*}
 Can change magnification of optics, but there is a balance. Might have
 two stars five arcsec apart. Maxiumum resolution is not always the
 best! readout noise is very important when the background is very low.
@@ -1025,7 +1025,7 @@ useful.
 \textcolor{red}{\textbf{Understanding these terms is very important!}}
 
 Examples for \emph{uncorrelated} errrors:
-\begin{itemize}
+\begin{itemize*}
     \item addition/subtraction:
         $$ x = u + v $$
         $$ \sigma_x^2 = \sigma_u^2\left(\frac{\partial x}
@@ -1045,7 +1045,7 @@ Examples for \emph{uncorrelated} errrors:
         Note that when dealing with logarithmic quantities, errors in
         the log correspond to \emph{fractional} errors in the raw
         quantity.
-\end{itemize}
+\end{itemize*}
 
 \textcolor{myBlue}{E.g. $x=10u \rightarrow \sigma_x=10\sigma_u$}
 
@@ -1191,20 +1191,20 @@ splitting exposures leads to reduced $S/N$.
     is it better to have, e.g.\ 3600 1-second exposure, 1800 2-second
     exposures, 300 12-second exposures$\ldots$
     Pros of lots of short exposures:
-    \begin{itemize}
+    \begin{itemize*}
         \item avoid saturation
         \item tracking
         \item cosmic rays
         \item variable object
         \item monitor atmospheric throughput variation
-    \end{itemize}
+    \end{itemize*}
     cons of lots of exposures:
-    \begin{itemize}
+    \begin{itemize*}
         \item data processing
         \item high data quantity
         \item can't see object
         \item readout time penalty
-    \end{itemize}
+    \end{itemize*}
     If tracking is bad, image can be blurry, and would get more background.
     If you're signal-limited though, this doesn't matter.
     How do you figure out the minimum amount of time to expose?
@@ -1417,23 +1417,23 @@ especially critical in the IR\@. See some
 
 Earth's atmosphere doesn't transmit 100\% of light. Various things
 contribute to the absorption of light:
-\begin{itemize}
+\begin{itemize*}
     \item scattering, e.g., Rayleigh scattering off molecules.
     \item aerosols: scattering off larger particles (e.g.\ natural
     aerosols like fog, forest exudates, and geyser steam, and
     artificial aerosols like haze, dust, particulate air pollutants
     and smoke). Particle size $\sim$ 1 $\mu m$.
     \item variety of molecules:
-    \begin{itemize}
+    \begin{itemize*}
         \item ozone
         \item $H_2O$
         \item $O_2$
         \item $CO_2$
         \item $N_2O$
         \item $CH_4$
-    \end{itemize}
+    \end{itemize*}
     All of these have a $\lambda$ dependency.
-\end{itemize}
+\end{itemize*}
 All are functions of wavelength, time to some extent, and position in
 sky.
 
@@ -1919,7 +1919,7 @@ a gaussian: FWHM = 2.354$\sigma$.
 However, beware of effects of
 sampling of the PSF: you're really getting the PSF integrated over
 pixels, not the PSF. Remember that the FWHM doesn't fully specify a
-PSF, and one should always consider how applicable the quantity is. 
+PSF, and one should always consider how applicable the quantity is.
 
 Another way of describing the quality of an image is to specify its
 \emph{modulation transfer function} (MTF). The MTF and PSF are a Fourier
@@ -1928,7 +1928,7 @@ transform pair,
 {thin gaussian $\leftarrow$\small FT\normalsize$\rightarrow$ fat gaussian}
 so the MTF gives the \emph{power} in an image on various
 \emph{spatial} scales. Turbulence theory makes a prediction for the MTF from
-seeing: 
+seeing:
     $$ MTF(\nu) = exp\left[-3.44\left(\frac{\lambda \nu}{r_o}\right)
     ^{5/3}\right] $$
 where $\nu$ is the spatial frequency,
@@ -1956,7 +1956,7 @@ a potentially better empirical fitting function is a
 \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/racine3.htm}
 {\textcolor{blue}{Moffat function}}:
     $$  I=p_1\left[
-    1+\frac{\left(x-p_2\right)^2}{p_4^2} + 
+    1+\frac{\left(x-p_2\right)^2}{p_4^2} +
       \frac{\left(y-p_3\right)^2}{p_5^2}\right]^{-p_6} $$
 ``Nothing special, six parameters, more accurate.''
 
@@ -2003,7 +2003,7 @@ here is irrelevant}.
  mirrors (reflection), using \emph{curved surfaces}.
 
  The operation of refractive optical systems is given by Snell's law
- of refraction: 
+ of refraction:
     $$ n\sin{i} = n'\sin{i'} $$
 where $n$ and $n'$ are the indices of refraction and $i$ and $i'$ are the
 angles of incidence relative to the normal to the surface. For
@@ -2017,7 +2017,7 @@ space; a virtual image is formed where light rays apparently emanate
 from or converge to, but at a location where no light actually
 appears. For example, in a Cassegrain telescope, the image formed by
 the primary is virtual, because the secondary intercepts the light and
-redirects it before light gets to the focus of the primary. 
+redirects it before light gets to the focus of the primary.
 
 The image will not necessarily be a perfect image: all rays regardless
 of height at the surface, $y$, might not cross at the same point. This
@@ -2057,7 +2057,7 @@ optical element. For $s=\infty$, $f=s'$.
 
 We can define the quantity on the right side of the equation, which
 depends only the the surface parameters (not the image or object
-locations), as the \emph{power}, $P$, of the surface: 
+locations), as the \emph{power}, $P$, of the surface:
     $$ P \equiv \frac{(n'-n)}{R} = \frac{n'}{f'} = \frac{n}{f} $$
 We can make a similar derivation for the case of reflection:
     $$ \frac{1}{s'} + \frac{1}{s} = \frac{2}{R}  $$
