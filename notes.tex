@@ -1,5 +1,6 @@
 \documentclass[12pt]{article}
-\usepackage[margin=0.25in]{geometry}
+%\usepackage[margin=0.25in]{geometry}
+\usepackage[margin=1.5in]{geometry}
 \usepackage{color}
 \usepackage{xcolor}
 \usepackage{hyperref}
@@ -1982,28 +1983,32 @@ Ways of characterizing the PSF:
 
 %--------------Part 3--------------------------------------------------%
 
-% Putting in sections early, so keep in mind that they will
-% probably be changed later...
+
+\newpage
 
 \section*{Astronomical Optics}
-Because astronomoical sources are faint, we need to collect light.
+Because astronomical sources are faint, we need to collect light.
 We use telescopes/cameras to make images of astronomical sources.
-Example: a 20th magnitude star gives $\sim$ 0.01photons/s/cm2 at 5000
-A through a 1000 A filter. However, using a 4m telescope gives 1200
-photons/s.
-
+Example: a 20th magnitude star gives $\sim$ 0.01 photons/s/cm$^2$ at
+5000\AA{} through a 1000\AA{} filter.
+However, using a 4-meter telescope gives 1200 photons/s.\\
 \textcolor{myBlue}{In other words, need a bigger collecting area to
 get lots of photons. The bandpass and wavelength information given
 here is irrelevant}.
 
 \subsection*{Single surface optics and definitions}
- We will define an optical system as a system which collects light;
- usually, the system will also make images. This requires the bending
- of light rays, which is accomplished using lenses (refraction) and/or
- mirrors (reflection), using \emph{curved surfaces}.
+By definition, an optical system collects light
+and (usually) makes images. This requires the bending
+of light rays, which is accomplished using \emph{curved surfaces}:
+\begin{itemize*}
+    \item lenses (refraction)
+    \item mirrors (reflection)
+\end{itemize*}
+Building large telescopes with lenses is difficult, but the
+instruments often have lenses.
 
- The operation of refractive optical systems is given by Snell's law
- of refraction:
+The operation of refractive optical systems is given by Snell's law
+of refraction:
     $$ n\sin{i} = n'\sin{i'} $$
 where $n$ and $n'$ are the indices of refraction and $i$ and $i'$ are the
 angles of incidence relative to the normal to the surface. For
@@ -2077,12 +2082,154 @@ beam to the image is wide. Systems with small focal ratios are called
 ``fast'' systems; systems with large focal ratios are called ``slow''
 systems.
 
+
+%--------------------------------------------------------------------%
 \textcolor{magenta}{Wednesday, March 2}
 
+The \emph{magnification} of a system gives the ratio of the image height to
+the object height:
+    $$  \frac{h'}{h} = \frac{s'-R}{s-R} = \frac{ns'}{n's}    $$
+The magnification is negative for this case, because object is
+flipped. The magnification also negative for reflection: n' = - n.
+Magnification is an important quantity for multi-element systems.
+
+We define the scale as the motion of image for given incident angle of
+parallel beam from infinity. From a consideration of the chief rays
+for objects on-axis and at field angle $ \alpha$, we get:
+    $$ \tan{\alpha} \approx \alpha = \frac{x}{f}  $$
+ or
+    $$ \textrm{scale} \equiv \frac{\alpha}{x} = \frac{1}{f}  $$
+In other words, the scale, in units of angular motion per physical
+motion in the focal plane, is given by 1/f. For a fixed aperture
+diameter, systems with a small focal ratio (smaller focal length) have
+a larger scale, i.e. more light in a patch of fixed physical size:
+hence, these are ``faster'' systems. 
+
 \subsection*{Multi-surface systems}
+To combine surfaces, one just takes the image from the first surface
+as the source for the second surface, etc., for each surface. We can
+generally describe the basic parameters of multi-surface systems by
+equivalent single-surface parameters, e.g. you can define an effective
+focal length of a multi-surface system as the focal length of some
+equivalent single-surface system. The effective focal length is the
+focal length of the first element multiplied by the magnification of
+each subsequent element. The two systems (single and multi) are
+equivalent in the paraxial approximation ONLY\@.
+
 \subsubsection*{a lens (has two surfaces)}
+Consider a lens in air ($n \sim 1$). The first surface gives:
+    $$ \frac{n}{s_1'}-\frac{1}{s_1} = \frac{n-1}{R_1}=P_1  $$
+The second surface gives:
+    $$ \frac{1}{s_2'}-\frac{n}{s_2} = \frac{n-1}{R_2}=P_2  $$
+but we have $s_2 = s_1'-d$ (remember we have to use the plane of the
+second surface to measure distances for the second surface).
+
+After some algebra, we find the effective focal length (from center of
+lens): 
+    $$ P=\frac{1}{f'}=P_{1}+P_{2}-\frac{d}{n}P_{1}P_{2}   $$
+    $$ P=\frac{(n-1)}{R_{1}}+\frac{(1-n)}{R_{2}}-\frac{d}{n}
+         \frac{(n-1)(1-n)}{R_{1}R_{2}}  $$
+From this, we derive the \emph{thin lens} formula:
+    $$ P=\frac{1}{f'} = \frac{(n-1)}{R_{1}}+\frac{(1-n)}{R_{2}}
+         = (n-1)\left( \frac{1}{R_1} - \frac{1}{R_2}\right)  $$
+    $$ \frac{1}{f'} = \frac{1}{f_{1}} + \frac{1}{f_{2}}   $$
+
 \subsubsection*{plane-parallel plate}
+Zero power, but moves image laterally: $\Delta =
+d\left[1-(1/n)\right]$.
+Application to filters: variation of focus.
+
 \subsubsection*{Two-mirror telescopes}
+In astronomy, most telescopes are two-mirror telescopes of Newtonian,
+Cassegrain, or Gregorian design. All 3 types have a concave primary.
+The Newtonian has a flat secondary, the Cassegrain a convex secondary,
+and the Gregorian a concave secondary. The Cassegrain is the most
+common for research astronomy; it is more compact than a Gregorian and
+allows for magnification by the secondary. Basic parameters are
+outlined
+\href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/cassegra.htm}
+{\textcolor{blue}{here}}.
+Each of these telescope types defines a \emph{family} of
+telescopes with different first-order performances. From the
+usage/instrumentation point of view, important quantities are: 
+\begin{itemize*}
+    \item the diameter of the primary, which defines the light
+        collecting power
+    \item the scale of the telescope, which is related to the focal
+        length of the primary and the magnification of the secondary:
+        $$ f_{eff} = f_1m  $$
+        (alternatively, the focal ratio of the telescope, which gives
+        the effective focal length with the diameter)
+    \item the back focal distance, which is the distance of the focal
+        plane behind the telescope.
+\end{itemize*}
+From the design point of view, we need to specify:
+\begin{itemize*}
+    \item the radii of curvature of the mirrors
+    \item the separation between the mirrors
+\end{itemize*}
+The relation between the usage and design parameters can be derived
+from simple geometry. First, accept some basic definitions:
+\begin{itemize*}
+    \item ratio of focal lengths, $\rho$:
+        $$ \rho = \frac{R_2}{R_1} = \frac{f_2}{f_1}  $$
+    \item magnification of the secondary, $m$ (be aware that $s_2'$ is
+        negative for a Cassegrain):
+        $$ m = -\frac{s_2'}{s_2} $$
+    \item \emph{back focal distance},
+        the distance from the primary vertex to
+        the focal plane (often expressed in units of the primary focal
+        length, or primary diameter):
+        $$ f_{1}\beta = D\eta  $$
+    \item primary focal ratio, F1:
+        $$ F_{1} = \frac{f_{1}}{D} $$
+    \item ratio of marginal ray heights, k (directly related to
+        separation of mirrors):
+        $$ k = \frac{y_{2}}{y_{1}}  $$
+\end{itemize*}
+Using some geometry, we can derive some basic relations between these
+quantities, in particular:
+    $$ \rho = \frac{mk}{(m-1)}  $$
+and
+    $$ (1+\beta) = k(m+1)  $$
+Usually, $f_1$ is limited by technology/cost. Then choose $m$ to match
+desired scale. $k$ is related to separation of mirrors, and is a
+compromise between making telescope shorter and blocking out more
+light vs. longer and blocking less light; in either case, have to keep
+focal plane behind primary.
+
+One final thing to note is how we focus a Cassegrain telescope. Most
+instruments are placed at a fixed location behind the primary.
+Ideally, this will be at the back focal distance, and everything
+should be set as designed. However, sometimes the instrument may not
+be exactly at the correct back focal distance, or it might move
+slightly because of thermal expansion/contraction. In this case,
+focussing is usually then done by moving the secondary mirror.
+
+The amount of image motion for a given secondary motion is given by: 
+    $$ \frac{d\beta}{dk} = \frac{d}{dk}k(m+1)-1 $$
+Working through the relations above, this gives:
+    $$ \frac{d\beta}{dk} = m^{2}+1  $$
+so the amount of focal plane motion ($f_{1}d\beta$) for a given amount
+of secondary motion ($f_{1}dk$) depends on the magnification of the
+system.
+
+If you move the secondary you change $k$. Since $\rho$ is fixed by the
+mirror shapes, it's also clear that you change the magnification as
+you move the secondary; this is expected since you are changing the
+system focal length, $f = mf_{1}$. So it's possible that a given
+instrument could have a slightly varying scale if its position is not
+perfectly fixed relative to the primary.
+
+Note that even if the instrument is at exactly the back focal
+distance, movement of the secondary is required to account for
+mechanical changing of spacing between the primary and secondary as a
+result of thermal expansion/contraction.
+
+
+%------------------------------------------------------------------%
+\textcolor{magenta}{Monday, March 7, 2016}
+
 \subsubsection*{Definitions for multi-surface system: stops and pupils}
 \subsection*{Aberrations}
 \subsubsection*{Surface requirements for unaberrated images}
@@ -2093,7 +2240,15 @@ systems.
 \subsection*{Physical (diffraction) optics}
 \subsection*{Adaptive optics}
 
-
+% fill in with correct dates
+%------------------------------------------------------------------%
+%\textcolor{magenta}{Monday, March 7, 2016}
+%------------------------------------------------------------------%
+%\textcolor{magenta}{Monday, March 7, 2016}
+%------------------------------------------------------------------%
+%\textcolor{magenta}{Monday, March 7, 2016}
+%------------------------------------------------------------------%
+%\textcolor{magenta}{Monday, March 7, 2016}
 
 
 
