@@ -1965,11 +1965,11 @@ Ways of characterizing the PSF:
 \begin{itemize*}
     \item \emph{encircled energy} as a function of radius,
         or at some specified radius. The encircled energy is just the
-        cumulative integral of the PSF. Encircled energy requirements
+        cumulative integral of the PSF\@. Encircled energy requirements
         are often used for specifying optical tolerances.
     \item Strehl ratio: more commonly used in
         adaptive optics applications \textcolor{myBlue}{not for
-        ``normal observing'')}. The Strehl ratio is
+        ``normal observing''}. The Strehl ratio is
         the ratio between the peak amplitude of the PSF and the peak amplitude
         expected in the presence of diffraction only. With normal atmospheric
         seeing, the Strehl ratio is \emph{very} low. However, the Strehl ratio is
@@ -1979,6 +1979,10 @@ Ways of characterizing the PSF:
         A really good adaptive optics system would have a Strehl ratio
         of about 1/2. Seeing of a big telescope is nowhere close to
         diffraction-limited$\ldots$ fraction of a \%.}
+        From Nancy's solutions: the Strehl ratio is the ratio of the
+        amoutn of light actually delivered by the optical system into
+        the Airy disk to the theoretical maximum at the diffraction limit.
+
 \end{itemize*}
 
 %--------------Part 3--------------------------------------------------%
@@ -2103,7 +2107,7 @@ In other words, the scale, in units of angular motion per physical
 motion in the focal plane, is given by 1/f. For a fixed aperture
 diameter, systems with a small focal ratio (smaller focal length) have
 a larger scale, i.e. more light in a patch of fixed physical size:
-hence, these are ``faster'' systems. 
+hence, these are ``faster'' systems.
 
 \subsection*{Multi-surface systems}
 To combine surfaces, one just takes the image from the first surface
@@ -2125,7 +2129,7 @@ but we have $s_2 = s_1'-d$ (remember we have to use the plane of the
 second surface to measure distances for the second surface).
 
 After some algebra, we find the effective focal length (from center of
-lens): 
+lens):
     $$ P=\frac{1}{f'}=P_{1}+P_{2}-\frac{d}{n}P_{1}P_{2}   $$
     $$ P=\frac{(n-1)}{R_{1}}+\frac{(1-n)}{R_{2}}-\frac{d}{n}
          \frac{(n-1)(1-n)}{R_{1}R_{2}}  $$
@@ -2151,7 +2155,7 @@ outlined
 {\textcolor{blue}{here}}.
 Each of these telescope types defines a \emph{family} of
 telescopes with different first-order performances. From the
-usage/instrumentation point of view, important quantities are: 
+usage/instrumentation point of view, important quantities are:
 \begin{itemize*}
     \item the diameter of the primary, which defines the light
         collecting power
@@ -2206,7 +2210,7 @@ be exactly at the correct back focal distance, or it might move
 slightly because of thermal expansion/contraction. In this case,
 focussing is usually then done by moving the secondary mirror.
 
-The amount of image motion for a given secondary motion is given by: 
+The amount of image motion for a given secondary motion is given by:
     $$ \frac{d\beta}{dk} = \frac{d}{dk}k(m+1)-1 $$
 Working through the relations above, this gives:
     $$ \frac{d\beta}{dk} = m^{2}+1  $$
