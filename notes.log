@@ -1,4 +1,4 @@
-This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2015.11.14)  2 MAR 2016 11:49
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2015.11.14)  8 MAR 2016 21:06
 entering extended mode
  %&-line parsing enabled.
 **notes.tex
@@ -187,28 +187,23 @@ Package: enumitem 2005/05/12 v1.1 Customized lists
 )
 (/usr/share/texmf/tex/latex/mdwtools/mdwlist.sty
 Package: mdwlist 1996/05/02 1.1 Various list-related things
-)
-(/usr/share/texmf/tex/latex/setspace/setspace.sty
-Package: setspace 2000/12/01 6.7 Contributed and Supported LaTeX2e package
-
-Package: `setspace' 6.7 <2000/12/01>
 ) (./notes.aux)
 \openout1 = `notes.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 24.
-LaTeX Font Info:    ... okay on input line 24.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 23.
+LaTeX Font Info:    ... okay on input line 23.
 -------------------- Geometry parameters
 paper: class default
 landscape: --
@@ -248,8 +243,9 @@ driver: pdftex
 
 (1in=72.27pt, 1cm=28.45pt)
 -----------------------
-Package hyperref Info: Link coloring OFF on input line 24.
- (/usr/share/texmf/tex/latex/hyperref/nameref.sty
+Package hyperref Info: Link coloring OFF on input line 23.
+
+(/usr/share/texmf/tex/latex/hyperref/nameref.sty
 Package: nameref 2006/12/27 v2.28 Cross-referencing by name of section
 
 (/usr/share/texmf/tex/latex/oberdiek/refcount.sty
@@ -257,8 +253,8 @@ Package: refcount 2006/02/20 v3.0 Data extraction from references (HO)
 )
 \c@section@level=\count110
 )
-LaTeX Info: Redefining \ref on input line 24.
-LaTeX Info: Redefining \pageref on input line 24.
+LaTeX Info: Redefining \ref on input line 23.
+LaTeX Info: Redefining \pageref on input line 23.
  (./notes.out) (./notes.out)
 \@outlinefile=\write3
 \openout3 = `notes.out'.
@@ -271,48 +267,14 @@ LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
 (Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 38.
  [1
 
-{/usr/share/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4]
-Overfull \hbox (3.12752pt too wide) in paragraph at lines 217--224
-[]\OT1/cmr/m/n/12 There are three main types of mag-ni-tude sys-tems in use in 
-as-tron-omy: STMAG,
- []
-
-[5]
-Underfull \hbox (badness 10000) in paragraph at lines 273--277
+{/usr/share/texmf/fonts/map/pdftex/updmap/pdftex.map}] [2] [3] [4] [5] [6] [7] 
+[8] [9] [10] [11] [12] [13]
+[14] [15] [16] [17]
+Underfull \hbox (badness 10000) in paragraph at lines 870--870
 
  []
 
-
-Underfull \hbox (badness 10000) in paragraph at lines 278--283
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 284--291
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 297--304
-
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 305--309
-
- []
-
-[6] [7] [8] [9]
-Underfull \hbox (badness 10000) in paragraph at lines 494--495
-
- []
-
-[10] [11] [12] [13] [14] [15] [16] [17] [18]
-Underfull \hbox (badness 10000) in paragraph at lines 888--888
-
- []
-
-[19] [20] [21] [22] [23] [24] [25] [26] [27] [28] [29] [30]
+[18] [19] [20] [21] [22] [23] [24] [25] [26] [27] [28] [29] [30]
 
 LaTeX Warning: `h' float specifier changed to `ht'.
 
@@ -321,125 +283,41 @@ LaTeX Warning: `h' float specifier changed to `ht'.
 LaTeX Warning: `h' float specifier changed to `ht'.
 
 [35]
-Overfull \hbox (3.8539pt too wide) in paragraph at lines 1719--1728
+Overfull \hbox (3.8539pt too wide) in paragraph at lines 1716--1725
 []\OT1/cmr/m/n/12 Generally, a per-fect as-tro-nom-i-cal op-ti-cal sys-tem will
  make a per-fect (diffraction-
  []
 
-[36] [37] [38] [39] [40] [41] [42]
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.2006     \item l
-                  enses (refraction)
-? q
-OK, entering \batchmode...
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.2006     \item l
-                  enses (refraction)
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.2006     \item l
-                  enses (refraction)
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.2007     \item m
-                  irrors (reflection)
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.2007     \item m
-                  irrors (reflection)
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.2007     \item m
-                  irrors (reflection)
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
-
-! LaTeX Error: Something's wrong--perhaps a missing \item.
-
-See the LaTeX manual or LaTeX Companion for explanation.
-Type  H <return>  for immediate help.
- ...                                              
-                                                  
-l.2008 \end{itemize*}
-                     
-Try typing  <return>  to proceed.
-If that doesn't work, type  X <return>  to quit.
-
- [43] [44] [45]
-Overfull \hbox (16.10237pt too wide) in paragraph at lines 2145--2158
+[36] [37] [38] [39] [40] [41] [42] [43] [44] [45]
+Overfull \hbox (16.10237pt too wide) in paragraph at lines 2146--2159
 \OT1/cmr/m/n/12 In as-tron-omy, most tele-scopes are two-mirror tele-scopes of 
 New-to-nian, Cassegrain,
  []
 
- [46] [47] [48] [49] (./notes.aux) ) 
+[46] [47] [48] [49] (./notes.aux) ) 
 Here is how much of TeX's memory you used:
- 3963 strings out of 256214
- 52362 string characters out of 1916999
- 118948 words of memory out of 1500000
- 7136 multiletter control sequences out of 10000+200000
+ 3933 strings out of 256214
+ 51831 string characters out of 1916999
+ 117535 words of memory out of 1500000
+ 7107 multiletter control sequences out of 10000+200000
  11108 words of font info for 40 fonts, out of 1200000 for 2000
  645 hyphenation exceptions out of 8191
  27i,11n,35p,222b,435s stack positions out of 5000i,500n,6000p,200000b,15000s
-</usr/share/texmf/fonts/type1/bluesky/cm/cm
-bx12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmbxti10.pfb></usr/share/texm
-f/fonts/type1/bluesky/cm/cmex10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cm
-mi12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi6.pfb></usr/share/texmf/f
-onts/type1/bluesky/cm/cmmi8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr10.
-pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr12.pfb></usr/share/texmf/fonts/
-type1/bluesky/cm/cmr17.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr6.pfb></
-usr/share/texmf/fonts/type1/bluesky/cm/cmr8.pfb></usr/share/texmf/fonts/type1/b
-luesky/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy6.pfb></usr/s
-hare/texmf/fonts/type1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/blues
-ky/cm/cmti12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt12.pfb></usr/shar
-e/texmf/fonts/type1/public/cmex/fmex8.pfb>
-Output written on notes.pdf (49 pages, 271084 bytes).
+</usr/share/texmf/fonts/type1/bluesky/cm/cmb
+x12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmbxti10.pfb></usr/share/texmf
+/fonts/type1/bluesky/cm/cmex10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmm
+i12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi6.pfb></usr/share/texmf/fo
+nts/type1/bluesky/cm/cmmi8.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr10.p
+fb></usr/share/texmf/fonts/type1/bluesky/cm/cmr12.pfb></usr/share/texmf/fonts/t
+ype1/bluesky/cm/cmr17.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmr6.pfb></u
+sr/share/texmf/fonts/type1/bluesky/cm/cmr8.pfb></usr/share/texmf/fonts/type1/bl
+uesky/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy6.pfb></usr/sh
+are/texmf/fonts/type1/bluesky/cm/cmsy8.pfb></usr/share/texmf/fonts/type1/bluesk
+y/cm/cmti12.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmtt12.pfb></usr/share
+/texmf/fonts/type1/public/cmex/fmex8.pfb>
+Output written on notes.pdf (49 pages, 275518 bytes).
 PDF statistics:
- 370 PDF objects out of 1000 (max. 8388607)
- 95 named destinations out of 1000 (max. 131072)
+ 373 PDF objects out of 1000 (max. 8388607)
+ 98 named destinations out of 1000 (max. 131072)
  17 words of extra memory for PDF output out of 10000 (max. 10000000)
 
