@@ -1,6 +1,7 @@
 \documentclass[12pt]{article}
 %\usepackage[margin=0.25in]{geometry}
 \usepackage[margin=1.5in]{geometry}
+\usepackage{graphicx}
 \usepackage{color}
 \usepackage{xcolor}
 \usepackage{hyperref}
@@ -162,7 +163,7 @@ Terminology of measurements:
 In general:
 \begin{itemize*}
     \item photometry: measure \emph{flux}
-    \item spectroscopy: flux \emph{density} (per unit wavelength, 
+    \item spectroscopy: flux \emph{density} (per unit wavelength,
         down to the resolution of the spectrograph)
 \end{itemize*}
 
@@ -261,7 +262,7 @@ defined relative to $F_{\nu}$. The reference flux is given by
 $$ F_{0,\nu} = 3.63 \times 10^{-20}\ \textrm{erg\ s}^{-1}\
     \textrm{cm}^{-2}\ \textrm{Hz}^{-1} = F_{\nu,Vega} $$
 or
-$$     m_{\textrm{ABNU}} = -2.5 \log F_{\nu} - 48.6 $$ 
+$$     m_{\textrm{ABNU}} = -2.5 \log F_{\nu} - 48.6 $$
 for $F_{\nu}$ in \textcolor{red}{cgs units}.
 
 Magnitudes usually refer to the \emph{integrated} flux (over a
@@ -529,7 +530,7 @@ critical in all sciences, and maybe even more so in astronomy, where
 objects are faint, photons are scarce, and errors are not at all
 insignificant. The count equation provides the basis for
 \textbf\emph{exposure time calculator} (ETC) programs,
-because it gives $N_{\textrm{photons}}(t)$. 
+because it gives $N_{\textrm{photons}}(t)$.
 As we will see shortly, this provides the information we need to
 calculate the \emph{uncertainty} in the measurement
 as a function of exposure time.
@@ -2018,48 +2019,55 @@ angles of incidence relative to the normal to the surface. For
 reflection:
     $$ i' = -i $$
 An optical element takes a source at $s$ and makes an image at $s'$.
-The source \textcolor{myBlue}{(actually, the image$\ldots$ the source
-better be real!)} can be \emph{real} or \emph{virtual}.
+The image can be \emph{real} or \emph{virtual}.
 A real image exists at some point in
 space; a virtual image is formed where light rays apparently emanate
 from or converge to, but at a location where no light actually
 appears. For example, in a Cassegrain telescope, the image formed by
 the primary is virtual, because the secondary intercepts the light and
-redirects it before light gets to the focus of the primary.
+redirects it before light gets to the focus of the primary
+(see figure \ref{cassegrain}).
+\begin{figure}[h]
+    \centering
+    \includegraphics{cassegrain.png}
+    \caption{Diagram showing the optical arrangement of the Cassegrain.}
+    \label{cassegrain}
+\end{figure}
 
 The image will not necessarily be a perfect image: all rays regardless
-of height at the surface, $y$, might not cross at the same point. This
+of height at the surface (the lens or mirror),
+$y$, might not cross at the same point. This
 is the subject of aberrations, which we will get into in a while. For
-a ``smooth" surface, the amount of aberration will depend on how much
+a ``smooth'' surface, the amount of aberration will depend on how much
 the different rays differ in $y$, which depends on the shape of the
-surface. We define \emph{paraxial} and \emph{marginal} rays,
-as rays near the center
-of the aperture and those on the edge of the aperture, respectively.
-We define the
-\emph{chief} ray as the ray that passes through the center of the aperture.
+surface. We define:
+\begin{itemize*}
+    \item \emph{paraxial} rays are near the center of the aperture.
+    \item \emph{marginal} rays are on the edge of the aperture.
+    \item the \emph{chief} ray passes through the center of the aperture.
+\end{itemize*}
 To define nominal (unaberrated) quantities, we consider the
-\emph{paraxial}
-regime, i.e.\ a small region near the optical axis, surrounding the
+\emph{paraxial regime}, a small region near the optical axis surrounding the
 chief ray. In this regime, all angles are small, aberrations vanish,
-and a surface can be wholly specified by its radius of curvature $R$.
+and a surface can be wholly specified by its radius of curvature, $R$.
 
-The \emph{field angle} gives the angle formed between the chief ray from an
+The \emph{field angle} (FA) gives the angle formed between the chief ray from an
 object and the z-axis. Note that paraxial does not necessarily mean a
 field angle of zero; one can have an object at a field angle and
 still consider the paraxial approximation.
 
-Note also that for the time being, we are ignoring \emph{diffraction}. But
-we'll get back to that too. We are considering \emph{geometric} optics,
-which is what you get from diffraction as wavelength tends to 0. For
-nonzero wavelength, geometric optics applies as scales
-$x>\sim\lambda$.
+For the time being, we are ignoring \emph{diffraction}
+and considering \emph{geometric} optics,
+(what you get from diffraction as wavelength tends to 0).
+For nonzero wavelength, geometric optics applies as scales
+$x$ $>$ $\sim\lambda$.
 
-We can derive the basic relation between object and image location as
-a function of a surface where the index of refraction changes
-(Schroeder, chapter 2).
-    $$  \frac{n'}{s'}-\frac{n}{s} = \frac{(n'-n)}{R}  $$
+We can derive the basic relation between the object location at $s$ and
+the image location at $s'$ as a function of a surface where the index of
+refraction changes (Schroeder, chapter 2).
+$$  \frac{n'}{s'}-\frac{n}{s} = \frac{(n'-n)}{R}  $$
 The points at $s$ and $s'$ are called \emph{conjugate}. If either $s$
-or $s'$ is at infinity (true for astronomical sources for $s$), the
+or $s'$ is at infinity (true for astronomical sources at $s$), the
 other distance is defined as the \emph{focal length}, $f$, of the
 optical element. For $s=\infty$, $f=s'$.
 
@@ -2073,53 +2081,54 @@ This shows that the focal length for a mirror is given by $R/2$.
 
 Note that one can treat reflection by considering refraction with
 $n' = -n$, and get the same result:
-    $$  \frac{n'}{s'}+\frac{n'}{s} = \frac{(n'+n')}{R}  $$
-Given the focal length, we define the \emph{focal ratio} to be the focal
-length divided by the aperture diameter. The focal ratio is also
-called the \emph{F-number} and is denoted by the abbreviation $f /$.
-Note $f /10$
-means a focal ratio of ten; $f$ is not a variable in this. The focal
-ratio gives the beam ``width''; systems with a small focal ratio have
-a short focal length compared with the diameter and hence the imcoming
+$$  \frac{n'}{s'}+\frac{n'}{s} = \frac{(n'+n')}{R}  $$
+The \emph{focal ratio} (or \emph{F-number}) is defined as
+$$ f/ = \frac{f}{A}$$
+where A is the aperture diameter and $f/$ denotes the focal ratio.
+(Note that, for example, $f /10$ means a focal ratio of 10;
+$f$ is not some variable being divided by 10).
+The focal ratio gives the beam ``width''; systems with a small focal ratio
+have a short focal length compared with $A$, and hence the imcoming
 beam to the image is wide. Systems with small focal ratios are called
-``fast'' systems; systems with large focal ratios are called ``slow''
-systems.
-
-
+``fast'' systems; systems with large focal ratios are called ``slow'' systems.
 %--------------------------------------------------------------------%
 \textcolor{magenta}{Wednesday, March 2}
 
 The \emph{magnification} of a system gives the ratio of the image height to
 the object height:
     $$  \frac{h'}{h} = \frac{s'-R}{s-R} = \frac{ns'}{n's}    $$
-The magnification is negative for this case, because object is
-flipped. The magnification also negative for reflection: n' = - n.
-Magnification is an important quantity for multi-element systems.
+The magnification is negative for inverted images, and also for
+reflection (n' = - n).
+Magnification is an important quantity for \emph{multi-element} systems.
 
-We define the scale as the motion of image for given incident angle of
-parallel beam from infinity. From a consideration of the chief rays
+The \emph{plate scale} is defined as the
+``motion'' of an image for a given incident angle
+of parallel beam from infinity.
+From a consideration of the chief rays
 for objects on-axis and at field angle $ \alpha$, we get:
-    $$ \tan{\alpha} \approx \alpha = \frac{x}{f}  $$
- or
-    $$ \textrm{scale} \equiv \frac{\alpha}{x} = \frac{1}{f}  $$
+$$ \tan{\alpha} \approx \alpha = \frac{x}{f}  $$
+or
+$$ \textrm{scale} \equiv \frac{\alpha}{x} = \frac{1}{f}  $$
 In other words, the scale, in units of angular motion per physical
 motion in the focal plane, is given by 1/f. For a fixed aperture
 diameter, systems with a small focal ratio (smaller focal length) have
-a larger scale, i.e. more light in a patch of fixed physical size:
+a larger scale, i.e.\ more light in a patch of fixed physical size:
 hence, these are ``faster'' systems.
 
 \subsection*{Multi-surface systems}
-To combine surfaces, one just takes the image from the first surface
-as the source for the second surface, etc., for each surface. We can
-generally describe the basic parameters of multi-surface systems by
-equivalent single-surface parameters, e.g. you can define an effective
-focal length of a multi-surface system as the focal length of some
-equivalent single-surface system. The effective focal length is the
+To combine surfaces, the image from the first surface becomes the
+source for the second surface, and so on for each surface in the system.
+The basic parameters of multi-surface systems can generally be described by
+equivalent single-surface parameters.
+For example, the effective focal length of a multi-surface system
+can be defined as the focal length of some
+equivalent single-surface system.
+The \emph{effective} focal length is the
 focal length of the first element multiplied by the magnification of
 each subsequent element. The two systems (single and multi) are
 equivalent in the paraxial approximation ONLY\@.
 
-\subsubsection*{a lens (has two surfaces)}
+\subsubsection*{The two-surface lens}
 Consider a lens in air ($n \sim 1$). The first surface gives:
     $$ \frac{n}{s_1'}-\frac{1}{s_1} = \frac{n-1}{R_1}=P_1  $$
 The second surface gives:
@@ -2138,8 +2147,8 @@ From this, we derive the \emph{thin lens} formula:
     $$ \frac{1}{f'} = \frac{1}{f_{1}} + \frac{1}{f_{2}}   $$
 
 \subsubsection*{plane-parallel plate}
-Zero power, but moves image laterally: $\Delta =
-d\left[1-(1/n)\right]$.
+Zero power, but moves image laterally:
+$$\Delta = d\left[1-\left(\frac{1}{n}\right)\right]$$
 Application to filters: variation of focus.
 
 \subsubsection*{Two-mirror telescopes}
@@ -2172,7 +2181,7 @@ From the design point of view, we need to specify:
     \item the separation between the mirrors
 \end{itemize*}
 The relation between the usage and design parameters can be derived
-from simple geometry. First, accept some basic definitions:
+from simple geometry. Some basic definitions:
 \begin{itemize*}
     \item ratio of focal lengths, $\rho$:
         $$ \rho = \frac{R_2}{R_1} = \frac{f_2}{f_1}  $$
@@ -2184,9 +2193,9 @@ from simple geometry. First, accept some basic definitions:
         the focal plane (often expressed in units of the primary focal
         length, or primary diameter):
         $$ f_{1}\beta = D\eta  $$
-    \item primary focal ratio, F1:
+    \item primary focal ratio, $F1$:
         $$ F_{1} = \frac{f_{1}}{D} $$
-    \item ratio of marginal ray heights, k (directly related to
+    \item ratio of marginal ray heights, $k$ (directly related to
         separation of mirrors):
         $$ k = \frac{y_{2}}{y_{1}}  $$
 \end{itemize*}
@@ -2198,8 +2207,8 @@ and
 Usually, $f_1$ is limited by technology/cost. Then choose $m$ to match
 desired scale. $k$ is related to separation of mirrors, and is a
 compromise between making telescope shorter and blocking out more
-light vs. longer and blocking less light; in either case, have to keep
-focal plane behind primary.
+light vs.\ longer and blocking less light; in either case,
+the focal plane has to be kept behind the primary.
 
 One final thing to note is how we focus a Cassegrain telescope. Most
 instruments are placed at a fixed location behind the primary.
@@ -2229,37 +2238,162 @@ distance, movement of the secondary is required to account for
 mechanical changing of spacing between the primary and secondary as a
 result of thermal expansion/contraction.
 
-
 %------------------------------------------------------------------%
-\textcolor{magenta}{Monday, March 7, 2016}
-
 \subsubsection*{Definitions for multi-surface system: stops and pupils}
+\textcolor{magenta}{Monday, March 7, 2016}
+\begin{itemize*}
+    \item aperture stop: determines the amount of light reaching an
+        image (usually the primary mirror).
+    \item field stop: determines the angular size of the field. This
+        is usually the detector, but for a large enough detector, it
+        could be the secondary.
+    \item pupil: location where rays from all fiel angles fill the
+        same aperture.
+    \item entrance pupil: image of aperture stop as seen from source
+        object (usually the primary).
+    \item exit pupil: image of aperture stop formed by all subsequent
+        optical elements.
+\end{itemize*}
+In a two-mirror telescope, the location of the exit pupil is where the
+image of the primary is formed by the secondary. This can be calculated
+using $s=d$ as the object distance (where $d$ is the separation of the
+mirrors), then with the reflection equation, we can solve for $s'$
+which gives the location of the exit pupil relative to the secondary
+mirror. If one defines the quantity $\delta$, such that $f_1 \delta$
+is the distance between the exit pupil and the focal plane,
+then (algebra not shown):
+$$ \delta = \frac{m^{2}k}{m+k-1} = \frac{m^{2}(1+\beta)}{m^{2}+\beta} $$
+This pupil is generallynot accessible, so if one needs access to a pupil,
+additional optics are used.
+
+The exit pupil is an important concept. When we discuss aberrations, it is
+the total wavefront error at the exit pupil which gives the system aberration.
+Pupils are important for aberration compensation. They can also be used to
+put light at a location that is independent of pointing errors.
 \subsection*{Aberrations}
 \subsubsection*{Surface requirements for unaberrated images}
-\subsubsection*{Aberrations: gneeral description and low-order aberrations}
+Next we consider non-paraxial rays. We first consider what surface is
+required to make an unaberrated image.
+
+We can derive the surface using Fermat's principle. Fermat's principle
+states that light travels in the path such that infinitessimally small
+variations in the path doesn't change the travel time to first order:
+%{\Large$\frac{\textrm{d}t}{\textrm{d}l}$}
+$\textrm{d}t/\textrm{d}l$
+is a minimum.
+For a single surface, this reduces to
+the statement that light travels the path which takes the least time.
+An alternate way of stating Fermat's principle is that the \emph{optical path
+length} is unchanged to first order for a small change in path. The OPL
+is given by:
+$$ OPL = \int{c\textrm{d}t} = \int{\frac{c}{v}v\textrm{d}t} = \int{n\textrm{d}s}$$
+Fermat's principle has a physical interpretation when one considers the
+wave nature of light. It is clear that around a stationary point of the
+optical path light, the maximum amount of light can be accumulated over
+different paths with a minimum of destructive interference. By the wave
+theory, light travels over all possible paths, but the light coming over
+the ``wrong'' paths destructively interferes, and only the light coming over
+the ``right'' path constructively interferes.
+
+Fermat's principle can be used to derive the basic laws of reflection
+and refraction (Snell's law).
+
+Now consider a perfect imaging system that takes all rays from an object
+and makes them all converge to an object. Since Fermat's principle says
+the only paths taken will be those for which the OPL is minimally changed
+for small changes in path, the only way a perfect image will be formed is
+when all optical path lengths along a surface between an image and object
+point are the same - otherwise the light doesn't get to this point.
+
+Instead of using Fermat's principle, we could solve for the parameters
+of a perfect surface using analytic geometry, but this would require an
+inspired guess for the correct functional form of the surface.
+
+We find that the perfect surface depends on the situation: whether the
+light comes from a source at finite or infinite distance, and whether
+the mirror is concave or convex. We consider the various cases now,
+quoting the results without actually doing the geometry. In all cases,
+consider the z-axis to be the optical axis, with the y-axis running
+perpendicular. We want to know the shape of the surface, $y(z)$, that gives
+a perfect image.
+
+\textbf{\emph{Concave mirror with one conjugate at infinity}}
+
+Sample application: primary mirror of telescope looking at stars.
+
+Fermat's principle gives:
+$$ y^{2} = 2R_{z} $$
+where $R = 2f$, the radius of curvature at the mirror vertex. This equation
+is that of a parabola. Note, however, that a prabola makes a perfect image
+only for on-axis images (field angle = 0).
+
+\textbf{\emph{Concave mirror with both conjugates at finite distances}}
+
+Sample application: Gregorian secondary looking at image formed by primary.
+
+For a concave mirror with both conjugates finite, we get an ellipse.
+Again, this is perfect only for field angle = 0.
+$$ \frac{(z-a)^2}{a^2} + \frac{y^2}{b^2} = 1 $$
+$$ y^2 - \frac{2zb^2}{a} + \frac{z^2b^2}{a^2} = 0 $$
+where
+$$ a = \frac{s+s'}{2} $$
+$$ b = \sqrt{(ss')} $$
+$$ R = \frac{ss'}{s+s'} = \frac{2b^2}{a} $$
+
+\textbf{\emph{Convex mirror with both conjugates at finite distance}}
+
+Sample application: Cassegrain secondary looking at image formed by primary.
+
+For a convex mirror with both conjugates finite, we get a hyperbola:
+$$ \frac{(z-a)^2}{a^2} - \frac{y^2}{b^2} = 1 $$
+$$ y^2 + \frac{2zb^2}{a} - \frac{z^2b^2}{a^2} = 0 $$
+where
+$$ a = \frac{s+s'}{2} $$
+$$ b^2 = \sqrt{(-ss')} $$
+($s$ is negative)
+$$ R = -\frac{2b^2}{a} $$
+
+\textbf{\emph{Convex mirror with one conjugate at infinity}}
+
+For a convex mirror with one conjugate at infinity, we get a parabola.
+
+\textbf{\emph{2D to 3D}}
+
+Note that in all cases we've considered a one-dimension surface. We can
+generalize to 2D surfaces by rotating around the z-axis; for the equations,
+simply replace $y^2$ with $(x^2 + y^2)$.
+
+\textbf{\emph{Conic sections}}
+
+As you may recall from analytic geometry, all of these figures are
+\emph{conic sections}, and it is possible to describe all of these figures with a
+single equation:
+$$ \rho^2 - 2R_z + (1+K)z^2 = 0 $$
+where $ \rho^2 = x^2 + y^2 $
+and $R$ is the radius of curvature at the mirror vertex,
+$K$ is called the conic constant ($K = -e^2$, where $e$ is the eccentricity for
+an ellipse, $e(b, a)$).
+\begin{itemize*}
+    \item $K > 0$ gives a prolate ellipsoid
+    \item $K = 0$ gives a sphere
+    \item $-1 < K < 0$ gives an oblate ellipsoid
+    \item $K = - 1$ gives a paraboloid
+    \item $K < - 1$ gives a hyperboloid
+\end{itemize*}
+
+%------------------------------------------------------------------%
+\subsubsection*{Aberrations: general description and low-order aberrations}
+\textcolor{magenta}{Monday, March 7, 2016}
+
+
+
 \subsubsection*{Aberration compensation and different telescope types}
 \subsection*{Sources of aberrations}
 \subsection*{Ray tracing}
 \subsection*{Physical (diffraction) optics}
 \subsection*{Adaptive optics}
 
-% fill in with correct dates
 %------------------------------------------------------------------%
-%\textcolor{magenta}{Monday, March 7, 2016}
-%------------------------------------------------------------------%
-%\textcolor{magenta}{Monday, March 7, 2016}
-%------------------------------------------------------------------%
-%\textcolor{magenta}{Monday, March 7, 2016}
-%------------------------------------------------------------------%
-%\textcolor{magenta}{Monday, March 7, 2016}
-
-
-
-
-
-
-
-
 
 
 
