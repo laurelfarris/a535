@@ -414,79 +414,13 @@ tools to be able to explore data.
             \item \texttt{var.<tab>} gives information on variable
                 attributes and methods.
         \end{itemize*}
-    \item Python as a language
-        \begin{itemize*}
-            \item conditionals via if/elif/else
-            \item looping via for, while
-        \end{itemize*}
 \end{itemize*}
 
 \subsubsection{File I/O with astropy}
-\begin{itemize*}
-    \item FITS: header/data, data types, HDUList, etc.
-        \begin{itemize*}
-            \item \texttt{from astropy.io import fits}
-            \item \texttt{hd=fits.open(\emph{filename})}
-                returns HDULIST
-            \item \texttt{hd[0].data} is data from initial HDU
-            \item \texttt{hd[0].header} is header from initial HDU
-        \end{itemize*}
-    \item ASCII:
-        \begin{itemize*}
-            \item \texttt{from astropy.io import ascii}
-            \item \texttt{a=ascii.read(\emph{filename})} returns Table with columns.
-        \end{itemize*}
-\end{itemize*}
-
 \subsubsection{Image statistics}
-\begin{itemize*}
-    \item numpy array methods; e.g.:
-        \begin{itemize*}
-            \item \texttt{data.sum()}: total
-            \item \texttt{data.mean()}: mean
-            \item \texttt{data.std()}: standard deviation
-        \end{itemize*}
-    \item subsections: data[y1:y2,x1:x2]
-\end{itemize*}
-
 \subsubsection{Image display}
-\begin{itemize*}
-    \item primitive display via imshow
-        \begin{itemize*}
-            \item plt.imshow(hd[0].data,vmin=min,vmax=max)
-        \end{itemize*}
-    \item display using pyds9,
-        \begin{itemize*}
-            \item from pyds9 import *
-            \item d=DS9() (opens a DS9 window, associates with object d)
-            \item d.set("fits filename") (display from file)
-            \item d.set\_pyfits(hd) (display from HDULIST)
-            \item d.set\_np2arr(hd[0].data) (display from numpy array)
-            \item d.set("scale limits 400 500") (sets display range)
-            \item command list
-        \end{itemize*}
-    \item display with tv
-        \begin{itemize*}
-            \item import os
-            \item os.environ["PYTHONPATH"] = /home/holtz/python
-            \item from tv.tv import *
-            \item t=TV()
-            \item t.tv(hd[0],min=400,max=500)
-            \item t.tv(hd[0].data)
-            \item zoom, pan, colorbar
-            \item blinking image buffers with +/-
-        \end{itemize*}
-\end{itemize*}
-
 \subsubsection{Plotting}
-\begin{itemize*}
-    \item \texttt{plt.figure}
-    \item \texttt{plt.plot(hd[0].data[:,100])} for a plot along column 100
-    \item \texttt{plt.plot(hd[0].data[500,:])} for a plot along row 500
-\end{itemize*}
-
 \subsubsection{Histogram}
-\texttt{plt.hist(data.flatten(),[bins=n],[bins=np.arange(min,max,delta)],
-[log=True])}
 
 \end{document}
+

@@ -1,0 +1,8 @@
+\BOOKMARK [1][-]{section.1}{Astronomical image processing: Introduction and basics}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Getting started with Python}{section.1}% 2
+\BOOKMARK [3][-]{subsubsection.1.1.1}{Basics}{subsection.1.1}% 3
+\BOOKMARK [3][-]{subsubsection.1.1.2}{File I/O with astropy}{subsection.1.1}% 4
+\BOOKMARK [3][-]{subsubsection.1.1.3}{Image statistics}{subsection.1.1}% 5
+\BOOKMARK [3][-]{subsubsection.1.1.4}{Image display}{subsection.1.1}% 6
+\BOOKMARK [3][-]{subsubsection.1.1.5}{Plotting}{subsection.1.1}% 7
+\BOOKMARK [3][-]{subsubsection.1.1.6}{Histogram}{subsection.1.1}% 8
