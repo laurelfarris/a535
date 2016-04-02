@@ -1,6 +1,6 @@
 \documentclass[12pt]{article}
 %\usepackage[margin=0.25in]{geometry}
-\usepackage[margin=1.5in]{geometry}
+\usepackage[margin=1.0in]{geometry}
 \usepackage{graphicx}
 \usepackage{color}
 \usepackage{xcolor}
@@ -2072,7 +2072,7 @@ other distance is defined as the \emph{focal length}, $f$, of the
 optical element. For $s=\infty$, $f=s'$.
 
 We can define the quantity on the right side of the equation, which
-depends only the the surface parameters (not the image or object
+depends only on the surface parameters (not the image or object
 locations), as the \emph{power}, $P$, of the surface:
     $$ P \equiv \frac{(n'-n)}{R} = \frac{n'}{f'} = \frac{n}{f} $$
 We can make a similar derivation for the case of reflection:
@@ -2098,7 +2098,7 @@ The \emph{magnification} of a system gives the ratio of the image height to
 the object height:
     $$  \frac{h'}{h} = \frac{s'-R}{s-R} = \frac{ns'}{n's}    $$
 The magnification is negative for inverted images, and also for
-reflection (n' = - n).
+reflection ($n' = -n$).
 Magnification is an important quantity for \emph{multi-element} systems.
 
 The \emph{plate scale} is defined as the
@@ -2110,7 +2110,7 @@ $$ \tan{\alpha} \approx \alpha = \frac{x}{f}  $$
 or
 $$ \textrm{scale} \equiv \frac{\alpha}{x} = \frac{1}{f}  $$
 In other words, the scale, in units of angular motion per physical
-motion in the focal plane, is given by 1/f. For a fixed aperture
+motion in the focal plane, is given by $1/f$. For a fixed aperture
 diameter, systems with a small focal ratio (smaller focal length) have
 a larger scale, i.e.\ more light in a patch of fixed physical size:
 hence, these are ``faster'' systems.
@@ -2138,10 +2138,13 @@ second surface to measure distances for the second surface).
 
 After some algebra, we find the effective focal length (from center of
 lens):
+
     $$ P=\frac{1}{f'}=P_{1}+P_{2}-\frac{d}{n}P_{1}P_{2}   $$
     $$ P=\frac{(n-1)}{R_{1}}+\frac{(1-n)}{R_{2}}-\frac{d}{n}
          \frac{(n-1)(1-n)}{R_{1}R_{2}}  $$
+
 From this, we derive the \emph{thin lens} formula:
+
     $$ P=\frac{1}{f'} = \frac{(n-1)}{R_{1}}+\frac{(1-n)}{R_{2}}
          = (n-1)\left( \frac{1}{R_1} - \frac{1}{R_2}\right)  $$
     $$ \frac{1}{f'} = \frac{1}{f_{1}} + \frac{1}{f_{2}}   $$
@@ -2247,7 +2250,7 @@ result of thermal expansion/contraction.
     \item field stop: determines the angular size of the field. This
         is usually the detector, but for a large enough detector, it
         could be the secondary.
-    \item pupil: location where rays from all fiel angles fill the
+    \item pupil: location where rays from all field angles fill the
         same aperture.
     \item entrance pupil: image of aperture stop as seen from source
         object (usually the primary).
@@ -2263,8 +2266,8 @@ mirror. If one defines the quantity $\delta$, such that $f_1 \delta$
 is the distance between the exit pupil and the focal plane,
 then (algebra not shown):
 $$ \delta = \frac{m^{2}k}{m+k-1} = \frac{m^{2}(1+\beta)}{m^{2}+\beta} $$
-This pupil is generallynot accessible, so if one needs access to a pupil,
-additional optics are used.
+This pupil is generally not accessible, so if one needs access to a pupil,
+additional optics are use.
 
 The exit pupil is an important concept. When we discuss aberrations, it is
 the total wavefront error at the exit pupil which gives the system aberration.
@@ -2385,15 +2388,15 @@ an ellipse, $e(b, a)$).
 \subsubsection*{Aberrations: general description and low-order aberrations}
 \textcolor{magenta}{?, March ?, 2016}
 
-Now consider what happens for surfaces that are not perfect, e.g. for 
-the cases considered above for $FA\neq 0$ (since only a sphere 
-is symmetric for all field angles), or for field angle 0 for a conic 
+Now consider what happens for surfaces that are not perfect, e.g. for
+the cases considered above for $FA\neq 0$ (since only a sphere
+is symmetric for all field angles), or for field angle 0 for a conic
 surface which doesn't give a perfect image?
 
-You get \emph{aberrations}; the light from all locations in the aperture 
+You get \emph{aberrations}; the light from all locations in the aperture
 does not land at any common point.
 
-One can consider aberrations in either of two ways: 
+One can consider aberrations in either of two ways:
 \begin{itemize*}
     \item All rays don't land at a common point.
     \item Wavefront deviates from a spherical wavefront.
@@ -2404,7 +2407,7 @@ rays miss the paraxial focus, or the \emph{angular} aberration, which is the
 angle by which the rays deviate from the perfect ray which will hit
 paraxial focus. For the latter, one discusses the wavefront error,
 i.e., the deviation of the wavefront from a spherical wavefront as a
-function of location in the exit pupil. 
+function of location in the exit pupil.
 
 In general, the angular and transverse aberrations can be determined
 from the optical path difference between a given ray and that of a
@@ -2415,7 +2418,7 @@ $$ \textrm{transverse aberration}
 = s'\frac{\textrm{d}\Delta z}{\textrm{d}\rho}$$
 If the aberrations are not symmetric in the pupil, then
 define angular and transverse $x$ and $y$ aberrations separately by taking
-derivatives with respect to $x$ or $y$ instead of $\rho$. 
+derivatives with respect to $x$ or $y$ instead of $\rho$.
 
 \textbf{\emph{Spherical aberration}}
 
@@ -2423,7 +2426,7 @@ First, consider the axisymmetric case of looking at an object on axis
 (field angle equal zero) with an optical element that is a conic
 section. We can consider where rays land as $f(\rho)$, and derive
 the effective focal length, $f_e(\rho)$, for an arbitrary conic
-section: 
+section:
 %\begin{figure}
 %    \includegraphics{spherical_ab.png}
 %\end{figure}
@@ -2431,13 +2434,13 @@ $$ z_0 = \frac{\rho}{\tan(2\phi)} = \frac{\rho(1-(\tan\phi)^2)}{2\tan\phi}$$
 $$ \tan\phi = \frac{\textrm{d}z}{\textrm{d}\rho} $$
 from conic sections: \textcolor{red}{$\ldots$ a crapload of equations.}
 
-Note that $f_e$ is independent of $z$ only for $K=-1$, a parabola. 
+Note that $f_e$ is independent of $z$ only for $K=-1$, a parabola.
 Also note that $\Delta f$ is symmetric with respect to $\rho$.
 
-We define spherical aberration as the aberration resulting from 
+We define spherical aberration as the aberration resulting from
 $K\ne -1$. Rays from different radial positions in the entrance
 aperture focus at different locations. It is an aberration which is
-present on axis as seen 
+present on axis as seen
 \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/spher.htm}
 {\textcolor{blue}{here}}. Spherical aberration is symmetric in
 the pupil. There is no location in space where all rays focus at a
@@ -2449,20 +2452,20 @@ confusion.
 
 The asymmetric nature of spherical aberration as a function of focal
 position distinguishes it from other aberrations and is a useful
-diagnostic for whether a system has this aberration. This is shown in this 
+diagnostic for whether a system has this aberration. This is shown in this
 %\href{}
 \textcolor{blue}{figure} which shows a sequence of images at different focal
 positions in the presence of spherical aberration. We define
 \emph{transverse spherical aberration} (TSA) as the image size at paraxial
-focus. This is not the location of the minimum image size. 
+focus. This is not the location of the minimum image size.
 %\begin{figure}...
 
 $$ \frac{\textrm{TSA}}{\Delta f} = \frac{\rho}{f-z(\rho)} $$
-$$ \textrm{TSA} = 1(1+K)\frac{\rho^3}{2R^2} - 
+$$ \textrm{TSA} = 1(1+K)\frac{\rho^3}{2R^2} -
     3(1+K)(3+K)\frac{\rho^5}{8R^4} + \ldots $$
 The difference in angle between the ``perfect'' ray from the parabola
 and the actual ray is called the \emph{angular aberration}, in this case
-\emph{angular spherical aberration} (ASA). 
+\emph{angular spherical aberration} (ASA).
 %\begin{figure}...
 $$ \textrm{ASA} = 2(\phi_{P}-\phi) \approx \frac{d}{d\rho}(2\Delta z)
     \approx -(1+K)\frac{\rho^3}{R^3} $$
@@ -2480,11 +2483,11 @@ This result can be generalized to any sort of aberration: the angular
 and transverse aberrations can be determined from the optical path
 difference between a given ray and that of a spherical wavefront. The
 relations are given by:
-$$ \textrm{angular aberration} = \frac{d(2\Delta z)}{d\rho} $$
-$$ \textrm{transverse aberration} = s'\frac{d(2\Delta z)}{d\rho} $$
+$$ \textrm{angular aberration} = \frac{\textrm{d}(2\Delta z)}{d\rho} $$
+$$ \textrm{transverse aberration} = s'\frac{\textrm{d}(2\Delta z)}{d\rho} $$
 If the aberrations are not symmetric in the pupil, then we could
 define angular and transverse $x$ and $y$ aberrations separation by taking
-derivatives with respect to $x$ or $y$ instead of$ \rho$. 
+derivatives with respect to $x$ or $y$ instead of $\rho$.
 
 \textbf{\emph{General aberration description}}
 
@@ -2492,7 +2495,7 @@ We can describe deviations from a spherical wavefront generally. Since
 all we care about are optical path differences, we write an expression
 for the optical path difference between an arbitrary ray and the chief
 ray, and in doing this, we can also include the possibility of an
-off-axis image, and get 
+off-axis image, and get
 $$ OPD = OPL - OPL(chiefray) $$
 $$ OPD = A_0y + A_1y^2 + A_1'x^2 + A_2y^3 + A_2'x^2y + A_3\rho^4 $$
 where we've kept terms only to fourth order and chosen our coordinate
@@ -2508,19 +2511,25 @@ Analytically, people generally restrict themselves to talking about
 difference, because of the derivative we take to get transverse or
 angular aberrations. In the third-order limit, one finds that
 $A2 = A2'$, and $A1 = -A1'$. Working
-out the geometry, we find for a mirror that: 
+out the geometry, we find for a mirror that:
 \textcolor{red}{Craploads more equations.}
+
+$$ A_0 = 0 $$
+$$ A_1 = \frac{n\theta^2}{R} $$
+$$ A_2 = -\frac{n\theta}{R^2}\left(\frac{m+1}{m-1}\right) $$
+$$ A_3 = \frac{n}{4R^3}\left[K+\left(\frac{M+1}{M-1}\right)^2 \right] $$
 
 From the general expression, we can derive the angular or the
 transverse aberrations in either the $x$ or $y$ direction. Considering the
 aberrations in the two separate directions, we find:
-$$ bleh $$
-$$ bleh $$
+
+$$ AA_y = 2A_1y + A_2(x^2+3y^2) + 4A_3y\rho^2  $$
+$$ AA_x = 2A_1'x + 2A_2xy + 4A_3x\rho^2  $$
 
 The first term is proportional to $\theta^{2}y$ and is called
 \emph{astigmatism}. The second term is proportional to
 $ \theta(x^2 +3y^2)$
-and is called \emph{coma}. The final term, proportional to 
+and is called \emph{coma}. The final term, proportional to
 $y\rho^{2}$
 is \emph{spherical aberration}, which we've already discussed (note for
 spherical, $AA_x = AA_y$ and in fact the $AA$ in any direction is equal,
@@ -2538,7 +2547,7 @@ Astigmatism goes as $\theta^{2}$, and consequently looks the same
 for opposite field angles. Astigmatism is characterized in the image
 plane by the \emph{transverse} or \emph{angular} astigmatism (TAS or AAS), which
 refer to the height of the marginal rays at the paraxial focus.
-Astigmatism is symmetric around zero field angle. 
+Astigmatism is symmetric around zero field angle.
 
 This \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/astig.htm}
 {\textcolor{blue}{figure}} shows the rays in the presence of astigmatism.
@@ -2580,7 +2589,7 @@ pupil (Schroeder p89-90); it's just more geometry and algebra. With
 all these realtions, we can determine the optical path differences for
 an entire system: for a multi-surface system, we just add the OPD's as
 we go from surface to surface. The final aberrations can be determined
-from the system OPD. 
+from the system OPD.
 
 \subsubsection*{Aberration compensation and different telescope types}
 \textcolor{magenta}{Wednesday, March 30}
@@ -2593,7 +2602,7 @@ eliminate one (or more) aberrations.
 For example, given a conic constant of the primary mirror, we can use
 the aberration relations to determine $K_2$ such that spherical
 aberration is zero; this will give us perfect images on-axis. We find
-that: 
+that:
 $$ K_2 = \left(\frac{m+1}{m-1}\right)^2 +
     \frac{m^{3}}{k\left(m-1\right)^{3}}\left(K_{1}+1\right) $$
 satisfies this criterion.  If we set the primary to be a parabola
@@ -2601,13 +2610,13 @@ satisfies this criterion.  If we set the primary to be a parabola
 avoid spherical aberration. This type of telescope is called a
 \emph{classical} telescope. Using the aberration relations, we can determine
 the amount of astigmatism and coma for such telescopes, and we find
-that coma gives significantly larger aberrations than astigmatism. 
+that coma gives significantly larger aberrations than astigmatism.
 
 If we allow ourselves the freedom to choose both $K_1$ and $K_2$,
 we can eliminate both spherical aberration and coma.
 Designs of this sort are called \emph{aplanatic}.
-The relevant expression, in terms of the magnification and 
-back focal distance (we could use the relations discussed earlier to 
+The relevant expression, in terms of the magnification and
+back focal distance (we could use the relations discussed earlier to
 present these in terms of other paraxial parameters), is:
 $$ K_{1} = -1 - \frac{2(1+\beta)}{m^{2}(m-\beta)} $$
 We can only eliminate two aberrations with two mirrors, so even this
@@ -2626,9 +2635,8 @@ Cassegrain telescope is called a \emph{Ritchey-Chretien} telescope.
 
 The following table gives some characteristics of ``typical''
 telescopes. Aberrations are given at a field angle of 18 arc-min in
-units of arc-seconds. Coma is given in terms of tangential coma. 
+units of arc-seconds. Coma is given in terms of tangential coma.
 
-\textbf{Characteristics of Two-Mirror Telescopes}
 \begin{table}[h]
 \centering
 \begin{tabular}{c r r r r}
@@ -2645,6 +2653,7 @@ $\kappa_{m}R_{1}$ & 7.25 & -4.75 & 7.625 & -5.175\\
 $\kappa_{P}R_{1}$ & 4.00 & -8.00 & 4.00 & -8.00\\
 \hline
 \end{tabular}
+\caption{Characteristics of Two-Mirror Telescopes}
 \end{table}
 
 The image quality is clearly better for the aplanatic designs than for
@@ -2665,7 +2674,7 @@ optical design of a system when we have a limited number of elements.
 However, it is important to realize that aberrations can arise from
 other sources as well. These other sources can give additional
 third-order aberrations, as well as higher order aberrations. Some
-possible sources include: 
+possible sources include:
 \begin{itemize*}
     \item misfigured (a slightly harsh term)
         or imperfectly figured optics: rarely is an element made
@@ -2676,7 +2685,7 @@ possible sources include:
         (third-order) from the aberration expressions for decentered elements.
         For two mirror systems, decentering or tilting the
         secondary introduces a constant amount of coma over the field. Coma
-        dominates astigmatism for a misaligned telescope. 
+        dominates astigmatism for a misaligned telescope.
         The Ritchey-Chretian has a ``high'' tolerance for this (not much
         wiggle room).
     \item mechanical/support problems. When the mirrors are mounted in mirror
@@ -2689,7 +2698,7 @@ possible sources include:
         different secondary (mis)alignment as a function of where one is
         pointing. Finally, one might expect the spacing between the primary
         and secondary to vary with temperature, if the telescope structure is
-        made of materials which have non-zero coefficients of expansion. 
+        made of materials which have non-zero coefficients of expansion.
     \item chromatic aberration. Generally, we've only been discussing mirrors
         since this is what is used in telescopes. However, astronomers often
         put additional optics (e.g., cameras or spectrographs) behind
@@ -2701,7 +2710,7 @@ possible sources include:
         wavelength-dependent aberrations, called chromatic aberrations. These
         can be minimized by good choices of materials or by using combinations
         of different materials for different elements; however, it is an
-        additional source of aberration. 
+        additional source of aberration.
     \item seeing. This is the only natural source of aberration (the one
         we can't control).
         The earth's atmosphere introduces optical path differences
@@ -2710,7 +2719,7 @@ possible sources include:
         telescope. Consequently, one builds telescopes in good sites, and as
         far as design and other sources of image degradation are concerned,
         one is generally only interested in getting these errors small when
-        compared with the smallest expected seeing errors. 
+        compared with the smallest expected seeing errors.
 \end{itemize*}
 
 \subsection*{Ray tracing}
@@ -2742,7 +2751,7 @@ focus, ray fan, opd plots, etc. Now introduce second mirror. What
 determines where focus will be? Magnification? What shape to make a
 perfect on-axis image? What do off-axis images look like? How do we
 make them better? Now how is performance? Real 3.5m and 1m
-prescriptions. Issue: guider.) 
+prescriptions. Issue: guider.)
 
 \subsection*{Physical (diffraction) optics}
 
@@ -2784,11 +2793,9 @@ and at the image plane are a Fourier transform pair. Consequently, we
 can determine the light distribution in the image plane by taking the
 Fourier transform of the pupil plane; the light distribution, or point
 spread function, is just the modulus-squared of the OTF at the image
-plane. Symbolically, we have 
+plane. Symbolically, we have
 
-PSF = $\displaystyle
-\left\vert\vphantom{FT(OTF(pupil))}\right.$FT(OTF(pupil
-))$\displaystyle \left.\vphantom{FT(OTF(pupil))}\right\vert^{2}_{}$
+$$ PSF = \left\vert FT(OTF(pupil))\right\vert^2 $$
 
 where $FT$ represents a Fourier transform, and
 
@@ -2811,18 +2818,14 @@ circular aperture with a central obscuration, when the fractional
 radius of the obscuration is given by $\epsilon$, the expression for
 the PSF is:
 
-PSF $\displaystyle \propto$ $\displaystyle
-\left[\vphantom{{2J_1(v)\over v} - \epsilon^2{2J_1(\epsilon v)\over
-\epsilon v}}\right.$$\displaystyle {2J_1(v)\over v}$ - $\displaystyle
-\epsilon^{2}_{}$$\displaystyle {2J_1(\epsilon v)\over \epsilon
-v}$$\displaystyle \left.\vphantom{{2J_1(v)\over v} -
-\epsilon^2{2J_1(\epsilon v)\over \epsilon v}}\right]^{2}_{}$
+$$ PSF \propto \left[\frac{2J_1(v)}{v}-
+    \epsilon^2\frac{2J_1(\epsilon v)}{\epsilon v} \right]^2$$
 
-v = $\displaystyle {\pi r \over \lambda F}$
+    $$ v = \frac{\pi r}{\lambda F} $$
 
 where $J_1$ is a first order Bessel function, $r$ is the distance in the
 image plane, $\lambda$ is the wavelength, and $F$ is the focal ratio
-($F=f/D$). 
+($F=f/D$).
 
 This expression gives the so-called \emph{Airy pattern} (the solution?)
 which has a central disk surrounded by concentric dark and bright rings.
@@ -2859,7 +2862,7 @@ This \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/zernike.htm}
 {\textcolor{blue}{figure}} shows the form of some of the low order Zernike terms:
 the first corresponds to focus aberration, the next two to
 astigmatism, the next two to coma, the next two to trefoil
-aberration, and the last to spherical aberration. 
+aberration, and the last to spherical aberration.
 
 A wonderful example of the application of all of this stuff was in the
 diagnosis of spherical aberration in the Hubble Space Telescope, which
@@ -2867,7 +2870,7 @@ has been corrected in subsequent instruments in the telescope, which
 introduce spherical aberration of the opposite sign. To perform this
 correction, however, required and accurate understanding of the
 amplitude of the aberration. This was derived from analysis of
-on-orbit images, as shown in this 
+on-orbit images, as shown in this
 \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/hstspher.htm}
 {\textcolor{blue}{figure}}. Note that it is possible in
 some cases to try to recover the phase errors from analysis of images.
@@ -2878,7 +2881,7 @@ spherical aberration was derived from these images. This derived value
 was later found to correspond almost exactly to the error expected
 from an error which was made in the testing facility for the HST
 primary mirror, and the agreement of these two values allowed the
-construction of new corrective optics to proceed$\ldots$ 
+construction of new corrective optics to proceed$\ldots$
 
 \subsection*{Adaptive optics}
 \textcolor{magenta}{Monday, April 4}
