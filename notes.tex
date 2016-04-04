@@ -1,14 +1,16 @@
 \documentclass[12pt]{article}
-%\usepackage[margin=0.25in]{geometry}
 \usepackage[margin=1.0in]{geometry}
 \usepackage{graphicx}
 \usepackage{color}
 \usepackage{xcolor}
-\usepackage{hyperref}
 \usepackage{amsmath}
 \usepackage{enumitem}
-%\setlist[1]{itemsep=-2pt}
 \usepackage{mdwlist}
+
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,urlcolor=blue}
+\urlstyle{same}
+
 
 \definecolor{myBlue}{rgb}{0.2,0.2,0.6}
 \definecolor{myGreen}{rgb}{0.0,0.26,0.15}
@@ -1905,22 +1907,19 @@ recognized over the past several decades to be significant effects.
 
 The ``quality'' of an image can be described in many different ways.
 The overall shape of the distribution of light from a point source is
-specified by the \emph{point spread function}. Diffraction gives a basic
+specified by the \emph{point spread function} (PSF). Diffraction gives a basic
 limit to the quality of the PSF, but seeing, aberrations, or image
-motion add to structure/broadening of the PSF. For a good ground-based
+motion add to structure/broadening of the PSF\@. For a good ground-based
 telescope, seeing is generally the dominant component of the PSF.
-\textcolor{myBlue}{PSF provides a full description... 2D function}.
 
-Probably the most common way of describing the seeing is by specifying
+There is no equation for seeing;
+the most common way of describing the seeing is by specifying
 the full-width-half-maximum (FWHM) of the image, which may be
 estimated either by direct inspection or by fitting a function
-(usually a Gaussian); note the correspondence of FWHM to $\sigma$ of
-a gaussian: FWHM = 2.354$\sigma$.
-\textcolor{myBlue}{FWHM = $2\sigma\sqrt{2\ln 2}$ }
-However, beware of effects of
-sampling of the PSF: you're really getting the PSF integrated over
-pixels, not the PSF. Remember that the FWHM doesn't fully specify a
-PSF, and one should always consider how applicable the quantity is.
+(usually a Gaussian, where $FWHM = 2\sigma\sqrt{2\ln{2}} \approx 2.354\sigma$.
+However, the sampled PSF is integrated over pixels;
+not the PSF\@. The FWHM doesn't fully specify a PSF,
+so always consider how applicable the quantity is.
 
 Another way of describing the quality of an image is to specify its
 \emph{modulation transfer function} (MTF). The MTF and PSF are a Fourier
@@ -1930,7 +1929,7 @@ transform pair,
 so the MTF gives the \emph{power} in an image on various
 \emph{spatial} scales. Turbulence theory makes a prediction for the MTF from
 seeing:
-    $$ MTF(\nu) = exp\left[-3.44\left(\frac{\lambda \nu}{r_o}\right)
+    $$ MTF(\nu) = \exp\left[-3.44\left(\frac{\lambda\nu}{r_o}\right)
     ^{5/3}\right] $$
 where $\nu$ is the spatial frequency,
 \textcolor{myBlue}{$\xi = \frac{1}{\lambda}$ [cycles per cm].
@@ -1940,10 +1939,8 @@ where $\nu$ is the spatial frequency,
     \item PSF: intensity as function of position
 \end{itemize*}}
 
-Note that a gaussian goes as $e^{\left(-\nu^2\right)}$,
-so this is close to a gaussian.
-The shape of seeing-limited images is roughly Gaussian in
-core but has more
+Note that a gaussian goes as $e^{-\nu^2}$, so this is close to a gaussian.
+The shape of seeing-limited images is roughly Gaussian in core but has more
 \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/racine2.htm}
 {\textcolor{blue}{extended wings}}.
 This is relevant because the seeing
@@ -2048,13 +2045,15 @@ surface. We define:
 \end{itemize*}
 To define nominal (unaberrated) quantities, we consider the
 \emph{paraxial regime}, a small region near the optical axis surrounding the
-chief ray. In this regime, all angles are small, aberrations vanish,
-and a surface can be wholly specified by its radius of curvature, $R$.
+chief ray. In this regime, all angles are small, aberrations vanish
+(everything converges to a point),
+and a surface can be wholly specified by its radius of curvature, $R$
+(where the image is at the center of the ``circle'').
 
 The \emph{field angle} (FA) gives the angle formed between the chief ray from an
-object and the z-axis. Note that paraxial does not necessarily mean a
-field angle of zero; one can have an object at a field angle and
-still consider the paraxial approximation.
+object and the z-axis; receiving light off-axis by some angular amount.
+Note that paraxial does not necessarily mean a field angle of zero;
+one can have an object at a field angle and still consider the paraxial approximation.
 
 For the time being, we are ignoring \emph{diffraction}
 and considering \emph{geometric} optics,
@@ -2066,10 +2065,13 @@ We can derive the basic relation between the object location at $s$ and
 the image location at $s'$ as a function of a surface where the index of
 refraction changes (Schroeder, chapter 2).
 $$  \frac{n'}{s'}-\frac{n}{s} = \frac{(n'-n)}{R}  $$
-The points at $s$ and $s'$ are called \emph{conjugate}. If either $s$
+where $n$ and $n'$ are the index of refraction where the light is coming from
+and in the lens, respectively.
+The points at $s$ and $s'$ are called \emph{conjugate}; if one is known,
+the other can be calculated. If either $s$
 or $s'$ is at infinity (true for astronomical sources at $s$), the
 other distance is defined as the \emph{focal length}, $f$, of the
-optical element. For $s=\infty$, $f=s'$.
+optical element. This is where the light is focused. For $s=\infty$, $f=s'$.
 
 We can define the quantity on the right side of the equation, which
 depends only on the surface parameters (not the image or object
@@ -2078,20 +2080,27 @@ locations), as the \emph{power}, $P$, of the surface:
 We can make a similar derivation for the case of reflection:
     $$ \frac{1}{s'} + \frac{1}{s} = \frac{2}{R}  $$
 This shows that the focal length for a mirror is given by $R/2$.
+(Remember from optics: $1/n' + 1/n = 1/f$).
 
-Note that one can treat reflection by considering refraction with
+Reflection can be considered as refraction with
 $n' = -n$, and get the same result:
 $$  \frac{n'}{s'}+\frac{n'}{s} = \frac{(n'+n')}{R}  $$
+Mirror changes sign, but not amplitude.
+
 The \emph{focal ratio} (or \emph{F-number}) is defined as
 $$ f/ = \frac{f}{A}$$
 where A is the aperture diameter and $f/$ denotes the focal ratio.
-(Note that, for example, $f /10$ means a focal ratio of 10;
-$f$ is not some variable being divided by 10).
+For example, a 3.5-m telescope with a focal ratio of $f /10$
+has a focal length of 35 meters. The scale,
+$\alpha = \frac{1}{35m} = \frac{1}{35\times10^3} = 2.86\times10^{-5}$
+radians $ = 5.98''$/mm (there are 206265 arcseconds per radian).
+
 The focal ratio gives the beam ``width''; systems with a small focal ratio
 have a short focal length compared with $A$, and hence the imcoming
 beam to the image is wide. Systems with small focal ratios are called
 ``fast'' systems; systems with large focal ratios are called ``slow'' systems.
 %--------------------------------------------------------------------%
+
 \textcolor{magenta}{Wednesday, March 2}
 
 The \emph{magnification} of a system gives the ratio of the image height to
@@ -2105,12 +2114,14 @@ The \emph{plate scale} is defined as the
 ``motion'' of an image for a given incident angle
 of parallel beam from infinity.
 From a consideration of the chief rays
-for objects on-axis and at field angle $ \alpha$, we get:
+for objects on-axis and at field angle $ \alpha$ (angle off-axis), we get:
 $$ \tan{\alpha} \approx \alpha = \frac{x}{f}  $$
 or
 $$ \textrm{scale} \equiv \frac{\alpha}{x} = \frac{1}{f}  $$
-In other words, the scale, in units of angular motion per physical
-motion in the focal plane, is given by $1/f$. For a fixed aperture
+In other words, the scale, in units of angular motion (arcsec)
+per physical motion in the focal plane ($x$), is given by $1/f$
+(\textcolor{red}{important!})
+For a fixed aperture
 diameter, systems with a small focal ratio (smaller focal length) have
 a larger scale, i.e.\ more light in a patch of fixed physical size:
 hence, these are ``faster'' systems.
@@ -2386,9 +2397,9 @@ an ellipse, $e(b, a)$).
 
 %------------------------------------------------------------------%
 \subsubsection*{Aberrations: general description and low-order aberrations}
-\textcolor{magenta}{?, March ?, 2016}
+\textcolor{magenta}{Wednesday, March 9, 2016}
 
-Now consider what happens for surfaces that are not perfect, e.g. for
+Now consider what happens for surfaces that are not perfect, e.g.\ for
 the cases considered above for $FA\neq 0$ (since only a sphere
 is symmetric for all field angles), or for field angle 0 for a conic
 surface which doesn't give a perfect image?
@@ -2885,8 +2896,182 @@ construction of new corrective optics to proceed$\ldots$
 
 \subsection*{Adaptive optics}
 \textcolor{magenta}{Monday, April 4}
+Double-check these; taking notes prematurely.
 
 %------------------------------------------------------------------%
+
+The goal of adaptive optics is to partially or entirely remove the
+effects of atmospheric seeing.
+This is different from \emph{active} optics, which works at lower
+frequencies ($\ll1$ Hz) and has the main goal of removing aberrations
+from the change in telescope configuration as the telescope moves
+(for example, small changes in alignment from flexure (?) or sag (??)
+of the primary mirror surface as the telescope moves).
+Adaptive optics must work at 10 to 1000 Hz.
+At low frequencies, the active optics can be done
+with actuators on the primary and secondary mirrors themselves.
+At the high frequencies reqiured for adaptive optics, however, these large
+mirrors cannot respond fast enough, so it is required to form a pupil
+on a smaller mirror which can be rapidly adjusted;
+hence adaptive optics systems are really separate astronomical instruments.
+
+Many adaptive optics systems functioning and/or under development:
+(lots of links here).
+
+The basic idea of an adaptive optics system is to rapidly sense the
+wavefront errors and then correct for them on timescales faster
+than those at which the atmosphere changes. Consequently, there are
+three parts to an adaptive optics system:
+\begin{enumerate*}
+    \item A component that senses wavefront errors
+    \item A control system that figures out how to correct these errors
+    \item An optical element that receives the signals from the
+        control system and implements wavefront corrections
+\end{enumerate*}
+
+There are several methods used for wavefront sensing. Two that are in
+fairly common use today are
+\begin{enumerate*}
+    \item \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/beckers3.htm}
+        {Shack-Hartmann sensors}
+    \item wavefront curvature sensing devices
+\end{enumerate*}
+In a
+Shack-Hartmann sensor, an array of lenslets is put in a pupil plane
+and each lenslet images a small part of the pupil. Measuring image
+shifts between each of the images gives a measure of the local
+wavefront tilts. Wavefront curvature devices look at the intensity
+distribution in out-of focus images. Other wavefront sensing
+techniques include pyramid wavefront sensors and phase diversity
+techniques. Usually, a star is used as the source, but this is not
+required for some wavefront sensors
+(in other words, an extended source can be used).
+
+To correct wavefront errors, a deformable mirror is used.
+These can be generically split into two categories:
+segmented and continuous faceplate mirrors,
+where the latter are more common.
+A deformable mirror is characterized by the number of adjustable
+elements: the more elements there are, the more correction can be done.
+LCD arrays have also been used for wavefront correction.
+
+In general, it is very difficult to achieve complete correction even
+for ideal performance, and the effectiveness of
+different adaptive optics systems needs to be considered.
+This effectiveness depends on the
+size of the aperture, the wavelength, the number of resolution
+elements on the deformable mirror, and the quality of the site.
+Clearly, more resolution elements are needed for larger apertures.
+Equivalently, the effectiveness of a system will decrease as the
+aperture is increased for a fixed number of resolution elements.
+The return can be considered as a function of Zernike order corrected and
+aperture size. (\textcolor{myBlue}{uh, do hwut?})
+For large telescopes, you'll only get partial
+correction unless a very large number of resolution elements on the
+deformable mirror are available. The following table gives the mean
+square amplitude, $\Delta_{j}$, for Kolmogorov turbulence after
+removal of the first $j$ terms; the rms phase variation is just
+$ \frac{\sqrt{\Delta_j}}{2\pi}  $
+For small apertures, you can make
+significant gains with removal of just low order terms, but for large
+apertures you need very high order terms. Note various criteria for
+quality of imaging, e.g.\ $\lambda/4$, etc.
+
+\newpage
+\begin{table}[th]
+\centering
+\begin{tabular}{c c c c c c c}
+    $Z_j$ & $n$ & $m$ & Expression & Description &
+    $\Delta_j$ & $\Delta_j - \Delta_{j-1}$\\
+    \hline\hline
+    Z1 & 0 & 0 & 1 & constant & 1.030 s & n/a\\
+    Z1 & 0 & 0 & 1 & constant & 1.030 s & n/a\\
+    Z1 & 0 & 0 & 1 & constant & 1.030 s & n/a\\
+    Z1 & 0 & 0 & 1 & constant & 1.030 s & n/a\\
+    Z1 & 0 & 0 & 1 & constant & 1.030 s & n/a\\
+    Z1 & 0 & 0 & 1 & constant & 1.030 s & n/a\\
+    Z1 & 0 & 0 & 1 & constant & 1.030 s & n/a\\
+    Z1 & 0 & 0 & 1 & constant & 1.030 s & n/a\\
+    Z1 & 0 & 0 & 1 & constant & 1.030 s & n/a\\
+    Z1 & 0 & 0 & 1 & constant & 1.030 s & n/a\\
+    Z1 & 0 & 0 & 1 & constant & 1.030 s & n/a\\
+    \hline
+    \end{tabular}
+\end{table}
+
+$r$ = distance from center circle;
+$\phi$ = azimuth angle; $S=(D/r_0)^{5/3}$.
+
+Another important limitation is that an object on which you
+can derive the wavefront is needed. Measurements of wavefront are subject to
+noise just like any other photon detection, so bright sources may be required.
+This is even more evident considering a source that is within the same
+isoplanatic patch as the desired object is needed.
+Recall that the wavefront changes on time scales of milliseconds.
+These requirements place limitations on the amount of
+sky over which it is possible to get good corrections.
+It also places limitations on the sorts of detectors that are needed
+in the wavefront sensors (fast readout and little to no readout noise).
+
+\begin{table}[th]
+\centering
+\begin{tabular}{c c c c c c c c}
+    band & $\lambda$ & $r_0$ & $\tau_0$ & $\tau_{det}$ & $V_{lim}$ &
+    $\theta_0$ & Coverage(\%)\\
+    \hline\hline
+    U & 0.365 & 9.0 & 0.009 & 0.0027 & 7.4 & 1.2 & 1.8E-5\\
+    B & 0.44 & 11.4 & 0.011 & 0.0034 & 8.2 & 1.5 & 1.8E-5\\
+    V & 0.365 & 9.0 & 0.009 & 0.0027 & 7.4 & 1.9 & 1.8E-5\\
+    R & 0.365 & 9.0 & 0.009 & 0.0027 & 7.4 & 2.6 & 1.8E-5\\
+    I & 0.365 & 9.0 & 0.009 & 0.0027 & 7.4 & 3.5 & 1.8E-5\\
+    J & 0.365 & 9.0 & 0.009 & 0.0027 & 7.4 & 5.1 & 1.8E-5\\
+    H & 0.365 & 9.0 & 0.009 & 0.0027 & 7.4 & 7.0 & 1.8E-5\\
+    K & 0.365 & 9.0 & 0.009 & 0.0027 & 7.4 & 10.1 & 1.8E-5\\
+    L & 0.365 & 9.0 & 0.009 & 0.0027 & 7.4 & 17.0 & 1.8E-5\\
+    M & 0.365 & 9.0 & 0.009 & 0.0027 & 7.4 & 27.0 & 1.8E-5\\
+    N & 0.365 & 9.0 & 0.009 & 0.0027 & 7.4 & 64 & 1.8E-5\\
+    \hline
+    \end{tabular}
+\end{table}
+
+Conditions are: 0.75 arcsec seeing at 0.5 $\mu$; $ \tau_{det}$
+$\sim$ 0.3, $\tau_0$ = 0.3 $r/V_{wind}$; $V_{wind}=10$ mIsec; $H=5000$;
+photon detection efficiency (including transmission and QE) = 20\%;
+spectral bandwidth = 300 nm; $SNR=100$ per Hartmann-Shack image;
+detector noise = 5$e^{-}$.
+
+The isoplanatic patch limitation is severe. In many cases, we might
+expect non-opticmal performance if the reference object is not as
+close as it should be ideally.
+
+In most cases, both because of lack of higher order correction and
+because of reference star vs.\ target wavefront differences, adaptive
+optics works in the partially correcting regime. This typically gives
+PSFs with a sharp core, but still with extended wings.
+
+The problem of sky coverage can be avoided by using so-called \emph{laser
+guide stars}. The idea is to create a ``star'' by shining a laser up into
+the atmosphere. To date, two generic classes of lasers have been used:
+\emph{Rayleigh beacons} and \emph{sodium beacons}.
+The Rayleigh beacons scatter off a layer roughly 30 km above the Earth's surface;
+the sodium beacons scatter off a layer roughly 90 km above the Earth's surface.
+Laser guide stars still have some limitations:
+the path through the atmosphere that the laser traverses does not exactly
+correspond to the path that light from a star traverses, because the
+latter comes from an essentially infinite distance; this leads to the
+effect called \emph{focal anoisoplanatism}.
+In addition, laser guide stars
+cannot generally be used to track image motion since the laser passes
+up and down through the same atmosphere and image motion is cancelled
+out. To correct for image motion, separate tip-tilt tracking is
+required. Note that even with perfect correction, one is still limited
+by the isoplanatic patch size. As one moves further and further away
+from the reference object, the correction will gradually degrade.
+
+
+
+
+
 
 
 
