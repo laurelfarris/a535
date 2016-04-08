@@ -358,7 +358,9 @@ IRAF basics}
         \end{itemize*}
 \end{itemize*}
 
+
 \section{Astronomical image processing: Introduction and basics}
+
 Various software packages have been developed for astronomical image processing,
 e.g.\
 \begin{itemize*}
@@ -478,15 +480,220 @@ tools to be able to explore data.
         \end{itemize*}
 \end{itemize*}
 
-\subsubsection{Plotting}
+\subsubsection*{Plotting}
 \begin{itemize*}
     \item \texttt{plt.figure}
     \item \texttt{plt.plot(hd[0].data[:,100])} for a plot along column 100
     \item \texttt{plt.plot(hd[0].data[500,:])} for a plot along row 500
 \end{itemize*}
 
-\subsubsection{Histogram}
+\subsubsection*{Histogram}
 \texttt{plt.hist(data.flatten(),[bins=n],[bins=np.arange(min,max,delta)],
 [log=True])}
+
+%----------------------------------------------------------------------------%
+\section*{Introduction to CCD images and basic CCD data reduction}
+%----------------------------------------------------------------------------%
+\section*{Astronomical image processing packages: Introduction and IRAF basics}
+%----------------------------------------------------------------------------%
+\section*{Astronomical image processing/reduction: Basic tools}
+\textcolor{magenta}{Friday, April 1, 2016}
+
+When observing, a bare minimum requirement is the ability to look at
+your data. In many cases, however, it is preferable to have tools to
+do some quick image manipulation and analysis, and these will be
+required for image reduction/analysis. It's best if these are easily
+available so that you are likely to encounter them in most computing
+situations, and ideally, could access them on your laptop if you have
+one.
+
+In the current computing climate, I would recommend using Python tools
+wherever possible. For some analysis, IRAF routines provide a lot of
+developed routines, so if IRAF installed, these can be useful; I would
+recommend using them from a Python environment to be able to take
+advantage of native Python features.
+
+For image display, \texttt{ds9} is probably the best choice, although there may
+be alternatives.
+
+Our goal is to work towards reduction of all of our APO images.
+
+\subsection*{Getting started}
+\begin{itemize}
+\item Start ds9 in the background
+\begin{verbatim}
+ds9 &
+\end{verbatim}
+\item Start an iPython session
+\begin{verbatim}
+ipython --matplotlib
+\end{verbatim}
+
+\item Import standard Python packages
+\begin{verbatim}
+import numpy as np
+import matplotlib.pyplot as plt
+import pyds9
+\end{verbatim}
+(note that you can put these in a
+\texttt{/.ipython/profile\_default/startup/00startup.py}
+script to load every time you start ipython.)
+
+\item Import useful astropy routines
+\begin{verbatim}
+from astropy.io import fits
+\end{verbatim}
+
+\item Create \texttt{login.cl} file
+If IRAF is available, make sure you have a login.cl file. If you don't:
+\begin{verbatim}
+mkiraf # note this is a UNIX command, not a python command
+\end{verbatim}
+and edit the \texttt{login.cl} file to set \texttt{stdimage=imt2048},
+or copy a \texttt{login.cl} file from a previous directory.
+\begin{verbatim}
+from pyraf import iraf
+\end{verbatim}
+in which case, you will need to call iraf routines using
+\texttt{iraf.routine\_name()}
+which makes it clear that they are IRAF routines. If you want to
+enter the routine names without the \texttt{iraf.} prefix, type
+\begin{verbatim}
+from pyraf.iraf import *
+\end{verbatim}
+\end{itemize}
+
+\subsection*{Reading images}
+\begin{itemize}
+\item Read image into variable:
+\begin{verbatim}
+im=fits.open(filename)[0]
+\end{verbatim}
+Note that this reads the first extension ([0]) into a HDU object, with
+im.header containing the header, and im.data containing the data
+\item For convenience, you might want to:
+\begin{itemize}
+\item Set up a variable with the directory name for the images,
+to avoid having to retype it:
+\begin{verbatim}
+imdir='/pathtoimage directory/'
+im=fits.open(imdir+'nameoffile')[0]
+\end{verbatim}
+\item Set up a symbolic link to the directory with the images,
+to avoid having to retype it:
+\begin{verbatim}
+%ln -s /pathtoimage directory/ raw    # UNIX command
+im=fits.open('raw/nameoffile')[0]
+\end{verbatim}
+\end{itemize}
+\item IDL: im=mrdfits('filename')
+\end{itemize}
+
+
+\subsection*{Displaying images}
+\begin{itemize}
+\item Direct from memory (variable):
+\begin{verbatim}
+d=DS9()   # to open display
+hd=fits.open(filename)   # puts HDUlist of file into hd
+d.set_pyfits(hd)  #  display from HDUList variable
+d.set_np2arr(hd[0].data)  # display from numpy array
+d.set("scale limits 400 500")  (sets display range)
+\end{verbatim}
+You might want to write yourself a simple Python function to display
+and scale with a single simple command!
+\item Direct from disk, using IRAF display:
+\begin{verbatim}
+iraf.display(imdir+'nameoffile')
+\end{verbatim}
+If you wish to control display parameters (recommended):
+\begin{verbatim}
+iraf.display(imdir+'nameoffile',zrange='No',scale='No',z1=low,z2=high)
+\end{verbatim}
+where low, high are the values you want for color mapping. If you want
+to have your values set by default, you can:
+\begin{verbatim}
+iraf.epar('display')
+\end{verbatim}
+and set zrange and scale to 'No', or alternatively:
+\begin{verbatim}
+iraf.display.setParam('zrange=no')
+iraf.display.setParam('zscale=no')
+\end{verbatim}
+\item IDL: atv,im,[min=min,max=max]
+\end{itemize}
+
+
+\subsection*{Image inspection}
+\begin{itemize}
+\item image cross sections:
+    \begin{itemize}
+        \item Python:
+            \begin{verbatim}
+plt.plot(im.data[:,500])  # plots row 500
+plt.plot(im.data[500,:)  # plots column 500
+            \end{verbatim}
+        \item IRAF: \emph{implot} task.
+            \begin{itemize}
+                \item See plot window commands ('?')
+                \item `l' and `c' for line (row) and column plots,
+                    as determined by cursor location
+            \end{itemize}
+        \item IDL: plot,im[*,500]
+    \end{itemize}
+
+\item Image histogram:
+    \begin{itemize}
+        \item Python:
+            \begin{verbatim}
+plt.hist(im.data.flatten(),bins=....)
+            \end{verbatim}
+        \item IRAF imhist. Look at the parameter file for options. Note that you
+            can specify image subsections using
+            \texttt{filename[x1:x2,y1:y2]}
+        \item IDL: plothist,im
+    \end{itemize}
+
+\item Image statistics:
+    \begin{itemize}
+        \item Python: use numpy array methods: mean, sum and std, e.g.,
+            \begin{verbatim}
+mean=im.data[400:600,400:600].mean()
+tot=im.data[400:600,400:600].sum()
+sig=im.data[400:600,400:600].std()
+            \end{verbatim}
+        \item IRAF imstat. Look at the parameter file. Note you can specify
+            image subsections as above.
+        \item IDL: MEAN(), STDEV() functions
+\end{itemize}
+
+\item Image arithmetic:
+    \begin{itemize}
+        \item Python: just use normal arithmetic, e.g.:
+            \begin{verbatim}
+a=im1.data-bias
+b=im1.data=im2.data
+            \end{verbatim}
+        \item IRAF imarith: file based. You can do arithmetic with images and
+            constants, or with multiple images. For example: imarith
+            file1.fits - 363 will subtract a constant of 363 from the image,
+            imarith file1.fits / file2.fits will divide file1 by file2 (on a
+            pixel-by-pixel basis).
+        \item IDL: normal array arithmetic
+    \end{itemize}
+
+\item Interactive inspection of stellar images:
+    \begin{itemize}
+        \item Python: someone needs to write some tools!
+        \item IRAF imexam: need to display image with iraf.display() first. Note
+            `a', `r', and `m' keys, `?' for help (note you have to exit help
+            to get interactive cursor!), `q' for quit.
+        \item IDL: atv
+    \end{itemize}
+\end{itemize}
+
+\subsection*{Exercises}
+
+
 
 \end{document}

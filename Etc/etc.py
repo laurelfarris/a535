@@ -27,7 +27,7 @@ def sys_transmission(wavelength):
     '''
     Calculate the system transmission (q), using the telescope
     throughput, filter throughput, and detector efficiency; all three of
-    which are calculated within their own function embedded below. 
+    which are calculated within their own function embedded below.
     '''
     def telescope_throughput():
         return 0
