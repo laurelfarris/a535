@@ -3068,9 +3068,65 @@ required. Note that even with perfect correction, one is still limited
 by the isoplanatic patch size. As one moves further and further away
 from the reference object, the correction will gradually degrade.
 
+\section*{Telescopes}
+\textcolor{magenta}{Wednesday, April 13, 2016}
 
+(In class only):
 
+3 types of large mirrors:
+\begin{itemize*}
+    \item Borosilicate honeycomb - large thermal mass, need to keep daytime
+        temp as close to observing temp as possible. University of Arizona
+        (Tucson) doing this under a football stadium.
+    \item Thin mirrors - lightweight, better for TE, but not as stiff, uses
+        an active support system (changing gravity load during tracking,
+        timescales of minutes or hours, not like adaptive optics).
+        \emph{Active} optics - operates on longer timescales, structural
+        mechanical stuff. Gemini was a big deal. VLT (Europe).
+    \item Segmented - lots of little mirrors, each element needs its own correct
+        shape (overall shape is hyperbola).
+\end{itemize*}
 
+\href{http://astro.nineplanets.org/bigeyes.html}{Tabular summary}
+of the world's telescopes!
+
+Mercury - highly reflective liquid :)
+
+\subsection*{Mirror coatings}
+Aluminum usually highest choice. Silver and gold better at longer wavelengths,
+but go back at shorter ones; mostly used for telescopes that work primarily
+in the IR\@.
+
+\subsection*{Telescope mounts}
+Axes of machine...
+\begin{itemize*}
+    \item equatorial: simpler, don't have to track dec, just RA. Rotation rate
+        of Earth is used, so it's fixed.
+    \item alt-ax: More complicated, have to track in both axes. Get constant speed
+        (vector-wise) but each individual speed varies. From control-system point
+        of view is more complex, but is the choice for large telescopes
+        (cheaper). Can't point to zenith, 3.5 m has $\sim$ 520 degree range
+        of ``wrap'', telescope has to swing all the way around once passing
+        zenith, too much swiveling can wrap up cables (don't want that).
+\end{itemize*}
+Picture orientation:  mirrors that of the telescope axes. N/E vs.\ zenith/horizon.
+N/S changes for alt-az telescope, aka entire field rotates. Need third axis to
+compensate when taking long images. For single point, doesn't matter. Rotating
+point is still a point.
+
+Assuming perfect system, build up table of offsets, which will be repeatable
+for a well-built telescope. Called \emph{pointing models}.
+
+\subsection{Using telescopes}
+\subsection{Planning observing}
+%---------------------------------------------------------------------------%
+\section{Instrumentation}
+\textcolor{magenta}{Monday, April 18, 2016}
+
+Stuff behind a telescope. Spectrographs will be the biggest thing we
+talk about.
+
+Detectors, numbers that go into the computer.
 
 
 
