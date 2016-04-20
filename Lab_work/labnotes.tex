@@ -1,4 +1,4 @@
-\documentclass[12pt]{article}
+\documentclass{article}
 \usepackage[margin=1in]{geometry}
 \usepackage{enumerate}
 \usepackage{color}
@@ -692,8 +692,128 @@ b=im1.data=im2.data
     \end{itemize}
 \end{itemize}
 
-\subsection*{Exercises}
+\section*{Data reduction}
+\textcolor{magenta}{Friday, April 15, 2016}
 
+Our goal is to understand all of the steps and issues involved with
+data reduction and how they may be dealt with when people reduce data,
+and to try to avoid, as much as possible, ``black-box" recipes for
+reducing data.
+
+To be able to capture the process, it is best if data reduction
+efforts always be scripted, so that you have a record of what you did,
+and a resource to look back on the next time you have to do it again!
+
+Your goal is to deliver basic data reduction scripts for the standard
+stars observed with ARCTIC and DIS
+
+\subsection*{Basic data reduction}
+\begin{itemize*}
+    \item Overscan subtraction
+        \begin{itemize*}
+            \item Determine overscan region location
+            \item Determine whether constant overscan (subtraction of a single value) is
+                appropriate, or if not, consider possibilities:
+                \begin{itemize*}
+                    \item Fit to overscan as a function of row
+                    \item Median overscan as a function of raw
+                \end{itemize*}
+            \item Remove overscan
+                \begin{itemize*}
+                    \item Using image arithmetic
+                    \item Using IRAF: ccdproc (note overscan options)
+                \end{itemize*}
+        \end{itemize*}
+    \item Superbias (zero) frame construction
+        \begin{itemize*}
+            \item Inspect overscan-subtracted bias frames. If there is repeatable
+                structure in these, construct a superbias frame by combining
+                overscan-subtracted bias frames:
+                \begin{itemize*}
+                    \item Using image arithmetic
+                    \item Using IRAF: zerocombine
+                    \item Note that there are multiple options for combining stacks of frames,
+                        to avoid contamination by outliers, resulting biases, noise
+                        minimization, etc: mean, median, max-reject, min-max reject, sigma
+                        clipping, etc. Median is a simple algorithm that is fairly robust if
+                        not perfectly optimal.
+                \end{itemize*}
+            \item Note that any noise in your superbias frame will be propagated to
+                every image you reduce, hence the desire to combine many individual
+                bias frames, and only to use a superbias if there is repeatable
+                structure to subtract!
+        \end{itemize*}
+    \item Flat field construction
+        \begin{itemize*}
+            \item You will need to construct separate flat fields for each
+                filter/configuration that you use
+            \item Flat fields should be normalized before combining to account for
+                variations in lamp/sky brightness
+            \item Final flat fields should be normalized such that dividing by them does
+                not change the overall mean level significantly, so that noise can
+                still be calculated using the observed number of
+                counts. Don't want to change numbers much because want
+                to measure uncertainty on brightness later
+            \item Making flats:
+                \begin{itemize*}
+                    \item Using image arithmetic
+                    \item Using IRAF: flatcombine
+                    \item Again, there are many frame combination options.
+                \end{itemize*}
+        \end{itemize*}
+\end{itemize*}
+
+\subsection*{Basic spectroscopic calibration}
+\begin{enumerate*}
+    \item normal CCD processing: overscan, (bias, dark). (Note that
+        Triplespec is not a CCD, so requires normal IR detector
+        processing: dark/bias subtraction).
+    \item
+        flat fielding. Note problem that dome flats have spectral
+        energy distribution of light source. ``Flatten'' the flats in
+        the wavelength direction to preserve error analysis, i.e.\
+        remove the large scale wavelength dependence, but preserve the
+        pixel-to-pixel response variations. In the spatial direction,
+        flat fielding is like imaging, but often the requirements on
+        accuracy are less stringent. An extra spatial component in the
+        flats comes from variation of slit width.
+    \item wavelength calibration. Use arc lamps with known lines.
+        Identify lines, determine line centers (centroid or fitting),
+        and fit function to centers vs.\ wavelength.
+    \item flux calibration: correction for throughput as a function of
+        wavelength. Not always required, e.g.\ if measuring strengths
+        relative to nearby continuum. Spectrophotometric standards,
+        e.g. Massey et al. ApJ 328, 315 (1988).
+        If fluxing is performed, usually also want to correct for
+        atmospheric extinction as a function of wavelength and
+        airmass: use of mean extinction coefficients.
+    \item Object reduction: extracting object spectrum (``tracing'' the
+        object) and sky spectrum. Aperture extraction vs.\ optimal
+        extraction. Caveats: spectral curvature.
+    \item Advanced topics: nod and shuffle, atmospheric feature
+        correction (esp in IR).
+\end{enumerate*}
+
+\subsection*{IRAF utilities}
+\begin{itemize*}
+    \item IRAF: \href{http://iraf.noao.edu/iraf/web/tutorials/doslit/doslit.html}
+        {response and doslit}
+    \item load specred package:
+        \begin{verbatim}
+iraf.imred()
+iraf.specred()
+        \end{verbatim}
+    \item response takes out the observed flat field response in the
+        wavelength direction (which is a combination of the flat field
+        SED and the spectrograph response)
+        doslit is the "meta" task that does wavelength calibration,
+        flux calibration, and object extraction for point sources
+        Images must be run through CCDPROC first (or have CCDPROC flag
+        in header)
+        For the arc list, beware that the .fits should not be included
+        in the file name, it is automatically added (with imtype =
+        fits)
+\end{itemize*}
 
 
 \end{document}

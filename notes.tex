@@ -3117,16 +3117,229 @@ point is still a point.
 Assuming perfect system, build up table of offsets, which will be repeatable
 for a well-built telescope. Called \emph{pointing models}.
 
-\subsection{Using telescopes}
-\subsection{Planning observing}
+\subsection*{Using telescopes}
+\subsection*{Planning observing}
 %---------------------------------------------------------------------------%
-\section{Instrumentation}
+\section*{Instrumentation}
 \textcolor{magenta}{Monday, April 18, 2016}
+Often, astronomers use additional optics between the telescope and
+their detector. These, in conjunction with a detector, make up an
+\emph{instrument}.
 
-Stuff behind a telescope. Spectrographs will be the biggest thing we
-talk about.
+\subsection*{Location of optics}
 
-Detectors, numbers that go into the computer.
+Before going into specifics, consider the effect of placing optics at
+different locations within an optical system, like a telescope.
+
+Optics placed in or near a focal plane will affect images at different
+field angles differently. Optics in a focal plane will not affect the
+image quality at any given field angle; however, such optics might be
+used to control the location of an image of the pupil of the
+telescope.
+
+Optics placed in or near a pupil plane will affect images at all field
+angles similarly, and will have an effect on the image quality.
+
+\subsection*{Refractive optics and chromatic aberration}
+In many instruments, lenses are used rather than mirrors; they can be
+cheaper and lead to more compact designs. Recall, however, that when
+lenses are used, chromatic effects will arise because the index of
+refraction of glasses changes with wavelength. While they can often be
+minimized by the use of use of multiple elements to make achromatic
+combinations, they are not always negligible. In particular, if an
+instrument is used at multiple wavelengths, some refocussing may be
+required.
+
+\subsection*{Field Flatteners}
+As we've discussed, all standard two-mirror telescopes have curved
+focal planes. It is possible to make a simple lens to correct the
+field curvature. We know that a plane-parallel plate will shift an
+image laterally, depending on the thickness of the plate. If we don't
+want to affect the image quality, only the location, we want the
+correcting element to be located near the focal plane.
+
+Consequently, we can put a lens right near the telescope focal plane to
+flatten the field. For a field which curves towards the secondary
+mirror, one finds that the correct shape to flatten the field is just
+a plano-concave lens with the curved side towards the secondary.
+Often, the field flattener is incorporated into a detector dewar as
+the dewar window.
+
+\subsection*{Focal plane reimagers}
+A focal reimager is a reimaging system which demagnifies/magnifies the
+telescope focal plane. In a simple form, it consists of two lenses: a
+collimator and a camera lens. The collimator lens is placed such that
+the telescope focal plane is put at the focal length of the
+collimator, so that it converts the telescope beam into a collimated
+beam (note that the focal ratio of the collimating lens itself will be
+larger than that of the telescope so that the beam underfills the lens
+to allow for off-axis light as well). The camera lens then refocuses
+the light light with the desired focal ratio. The magnification of the
+system is given by:
+$$ m = \frac{f_{camera}}{f_{collimator}}  $$
+Consequently, the scale in the image plane of the focal reimager is
+just the scale in the telescope focal plane multiplied by the ratio of
+the focal ratio of the camera to that of the telescope.
+
+Note that with a focal plane reimager, one does not necessarily get a
+new scale ``for free''. The focal reimaging system may introduce
+additional aberrations giving reduced image quality. In addition, one
+always loses some light at each additional optical surface from
+reflection and/or scattering, so the more optics in a system, the
+lower the total throughput.
+
+Note that it is possible to do focal reduction/expansion
+\emph{without} reimaging, i.e., by putting optics in the converging beam.
+
+\subsection*{Pupil reimagers}
+Often, an additional lens, called a field lens is placed in or near
+the telescope focal plane. This does not affect the focal reduction
+but is used to reimage the telescope pupil somewhere in the reimager.
+One reason this may be done is to minimize the size that the
+collimator lens needs to be to get off-axis images. The size of the
+field lens itself depends on the desired size of the field that one
+wishes to reimage.
+
+Another use of reimaging the pupil is when one is building a
+\emph{coronagraph}, an imaging system designed to observe faint sources
+nearby to very bright ones. The problem in seeing the faint source is
+light from the bright one, both from scattered light, from
+diffraction, and sometimes, from detector effects (e.g., charge
+bleeding in a CCD). A partial solution is to put an occulting spot in
+the telescope focal plane which removes most of the light from the
+bright object. However, the diffraction structure is still a problem.
+It turns out you can remove this by reimaging the pupil after the
+occulting spot and putting a mask in around the edges which are the
+source of the diffraction; this mask is called a \emph{Lyot stop}.
+The resulting image in the focal plane of the focal reducer is free of
+both bright source and diffraction structure.
+
+Note that for really high contrast imaging, you also need to consider
+other sources of far-field light including light scattered from
+small-scale features on optical elements, and far-field light from
+seeing. Minimizing the former required very smooth optics, while
+minimizing the latter requires high-performance adaptive optics (e.g.
+``extreme-AO'').
+
+\textcolor{magenta}{Wednesday, April 20}
+
+Pupil reimagers are also widely used in IR systems to reduce emission
+via cold pupil stops. The issue here is that the telescope itself
+contributes infrared emission which acts as additional background in
+your observations. There is little you can do about emission from the
+primary, since you need to see light from the primary to see your
+object! However, you can block out emission from regions of the pupils
+which are obscured already, for example, by the secondary and/or
+secondary support structures. To do this you put a mask in the pupil
+plane. Obviously, however, the mask needs to be colder than the
+telescope itself or else the mask would contribute the background, so
+it is usually placed within the dewar that contains the detector and
+camera optics.
+
+\subsection*{Filters}
+Filters are used in optical systems (usually imaging systems) to
+restrict the observed wavelength range. Using multiple filters thus
+provides color information on the object being studied. Generally,
+filters are loosely classified as
+broadband ($ > \sim 1000$ \AA{} wide),
+medium band ($100 < $\sim$ 1000$ \AA{}), or
+narrow band ($1 < \sim 100$ \AA{}).
+
+
+Perhaps a better distinction between different filters is by the way
+that they filter light, or how they work.
+Many broad band filters work by using \emph{colored
+glass}, which has pigments which absorb certain wavelengths of light
+and let others pass. Bandpasses can be constructed by using multiple
+types of colored glass. These are generally the most inexpensive
+filters.
+
+A separate filter technique uses the principle of \emph{interference},
+giving what are called interference filters. They are made by using two
+partially reflecting plates separated by a distance $d$ apart. The
+principle is fairly simple:
+
+\href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/intfilt.htm}
+{Interference filter diagram}
+When light from the different paths
+combines constructively, light is transmitted; when it combines
+destructively, it is not. Simple geometry gives:
+m$\displaystyle \lambda$ = 2nd cos$\displaystyle \theta$
+It is clear from this expression that the passband of the filter will
+depend on the angle of incidence. Consequently narrowband filters will
+have variable bandpasses across the field if they are located in a
+collimated beam; this can cause great difficulties in interpretation!
+If the filter is located in a focal plane or a converging beam,
+however, the mix of incident angles will broaden the filter bandpass.
+This can be a serious effect in a fast beam. Bandpasses of
+interference filters can also be affected by the temperature.
+
+Since interference filters will pass light at integer multiples of the
+wavelength, the extra orders often must be blocked. This can be done
+fairly easily with colored glass.
+
+The width of the bandpass of a narrowband filter is determined by the
+amount of reflection at each surface. Both the wavelength center and
+the width can be tuned by using multiple cavities and/or multiple
+reflecting layers, and most filters in use in astronomy are of this
+more complex type.
+
+The same principles by which interference filters are made are used to
+make antireflection coatings.
+
+Note filters can introduce aberrations, dust spots, reflections, etc;
+one needs to consider these issues when deciding on the location of
+filters in an optical system.
+
+\subsection*{Fabry-Perot Interferometer}
+
+A Fabry-Perot system makes use of a tunable interference filter. The
+filter is tuned in wavelength by adjusting one of
+
+the spacing,
+the index of refraction (usually changed by chaning the pressure), or
+the tilt of the interference filter.
+A tunable interference filter is called an etalon. Often, etalons are
+made to provide very narrow bandpasses, on the order of 1Å.
+A picture taken with a Fabry-Perot system covers multiple wavelengths
+because the etalon is located in the collimated beam between the two
+elements of the focal reducer. At each etalon setting, one observes an
+image which has rings of constant wavelength. By tuning the etalon to
+give different wavelengths at each location, one build up a ``data
+cube'', through which observations at a constant wavelength carve some
+surface. Consequently, to extract constant wavelength information from
+the Fabry-Perot takes some reasonably sophisticated reduction
+techniques. It is further complicated by the fact that to get accurate
+quantitative information, one requires that the atmospheric conditions
+be stable over the entire time when the data cube is being taken.
+
+
+\subsection*{Spectrographs}
+A spectrograph is an instrument which separates different wavelengths
+of light so they can be measured independently. Most spectrographs
+work by using a dispersive element, which directs light of different
+wavelengths in different directions.
+
+A conventional spectrograph has a collimator, a dispersive element, a
+camera to refocus the light, and a detector. The performance of a
+spectrograph is characterized by the dispersion, which gives the
+amount that different wavelengths are separated, and the resolution,
+which gives the smallest difference in wavelength that two different
+monochromatic sources can be separated. There are different sorts of
+dispersive elements with different characteristics; two common ones
+are prisms and diffraction gratings, with the latter the most commonly
+in use in astronomy.
+
+
+
+
+
+
+
+
+
+
+
 
 
 
