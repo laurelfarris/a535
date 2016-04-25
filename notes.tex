@@ -3330,6 +3330,191 @@ dispersive elements with different characteristics; two common ones
 are prisms and diffraction gratings, with the latter the most commonly
 in use in astronomy.
 
+\textcolor{magenta}{Monday, April 25}
+
+The dispersion depends on the characteristic of the dispersing
+element. Various elements can be characterized by the angular
+dispersion, d$ \theta$/d$ \lambda$, or alternatively, the reciprocal
+angular dispersion, d$ \lambda$/d$ \theta$. In practice, we are often
+interested in the linear dispersion, dx/d$ \lambda$ = f2d$ \theta$/d$
+\lambda$ or the reciprocal linear dispersion, d$ \lambda$/dx = $
+{1\over f_2}$d$ \lambda$/d$ \theta$ where the latter is often referred
+to simply as the dispersion in astronomical contexts, and is usually
+specified in Å/mm or Å/pixel.
+
+If the source being viewed is extended, it is clear that any light
+which comes from regions parallel to the dispersion direction will
+overlap in wavelength with other light, leading to a very confused
+image to interpret. For this reason, spectrographs are usually used
+with slits or apertures in the focal plane to restrict the incoming
+light. Note that one dimension of spatial information can be retained,
+leading to so-called long-slit spectroscopy. If there is a single
+dominant point source in the image plane, or if they are spaced far
+enough (usually in combination with a low dispersion) that spectra
+will not overlap, spectroscopy can be done in slitless mode. However,
+note that in slitless mode, one can be significantly impacted by sky
+emission.
+
+The resolution depends on the width of the slit or on the size of the
+image in slitless mode, because all a spectrograph does is create an
+image of the focal plane after dispersing the light. The ``width'' of
+a spectral line will be given by the width of the slit or the image,
+whichever is smaller. In reality, the spectral line width is a
+convolution of the slit/image profile with diffraction. The spatial
+resolution of the detector may also be important.
+
+Note that throughput may also depend on the slit width, depending on
+the seeing, so maximizing resolution may come at the expense of
+throughput. Throughtput = seeing + slit width.
+
+Given a linear slit or image width, $ \omega$ (or an angular width,  $
+\phi$ = $ \omega$/f, where f is the focal length of the telescope) and
+height h (or  $ \phi^{\prime}_{}$ = h/f), we get an image of the slit
+which has width,  $ \omega^{\prime}_{}$, and height, h$\scriptstyle
+\prime$, given by
+
+[insert equations]
+
+where we have allowed that the dispersing element might
+magnify/demagnify the image in the direction of dispersion by a factor
+r, which is called the anamorphic magnification.
+
+Using this, we can derive the difference in wavelength between two
+monochromatic sources which are separable by the system.
+
+$\displaystyle \delta$$\displaystyle \lambda$ = $\displaystyle
+\omega^{\prime}_{}$$\displaystyle {d\lambda\over dx}$
+$\displaystyle \delta$$\displaystyle \lambda$ = r$\displaystyle
+\omega$$\displaystyle {f_2\over f_1}$$\displaystyle {d\lambda\over
+dx}$
+The bigger the slit, the lower the resolving power.
+The resolution is often characterized in dimensionless form by
+
+R $\displaystyle \equiv$ $\displaystyle {\lambda\over \delta\lambda}$
+= $\displaystyle {\lambda f_1 \over r \omega f_2 (d\lambda/dx)}$
+
+Note that there is a maximum resolution allowed by diffraction. This
+resolution is given aproximately by noting that minimum angles which
+can be separated is given by approximately  $ \lambda$/d2, where d2 is
+the width of the beam at the camera lens, from which the minimum
+distance which can be separated is:
+
+$\displaystyle \omega_{{min}}^{}$ = f2$\displaystyle {\lambda\over
+d_2}$
+The slit width which corresponds to this limit is given by:
+$\displaystyle \omega^{\prime}_{}$ = r$\displaystyle
+\omega$$\displaystyle {f_2\over f_1}$ = f2$\displaystyle {\lambda\over
+d_2}$
+or
+$\displaystyle \omega$ = $\displaystyle {f_1 \over r}$$\displaystyle
+{\lambda\over d_2}$
+and the maximum resolution is
+Rmax = $\displaystyle {d_2 \over f_2 (d\lambda/dx)}$ =
+d2$\displaystyle {d\theta\over d\lambda}$
+
+\subsubsection*{Astronomical spectrographs}
+
+Slitless spectographs.
+
+Long slit spectrographs
+
+Image slicers: preserving resolution and flux.
+
+Fiber spectrographs: multiobject data.
+
+Slitlets: multiobject data.
+
+Integral field spectrographs.
+
+
+
+\subsubsection*{Dispersing elements}
+
+Prisms
+
+Perhaps the simplest conceptual dispersing element is a prism, which
+disperses light because the index of refraction of many glasses is a
+function of wavelength. From Snell's law, one finds that:
+
+$\displaystyle {d\theta\over d\lambda}$ = $\displaystyle {t\over
+d}$$\displaystyle {dn\over d\lambda}$
+where t is the base length, and d is the beamwidth. Note that prisms
+do not have anamorphic magnification (r = 1). The limiting resolution
+of a prism, from above is:
+Rmax = $\displaystyle {d_2 \over f_2 (d\lambda/dx)}$ =
+d2$\displaystyle {d\theta\over d\lambda}$
+Rmax = t$\displaystyle {dn\over d\lambda}$
+One finds that dn/d$ \lambda$ $ \propto$ $ \lambda^{{-3}}_{}$ for many
+glasses.
+
+[figure here]
+
+So dispersion and resolution are a function of wavelength for a prism.
+In addition, the resolution offered by a prism is relatively low
+compared with other dispersive elements (e.g. gratings) of the same
+size. Typically, prisms have R < 1000. Consequently, prisms are rarely
+used as the primary dispersive element in astronomical spectrographs.
+They are occasionally used as cross-dispersing elements.
+Gratings
+
+Diffraction gratings work using the principle of multi-slit
+interference. A diffraction grating is just an optical element with
+multiple grooves, or slits (not to be confused with the slit in the
+spectrograph!). Diffraction gratings may be either transmissive or
+reflective. Bright regions are formed where light of a given
+wavelength from the different grooves constructively interferes.
+
+The location of bright images is given by the grating equation:
+m$\displaystyle \lambda$ = $\displaystyle \sigma$(sin$\displaystyle
+\theta$ + sin$\displaystyle \alpha$)
+for a reflection grating, where $ \sigma$ is the groove spacing, m is
+the order, and $ \alpha$ and $ \theta$ ($ \beta$ in picture above!)
+are the angles of incidence and diffraction as measured from the
+normal to the grating surface.
+The dispersion of a grating can then be derived:
+
+$\displaystyle {d\theta\over d\lambda}$ = $\displaystyle {m\over
+\sigma \cos\theta}$
+One can see that the dispersion is larger at higher order, and for a
+finer ruled grating. The equation can be rewritten as
+$\displaystyle {d\theta\over d\lambda}$ = $\displaystyle {\sin\theta +
+\sin \alpha \over \lambda \cos\theta}$
+from which it can be seen that high dispersion can also be achieved by
+operating at large values of $ \alpha$ and $ \theta$. This is the
+principle of an echelle grating, which has large $ \sigma$, and
+operates at high m, $ \alpha$ and $ \theta$, and gives high dispersion
+and resolution. An advantage of this is that one can get a large
+fraction of the light over a broad bandpass in a series of adjacent
+orders.
+Typical gratings have groove densities between 300 and 1200 lines/mm.
+Echelle gratings have groove densities between 30 and 300 lines/mm.
+
+One can derive the anamorphic magnification for a grating by looking
+at how $ \theta$ changes as $ \alpha$ changes at fixed $ \lambda$. One
+finds that:
+
+[equation]
+
+where the d's are the beam diameters. Note that higher resolution
+occurs when r < 1, or  $ \theta$ < $ \alpha$.
+
+$\ldots$
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
