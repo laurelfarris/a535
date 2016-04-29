@@ -12,7 +12,6 @@ def bias_sub(image):
 def norm(image):
     return image/image[400:600,400:600].mean()
 
-
 def combine(lis):
     '''Jon's stuff'''
     cube=np.array(lis)
