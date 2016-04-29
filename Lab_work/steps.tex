@@ -1,0 +1,714 @@
+\documentclass{article}
+\usepackage[margin=1in]{geometry}
+\usepackage{enumerate}
+\usepackage{color}
+\usepackage{xcolor}
+\usepackage{mdwlist}
+
+\definecolor{date}{HTML}{5F0087}
+
+\setlength{\parindent}{0em}
+\setlength{\parskip}{0.5em}
+
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,urlcolor=blue}
+%\urlstyle{same}
+
+\title{\vspace{-0.75in}ASTR 535 Lab notes}
+\author{Jon Holtzman}
+\date{Spring 2016}
+
+\begin{document}
+\maketitle
+
+\section*{Basic display operation}
+\begin{itemize*}
+    \item image display with DS9: DS9 can be used as a standalone display tool
+        \begin{itemize*}
+            \item start: \emph{ds9}
+            \item select a file to display using File/Open menu
+            \item manipulate display scaling using Scale button,
+                note no manual scaling option on main menu,
+                but see Scale/Scale Parameters
+            \item manipulate color map using mouse motions with right button
+            \item manipulate region to display using Zoom button
+        \end{itemize*}
+    \item image display with GAIA
+        \begin{itemize*}
+            \item Type the alias \emph{starsetup} to set up environment variable,
+                paths, etc. (this is a local NMSU defined alias).
+            \item Enter \emph{gaia} to start gaia.
+            \item Note the help window, available from the button at the
+                top right
+            \item load images using the File menu. You can also start
+                gaia with an image file name on the command line. You can open a new window using the
+                File menu and display another image there, etc.
+            \item image display: color tables (Color Map), automatic scaling
+                algorithms (Auto Cut, Intensity Map), manual scaling
+            \item display region: note zoom buttons and zoom and pan windows
+            \item image histograms: View/Cut levels
+            \item image slices: View/Slice
+        \end{itemize*}
+\end{itemize*}
+
+
+\section*{Astronomical image processing: Introduction and basics}
+\textcolor{date}{Friday, February 12, 2016}
+useful in conjuction with PyRAF) and IDL\@. Working in one of these
+environments allows you to script the use of existing routines, and
+also to develop your own routines. Also extremely important to have
+tools to be able to explore data.
+
+\subsection*{Getting started with Python}
+\subsubsection*{Basics}
+\begin{itemize*}
+    \item Start python using \verb|ipython -matplotlib|
+    \item Python works with \emph{objects}. All objects have different
+        attributes and methods.
+    \item Get information
+        \begin{itemize*}
+            \item \verb|type(var)| gives type of variable.
+            \item \verb|var?| gives information on variable (iPython
+                only).
+            \item \verb|var.<tab>| gives information on variable
+                attributes and methods.
+        \end{itemize*}
+    \item Python as a language
+        \begin{itemize*}
+            \item conditionals via \verb|if/elif/else|
+            \item looping via \verb|for, while|
+        \end{itemize*}
+\end{itemize*}
+\subsubsection*{File I/O with astropy}
+\begin{itemize*}
+    \item FITS: header/data, data types, HDUList, etc.
+        \begin{itemize*}
+            \item \verb|from astropy.io import fits|
+            \item \verb|hd = fits.open(filename)| returns HDULIST
+            \item \verb|hd[0].data| is the data from initial HDU
+            \item \verb|hd[0].header| is the header from initial HDU
+        \end{itemize*}
+    \item ASCII:
+        \begin{itemize*}
+            \item \verb|from astropy.io import ascii|
+            \item \verb|a = ascii.read(filename)| returns Table with
+                columns.
+        \end{itemize*}
+\end{itemize*}
+\subsubsection*{Image statistics}
+\begin{itemize*}
+    \item numpy array methods, e.g.:
+        \begin{itemize*}
+            \item \verb|data.sum()| total
+            \item \verb|data.mean()| mean
+            \item \verb|data.std| standard deviation
+        \end{itemize*}
+    \item subsections: \verb|data[y1:y2, x1:x2|
+\end{itemize*}
+\subsubsection*{Image display}
+\begin{itemize*}
+    \item primitive display via imshow
+        \begin{itemize*}
+            \item \verb|plt.imshow(hd[0].data,vmin=min,vmax=max)|
+        \end{itemize*}
+    \item display using \href{http://hea-www.harvard.edu/RD/pyds9/}
+        {pyds9}
+        \begin{itemize*}
+            \item \verb|from pyds9 import *|
+            \item \verb|d = DS9()| opens a DS9 window, associates with
+                object \verb|d|.
+            \item \verb|d.set("fits_filename")| display from file
+            \item \verb|d.set_pyfits(hd)| display from HDULIST
+            \item \verb|d.set_np2arr(hd[0].data)| display from numpy
+                array
+            \item \verb|d.set("scale limits 400 500)| sets display
+                range
+            \item \href{http://ds9.si.edu/doc/ref/command.html}
+                {command list}
+        \end{itemize*}
+    \item display with tv
+        \begin{itemize*}
+            \item \verb|import os|
+            \item \verb|os.environ["PYTHONPATH"] = /home/holtz/python|
+            \item \verb|from tv.tv import *|
+            \item \verb|t=TV()|
+            \item \verb|t.tv(hd[0],min=400,max=500)|
+            \item \verb|t.tv(hd[0].data)|
+            \item zoom, pan, colorbar
+            \item blinking image buffers with +/-
+        \end{itemize*}
+\end{itemize*}
+\subsubsection*{Plotting}
+\begin{itemize*}
+    \item \verb|plt.figure|
+    \item \verb|plt.plot(hd[0].data[:,100]| along column 100
+    \item \verb|plt.plot(hd[0].data[500,:]| along row 500
+\end{itemize*}
+\subsubsection*{Histogram}
+\begin{itemize*}
+    \item \verb|plt.hist(data.flatten(),[bins=n],[bins=np.arange(min,max,delta)],[log=True])|
+\end{itemize*}
+
+HDU (Header Data Unit) consists of a header (array of character strings) and
+data (2D array of numbers).
+
+\subsection*{Getting started with IDL}
+\subsection*{Exercises}
+
+\section*{Introduction to CCD images and basic CCD data reduction}
+
+\subsection*{Python tools}
+
+Basic techniques for image reduction in IDL are just image arithmetic
+and statistics (e.g.\ mean() and std() methods of numpy arrays). To
+median images, stack them into a \emph{data cube}, then use
+numpy.median(cube,axis=0) to median them together.
+\begin{itemize*}
+    \item You can create a cube ``in advance'', using, e.g.,
+        cube=numpy.zeros(nim,nrow,ncol), and load using: cube[0,:,:]=im1,
+        cube[1,:,:]=im2, etc
+    \item You can create a cube ``on the fly'', using, e.g.,
+        cube=numpy.array([im1,im2,im3])
+    \item med=numpy.median(cube,axis=0)
+\end{itemize*}
+
+\section*{Astronomical image processing packages: IRAF basics}
+
+\subsection*{IRAF/DS9 basic operation}
+One time only for each directory:
+run \texttt{mkiraf}, which creates \texttt{login.cl}, and starts a
+uparm/subdirectory for parameter files.
+This file can be customized at a later time if you have settings you want
+to start with every time.
+To enable a larger frame buffer for display, uncomment and
+modify line: \texttt{stdimage = imt2048}
+
+The preferred method of running IRAF in the modern era is using the
+PYTHON interface, \texttt{pyraf}.
+You can use pyraf via a normal python interface:
+
+\texttt{from pyraf import iraf} or \texttt{from pyraf.iraf import *}
+
+for the former, you'll need to precede tasknames with iraf.
+You will then need to use standard PYTHON styntax, rather
+than the old IRAF \texttt{cl} syntax.
+
+
+For displaying images, start an image display tool, i.e.\ DS9,
+in the background: \texttt{ds9 \&}. Be aware that the stdimage that is set
+in the login.cl file may limit the maximum size of the image that will
+be displayed.
+
+\subsubsection*{Help}
+\begin{itemize*}
+    \item there is an internal \texttt{.help} command.
+    \item \href{http://iraf.noao.edu/iraf-help.html}
+        {IRAF help}
+    \item \href{http://iraf.noao.edu/iraf/web/tutorials/tutorials.html}
+        {tutorials}
+\end{itemize*}
+
+\subsubsection*{Basics}
+
+\begin{itemize*}
+    \item e.g., to load noao package via Python interpreter: iraf.noao()
+    \item e.g., to load noao package via PYRAF interpreter: noao
+\end{itemize*}
+
+\subsubsection*{image display with DS9 through IRAF: the
+\emph{display} task}
+
+The default mode is to autoscale the image (zscale=yes, zrange=yes).
+You can manually set the display range using z1=low and z2=high, but
+you must also turn off autoscaling (zs- zr-) for the manual values to
+take effect
+
+Note that the data value display in the display window is derived from
+the display pixel value, so you won't see actual data values that are
+below z1 or above z2, the value display will just say < z1 or > z2 -
+rather annoying.
+
+If using IRAF to control the ds9 display, the ds9 scaling option will
+not be available.
+
+If image buffer isn't set correctly, you can reset using, e.g.,
+
+\verb|iraf.set(stdimage='imt2048')|
+
+\subsubsection*{Other}
+
+image cross sections: the \emph{implot} task.
+
+Image histogram: imhist. Look at the parameter file. Note that you can
+specify image subsections using filename[x1:x2,y1:y2]
+
+Image statistics: imstat. Look at the parameter file. Note you can
+specify image subsections as above.
+
+Image arithmetic: imarith. You can do arithmetic with images and
+constants, or with multiple images. For example: imarith file1.fits -
+363 will subtract a constant of 363 from the image, imarith file1.fits
+/ file2.fits will divide file1 by file2 (on a pixel-by-pixel basis).
+
+Inspection of stellar images: imexam. Note `a', `r', and `m' keys, '?'
+for help (note you have to exit help to get interactive cursor), `q'
+for quit.
+
+For many tasks that require an input file, it is possible to specify a
+list of input files if the same action is to be taken on each. This is
+accomplished by creating a file (e.g., files.lis) that has a list of
+all of the files that you wish to run the task on, each on a separate
+line. Then, instead of giving an image name to the task, you give the
+list file name than contains the image names, preceded by an @ sign,
+e.g. @files.lis. Remember when you are proccessing images that IRAF
+wants to write the output files; if you don't have write permission in
+the input directory, you'll need to also supply an @output.lis file
+with the names for the output images.
+
+Quit pyraf using the \verb|.exit| command
+
+\subsection*{IRAF user guides}
+See \url{http://iraf.noao.edu/docs/}
+
+\subsection*{IRAF data reduction}
+IRAF package imred/ccdred: zerocombine, darkcombine, flatcombine,
+ccdproc (note need for header cards)
+
+lower level: imcombine, image arithmetic
+
+Note that you may have to do a iraf.setinst first, have to pay
+attention to ccdproc parameters!
+
+IRAF file list specification: comma-separated string
+
+\subsection*{IRAF simple stellar photometry}
+phot/apphot
+
+\subsection*{Exercises}
+
+%---------------------------------------------------------------------------%
+*{Astronomical image processing/reduction: Basic tools}
+\textcolor{magenta}{Friday, April 1, 2016}
+
+When observing, a bare minimum requirement is the ability to look at
+your data. In many cases, however, it is preferable to have tools to
+do some quick image manipulation and analysis, and these will be
+required for image reduction/analysis. It's best if these are easily
+available so that you are likely to encounter them in most computing
+situations, and ideally, could access them on your laptop if you have
+one.
+
+In the current computing climate, I would recommend using Python tools
+wherever possible. For some analysis, IRAF routines provide a lot of
+developed routines, so if IRAF installed, these can be useful; I would
+recommend using them from a Python environment to be able to take
+advantage of native Python features.
+
+For image display, \texttt{ds9} is probably the best choice, although there may
+be alternatives.
+
+Our goal is to work towards reduction of all of our APO images.
+
+\subsection*{Getting started}
+\begin{itemize}
+\item Start ds9 in the background
+\begin{verbatim}
+ds9 &
+\end{verbatim}
+\item Start an iPython session
+\begin{verbatim}
+ipython --matplotlib
+\end{verbatim}
+
+\item Import standard Python packages
+\begin{verbatim}
+import numpy as np
+import matplotlib.pyplot as plt
+import pyds9
+\end{verbatim}
+(note that you can put these in a
+\texttt{/.ipython/profile\_defa/startup/00startup.py}
+script to load every time you start ipython.)
+
+\item Import useful astropy routines
+\begin{verbatim}
+from astropy.io import fits
+\end{verbatim}
+
+\item Create \texttt{login.cl} file
+If IRAF is available, make sure you have a login.cl file. If you don't:
+\begin{verbatim}
+mkiraf # note this is a UNIX command, not a python command
+\end{verbatim}
+and edit the \texttt{login.cl} file to set \texttt{stdimage=imt2048},
+or copy a \texttt{login.cl} file from a previous directory.
+\begin{verbatim}
+from pyraf import iraf
+\end{verbatim}
+in which case, you will need to call iraf routines using
+\texttt{iraf.routine\_name()}
+which makes it clear that they are IRAF routines. If you want to
+enter the routine names without the \texttt{iraf.} prefix, type
+\begin{verbatim}
+from pyraf.iraf import *
+\end{verbatim}
+\end{itemize}
+
+\subsection*{Reading images}
+\begin{itemize}
+\item Read image into variable:
+\begin{verbatim}
+im=fits.open(filename)[0]
+\end{verbatim}
+Note that this reads the first extension ([0]) into a HDU object, with
+im.header containing the header, and im.data containing the data
+\item For convenience, you might want to:
+\begin{itemize}
+\item Set up a variable with the directory name for the images,
+to avoid having to retype it:
+\begin{verbatim}
+imdir='/pathtoimage directory/'
+im=fits.open(imdir+'nameoffile')[0]
+\end{verbatim}
+\item Set up a symbolic link to the directory with the images,
+to avoid having to retype it:
+\begin{verbatim}
+%ln -s /pathtoimage directory/ raw    # UNIX command
+im=fits.open('raw/nameoffile')[0]
+\end{verbatim}
+\end{itemize}
+\item IDL: im=mrdfits('filename')
+\end{itemize}
+
+
+\subsection*{Displaying images}
+\begin{itemize}
+\item Direct from memory (variable):
+\begin{verbatim}
+d=DS9()   # to open display
+hd=fits.open(filename)   # puts HDUlist of file into hd
+d.set_pyfits(hd)  #  display from HDUList variable
+d.set("scale limits 400 500")  (sets display range)
+\end{verbatim}
+If you are doing image arithmetic and want to display a numpy array,
+you can do so with:
+\begin{verbatim}
+d.set_np2arr(hd[0].data)  # display from numpy array
+\end{verbatim}
+You might want to write yourself a simple Python function to display
+and scale with a single simple command.
+\item Direct from disk, using IRAF display:
+\begin{verbatim}
+iraf.display(imdir+'nameoffile')
+\end{verbatim}
+If you wish to control display parameters (recommended):
+\begin{verbatim}
+iraf.display(imdir+'nameoffile',zrange='No',scale='No',z1=low,z2=high)
+\end{verbatim}
+where low, high are the values you want for color mapping. If you want
+to have your values set by default, you can:
+\begin{verbatim}
+iraf.epar('display')
+\end{verbatim}
+and set zrange and scale to 'No', or alternatively:
+\begin{verbatim}
+iraf.display.setParam('zrange=no')
+iraf.display.setParam('zscale=no')
+\end{verbatim}
+\item IDL: atv,im,[min=min,max=max]
+\end{itemize}
+
+
+\subsection*{Image inspection}
+\begin{itemize}
+\item image cross sections:
+    \begin{itemize}
+        \item Python:
+            \begin{verbatim}
+plt.plot(im.data[:,500])  # plots row 500
+plt.plot(im.data[500,:)  # plots column 500
+            \end{verbatim}
+        \item IRAF: \emph{implot} task.
+            \begin{itemize}
+                \item See plot window commands ('?')
+                \item `l' and `c' for line (row) and column plots,
+                    as determined by cursor location
+            \end{itemize}
+        \item IDL: plot,im[*,500]
+    \end{itemize}
+
+\item Image histogram:
+    \begin{itemize}
+        \item Python:
+            \begin{verbatim}
+plt.hist(im.data.flatten(),bins=....)
+            \end{verbatim}
+        \item IRAF \emph{imhist}. Look at the parameter file for options.
+            Note that you can specify image subsections using
+            \texttt{filename[x1:x2,y1:y2]}
+        \item IDL: plothist,im
+    \end{itemize}
+
+\item Image statistics:
+    \begin{itemize}
+        \item Python: use numpy array methods: mean, sum and std, e.g.,
+            \begin{verbatim}
+mean=im.data[400:600,400:600].mean()
+tot=im.data[400:600,400:600].sum()
+sig=im.data[400:600,400:600].std()
+            \end{verbatim}
+        \item IRAF imstat. Look at the parameter file. Note you can specify
+            image subsections as above.
+        \item IDL: MEAN(), STDEV() functions
+\end{itemize}
+
+\item Image arithmetic:
+    \begin{itemize}
+        \item Python: just use normal arithmetic, e.g.:
+            \begin{verbatim}
+a=im1.data-bias
+b=im1.data=im2.data
+            \end{verbatim}
+        \item IRAF imarith: file based. You can do arithmetic with images and
+            constants, or with multiple images. For example:
+            \emph{imarith file1.fits - 363}
+            will subtract a constant of 363 from the image,
+            \emph{imarith file1.fits / file2.fits}
+            will divide file1 by file2 (on a pixel-by-pixel basis).
+        \item IDL: normal array arithmetic
+    \end{itemize}
+
+\item Interactive inspection of stellar images:
+    \begin{itemize}
+        \item Python: someone needs to write some tools!
+        \item IRAF imexam: need to display image with iraf.display() first. Note
+            `a', `r', and `m' keys, `?' for help (note you have to exit help
+            to get interactive cursor!), `q' for quit.
+        \item IDL: atv
+    \end{itemize}
+\end{itemize}
+
+\subsection*{Basic data reduction}
+\subsubsection*{Overscan subtraction}
+\begin{itemize*}
+    \item Determine overscan region location
+    \item Determine whether constant overscan (subtraction of a single value) is
+        appropriate, or if not, consider possibilities:
+        \begin{itemize*}
+            \item Fit to overscan as a function of row
+            \item Median overscan as a function of raw
+        \end{itemize*}
+    \item Remove overscan
+        \begin{itemize*}
+            \item Using image arithmetic
+            \item Using IRAF: ccdproc (note overscan options)
+        \end{itemize*}
+\end{itemize*}
+
+\subsubsection*{Superbias (zero) frame construction}
+\begin{itemize*}
+    \item Inspect overscan-subtracted bias frames. If there is repeatable
+        structure in these, construct a superbias frame by combining
+        overscan-subtracted bias frames:
+        \begin{itemize*}
+            \item Using image arithmetic
+            \item Using IRAF: zerocombine
+            \item Note that there are multiple options for combining stacks of frames,
+                to avoid contamination by outliers, resulting biases, noise
+                minimization, etc: mean, median, max-reject, min-max reject, sigma
+                clipping, etc. Median is a simple algorithm that is fairly robust if
+                not perfectly optimal.
+        \end{itemize*}
+    \item Note that any noise in your superbias frame will be propagated to
+        every image you reduce, hence the desire to combine many individual
+        bias frames, and only to use a superbias if there is repeatable
+        structure to subtract!
+\end{itemize*}
+
+\subsubsection*{Flat field construction}
+\begin{itemize*}
+    \item You will need to construct separate flat fields for each
+        filter/configuration that you use
+    \item Flat fields should be normalized before combining to account for
+        variations in lamp/sky brightness
+    \item Final flat fields should be normalized such that dividing by
+        them does not change the overall mean level significantly,
+        so that noise can still be calculated using the observed number
+        of counts
+    \item Making flats:
+        \begin{itemize*}
+            \item Using image arithmetic
+            \item Using IRAF: flatcombine
+            \item Again, there are many frame combination options.
+        \end{itemize*}
+\end{itemize*}
+\subsection*{Exercises}
+
+\section*{Data reduction}
+\textcolor{magenta}{Friday, April 15, 2016}
+
+Our goal is to understand all of the steps and issues involved with
+data reduction and how they may be dealt with when people reduce data,
+and to try to avoid, as much as possible, ``black-box" recipes for
+reducing data.
+
+To be able to capture the process, it is best if data reduction
+efforts always be scripted, so that you have a record of what you did,
+and a resource to look back on the next time you have to do it again!
+
+Your goal is to deliver basic data reduction scripts for the standard
+stars observed with ARCTIC and DIS
+
+\subsection*{Basic data reduction}
+\begin{itemize*}
+    \item Overscan subtraction
+        \begin{itemize*}
+            \item Determine overscan region location
+            \item Determine whether constant overscan (subtraction of a single value) is
+                appropriate, or if not, consider possibilities:
+                \begin{itemize*}
+                    \item Fit to overscan as a function of row
+                    \item Median overscan as a function of raw
+                \end{itemize*}
+            \item Remove overscan
+                \begin{itemize*}
+                    \item Using image arithmetic
+                    \item Using IRAF: ccdproc (note overscan options)
+                \end{itemize*}
+        \end{itemize*}
+    \item Superbias (zero) frame construction
+        \begin{itemize*}
+            \item Inspect overscan-subtracted bias frames. If there is repeatable
+                structure in these, construct a superbias frame by combining
+                overscan-subtracted bias frames:
+                \begin{itemize*}
+                    \item Using image arithmetic
+                    \item Using IRAF: zerocombine
+                    \item Note that there are multiple options for combining stacks of frames,
+                        to avoid contamination by outliers, resulting biases, noise
+                        minimization, etc: mean, median, max-reject, min-max reject, sigma
+                        clipping, etc. Median is a simple algorithm that is fairly robust if
+                        not perfectly optimal.
+                \end{itemize*}
+            \item Note that any noise in your superbias frame will be propagated to
+                every image you reduce, hence the desire to combine many individual
+                bias frames, and only to use a superbias if there is repeatable
+                structure to subtract!
+        \end{itemize*}
+    \item Flat field construction
+        \begin{itemize*}
+            \item You will need to construct separate flat fields for each
+                filter/configuration that you use
+            \item Flat fields should be normalized before combining to account for
+                variations in lamp/sky brightness
+            \item Final flat fields should be normalized such that dividing by them does
+                not change the overall mean level significantly, so that noise can
+                still be calculated using the observed number of
+                counts. Don't want to change numbers much because want
+                to measure uncertainty on brightness later
+            \item Making flats:
+                \begin{itemize*}
+                    \item Using image arithmetic
+                    \item Using IRAF: flatcombine
+                    \item Again, there are many frame combination options.
+                \end{itemize*}
+        \end{itemize*}
+\end{itemize*}
+
+\subsection*{Basic spectroscopic calibration}
+\begin{enumerate*}
+    \item normal CCD processing: overscan, (bias, dark). (Note that
+        Triplespec is not a CCD, so requires normal IR detector
+        processing: dark/bias subtraction).
+    \item
+        flat fielding. Note problem that dome flats have spectral
+        energy distribution of light source. ``Flatten'' the flats in
+        the wavelength direction to preserve error analysis, i.e.\
+        remove the large scale wavelength dependence, but preserve the
+        pixel-to-pixel response variations. In the spatial direction,
+        flat fielding is like imaging, but often the requirements on
+        accuracy are less stringent. An extra spatial component in the
+        flats comes from variation of slit width.
+    \item wavelength calibration. Use arc lamps with known lines.
+        Identify lines, determine line centers (centroid or fitting),
+        and fit function to centers vs.\ wavelength.
+    \item flux calibration: correction for throughput as a function of
+        wavelength. Not always required, e.g.\ if measuring strengths
+        relative to nearby continuum. Spectrophotometric standards,
+        e.g. Massey et al. ApJ 328, 315 (1988).
+        If fluxing is performed, usually also want to correct for
+        atmospheric extinction as a function of wavelength and
+        airmass: use of mean extinction coefficients.
+    \item Object reduction: extracting object spectrum (``tracing'' the
+        object) and sky spectrum. Aperture extraction vs.\ optimal
+        extraction. Caveats: spectral curvature.
+    \item Advanced topics: nod and shuffle, atmospheric feature
+        correction (esp in IR).
+\end{enumerate*}
+
+\subsection*{IRAF utilities}
+IRAF: \href{http://iraf.noao.edu/iraf/web/tutorials/doslit/doslit.html}
+        {response and doslit}
+\begin{itemize*}
+    \item load specred package:
+        \begin{verbatim}
+iraf.imred()
+iraf.specred()
+        \end{verbatim}
+    \item response takes out the observed flat field response in the
+        wavelength direction (which is a combination of the flat field
+        SED and the spectrograph response)
+    \item doslit is the ``meta'' task that does wavelength calibration,
+        flux calibration, and object extraction for point sources
+        \begin{itemize*}
+            \item Images must be run through CCDPROC first
+                (or have CCDPROC flag in header).
+            \item For the arc list, be aware that the \verb|.fits|
+                should not be included in the file name, it is
+                automatically added (with imtype = fits)
+        \end{itemize*}
+\end{itemize*}
+
+Individual commands (instead of doslit doing the whole thing):
+\begin{itemize*}
+    \item apall: marks apertures and does the extraction
+    \item for arc: apall arc ref=object (from above marked) inter-
+        backg- recen- trace-
+    \item identify: m to mark 2 lines, f to quick fit, q, l to identify
+        more lintes, f to refit (:func cheb :order 3 to change
+        function), d to delete lines.
+        Reidentify can be used to id lines on subsequent spectra with
+        similar wavelength calibration
+    \item refspec on each object file, reference=arcname (may need to
+        remove sort key)
+    \item dispcor: applies wavelength solution to extracted spectrum,
+        linearizes if requested
+\end{itemize*}
+\subsection*{Scripting issues}
+Different people/packages have different preferences for handling
+issues involved with scripting data reduction. In particular, a set of
+images taken on a given night is generally divided among different
+types: flat field frames (in different filters/configurations), bias
+frames, wavelength calibration frames, object frames (in different
+filters/configurations), etc., and these need to be handlede
+differently.
+
+One way of handling this is to try to extract all of the relevant
+information from file headers. This requires that the data acquisition
+software put the appropriate information there, and that the user
+specifies things in such a way to guarantee the information is
+correct, or subsequently edits it so that it is.
+
+IRAF: instrument files, setinst command, hselect comment, hedit
+command
+
+Alternatively, one might just prepare some standard input files that
+list frames of a given type.
+
+Finally, one might just build into a script the appropriate files to
+use for each step of the reduction process.
+
+\subsection*{Exercises}
+
+
+\end{document}

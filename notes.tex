@@ -541,7 +541,7 @@ Random note: The field of view (FOV) is usually in arcminute scales.
 
 \textcolor{om}{\emph{Understand the count equation and the terms in
 it. Understand the distinction between estimating count rates from an
-understanding of all the terms in the count equaiton vs. measuring the
+understanding of all the terms in the count equation vs.\ measuring the
 overall throughput (zeropoint) by observing stars of known brightness.
 Know instrumental magnitudes and zeropoints are.}}
 %-----------------------------------------------------------------------%
@@ -741,7 +741,7 @@ data points can be made using reduced $\chi^{2}$, defined as
 $\chi^{2}$ divided by the \emph{degrees of freedom} (number of data points
 minus number of parameters).
 
-\textcolor{myBlue}{
+\textcolor{myBlue}{%
     $$  \chi^2 = \sum_N \frac{(y_i-y(x_i))^2}{\sigma_i^2} $$
 for $N$ data points. If every point was 1$\sigma$ off,
 $\chi^2 \sim$ number of data points. Can calculate the probability
@@ -755,17 +755,17 @@ Is the data consistent with the model?
 uncertainties?}
 \emph{Signal-to-noise}
 
-\textcolor{myBlue}{
+\textcolor{myBlue}{%
 Shape parameterized by stddev which = $\sqrt{\mu}$
-$\rightarrow$ Fundamental! e.g. source emitting 1000 photons has
-uncertainty of 100, etc. (telescope, brightness of source, etc. don't
+$\rightarrow$ Fundamental! E.g.\ source emitting 1000 photons has
+uncertainty of 100, etc.\ (telescope, brightness of source, etc.\ don't
 matter$\ldots$ only number of photons, no matter how you got them).
     $$ \frac{S}{N} = \frac{S}{\sqrt{S}} = \sqrt{S} $$
 How does $S/N$ change for a given object?
 }
 
 Astronomers often describe uncertainties in terms of the fractional
-error, e.g. the amplitude of the uncertainty divided by the amplitude
+error, e.g.\ the amplitude of the uncertainty divided by the amplitude
 of the quantity being measured (the signal);
 often, the inverse of this, referred
 to as the signal-to-noise ratio, is used. Given an estimate the number
@@ -777,7 +777,7 @@ which is the inverse of the predicted fractional error ($N/S$).
 Consider an object with observed photon flux, $S^{\prime}$
 [cm$^{-2}$ s$^{-1}$],
 leading to a signal, $S = S^{\prime}Tt$.
-In the simplest case (i.e. perfect
+In the simplest case (i.e.\ perfect
 instruments), the only noise
 source is Poisson statistics from the source, in which case:
     $$ \sigma^2 = S = S^{\prime}Tt $$
@@ -799,7 +799,7 @@ A more realistic case includes the noise contributed from Poisson
 statistics of ``background'' light, $B^{\prime}$,
 which has units of flux per area
 on the \emph{sky}, not the detector
-(i.e. a surface brightness); note that this is also usually
+(i.e.\ a surface brightness); note that this is also usually
 given in magnitudes (more on the physical nature of
 this later).
 
@@ -968,7 +968,7 @@ colors, etc.) using these observations: we need to be able to estimate
 the uncertainties in the calculated quantities that depend on our
 measured quantities.
 
-\textcolor{myBlue}{
+\textcolor{myBlue}{%
 Total signal: $ S=S+B-<B>+O $. There are uncertainties from all
 four terms, but $<B> \sim 0$ ($\sigma_{<B>}=0$), so there are
 actually only three. $S+BA$: total \underline{inside} aperture;
@@ -992,7 +992,7 @@ As long as errors are small:
 where $var_i - <var>$ is the uncertainty, and the derivatives are the
 amount by which the input quantity depends on other quantities.
 
-\textcolor{myBlue}{
+\textcolor{myBlue}{%
 Possible class example involving
 S=100, B=10, A=10, and $\sigma_{rn}=10\ldots$?
 The \emph{sample variance} (by definition, see above notes) is}
@@ -1053,7 +1053,7 @@ underestimating them.}
 When propagating errors, even though you can calculate the variances
 in the new variables, the distribution of errors in the new variables
 is not, in general, the same as the distribution of errors in the
-original variables, e.g. if errors in individual variables are
+original variables, e.g.\ if errors in individual variables are
 normally distributed, errors in output variable is not necessarily.
 
 When two variables are added, however, the output is normally
@@ -1067,7 +1067,7 @@ distributed.
 We've covered errors in single measurements ($\sigma_i$).
 Next we turn to averaging measurements.
 Say we have multiple observations and want the best
-estimate of the mean and variance of the population, e.g. multiple
+estimate of the mean and variance of the population, e.g.\ multiple
 measurements of stellar brightness. Here we'll define the best
 estimate of the mean as the value which maximizes the likelihood that
 our estimate equals the true parent population mean.
@@ -1086,7 +1086,7 @@ the optimal determination of the mean is using a:
     $$ \textrm{weighted\ mean} = \frac{\sum\frac{x_i}{\sigma_i^2}}
        {\sum\frac{1}{\sigma_i^2}} $$
 \textcolor{myBlue}{which can be derived from maximum liklihood.
-large weight means small error}.
+Large weight means small error}.
 The estimated error in this value is given by:
     $$ \sigma_{\mu}^2 = \sum\frac{\frac{\sigma_i^2}{\sigma_i^4}}
        {(\sum\frac{1}{\sigma_i^2})^2}
@@ -1116,7 +1116,7 @@ you'll get a mean rate of $<x>=48.64$.
 
 \textcolor{myBlue}{Imagine 10,000 measurements; 50 is the \emph{true}
 population mean. $\sigma$ is really $\sqrt{50}$ for all 3 observations
-above... \underline{estimation} of true uncertainties.
+above$\ldots$ \underline{estimation} of true uncertainties.
 Avoid by: revised mean: $50 \rightarrow 48.64 \ldots
 \sqrt{48.64}$. Something other than Poisson stats, some measurements
 have more weight than others, same uncertainty across all
@@ -1158,7 +1158,7 @@ not the same as averaging magnitudes.
 Although from $S/N$ considerations, one can determine the required
 number of counts you need (exposure time) to do your science, when
 observing, one must also consider the question of whether this time
-should be collected in single or in multiple exposures, i.e. how long
+should be collected in single or in multiple exposures, i.e.\ how long
 individual exposures should be. There are several reasons why one
 might imagine that it is nicer to have a sequence of shorter
 exposures rather than one single longer exposure (e.g., tracking,
@@ -1234,7 +1234,7 @@ EXAMPLE: flat fielding, subpixel QE variations.
 
 Note that error analysis from expected random errors may be the only
 clue you get to discovering systematic errors. To discover systematic
-errors, plot residuals vs. everything
+errors, plot residuals vs.\ everything
 
 \textcolor{om}{\emph{}}
 
@@ -1752,7 +1752,7 @@ size and B is the size of wiggles in the wavefront. Comparing 8'' telescope
 to 4-m telescope (See handwritten diagrams).
 Both telescopes produced the same end resutl, but how it got there is different
 for each one. Difference? Aperture size compared to length of [curve] $\sim$
-6-8 inches (size scale of wavefront pieces) approx. same as waveplane front.}
+6-8 inches (size scale of wavefront pieces) approx.\ same as waveplane front.}
 
 
 
@@ -1858,9 +1858,9 @@ atmosphereic correction, i.e.\ tip-tilt, where one is doing
 Area where wiggles, wavefronts are the same. Smaller patch if $H$
 (height in atmosphere) is bigger. $H$ is bigger at top of atm than at
 bottom. Take out seeing entirely: correction in one area doesn't work
-in another area. Space telescopes get wider FOV. Adaptive optics:
+in another area. Space telescopes get wider FOV\@. Adaptive optics:
 multiple corrections for different angles (complicated). Better in IR
-(bigger $r_0$). 1/2' or 1' patch. Most adaptive optics in NIR.
+(bigger $r_0$). 1/2' or 1' patch. Most adaptive optics in NIR\@.
 Partial correction: coherent over larger angular scale, but not down
 to diffraction-limited. Wobbly wavelength front; can correct
 \emph{some} spatial area. Measure \emph{mean} tilt and correct for
@@ -1881,10 +1881,10 @@ recognized over the past several decades to be significant effects.
     worse for smaller domes.}
     \item Mirror seeing: arises from turbulence right above the
     surface of the mirror, which can arise if the mirror temperature
-    differs from that of the air above it. \textcolor{myBlue}{
+    differs from that of the air above it. \textcolor{myBlue}{%
     Thinner mirrors are better; less mass, or thermal
     something-or-other}.
-    \item Wind shake of the telescope. \textcolor{myBlue}{
+    \item Wind shake of the telescope. \textcolor{myBlue}{%
     Maybe getting rid of the dome isn't such a good idea$\ldots$
     Good idea to put telescopes on mountain on edge facing the wind.
     As the wind goes up over where the telescope is, the turbulence
@@ -2023,7 +2023,7 @@ from or converge to, but at a location where no light actually
 appears. For example, in a Cassegrain telescope, the image formed by
 the primary is virtual, because the secondary intercepts the light and
 redirects it before light gets to the focus of the primary
-(see figure \ref{cassegrain}).
+(see figure~\ref{cassegrain}).
 \begin{figure}[h]
     \centering
     \includegraphics{cassegrain.png}
@@ -2675,7 +2675,7 @@ quality are considered, the Cassegrain usually is favored: for the
 same primary mirror, the Cassegrain is considerably shorter and thus
 it is less costly to build an enclosure and telescope structure. To
 keep the physical length the same, the Gregorian would have to have a
-faster primary mirror, which are more difficult (i.e. costly) to
+faster primary mirror, which are more difficult (i.e.\ costly) to
 fabricate, and which will result in a greater sensitivity to alignment
 errors. Both types of telescopes have a \emph{curved} focal plane.
 
@@ -2900,10 +2900,10 @@ Double-check these; taking notes prematurely.
 
 %------------------------------------------------------------------%
 
-The goal of adaptive optics is to partially or entirely remove the
+The goal of \emph{adaptive optics} is to partially or entirely remove the
 effects of atmospheric seeing.
 This is different from \emph{active} optics, which works at lower
-frequencies ($\ll1$ Hz) and has the main goal of removing aberrations
+frequencies ($\ll$ 1 Hz) and has the main goal of removing aberrations
 from the change in telescope configuration as the telescope moves
 (for example, small changes in alignment from flexure (?) or sag (??)
 of the primary mirror surface as the telescope moves).
@@ -3071,36 +3071,182 @@ from the reference object, the correction will gradually degrade.
 \section*{Telescopes}
 \textcolor{magenta}{Wednesday, April 13, 2016}
 
-(In class only):
+One real-world issue for large telescopes is the technology of how to
+build a large mirror which will not be so heavy that it will sag under
+its own weight. Additionally, since it has been recognized that good
+image quality requires that the mirrors be at the same temperature as
+the outside air, the mirror technology must be such that the mirror
+has a short thermal time constant, or, in other words, it must be able
+to change temperature to match the outside air fairly quickly. If
+necessary, one can consider thermally controlling the mirror, e.g.,
+with heating or air conditioning.
 
-3 types of large mirrors:
+In the large mirror regime, there are currently three leading technologies.
 \begin{itemize*}
-    \item Borosilicate honeycomb - large thermal mass, need to keep daytime
+    \item Borosilicate honeycomb -
+        \textcolor{myBlue}{%
+        large thermal mass, need to keep daytime
         temp as close to observing temp as possible. University of Arizona
-        (Tucson) doing this under a football stadium.
-    \item Thin mirrors - lightweight, better for TE, but not as stiff, uses
+        (Tucson) doing this under a football stadium.}
+        The first is the construction of a single large mirror
+        (monolithic) made from borosilicate glass, but having large hollowed
+        out regions to keep the weight down. This borosilicate honeycomb
+        design has been pioneered by Roger Angel at the Mirror Lab of the
+        University of Arizona. This type of mirror has been successfully cast
+        in a 3.5m size (used in the ARC 3.5m (APO), WIYN 3.5m (KPNO), and the
+        Starfire Optical Range Telescope near Albuquerque), and in a 6.5m
+        format for the MMT conversion (Mt. Hopkins, AZ) and the Magellan (Las
+        Campanas Observatory, Chile) telescopes; they have also been made in
+        an 8m format (x2) for the Large Binocular Telescope (Mt. Graham, AZ).
+    \item \textcolor{myBlue}{Thin mirrors - lightweight, better for TE, but not as stiff, uses
         an active support system (changing gravity load during tracking,
         timescales of minutes or hours, not like adaptive optics).
         \emph{Active} optics - operates on longer timescales, structural
-        mechanical stuff. Gemini was a big deal. VLT (Europe).
-    \item Segmented - lots of little mirrors, each element needs its own correct
-        shape (overall shape is hyperbola).
+        mechanical stuff. Gemini was a big deal. VLT (Europe).}
+        The second design is also monolithic but has a mirror which is
+        significantly thinner than the borosilicate mirror. These thin mirrors
+        are being built primarly by two companies, Corning (USA) and Schott
+        (Germany). They use materials with good thermal properties, ULE
+        (Corning) and Zerodur (Schott). Thin mirrors are being used in ESO's
+        3.5m New Technology Telescope (La Silla, Chile), Japan's 8m Subaru
+        telescope (Mauna Kea, Hawaii), the two 8m Gemini telescopes (Mauna Kea
+        and Cerro Pachon, Chile), and ESO's Very Large Telescopes (4 8m's on
+        Cerro Paranal).
+    \item \textcolor{myBlue}{Segmented - lots of little mirrors, each element needs its own correct
+            shape (overall shape is hyperbola).}
+        Finally, the third design make use of segmented
+        mirrors, in which a large mirror is made by combining many small
+        mirrors. This design is currently operational in the 10m Keck
+        telescope (Mauna Kea), the 11m Hobby-Eberly Telescope, the 11m SALT
+        telescope, and the 10m Gran Telescopio de las Canarias. Future 30m
+        class telescopes: TMT, GMT, and E-ELT.
 \end{itemize*}
-
 \href{http://astro.nineplanets.org/bigeyes.html}{Tabular summary}
 of the world's telescopes!
 
-Mercury - highly reflective liquid :)
+The borosilicate mirrors have the advantage that they are stiffer than
+the other designs, so the mirror support is less complicated. For thin
+mirrors, the support system must be activated to allow for changing
+shape as a function of telescope pointing. For segmented mirrors, each
+segment must be controlled to make sure the entire surface is smooth.
+The thick mirror is also less susceptible to wind shake, which can
+adversely affect image quality. The thin and segmented mirrors have
+the advantage of better thermal properties since they contain less
+total material.
+
+The choice of a primary mirror technology can be complicated. In
+designing a large telescope, one generally first decides on an optical
+prescription which is chosen considering the main scientific goals for
+the project (e.g., large field, IR, good image quality, etc.). The
+primary mirror choice is made considering the choice of site (e.g, are
+there large temperature changes, lots of wind, etc.), availability,
+issues of engineering complexity, and, especially, cost (and
+politics). The choice of a mount and control system to use is
+basically a cost and operations issue.
+
 
 \subsection*{Mirror coatings}
+\textcolor{myBlue}{Mercury - highly reflective liquid :)
 Aluminum usually highest choice. Silver and gold better at longer wavelengths,
 but go back at shorter ones; mostly used for telescopes that work primarily
-in the IR\@.
+in the IR\@.}
+
+Aluminum, silver, gold most commonly used. See, e.g.\
+\href{http://www.optiforms.com/optical-coatings/}
+{here} for relative reflectances as a function of wavelength, also
+\href{https://en.wikipedia.org/wiki/Reflectance}{here}.
+
+Issues with mirror cleaning and recoating.
 
 \subsection*{Telescope mounts}
-Axes of machine...
+We've talked about the optics that go into telescopes. However, it's
+clear that these optics need to be supported in some structure and
+kept in alignment with each other. The support structures needed are
+really an engineering issue (and a challenging one for large
+telescopes), and we won't disucss it here. In addition to supporting
+the optics, the structure also needs to be capable of tracking
+astronomical objects as they move across the sky because of the
+rotation of the earth.
+
+There are two main different sorts of telescope mounts found in
+observatories: the \emph{equatorial} mount and the
+\emph{altitude-azimuth (alt-az)}
+mount. The equatorial mount is by far the most common for older
+telescopes, but the alt-az design is being used more frequently for
+newer, especially larger, telescopes. In the equatorial design, the
+telescope move along axes which are parallel and perpendicular to the
+polar axis, which is the direction parallel to the earth's rotation
+axis. In such a mount, tracking the earth's rotation only requires
+motion along one axis, the one perpendicular to the polar axis, and
+the tracking motion is at a uniform rate. In the alt-az mount, the
+telescope moves along axes which are perpendicular and parallel to the
+local vertical axis. With this mount, however, tracking of celestial
+objects requires motions of variable speed along both axes. An
+additional complication of an alt-az mount is the fact that, for a
+detector which is fixed to the back of the telescope, the image field
+rotates as the telescope tracks an object. Note, however, that the
+telescope pupil does not rotate with the object.
+
+An equatorial mount is much easier to control for pointing and
+tracking. However, from an engineering point of view, it is much more
+demanding to construct, especially for large telescopes which have
+significant weight. The engineering complications generally result in
+a significantly larger cost (for large telescopes) than for an alt-az
+design. An alt-az telescope, however, has a significantly more complex
+control system, and must have an image rotator for the instruments.
+
+Regardless of mount type, the mount is never built absolutely
+perfectly, i.e. with axes exactly perpendicular, exactly aligned as
+they should be, totally round surfaces, optics aligned with mechanics,
+etc. As a result, a telescope does not generally point perfectly.
+However, many effects of an imperfect telescope are quite repeatable,
+so they can be corrected for. This corrrection is done by something
+called a pointing model, which records the difference in true position
+from prediction position over the sky, and, once derived, the pointing
+model can be implemented to significantly improve pointing. A good
+telescope points to within a few arcseconds after implementation of a
+good pointing model.
+
+Related to pointing is tracking performance. The issue here is how
+long the telescope can stay pointed at a given target. You can
+consider this question as how well the telescope can point over the
+area of the sky through which your object will drift. Since your
+required pointing stability should be significantly less than one
+arcsec, so that tracking does not degrade the image quality
+significantly, almost no telescopes have sufficiently good pointing to
+track to within an arcsecond for an arbitrarily long time. Most
+telescopes can track sucessfully for several minutes, but will give
+significant image degradation for exposures longer than this.
+Consequently, most telescopes/instruments are equipped with
+\emph{guide cameras}, which are used to continually correct the pointing by
+observing an object somewhere in the field of view of the telescope
+(possibly the object you are interested in, but usually not, since
+that's where your detector is looking). These days, most guiders are
+\emph{autoguiders}, meaning that they automatically find the position of the
+guide object, compute the pointing offsets needed to keep this object
+in one position, and send these offsets as commands to the telescope.
+The observer generally just has to choose a guide object for the
+autoguider to use, though they also may have to adjust the guide
+camera sensitivity or gain to insure that the guide star has a strong
+signal. These days, many autoguiders can automatically find guide
+stars in the field or from some on-line catalog (e.g., the HST Guide
+Star Catalog, which catalogs stars down to V 14). However, if one is
+taking long exposures and knows that they'll need to use guide stars,
+make sure to find out whether such a facility is available ; if not,
+it may still be possible to find guide stars in advance of your
+observing run, e.g., from the sky survey. If so, you should seriously
+consider doing so, as it can take a frustratingly long amount of time
+to search for a guide star at the telescope in real time. Since
+telescope time is heavily oversubscribed at most facilities, you
+really want to maximize your efficiency, and doing so is a large part
+of what will make you a ``expert'' observer.
+
+Note guiding in spectrographs is often done off of the slit with a
+slit-viewing camera.
+
+\textcolor{myBlue}{Axes of machine$\ldots$
 \begin{itemize*}
-    \item equatorial: simpler, don't have to track dec, just RA. Rotation rate
+    \item equatorial: simpler, don't have to track dec, just RA\@. Rotation rate
         of Earth is used, so it's fixed.
     \item alt-ax: More complicated, have to track in both axes. Get constant speed
         (vector-wise) but each individual speed varies. From control-system point
@@ -3113,28 +3259,34 @@ Picture orientation:  mirrors that of the telescope axes. N/E vs.\ zenith/horizo
 N/S changes for alt-az telescope, aka entire field rotates. Need third axis to
 compensate when taking long images. For single point, doesn't matter. Rotating
 point is still a point.
-
 Assuming perfect system, build up table of offsets, which will be repeatable
-for a well-built telescope. Called \emph{pointing models}.
+for a well-built telescope. Called \emph{pointing models}.}
 
 \subsection*{Using telescopes}
+(skipped over this in class)
 \subsection*{Planning observing}
+(skipped over this in class)
 %---------------------------------------------------------------------------%
 \section*{Instrumentation}
 \textcolor{magenta}{Monday, April 18, 2016}
+
+\textcolor{myBlue}{%
+\underline{Review:}
+Different angles have different wavefronts. Multi-conjugate
+$\rightarrow$ multiple deformable mirror.}
+
 Often, astronomers use additional optics between the telescope and
 their detector. These, in conjunction with a detector, make up an
 \emph{instrument}.
 
 \subsection*{Location of optics}
-
 Before going into specifics, consider the effect of placing optics at
 different locations within an optical system, like a telescope.
 
 Optics placed in or near a focal plane will affect images at different
 field angles differently. Optics in a focal plane will not affect the
 image quality at any given field angle; however, such optics might be
-used to control the location of an image of the pupil of the
+used to control the location of an image of the \emph{pupil} of the
 telescope.
 
 Optics placed in or near a pupil plane will affect images at all field
@@ -3152,7 +3304,8 @@ required.
 
 \subsection*{Field Flatteners}
 As we've discussed, all standard two-mirror telescopes have curved
-focal planes. It is possible to make a simple lens to correct the
+focal planes, so the image locations are in a curved plane.
+It is possible to make a simple lens to correct the
 field curvature. We know that a plane-parallel plate will shift an
 image laterally, depending on the thickness of the plate. If we don't
 want to affect the image quality, only the location, we want the
@@ -3160,7 +3313,7 @@ correcting element to be located near the focal plane.
 
 Consequently, we can put a lens right near the telescope focal plane to
 flatten the field. For a field which curves towards the secondary
-mirror, one finds that the correct shape to flatten the field is just
+mirror, the correct shape to flatten the field is just
 a plano-concave lens with the curved side towards the secondary.
 Often, the field flattener is incorporated into a detector dewar as
 the dewar window.
@@ -3174,7 +3327,7 @@ collimator, so that it converts the telescope beam into a collimated
 beam (note that the focal ratio of the collimating lens itself will be
 larger than that of the telescope so that the beam underfills the lens
 to allow for off-axis light as well). The camera lens then refocuses
-the light light with the desired focal ratio. The magnification of the
+the light with the desired focal ratio. The magnification of the
 system is given by:
 $$ m = \frac{f_{camera}}{f_{collimator}}  $$
 Consequently, the scale in the image plane of the focal reimager is
@@ -3183,16 +3336,16 @@ the focal ratio of the camera to that of the telescope.
 
 Note that with a focal plane reimager, one does not necessarily get a
 new scale ``for free''. The focal reimaging system may introduce
-additional aberrations giving reduced image quality. In addition, one
-always loses some light at each additional optical surface from
-reflection and/or scattering, so the more optics in a system, the
-lower the total throughput.
+additional aberrations giving reduced image quality. In addition,
+there is always some light lost at each additional optical surface from
+reflection and/or scattering, so the more optics there are in a system,
+the lower the total throughput is.
 
 Note that it is possible to do focal reduction/expansion
 \emph{without} reimaging, i.e., by putting optics in the converging beam.
 
 \subsection*{Pupil reimagers}
-Often, an additional lens, called a field lens is placed in or near
+Often, an additional lens, called a \emph{field} lens is placed in or near
 the telescope focal plane. This does not affect the focal reduction
 but is used to reimage the telescope pupil somewhere in the reimager.
 One reason this may be done is to minimize the size that the
@@ -3228,7 +3381,7 @@ via cold pupil stops. The issue here is that the telescope itself
 contributes infrared emission which acts as additional background in
 your observations. There is little you can do about emission from the
 primary, since you need to see light from the primary to see your
-object! However, you can block out emission from regions of the pupils
+object. However, you can block out emission from regions of the pupils
 which are obscured already, for example, by the secondary and/or
 secondary support structures. To do this you put a mask in the pupil
 plane. Obviously, however, the mask needs to be colder than the
@@ -3240,35 +3393,35 @@ camera optics.
 Filters are used in optical systems (usually imaging systems) to
 restrict the observed wavelength range. Using multiple filters thus
 provides color information on the object being studied. Generally,
-filters are loosely classified as
-broadband ($ > \sim 1000$ \AA{} wide),
-medium band ($100 < \sim 1000$ \AA{}), or
-narrow band ($1 < \sim 100$ \AA{}).
+filters are \emph{loosely} classified with widths of:
+\begin{itemize*}
+    \item broadband ($ > \sim 1000$ \AA{}),
+    \item medium band ($100 < \sim 1000$ \AA{}), or
+    \item narrow band ($1 < \sim 100$ \AA{}).
+\end{itemize*}
 
-
-Perhaps a better distinction between different filters is by the way
-that they filter light, or how they work.
-Many broad band filters work by using \emph{colored
+Perhaps a better distinction between different filters is by
+how they work.
+Many broad band filters use \emph{colored
 glass}, which has pigments which absorb certain wavelengths of light
 and let others pass. Bandpasses can be constructed by using multiple
 types of colored glass. These are generally the most inexpensive
 filters.
 
 A separate filter technique uses the principle of \emph{interference},
-giving what are called interference filters. They are made by using two
+and are called interference filters. They are made by using two
 partially reflecting plates separated by a distance $d$ apart. The
 principle is fairly simple:
-
-\href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/intfilt.htm}
+\par\href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/intfilt.htm}
 {Interference filter diagram}
-When light from the different paths
+\par When light from the different paths
 combines constructively, light is transmitted; when it combines
 destructively, it is not. Simple geometry gives:
-m$\displaystyle \lambda$ = 2nd cos$\displaystyle \theta$
+$$m\lambda = 2dn\cos\theta$$
 It is clear from this expression that the passband of the filter will
 depend on the angle of incidence. Consequently narrowband filters will
 have variable bandpasses across the field if they are located in a
-collimated beam; this can cause great difficulties in interpretation!
+collimated beam; this can cause great difficulties in interpretation.
 If the filter is located in a focal plane or a converging beam,
 however, the mix of incident angles will broaden the filter bandpass.
 This can be a serious effect in a fast beam. Bandpasses of
@@ -3292,16 +3445,17 @@ one needs to consider these issues when deciding on the location of
 filters in an optical system.
 
 \subsection*{Fabry-Perot Interferometer}
-
-A Fabry-Perot system makes use of a tunable interference filter. The
+A \emph{Fabry-Perot} system makes use of a tunable interference filter. The
 filter is tuned in wavelength by adjusting one of
-
-the spacing,
-the index of refraction (usually changed by chaning the pressure), or
-the tilt of the interference filter.
-A tunable interference filter is called an etalon. Often, etalons are
-made to provide very narrow bandpasses, on the order of 1Å.
-A picture taken with a Fabry-Perot system covers multiple wavelengths
+\begin{itemize*}
+    \item the spacing
+    \item the index of refraction (usually changed by chaning the pressure)
+    \item the tilt of the interference filter
+\end{itemize*}
+A tunable interference filter is called an \emph{etalon}.
+Often, etalons are
+made to provide very narrow bandpasses, on the order of 1 \AA{}.
+\par A picture taken with a Fabry-Perot system covers multiple wavelengths
 because the etalon is located in the collimated beam between the two
 elements of the focal reducer. At each etalon setting, one observes an
 image which has rings of constant wavelength. By tuning the etalon to
@@ -3313,17 +3467,21 @@ techniques. It is further complicated by the fact that to get accurate
 quantitative information, one requires that the atmospheric conditions
 be stable over the entire time when the data cube is being taken.
 
-
 \subsection*{Spectrographs}
 A spectrograph is an instrument which separates different wavelengths
 of light so they can be measured independently. Most spectrographs
-work by using a dispersive element, which directs light of different
+work by using a \emph{dispersive} element, which directs light of different
 wavelengths in different directions.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{slit2.png}
+\end{figure}
 
 A conventional spectrograph has a collimator, a dispersive element, a
 camera to refocus the light, and a detector. The performance of a
-spectrograph is characterized by the dispersion, which gives the
-amount that different wavelengths are separated, and the resolution,
+spectrograph is characterized by the \emph{dispersion}, which gives the
+amount that different wavelengths are separated, and the \emph{resolution},
 which gives the smallest difference in wavelength that two different
 monochromatic sources can be separated. There are different sorts of
 dispersive elements with different characteristics; two common ones
@@ -3334,13 +3492,14 @@ in use in astronomy.
 
 The dispersion depends on the characteristic of the dispersing
 element. Various elements can be characterized by the angular
-dispersion, d$ \theta$/d$ \lambda$, or alternatively, the reciprocal
-angular dispersion, d$ \lambda$/d$ \theta$. In practice, we are often
-interested in the linear dispersion, dx/d$ \lambda$ = f2d$ \theta$/d$
-\lambda$ or the reciprocal linear dispersion, d$ \lambda$/dx = $
-{1\over f_2}$d$ \lambda$/d$ \theta$ where the latter is often referred
+dispersion, d$\theta$/d$\lambda$, or alternatively, the reciprocal
+angular dispersion, d$\lambda$/d$\theta$.
+In practice, we are often interested in the linear dispersion,
+d$x$/d$\lambda$ = $f_{2}d\theta$/d$\lambda$ or the reciprocal linear
+dispersion, d$\lambda$/d$x$ = $\frac{1}{f_{2}}$d$\lambda$/d$\theta$
+where the latter is often referred
 to simply as the dispersion in astronomical contexts, and is usually
-specified in Å/mm or Å/pixel.
+specified in \AA{}/mm or \AA{}/pixel.
 
 If the source being viewed is extended, it is clear that any light
 which comes from regions parallel to the dispersion direction will
@@ -3348,12 +3507,12 @@ overlap in wavelength with other light, leading to a very confused
 image to interpret. For this reason, spectrographs are usually used
 with slits or apertures in the focal plane to restrict the incoming
 light. Note that one dimension of spatial information can be retained,
-leading to so-called long-slit spectroscopy. If there is a single
+leading to so-called \emph{long-slit} spectroscopy. If there is a single
 dominant point source in the image plane, or if they are spaced far
 enough (usually in combination with a low dispersion) that spectra
-will not overlap, spectroscopy can be done in slitless mode. However,
-note that in slitless mode, one can be significantly impacted by sky
-emission.
+will not overlap, spectroscopy can be done in \emph{slitless} mode. However,
+note that in slitless mode, there can be a significant impact
+from sky emission.
 
 The resolution depends on the width of the slit or on the size of the
 image in slitless mode, because all a spectrograph does is create an
@@ -3363,129 +3522,120 @@ whichever is smaller. In reality, the spectral line width is a
 convolution of the slit/image profile with diffraction. The spatial
 resolution of the detector may also be important.
 
-Note that throughput may also depend on the slit width, depending on
+Note that \emph{throughput} may also depend on the slit width, depending on
 the seeing, so maximizing resolution may come at the expense of
 throughput. Throughtput = seeing + slit width.
 
-Given a linear slit or image width, $ \omega$ (or an angular width,  $
-\phi$ = $ \omega$/f, where f is the focal length of the telescope) and
-height h (or  $ \phi^{\prime}_{}$ = h/f), we get an image of the slit
-which has width,  $ \omega^{\prime}_{}$, and height, h$\scriptstyle
-\prime$, given by
-
-[insert equations]
-
+Given a linear slit or image width, $\omega$ (or an angular width,
+$\phi$ = $\omega/f$, where $f$ is the focal length of the telescope) and
+height $h$ (or $\phi^{\prime} = h/f$), we get an image of the slit,
+which has width $\omega^{\prime}$ and height $h^{\prime}$,
+given by
+$$ h' = h\frac{f_{2}}{f_{1}} $$
+$$ \omega' = r\omega\frac{f_{2}}{f_{1}}  $$
 where we have allowed that the dispersing element might
 magnify/demagnify the image in the direction of dispersion by a factor
-r, which is called the anamorphic magnification.
+$r$, which is called the anamorphic magnification.
 
 Using this, we can derive the difference in wavelength between two
 monochromatic sources which are separable by the system.
-
-$\displaystyle \delta$$\displaystyle \lambda$ = $\displaystyle
-\omega^{\prime}_{}$$\displaystyle {d\lambda\over dx}$
-$\displaystyle \delta$$\displaystyle \lambda$ = r$\displaystyle
-\omega$$\displaystyle {f_2\over f_1}$$\displaystyle {d\lambda\over
-dx}$
+$$ \delta\lambda = \omega'\frac{\textrm{d}\lambda}{\textrm{d}x} $$
+$$ \delta\lambda = r\omega\frac{f_{2}}{f_{1}}\frac{\textrm{d}\lambda}{\textrm{d}x} $$
 The bigger the slit, the lower the resolving power.
 The resolution is often characterized in dimensionless form by
-
-R $\displaystyle \equiv$ $\displaystyle {\lambda\over \delta\lambda}$
-= $\displaystyle {\lambda f_1 \over r \omega f_2 (d\lambda/dx)}$
-
+$$
+    R \equiv \frac{\lambda}{\delta\lambda} =
+    \frac{\lambda{f_{1}}}{r\omega{f_{2}}(\textrm{d}\lambda/\textrm{d}x)}
+$$
 Note that there is a maximum resolution allowed by diffraction. This
 resolution is given aproximately by noting that minimum angles which
-can be separated is given by approximately  $ \lambda$/d2, where d2 is
+can be separated is given by approximately $\lambda/d_{2}$,
+where $d_{2}$ is
 the width of the beam at the camera lens, from which the minimum
 distance which can be separated is:
-
-$\displaystyle \omega_{{min}}^{}$ = f2$\displaystyle {\lambda\over
-d_2}$
+$$ \omega_{min} = f_{2}\frac{\lambda}{d_{2}} $$
 The slit width which corresponds to this limit is given by:
-$\displaystyle \omega^{\prime}_{}$ = r$\displaystyle
-\omega$$\displaystyle {f_2\over f_1}$ = f2$\displaystyle {\lambda\over
-d_2}$
+$$ \omega' = r\omega\frac{f_{2}}{f_{1}} = f_{2}\frac{\lambda}{d_{2}} $$
 or
-$\displaystyle \omega$ = $\displaystyle {f_1 \over r}$$\displaystyle
-{\lambda\over d_2}$
+$$ \omega = \frac{f_{1}}{r}\frac{\lambda}{d_{2}} $$
 and the maximum resolution is
-Rmax = $\displaystyle {d_2 \over f_2 (d\lambda/dx)}$ =
-d2$\displaystyle {d\theta\over d\lambda}$
+$$ R_{max} = \frac{d_{2}}{f_{2}}\left(\textrm{d}\lambda/\textrm{d}x\right)
+   d_{2}\frac{\textrm{d}\theta}{\textrm{d}\lambda} $$
 
-\subsubsection*{Astronomical spectrographs}
+\subsection*{Astronomical spectrographs}
+\begin{itemize*}
+    \item Slitless spectographs.
+    \item Long slit spectrographs
+    \item Image slicers: preserving resolution and flux.
+    \item Fiber spectrographs: multiobject data.
+    \item Slitlets: multiobject data.
+    \item Integral field spectrographs.
+\end{itemize*}
 
-Slitless spectographs.
-
-Long slit spectrographs
-
-Image slicers: preserving resolution and flux.
-
-Fiber spectrographs: multiobject data.
-
-Slitlets: multiobject data.
-
-Integral field spectrographs.
-
-
-
-\subsubsection*{Dispersing elements}
-
-Prisms
-
+\subsection*{Dispersing elements}
+\subsubsection*{Prisms}
 Perhaps the simplest conceptual dispersing element is a prism, which
 disperses light because the index of refraction of many glasses is a
 function of wavelength. From Snell's law, one finds that:
-
-$\displaystyle {d\theta\over d\lambda}$ = $\displaystyle {t\over
-d}$$\displaystyle {dn\over d\lambda}$
-where t is the base length, and d is the beamwidth. Note that prisms
-do not have anamorphic magnification (r = 1). The limiting resolution
+    $$\frac{\textrm{d}\theta}{\textrm{d}\lambda} =
+    \frac{t}{d}\frac{\textrm{d}n}{\textrm{d}\lambda}
+$$
+where $t$ is the base length, and $d$ is the beamwidth. Note that prisms
+do not have anamorphic magnification ($r$ = 1). The limiting resolution
 of a prism, from above is:
-Rmax = $\displaystyle {d_2 \over f_2 (d\lambda/dx)}$ =
-d2$\displaystyle {d\theta\over d\lambda}$
-Rmax = t$\displaystyle {dn\over d\lambda}$
-One finds that dn/d$ \lambda$ $ \propto$ $ \lambda^{{-3}}_{}$ for many
-glasses.
+$$ R_{max} = \frac{d_{2}}{f_{2}(\textrm{d}\lambda/\textrm{d}x)} =
+    d_{2}\frac{\textrm{d}\theta}{\textrm{d}\lambda}
+$$
+$$    R_{max} = t\frac{\textrm{d}n}{\textrm{d}\lambda}
+$$
 
-[figure here]
+For many glasses, $\textrm{d}n/\textrm{d}\lambda \propto \lambda^{-3}$.
+
+\begin{figure}
+    \centering
+    \includegraphics[width=0.8\textwidth]{curves.png}
+\end{figure}
 
 So dispersion and resolution are a function of wavelength for a prism.
 In addition, the resolution offered by a prism is relatively low
-compared with other dispersive elements (e.g. gratings) of the same
-size. Typically, prisms have R < 1000. Consequently, prisms are rarely
+compared with other dispersive elements (e.g.\ gratings) of the same
+size. Typically, prisms have $R$ < 1000. Consequently, prisms are rarely
 used as the primary dispersive element in astronomical spectrographs.
 They are occasionally used as cross-dispersing elements.
-Gratings
 
+\subsubsection*{Gratings}
 Diffraction gratings work using the principle of multi-slit
 interference. A diffraction grating is just an optical element with
 multiple grooves, or slits (not to be confused with the slit in the
-spectrograph!). Diffraction gratings may be either transmissive or
+spectrograph). Diffraction gratings may be either transmissive or
 reflective. Bright regions are formed where light of a given
 wavelength from the different grooves constructively interferes.
-
-The location of bright images is given by the grating equation:
-m$\displaystyle \lambda$ = $\displaystyle \sigma$(sin$\displaystyle
-\theta$ + sin$\displaystyle \alpha$)
-for a reflection grating, where $ \sigma$ is the groove spacing, m is
-the order, and $ \alpha$ and $ \theta$ ($ \beta$ in picture above!)
+\begin{figure}[ht]
+    \centering
+    \includegraphics[width=0.6\textwidth]{angle.png}
+\end{figure}
+The location of bright images is given by the \emph{grating equation}:
+    $$ m\lambda = \sigma\left(\sin\theta + \sin\alpha\right) $$
+for a reflection grating, where $\sigma$ is the groove spacing, $m$ is
+the order, and $\alpha$ and $\theta$ ($\beta$ in picture above)
 are the angles of incidence and diffraction as measured from the
 normal to the grating surface.
-The dispersion of a grating can then be derived:
 
-$\displaystyle {d\theta\over d\lambda}$ = $\displaystyle {m\over
-\sigma \cos\theta}$
+The dispersion of a grating can then be derived:
+$$ \frac{\textrm{d}\theta}{\textrm{d}\lambda} =
+    \frac{m}{\sigma\cos\theta} $$
 One can see that the dispersion is larger at higher order, and for a
 finer ruled grating. The equation can be rewritten as
-$\displaystyle {d\theta\over d\lambda}$ = $\displaystyle {\sin\theta +
-\sin \alpha \over \lambda \cos\theta}$
+$$ \frac{\textrm{d}\theta}{\textrm{d}\lambda} =
+    \frac{\sin\theta + \sin\alpha}{\lambda\cos\theta} $$
 from which it can be seen that high dispersion can also be achieved by
 operating at large values of $ \alpha$ and $ \theta$. This is the
 principle of an echelle grating, which has large $ \sigma$, and
-operates at high m, $ \alpha$ and $ \theta$, and gives high dispersion
+operates at high $m$, $ \alpha$ and $ \theta$, and gives high dispersion
 and resolution. An advantage of this is that one can get a large
 fraction of the light over a broad bandpass in a series of adjacent
 orders.
+
 Typical gratings have groove densities between 300 and 1200 lines/mm.
 Echelle gratings have groove densities between 30 and 300 lines/mm.
 
@@ -3493,10 +3643,9 @@ One can derive the anamorphic magnification for a grating by looking
 at how $ \theta$ changes as $ \alpha$ changes at fixed $ \lambda$. One
 finds that:
 
-[equation]
 
-where the d's are the beam diameters. Note that higher resolution
-occurs when r < 1, or  $ \theta$ < $ \alpha$.
+where the $d$'s are the beam diameters. Note that higher resolution
+occurs when $r < 1$, or  $ \theta <  \alpha$.
 
 $\ldots$
 

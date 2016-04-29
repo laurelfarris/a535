@@ -2,11 +2,17 @@
 \usepackage[margin=1in]{geometry}
 \usepackage{enumerate}
 \usepackage{color}
+\usepackage{xcolor}
 \usepackage{mdwlist}
-\usepackage{hyperref}
+
+\definecolor{date}{HTML}{5F0087}
 
 \setlength{\parindent}{0em}
 \setlength{\parskip}{0.5em}
+
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,urlcolor=blue}
+%\urlstyle{same}
 
 \title{\vspace{-0.75in}ASTR 535 Lab notes}
 \author{Jon Holtzman}
@@ -306,68 +312,203 @@ laptop, but they will probably not be there by default.
 \textcolor{magenta}{Friday, February 5}
 
 \section*{Image display and graphical file-based display tools}
+
 \subsection*{Image Display}
+Much astronomical data is in the form of 2D images. It is critical to
+understand how to display such data and be able to see all of the
+information it contains. This is an issue because in most cases, the
+data will contain more information that can be displayed on a screen
+at any one time. There are two issues: spatial resolution and,
+probably more importantly, \emph{dynamic range}.
+
+
+\subsubsection*{Spatial resolution}
+Note that many modern detectors have larger pixel dimensions than many
+computer displays. This means that it's not possible to see all of the
+pixels at one time; you can either see a subframe of the entire image
+at full spatial resolution, or the entire image at reduced spatial
+resolution; generally software does reduced spatial resolution by
+displaying every other, every 3rd, every 4th, etc.\ pixel value, so it
+is possible to miss features.
+
+\subsubsection*{Dynamic range: brightness and contrast}
+Most image displays provide only 8-bits of display range in intensity,
+giving only 256 possible intensities; the human eye can't
+distinguish many more with any reliability. Most
+astronomical images can have up to 16-bits of dynamic range, 256 times
+more levels. Any image with more dynamic range must somehow be
+compressed into 8-bits before it can be displayed. This can be done
+by:
+\begin{itemize*}
+    \item sampling the true image coarsely (in intensity), which
+        allows viewing of the whole dynamic range but can lead to the apparent
+        loss of intensity detail
+    \item fully sampling only a part of the true image range,
+        which leads to the loss of ability to view detail outside
+        the chosen range.
+\end{itemize*}
+or by something in between. Most packages will use
+some default algorithm to make this choice automatically, so you have
+to be careful to understand what is being done, and what information
+might be lost in what you are looking at. Any decent display package
+will give you control over how to display the image, and you need to
+understand in detail how you can see different things in images when
+you display them in different ways. To be able to choose reasonable
+display parameters, you will need to know something about the
+intensity values in your images, so most display packages will allow
+you to directly see pixel intensities. This is also useful so you can
+make sure that the values are somewhere around the levels that you
+expect.
+
+Image scaling parameters are generally specified by a low and a high
+data value (or a low value and a range) which give the limits in the
+true data which will be scaled into 8-bits. In old-imaging parlance,
+the \emph{brightness} is set by the choice of value that will correspond to
+the darkest pixel, and the \emph{contrast} is set by the difference between
+the darkest and lightest pixel.
+
+Common choices for automatic scaling might be to display an image such
+that the pixel with the lowest data value in an image will appear
+black, and the pixel with the highest data value will appear white;
+this is sometimes called 100\% scaling. However, many images can have
+defects which might appear as very low or very high data values, so
+often this choice will set display parameters non-optimally.
+Alternative autoscaling might be determined from the low and high data
+values of the middle 99\% of the data values (i.e.\ exclude the 0.5\%
+lowest and highest data values), or 98\%, etc.
+
+To change the display scaling factors, the data values must be
+rescaled and the image redisplayed. On modern machines, this is
+generally still quite fast. However, there is a faster way to
+\emph{partially} get the same result, see below.
+
+
+\subsubsection*{nonlinear scalings}
+Note you can also use a nonlinear scaling to sample a larger (or
+smaller) range. Example: logarithmic, square root scaling, asinh
+scaling.
+
+\subsubsection*{color maps and pseudocolor}
+Once an intensity subsection is chosen, it can be displayed with any
+choice of ``color map'', which specifies the colors to be assigned to
+each of the display levels. These can be various shades of grey
+(greyscale) or some other color, or some arbitrary color scheme
+(pseudo-color). Note that most packages allow the user to manipulate
+the color table, allowing users to change the contrast and brightness
+of a displayed subsection; for this reason, it is usually reasonable
+to chose a range with a significantly larger range than 256 data
+values.
+
+Most packages will allow the user to inspect individual data values
+based on a cursor location. Beware, however, of packages which give
+data readout based on scaling parameters and 8-bit display number
+only: these are unable to give correct values outside of the scaled
+region of the image.
+
+The color map is implemented at a lower level and can generally be
+changed very rapidly. One use of this is to "stretch" or "roll" the
+color map to change the brightness and/or the contrast in the image.
+
+\subsubsection*{true color images}
+True color images obviously require information about colors of the
+objects in the picture, so they cannot be made from an image taken
+through a single filter. Generally, three independent filters are used
+to create true color images, e.g. RGB images. The image in each
+individual filter must be properly scaled if one wants to make the
+true color image match what would be seen with the eye, i.e.\ correct
+white balance.
+
+One can also use images in multiple filters to construct
+``pseudo-true'' color images, e.g.\ emission line regions in one color,
+continuum in another, etc.
+
+\subsubsection*{other display functions}
+Other useful display tools include zoom, blink, interactive image
+analysis (peak, valley, fwhm, etc), marking of objects, etc.
+
 \subsection*{Quick introduction to astronomical image file format}
+FITS format. Two parts in one file: header plus data. Header contains
+ASCII information, data is in binary format. Be aware that headers must
+conform to specific lengths: don't use an editor on a FITS file.
+Headers have a small amount of required information, plus there are
+lots of possibilities for optional information.
+
 \subsection*{Standalone display tools}
+\begin{itemize*}
+    \item \href{http://ds9.si.edu/site/Home.html}
+        {DS9}: standalone display tool, but also most commonly used
+        display tool with IRAF (an astronomical image processing
+        package).
+    \item \href{http://iraf.noao.edu/x11iraf/x11iraf.html}
+        {XIMTOOL}: another display tool that can be used with IRAF.
+    \item \href{http://starlink.eao.hawaii.edu/starlink/}
+        {GAIA}: also includes image processing routines.
+\end{itemize*}
+These are all installed on the Astronomy cluster; you should be able to
+install them on your laptop via the links above if you want to.
+
+Of course, any image processing package will generally include a
+display tool as part of the package, and we will use these
+extensively. But, in dicussing principles of image display, perhaps
+it's best to start with standalone display tools. These can be very
+useful for quick-look analysis.
+
 \subsection*{Basic display operation}
+\begin{itemize*}
+    \item image display with DS9: DS9 can be used as a standalone display tool
+        \begin{itemize*}
+            \item start: \emph{ds9}
+            \item select a file to display using File/Open menu
+            \item manipulate display scaling using Scale button,
+                note no manual scaling option on main menu,
+                but see Scale/Scale Parameters
+            \item manipulate color map using mouse motions with right button
+            \item manipulate region to display using Zoom button
+        \end{itemize*}
+    \item image display with GAIA
+        \begin{itemize*}
+            \item Type the alias \emph{starsetup} to set up environment variable,
+                paths, etc. (this is a local NMSU defined alias).
+            \item Enter \emph{gaia} to start gaia.
+            \item Note the help window, available from the button at the
+                top right
+            \item load images using the File menu. You can also start
+                gaia with an image file name on the command line. You can open a new window using the
+                File menu and display another image there, etc.
+            \item image display: color tables (Color Map), automatic scaling
+                algorithms (Auto Cut, Intensity Map), manual scaling
+            \item display region: note zoom buttons and zoom and pan windows
+            \item image histograms: View/Cut levels
+            \item image slices: View/Slice
+        \end{itemize*}
+\end{itemize*}
+
 \subsection*{Exercises}
 
+\section*{Astronomical image processing: Introduction and basics}
+\textcolor{date}{Friday, February 12, 2016}
 
-\textcolor{magenta}{Friday, February 26}
+Various software packages have been developed for astronomical image
+processing, e.g.:
 
-\section*{Astronomical image processing packages: Introduction and
-IRAF basics}
-
-\subsection*{IRAF/DS9 basic operation}
 \begin{itemize*}
-    \item One time only: run \texttt{mkiraf}, which creates \texttt{login.cl}.
-        This file can be customized at a later time if you have settings you want
-        to start with every time.
-        \begin{itemize*}
-            \item to enable a larger frame buffer for display, uncomment and
-                modify line: \texttt{stdimage = imt2048}
-        \end{itemize*}
-    \item The preferred method of running IRAF in the modern era is using the
-        PYTHON interface, \texttt{pyraf}:
-        \begin{itemize*}
-            \item You can use pyraf via a normal python interface:
-
-                \texttt{from pyraf import iraf}
-
-                You will then need to use standard PYTHON styntax, rather
-                than the old IRAF \texttt{cl} syntax.
-            \item \texttt{pyraf} actually runs a front-end interpreter to
-                emulate the original IRAF command-line interface. This is
-                convenient for previous users and for some tasks, but
-                ``hides'' the Python interpreter and its power.
-        \end{itemize*}
-    \item For displaying images, start an image display tool, i.e.\ DS9,
-        in the background: \texttt{ds9 \&}. Be aware that the stdimage that is set
-        in the login.cl file may limit the maximum size of the image that will
-        be displayed.
-    \item help:
-        \begin{itemize*}
-            \item there is an internal \texttt{.help} command.
-            \item IRAF help
-            \item tutorials
-        \end{itemize*}
-    \item basics:
-        \begin{itemize*}
-            \item IRAF contains many programs for astronomical analysis. These
-                are grouped into \emph{packages}, and individual commands are
-        \end{itemize*}
-\end{itemize*}
-
-
-\section{Astronomical image processing: Introduction and basics}
-
-Various software packages have been developed for astronomical image processing,
-e.g.\
-\begin{itemize*}
-    \item IRAF (links and such)
+    \item \href{http://iraf.noao.edu}{IRAF}.
+        In particular, note
+        \href{http://www.stsci.edu/institute/software_hardware/pyraf}
+        {PYRAF} Python interface
+    \item
+        \href{http://www.harrisgeospatial.com/docs/using_idl_home.html}
+        {IDL} (astronomy
+        \href{http://idlastro.gsfc.nasa.gov/homepage.html}{users library})
+    \item XVISTA
+    \item \href{http://star-www.dur.ac.uk/~pdraper/gaia/gaia.html}{GAIA}
+    \item FIGARO
+    \item MIDAS
+    \item AIPS
+    \item Add-on packages: STSDAS, PROS, DAOPHOT, $\ldots$
 \end{itemize*}
 Pros and cons: availability, cost, GUI/command line, data handling
-(disk vs. memory), speed, ease of use (e.g., keywords vs. parm files),
+(disk vs.\ memory), speed, ease of use (e.g., keywords vs.\ parm files),
 language and access to existing code, ability to add new code,
 scripts/ procedures (internal control language).
 
@@ -376,7 +517,7 @@ but sometimes significant investment in understanding/learning your
 tool really increases its utility. But also, in the long run, it's a
 tool, and you shouldn't be limited in what you choose to do by the
 tool you are comfortable with, so always keep open the possibility of
-other tools, or improving the capability of a tool!
+other tools, or improving the capability of a tool.
 
 What should you learn? These days, many instruments require rather
 involved tasks for reducing data. Often, the instrument team or
@@ -388,115 +529,393 @@ should also probably take the time to become an expert in at least
 one.
 
 An alternative way to look at things is that to be at the forefront,
-you will likely be working
-with new instruments and/or new techniques. Using standard analysis
-may be unlikely to take the most advantage, or even work at all, with
-new data. So you want to be in the position of having the flexibility
-to develop tools yourself.
+you will likely be working with new instruments and/or new techniques.
+Using standard analysis may be unlikely to take the most advantage, or
+even work at all, with new data. So you want to be in the position of
+having the flexibility to develop tools yourself.
 
 There are several programming environments that make it fairly simple
 to work with astronomical data. Here, we'll provide an introduction to
 two of the more popular environments in the US: Python (especially
-useful in conjuction with PyRAF) and IDL. Working in one of these
+useful in conjuction with PyRAF) and IDL\@. Working in one of these
 environments allows you to script the use of existing routines, and
 also to develop your own routines. Also extremely important to have
 tools to be able to explore data.
 
-\subsection{Getting started with Python}
-\subsubsection{Basics}
+\subsection*{Getting started with Python}
+\subsubsection*{Basics}
 \begin{itemize*}
-    \item Start python using \texttt{ipython -matplotlib}
-    \item Python works with \emph{objects}. All objects can have
+    \item Start python using \verb|ipython -matplotlib|
+    \item Python works with \emph{objects}. All objects have different
         attributes and methods.
-    \item Get information:
+    \item Get information
         \begin{itemize*}
-            \item \texttt{type(var)} gives type of variable
-            \item \texttt{var?} gives information on variable (iPython
-                only)
-            \item \texttt{var.<tab>} gives information on variable
+            \item \verb|type(var)| gives type of variable.
+            \item \verb|var?| gives information on variable (iPython
+                only).
+            \item \verb|var.<tab>| gives information on variable
                 attributes and methods.
         \end{itemize*}
     \item Python as a language
         \begin{itemize*}
-            \item conditionals via if/elif/else
-            \item looping via for, while
+            \item conditionals via \verb|if/elif/else|
+            \item looping via \verb|for, while|
         \end{itemize*}
 \end{itemize*}
-
-\subsubsection{File I/O with astropy}
+\subsubsection*{File I/O with astropy}
 \begin{itemize*}
     \item FITS: header/data, data types, HDUList, etc.
         \begin{itemize*}
-            \item \texttt{from astropy.io import fits}
-            \item \texttt{hd=fits.open(\emph{filename})}
-                returns HDULIST
-            \item \texttt{hd[0].data} is data from initial HDU
-            \item \texttt{hd[0].header} is header from initial HDU
+            \item \verb|from astropy.io import fits|
+            \item \verb|hd = fits.open(filename)| returns HDULIST
+            \item \verb|hd[0].data| is the data from initial HDU
+            \item \verb|hd[0].header| is the header from initial HDU
         \end{itemize*}
     \item ASCII:
         \begin{itemize*}
-            \item \texttt{from astropy.io import ascii}
-            \item \texttt{a=ascii.read(\emph{filename})} returns Table with columns.
+            \item \verb|from astropy.io import ascii|
+            \item \verb|a = ascii.read(filename)| returns Table with
+                columns.
         \end{itemize*}
 \end{itemize*}
-
-\subsubsection{Image statistics}
+\subsubsection*{Image statistics}
 \begin{itemize*}
-    \item numpy array methods; e.g.:
+    \item numpy array methods, e.g.:
         \begin{itemize*}
-            \item \texttt{data.sum()}: total
-            \item \texttt{data.mean()}: mean
-            \item \texttt{data.std()}: standard deviation
+            \item \verb|data.sum()| total
+            \item \verb|data.mean()| mean
+            \item \verb|data.std| standard deviation
         \end{itemize*}
-    \item subsections: data[y1:y2,x1:x2]
+    \item subsections: \verb|data[y1:y2, x1:x2|
 \end{itemize*}
-
-\subsubsection{Image display}
+\subsubsection*{Image display}
 \begin{itemize*}
     \item primitive display via imshow
         \begin{itemize*}
-            \item plt.imshow(hd[0].data,vmin=min,vmax=max)
+            \item \verb|plt.imshow(hd[0].data,vmin=min,vmax=max)|
         \end{itemize*}
-    \item display using pyds9,
+    \item display using \href{http://hea-www.harvard.edu/RD/pyds9/}
+        {pyds9}
         \begin{itemize*}
-            \item from pyds9 import *
-            \item d=DS9() (opens a DS9 window, associates with object d)
-            \item d.set("fits filename") (display from file)
-            \item d.set\_pyfits(hd) (display from HDULIST)
-            \item d.set\_np2arr(hd[0].data) (display from numpy array)
-            \item d.set("scale limits 400 500") (sets display range)
-            \item command list
+            \item \verb|from pyds9 import *|
+            \item \verb|d = DS9()| opens a DS9 window, associates with
+                object \verb|d|.
+            \item \verb|d.set("fits_filename")| display from file
+            \item \verb|d.set_pyfits(hd)| display from HDULIST
+            \item \verb|d.set_np2arr(hd[0].data)| display from numpy
+                array
+            \item \verb|d.set("scale limits 400 500)| sets display
+                range
+            \item \href{http://ds9.si.edu/doc/ref/command.html}
+                {command list}
         \end{itemize*}
     \item display with tv
         \begin{itemize*}
-            \item import os
-            \item os.environ["PYTHONPATH"] = /home/holtz/python
-            \item from tv.tv import *
-            \item t=TV()
-            \item t.tv(hd[0],min=400,max=500)
-            \item t.tv(hd[0].data)
+            \item \verb|import os|
+            \item \verb|os.environ["PYTHONPATH"] = /home/holtz/python|
+            \item \verb|from tv.tv import *|
+            \item \verb|t=TV()|
+            \item \verb|t.tv(hd[0],min=400,max=500)|
+            \item \verb|t.tv(hd[0].data)|
             \item zoom, pan, colorbar
             \item blinking image buffers with +/-
         \end{itemize*}
 \end{itemize*}
-
 \subsubsection*{Plotting}
 \begin{itemize*}
-    \item \texttt{plt.figure}
-    \item \texttt{plt.plot(hd[0].data[:,100])} for a plot along column 100
-    \item \texttt{plt.plot(hd[0].data[500,:])} for a plot along row 500
+    \item \verb|plt.figure|
+    \item \verb|plt.plot(hd[0].data[:,100]| along column 100
+    \item \verb|plt.plot(hd[0].data[500,:]| along row 500
+\end{itemize*}
+\subsubsection*{Histogram}
+\begin{itemize*}
+    \item \verb|plt.hist(data.flatten(),[bins=n],[bins=np.arange(min,max,delta)],[log=True])|
 \end{itemize*}
 
-\subsubsection*{Histogram}
-\texttt{plt.hist(data.flatten(),[bins=n],[bins=np.arange(min,max,delta)],
-[log=True])}
+HDU (Header Data Unit) consists of a header (array of character strings) and
+data (2D array of numbers).
 
-%----------------------------------------------------------------------------%
+\subsection*{Getting started with IDL}
+\subsection*{Exercises}
+
 \section*{Introduction to CCD images and basic CCD data reduction}
-%----------------------------------------------------------------------------%
-\section*{Astronomical image processing packages: Introduction and IRAF basics}
-%----------------------------------------------------------------------------%
-\section*{Astronomical image processing/reduction: Basic tools}
+\subsection*{CCD introduction and principles of operations}
+Photoelectric effect in a semiconductor. Photons excite
+photoelectrons, which are kept localized by electronics on the chip.
+Note that ``input'' is number of photons, ``output'' is number of
+electrons, which are related by the sensitivity (quantum efficiency)
+of the pixel.
+
+Charge sensing (readout) by charge transfer through the array, first
+vertically to the serial register, then horizontally into the readout
+electronics.
+
+Electronics: multiply input electrons by a gain factor (to optimize
+dynamic range), add a bias level (to avoid negative input), convert to
+digital via an A/D converter. ``Input'' is electrons, ``output'' is counts
+(also known as DN, or ADU).
+
+Note that the bias level can vary with time/temperature, so in
+general, the bias level must be measured on \emph{each individual exposure}.
+This is typically achieved by reading several ``dummy'' pixels after
+each row is read, where these "dummy" pixels act to record the current
+bias level. This leads to a set of columns of ``dummy'' pixels at the
+right-hand edge of every image, called the overscan. The overscan is
+used to derive the bias value for the frame. (Note in some cases, the
+bias level can actually vary during the course of the readout, in
+which case more sophisticated handling is required).
+
+The physical architecture of CCDs leads to specific terminology: rows,
+columns, serial registers, overscan, underscan.
+
+Note pixel-to-pixel sensitivity variations, and variation of
+sensitivity with wavelength.
+
+\subsection*{Basic calibration}
+Basic calibration: bias level subtraction (subtract out bias level
+that was added), flat field division (compensates for pixel-to-pixel
+sensitivity variations).
+
+Other possible calibration: bias pattern subtraction, dark
+subtraction, shutter shading division, fringe correction
+
+\subsection*{Calibration Data}
+Calibration data: obtaining biases, darks, flats. Need for multiple
+exposures for noise reduction (biases and darks), outlier suppression
+(cosmic rays, stars in sky flats). Note issues with source of flat
+fields: how flat are they?
+
+\subsection*{Creating calibration frames: combining images}
+creating superbias, superdark, flat field: combining images, including
+normalization for flats
+
+The best estimator of parent population mean in a least-squares,
+maximum likelihood sense, is the sample mean. However, the sample mean
+is not especially robust in the case of outliers. Outliers occur in
+lots of astronomical contexts, e.g., cosmic rays, filtering of stars,
+or just bad data. Combining images while doing the best job of
+rejecting outliers is a critical part of many data reduction/analysis
+tasks.
+
+Some more robust estimators: median, but it produces larger error of
+the mean (about 25\% larger ( 1.253$\sigma$/$\sqrt{n}$ for normal
+distribution) than does the mean. Often can make use of a priori
+knowledge about outliers: e.g., stars and CRs are always positive.
+This leads to routines like maximum-pixel rejection. However, this
+leads to biases for all pixels without outliers. Hence, a better
+technique is min-max rejection; even this still leads to biases in
+pixels which have an outlier, and really throws away signal on others.
+Probably the best bet is to do n-sigma rejection, then recomputation
+of the mean. Problem here is that estimator of sigma can be very
+biased in the presence of outliers; may work better if you compute
+both mean and variance from the sample with the maximum value
+removed). Alternatively, apply using error model; for example, compute
+sigma from the median value and a noise model, use this to reject
+outliers, then average the remaining data points. Be aware of issues
+trying to reject stars, e.g., in twilight flats: there will always be
+some point in the profile at which your rejection will fail if done on
+a pixel-by-pixel basis.
+
+If you don't have exposures at a common intensity, you need to
+normalize and potentially, consider the effect of different noise
+levels.
+
+\subsection*{Python tools}
+
+Basic techniques for image reduction in IDL are just image arithmetic
+and statistics (e.g.\ mean() and std() methods of numpy arrays). To
+median images, stack them into a \emph{data cube}, then use
+numpy.median(cube,axis=0) to median them together.
+\begin{itemize*}
+    \item You can create a cube ``in advance'', using, e.g.,
+        cube=numpy.zeros(nim,nrow,ncol), and load using: cube[0,:,:]=im1,
+        cube[1,:,:]=im2, etc
+    \item You can create a cube ``on the fly'', using, e.g.,
+        cube=numpy.array([im1,im2,im3])
+    \item med=numpy.median(cube,axis=0)
+\end{itemize*}
+
+\subsection*{IDL tools}
+
+
+
+\section*{Astronomical image processing packages: IRAF basics}
+\textcolor{date}{Friday, February 26$\ldots$ maybe}
+The Image Reduction and Analysis Facility (IRAF) is a suite of
+software developed by NOAO in the 1980's. It provides an environment
+for the reduction and analysis of astronomical data that is widely
+used, especially in the US astronomical community. However, there are
+certainly a number of astronomers who find the IRAF approach somewhat
+cumbersome or opaque, and who prefer to develop their own tools for
+data reduction. Nonetheless, some familiarity at least with IRAF tools
+is probably a very good idea.
+
+IRAF has been incorporated into a more modern interface with the
+development of PYRAF, which is a Python front-end to the IRAF
+routines. In this day and age, use of IRAF through this interface, as
+opposed to the traditional CL interface, is \emph{strongly}
+recommended.
+
+\subsection*{IRAF/DS9 basic operation}
+One time only for each directory:
+run \texttt{mkiraf}, which creates \texttt{login.cl}, and starts a
+uparm/subdirectory for parameter files.
+This file can be customized at a later time if you have settings you want
+to start with every time.
+To enable a larger frame buffer for display, uncomment and
+modify line: \texttt{stdimage = imt2048}
+
+The preferred method of running IRAF in the modern era is using the
+PYTHON interface, \texttt{pyraf}.
+You can use pyraf via a normal python interface:
+
+\texttt{from pyraf import iraf} or \texttt{from pyraf.iraf import *}
+
+for the former, you'll need to precede tasknames with iraf.
+You will then need to use standard PYTHON styntax, rather
+than the old IRAF \texttt{cl} syntax.
+
+You can use pyraf through a front-end interpreter to emulate the
+original IRAF command-line interface, using the command: pyraf. This
+is convenient for previous users and for some tasks, but ``hides'' the
+Python interpreter and its power
+
+For displaying images, start an image display tool, i.e.\ DS9,
+in the background: \texttt{ds9 \&}. Be aware that the stdimage that is set
+in the login.cl file may limit the maximum size of the image that will
+be displayed.
+
+\subsubsection*{Help}
+\begin{itemize*}
+    \item there is an internal \texttt{.help} command.
+    \item \href{http://iraf.noao.edu/iraf-help.html}
+        {IRAF help}
+    \item \href{http://iraf.noao.edu/iraf/web/tutorials/tutorials.html}
+        {tutorials}
+\end{itemize*}
+
+\subsubsection*{Basics}
+
+IRAF contains many programs for astronomical analysis. These are
+grouped into \emph{packages}, and individual commands are
+\emph{tasks} within each
+package. Before a particular task can be run, the package within which
+it is located must be loaded, which is done by entering the package
+name. Several packages are loaded by default, and this can be
+customized in the login.cl file. If you know a task name, and need to
+find out what package it can be found in, try the
+\emph{iraf.apropos(`task')}
+command (\emph{apropos task} in IRAF interpreter)
+\begin{itemize*}
+    \item e.g., to load noao package via Python interpreter: iraf.noao()
+    \item e.g., to load noao package via PYRAF interpreter: noao
+\end{itemize*}
+Most tasks have a set of adjustable values, or parameters, which
+govern the specifics of how the task operates. IRAF manages the values
+of these parameters by having an individual \emph{parameter file} for each
+task. You can look at and modify the parameter values for a given task
+using the \emph{iraf.epar(`taskname')(epar taskname)} command, or
+\emph{iraf.lpar(`taskname')} to just print a list. This is useful for seeing
+what all of possible parameters are. If you modify parameters using
+\emph{epar}, the modifications are saved and will be used in all future
+invocations of the task.
+Because of this behavior, it is useful, and perhaps even wise, to know
+how to reset parameters back to their default values: this can be
+accomplished using the \emph{iraf.unlearn('taskname') (unlearn
+taskname)} command.
+
+You can get detailed information about each task and its parameters
+using the \emph{iraf.help('taskname') (help tasknamera)} command.
+
+You can override a value from the parameter file by specifying it as a
+keyword in the commande, e.g.\ valname=xxxx. In this case, the
+parameter file is not permanently modified. This is convenient for
+scripting. On the command line, keywords are separated from the
+command and each other by spaces.
+
+In the Python interface, parameters can also be accessed/modified as
+attributes of the task
+
+IRAF is a \textbf{disk-based} system: commands that work with images require
+filenames of input images and filenames for output images.
+
+You can issue operating system commands from within IRAF command
+language by starting the command lines with `!'
+
+\subsubsection*{image display with DS9 through IRAF: the
+\emph{display} task}
+
+The default mode is to autoscale the image (zscale=yes, zrange=yes).
+You can manually set the display range using z1=low and z2=high, but
+you must also turn off autoscaling (zs- zr-) for the manual values to
+take effect
+
+Note that the data value display in the display window is derived from
+the display pixel value, so you won't see actual data values that are
+below z1 or above z2, the value display will just say < z1 or > z2 -
+rather annoying.
+
+If using IRAF to control the ds9 display, the ds9 scaling option will
+not be available.
+
+If image buffer isn't set correctly, you can reset using, e.g.,
+
+\verb|iraf.set(stdimage='imt2048')|
+
+\subsubsection*{Other}
+
+image cross sections: the \emph{implot} task.
+See plot window commands ('?')
+
+Image histogram: imhist. Look at the parameter file. Note that you can
+specify image subsections using filename[x1:x2,y1:y2]
+
+Image statistics: imstat. Look at the parameter file. Note you can
+specify image subsections as above.
+
+Image arithmetic: imarith. You can do arithmetic with images and
+constants, or with multiple images. For example: imarith file1.fits -
+363 will subtract a constant of 363 from the image, imarith file1.fits
+/ file2.fits will divide file1 by file2 (on a pixel-by-pixel basis).
+
+Inspection of stellar images: imexam. Note `a', `r', and `m' keys, '?'
+for help (note you have to exit help to get interactive cursor), `q'
+for quit.
+
+For many tasks that require an input file, it is possible to specify a
+list of input files if the same action is to be taken on each. This is
+accomplished by creating a file (e.g., files.lis) that has a list of
+all of the files that you wish to run the task on, each on a separate
+line. Then, instead of giving an image name to the task, you give the
+list file name than contains the image names, preceded by an @ sign,
+e.g. @files.lis. Remember when you are proccessing images that IRAF
+wants to write the output files; if you don't have write permission in
+the input directory, you'll need to also supply an @output.lis file
+with the names for the output images.
+
+Quit pyraf using the \verb|.exit| command
+
+\subsection*{IRAF user guides}
+See \url{http://iraf.noao.edu/docs/}
+
+\subsection*{IRAF data reduction}
+IRAF package imred/ccdred: zerocombine, darkcombine, flatcombine,
+ccdproc (note need for header cards)
+
+lower level: imcombine, image arithmetic
+
+Note that you may have to do a iraf.setinst first, have to pay
+attention to ccdproc parameters!
+
+IRAF file list specification: comma-separated string
+
+\subsection*{IRAF simple stellar photometry}
+phot/apphot
+
+\subsection*{Exercises}
+
+%---------------------------------------------------------------------------%
+*{Astronomical image processing/reduction: Basic tools}
 \textcolor{magenta}{Friday, April 1, 2016}
 
 When observing, a bare minimum requirement is the ability to look at
@@ -597,11 +1016,15 @@ im=fits.open('raw/nameoffile')[0]
 d=DS9()   # to open display
 hd=fits.open(filename)   # puts HDUlist of file into hd
 d.set_pyfits(hd)  #  display from HDUList variable
-d.set_np2arr(hd[0].data)  # display from numpy array
 d.set("scale limits 400 500")  (sets display range)
 \end{verbatim}
+If you are doing image arithmetic and want to display a numpy array,
+you can do so with:
+\begin{verbatim}
+d.set_np2arr(hd[0].data)  # display from numpy array
+\end{verbatim}
 You might want to write yourself a simple Python function to display
-and scale with a single simple command!
+and scale with a single simple command.
 \item Direct from disk, using IRAF display:
 \begin{verbatim}
 iraf.display(imdir+'nameoffile')
@@ -648,8 +1071,8 @@ plt.plot(im.data[500,:)  # plots column 500
             \begin{verbatim}
 plt.hist(im.data.flatten(),bins=....)
             \end{verbatim}
-        \item IRAF imhist. Look at the parameter file for options. Note that you
-            can specify image subsections using
+        \item IRAF \emph{imhist}. Look at the parameter file for options.
+            Note that you can specify image subsections using
             \texttt{filename[x1:x2,y1:y2]}
         \item IDL: plothist,im
     \end{itemize}
@@ -675,10 +1098,11 @@ a=im1.data-bias
 b=im1.data=im2.data
             \end{verbatim}
         \item IRAF imarith: file based. You can do arithmetic with images and
-            constants, or with multiple images. For example: imarith
-            file1.fits - 363 will subtract a constant of 363 from the image,
-            imarith file1.fits / file2.fits will divide file1 by file2 (on a
-            pixel-by-pixel basis).
+            constants, or with multiple images. For example:
+            \emph{imarith file1.fits - 363}
+            will subtract a constant of 363 from the image,
+            \emph{imarith file1.fits / file2.fits}
+            will divide file1 by file2 (on a pixel-by-pixel basis).
         \item IDL: normal array arithmetic
     \end{itemize}
 
@@ -691,6 +1115,62 @@ b=im1.data=im2.data
         \item IDL: atv
     \end{itemize}
 \end{itemize}
+
+\subsection*{Basic data reduction}
+\subsubsection*{Overscan subtraction}
+\begin{itemize*}
+    \item Determine overscan region location
+    \item Determine whether constant overscan (subtraction of a single value) is
+        appropriate, or if not, consider possibilities:
+        \begin{itemize*}
+            \item Fit to overscan as a function of row
+            \item Median overscan as a function of raw
+        \end{itemize*}
+    \item Remove overscan
+        \begin{itemize*}
+            \item Using image arithmetic
+            \item Using IRAF: ccdproc (note overscan options)
+        \end{itemize*}
+\end{itemize*}
+
+\subsubsection*{Superbias (zero) frame construction}
+\begin{itemize*}
+    \item Inspect overscan-subtracted bias frames. If there is repeatable
+        structure in these, construct a superbias frame by combining
+        overscan-subtracted bias frames:
+        \begin{itemize*}
+            \item Using image arithmetic
+            \item Using IRAF: zerocombine
+            \item Note that there are multiple options for combining stacks of frames,
+                to avoid contamination by outliers, resulting biases, noise
+                minimization, etc: mean, median, max-reject, min-max reject, sigma
+                clipping, etc. Median is a simple algorithm that is fairly robust if
+                not perfectly optimal.
+        \end{itemize*}
+    \item Note that any noise in your superbias frame will be propagated to
+        every image you reduce, hence the desire to combine many individual
+        bias frames, and only to use a superbias if there is repeatable
+        structure to subtract!
+\end{itemize*}
+
+\subsubsection*{Flat field construction}
+\begin{itemize*}
+    \item You will need to construct separate flat fields for each
+        filter/configuration that you use
+    \item Flat fields should be normalized before combining to account for
+        variations in lamp/sky brightness
+    \item Final flat fields should be normalized such that dividing by
+        them does not change the overall mean level significantly,
+        so that noise can still be calculated using the observed number
+        of counts
+    \item Making flats:
+        \begin{itemize*}
+            \item Using image arithmetic
+            \item Using IRAF: flatcombine
+            \item Again, there are many frame combination options.
+        \end{itemize*}
+\end{itemize*}
+\subsection*{Exercises}
 
 \section*{Data reduction}
 \textcolor{magenta}{Friday, April 15, 2016}
@@ -795,9 +1275,9 @@ stars observed with ARCTIC and DIS
 \end{enumerate*}
 
 \subsection*{IRAF utilities}
-\begin{itemize*}
-    \item IRAF: \href{http://iraf.noao.edu/iraf/web/tutorials/doslit/doslit.html}
+IRAF: \href{http://iraf.noao.edu/iraf/web/tutorials/doslit/doslit.html}
         {response and doslit}
+\begin{itemize*}
     \item load specred package:
         \begin{verbatim}
 iraf.imred()
@@ -806,14 +1286,57 @@ iraf.specred()
     \item response takes out the observed flat field response in the
         wavelength direction (which is a combination of the flat field
         SED and the spectrograph response)
-        doslit is the "meta" task that does wavelength calibration,
+    \item doslit is the ``meta'' task that does wavelength calibration,
         flux calibration, and object extraction for point sources
-        Images must be run through CCDPROC first (or have CCDPROC flag
-        in header)
-        For the arc list, beware that the .fits should not be included
-        in the file name, it is automatically added (with imtype =
-        fits)
+        \begin{itemize*}
+            \item Images must be run through CCDPROC first
+                (or have CCDPROC flag in header).
+            \item For the arc list, be aware that the \verb|.fits|
+                should not be included in the file name, it is
+                automatically added (with imtype = fits)
+        \end{itemize*}
 \end{itemize*}
+
+Individual commands (instead of doslit doing the whole thing):
+\begin{itemize*}
+    \item apall: marks apertures and does the extraction
+    \item for arc: apall arc ref=object (from above marked) inter-
+        backg- recen- trace-
+    \item identify: m to mark 2 lines, f to quick fit, q, l to identify
+        more lintes, f to refit (:func cheb :order 3 to change
+        function), d to delete lines.
+        Reidentify can be used to id lines on subsequent spectra with
+        similar wavelength calibration
+    \item refspec on each object file, reference=arcname (may need to
+        remove sort key)
+    \item dispcor: applies wavelength solution to extracted spectrum,
+        linearizes if requested
+\end{itemize*}
+\subsection*{Scripting issues}
+Different people/packages have different preferences for handling
+issues involved with scripting data reduction. In particular, a set of
+images taken on a given night is generally divided among different
+types: flat field frames (in different filters/configurations), bias
+frames, wavelength calibration frames, object frames (in different
+filters/configurations), etc., and these need to be handlede
+differently.
+
+One way of handling this is to try to extract all of the relevant
+information from file headers. This requires that the data acquisition
+software put the appropriate information there, and that the user
+specifies things in such a way to guarantee the information is
+correct, or subsequently edits it so that it is.
+
+IRAF: instrument files, setinst command, hselect comment, hedit
+command
+
+Alternatively, one might just prepare some standard input files that
+list frames of a given type.
+
+Finally, one might just build into a script the appropriate files to
+use for each step of the reduction process.
+
+\subsection*{Exercises}
 
 
 \end{document}
