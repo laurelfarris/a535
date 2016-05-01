@@ -1,11 +1,23 @@
 \documentclass{article}
 \usepackage[margin=1in]{geometry}
+\usepackage{verbatim}
+%\usepackage{enumitem}
 \usepackage{enumerate}
 \usepackage{color}
 \usepackage{xcolor}
 \usepackage{mdwlist}
-
 \definecolor{date}{HTML}{5F0087}
+\definecolor{term}{HTML}{005F00}
+
+%\renewcommand{\labelitemi}{$\bullet$}
+%\renewcommand{\labelitemii}{$\cdot$}
+%\renewcommand{\labelitemiii}{$\diamond$}
+%\renewcommand{\labelitemiv}{$\ast$}
+
+% Make all 'verbatim' text a different color!
+\makeatletter
+  \renewcommand\verbatim@font{\normalfont\ttfamily\color{term}}
+  \makeatother
 
 \setlength{\parindent}{0em}
 \setlength{\parskip}{0.5em}
@@ -21,7 +33,7 @@
 \begin{document}
 \maketitle
 
-\section*{Time, coordinate systems, observability tools}
+\section{Time, coordinate systems, observability tools}
 \subsection*{Time Systems}
 Systems of time: see \textcolor{blue}{\href{tycho.usno.navy.mil/systime.html}
         {Naval observatory reference}}
@@ -232,86 +244,12 @@ laptop, but they will probably not be there by default.
         {\textcolor{blue}{euler}} in Astronomy users library.
 \end{itemize}
 
-
 \subsection*{Exercises}
-\begin{enumerate}[1.]
-    \item \textbf{Predict the RA crossing the meridian at midnight for the
-    first of every month. Try the command skycalendar (on the cluster,
-    unless you download it yourself for your laptop) - give yourself a
-    wide terminal window first - to see how well you did}
-
-    \item \textbf{What time is it now? What is the sidereal time? What
-    coordinates would it be most optimal to observe right now?}
-
-    \item \textbf{When are the dark (no moon above horizon) first half
-    nights in first quarter ? }
-
-    \item \textbf{APO schedules the 3.5m in half-night blocks (A and
-    B), split at midnight (or 1am during daylight savings). What are
-    the best half-nights in the next year (month and half, e.g., Oct
-    A, March B, etc.) to request to observe:}
-        \begin{itemize}
-            \item \textbf{Virgo cluster of galaxies (note central
-            galaxy is M87, look up the coordinates)}
-            \item \textbf{Galactic center (galactic coordinates are
-            .... ask if you don't know!). You can use command skycoor
-            (or Python or IDL tools) to convert galactic to equatorial
-            (skycoor with no arguments gives syntax). }
-            \item \textbf{Jupiter (look up its position using JPL
-            HORIZONS) }
-        \end{itemize}
-
-    \item \textbf{Run skycalc (choose observatory A for APO, ? gives
-    list of command help, look at r, d, y, and h commands). For the
-    galactic center, what is the maximum amount of time it can be
-    observed at an airmass of less than 2.5? How about the Virgo
-    cluster? Why are these different?}
-
-    \item \textbf{Run jskycalc. Play with all of the buttons! What
-    planets will be visible spring 2016, and at what times of night?
-    Note that you can load files with a list of coordinates, and you
-    can make airmass observability charts for them.}
-
-    \item \textbf{Start to outline plan for an 3 half-night observing
-    run during late March A halves, when we are taking our APO trip.
-    Eventually, the plan should include a list of objects for each
-    night with a tentative order of observation, taking into account
-    how much time needs to be spent on each object. Our projects are
-    still TBD, but will likely include observations with multiple
-    instruments.}
-        \begin{itemize}
-            \item \textbf{Determine the approximate range of RAs that
-            we will be able to observe. }
-            \item \textbf{Given the NMSU 1st quarter proposals, which
-            of them might we be able to make some observations for?}
-            \item \textbf{If you have other ideas for projects, start
-            to tabulate them. (Sten/Diane stars for APOGEE
-            calibration/neutron capture calibration, Triplespec RR
-            Lyrae RV curves Drew Be stars)}
-            \item \textbf{Start to prepare a joint web page with the
-            plan, including relevant information: coordinates of
-            objects, finder images if necessary, links to tabulated
-            spectra, instrument manuals, etc. etc. }
-        \end{itemize}
-
-    \item \textbf{Look up the catalog Globular Clusters in the Milky
-    Way in VizieR and download it (make sure to get all of the rows).}
-        \begin{itemize}
-            \item \textbf{Plot the locations in an Aitoff projection
-            of equatorial coordinates. Can you detect Galactic
-            structure?}
-            \item \textbf{What clusters would be possible to observe
-            during our March run? }
-            \item \textbf{Convert coordinates to galactic coordinates
-            and plot in an Aitoff projection.}
-        \end{itemize}
-
-\end{enumerate}
 
 \newpage
-\textcolor{magenta}{Friday, February 5}
+\textcolor{date}{Friday, February 5}
 
-\section*{Image display and graphical file-based display tools}
+\section{Image display and graphical file-based display tools}
 
 \subsection*{Image Display}
 Much astronomical data is in the form of 2D images. It is critical to
@@ -485,7 +423,7 @@ useful for quick-look analysis.
 
 \subsection*{Exercises}
 
-\section*{Astronomical image processing: Introduction and basics}
+\section{Astronomical image processing: Introduction and basics}
 \textcolor{date}{Friday, February 12, 2016}
 
 Various software packages have been developed for astronomical image
@@ -638,7 +576,8 @@ data (2D array of numbers).
 \subsection*{Getting started with IDL}
 \subsection*{Exercises}
 
-\section*{Introduction to CCD images and basic CCD data reduction}
+\newpage\textcolor{date}{Friday, something}
+\section{Introduction to CCD images and basic CCD data reduction}
 \subsection*{CCD introduction and principles of operations}
 Photoelectric effect in a semiconductor. Photons excite
 photoelectrons, which are kept localized by electronics on the chip.
@@ -665,19 +604,26 @@ used to derive the bias value for the frame. (Note in some cases, the
 bias level can actually vary during the course of the readout, in
 which case more sophisticated handling is required).
 
-The physical architecture of CCDs leads to specific terminology: rows,
-columns, serial registers, overscan, underscan.
-
+The physical architecture of CCDs leads to specific terminology:
+\begin{itemize*}
+    \item rows
+    \item columns
+    \item serial registers
+    \item overscan
+    \item underscan
+\end{itemize*}
 Note pixel-to-pixel sensitivity variations, and variation of
 sensitivity with wavelength.
 
 \subsection*{Basic calibration}
-Basic calibration: bias level subtraction (subtract out bias level
-that was added), flat field division (compensates for pixel-to-pixel
-sensitivity variations).
-
-Other possible calibration: bias pattern subtraction, dark
-subtraction, shutter shading division, fringe correction
+\begin{enumerate*}
+    \item bias level subtraction
+    \item flat field division
+\end{enumerate*}
+Dividing by the flat field compensates for pixel-to-pixel
+sensitivity variations.
+\par Other possible calibration steps include bias \emph{pattern} subtraction,
+dark subtraction, shutter shading division, and fringe correction.
 
 \subsection*{Calibration Data}
 Calibration data: obtaining biases, darks, flats. Need for multiple
@@ -686,7 +632,7 @@ exposures for noise reduction (biases and darks), outlier suppression
 fields: how flat are they?
 
 \subsection*{Creating calibration frames: combining images}
-creating superbias, superdark, flat field: combining images, including
+Creating superbias, superdark, flat field: combining images, including
 normalization for flats
 
 The best estimator of parent population mean in a least-squares,
@@ -697,50 +643,56 @@ or just bad data. Combining images while doing the best job of
 rejecting outliers is a critical part of many data reduction/analysis
 tasks.
 
-Some more robust estimators: median, but it produces larger error of
-the mean (about 25\% larger ( 1.253$\sigma$/$\sqrt{n}$ for normal
-distribution) than does the mean. Often can make use of a priori
-knowledge about outliers: e.g., stars and CRs are always positive.
-This leads to routines like maximum-pixel rejection. However, this
-leads to biases for all pixels without outliers. Hence, a better
-technique is min-max rejection; even this still leads to biases in
-pixels which have an outlier, and really throws away signal on others.
-Probably the best bet is to do n-sigma rejection, then recomputation
-of the mean. Problem here is that estimator of sigma can be very
-biased in the presence of outliers; may work better if you compute
-both mean and variance from the sample with the maximum value
-removed). Alternatively, apply using error model; for example, compute
-sigma from the median value and a noise model, use this to reject
-outliers, then average the remaining data points. Be aware of issues
-trying to reject stars, e.g., in twilight flats: there will always be
-some point in the profile at which your rejection will fail if done on
+The median is more robust, but compared to the mean, it produces
+an \emph{error} of the mean about 25\% larger
+(1.253$\sigma$/$\sqrt{n}$ for normal distribution).
+Often, it is possible to make use of a priori
+knowledge about outliers, such as the fact that stars and CRs are
+always positive.
+This leads to routines like maximum-pixel rejection. However, this also
+leads to biases for all pixels without outliers.
+A better technique is \emph{min-max} rejection, but this still leads to
+biases in pixels which have an outlier, and throws away signal on others.
+The best bet is to do $n-\sigma$ rejection, then recomputation
+of the mean.
+The problem here is that the estimation of sigma can be very
+biased in the presence of outliers, so it may work better if you compute
+both the mean and the variance from the sample with the maximum value
+removed.
+
+Alternatively, apply using error model.
+For example, compute $\sigma$ from the median value and a noise model,
+and use this to reject outliers. Then average the remaining data points.
+Be aware of issues when trying to reject stars;
+for example, in twilight flats, there will always be
+some point in the profile at which your rejection will fail if it is done on
 a pixel-by-pixel basis.
 
-If you don't have exposures at a common intensity, you need to
-normalize and potentially, consider the effect of different noise
-levels.
+If the exposures are not at a \emph{common intensity}, they need to be
+\emph{normalized}.
+Potentially, the effect of different noise levels needs to be considered.
 
 \subsection*{Python tools}
 
-Basic techniques for image reduction in IDL are just image arithmetic
-and statistics (e.g.\ mean() and std() methods of numpy arrays). To
-median images, stack them into a \emph{data cube}, then use
-numpy.median(cube,axis=0) to median them together.
+Basic techniques for image reduction: image arithmetic
+and statistics (e.g.\ mean() and std() methods of numpy arrays).
+To median images, stack them into a \emph{data cube}, then use
+numpy.median(cube,axis=0) to median them together. Options:
 \begin{itemize*}
-    \item You can create a cube ``in advance'', using, e.g.,
-        cube=numpy.zeros(nim,nrow,ncol), and load using: cube[0,:,:]=im1,
-        cube[1,:,:]=im2, etc
-    \item You can create a cube ``on the fly'', using, e.g.,
-        cube=numpy.array([im1,im2,im3])
-    \item med=numpy.median(cube,axis=0)
+    \item Create a cube in advance:
+        \verb|cube=np.zeros(nim,nrow,ncol)| and load using
+        \verb|im1 = cube[0,:,:]|,
+        \verb|im2 = cube[1,:,:]|, etc.
+    \item Create a cube on the fly:
+        \verb|cube = np.array([im1,im2,im3])|
+    \item \verb|med = np.median(cube,axis=0)|
 \end{itemize*}
 
 \subsection*{IDL tools}
+\subsection*{Exercises}
 
-
-
-\section*{Astronomical image processing packages: IRAF basics}
-\textcolor{date}{Friday, February 26$\ldots$ maybe}
+\newpage\textcolor{date}{Friday, February 26$\ldots$ maybe}
+\section{Astronomical image processing packages: IRAF basics}
 The Image Reduction and Analysis Facility (IRAF) is a suite of
 software developed by NOAO in the 1980's. It provides an environment
 for the reduction and analysis of astronomical data that is widely
@@ -757,33 +709,49 @@ opposed to the traditional CL interface, is \emph{strongly}
 recommended.
 
 \subsection*{IRAF/DS9 basic operation}
+
+IRAF: \url{http://iraf.noao.edu}\\
+DS9: \url{http://ds9.si.edu/site/Home.html}
+\subsubsection*{From terminal}
 One time only for each directory:
-run \texttt{mkiraf}, which creates \texttt{login.cl}, and starts a
-uparm/subdirectory for parameter files.
+\begin{verbatim}
+cl> mkiraf
+\end{verbatim}
+This creates the file \verb|login.cl|, and starts a
+\emph{uparm/subdirectory} \textcolor{red}{(???)} for parameter files.
 This file can be customized at a later time if you have settings you want
 to start with every time.
 To enable a larger frame buffer for display, uncomment and
-modify line: \texttt{stdimage = imt2048}
-
+modify line: \verb|stdimage = imt2048|.
+\subsubsection*{Running IRAF}
 The preferred method of running IRAF in the modern era is using the
-PYTHON interface, \texttt{pyraf}.
-You can use pyraf via a normal python interface:
+PYTHON interface, \verb|pyraf|.
+\begin{itemize*}
+    \item Use \verb|pyraf| via a normal python interface using one of
+        the following:
+        \begin{list}{}
+            \item \verb|>>> from pyraf import iraf|
+            \item \verb|>>> from pyraf.iraf import *|
+        \end{list}
+        For the former, you'll need to precede tasknames with iraf
+        (\verb|iraf.taskname|).
+        You will then need to use standard PYTHON styntax, rather
+        than the old IRAF \verb|cl| syntax.
+    \item Use \verb|pyraf| through a front-end interpreter to emulate the
+        original IRAF command-line interface, using the command
+        \verb|pyraf| \textcolor{red}{(from command line or inside python?)}
+        This is convenient for previous users and for some tasks,
+        but ``hides'' the Python interpreter and its power.
+\end{itemize*}
 
-\texttt{from pyraf import iraf} or \texttt{from pyraf.iraf import *}
-
-for the former, you'll need to precede tasknames with iraf.
-You will then need to use standard PYTHON styntax, rather
-than the old IRAF \texttt{cl} syntax.
-
-You can use pyraf through a front-end interpreter to emulate the
-original IRAF command-line interface, using the command: pyraf. This
-is convenient for previous users and for some tasks, but ``hides'' the
-Python interpreter and its power
-
-For displaying images, start an image display tool, i.e.\ DS9,
-in the background: \texttt{ds9 \&}. Be aware that the stdimage that is set
-in the login.cl file may limit the maximum size of the image that will
-be displayed.
+\subsubsection*{Displaying images}
+Start an image display tool (such as DS9) in the background:
+\begin{verbatim}
+cl> ds9 &
+\end{verbatim}
+Be aware that the
+\verb|stdimage| that is set in the \verb|login.cl| file may limit the
+maximum size of the image that will be displayed.
 
 \subsubsection*{Help}
 \begin{itemize*}
@@ -795,102 +763,133 @@ be displayed.
 \end{itemize*}
 
 \subsubsection*{Basics}
-
 IRAF contains many programs for astronomical analysis. These are
 grouped into \emph{packages}, and individual commands are
-\emph{tasks} within each
-package. Before a particular task can be run, the package within which
+\emph{tasks} within each package.
+Before a particular task can be run, the package within which
 it is located must be loaded, which is done by entering the package
 name. Several packages are loaded by default, and this can be
-customized in the login.cl file. If you know a task name, and need to
-find out what package it can be found in, try the
-\emph{iraf.apropos(`task')}
-command (\emph{apropos task} in IRAF interpreter)
+customized in the \verb|login.cl| file. If you know a task name, and need to
+find out what package it can be found in, try the command
+\verb|iraf.apropos(`task')|
+(\verb|apropos task| in IRAF interpreter). Examples:
 \begin{itemize*}
-    \item e.g., to load noao package via Python interpreter: iraf.noao()
-    \item e.g., to load noao package via PYRAF interpreter: noao
+    \item to load noao package via Python interpreter:
+        \verb|iraf.noao()|
+    \item to load noao package via PYRAF interpreter:
+        \verb|noao|
 \end{itemize*}
-Most tasks have a set of adjustable values, or parameters, which
-govern the specifics of how the task operates. IRAF manages the values
-of these parameters by having an individual \emph{parameter file} for each
-task. You can look at and modify the parameter values for a given task
-using the \emph{iraf.epar(`taskname')(epar taskname)} command, or
-\emph{iraf.lpar(`taskname')} to just print a list. This is useful for seeing
-what all of possible parameters are. If you modify parameters using
-\emph{epar}, the modifications are saved and will be used in all future
-invocations of the task.
-Because of this behavior, it is useful, and perhaps even wise, to know
-how to reset parameters back to their default values: this can be
-accomplished using the \emph{iraf.unlearn('taskname') (unlearn
-taskname)} command.
 
-You can get detailed information about each task and its parameters
-using the \emph{iraf.help('taskname') (help tasknamera)} command.
-
-You can override a value from the parameter file by specifying it as a
-keyword in the commande, e.g.\ valname=xxxx. In this case, the
-parameter file is not permanently modified. This is convenient for
-scripting. On the command line, keywords are separated from the
+\paragraph{Tasks and parameters:}
+Most tasks have a set of adjustable values, or \emph{parameters}, which
+govern the specifics of how the task operates.
+IRAF manages the values of these parameters by having an
+individual parameter \emph{file} for each task.
+\begin{list}{}
+    \item \verb|iraf.epar(`taskname')(epar taskname)|
+        change existing parameters
+    \item \verb|iraf.lpar(`taskname')|
+        print a list of all possible parameters
+\end{list}
+If you modify parameters using
+\verb|epar|, the modifications are saved and will be used in \emph{all}
+future invocations of the task.
+To reset parameters back to the default values:
+\begin{list}{}
+\item \verb|iraf.unlearn('taskname') (unlearn taskname)|
+\end{list}
+To get detailed information about each task and its parameters:
+{\renewcommand{\labelitemi}{}
+\begin{itemize*}
+    \item \verb|iraf.help('taskname')(help tasknamera)|
+\end{itemize*}}
+To override a value from the parameter file, specify it as a
+keyword in the command, e.g.\ \verb|valname=xxxx|. In this case, the
+parameter file is \emph{not} permanently modified.
+\textcolor{red}{This is convenient for scripting!}
+On the command line, keywords are separated from the
 command and each other by spaces.
-
 In the Python interface, parameters can also be accessed/modified as
-attributes of the task
+attributes of the task.
 
+\paragraph{OS vs.\ program:}
 IRAF is a \textbf{disk-based} system: commands that work with images require
 filenames of input images and filenames for output images.
-
 You can issue operating system commands from within IRAF command
-language by starting the command lines with `!'
+language:
+\begin{list}{}
+    \item \verb|>>> !<command>|
+\end{list}
 
 \subsubsection*{image display with DS9 through IRAF: the
 \emph{display} task}
 
-The default mode is to autoscale the image (zscale=yes, zrange=yes).
-You can manually set the display range using z1=low and z2=high, but
-you must also turn off autoscaling (zs- zr-) for the manual values to
-take effect
-
-Note that the data value display in the display window is derived from
+The default mode is to autoscale the image:
+\verb|(zscale=yes, zrange=yes)|.
+To manually set the display range:
+\begin{list}{}
+\item \verb|z1 = low|
+\item \verb|z2 = high|
+\end{list}
+and be sure to turn off autoscaling:
+\begin{list}{}
+\item \verb|(zs- zr-)|
+\end{list}
+for the manual values to take effect.
+Annoyingly, the data value display in the display window is derived from
 the display pixel value, so you won't see actual data values that are
-below z1 or above z2, the value display will just say < z1 or > z2 -
-rather annoying.
+below \verb|z1| or above \verb|z2|; the value display will just say
+\verb|< z1| or \verb|> z2|.
 
-If using IRAF to control the ds9 display, the ds9 scaling option will
-not be available.
+If you are using IRAF to control the \verb|ds9| display, the \verb|ds9|
+scaling option will not be available.
 
-If image buffer isn't set correctly, you can reset using, e.g.,
-
-\verb|iraf.set(stdimage='imt2048')|
+If the image buffer isn't set correctly, you can reset it using:
+\begin{list}{}
+\item \verb|iraf.set(stdimage='imt2048')|
+\end{list}
 
 \subsubsection*{Other}
 
-image cross sections: the \emph{implot} task.
-See plot window commands ('?')
+Tasks:
+Look at the parameter files for each.
+Image \emph{subsections} can be specified:
+\begin{list}{}
+\item \verb|filename[x1:x2,y1:y2]|
+\end{list}
 
-Image histogram: imhist. Look at the parameter file. Note that you can
-specify image subsections using filename[x1:x2,y1:y2]
+\begin{list}{}
+    \item \verb|implot| Image cross sections
+    \item \verb|imhist| Image historgram
+    \item \verb|imstat| Image statistics
+    \item \verb|imarith| Image arithmetic
+    \item \verb|imexam| Inspect images
+\end{list}
+To see plot window commands: \verb|('?')|
 
-Image statistics: imstat. Look at the parameter file. Note you can
-specify image subsections as above.
+You can do arithmetic with images and
+constants, or with multiple images. For example:
+\begin{list}{}
+    \item \verb|imarith file1.fits - 363|
+        will subtract a constant of 363 from the image
+    \item \verb|imarith file1.fits / file2.fits|
+        will divide \texttt{file1} by \texttt{file2} (on a pixel-by-pixel basis).
+\end{list}
 
-Image arithmetic: imarith. You can do arithmetic with images and
-constants, or with multiple images. For example: imarith file1.fits -
-363 will subtract a constant of 363 from the image, imarith file1.fits
-/ file2.fits will divide file1 by file2 (on a pixel-by-pixel basis).
-
-Inspection of stellar images: imexam. Note `a', `r', and `m' keys, '?'
-for help (note you have to exit help to get interactive cursor), `q'
-for quit.
+Note \verb|a|, \verb|r|, and \verb|m| keys, and \verb|?|
+for help (you have to exit help to get interactive cursor)
+\verb|q| for quit.
 
 For many tasks that require an input file, it is possible to specify a
-list of input files if the same action is to be taken on each. This is
-accomplished by creating a file (e.g., files.lis) that has a list of
+\emph{list} of input files if the same action is to be taken on each.
+This is accomplished by creating a file (e.g., \verb|files.lis|)
+that has a list of
 all of the files that you wish to run the task on, each on a separate
 line. Then, instead of giving an image name to the task, you give the
-list file name than contains the image names, preceded by an @ sign,
-e.g. @files.lis. Remember when you are proccessing images that IRAF
+list file name that contains the image names, preceded by an @ sign,
+e.g. \verb|@files.lis|. Remember when you are proccessing images that IRAF
 wants to write the output files; if you don't have write permission in
-the input directory, you'll need to also supply an @output.lis file
+the input directory, you'll need to also supply an \verb|@output.lis| file
 with the names for the output images.
 
 Quit pyraf using the \verb|.exit| command
@@ -899,153 +898,126 @@ Quit pyraf using the \verb|.exit| command
 See \url{http://iraf.noao.edu/docs/}
 
 \subsection*{IRAF data reduction}
-IRAF package imred/ccdred: zerocombine, darkcombine, flatcombine,
-ccdproc (note need for header cards)
+IRAF package \verb|imred| and \verb|ccdred|:
+\begin{list}{}
+\item \verb|zerocombine|
+\item \verb|darkcombine|
+\item \verb|flatcombine|
+\item \verb|ccdproc (note need for header cards)|
+\end{list}
 
-lower level: imcombine, image arithmetic
+lower level: \verb|imcombine|, image arithmetic
 
-Note that you may have to do a iraf.setinst first, have to pay
-attention to ccdproc parameters!
+Note that you may have to do a \verb|iraf.setinst| first,
+be sure to pay attention to ccdproc parameters.
 
 IRAF file list specification: comma-separated string
-
 \subsection*{IRAF simple stellar photometry}
 phot/apphot
-
 \subsection*{Exercises}
-
 %---------------------------------------------------------------------------%
-*{Astronomical image processing/reduction: Basic tools}
-\textcolor{magenta}{Friday, April 1, 2016}
+\newpage
+\section{Astronomical image processing/reduction: Basic tools}
+\textcolor{date}{Friday, April 1, 2016}
 
-When observing, a bare minimum requirement is the ability to look at
-your data. In many cases, however, it is preferable to have tools to
-do some quick image manipulation and analysis, and these will be
-required for image reduction/analysis. It's best if these are easily
+In addition to simply looking at images,
+some tools are needed to do some quick image manipulation and analysis.
+It is best if these are easily
 available so that you are likely to encounter them in most computing
 situations, and ideally, could access them on your laptop if you have
 one.
 
-In the current computing climate, I would recommend using Python tools
-wherever possible. For some analysis, IRAF routines provide a lot of
-developed routines, so if IRAF installed, these can be useful; I would
-recommend using them from a Python environment to be able to take
-advantage of native Python features.
-
-For image display, \texttt{ds9} is probably the best choice, although there may
-be alternatives.
-
-Our goal is to work towards reduction of all of our APO images.
+For some analysis, IRAF routines provide a lot of
+developed routines, so if IRAF is installed, these can be useful;
+use them from a Python environment to take advantage of native Python features.
+For image display, \verb|ds9| is probably the best choice.
 
 \subsection*{Getting started}
-\begin{itemize}
-\item Start ds9 in the background
-\begin{verbatim}
-ds9 &
-\end{verbatim}
-\item Start an iPython session
-\begin{verbatim}
-ipython --matplotlib
-\end{verbatim}
-
+\begin{enumerate*}
+\item Start ds9 in the background \verb|ds9 &|
+\item Start an iPython session \verb|ipython --matplotlib|
 \item Import standard Python packages
-\begin{verbatim}
-import numpy as np
-import matplotlib.pyplot as plt
-import pyds9
-\end{verbatim}
+    \begin{itemize*}
+        \item \verb|import numpy as np|
+        \item \verb|import matplotlib.pyplot as plt|
+        \item \verb|import pyds9|
+    \end{itemize*}
 (note that you can put these in a
-\texttt{/.ipython/profile\_default/startup/00startup.py}
+\verb|/.ipython/profile\_default/startup/00startup.py|
 script to load every time you start ipython.)
-
 \item Import useful astropy routines
-\begin{verbatim}
-from astropy.io import fits
-\end{verbatim}
-
-\item Create \texttt{login.cl} file
-If IRAF is available, make sure you have a login.cl file. If you don't:
-\begin{verbatim}
-mkiraf # note this is a UNIX command, not a python command
-\end{verbatim}
-and edit the \texttt{login.cl} file to set \texttt{stdimage=imt2048},
-or copy a \texttt{login.cl} file from a previous directory.
-\begin{verbatim}
-from pyraf import iraf
-\end{verbatim}
-in which case, you will need to call iraf routines using
-\texttt{iraf.routine\_name()}
-which makes it clear that they are IRAF routines. If you want to
-enter the routine names without the \texttt{iraf.} prefix, type
-\begin{verbatim}
-from pyraf.iraf import *
-\end{verbatim}
-\end{itemize}
+    \begin{itemize*}
+        \item \verb|from astropy.io import fits|
+    \end{itemize*}
+\item If IRAF is available, make sure you have a \verb|login.cl|
+    file. If you don't:
+    \begin{itemize*}
+        \item \verb|cl> mkiraf| and edit the \verb|login.cl|
+            file to set \verb|stdimage=imt2048|,
+            or copy a \verb|login.cl| file from a previous directory.
+    \end{itemize*}
+\item Import IRAF routines:
+    \begin{itemize*}
+        \item \verb|from pyraf import iraf| and call routines using
+            \verb|iraf.routine_name()|
+        \item \verb|from pyraf.iraf import *|
+    \end{itemize*}
+\end{enumerate*}
 
 \subsection*{Reading images}
-\begin{itemize}
-\item Read image into variable:
-\begin{verbatim}
-im=fits.open(filename)[0]
-\end{verbatim}
-Note that this reads the first extension ([0]) into a HDU object, with
-im.header containing the header, and im.data containing the data
-\item For convenience, you might want to:
-\begin{itemize}
-\item Set up a variable with the directory name for the images,
-to avoid having to retype it:
-\begin{verbatim}
-imdir='/pathtoimage directory/'
-im=fits.open(imdir+'nameoffile')[0]
-\end{verbatim}
-\item Set up a symbolic link to the directory with the images,
-to avoid having to retype it:
-\begin{verbatim}
-%ln -s /pathtoimage directory/ raw    # UNIX command
-im=fits.open('raw/nameoffile')[0]
-\end{verbatim}
-\end{itemize}
-\item IDL: im=mrdfits('filename')
-\end{itemize}
-
+Read image into variable:
+\begin{itemize*}
+    \item \verb|im=fits.open(filename)[0]|
+\end{itemize*}
+Note that this reads the first extension into an HDU object
+([0]; subsequent indices are something that we apparently don't need)
+\begin{itemize*}
+    \item \verb|im.header| contains the header
+    \item \verb|im.data| contains the data
+\end{itemize*}
+Set up variable with directory name:
+\begin{itemize*}
+    \item \verb|imdir='/pathtoimage directory/'|
+    \item \verb|im=fits.open(imdir+'nameoffile')[0]|
+\end{itemize*}
+Set up a symbolic link to the directory with the images:
+\begin{itemize*}
+    \item \verb|%ln -s /pathtoimage directory/ raw|
+    \item \verb|im = fits.open('raw/nameoffile')[0]|
+\end{itemize*}
 
 \subsection*{Displaying images}
-\begin{itemize}
-\item Direct from memory (variable):
-\begin{verbatim}
-d=DS9()   # to open display
-hd=fits.open(filename)   # puts HDUlist of file into hd
-d.set_pyfits(hd)  #  display from HDUList variable
-d.set("scale limits 400 500")  (sets display range)
-\end{verbatim}
-If you are doing image arithmetic and want to display a numpy array,
-you can do so with:
-\begin{verbatim}
-d.set_np2arr(hd[0].data)  # display from numpy array
-\end{verbatim}
+Direct from memory (variable):
+\begin{itemize*}
+    \item \verb| d = DS9()| \# to open display
+    \item \verb|hd = fits.open(filename)| \# puts HDUlist of file into hd
+    \item \verb|d.set_pyfits(hd)| \# display from HDUList variable
+    \item \verb|d.set("scale limits 400 500")| \# sets display range
+    \item \verb|d.set_np2arr(hd[0].data)| \# display from numpy array
+        for image arithmetic
+\end{itemize*}
 You might want to write yourself a simple Python function to display
 and scale with a single simple command.
-\item Direct from disk, using IRAF display:
-\begin{verbatim}
-iraf.display(imdir+'nameoffile')
-\end{verbatim}
-If you wish to control display parameters (recommended):
-\begin{verbatim}
-iraf.display(imdir+'nameoffile',zrange='No',scale='No',z1=low,z2=high)
-\end{verbatim}
-where low, high are the values you want for color mapping. If you want
-to have your values set by default, you can:
-\begin{verbatim}
-iraf.epar('display')
-\end{verbatim}
-and set zrange and scale to 'No', or alternatively:
-\begin{verbatim}
-iraf.display.setParam('zrange=no')
-iraf.display.setParam('zscale=no')
-\end{verbatim}
-\item IDL: atv,im,[min=min,max=max]
-\end{itemize}
 
+Direct from disk, using IRAF display:
+\begin{itemize*}
+    \item \verb|iraf.display(imdir+`nameoffile')|
+\end{itemize*}
+
+If you wish to control display parameters (recommended):
+\begin{itemize*}
+    \item \verb|iraf.display(imdir+`nameoffile',zrange=`No',scale=`No',z1=low,z2=high)|
+\end{itemize*}
+where low, high are the values you want for color mapping.
+To set the default values:
+\begin{itemize*}
+    \item \verb|iraf.epar(`display')|
+\end{itemize*}
+and set \verb|zrange| and \verb|scale| to \verb|`No'|, or alternatively:
+\begin{itemize*}
+    \item \verb|iraf.display.setParam(`zrange=no')|
+    \item \verb|iraf.display.setParam(`zscale=no')|
+\end{itemize*}
 
 \subsection*{Image inspection}
 \begin{itemize}
@@ -1172,8 +1144,9 @@ b=im1.data=im2.data
 \end{itemize*}
 \subsection*{Exercises}
 
-\section*{Data reduction}
-\textcolor{magenta}{Friday, April 15, 2016}
+\newpage
+\textcolor{date}{Friday, April 15, 2016}
+\section{Data reduction}
 
 Our goal is to understand all of the steps and issues involved with
 data reduction and how they may be dealt with when people reduce data,
