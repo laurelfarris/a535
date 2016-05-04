@@ -3786,36 +3786,141 @@ it yields information on intensity at all wavelengths simultaneously.
 
 \textcolor{date}{End of this section as of 5/1/16.}
 
+\newpage\section*{Detectors}
+\textcolor{date}{Monday, May 2, 2016}
+\subsection*{Basic Principles and Properties}
+Detectors work because they are made of material that interacts
+with photons. Three general types, based on what is generated
+by the photon:
+\begin{itemize*}
+    \item Photographic detector: chemical reaction
+    \item Photomultiplier/photon counter: event, usually detected
+        in real time. Electrons are rapidly accelerated toward anode
+        by photon, then more electrons are excited and accelerate, and
+        so on. High voltage. These are \emph{not} imagers.
+    \item Photon collecter: photoelectron, usually (electronically)
+        stored for subsequent readout. CCDs are a subset of this type.
+\end{itemize*}
 
+In a photon counting device, some fraction of incident photons hit a
+photosensitive material and eject a photoelectron. This electron is
+amplified numerous times to create a large ``swarm'' of electrons
+which is detected as a pulse. Thus, photons are ``counted'' as they
+come in. Simple photomultipliers do not retain any information about
+the location on the detector where the photon hits. There are some
+modern devices, however, called microchannel plates, which are
+essentially arrays of small photomultipliers where positional
+information can be obtained; one of the more common of these is called
+a MAMA (Multi-Anode\ldots something),
+and exists in several instruments on the Hubble Space
+Telescope. Traditional photomultipliers were the workhorse of
+photometry from the 50's to the late 70's. More recently, a more
+sensitive type of photon counter, called an avalanche photo-diode, has
+been used.
 
+Photon collecting array detectors are in more common usage today. In
+these devices, incoming photons create photoelectrons which are
+trapped in local potential wells. The amount of energy needed to eject
+a photoelectron depends on the type of material used. In the optical,
+silicon provides a good choice, but the excitation energy for silicon
+is too high to be used in the infrared. In the IR, various different
+substances are used, including HgCdTe, InSb, and PtSi. After a
+specified amount of time, the photoelectrons are ``counted''. The
+method by which this is done differs between different types of
+arrays. In CCDs, the charge is physically clocked down columns of the
+device, a single row at a time (a parallel transfer) then read out of
+serial register; CCDs are inherently asymmetric in rows and columns.
+In IR devices, each pixel is read individually, in sequence.
+\textcolor{myBlue}{Material: semiconductor. In optical, pure silicon
+is used, which isn't sensitive at wavelengths greater than $\sim$
+1 $\mu$m. At 1$\mu$m, ``barely'' enough energy. Other materials used
+in IR\ldots First two are sensitive out to about 2.5 $\mu$m, last one
+to $\ltsim$ 5 $\mu$m (see book in library about the physics here!)}
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+Detectors are characterized by a variety of different important
+quantities:
+\begin{itemize*}
+    \item Quantum efficiency: fraction of photons detected, usually
+        a function of wavelength. Typical values:
+        \begin{itemize*}
+            \item photographic: $\sim$ 0.1 \%
+            \item photomultiplier: $\sim$ 10-20 \%
+            \item array detector: $\sim$ 20-90 \%
+        \end{itemize*}
+    \item Size and resolution elements (given that optics can be used
+        to change the scale, the number of resolution elements may be
+        more critical):
+        \begin{itemize*}
+            \item photographic: large (many inches), good resolution
+            \item photomultiplier: several inches, no resolution
+                (though there are arrays of photomultipliers, e.g.
+                MAMA). APDs (?) have very small collecting areas.
+            \item Array detector: individual detectors started out
+                small but are continually growing. The largest current
+                CCDs are around 2.5 in$^{2}$, wheras the largest IR
+                arrays are roughly 1 in$^{2}$. Larger effective sizes
+                are now available (for CCDs) because modern devices
+                are made to be ``buttable'', i.e.\ several can be
+                placed side by side with only very small gaps between
+                them. Pixel sizes of array detectors are typically
+                15-25 microns (although arrays with smaller pixels are
+                very common, e.g., for digital camera, etc,
+                applications, they are less frequently used in
+                astronomy because they generally don't provide a good
+                match to telescope scales).
+        \end{itemize*}
+    \item Discovery efficiency: product of sensitivity and area.
+    \item Readout effects. The process of counting electrons is never
+        totally exact, so noise is introduced. Generally this is at a
+        level of 1-100 electrons rms. Readout effects can come in two
+        different forms: pattern and random noise. The latter is what
+        people usually refer to as readout noise. Pattern noise is
+        noise which is introduced in the readout process but which has
+        some spatial correlation. \emph{Fixed} pattern noise has the same
+        spatial pattern over the detector from exposure to exposure,
+        and thus can be corrected.
+        \textcolor{myBlue}{If the pattern noise is not fixed, it
+        changes every time exposure is read out.} If photon events are counted,
+        rather than counting the number of photoelectrons, as is the
+        case for a photomultiplier, there is no readout noise; this is
+        the key advantage of photon counters \textcolor{myBlue}{(no
+        readout noise!}.
+\end{itemize*}
+\textcolor{date}{Wednesday, May 4, 2016}
+\begin{itemize*}
+    \item Dark current. Electrons in a given substance will be moving
+        around at speeds which are correlated with the operating
+        temperature of the device. If there is enough thermal motion,
+        an electron can actually be liberated from the substance and
+        then counted as a (spurious) photon detection. This is called
+        dark current. Devices with lower photoelectric threshholds
+        (used at longer wavelengths) are more susceptible to dark
+        current, thus they must be operated at a colder temperature.
+        CCDs are typically operated between -70 and -120 C, IR arrays
+        are operated colder (LN$_{2}$ = 77K, Liquid He = 4K). Dark current
+        can be subtracted off using calibration data, but note that
+        there is still the Poisson \emph{noise} associated with the dark
+        current, so even with dark subtraction, additional noise is
+        generated.
+    \item Linearity: relation between number of output electrons and
+        input photons. In a fully linear detector, this relation is
+        linear, with the slope of the relation given by the quantum
+        effeciency. An alternate way to consider nonlinearity is to
+        consider that the quantum efficiency is a function of the
+        count level.
+        \begin{itemize*}
+            \item photographic: nonlinear
+                (\href{https://en.wikipedia.org/wiki/Sensitometry}
+                {characteristic curve})
+            \item photoelectric: linear except for dead-time correction.
+                A dead-time correction applies for bright sources; if
+                two photons arrive essentially simultaneously, they
+                will only be counted as a single photon.
+            \item array detector: CCDs \emph{usually} linear up to
+                50-90\% of full well. IR arrays are usually slightly
+                nonlinear over their entire range, but repeatably so.
+        \end{itemize*}
+\end{itemize*}
 
 
 
