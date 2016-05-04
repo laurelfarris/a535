@@ -3835,7 +3835,7 @@ In IR devices, each pixel is read individually, in sequence.
 is used, which isn't sensitive at wavelengths greater than $\sim$
 1 $\mu$m. At 1$\mu$m, ``barely'' enough energy. Other materials used
 in IR\ldots First two are sensitive out to about 2.5 $\mu$m, last one
-to $\ltsim$ 5 $\mu$m (see book in library about the physics here!)}
+to $\sim$ 5 $\mu$m (see book in library about the physics here!)}
 
 Detectors are characterized by a variety of different important
 quantities:
@@ -3884,30 +3884,30 @@ quantities:
         rather than counting the number of photoelectrons, as is the
         case for a photomultiplier, there is no readout noise; this is
         the key advantage of photon counters \textcolor{myBlue}{(no
-        readout noise!}.
+        readout noise!)}.
 \end{itemize*}
 \textcolor{date}{Wednesday, May 4, 2016}
 \begin{itemize*}
     \item Dark current. Electrons in a given substance will be moving
-        around at speeds which are correlated with the operating
+        around at speeds correlated with the operating
         temperature of the device. If there is enough thermal motion,
-        an electron can actually be liberated from the substance and
+        an electron can be liberated from the substance and
         then counted as a (spurious) photon detection. This is called
         dark current. Devices with lower photoelectric threshholds
         (used at longer wavelengths) are more susceptible to dark
         current, thus they must be operated at a colder temperature.
-        CCDs are typically operated between -70 and -120 C, IR arrays
-        are operated colder (LN$_{2}$ = 77K, Liquid He = 4K). Dark current
-        can be subtracted off using calibration data, but note that
+        CCDs are typically operated between -70$^{\circ}$C and
+        -120$^{\circ}$C, IR arrays
+        are colder (77K for liquid N$_{2}$, 4K for liquid He). Dark current
+        can be subtracted using calibration data, but note that
         there is still the Poisson \emph{noise} associated with the dark
         current, so even with dark subtraction, additional noise is
         generated.
     \item Linearity: relation between number of output electrons and
-        input photons. In a fully linear detector, this relation is
-        linear, with the slope of the relation given by the quantum
-        effeciency. An alternate way to consider nonlinearity is to
-        consider that the quantum efficiency is a function of the
-        count level.
+        input photons. In a fully linear detector,
+        the slope of the relation is given by the quantum
+        effeciency, which can be considered as a function of the count
+        level for \emph{non}linearity.
         \begin{itemize*}
             \item photographic: nonlinear
                 (\href{https://en.wikipedia.org/wiki/Sensitometry}
@@ -3920,7 +3920,78 @@ quantities:
                 50-90\% of full well. IR arrays are usually slightly
                 nonlinear over their entire range, but repeatably so.
         \end{itemize*}
+    \item Full well: maximum number of photons possible to detect.
+        \begin{itemize*}
+            \item photographic: limited by number of gains
+            \item photomultiplier: unlimited
+            \item array detector: $\sim$ 100,000 photons
+        \end{itemize*}
 \end{itemize*}
+Other possible effects/issues:
+\begin{itemize*}
+    \item Defects. Most detectors are not perfect; there are often small
+        regions which are unusable because of very low quantum efficiency,
+        blocked columns, etc. Many devices are rejected for astronomical use
+        because of too many defects.
+    \item Modulation transfer function. In some detectors at some
+        wavelengths, charge deposited at one location can be spread
+        over a wider region, leading to degradation of image quality.
+        This is often most notable at long wavelengths in CCDs, where
+        one can see moderately large halos around point sources. This
+        is usually due to the penetration of long wavelength photons
+        to the substrate of the device from which they can be
+        reflected back.\\
+        A related effect is fringing on chips, which results from
+        interference of monochromatic incident light that is reflected
+        from the substrate, which is relevant because the night sky
+        spectrum contains strong monochromatic features. Since the
+        substrate surface is not perfectly flat, this can lead to
+        irregular patterns in the background. Examples: DIS red
+        fringing, 1m i band imaging. The details of fringing depend on
+        specifics of the chip construction, and fringing effects can
+        be mitigated in some cases.
+    \item Readout speed: typically 25 microsec/pixel for array
+        detectors. However, the chips can in many cases be read at a
+        variety of speeds. In general, when chips are read faster, the
+        readout noise increases. Larger chips now often have multiple
+        readout channels, so several regions of the chip can be read
+        simultaneously, decreasing the total readout time.
+    \item Saturation behavior. When full well is reached, the chip is
+        said to be saturated. In some array detectors, especially
+        CCDs, when a given pixel is saturated, additional charge often
+        leaks into adjacent pixels, usually into adjacent rows rather
+        than columns because of the construction of the CCD.
+        Separately from detector saturation, one occasionally sees
+        saturation of the readout electrons which can have the effect
+        of a saturated pixel affecting the counts in subsequent
+        pixels.
+    \item Hysteresis generally refers to processes in which the prior
+        exposure history of a detector affects subsequent exposures. A
+        common example is \emph{residual image}, in which an area of a
+        detector which was subject to a very bright source in a
+        previous exposure will continue to ``glow'' in subsequent
+        exposures. Another form of hysteresis is so-called quantum
+        efficiency hysteresis (QEH) in which the quantum efficiency of
+        the chip changes as a function of previous exposure history.
+        One manifestation of this effect has been used by astronomers,
+        mostly with older CCDs; for some reason, when these CCDs were
+        subjected to an extended influx of ultraviolet light, their
+        optical quantum efficiency was found to be increased, and to
+        stay increased at a stable level as long as the chip was kept
+        cold. This led to the practive of ``UV-flooding'' CCDs as they
+        were being cooled.
+    \item Reciprocity: sensitivity changes as a function of photon
+        incidence \emph{rate}. Exists in photographic plates,
+        \emph{maybe} in some
+        array detectors? Dead-time correction is a reciprocity
+        failure.
+\end{itemize*}
+\subsubsection*{Digitization}
+\subsubsection*{Dynamic range}
+\subsubsection*{Determining gain and readout noise}
+\subsection*{CCDs}
+\subsection*{IR detectors}
+\subsection*{UV and other detectors}
 
 
 
