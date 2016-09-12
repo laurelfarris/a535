@@ -6,13 +6,12 @@
 \usepackage{color}
 \usepackage{xcolor}
 \usepackage{amsmath}
-\usepackage{mdwlist}
 \usepackage{enumitem}
+\setlist[itemize]{noitemsep}
 \setlist[description]{%
-   % leftmargin=4em, % indents ?
-    labelindent=4em, % indents items in []s
+    noitemsep,
+    labelindent=4em,
     topsep=0.5em,
-    itemsep=0em,
     font={\sffamily\bfseries\color{red}}
 }
 
@@ -34,6 +33,8 @@
 \definecolor{myGreen}{rgb}{0.0,0.26,0.15}
 \definecolor{om}{rgb}{0.4,0.19,0.28} % om - old mauve
 
+\newcommand{\mynotes}[1]{\textcolor{myBlue}{#1}}
+
 \title{\vspace{-0.75in}ASTR 535 Lecture Notes}
 \author{Jon Holtzman}
 \date{Spring 2016}
@@ -47,19 +48,19 @@ course website: \textcolor{blue}
 %--------------Part 1--------------------------------------------------%
 
 \textcolor{date}{Friday, January 22}
-\section*{Properties of light, magnitudes, errors,\\
+\section{Properties of light, magnitudes, errors,\\
 and error analysis}
 
-\subsection*{Light}
+\subsection{Light}
 Wavelength regimes:
-\begin{itemize*}
+\begin{itemize}
     \item gamma rays
     \item x-rays
     \item ultraviolent (UV)
-        \begin{itemize*}
+        \begin{itemize}
             \item near: 900--3500 \AA{}
             \item far: 100--900 \AA{}
-        \end{itemize*}
+        \end{itemize}
         The 900 \AA{} break is because of the Lyman limit at 912 \AA{}.
         This is where neutral hydrogen is ionized, so the universe is largely
         opaque to wavelengths shorter than this.
@@ -69,17 +70,17 @@ Wavelength regimes:
         is due to the Earth's atmosphere being opaque to wavelengths shorter
         than this).
     \item IR
-        \begin{itemize*}
+        \begin{itemize}
             \item near: 1--5 $\mu$ (1--10 $\mu$ in online notes)
             \item mid: (10--100 $\mu$)
             \item far: 5--100 $\mu$ (100--1000 $\mu$)
-        \end{itemize*}
+        \end{itemize}
     \item sub-mm 500--1000 $\mu$
     \item microwave
     \item radio
-\end{itemize*}
+\end{itemize}
 Quantities of light:
-\begin{itemize*}
+\begin{itemize}
     \item Intensity $I(\theta,\phi)$ [erg s$^{-1}\ \nu^{-1}\ \Omega^{-1}$]:
         Encapsulates $direction$ light is coming from.
         Also known as radiance.
@@ -122,25 +123,25 @@ Quantities of light:
         \end{equation}
         where $d$ = distance to source (so L can only be calculated if
         the distance is known). Also known as radiant flux.
-\end{itemize*}
+\end{itemize}
 What to measure for sources:
-\begin{itemize*}
+\begin{itemize}
     \item Resolved: directly measure surface brightness (intensity)
         distribution on the sky, usually over some bandpass or wavelength
         interval.
     \item Unresolved: measure the flux. Diffraction is the reason stellar
         surfaces cannot be resolved. Because of this, we cannot measure
         SB, so we measure flux, integrated over the entire object.
-\end{itemize*}
+\end{itemize}
 
 Questions:
-\begin{itemize*}
+\begin{itemize}
     \item What are the dimensions of the three quantities: luminosity,
         surface brightness (intensity), and flux?
     \item How do the three quantities depend on distance to the source?
     \item To what quantity is apparent magnitude of a star related?
     \item To what quantity is the absolute magnitude related?
-\end{itemize*}
+\end{itemize}
 \emph{specific} flux: per unit wavelength (or frequency).
 Using $\lambda=\frac{c}{\nu} \rightarrow
 \frac{\textrm{d}\lambda}{\textrm{d}\nu} = \frac{-c}{\nu^2}$
@@ -162,7 +163,7 @@ Units: cgs, magnitudes, Jansky (a flux density unit:
 1 Jy = $10^{-26}$ W m$^{-2}$ Hz$^{-1}$)
 
 Terminology of measurements:
-\begin{itemize*}
+\begin{itemize}
     \item photometry (broad-band flux measurement): SB or flux, integrated
         over some wavelength range.
     \item spectroscopy (\emph{relative} measurement of fluxes at
@@ -176,13 +177,13 @@ Terminology of measurements:
     \item morphology: intensity as a function of position;
         often, absolute measurements are unimportant. Deals with $resolved$
         objects, intensity as function of position.
-\end{itemize*}
+\end{itemize}
 In general:
-\begin{itemize*}
+\begin{itemize}
     \item photometry: measure \emph{flux}
     \item spectroscopy: flux \emph{density} (per unit wavelength,
         down to the resolution of the spectrograph)
-\end{itemize*}
+\end{itemize}
 
 In practice, measure \emph{photon} flux [photons cm$^{-2}$ s$^{-1}$]
 with a ``photon counting device'',
@@ -200,7 +201,7 @@ frequency and how to convert between the two.}}
 
 %-----------------------------------------------------------------------%
 
-\subsection*{Magnitudes and photometric systems}
+\subsection{Magnitudes and photometric systems}
 Magnitudes are related to flux (or SB or L) by:
     $$  m_1 - m_2 = -2.5 \log \frac{b_1}{b_2} $$
 or for a single object:
@@ -248,11 +249,11 @@ magnitude system.}}
 \textcolor{date}{Monday, January 25}
 
 Three main types of magnitude systems in use in astronomy:
-\begin{enumerate*}
+\begin{enumerate}
     \item STMAG
     \item ABNU
     \item UBVRI
-\end{enumerate*}
+\end{enumerate}
 The STMAG and ABNU magnitude systems are the simplest.
 In these systems, the reference flux is just some \emph{constant} value in
 $F_{\lambda}$ or $F_{\nu}$. However, these are not always the most widely used
@@ -347,7 +348,7 @@ systems in use, and understand how they differ. Know when it is
 important to know what the magitude system is, and when it isn't.}}
 
 %-----------------------------------------------------------------%
-\subsubsection*{Colors}
+\subsubsection{Colors}
 In the UBVRI system, the \emph{difference} between magnitudes
 (e.g.\ B-V) gives the ratio of the fluxes in different bandpasses
 ($F_{B}/F_{V}$)
@@ -377,10 +378,10 @@ E.g., convert the spectrum of an elliptical galaxy to color;
 if you know $F$ in one filter, you can get $F$ in another filter.
 
 Questions:
-\begin{itemize*}
+\begin{itemize}
     \item Which is closer to the UBVRI system, STMAG or ABNU?
     \item What would typical colors be in a STMAG or ABNU system?
-\end{itemize*}
+\end{itemize}
 
 \textcolor{om}{\emph{Understand how colors are represented by a difference in
 magnitude, and recognize how colors expressed in magnitude are related
@@ -388,7 +389,7 @@ to the shape of the underlying spectrum, with differences for
 different magnitude systems.}}
 
 %-----------------------------------------------------------------%
-\subsubsection*{UBVRI magnitudes-flux conversion}
+\subsubsection{UBVRI magnitudes-flux conversion}
 \textcolor{date}{Wednesday, January 27}
 
 To \textcolor{red}{convert Vega-based magnitudes to fluxes},
@@ -433,26 +434,26 @@ behavior for very faint objects (near the detection threshold). See
 for details.
 
 %---------------------------------------------------------------%
-\subsection*{Observed fluxes and the count equation}
+\subsection{Observed fluxes and the count equation}
 If you are measuring flux with an actual instrument,
 the \emph{intrinsic} photon flux from the source is not
 trivial to determine from the number of photons that you count.
 To get the number of photons that you count in an observation,
 you need to take into account
-\begin{itemize*}
+\begin{itemize}
     \item The area of your photon collector (telescope)
     \item Photon losses and gains from the Earth's atmosphere
     (which change with conditions)
     \item The efficiency of your collection/detection
     apparatus (which can change with time).
-\end{itemize*}
+\end{itemize}
 Generally, the astronomical signal (which might be a flux or a
 surface brightness, depending on whether the object is resolved)
 can be written in the form of the \emph{\textbf{count equation:}}
     $$ S = Tt \int \frac{F_{\lambda}}
     {\left(\frac{hc}{\lambda}\right)}q_{\lambda}
     a_{\lambda}\textrm{d}\lambda \equiv TtS' $$
-    \begin{itemize*}
+    \begin{itemize}
         \item $S$: total number of photons observed (the ``signal'')
         \item $S'$: observed flux rate [photons s$^{-1}$ cm$^{-2}$],
             with all of the real details of the observing system included.
@@ -470,7 +471,7 @@ can be written in the form of the \emph{\textbf{count equation:}}
         \item $\frac{F_{\lambda}}{\left(hc/\lambda\right)}$:
             flux divided by the energy per photon;
             gives the number of photons per second per square cm.
-    \end{itemize*}
+    \end{itemize}
 $T$ and $t$ are the \emph{only} terms that do not depend on
 the wavelength (or frequency).
 
@@ -560,7 +561,7 @@ understanding of all the terms in the count equation vs.\ measuring the
 overall throughput (zeropoint) by observing stars of known brightness.
 Know instrumental magnitudes and zeropoints are.}}
 %-----------------------------------------------------------------------%
-\subsection*{Uncertainties in photon rates}
+\subsection{Uncertainties in photon rates}
 Useful reference:
 \href{http://users.wfu.edu/ecarlson/skeptic/statistics.pdf}
 {\textcolor{blue}{Statistics}}
@@ -609,11 +610,11 @@ For astronomical observations, the photon distribution can be derived from the
 \emph{binomial} distribution:
    $$ P(x,n,p) = \frac{n!p^x(1-p)^{n-x}}{x!(n-x)!}  $$
 where
-\begin{itemize*}
+\begin{itemize}
     \item $x$: number of photons in a single event
     \item $n$: total number of events
     \item $p$: probability of observing $x$
-\end{itemize*}
+\end{itemize}
 under the assumption that all events are independent of each other
 (e.g., when rolling dice, the result of the second roll is independent
 of the result of the first). For the binomial distribution:
@@ -692,7 +693,7 @@ distribution is similar to a normal distribution.}}
 
 The expected uncertainties in observations need to be understood in
 order to:
-\begin{itemize*}
+\begin{itemize}
     \item predict the amount of observing time needed to get
         uncertainties as small as they need to be.
     \item Figure out if the scatter in the observed data is consistent
@@ -706,7 +707,7 @@ order to:
         distribution (the null hypothesis). If it is low, the null
         hypothesis can be rejected.
     \item interpret your results in the context of a scientific prediction
-\end{itemize*}
+\end{itemize}
 
 \textbf{\emph{Confidence levels}}
 
@@ -766,7 +767,7 @@ Is the data consistent with the model?
 }
 
 \textcolor{date}{Wednesday, February 3}
-\subsubsection*{Noise equation: how do we predict expected
+\subsubsection{Noise equation: how do we predict expected
 uncertainties?}
 \emph{Signal-to-noise}
 
@@ -863,7 +864,7 @@ is:
     \sqrt{T}\sqrt{t}$$
 
 Limiting regimes:
-\begin{itemize*}
+\begin{itemize}
     \item \emph{signal-limited} case: $S^{\prime}\gg B^{\prime}A$,
         the background goes away and we get
          $$ \frac{S}{N} = \sqrt{S} = \sqrt{S^{\prime}tT} $$
@@ -871,7 +872,7 @@ Limiting regimes:
         and
         $$ \frac{S}{N} = \frac{S}{\sqrt{BA}} =
         \frac{S^{\prime}}{\sqrt{B^{\prime}A}}\sqrt{tT} $$
-\end{itemize*}
+\end{itemize}
 
 \textcolor{myBlue}{starlight dominates by factor of 1000 for
 m$_* = 12.5$ and m$_{BG} = 20$ ($\Delta m = 7.5
@@ -880,11 +881,11 @@ m$_* = 12.5$ and m$_{BG} = 20$ ($\Delta m = 7.5
 \large$\odot$: \normalsize little circle around star to reduce sky
 background noise. Depends on how blurry the star is; determined by
 seeing.
-\begin{itemize*}
+\begin{itemize}
     \item Dust scattering in the plane of the solar system
     \item Diffraction limit of space telescope $\sim$ 20th of an
     arcsecond. ($\sim$ angular resolution).
-\end{itemize*}
+\end{itemize}
 }
 
 As one goes to fainter objects, the S/N drops, and it drops faster
@@ -912,10 +913,10 @@ zero with no exposure time. Mean is zero, so can't subtract it out, it
 just blurs what you're looking at. B - background per square
 arcsecond, A - square arcsecond. Number of pixels over which it's
 spread:
-\begin{itemize*}
+\begin{itemize}
     \item sharper image
     \item 10 arcsec all in one pixel
-\end{itemize*}
+\end{itemize}
 Can change magnification of optics, but there is a balance. Might have
 two stars five arcsec apart. Maxiumum resolution is not always the
 best! readout noise is very important when the background is very low.
@@ -973,7 +974,7 @@ Noise, $N = \sqrt{S+BA+N_{pix}\sigma_{rn}^2}$
 \textcolor{om}{\emph{}}
 
 %---------------------------------------------------------------%
-\subsubsection*{Error propagation}
+\subsubsection{Error propagation}
 \textcolor{date}{Monday, February 8}
 
 So now we know how to estimate uncertainties of observed count rates.
@@ -1033,7 +1034,7 @@ useful.
 \textcolor{red}{\textbf{Understanding these terms is very important!}}
 
 Examples for \emph{uncorrelated} errrors:
-\begin{itemize*}
+\begin{itemize}
     \item addition/subtraction:
         $$ x = u + v $$
         $$ \sigma_x^2 = \sigma_u^2\left(\frac{\partial x}
@@ -1053,7 +1054,7 @@ Examples for \emph{uncorrelated} errrors:
         Note that when dealing with logarithmic quantities, errors in
         the log correspond to \emph{fractional} errors in the raw
         quantity.
-\end{itemize*}
+\end{itemize}
 
 \textcolor{myBlue}{E.g. $x=10u \rightarrow \sigma_x=10\sigma_u$}
 
@@ -1078,7 +1079,7 @@ distributed.
 \textcolor{om}{\emph{}}
 
 
-\subsubsection*{Determining sample parameters: averaging measurements}
+\subsubsection{Determining sample parameters: averaging measurements}
 We've covered errors in single measurements ($\sigma_i$).
 Next we turn to averaging measurements.
 Say we have multiple observations and want the best
@@ -1205,20 +1206,20 @@ splitting exposures leads to reduced $S/N$.
     is it better to have, e.g.\ 3600 1-second exposure, 1800 2-second
     exposures, 300 12-second exposures$\ldots$
     Pros of lots of short exposures:
-    \begin{itemize*}
+    \begin{itemize}
         \item avoid saturation
         \item tracking
         \item cosmic rays
         \item variable object
         \item monitor atmospheric throughput variation
-    \end{itemize*}
+    \end{itemize}
     cons of lots of exposures:
-    \begin{itemize*}
+    \begin{itemize}
         \item data processing
         \item high data quantity
         \item can't see object
         \item readout time penalty
-    \end{itemize*}
+    \end{itemize}
     If tracking is bad, image can be blurry, and would get more background.
     If you're signal-limited though, this doesn't matter.
     How do you figure out the minimum amount of time to expose?
@@ -1229,7 +1230,7 @@ splitting exposures leads to reduced $S/N$.
 
 \textcolor{om}{\emph{}}
 
-\subsubsection*{Random errors vs systematic errors}
+\subsubsection{Random errors vs systematic errors}
 So far, we've been discussing \emph{random} errors.
 There is an additional,
 usually more troublesome, type of errors known as \emph{systematic} errors.
@@ -1283,19 +1284,19 @@ propagation!}
 
 %--------------Part 2--------------------------------------------------%
 \newpage
-\section*{Effects of the earth's atmosphere}
+\section{Effects of the earth's atmosphere}
 
 Four effects:
-\begin{enumerate*}
+\begin{enumerate}
     \item Emission
     \item Absorption
     \item Refraction (shifting apparent direction of incoming light)
     \item Seeing (degrading the coherence of incoming light,
         leading to degradation of image quality when collecting light
         over a large aperture)
-\end{enumerate*}
+\end{enumerate}
 
-\subsection*{Night sky emission}
+\subsection{Night sky emission}
 (brightness as function of wavelength)
 
 Sources
@@ -1303,7 +1304,7 @@ Sources
 sources, as shown in this
 \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/skyemiss.htm}
 {\textcolor{blue}{plot}}):
-\begin{itemize*}
+\begin{itemize}
     \item \textbf{air glow:} thermally excited molecules (by sunlight).
         Emission takes time, so this continues into the night.
         OH lines. Lines are pretty bright.
@@ -1319,11 +1320,11 @@ sources, as shown in this
     \item \textbf{sunlight:} Brightness is
         small away from twilight, depending on distance sun is below horizon. Note that there are
         Different definitions of twilight:
-        \begin{itemize*}
+        \begin{itemize}
             \item civil (6 degrees)
             \item nautical (12 degrees; ``pretty dang dark''),
             \item astronomical (18 degrees; ``dark as it's gonna get'').
-        \end{itemize*}
+        \end{itemize}
         By astronomical twilight, there is essentially no contribution
         from sunlight, but much useful observing can be done before this.
     \item \textbf{moonlight:} Brightness is variable; can be very bright.
@@ -1335,7 +1336,7 @@ sources, as shown in this
     \item \textbf{thermal emission:} IR emission from sky,
         telescope, and dome.
         T$_{atm} \rightarrow$ blackbody emission.
-\end{itemize*}
+\end{itemize}
 
 \textbf{Optical:}
 
@@ -1364,10 +1365,10 @@ Most ($\sim$ 90\%) of the emission in the near-IR is from
 vibrational and rotational transition emission lines of the OH molecule,
 the so-called ``OH forest.''
 For broadband work:
-\begin{itemize*}
+\begin{itemize}
     \item H band: $m\sim$ 13.5 mag arcsec$^{-1}$
     \item K band: $m\sim$ 12.5 mag arcsec$^{-1}$.
-\end{itemize*}
+\end{itemize}
 ($\sim$ surface brightness);
 So for all except bright objects, we're background limited.
 This leads to some
@@ -1407,7 +1408,7 @@ especially critical in the IR\@. See some
 {\textcolor{blue}{here}}.
 
 %----------------------------------------------------------------------%
-\subsection*{Transmission of atmosphere}
+\subsection{Transmission of atmosphere}
 
 \textcolor{myBlue}{\textbf{More unorganized notes:}
     Extinction: mostly from scattering and aerosols. SHOULD REVIEW
@@ -1435,27 +1436,27 @@ especially critical in the IR\@. See some
 
 Earth's atmosphere doesn't transmit 100\% of light. Various things
 contribute to the absorption of light:
-\begin{itemize*}
+\begin{itemize}
     \item scattering, e.g., Rayleigh scattering off molecules.
     \item aerosols: scattering off larger particles (e.g.\ natural
     aerosols like fog, forest exudates, and geyser steam, and
     artificial aerosols like haze, dust, particulate air pollutants
     and smoke). Particle size $\sim$ 1 $\mu m$.
     \item variety of molecules:
-    \begin{itemize*}
+    \begin{itemize}
         \item ozone
         \item $H_2O$
         \item $O_2$
         \item $CO_2$
         \item $N_2O$
         \item $CH_4$
-    \end{itemize*}
+    \end{itemize}
     All of these have a $\lambda$ dependency.
-\end{itemize*}
+\end{itemize}
 All are functions of wavelength, time to some extent, and position in
 sky.
 
-\subsubsection*{Sources of extinction}
+\subsubsection{Sources of extinction}
 In the optical part of the spectrum, extinction is a roughly smooth
 function of wavelength and arises from a combination of ozone,
 Rayleigh scattering, and aerosols, as shown in
@@ -1525,7 +1526,7 @@ When doing IR spectroscopy, one needs to be aware of these and
 possibly attempt to correct for them, taking care not to confuse them
 with real stellar features.
 
-\subsubsection*{Airmass and zenith distance dependence}
+\subsubsection{Airmass and zenith distance dependence}
 
 Clearly, if the light has to pass through a larger path in the Earth's
 atmosphere, more light will be scattered/absorbed; hence one expects
@@ -1551,7 +1552,7 @@ approximation:
                   - 0.002875(\sec z-1)^2
                   - 0.0008083(\sec z-1)^3 $$
 
-\subsubsection*{How much light is lost going through the atmosphere?}
+\subsubsection{How much light is lost going through the atmosphere?}
 Consider a thin sheet of atmosphere, with incident flux $F$, and
 outgoing flux $F + \textrm{d}F$.
 Let the thin sheet have opacity $\kappa = N\sigma$,
@@ -1609,7 +1610,7 @@ in.
 }
 
 %----------------------------------------------------------------------%
-\subsection*{Atmospheric Refraction}
+\subsection{Atmospheric Refraction}
 \textcolor{date}{Monday, February 22}
 
 \textcolor{myBlue}{Amount of refraction depends on where you're looking
@@ -1727,7 +1728,7 @@ lose light as a function of wavelength, but otherwise it will.
 However, for a slit at the parallactic angle, be careful about
 matching up flux at different wavelengths for extended objects.
 %----------------------------------------------------------------------%
-\subsection*{Seeing: theory and practice}
+\subsection{Seeing: theory and practice}
 References: Coulson, ARAA 23,19; Beckers, ARAA 31, 13; Schroeder
 16.II.
 
@@ -1739,7 +1740,7 @@ refraction cause the plane wavefront from distant objects to be
 \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/seeing.htm}
 {\textcolor{blue}{distorted}}.
 These cause several astronomical effects:
-\begin{itemize*}
+\begin{itemize}
     \item scintillation, which is amplitude variations, which
         typically vary over scales of cm: generally very small for larger
         apertures. \textcolor{myBlue}{``twinkling'', small aperture
@@ -1754,11 +1755,11 @@ These cause several astronomical effects:
         {\textcolor{blue}{moving around}}
         on scale of $\sim$ 1 arcsec. These observations
         imply:
-        \begin{itemize*}
+        \begin{itemize}
             \item local wavefront curvatures flat on scales of small apertures
             \item instantaneous slopes vary by $\sim$ an arcsec
-        \end{itemize*}
-\end{itemize*}
+        \end{itemize}
+\end{itemize}
 The time variation scales are
 \textcolor{myGreen}{several milliseconds} and up.
 
@@ -1881,12 +1882,12 @@ to diffraction-limited. Wobbly wavelength front; can correct
 \emph{some} spatial area. Measure \emph{mean} tilt and correct for
 that $\rightarrow$ \emph{active} optics (or tip-tilt system)}.
 
-\subsubsection*{Other sources of seeing}
+\subsubsection{Other sources of seeing}
 Although the Earth's atmosphere provides a limit on the quality of
 images that can be obtained, at many observatories, there are other
 factors that can dominate the image quality budget. These have been
 recognized over the past several decades to be significant effects.
-\begin{itemize*}
+\begin{itemize}
     \item Dome seeing: arises from turbulence pattern around the
     dome and the interface between inside the dome and outside the dome.
     Even small temperature differences can lead to significant
@@ -1915,9 +1916,9 @@ recognized over the past several decades to be significant effects.
     \item (lack of) effect of clouds. \textcolor{myBlue}{Cause
     decreased \emph{transparency}, but don't actaully make the images
     blurry. The seeing can atually be better with thin haze.}
-\end{itemize*}
+\end{itemize}
 
-\subsubsection*{What does seeing cause the image to look like?}
+\subsubsection{What does seeing cause the image to look like?}
 \textcolor{date}{Monday, February 29}
 
 The ``quality'' of an image can be described in many different ways.
@@ -1949,10 +1950,10 @@ seeing:
 where $\nu$ is the spatial frequency,
 \textcolor{myBlue}{$\xi = \frac{1}{\lambda}$ [cycles per cm].
 (Aside: wavenumber $k = \frac{2\pi}{\lambda} = 2\pi\xi$)
-\begin{itemize*}
+\begin{itemize}
     \item MTF: power as function of spatial frequency
     \item PSF: intensity as function of position
-\end{itemize*}}
+\end{itemize}}
 
 Note that a gaussian goes as $e^{-\nu^2}$, so this is close to a gaussian.
 The shape of seeing-limited images is roughly Gaussian in core but has more
@@ -1974,7 +1975,7 @@ a potentially better empirical fitting function is a
 ``Nothing special, six parameters, more accurate.''
 
 Ways of characterizing the PSF:
-\begin{itemize*}
+\begin{itemize}
     \item \emph{encircled energy} as a function of radius,
         or at some specified radius. The encircled energy is just the
         cumulative integral of the PSF\@. Encircled energy requirements
@@ -1995,7 +1996,7 @@ Ways of characterizing the PSF:
         amoutn of light actually delivered by the optical system into
         the Airy disk to the theoretical maximum at the diffraction limit.
 
-\end{itemize*}
+\end{itemize}
 %----------------------------------------------------------------------%
 \newpage
 \section{Astronomical Optics}
@@ -2006,10 +2007,10 @@ photons s$^{-1}$ at a 4-meter telescope.
 By definition, an optical system collects light
 and (usually) makes images. This requires the bending
 of light rays, which is accomplished using \emph{curved surfaces}:
-\begin{itemize*}
+\begin{itemize}
     \item lenses (refraction)
     \item mirrors (reflection)
-\end{itemize*}
+\end{itemize}
 Building large telescopes with lenses is difficult, but the
 instruments often have lenses.
 
@@ -2042,11 +2043,11 @@ is the subject of \emph{aberrations} (see \S{}~{\ref{ab}}).
 For a ``smooth'' surface, the amount of aberration will depend on how much
 the different rays differ in $y$, which depends on the shape of the
 surface:
-\begin{itemize*}
+\begin{itemize}
     \item \emph{paraxial} rays are near the center of the aperture.
     \item \emph{marginal} rays are on the edge of the aperture.
     \item the \emph{chief} ray passes through the center of the aperture.
-\end{itemize*}
+\end{itemize}
 To define nominal (unaberrated) quantities, we consider the
 \emph{paraxial regime}, a small region near the optical axis surrounding the
 chief ray. In this regime, all angles are small, aberrations vanish
@@ -2181,7 +2182,7 @@ http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/cassegra.htm}{%
 Each of these telescope types defines a \emph{family} of
 telescopes with different first-order performances. From the
 usage/instrumentation point of view, important quantities are:
-\begin{itemize*}
+\begin{itemize}
     \item the diameter of the primary, which defines the light
         collecting power
     \item the scale of the telescope, which is related to the focal
@@ -2191,15 +2192,15 @@ usage/instrumentation point of view, important quantities are:
         the effective focal length with the diameter)
     \item the back focal distance, which is the distance of the focal
         plane behind the telescope.
-\end{itemize*}
+\end{itemize}
 From the design point of view, we need to specify:
-\begin{itemize*}
+\begin{itemize}
     \item the radii of curvature of the mirrors
     \item the separation between the mirrors
-\end{itemize*}
+\end{itemize}
 The relation between the usage and design parameters can be derived
 from simple geometry. Some basic definitions:
-\begin{itemize*}
+\begin{itemize}
     \item ratio of focal lengths, $\rho$:
         $$ \rho = \frac{R_2}{R_1} = \frac{f_2}{f_1}  $$
     \item magnification of the secondary, $m$ (be aware that $s_{2}'$ is
@@ -2214,7 +2215,7 @@ from simple geometry. Some basic definitions:
         $$ F_{1} = \frac{f_{1}}{D} $$
     \item ratio of marginal ray heights, $k$:
         $$ k = \frac{y_{2}}{y_{1}}  $$
-\end{itemize*}
+\end{itemize}
 Using some geometry, some basic relations between these quantities
 can be derived, in particular:{$$
     \rho = \frac{mk}{(m-1)}
@@ -2270,7 +2271,7 @@ result of thermal expansion/contraction.
 
 {\small\hfill\emph{Monday, March 7, 2016}}
 \subsubsection{Definitions for multi-surface system: stops and pupils}
-\begin{itemize*}
+\begin{itemize}
     \item aperture stop: determines the amount of light reaching an
         image (usually the primary mirror).
     \item field stop: determines the angular size of the field. This
@@ -2284,7 +2285,7 @@ result of thermal expansion/contraction.
         object (usually the primary).
     \item exit pupil: image of aperture stop formed by all subsequent
         optical elements.
-\end{itemize*}
+\end{itemize}
 Stops are relevent for correcting aberrations.
 In a two-mirror telescope, the location of the exit pupil is where the
 image of the primary is formed by the secondary. This can be calculated
@@ -2426,10 +2427,10 @@ the light from all locations in the aperture
 does not land at any common point.
 
 Aberrations can be considered in either of two ways:
-\begin{itemize*}
+\begin{itemize}
     \item All rays don't land at a common point.
     \item Wavefront deviates from a spherical wavefront.
-\end{itemize*}
+\end{itemize}
 These two descriptions are equivalent. The former refers to
 \emph{transverse} aberrations (the distance by which the
 rays miss the paraxial focus), or \emph{angular} aberrations
@@ -2731,7 +2732,7 @@ However, it is important to realize that aberrations can arise from
 other sources as well. These other sources can give additional
 third-order aberrations, as well as higher order aberrations. Some
 possible sources include:
-\begin{itemize*}
+\begin{itemize}
     \item misfigured (a slightly harsh term)
         or imperfectly figured optics: rarely is an element made
         exactly to specification.
@@ -2776,7 +2777,7 @@ possible sources include:
         far as design and other sources of image degradation are concerned,
         one is generally only interested in getting these errors small when
         compared with the smallest expected seeing errors.
-\end{itemize*}
+\end{itemize}
 
 \subsection{Ray tracing}
 
@@ -2956,20 +2957,20 @@ The basic idea of an adaptive optics system is to rapidly sense the
 wavefront errors and then correct for them on timescales faster
 than those at which the atmosphere changes. Consequently, there are
 three parts to an adaptive optics system:
-\begin{enumerate*}
+\begin{enumerate}
     \item A component that senses wavefront errors
     \item A control system that figures out how to correct these errors
     \item An optical element that receives the signals from the
         control system and implements wavefront corrections
-\end{enumerate*}
+\end{enumerate}
 There are several methods used for wavefront sensing. Two that are in
 fairly common use today are
-\begin{enumerate*}
+\begin{enumerate}
     \item \href{%
         http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/beckers3.htm}
         {Shack-Hartmann sensors}
     \item wavefront curvature sensing devices
-\end{enumerate*}
+\end{enumerate}
 In a
 Shack-Hartmann sensor, an array of lenslets is put in a pupil plane
 and each lenslet images a small part of the pupil. Measuring image
@@ -3138,7 +3139,7 @@ necessary, one can consider thermally controlling the mirror, e.g.,
 with heating or air conditioning.
 
 In the large mirror regime, there are currently three leading technologies.
-\begin{itemize*}
+\begin{itemize}
     \item Borosilicate honeycomb -
         \textcolor{myBlue}{%
         large thermal mass, need to keep daytime
@@ -3176,7 +3177,7 @@ In the large mirror regime, there are currently three leading technologies.
         telescope (Mauna Kea), the 11m Hobby-Eberly Telescope, the 11m SALT
         telescope, and the 10m Gran Telescopio de las Canarias. Future 30m
         class telescopes: TMT, GMT, and E-ELT.
-\end{itemize*}
+\end{itemize}
 \href{http://astro.nineplanets.org/bigeyes.html}{Tabular summary}
 of the world's telescopes!
 
@@ -3301,7 +3302,7 @@ Note guiding in spectrographs is often done off of the slit with a
 slit-viewing camera.
 
 \textcolor{myBlue}{Axes of machine$\ldots$
-\begin{itemize*}
+\begin{itemize}
     \item equatorial: simpler, don't have to track dec, just RA\@. Rotation rate
         of Earth is used, so it's fixed.
     \item alt-ax: More complicated, have to track in both axes. Get constant speed
@@ -3310,7 +3311,7 @@ slit-viewing camera.
         (cheaper). Can't point to zenith, 3.5 m has $\sim$ 520 degree range
         of ``wrap'', telescope has to swing all the way around once passing
         zenith, too much swiveling can wrap up cables (don't want that).
-\end{itemize*}
+\end{itemize}
 Picture orientation:  mirrors that of the telescope axes. N/E vs.\ zenith/horizon.
 N/S changes for alt-az telescope, aka entire field rotates. Need third axis to
 compensate when taking long images. For single point, doesn't matter. Rotating
@@ -3454,11 +3455,11 @@ Filters are used in optical systems (usually imaging systems) to
 restrict the observed wavelength range. Using multiple filters thus
 provides color information on the object being studied. Generally,
 filters are \emph{loosely} classified with widths of:
-\begin{itemize*}
+\begin{itemize}
     \item broadband ($ > \sim 1000$ \AA{}),
     \item medium band ($100 < \sim 1000$ \AA{}), or
     \item narrow band ($1 < \sim 100$ \AA{}).
-\end{itemize*}
+\end{itemize}
 
 Perhaps a better distinction between different filters is by
 how they work.
@@ -3507,11 +3508,11 @@ filters in an optical system.
 \subsection{Fabry-Perot Interferometer}
 A \emph{Fabry-Perot} system makes use of a tunable interference filter. The
 filter is tuned in wavelength by adjusting one of the:
-\begin{itemize*}
+\begin{itemize}
     \item spacing
     \item index of refraction (usually by changing the pressure)
     \item tilt of the interference filter
-\end{itemize*}
+\end{itemize}
 A tunable interference filter is called an \emph{etalon}.
 Often, etalons are
 made to provide very narrow bandpasses, on the order of 1 \AA{}.
@@ -3623,14 +3624,14 @@ $$}and the maximum resolution is{$$
     d_{2}\frac{\textrm{d}\theta}{\textrm{d}\lambda}
 $$}
 \subsection{Astronomical spectrographs}
-\begin{itemize*}
+\begin{itemize}
     \item Slitless spectographs.
     \item Long slit spectrographs
     \item Image slicers: preserving resolution and flux.
     \item Fiber spectrographs: multiobject data.
     \item Slitlets: multiobject data.
     \item Integral field spectrographs.
-\end{itemize*}
+\end{itemize}
 
 \subsection{Dispersing elements}
 \subsubsection{Prisms}
@@ -3672,12 +3673,12 @@ The location of bright images is given by the
 \emph{grating equation}:{$$
     m\lambda = \sigma\left(\sin\theta + \sin\alpha\right)
 $$}for a reflection grating, where
-\begin{itemize*}
+\begin{itemize}
     \item $\sigma$ is the groove spacing
     \item $m$ is the order
     \item $\alpha$ is the angle of incidence
     \item $\theta$ ($\beta$ in picture above) is the angle of diffraction
-\end{itemize*}
+\end{itemize}
 $\alpha$ and $\theta$ are measured relative to the normal to the grating surface.
 
 The dispersion of a grating can then be derived:{$$
@@ -3841,15 +3842,15 @@ it yields information on intensity at all wavelengths simultaneously.
 Detectors work because they are made of material that interacts
 with photons. Three general types, based on what is generated
 by the photon:
-\begin{itemize*}
-    \item Photographic detector: chemical reaction
-    \item Photomultiplier/photon counter: event, usually detected
+\begin{description}[labelwidth=10em, leftmargin=12em]
+    \item [Photographic detector] chemical reaction
+    \item [Photomultiplier/photon counter] event, usually detected
         in real time. Electrons are rapidly accelerated toward anode
         by photon, then more electrons are excited and accelerate, and
         so on. High voltage. These are \emph{not} imagers.
-    \item Photon collecter: photoelectron, usually (electronically)
+    \item [Photon collecter] photoelectron, usually (electronically)
         stored for subsequent readout. CCDs are a subset of this type.
-\end{itemize*}
+\end{description}
 
 In a photon counting device, some fraction of incident photons hit a
 photosensitive material and eject a photoelectron. This electron is
@@ -3887,19 +3888,20 @@ in IR\ldots First two are sensitive out to about 2.5 $\mu$m, last one
 to $\sim$ 5 $\mu$m (see book in library about the physics here!)}
 
 Detectors are characterized by a variety of different important
-quantities:
-\begin{itemize*}
-    \item Quantum efficiency: fraction of photons detected, usually
+quantities that should be considered when buying them\ldots
+what do you need for your science? The ``Biggies'':
+\begin{description}
+    \item [Quantum efficiency] fraction of photons detected, usually
         a function of wavelength. Typical values:
-        \begin{itemize*}
+        \begin{itemize}
             \item photographic: $\sim$ 0.1 \%
             \item photomultiplier: $\sim$ 10-20 \%
             \item array detector: $\sim$ 20-90 \%
-        \end{itemize*}
-    \item Size and resolution elements (given that optics can be used
+        \end{itemize}
+    \item [Size and resolution elements] (given that optics can be used
         to change the scale, the number of resolution elements may be
         more critical):
-        \begin{itemize*}
+        \begin{itemize}
             \item photographic: large (many inches), good resolution
             \item photomultiplier: several inches, no resolution
                 (though there are arrays of photomultipliers, e.g.
@@ -3917,27 +3919,28 @@ quantities:
                 applications, they are less frequently used in
                 astronomy because they generally don't provide a good
                 match to telescope scales).
-        \end{itemize*}
-    \item Discovery efficiency: product of sensitivity and area.
-    \item Readout effects. The process of counting electrons is never
-        totally exact, so noise is introduced. Generally this is at a
-        level of 1-100 electrons rms. Readout effects can come in two
-        different forms: pattern and random noise. The latter is what
-        people usually refer to as readout noise. Pattern noise is
-        noise which is introduced in the readout process but which has
-        some spatial correlation. \emph{Fixed} pattern noise has the same
-        spatial pattern over the detector from exposure to exposure,
-        and thus can be corrected.
-        \textcolor{myBlue}{If the pattern noise is not fixed, it
-        changes every time exposure is read out.} If photon events are counted,
-        rather than counting the number of photoelectrons, as is the
-        case for a photomultiplier, there is no readout noise; this is
-        the key advantage of photon counters \textcolor{myBlue}{(no
-        readout noise!)}.
-\end{itemize*}
-\textcolor{date}{Wednesday, May 4, 2016}
-\begin{itemize*}
-    \item Dark current. Electrons in a given substance will be moving
+        \end{itemize}
+    \item [Discovery efficiency] product of sensitivity and area.
+    \item [Readout effects] The process of counting electrons is never totally
+        exact, so noise is introduced. Generally this is at a level of 1-100
+        electrons rms. Readout effects can come in two different forms:
+        \begin{enumerate}
+            \item pattern noise: introduced in the readout process, but has
+                some spatial correlation. \textit{Fixed} pattern noise has the
+                same spatial pattern over the detector from exposure to
+                exposure, and thus can be corrected. \textcolor{myBlue}{If the
+                pattern noise is not fixed, it changes every time exposure is
+                read out.}
+            \item random noise: what people usually refer to as readout noise.
+                If, instead of photoelectrons, photon \emph{events} are counted
+                (photomultiplier), there is no readout noise;
+                \textcolor{red}{this is the key advantage of photon counters.}
+        \end{enumerate}
+
+        \textcolor{date}{Wednesday, May 4, 2016} Should add some margins to
+        these notes\ldots
+
+    \item [Dark current] Electrons in a given substance will be moving
         around at speeds correlated with the operating
         temperature of the device. If there is enough thermal motion,
         an electron can be liberated from the substance and
@@ -3952,12 +3955,12 @@ quantities:
         there is still the Poisson \emph{noise} associated with the dark
         current, so even with dark subtraction, additional noise is
         generated.
-    \item Linearity: relation between number of output electrons and
+    \item [Linearity] relation between number of output electrons and
         input photons. In a fully linear detector,
         the slope of the relation is given by the quantum
         effeciency, which can be considered as a function of the count
         level for \emph{non}linearity.
-        \begin{itemize*}
+        \begin{itemize}
             \item photographic: nonlinear
                 (\href{https://en.wikipedia.org/wiki/Sensitometry}
                 {characteristic curve})
@@ -3968,43 +3971,51 @@ quantities:
             \item array detector: CCDs \emph{usually} linear up to
                 50-90\% of full well. IR arrays are usually slightly
                 nonlinear over their entire range, but repeatably so.
-        \end{itemize*}
-    \item Full well: maximum number of photons possible to detect.
-        \begin{itemize*}
+        \end{itemize}
+    \item [Full well] maximum number of photons possible to detect.
+        \begin{itemize}
             \item photographic: limited by number of gains
             \item photomultiplier: unlimited
             \item array detector: $\sim$ 100,000 photons
-        \end{itemize*}
-\end{itemize*}
+        \end{itemize}
+\end{description}
 Other possible effects/issues:
-\begin{itemize*}
+\begin{itemize}
     \item Defects. Most detectors are not perfect; there are often small
         regions which are unusable because of very low quantum efficiency,
         blocked columns, etc. Many devices are rejected for astronomical use
-        because of too many defects.
-    \item Modulation transfer function. In some detectors at some
-        wavelengths, charge deposited at one location can be spread
-        over a wider region, leading to degradation of image quality.
-        This is often most notable at long wavelengths in CCDs, where
-        one can see moderately large halos around point sources. This
-        is usually due to the penetration of long wavelength photons
-        to the substrate of the device from which they can be
-        reflected back.\\
-        A related effect is fringing on chips, which results from
-        interference of monochromatic incident light that is reflected
-        from the substrate, which is relevant because the night sky
-        spectrum contains strong monochromatic features. Since the
-        substrate surface is not perfectly flat, this can lead to
-        irregular patterns in the background. Examples: DIS red
-        fringing, 1m i band imaging. The details of fringing depend on
-        specifics of the chip construction, and fringing effects can
-        be mitigated in some cases.
-    \item Readout speed: typically 25 microsec/pixel for array
-        detectors. However, the chips can in many cases be read at a
-        variety of speeds. In general, when chips are read faster, the
-        readout noise increases. Larger chips now often have multiple
-        readout channels, so several regions of the chip can be read
-        simultaneously, decreasing the total readout time.
+        because of too many defects. \mynotes{dead pixels - no response at all.
+        sensitivity changes from pixel to pixel (reason for flats).}
+    \item Modulation transfer function. In some detectors at some wavelengths,
+        charge deposited at one location can be spread over a wider region,
+        leading to degradation of image quality.  This is often most notable at
+        long wavelengths in CCDs, where one can see moderately large halos
+        around point sources. This is usually due to the penetration of long
+        wavelength photons to the substrate of the device from which they can
+        be reflected back.
+        \mynotes{characterizing the \emph{size} of an image.}
+
+        A related effect is fringing on chips, which results from interference
+        of monochromatic (not broadband) incident light that is reflected from
+        the substrate, which is relevant because the night sky spectrum
+        contains strong monochromatic features. Since the substrate surface is
+        not perfectly flat, this can lead to irregular patterns in the
+        background. Examples: DIS red fringing, 1m i band imaging. The details
+        of fringing depend on specifics of the chip construction, and fringing
+        effects can be mitigated in some cases. \mynotes{what back of device
+        looks like, hard to deal with this, don't see it when the moon is up,
+        amount of fringing is proportional\ldots also depends on what direction
+        you're facing.}
+
+    \item Readout speed: typically 25 microsec/pixel for array detectors.
+        However, the chips can in many cases be read at a variety of speeds. In
+        general, when chips are read faster, the readout noise increases.
+        Larger chips now often have multiple readout channels, so several
+        regions of the chip can be read simultaneously, decreasing the total
+        readout time.
+        \mynotes{ccd: charge transferred down, then across to \emph{amplifier},
+        split into four parts (quad-channel readout vs.\ single channel
+        readout.) More expensive though\ldots}
     \item Saturation behavior. When full well is reached, the chip is
         said to be saturated. In some array detectors, especially
         CCDs, when a given pixel is saturated, additional charge often
@@ -4034,15 +4045,478 @@ Other possible effects/issues:
         \emph{maybe} in some
         array detectors? Dead-time correction is a reciprocity
         failure.
-\end{itemize*}
+\end{itemize}
 \subsubsection{Digitization}
+In array detectors, after the charge is collected and read out, it is
+sent through a chain of electrons which
+\textit{digitizes}\footnote{Online definition: convert into a digital
+form that can be processed by a computer}
+the signal, often
+after amplifying it. The digitization is made by a device known as an
+A/D convertor; these work by comparing an input signal with a set of
+reference voltages which successively differ by factors of two. Thus
+an input signal is translated into a series of bits depending on
+whether the input voltage exceeds a series of reference voltages.
+Typical A/D correctors in use in astronomy consider 16-bits.
+
+The digital signal which comes out of the CCDs is variously referred to as
+one of the following:
+\begin{itemize}
+    \item counts
+    \item digital numbers (DN)
+    \item analog-to-digital units (ADU).
+\end{itemize}
+\paragraph{Gain:}
+The number of output counts is related to the number of input counts by a
+constant which depends on the amplification in the electronics. The
+amplification factor is known by most people as the gain, but
+astronomers define the gain of a device by the \textit{number of input
+electrons divided by the number of output counts} (i.e., the inverse
+gain); this ``astronomers'' gain is specified in units of e-/DN.
+Because the number which we receive from the electronics chain differs
+from the number of input electrons (i.e, the number of detected
+photons), the calculation of noise must take this into account. The
+photon counting noise (rms) is given by the square root of the number
+of detected photons. The number of detected photons is given by GC,
+where G is the (inverse) gain and C is the number of detected counts.
+Consequently, the noise in electrons is $ \sqrt{{GC}}$, and in units
+of counts is given by  $ \sqrt{{C/G}}$. This is apart from readout
+noise; the latter is usually specified in units of electrons, giving a
+total noise in electrons of  $ \sqrt{{GC+\sigma_{rn}^2}}$, or, in
+units of counts, by  $ \sqrt{{C/G+\sigma_{rn}^2/G^2}}$.
+
+A/D converters can only measure a positive incoming signal. At low
+light levels, the true input signal can be negative in the presence of
+readout noise. To avoid trucation of the negative signals, a constant
+voltage, called the bias, is added to the signal before it passes
+through the A/D. This bias must later be removed to preserve the
+correct count ratios between different sources; this is generally
+accomplished in CCDs by using the overscan region of the image.
+
+A/D convertors can introduce small systematic errors in recorded count
+rates if the reference voltages are not carefully controlled.
+
+
 \subsubsection{Dynamic range}
+A detector system can be characterized by its dynamic range, which is
+the ratio of the signals of the brightest and faintest sources which
+can be detected (with some definition of ``detection''). At the bright
+end, the system is limited by either the full well of the detector (or
+the number of electrons at which the detector goes significantly
+non-linear), or alternatively by the limitation of the A/D convertor
+(e.g., if an A/D convertor has 16 bits, you can never see counts
+higher than 2$^{16}$ - 1 = 65535). At the faint end, the system is limited
+either by the A/D convertor (you can't detect less than one count), or
+by the readout noise (source buried by readout noise cannot be
+detected). The gain of a system is often set to maximize the dynamic
+range; if the readout noise is $ \sim$ 10 electrons, one can maximize
+dynamic range by digitizing the signal by several electrons/DN if the
+detector has sufficient full well.
+
+
 \subsubsection{Determining gain and readout noise}
 \subsection{CCDs}
 \subsection{IR detectors}
 \subsection{UV and other detectors}
 
+\section{Data reduction: details and subtleties}
 
+\section{Photometry}
+
+(All lecture notes from this section copied from website. Not edited
+at all yet).
+
+Consider techniques for stellar photometry, surface photometry,
+calibration of broad band and emission line photometry.
+
+
+\subsection{Aperture photometry}
+In aperture photometry, we simply identify stars and add up all of the
+light in the surrounding pixels. The light is spread over several
+pixels in a form given by the point spread function PSF(i, j). We must
+also measure the background and subtract its contribution to the sum.
+
+Error estimation: we're going to sum over pixels. First just consider
+the object aperture:
+\[
+    \]
+where the sum is over N pixels, and B is the background per pixel. To
+get the true signal S, N would need to approach infinity since the
+stellar profile continues out to great distances. In practice,
+however, we choose N such that a repeatable fraction of light falls
+within the N pixels independent of exposure. Next, we want to
+determine the error in our measurement of S. The noise is
+
+\[
+    \]
+which is just
+\[
+    \]
+Now we have to consider how we will estimate B. In the simplest case,
+we just go away from the star and take then mean level. Generally, we
+want to minimize effects of any nonuniform background, so we consider
+an annulus around the star. If this annulus contains Na pixels, then
+
+
+\[
+    \]
+and
+\[
+    \]
+From this we see that errors in determining the background are small
+contributors to the total error in the star if Na > > N, and generally
+that is the case. If the errors in determining the background are
+negligible, then
+
+\[
+    \]
+which is an important result that we have seen before, but here the
+area is explictly given in terms of a number of pixels.
+Using this, one can consider the optimal choice of aperture. As the
+aperture size increases, you get a increase in total signal, but also
+an increase in background, so the change in S/N depends on how bright
+the star is relative to background. The optimal choice of aperture
+will depend on the brightness of the star: a larger aperture will be
+better for brighter stars, a smaller aperture for fainter stars. But
+also recall that we don't want to use a too small aperture or else we
+won't be able to compare results from different frames because of
+changes in the PSF.
+
+This leads to the commonly used technique of using small apertures for
+all of the stars on the frame, but large apertures for a few bright
+stars. The few bright stars are assumed to have representative PSFs
+for this frame, so all of the small aperture measurements can be
+aperture corrected to large aperture measurements without the increase
+in noise you would get if you actually used a large aperture. Note
+that you can't go arbitrarily small as you will eventually run into
+the problem of PSF variations across the frame if for no other reason
+than any small dependences on pixel centering.
+
+In fact, you can do better for S/N if you use additional information.
+If you know the shape of the PSF, you can use this information to fit
+your stellar image, increasing the S/N in the process. Simple linear
+least squares argument, if you know PSF and position accurately, leads
+to
+\[
+    \]
+where
+\[
+    \]
+Note that you'll improve S/N, but only if your assumption that your
+knowledge of the PSF is good is valid. This naturally leads into the
+next area of stellar photometry in crowding fields, when you are
+forced into fitting the PSF whether you like it or not.
+
+
+It is customary to express the observed number of counts in a frame in
+terms of an instrumental magnitude:
+
+\[
+    \]
+\subsection{Crowding}
+Clearly, the above technique breaks down as you have more than a few
+stars in your frame for two reasons: the stars may have overlapping
+light, and there may be stars in your sky annuli. This leads to
+techniques for crowded field photometry, a complicated subject which
+we'll just review quickly.
+
+In crowded field photometry, the idea to that you have to solve for
+the brightnesses of overlapping stars while considering the
+contribution of neighboring stars. To do this requires that you have
+information about the point spread function. There are several
+possibilities for how you might consider accounting for neighbors:
+\begin{itemize}
+    \item Fit all stars that have an effect on each other simultaneously.
+        Unfortunately, in very crowded fields, this can lead to huge groups of
+        stars to be considered simultaneously, which can be computationally
+        difficult, if not impossible. (DAOPHOT NSTAR)
+    \item Fit each star independently, but iterate the fit: at each iteration,
+        subtract the contribution for all neighbors before fitting each star.
+        (DOPHOT)
+    \item Use some combination of the above. (DAOPHOT ALLSTAR)
+\end{itemize}
+Simply, the technique consists of: finding stars, finding the PSF,
+grouping the stars, and simultaneously fitting for stellar
+brightnesses and positions. You almost certainly have to do positions
+because your initial estimates will probably be biased by neighbors.
+You also might consider fitting for the background as well. We'll
+consider each one of the steps in order:
+
+\subsubsection{Finding stars}
+Need to consider automation because of completeness issues, not to
+mention tedium.
+
+Look for peaks; clearly need to consider background noise, so look for
+peaks above some noise threshold. More sublety: look for peaks which
+look like they have the right shape to be stars. Matched detector
+algorithm. Shape parameters, e.g. sharpness, roundness for additional
+spurious object rejection.
+
+\subsubsection{Finding the PSF}
+Find bright isolated stars. Tabulate the PSF. However, rememeber that
+you're going to have to use this PSF to estimate brightnesses for
+other stars, so you'll need to be able to interpolate it accurately.
+Consider using a functional fit to PSF, possibly carry along residuals
+as well.
+
+
+
+\subsubsection{Grouping stars}
+As discussed above, either consider all stars that overlap, or iterate
+each star individually with improved neighbor subtraction at each
+iteration.
+
+
+
+\subsubsection{Fitting stars}
+For all pixels under consideration, compare observed values with first
+guess values. Use residuals to refine your guesses (nonlinear least
+squares). Continue iterating until parameters converge.
+
+
+
+\subsubsection{Subleties}
+Sky estimation. Mode approx: 3*median - 2 * mean.
+
+Multiple iterations of entire procedure to improve PSF by subtracting
+neighbors, also to find new stars under wings of other stars.
+
+Multiple colors/frames simultaneously.
+
+Completeness. Function of crowding. Spurious detections as well as
+misses.
+
+Averaging measurements. Averaging mags not the same as averaging
+counts. Beware of weighted means if you use estimated errors, because
+these can be biased.
+
+
+\subsection{Atmospheric extinction}
+
+f you want to compare brightnesses of stars in different observations,
+you need to correct for the different absorption of the earth's
+atmosphere as a function of airmass. Note that if you are just
+comparing brightnesses within individual frames (differential
+photometry), correcting for atmospheric absorption isn't necessary, to
+the extent that the absorption is the same for all objects in the
+frame.
+
+We've already desribed the absorption/scattering effects of earth's
+atmosphere:
+
+F = F0exp(- $\displaystyle \tau_{0}^{}$X)
+or
+m = m0 +1.086$\displaystyle \tau_{0}^{}$X
+m = m0 + kX
+m0 = m - kX
+where k is the extinction coefficient. As we've discussed, this can
+vary from night to night, so if you're interested in accurate
+photometry (better than a couple percent), you need to measure it on
+your night. Also remember that the extinction coefficient is
+wavelength dependent, so you need a separate number for each filter.
+It's also critical to measure this to check for photometric weather:
+even if you don't require a few percent, if there are clouds you might
+get a lot worse! So you need to check.
+The extinction coefficient can be determined by making multiple
+observations of a star at different airmasses. Then you can solve for
+k and m0 using least squares. Note that you need to sample a good
+range of airmasses to get good leverage on the fit, and you should
+bracket the airmasses of all of your program objects.
+
+When doing broad-band work, however, there's an additional subtlety
+because of the wavelength dependence. Two different stars might have
+different extinction coefficients in the same filter because the stars
+might have very different colors, which has an effect if the filter
+bandpass is broad. This problem can be solved by using second order
+extinction coefficients, where the extinction is a function not only
+of the airmass, but also of the stellar color:
+\[
+    m = m_{0} + kX + k_{2}(color)X
+    \]
+where color can be either an observed or a known color for the star.
+Second order effects will have more importance in the limits of
+broader bandpasses, working with objects of extreme colors, and/or
+working with bandpasses in which the extinction coefficient varies
+rapidly within the bandpass (e.g., the near-UV).
+Another important thing to remember is that although we correct for
+the effects of the Earth's atmosphere using extinction coefficients,
+the actual response function of an imaging system includes the
+wavelength-dependent response of the Earth's atmosphere, which varies
+depending on airmass. If one wants to determine an ``average''
+wavelength response of a system, one probably wants to include the
+effects of the atmosphere at some ``typical'' airmass, and then
+correct the photometry to this airmass; for example, this is what is
+done by the SDSS photometric pipeline, where all photometry is
+corrected to an airmass of 1.3.
+
+Using the above formalism, you have to solve for extinction
+coefficients plus a magnitude for every star you observe. This
+requires a fair bit of observing to constrain all of the parameters.
+Clearly, if you can observe stars of known brightnesses, you will have
+better constraints on the extinction coefficients. These leads us into
+the discussion of standard stars.
+
+\subsection{Standard stars}
+Standard stars are required so that different observers are able to
+compare results with each other. The reason this is true is because
+every observational setup is likely to have different response
+functions, so the same stars will not be observed to have the same
+brightnesses (even relative brightnesses!) with each separate setup.
+Differences in response come from many factors: size and condition of
+the telescope optics, number and type of optics in the system,
+bandpass and quality of the filter, response function of the CCD, etc.
+In addition, it is very difficult to measure all of these responses in
+any absolute sense, so it is almost impossible to go straight from
+observations to inferences about physical fluxes in absolute units.
+
+To get around these problems, systems of standard stars have been set
+up so observers can calibrate any new observations against the known
+brightnesses of the standard stars. A standard system is just a
+more-or-less arbitrary choice of one particular instrumental setup,
+but is generally one which is very stable and which someone has spent
+a lot of observing time establishing. Generally, the standard system
+is tied to absolute flux observations of some primary standard star so
+that observations on the standard systems can be converted to physical
+fluxes.
+
+Let's consider some examples. First consider two identical systems.
+Clearly these will give the same observed flux as each other. Now let
+the systems differ only by a multiplicative factor in throughput. Now
+the observed fluxes will differ by a constant factor, or a constant
+additive factor in magnitudes. With observations of standard stars, it
+is straightforward to find the magnitude difference between the
+observed magnitude and the standard magnitude to calibrate out this
+constant factor. The additive constant in magnitudes is called the
+zeropoint.
+
+A slight divergence is called for here to mention that different
+packages apply some ``software'' zeropoints to the calculation of
+instrumental magnitude just to make the numbers (instrumental
+magnitudes) look ``reasonable'' (i.e., familiar). This is no problem
+since we determine a zeropoint on top of this to calibrate, but
+caution is required if talking about instrumental magnitudes measured
+with different software systems!
+
+OK, back to differing instrumental systems. Now let's consider the
+more realistic case where the shape of the response curve as well as
+the absolute throughput differs from the standard system. Let's
+consider a system which has slightly different filters with a
+different wavelength cutoff. Now you observe a different number of
+counts from the standard system, and the difference depends on the
+spectrum of the object you are looking at. Now spectra can differ for
+lots of reasons, but the biggest effect is just from spectral slope
+differences. If your filter has a shorter wavelength cutoff (on the
+red side), then you'll observe less counts than the standard system,
+and preferentially less counts for a redder star. To first order, this
+can be calibrated out by solving for an additive constant which
+depends on the spectrum of the object being looked at. Since we don't
+in general know the spectrum, we have to parameterize it by something
+we can observe, and the best choice here is the stellar color, as
+inferred from observations taken through more than one filter.
+
+Transformation coefficients.
+\begin{align*}
+    m &= -2.5\log(counts/s) + z_{soft}\\
+    m_{0} &= m - kX\\
+    M &= m_{0} + t(color) + z
+\end{align*}
+where capital letters are the magnitude on the standard system, z is
+the zeropoint, and t is the transformation coefficent.
+The color is generally parameterized by the ratio of the flux at two
+different wavelengths, or, in magnitudes, the difference between the
+magnitudes. The two wavelengths should be measured near in wavelength
+to the wavelength of the filter being corrected; generally, one uses
+the bandpass being corrected as one of the wavelenghts and an adjacent
+bandpass as the other. For example, when correcting V magnitudes,
+people usually use B - V, V - R, or V - I for the color term.
+
+There are two ways to define the color, either in terms of the
+observational system or in terms of the standard system. The latter is
+slightly preferred for using least-sqaures (small errors on the
+independent variable), and also because it allows observations from
+different nights to be combined. Note that this formulation does not
+require you to know the colors of your objects a priori, it's just
+algebra to figure them out as long as you have observations in both
+filters.
+
+The use of these first-order transformation coefficients is accurate
+as long as your filter system does not differ much from the standard
+system, and additionally, that the spectrum of your program objects
+does not differ significantly from the spectrum of the standard
+objects. The more these conditions are not met, the less accurate the
+results. Some additional accuracy in the case of differing systems can
+be achieved by using higher order transformation coefficients.
+However, even in this case, it is always important to remember that if
+the spectrum of the program object differs significantly from the
+standards, derived fluxes can be significantly in error.
+
+Certainly, you get to a point when the response of one system is so
+different than the response of another system that no transformation
+can be determined. In this case, you have two different photometric
+systems. In fact, there are several different photometric systems at
+use in astronomy today, and each has advantages and disadvantages.
+
+It is common practice to combine the equations for extinction and
+transformation coefficients into a single set of equations:
+\[
+    M_{i} = m_{i} + k_{i}X + t_{i}(M_{i} - M_{j}) + z
+    \]
+where the subscripts refer to measurements in different filters, and
+where I have ignored second order coefficients. The advantage of
+combining the equations is that you can use the information about the
+known magnitudes of the standard stars for the extinction term, so you
+can combine observations of different standards at different airmasses
+to derive the extinction coefficient and do not need to observe the
+same star at multiple airmasses.
+In practice, one observes a set of standards of different colors at
+different airmasses. Then one uses least squares techniques to solve
+for the values of k, t, and z which minimize the difference between
+the observed, transformed, magnitudes and the standard magnitudes.
+Then one applies these coefficients to measurements of your program
+objects to derive their magnitudes. Clearly, to do so, you must
+measure the colors of your program objects by making observations in
+more than one bandpass since, unlike the standard stars, the colors of
+your program objects are not known a priori.
+
+Note that for calibration of broad-band observations, we do not
+require knowledge of the transmission function. Of course, if you have
+such knowledge, you could derive synthetic transformations, if you
+also know the transmission functions of the standard system. Beware,
+however, that getting accurate transmission functions can be very
+difficult.
+
+\subsection{Photometric systems}
+What are some of the considerations for choosing a photometric system?
+One general approach is to consider a broadband system to give a low
+resolution approximation to the spectra of objects, regardless of the
+details of what objects you might be looking at.
+
+For broadband systems, the most common has been the UBVRI system,
+originally established by Johnson in the 1960s. However, even the
+UBVRI system has undergone some revisions, and Johnson's original
+system is not quite the one used predominantly today.
+
+UBVRI. Cousins RI. Subtleties of Johnson vs. Cousins vs. Landolt.
+
+Gunn system, uvgriz. Additional consideration: night sky brightness.
+
+HST system. Additional consideration: maximum throughput.
+
+Sloan system. Additional consideration: ``clean'' bandpasses.
+
+Choice of photometric system for studies of stars: determination of
+temperatures, reddenings, surface gravities, metallicites.
+
+Medium band: Stromgren system, uvby$ \beta$. Others: DDO, Washington.
+
+What goes into a choice of filters to use often involves a tradeoff of
+better spectral information vs. S/N considerations. Note that S/N
+considerations must include both the errors in the bandpasses being
+considered, and also the degree to which different objects are
+separated in color space. (possible problem to determine best filter
+choice given some sensitivities, astrophysical colors of stars).
+
+Narrow band filters most often used to study emission line objects.
 
 
 
