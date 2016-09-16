@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  9 SEP 2016 10:26
+This is pdfTeX, Version 3.14159265-2.6-1.40.16 (TeX Live 2015) (preloaded format=pdflatex 2015.5.24)  13 SEP 2016 11:49
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -54,6 +54,9 @@ Package: ifxetex 2010/09/12 v0.6 Provides ifxetex conditional
 \Gm@layoutvoffset=\dimen110
 \Gm@dimlist=\toks15
 )
+(/usr/local/texlive/2015/texmf-dist/tex/latex/setspace/setspace.sty
+Package: setspace 2011/12/19 v6.7a set line spacing
+)
 (/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/graphicx.sty
 Package: graphicx 2014/10/28 v1.0g Enhanced LaTeX Graphics (DPC,SPQR)
 
@@ -81,32 +84,6 @@ Package: ltxcmds 2011/11/09 v1.22 LaTeX kernel commands for general use (HO)
 ))
 \Gin@req@height=\dimen111
 \Gin@req@width=\dimen112
-)
-(/usr/local/texlive/2015/texmf-dist/tex/latex/graphics/color.sty
-Package: color 2014/10/28 v1.1a Standard LaTeX Color (DPC)
-
-(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/color.cfg
-File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
-)
-Package color Info: Driver file: pdftex.def on input line 142.
-)
-(/usr/local/texlive/2015/texmf-dist/tex/latex/xcolor/xcolor.sty
-Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
-
-(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/color.cfg
-File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
-)
-Package xcolor Info: Driver file: pdftex.def on input line 225.
-LaTeX Info: Redefining \color on input line 702.
-Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
-Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
-Package xcolor Info: Model `RGB' extended on input line 1353.
-Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
-Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
-Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
-Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
-Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
-Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/amsmath/amsmath.sty
 Package: amsmath 2013/01/14 v2.14 AMS math features
@@ -165,6 +142,23 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 567.
 \mathdisplay@stack=\toks20
 LaTeX Info: Redefining \[ on input line 2665.
 LaTeX Info: Redefining \] on input line 2666.
+)
+(/usr/local/texlive/2015/texmf-dist/tex/latex/xcolor/xcolor.sty
+Package: xcolor 2007/01/21 v2.11 LaTeX color extensions (UK)
+
+(/usr/local/texlive/2015/texmf-dist/tex/latex/latexconfig/color.cfg
+File: color.cfg 2007/01/18 v1.5 color configuration of teTeX/TeXLive
+)
+Package xcolor Info: Driver file: pdftex.def on input line 225.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1337.
+Package xcolor Info: Model `hsb' substituted by `rgb' on input line 1341.
+Package xcolor Info: Model `RGB' extended on input line 1353.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1355.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1356.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1357.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1358.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1359.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1360.
 )
 (/usr/local/texlive/2015/texmf-dist/tex/latex/enumitem/enumitem.sty
 Package: enumitem 2011/09/28 v3.5.2 Customized lists
@@ -284,28 +278,25 @@ Package uniquecounter Info: New unique counter `rerunfilecheck' on input line 2
 )
 \Hy@SectionHShift=\skip47
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 19.
+Package hyperref Info: Option `colorlinks' set `true' on input line 23.
 
-(/usr/local/texlive/2015/texmf-dist/tex/latex/sectsty/sectsty.sty
-Package: sectsty 2002/02/25 v2.0.2 Commands to change all sectional heading sty
-les
-) (./notes.aux)
+(./notes.aux)
 \openout1 = `notes.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 42.
-LaTeX Font Info:    ... okay on input line 42.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 49.
+LaTeX Font Info:    ... okay on input line 49.
 
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
@@ -315,15 +306,15 @@ LaTeX Font Info:    ... okay on input line 42.
 * layout: <same size as paper>
 * layoutoffset:(h,v)=(0.0pt,0.0pt)
 * modes: 
-* h-part:(L,W,R)=(72.26999pt, 469.75502pt, 72.26999pt)
-* v-part:(T,H,B)=(72.26999pt, 650.43001pt, 72.26999pt)
+* h-part:(L,W,R)=(108.405pt, 397.485pt, 108.405pt)
+* v-part:(T,H,B)=(108.405pt, 578.15999pt, 108.405pt)
 * \paperwidth=614.295pt
 * \paperheight=794.96999pt
-* \textwidth=469.75502pt
-* \textheight=650.43001pt
-* \oddsidemargin=0.0pt
-* \evensidemargin=0.0pt
-* \topmargin=-37.0pt
+* \textwidth=397.485pt
+* \textheight=578.15999pt
+* \oddsidemargin=36.13501pt
+* \evensidemargin=36.13501pt
+* \topmargin=-0.86499pt
 * \headheight=12.0pt
 * \headsep=25.0pt
 * \topskip=12.0pt
@@ -370,7 +361,7 @@ File: epstopdf-sys.cfg 2010/07/13 v1.3 Configuration of (r)epstopdf for TeX Liv
 e
 ))
 \AtBeginShipoutBox=\box30
-Package hyperref Info: Link coloring ON on input line 42.
+Package hyperref Info: Link coloring ON on input line 49.
 
 (/usr/local/texlive/2015/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -380,97 +371,166 @@ Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
 \c@section@level=\count120
 )
-LaTeX Info: Redefining \ref on input line 42.
-LaTeX Info: Redefining \pageref on input line 42.
-LaTeX Info: Redefining \nameref on input line 42.
+LaTeX Info: Redefining \ref on input line 49.
+LaTeX Info: Redefining \pageref on input line 49.
+LaTeX Info: Redefining \nameref on input line 49.
 
 (./notes.out) (./notes.out)
 \@outlinefile=\write3
 \openout3 = `notes.out'.
 
-LaTeX Font Info:    Try loading font information for OMS+cmr on input line 57.
+ (./notes.toc [1
 
+{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2])
+\tf@toc=\write4
+\openout4 = `notes.toc'.
+
+ [3]
+
+Package hyperref Warning: Token not allowed in a PDF string (PDFDocEncoding):
+(hyperref)                removing `\\' on input line 64.
+
+LaTeX Font Info:    Try loading font information for OMS+cmr on input line 69.
 (/usr/local/texlive/2015/texmf-dist/tex/latex/base/omscmr.fd
 File: omscmr.fd 2014/09/29 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    Font shape `OMS/cmr/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 57.
- [1
-
-{/usr/local/texlive/2015/texmf-var/fonts/map/pdftex/updmap/pdftex.map}] [2] [3]
- [4] [5]
-[6] [7] [8] [9] [10] [11] [12] [13] [14]
-Overfull \hbox (10.23012pt too wide) in paragraph at lines 889--889
-[][]\OT1/cmr/m/n/12 starlight dom-i-nates by fac-tor of 1000 for m$[] = 12\OML/
-cmm/m/it/12 :\OT1/cmr/m/n/12 5$ and m$[] = 20$ ($^^A\OML/cmm/m/it/12 m \OT1/cmr
-/m/n/12 = 7\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 5 = \OMS/cmsy/m/n/12 ^^@\OT1/cmr/m
-/n/12 2\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 5 [] [] \OMS/cmsy/m/n/12 !
- []
-
-
-Underfull \hbox (badness 10000) in paragraph at lines 889--889
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 69.
+ [4] [5] [6]
+[7] [8] [9] [10] [11] [12] [13] [14] [15] [16] [17] [18] [19] [20] [21]
+Underfull \hbox (badness 10000) in paragraph at lines 901--901
 
  []
 
-[15] [16] [17] [18] [19] [20] [21] [22] [23] [24] [25] [26] [27] [28] [29]
-[30] [31] [32] [33] [34] <cassegrain.png, id=446, 378.41376pt x 156.585pt>
+[22] [23] [24] [25] [26] [27] [28] [29] [30] [31] [32] [33]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[34] [35] [36] [37] [38]
+Overfull \hbox (3.8539pt too wide) in paragraph at lines 1747--1756
+[]\OT1/cmr/m/n/12 Generally, a per-fect as-tro-nom-i-cal op-ti-cal sys-tem will
+ make a per-fect (diffraction-
+ []
+
+[39] [40] [41] [42] [43] [44] [45]
+<cassegrain.png, id=636, 378.41376pt x 156.585pt>
 File: cassegrain.png Graphic file (type png)
-
-<use cassegrain.png>
-Package pdftex.def Info: cassegrain.png used on input line 2035.
+ <use cassegrain.png>
+Package pdftex.def Info: cassegrain.png used on input line 2055.
 (pdftex.def)             Requested size: 378.41283pt x 156.58461pt.
- [35 <./cassegrain.png>] [36]
 
-LaTeX Warning: Reference `?' on page 37 undefined on input line 2113.
 
-[37] [38] [39] [40] [41] [42] [43] [44] [45] [46] [47] [48] [49] [50] [51]
-[52] [53] [54] [55] [56] [57] [58] [59] [60] [61] [62]
-<slit2.png, id=593, 952.55875pt x 308.15125pt>
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[46] [47 <./cassegrain.png>]
+
+LaTeX Warning: Reference `?' on page 48 undefined on input line 2133.
+
+[48] [49]
+Overfull \hbox (16.10237pt too wide) in paragraph at lines 2193--2206
+\OT1/cmr/m/n/12 In as-tron-omy, most tele-scopes are two-mirror tele-scopes of 
+New-to-nian, Cassegrain,
+ []
+
+[50] [51] [52] [53] [54] [55] [56] [57] [58]
+Overfull \hbox (7.23302pt too wide) in paragraph at lines 2564--2565
+[][]\OT1/cmr/m/n/12 Surface de-scribed by poly-no-mial, op-ti-cal path dif-fer-
+ence, low or-der...something,
+ []
+
+[59] [60] [61]
+
+LaTeX Warning: `h' float specifier changed to `ht'.
+
+[62] [63] [64] [65] [66] [67]
+Overfull \hbox (0.39651pt too wide) in paragraph at lines 2994--2995
+\OT1/cmr/m/n/12 on back of mir-ror. Im-age pupil and do cor-rec-tions there (mu
+ch smaller...actual
+ []
+
+[68] [69] [70] [71] [72] [73] [74] [75] [76]
+Overfull \hbox (0.19524pt too wide) in paragraph at lines 3382--3383
+\OT1/cmr/m/n/12 Picture ori-en-ta-tion: mir-rors that of the tele-scope axes. N
+/E vs. zenith/horizon.
+ []
+
+[77]
+Overfull \hbox (0.17892pt too wide) in paragraph at lines 3427--3434
+\OT1/cmr/m/n/12 As we've dis-cussed, all stan-dard two-mirror tele-scopes have 
+curved fo-cal planes,
+ []
+
+[78] [79]
+Overfull \hbox (8.9955pt too wide) in paragraph at lines 3491--3497
+\OT1/cmr/m/n/12 quired very smooth op-tics, while min-i-miz-ing the lat-ter re-
+quires high-performance
+ []
+
+[80] [81] <slit2.png, id=814, 952.55875pt x 308.15125pt>
 File: slit2.png Graphic file (type png)
  <use slit2.png>
-Package pdftex.def Info: slit2.png used on input line 3538.
-(pdftex.def)             Requested size: 375.80544pt x 121.57498pt.
- [63 <./slit2.png>] [64] <curves.png, id=603, 507.8975pt x 501.875pt>
-File: curves.png Graphic file (type png)
- <use curves.png>
-Package pdftex.def Info: curves.png used on input line 3652.
-(pdftex.def)             Requested size: 375.80544pt x 371.3587pt.
+Package pdftex.def Info: slit2.png used on input line 3598.
+(pdftex.def)             Requested size: 317.98921pt x 102.87042pt.
 
-<angle.png, id=604, 599.23875pt x 217.81375pt>
+[82] [83 <./slit2.png>] [84] [85] <curves.png, id=836, 507.8975pt x 501.875pt>
+File: curves.png Graphic file (type png)
+
+<use curves.png>
+Package pdftex.def Info: curves.png used on input line 3718.
+(pdftex.def)             Requested size: 317.98921pt x 314.23013pt.
+ <angle.png, id=837, 599.23875pt x 217.81375pt>
 File: angle.png Graphic file (type png)
- <use angle.png>
-Package pdftex.def Info: angle.png used on input line 3670.
-(pdftex.def)             Requested size: 281.85587pt x 102.45222pt.
- [65] [66 <./curves.png>] [67 <./angle.png>] [68] [69] [70]
-Overfull \hbox (2.06786pt too wide) in paragraph at lines 3851--3853
-[]\OT1/cmr/m/n/12 photoelectron, usu-ally (elec-tron-i-cally) stored for sub-se
--quent
+
+<use angle.png>
+Package pdftex.def Info: angle.png used on input line 3736.
+(pdftex.def)             Requested size: 238.49342pt x 86.68855pt.
+ [86 <./curves.png>]
+Overfull \hbox (0.36597pt too wide) in paragraph at lines 3765--3767
+[]\OT1/cmr/m/n/12 Typical grat-ings have groove den-si-ties be-tween 300 and 12
+00 lines/mm. Echelle
  []
 
-[71] [72] [73] [74] [75] [76] [77] [78] [79] [80] [81]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 4500.
- [82]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 4500.
- (./notes.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 4500.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 4500.
+[87 <./angle.png>]
+Overfull \hbox (1.52243pt too wide) in paragraph at lines 3799--3810
+[]\OT1/cmr/m/it/12 Grating ef-fi-ciency \OT1/cmr/m/n/12 is the frac-tion of in-
+ci-dent light di-rected into a given diffracted
+ []
+
+[88] [89] [90] [91]
+Overfull \hbox (8.70378pt too wide) in paragraph at lines 3913--3917
+[]\OT1/cmr/m/n/12 event, usu-ally de-tected in real time.
+ []
+
+[92]
+Overfull \hbox (11.65262pt too wide) in paragraph at lines 3967--3971
+[]\OT1/cmr/m/n/12 (given that op-tics can be used to change
+ []
+
+[93] [94] [95] [96] [97] [98] [99] [100] [101] [102] [103] [104] [105]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 4589.
+ [106]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 4589.
+
+(./notes.aux)
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 4589.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 4589.
 
 Package rerunfilecheck Info: File `notes.out' has not changed.
-(rerunfilecheck)             Checksum: C3ACE689659802BBFF4A177691004135;4110.
+(rerunfilecheck)             Checksum: 86E6CAEB75FD75965ECF96D6736C49FD;5912.
 
 
 LaTeX Warning: There were undefined references.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 4500.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 4589.
  ) 
 Here is how much of TeX's memory you used:
- 7221 strings out of 493089
- 104273 string characters out of 6134842
- 209264 words of memory out of 5000000
- 10452 multiletter control sequences out of 15000+600000
+ 7201 strings out of 493089
+ 103838 string characters out of 6134842
+ 207425 words of memory out of 5000000
+ 10405 multiletter control sequences out of 15000+600000
  11975 words of font info for 43 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
- 29i,11n,35p,235b,531s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 29i,11n,35p,237b,550s stack positions out of 5000i,500n,10000p,200000b,80000s
 </usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbx12.pfb
 ></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmbxti10.pf
 b></usr/local/texlive/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb
@@ -491,10 +551,10 @@ e/2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmsy8.pfb></usr/local/texlive/
 2015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti10.pfb></usr/local/texlive/2
 015/texmf-dist/fonts/type1/public/amsfonts/cm/cmti12.pfb></usr/local/texlive/20
 15/texmf-dist/fonts/type1/public/amsfonts/cm/cmtt12.pfb>
-Output written on notes.pdf (82 pages, 673561 bytes).
+Output written on notes.pdf (106 pages, 696809 bytes).
 PDF statistics:
- 798 PDF objects out of 1000 (max. 8388607)
- 679 compressed objects within 7 object streams
- 183 named destinations out of 1000 (max. 500000)
- 477 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 1050 PDF objects out of 1200 (max. 8388607)
+ 904 compressed objects within 10 object streams
+ 211 named destinations out of 1000 (max. 500000)
+ 645 words of extra memory for PDF output out of 10000 (max. 10000000)
 

@@ -1,32 +1,27 @@
 \documentclass[12pt]{article}
-\usepackage[margin=1.0in]{geometry}
+\usepackage[margin=1.5in]{geometry}
 \setlength{\parindent}{0em}
 \setlength{\parskip}{0.5em}
+\usepackage{setspace} % spacing between toc items
 \usepackage{graphicx}
-\usepackage{color}
-\usepackage{xcolor}
 \usepackage{amsmath}
+
+\usepackage{xcolor}
+\definecolor{darkpowderblue}{rgb}{0.0, 0.2, 0.6}
+
 \usepackage{enumitem}
 \setlist[itemize]{noitemsep}
+\setlist[enumerate]{noitemsep}
 \setlist[description]{%
     noitemsep,
     labelindent=4em,
-    topsep=0.5em,
-    font={\sffamily\bfseries\color{red}}
+    topsep=-1ex,
+    font={\sffamily\bfseries\color{darkpowderblue}}
 }
 
 \usepackage{hyperref}
-\hypersetup{colorlinks=true,urlcolor=blue}
+\hypersetup{colorlinks=true,urlcolor=darkpowderblue, linkcolor=black}
 \urlstyle{same}
-
-\definecolor{sectioncolor}{rgb}{0.93, 0.53, 0.18}
-\definecolor{subsectioncolor}{rgb}{0.0, 0.42, 0.24}
-\definecolor{subsubsectioncolor}{rgb}{0.45, 0.31, 0.59}
-
-\usepackage{sectsty}
-\sectionfont{\color{sectioncolor}}
-\subsectionfont{\color{subsectioncolor}}
-\subsubsectionfont{\color{subsubsectioncolor}}
 
 \definecolor{date}{HTML}{5F0087}
 \definecolor{myBlue}{rgb}{0.2,0.2,0.6}
@@ -35,6 +30,18 @@
 
 \newcommand{\mynotes}[1]{\textcolor{myBlue}{#1}}
 
+\definecolor{hl}{rgb}{0.61, 0.87, 1.0}
+\newcommand{\test}[1]{%
+    \begin{center}
+        \colorbox{hl}{\parbox{0.9\textwidth}{\textit{\centering #1}}}
+    \end{center}}
+
+\newcommand{\mydate}[1]{
+    \rule{\textwidth}{0.4pt}
+
+    {\vspace{-1ex}\small\hfill\textit{#1}}}
+
+
 \title{\vspace{-0.75in}ASTR 535 Lecture Notes}
 \author{Jon Holtzman}
 \date{Spring 2016}
@@ -42,12 +49,17 @@
 \begin{document}
 \maketitle
 
-course website: \textcolor{blue}
-{\url{http://astronomy.nmsu.edu/holtz/a535}}
+course website: \url{http://astronomy.nmsu.edu/holtz/a535}
 
-%--------------Part 1--------------------------------------------------%
+\renewcommand{\baselinestretch}{0.5}\normalsize
+\tableofcontents
+\renewcommand{\baselinestretch}{1.0}\normalsize
 
-\textcolor{date}{Friday, January 22}
+%\addtocontents{toc}{\protect\setstretch{0.1}}
+%\tableofcontents
+
+\newpage
+\mydate{Friday, January 22}
 \section{Properties of light, magnitudes, errors,\\
 and error analysis}
 
@@ -1800,27 +1812,35 @@ with coordinates $r$ and $r+x$. See
 {\textcolor{blue}{this paper}}.
 
 Komogorov turbulence gives:
-    $$ D_n(x) = C_n^2x^{2/3} $$
-where $C_n$ is the refractive index structure constant.
+\[
+    D_{n}(x) = C_{n}^2x^{2/3}
+    \]
+where $C_{n}$ is the refractive index structure constant.
 From this, one can derive the phase structure function at the
 telescope aperture:
-    $$ D_{\phi}(x) = 6.88\left(\frac{x}{r_0}\right)^{5/3}   $$
-where the coherence length $r_0$ (also known as the Fried parameter)
+\[
+    D_{\phi}(x) = 6.88\left(\frac{x}{r_{0}}\right)^{5/3}
+    \]
+where the coherence length $r_{0}$ (also known as the Fried parameter)
 is:
-    $$ r_0 = 0.185\left(\lambda^{6/5}\right)
-             \left(\cos^{3/5}z\right)
-             \left[\int\left(C_n^2\textrm{d}h\right)\right]^{-3/5} $$
+\[
+    r_{0} = 0.185\left( \lambda^{6/5} \right)
+    \left( \cos^{3/5}z \right)
+    \left[ \int \left( C_{n}^{2}\textrm{d}h \right)\right]^{-3/5}
+    \]
 where $z$ is the zenith angle and $\lambda$ is the wavelength.
 Using optics theory, one can convert $D_{\phi}$ into an image shape.
-\textcolor{myBlue}{Bigger $r_0$ is better; integral is over the height
-of the atmosphere. $r_0$ same size as telescope$\ldots$?}
+\textcolor{myBlue}{Bigger $r_{0}$ is better; integral is over the height
+of the atmosphere. $r_{0}$ same size as telescope$\ldots$?}
 
-Physically, $r_0$ is (roughly) proportional to the image size from
+Physically, $r_{0}$ is (roughly) proportional to the image size from
 seeing:
-    $$ d \sim \lambda/r_0 $$
+\[
+    d \sim \lambda/r_{0}
+    \]
 as compared with the image size from diffraction-limited images:
     $$ d \sim \lambda/D $$
-Seeing dominates when $r_0 < D$; a larger $r_0$ means better seeing.
+Seeing dominates when $r_{0} < D$; a larger $r_{0}$ means better seeing.
 
 Seeing is more important than diffraction at shorter wavelengths (and
 for larger apertures); diffraction is more important at longer
@@ -1832,11 +1852,11 @@ for smaller telescope or better seeing.
 \textcolor{myBlue}{Image size from seeing is almost the same,
 regardless of $\lambda$ (\emph{little} better toward the IR, but not
 much). Diffraction swamps seeing at \emph{really} long wavelengths.
-Bigger telescopes are seeing-limited. $r_0$ has $\lambda$ in it, hence
+Bigger telescopes are seeing-limited. $r_{0}$ has $\lambda$ in it, hence
 the lack of $\lambda$ dependence. Crossover in the micron regime.
 }
 
-The meat of $r_0$ is in $\int\left(C_n^2\textrm{d}h\right)$;
+The meat of $r_{0}$ is in $\int\left(C_n^2\textrm{d}h\right)$;
 as you might expect, this varies from site to site and also in time.
 At most sites, there seems to be three regimes of ``surface layer''
 (wind-surface interactions and manmade seeing),
@@ -1845,7 +1865,7 @@ At most sites, there seems to be three regimes of ``surface layer''
 as seen in
 \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/beckers2.htm}
 {\textcolor{blue}{this plot}}.
-A typical astronomical site has $r_0 \sim$ 10 cm at 5000\AA{}.
+A typical astronomical site has $r_{0} \sim$ 10 cm at 5000\AA{}.
 
 We also want to consider the coherence of the same turbulence pattern
 over the sky: this coherence angle is called the
@@ -1855,14 +1875,14 @@ the \emph{isoplanatic patch}. This is relevant to adaptive optics, where we
 will try to correct for the differences across the telescope aperture;
 if we do a single correction, how large a field of view will be
 corrected?
-    $$ \theta \sim 0.314r_0/H $$
+    $$ \theta \sim 0.314r_{0}/H $$
 where $H$ is the average distance of the seeing layer:
     $$ H = \sec z\left[
     \frac{\int\left(C_n^2h^{5/3}\textrm{d}h\right)}
     {\int\left(C_n^2\textrm{d}h\right)}
     \right]^{3/5} $$
-For $r_0$ = 10 cm, $H \sim$ 5000 m, $\theta \sim$ 1.3 arcsec.
-In the IR, $r_0$ = 70 cm, $H \sim$ 5000 m, $\theta \sim$ 9 arcsec.
+For $r_{0}$ = 10 cm, $H \sim$ 5000 m, $\theta \sim$ 1.3 arcsec.
+In the IR, $r_{0}$ = 70 cm, $H \sim$ 5000 m, $\theta \sim$ 9 arcsec.
 
 Note however, that the ``isoplanatic patch for image motion'' (not
 wavefront) is $\sim 0.3 D/H$. For $D$ = 4 m, $H \sim$ 5000 m,
@@ -1876,7 +1896,7 @@ Area where wiggles, wavefronts are the same. Smaller patch if $H$
 bottom. Take out seeing entirely: correction in one area doesn't work
 in another area. Space telescopes get wider FOV\@. Adaptive optics:
 multiple corrections for different angles (complicated). Better in IR
-(bigger $r_0$). 1/2' or 1' patch. Most adaptive optics in NIR\@.
+(bigger $r_{0}$). 1/2' or 1' patch. Most adaptive optics in NIR\@.
 Partial correction: coherent over larger angular scale, but not down
 to diffraction-limited. Wobbly wavelength front; can correct
 \emph{some} spatial area. Measure \emph{mean} tilt and correct for
@@ -1997,7 +2017,7 @@ Ways of characterizing the PSF:
         the Airy disk to the theoretical maximum at the diffraction limit.
 
 \end{itemize}
-%----------------------------------------------------------------------%
+
 \newpage
 \section{Astronomical Optics}
 A 20th magnitude star gives $\sim$ 0.01 photons s$^{-1}$ cm$^{-2}$
@@ -2628,8 +2648,10 @@ This \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/z7.htm}
 {\textcolor{blue}{figure}} shows the behavior of coma as one passes
 through paraxial focus.
 In fact, there are two more third-order aberrations:
-\emph{distortion} and \emph{field curvature}.
-Neither affects image quality, only location (unless
+\textit{distortion} and \textit{field curvature},
+\mynotes{``field flattener''}.
+Neither affects image quality, only location;
+\mynotes{the images go off-axis} (unless
 you are forced to use a flat image plane). Field curvature gives a
 curved focal plane: if imaging onto a flat detector, this will lead to
 focus deviations as one goes off-axis. Distortion affects the location
@@ -2738,7 +2760,7 @@ possible sources include:
         exactly to specification.
     \item misalignments. If the mirrors in a multiple-element system are not
         perfectly aligned, aberrations will result. The centers must be
-        lined up.  These can be derived
+        lined up. These can be derived
         (third-order) from the aberration expressions for decentered elements.
         For two mirror systems, decentering or tilting the
         secondary introduces a constant amount of coma over the field. Coma
@@ -2813,15 +2835,17 @@ prescriptions. Issue: guider.)
 \subsection{Physical (diffraction) optics}
 
 Up until now, we have avoided considering the wave nature of light
-which introduces \emph{diffraction} from interference of light coming from
+which introduces \textit{diffraction} from interference of light coming from
 different parts of the aperture. Because of diffraction, images of a
 point source will be slightly blurred. From simple geometric arguments,
 we can estimate the size of the blur introduced from diffraction:
 (figure here)
 
-We find that:{$$
+We find that:
+\[
     \theta \sim \frac{\lambda}{D}
-$$}Using this, we find that the diffraction blur is smaller than the blur
+    \]
+Using this, we find that the diffraction blur is smaller than the blur
 introduced by seeing for $D > 0.2$ meters at 5500 \AA{}, even for the
 excellent seeing conditions of 0.5 arcsecond images. However, the
 study of diffraction has become important recently because of several
@@ -2840,20 +2864,24 @@ place in the image plane. The contributions are all summed taking into
 account phase differences at each image point, which causes
 reinforcment at some points and cancellation at others. The expression
 which sums all of the individual source points is called the
-\emph{diffraction integral}. When the details are worked out,
+\textit{diffraction integral}. When the details are worked out,
 the intensity in the image plane is related to the intensity and phase
 at the exit pupil. In fact the wavefront is described at any plane by
-the \emph{optical transfer function}, which gives the intensity and phase of
+the \textit{optical transfer function}, which gives the intensity and phase of
 the wave at all locations in that plane. The OTF at the pupil plane
 and at the image plane are a Fourier transform pair. Consequently, we
 can determine the light distribution in the image plane by taking the
 Fourier transform of the pupil plane; the light distribution, or point
 spread function, is just the modulus-squared of the OTF at the image
-plane. Symbolically, we have{$$
+plane. Symbolically, we have
+\[
     PSF = \left\vert{FT(OTF(pupil))}\right\vert^{2}
-$$}where $FT$ represents a Fourier transform, and{$$
+    \]
+where $FT$ represents a Fourier transform, and
+\[
     OTF(pupil) = P(x,y)e^{ik\phi(x,y)}
-$$}$P(x,y)$ is the \emph{pupil function}, which gives the transmission
+    \]
+$P(x,y)$ is the \textit{pupil function}, which gives the transmission
 properties of the pupil, and usually consists of ones and zeros for
 locations where light is either transmitted or blocked (e.g., for a
 circular lens, the pupil function is unity within the radius of lens,
@@ -2864,51 +2892,60 @@ taken to be the optical path difference in the pupil with some
 fiducial phase, since only OPDs matter, not the absolute phase.
 Finally the wavenumber $k$ is just $\frac{2\pi}{\lambda}$.
 
-For the simple case of a plane wave with no phase errors, the
+For the simple case of a plane wave with \textbf{no phase errors}, the
 diffraction integral can be solved analytically. The result for a
 circular aperture with a central obscuration, when the fractional
 radius of the obscuration is given by $\epsilon$, the expression for
-the PSF is:{$$
-    PSF \propto \left[\frac{2J_{1}(v)}{v} -
-    \epsilon^{2}\frac{2J_{1}(\epsilon{v})}{\epsilon{v}}\right]^{2}$$$$
+the PSF is:
+\[
+    PSF \propto \left[
+        \frac{2J_{1}(v)}{v} -
+        \epsilon^{2}\frac{2J_{1}(\epsilon{v})}{\epsilon{v}}
+        \right]^{2}
+    \]
+\[
     v = \frac{\pi{r}}{\lambda{F}}
-$$}where $J_1$ is a first order Bessel function, $r$ is the distance in the
+    \]
+where $J_{1}$ is a first order Bessel function, $r$ is the distance in the
 image plane, $\lambda$ is the wavelength, and $F$ is the focal ratio
 ($F=f/D$).
 
-This expression gives the so-called \emph{Airy pattern} (the solution?)
+This expression gives the so-called \textit{Airy pattern} (the solution?)
 which has a central disk surrounded by concentric dark and bright rings.
 The radius of the first dark ring is at the physical distance
 $r = 1.22\lambda F$, or alternatively, the angular distance
-$\alpha = 1.22\lambda/D$. This gives the size of the \emph{Airy disk}.
+$\theta = 1.22\lambda/D$. This gives the size of the \textit{Airy disk}.
+\mynotes{For the APO 3.5 m, $\theta \sim 0.02''$, but we get $\sim 1''$
+because we're \textit{seeing dominated}.}
 
-For more complex cases, the diffraction integral is solved
-numerically by doing a Fourier transform. The pupil function is often
-more complex than a simple circle, because there are often additional
+For more \textbf{complex cases}, the diffraction integral is solved
+numerically by doing a \textit{Fourier transform}. The pupil function is often
+more complex than a simple circle, because of additional
 items which block light in the pupil, such as the support structures
 for the secondary mirror.
 
 This \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/airy.htm}
-{\textcolor{blue}{figure}} shows the Airy pattern, both without obscurations,
+{figure} shows the Airy pattern, both without obscurations,
 and with a central obscuration and spiders in a setup typical of a telescope.
 
-In addition, there may be phase errors in the exit pupil, because of
+In addition, there may be \textit{phase errors} in the exit pupil, because of
 the existence of any one of the sources of aberration discussed
 above. For general use, $\phi$ is often expressed as an series,
 where the expansion is over a set of orthogonal polynomials for the
 aperture which is being used. For circular apertures with (or
 without) a central obscuration (the case most often found in
-astronomy), the appropriate polynomials are called \emph{Zernike}
+astronomy), the appropriate polynomials are called \textit{Zernike}
 polynomials. The lowest order terms are just uniform slopes of phase
 across the pupil, called tilt, and simply correspond to motion in the
 image plane. The next terms correspond to the expressions for the OPD
 which we found above for focus, astigmatism, coma, and spherical
 aberration, generalized to allow any orientation of the phase errors
 in the pupil. Higher order terms correspond to higher order
-aberrations.
+aberrations. \mynotes{Zernike polynomials: expansion, each tilted in
+different direction and/or parabolic}.
 
 This \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/zernike.htm}
-{\textcolor{blue}{figure}} shows the form of some of the low order Zernike terms:
+{figure} shows the form of some of the low order Zernike terms:
 the first corresponds to focus aberration, the next two to
 astigmatism, the next two to coma, the next two to trefoil
 aberration, and the last to spherical aberration.
@@ -2921,9 +2958,10 @@ correction, however, required and accurate understanding of the
 amplitude of the aberration. This was derived from analysis of
 on-orbit images, as shown in this
 \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/hstspher.htm}
-{\textcolor{blue}{figure}}. Note that it is possible in
+{figure}.
+Note that it is possible in
 some cases to try to recover the phase errors from analysis of images.
-This is called \emph{phase retrieval}. There are several ways of trying to do
+This is called \textit{phase retrieval}. There are several ways of trying to do
 this, some of which are complex, so we won't go into them, but it's
 good to know that it is possible. But an accurate amplitude of
 spherical aberration was derived from these images. This derived value
@@ -2932,30 +2970,35 @@ from an error which was made in the testing facility for the HST
 primary mirror, and the agreement of these two values allowed the
 construction of new corrective optics to proceed\ldots
 
-\subsection{Adaptive optics}
-{\small\hfill\textcolor{date}{Monday, April 4}}
+\test{Understand the principles of diffraction optics and, in particular,
+how diffraction scales with wavelength and aperture diameter. Know the
+terminology: optical transfer function, pupil function, and how phase
+errors across the pupil can be decomposed into a series of Zernike polynomials.}
 
-The goal of \emph{adaptive optics} is to partially or entirely remove the
-effects of atmospheric seeing.
-This is different from \emph{active} optics, which works at lower
-frequencies ($\ll$ 1 Hz) and has the main goal of removing aberrations
-from the change in telescope configuration as the telescope moves
-(for example, small changes in alignment from flexure (?) or sag (??)
-of the primary mirror surface as the telescope moves).
-Adaptive optics must work at 10 to 1000 Hz.
-At low frequencies, the active optics can be done
-with actuators on the primary and secondary mirrors themselves.
-At the high frequencies reqiured for adaptive optics, however, these large
-mirrors cannot respond fast enough, so it is required to form a pupil
-on a smaller mirror which can be rapidly adjusted;
-hence adaptive optics systems are really separate astronomical instruments.
+\subsection{Adaptive optics}
+\mydate{Monday, April 4}
+
+\textbf{The goal of \textit{adaptive optics} is to partially or entirely remove
+the effects of atmospheric seeing.} This is different from \textit{active}
+optics, which works at lower frequencies ($\ll$ 1 Hz), whereas adaptive optics
+must work at 10 to 1000 Hz.  At low frequencies, the active optics can be done
+with actuators on the primary and secondary mirrors themselves.  At the high
+frequencies reqiured for adaptive optics, however, these large mirrors cannot
+respond fast enough, so it is required to form a pupil on a smaller mirror
+which can be rapidly adjusted; hence adaptive optics systems are really
+separate astronomical instruments.
+
+\mynotes{Camera behind, make image of primary mirror.
+Actuators ``push me pull you'' on back of mirror.
+Image pupil and do corrections there (much smaller\ldots actual
+primary mirror is too big).}
 
 Many adaptive optics systems functioning and/or under development:
 (lots of links here).
 
-The basic idea of an adaptive optics system is to rapidly sense the
+The basic idea of an adaptive optics system is to \textbf{rapidly sense the
 wavefront errors and then correct for them on timescales faster
-than those at which the atmosphere changes. Consequently, there are
+than those at which the atmosphere changes}. Consequently, there are
 three parts to an adaptive optics system:
 \begin{enumerate}
     \item A component that senses wavefront errors
@@ -2971,46 +3014,46 @@ fairly common use today are
         {Shack-Hartmann sensors}
     \item wavefront curvature sensing devices
 \end{enumerate}
-In a
-Shack-Hartmann sensor, an array of lenslets is put in a pupil plane
-and each lenslet images a small part of the pupil. Measuring image
-shifts between each of the images gives a measure of the local
-wavefront tilts. Wavefront curvature devices look at the intensity
-distribution in out-of focus images. Other wavefront sensing
-techniques include pyramid wavefront sensors and phase diversity
-techniques. Usually, a star is used as the source, but this is not
-required for some wavefront sensors
-(in other words, an extended source can be used).
+In a Shack-Hartmann sensor,
+\mynotes{(determine wiggly wavefront; uses image of primary)}, an array of
+lenslets \mynotes{(lots of little telescopes in exit pupil)}
+is put in a pupil plane and each
+lenslet images a small part of the pupil. Measuring image shifts between each
+of the images gives a measure of the local wavefront tilts. Wavefront curvature
+devices look at the intensity distribution in out-of focus images. Other
+wavefront sensing techniques include pyramid wavefront sensors and phase
+diversity techniques. Usually, a star is used as the source, but this is not
+required for some wavefront sensors (in other words, an extended source can be
+used).
 
-To correct wavefront errors, a deformable mirror is used.
-These can be generically split into two categories:
-segmented and continuous faceplate mirrors,
-where the latter are more common.
-A deformable mirror is characterized by the number of adjustable
-elements: the more elements there are, the more correction can be done.
-LCD arrays have also been used for wavefront correction.
+To correct wavefront errors, a deformable mirror is used. These can be
+generically split into two categories: segmented and continuous faceplate
+mirrors, where the latter are more common. A deformable mirror is
+characterized by the number of adjustable elements: the more elements there
+are, the more correction can be done. LCD arrays have also been used for
+wavefront correction.
 
-In general, it is very difficult to achieve complete correction even
-for ideal performance, and the effectiveness of
-different adaptive optics systems needs to be considered.
-This effectiveness depends on the
-size of the aperture, the wavelength, the number of resolution
-elements on the deformable mirror, and the quality of the site.
-Clearly, more resolution elements are needed for larger apertures.
-Equivalently, the effectiveness of a system will decrease as the
-aperture is increased for a fixed number of resolution elements.
-The return can be considered as a function of Zernike order corrected and
-aperture size. (\textcolor{myBlue}{uh, do hwut?})
-For large telescopes, you'll only get partial
-correction unless a very large number of resolution elements on the
-deformable mirror are available. The following table gives the mean
-square amplitude, $\Delta_{j}$, for Kolmogorov turbulence after
-removal of the first $j$ terms; the rms phase variation is just
-$ \frac{\sqrt{\Delta_{j}}}{2\pi}  $
-For small apertures, you can make
-significant gains with removal of just low order terms, but for large
-apertures you need very high order terms. Note various criteria for
-quality of imaging, e.g.\ $\lambda/4$, etc.
+In general, it is very difficult to achieve complete correction even for ideal
+performance, and the effectiveness of different adaptive optics systems needs
+to be considered.  This effectiveness depends on the size of the aperture, the
+wavelength, the number of resolution elements on the deformable mirror, and the
+quality of the site.  Clearly, more resolution elements are needed for larger
+apertures.  Equivalently, the effectiveness of a system will decrease as the
+aperture is increased for a fixed number of resolution elements.  The return
+can be considered as a function of Zernike order corrected and aperture size.
+(\mynotes{uh, do hwut?}) For large telescopes, you'll only get
+partial correction unless a very large number of resolution elements on the
+deformable mirror are available. The following table gives the mean square
+amplitude, $\Delta_{j}$, for Kolmogorov turbulence after removal of the first
+$j$ terms; the rms phase variation is just
+$ \frac{\sqrt{\Delta_{j}}}{2\pi} $.
+
+\mynotes{$\Delta_{j}$ - rms around wavefront error; comes down even
+for lower order.}
+
+For small apertures, you can make significant gains with removal of just low
+order terms, but for large apertures you need very high order terms. Note
+various criteria for quality of imaging, e.g.\ $\lambda/4$, etc.
 \newpage
 \begin{table}[th]
 \centering
@@ -3019,33 +3062,52 @@ quality of imaging, e.g.\ $\lambda/4$, etc.
     $\Delta_j$ & $\Delta_j - \Delta_{j-1}$\\
     \hline\hline
     Z1 & 0 & 0 & 1 & constant & 1.030 s & n/a\\
-    Z1 & 0 & 0 & 1 & constant & 1.030 s & n/a\\
-    Z1 & 0 & 0 & 1 & constant & 1.030 s & n/a\\
-    Z1 & 0 & 0 & 1 & constant & 1.030 s & n/a\\
-    Z1 & 0 & 0 & 1 & constant & 1.030 s & n/a\\
-    Z1 & 0 & 0 & 1 & constant & 1.030 s & n/a\\
-    Z1 & 0 & 0 & 1 & constant & 1.030 s & n/a\\
-    Z1 & 0 & 0 & 1 & constant & 1.030 s & n/a\\
-    Z1 & 0 & 0 & 1 & constant & 1.030 s & n/a\\
-    Z1 & 0 & 0 & 1 & constant & 1.030 s & n/a\\
-    Z1 & 0 & 0 & 1 & constant & 1.030 s & n/a\\
+    Z2 & 1 & 1 & 1 & tilt & 1.030 s & n/a\\
+    Z3 & 1 & 1 & 1 & tilt & 1.030 s & n/a\\
+    Z4 & 2 & 1 & 1 & defocus & 1.030 s & n/a\\
+    Z5 & 2 & 2 & 1 & astigmatism & 1.030 s & n/a\\
+    Z6 & 2 & 2 & 1 & astigmatism & 1.030 s & n/a\\
+    Z7 & 3 & 1 & 1 & coma & 1.030 s & n/a\\
+    Z8 & 3 & 1 & 1 & coma & 1.030 s & n/a\\
+    Z9 & 3 & 3 & 1 & trifoil & 1.030 s & n/a\\
+    Z10 & 3 & 3 & 1 & trifoil & 1.030 s & n/a\\
+    Z11 & 4 & 0 & 1 & spherical & 1.030 s & n/a\\
     \hline
     \end{tabular}
 \end{table}
+\begin{itemize}
+    \item $r$ = distance from center circle
+    \item $\phi$ = azimuth angle
+    \item $S=(D/r_0)^{5/3}$ \mynotes{(from turbulence theory)}
+\end{itemize}
+\mynotes{Bigger $r_{0}$ is good (better seeing). NIR is best for
+AO systems.}
 
-$r$ = distance from center circle;
-$\phi$ = azimuth angle; $S=(D/r_0)^{5/3}$.
+Another important limitation is that an object on which you can derive the
+wavefront is needed. Measurements of wavefront are subject to noise just like
+any other photon detection, so bright sources may be required. This is even
+more evident considering a source that is within the same isoplanatic patch as
+the desired object is needed. Recall that the wavefront changes on time scales
+of milliseconds. These requirements place limitations on the amount of sky over
+which it is possible to get good corrections. It also places limitations on the
+sorts of detectors that are needed in the wavefront sensors (fast readout and
+little to no readout noise).
 
-Another important limitation is that an object on which you
-can derive the wavefront is needed. Measurements of wavefront are subject to
-noise just like any other photon detection, so bright sources may be required.
-This is even more evident considering a source that is within the same
-isoplanatic patch as the desired object is needed.
-Recall that the wavefront changes on time scales of milliseconds.
-These requirements place limitations on the amount of
-sky over which it is possible to get good corrections.
-It also places limitations on the sorts of detectors that are needed
-in the wavefront sensors (fast readout and little to no readout noise).
+\mynotes{4/06/16 Another challenge: wavefront sensing. Need one subcell for
+each $r_{0}$. How much light does each element collect? Not much\ldots
+Exposure time needs to be short enough that atmosphere doesn't change during
+that time. \underline{Isoplanatic patch}: same blurring pattern;
+size scale: $\theta \sim$ arcsec - 1 arcmin.
+Following table:
+Typical $r_{0}$ values [cm] and typical timescales ($\tau_{0}$) [seconds].
+$V_{lim}$ - subaperture of
+$r_{0}$,
+integrate at time
+$\tau_{0}$,
+Limiting V-magnitude.
+$V_{wind}$ - m/sec (?)
+Taken from some book, ap. not that important.
+}
 
 \begin{table}[th]
 \centering
@@ -3069,7 +3131,7 @@ in the wavefront sensors (fast readout and little to no readout noise).
 \end{table}
 
 Conditions are: 0.75 arcsec seeing at 0.5 $\mu$; $\tau_{det}$
-$\sim$ 0.3, $\tau_0$ = 0.3 $r/V_{wind}$; $V_{wind}=10$ mIsec; $H=5000$;
+$\sim$ 0.3, $\tau_{0}$ = 0.3 $r/V_{wind}$; $V_{wind}=10$ mIsec; $H=5000$;
 photon detection efficiency (including transmission and QE) = 20\%;
 spectral bandwidth = 300 nm; $SNR=100$ per Hartmann-Shack image;
 detector noise = 5$e^{-}$.
@@ -3083,29 +3145,31 @@ because of reference star vs.\ target wavefront differences, adaptive
 optics works in the partially correcting regime. This typically gives
 PSFs with a sharp core, but still with extended wings.
 
-The problem of sky coverage can be avoided by using so-called \emph{laser
-guide stars}. The idea is to create a ``star'' by shining a laser up into
-the atmosphere. To date, two generic classes of lasers have been used:
-\emph{Rayleigh beacons} and \emph{sodium beacons}.
-The Rayleigh beacons scatter off a layer roughly 30 km above the Earth's surface;
-the sodium beacons scatter off a layer roughly 90 km above the Earth's surface.
-Laser guide stars still have some limitations:
-the path through the atmosphere that the laser traverses does not exactly
-correspond to the path that light from a star traverses, because the
-latter comes from an essentially infinite distance; this leads to the
-effect called \emph{focal anoisoplanatism}.
-In addition, laser guide stars
-cannot generally be used to track image motion since the laser passes
-up and down through the same atmosphere and image motion is cancelled
-out. To correct for image motion, separate tip-tilt tracking is
-required. Note that even with perfect correction, one is still limited
-by the isoplanatic patch size. As one moves further and further away
-from the reference object, the correction will gradually degrade.
+The problem of sky coverage can be avoided by using so-called \textit{laser guide
+stars}. The idea is to create a ``star'' by shining a laser up into the
+atmosphere. To date, two generic classes of lasers have been used:
+\textit{Rayleigh beacons} and \textit{sodium beacons}. The Rayleigh beacons scatter
+off a layer roughly 30 km above the Earth's surface; the sodium beacons scatter
+off a layer roughly 90 km above the Earth's surface.
+\mynotes{Better to be higher up, most distortion is high in the atmosphere.}
+Laser guide stars still
+have some limitations: the path through the atmosphere that the laser traverses
+does not exactly correspond to the path that light from a star traverses,
+because the latter comes from an essentially infinite distance; this leads to
+the effect called \textit{focal anoisoplanatism}. In addition, laser guide
+stars cannot generally be used to track image motion since the laser passes up
+and down through the same atmosphere and image motion is cancelled out. To
+correct for image motion, separate tip-tilt tracking is required. Note that
+even with perfect correction, one is still limited by the isoplanatic patch
+size. As one moves further and further away from the reference object, the
+correction will gradually degrade.
+\mynotes{Laser guide star - not a perfect star, expensive, tracked on
+same platform as telescope (tip-tilt, tracking - still need natural
+star for these).}
 
 In principle, correction over a wider field of view is possible with
-\emph{multiple}
-deformable mirrors and multiple reference objects, giving rise to the concept
-of \emph{multi-conjugate} adaptive optics (MCAO) systems.
+\emph{multiple} deformable mirrors and multiple reference objects, giving rise
+to the concept of \textit{multi-conjugate} adaptive optics (MCAO) systems.
 
 Systems with single laser guide stars have certainly been tested and appear to
 work; but remember, only over an isoplanatic patch, and often with partially
@@ -3124,9 +3188,7 @@ Science with adaptive optics. Typical AO PSFs. Morphology vs.\ photometry.
 \subsection{AO Examples}
 Lots of links.
 
-\rule{\textwidth}{0.4pt}
-
-{\small\hfill\emph{Wednesday, April 13, 2016}}
+\mydate{Wednesday, April 13, 2016}
 \section{Telescopes}
 One real-world issue for large telescopes is the technology of how to
 build a large mirror which will not be so heavy that it will sag under
@@ -3433,9 +3495,7 @@ seeing. Minimizing the former required very smooth optics, while
 minimizing the latter requires high-performance adaptive optics (e.g.
 ``extreme-AO'').
 
-\rule{\textwidth}{0.4pt}
-
-{\small\hfill\emph{Wednesday, April 20}}
+\mynotes{Wednesday, April 20}
 
 Pupil reimagers are also widely used in IR systems to reduce emission
 via cold pupil stops. The issue here is that the telescope itself
@@ -3529,67 +3589,81 @@ quantitative information, one requires that the atmospheric conditions
 be stable over the entire time when the data cube is being taken.
 
 \subsection{Spectrographs}
+\mynotes{Re-images the field, at different location. Every image turns into
+a spectrum. Grating is a one-dimensional thing (linear, not circle).
+The \textbf{slit} is an important part of the spectrograph. Nothing
+to do with diffraction, just a mask. Not to be confused with the
+diffraction grating, e.g.\ multi-slit interference.}
+
 A spectrograph is an instrument which separates different wavelengths
 of light so they can be measured independently. Most spectrographs
-work by using a \emph{dispersive} element, which directs light of different
+work by using a \textit{dispersive} element, which directs light of different
 wavelengths in different directions.
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{slit2.png}
 \end{figure}
-A conventional spectrograph has a collimator, a dispersive element, a
-camera to refocus the light, and a detector. The performance of a
-spectrograph is characterized by the \emph{dispersion}, which gives the
-amount that different wavelengths are separated, and the \emph{resolution},
-which gives the smallest difference in wavelength that two different
-monochromatic sources can be separated. There are different sorts of
-dispersive elements with different characteristics; two common ones
-are prisms and diffraction gratings, with the latter the most commonly
-in use in astronomy.
-\rule{\textwidth}{0.4pt}
+A conventional spectrograph has each of the following:
+\begin{itemize}
+    \item collimator
+    \item dispersive element
+        \begin{itemize}
+            \item prism
+            \item diffraciton grating (most common in astronomy)
+        \end{itemize}
+    \item camera to refocus the light
+    \item detector
+\end{itemize}
+The performance of a spectrograph is characterized by the \textit{dispersion},
+which gives the amount that different wavelengths are separated, and the
+\textit{resolution}, which gives the smallest difference in wavelength that two
+different monochromatic sources can be separated.
 
-{\small\hfill\textcolor{date}{Monday, April 25}}
+\mydate{Monday, April 25}
 
-The dispersion depends on the characteristic of the dispersing
-element. Various elements can be characterized by the angular
-dispersion, d$\theta$/d$\lambda$, or alternatively, the reciprocal
-angular dispersion, d$\lambda$/d$\theta$.
-In practice, we are often interested in the linear dispersion,
-d$x$/d$\lambda$ = $f_{2}d\theta$/d$\lambda$ or the reciprocal linear
-dispersion, d$\lambda$/d$x$ = $\frac{1}{f_{2}}$d$\lambda$/d$\theta$
-where the latter is often referred
-to simply as the dispersion in astronomical contexts, and is usually
-specified in \AA{}/mm or \AA{}/pixel.
+\paragraph{Dispersion:}
+\mynotes{How much are different wavelengths separated?}
+The dispersion depends on the characteristic of the dispersing element. Various
+elements can be characterized by the angular dispersion, d$\theta$/d$\lambda$,
+or alternatively, the reciprocal angular dispersion, d$\lambda$/d$\theta$. In
+practice, we are often interested in the linear dispersion, d$x$/d$\lambda$ =
+$f_{2}d\theta$/d$\lambda$ or the reciprocal linear dispersion, d$\lambda$/d$x$
+= $\frac{1}{f_{2}}$d$\lambda$/d$\theta$ where the latter is often referred to
+simply as the dispersion in astronomical contexts, and is usually specified in
+\AA{}/mm or \AA{}/pixel.
 
-If the source being viewed is extended, it is clear that any light
-which comes from regions parallel to the dispersion direction will
-overlap in wavelength with other light, leading to a very confused
-image to interpret. For this reason, spectrographs are usually used
-with slits or apertures in the focal plane to restrict the incoming
-light. Note that one dimension of spatial information can be retained,
-leading to so-called \emph{long-slit} spectroscopy. If there is a single
-dominant point source in the image plane, or if they are spaced far
-enough (usually in combination with a low dispersion) that spectra
-will not overlap, spectroscopy can be done in \emph{slitless} mode. However,
-note that in slitless mode, there can be a significant impact
+If the source being viewed is extended, it is clear that any light which comes
+from regions parallel to the dispersion direction will overlap in wavelength
+with other light, leading to a very confused image to interpret. For this
+reason, spectrographs are usually used with slits or apertures in the focal
+plane to restrict the incoming light. Note that one dimension of spatial
+information can be retained, leading to so-called \textit{long-slit}
+spectroscopy. If there is a single dominant point source in the image plane, or
+if they are spaced far enough (usually in combination with a low dispersion)
+that spectra will not overlap, spectroscopy can be done in \textit{slitless}
+mode. However, note that in slitless mode, there can be a significant impact
 from sky emission.
 
-The resolution depends on the width of the slit or on the size of the
-image in slitless mode, because all a spectrograph does is create an
-image of the focal plane after dispersing the light. The ``width'' of
-a spectral line will be given by the width of the slit or the image,
-whichever is smaller. In reality, the spectral line width is a
-convolution of the slit/image profile with diffraction. The spatial
-resolution of the detector may also be important.
+\paragraph{Resolution}
+\mynotes{Can two wavelengths be distinguished?}
+The resolution depends on the width of the slit or on
+the size of the image in slitless mode, because all a spectrograph does is
+create an image of the focal plane after dispersing the light. The ``width'' of
+a spectral line will be given by the width of the slit or the image, whichever
+is smaller. In reality, the spectral line width is a convolution of the
+slit/image profile with diffraction. The spatial resolution of the detector may
+also be important.
 
-Note that \emph{throughput} may also depend on the slit width, depending on
+Note that \textit{throughput} may also depend on the slit width, depending on
 the seeing, so maximizing resolution may come at the expense of
 throughput. Throughput = seeing + slit width.
 
 Given the width, $\omega$, and height, $h$, of a linear slit,
 we can get an \emph{image} of the slit with width $\omega'$ and
 height $h'$:
-$$ h' = h\frac{f_{2}}{f_{1}} $$
+\[
+    h' = h\frac{f_{2}}{f_{1}}
+    \]
 Or for an angular width, $\phi = \omega/f$,
 (where $f$ is the focal length of the telescope) and height:
 $\phi' = h/f$:
@@ -3835,9 +3909,9 @@ used.
 The FTS requires scanning in path spacing. But unlike the Fabry-Perot,
 it yields information on intensity at all wavelengths simultaneously.
 
-\newpage\section{Detectors}
-\rule{\textwidth}{0.4pt}\\
-\textcolor{date}{Monday, May 2, 2016}
+\newpage
+\mydate{Monday, May 2, 2016}
+\section{Detectors}
 \subsection{Basic Principles and Properties}
 Detectors work because they are made of material that interacts
 with photons. Three general types, based on what is generated

@@ -1,57 +1,78 @@
-\BOOKMARK [1][-]{section.1}{Astronomical Optics}{}% 1
-\BOOKMARK [2][-]{subsection.1.1}{Single surface optics and definitions}{section.1}% 2
-\BOOKMARK [2][-]{subsection.1.2}{Multi-surface systems}{section.1}% 3
-\BOOKMARK [3][-]{subsubsection.1.2.1}{A lens \(has two surfaces\)}{subsection.1.2}% 4
-\BOOKMARK [3][-]{subsubsection.1.2.2}{plane-parallel plate}{subsection.1.2}% 5
-\BOOKMARK [3][-]{subsubsection.1.2.3}{Two-mirror telescopes}{subsection.1.2}% 6
-\BOOKMARK [3][-]{subsubsection.1.2.4}{Definitions for multi-surface system: stops and pupils}{subsection.1.2}% 7
-\BOOKMARK [2][-]{subsection.1.3}{Aberrations}{section.1}% 8
-\BOOKMARK [3][-]{subsubsection.1.3.1}{Surface requirements for unaberrated images}{subsection.1.3}% 9
-\BOOKMARK [3][-]{subsubsection.1.3.2}{Aberrations: general description and low-order aberrations}{subsection.1.3}% 10
-\BOOKMARK [3][-]{subsubsection.1.3.3}{Aberration compensation and different telescope types}{subsection.1.3}% 11
-\BOOKMARK [2][-]{subsection.1.4}{Sources of aberrations}{section.1}% 12
-\BOOKMARK [2][-]{subsection.1.5}{Ray tracing}{section.1}% 13
-\BOOKMARK [2][-]{subsection.1.6}{Physical \(diffraction\) optics}{section.1}% 14
-\BOOKMARK [2][-]{subsection.1.7}{Adaptive optics}{section.1}% 15
-\BOOKMARK [2][-]{subsection.1.8}{AO Examples}{section.1}% 16
-\BOOKMARK [1][-]{section.2}{Telescopes}{}% 17
-\BOOKMARK [2][-]{subsection.2.1}{Mirror coatings}{section.2}% 18
-\BOOKMARK [2][-]{subsection.2.2}{Telescope mounts}{section.2}% 19
-\BOOKMARK [2][-]{subsection.2.3}{Using telescopes}{section.2}% 20
-\BOOKMARK [2][-]{subsection.2.4}{Planning observing}{section.2}% 21
-\BOOKMARK [1][-]{section.3}{Instrumentation}{}% 22
-\BOOKMARK [2][-]{subsection.3.1}{Location of optics}{section.3}% 23
-\BOOKMARK [2][-]{subsection.3.2}{Refractive optics and chromatic aberration}{section.3}% 24
-\BOOKMARK [2][-]{subsection.3.3}{Field Flatteners}{section.3}% 25
-\BOOKMARK [2][-]{subsection.3.4}{Focal plane reimagers}{section.3}% 26
-\BOOKMARK [2][-]{subsection.3.5}{Pupil reimagers}{section.3}% 27
-\BOOKMARK [2][-]{subsection.3.6}{Filters}{section.3}% 28
-\BOOKMARK [2][-]{subsection.3.7}{Fabry-Perot Interferometer}{section.3}% 29
-\BOOKMARK [2][-]{subsection.3.8}{Spectrographs}{section.3}% 30
-\BOOKMARK [2][-]{subsection.3.9}{Astronomical spectrographs}{section.3}% 31
-\BOOKMARK [2][-]{subsection.3.10}{Dispersing elements}{section.3}% 32
-\BOOKMARK [3][-]{subsubsection.3.10.1}{Prisms}{subsection.3.10}% 33
-\BOOKMARK [3][-]{subsubsection.3.10.2}{Gratings}{subsection.3.10}% 34
-\BOOKMARK [3][-]{subsubsection.3.10.3}{Grisms}{subsection.3.10}% 35
-\BOOKMARK [2][-]{subsection.3.11}{Operational items: using a spectrograph}{section.3}% 36
-\BOOKMARK [2][-]{subsection.3.12}{Non-dispersive spectroscopy}{section.3}% 37
-\BOOKMARK [1][-]{section.4}{Detectors}{}% 38
-\BOOKMARK [2][-]{subsection.4.1}{Basic Principles and Properties}{section.4}% 39
-\BOOKMARK [3][-]{subsubsection.4.1.1}{Digitization}{subsection.4.1}% 40
-\BOOKMARK [3][-]{subsubsection.4.1.2}{Dynamic range}{subsection.4.1}% 41
-\BOOKMARK [3][-]{subsubsection.4.1.3}{Determining gain and readout noise}{subsection.4.1}% 42
-\BOOKMARK [2][-]{subsection.4.2}{CCDs}{section.4}% 43
-\BOOKMARK [2][-]{subsection.4.3}{IR detectors}{section.4}% 44
-\BOOKMARK [2][-]{subsection.4.4}{UV and other detectors}{section.4}% 45
-\BOOKMARK [1][-]{section.5}{Data reduction: details and subtleties}{}% 46
-\BOOKMARK [1][-]{section.6}{Photometry}{}% 47
-\BOOKMARK [2][-]{subsection.6.1}{Aperture photometry}{section.6}% 48
-\BOOKMARK [2][-]{subsection.6.2}{Crowding}{section.6}% 49
-\BOOKMARK [3][-]{subsubsection.6.2.1}{Finding stars}{subsection.6.2}% 50
-\BOOKMARK [3][-]{subsubsection.6.2.2}{Finding the PSF}{subsection.6.2}% 51
-\BOOKMARK [3][-]{subsubsection.6.2.3}{Grouping stars}{subsection.6.2}% 52
-\BOOKMARK [3][-]{subsubsection.6.2.4}{Fitting stars}{subsection.6.2}% 53
-\BOOKMARK [3][-]{subsubsection.6.2.5}{Subleties}{subsection.6.2}% 54
-\BOOKMARK [2][-]{subsection.6.3}{Atmospheric extinction}{section.6}% 55
-\BOOKMARK [2][-]{subsection.6.4}{Standard stars}{section.6}% 56
-\BOOKMARK [2][-]{subsection.6.5}{Photometric systems}{section.6}% 57
+\BOOKMARK [1][-]{section.1}{Properties of light, magnitudes, errors, and error analysis}{}% 1
+\BOOKMARK [2][-]{subsection.1.1}{Light}{section.1}% 2
+\BOOKMARK [2][-]{subsection.1.2}{Magnitudes and photometric systems}{section.1}% 3
+\BOOKMARK [3][-]{subsubsection.1.2.1}{Colors}{subsection.1.2}% 4
+\BOOKMARK [3][-]{subsubsection.1.2.2}{UBVRI magnitudes-flux conversion}{subsection.1.2}% 5
+\BOOKMARK [2][-]{subsection.1.3}{Observed fluxes and the count equation}{section.1}% 6
+\BOOKMARK [2][-]{subsection.1.4}{Uncertainties in photon rates}{section.1}% 7
+\BOOKMARK [3][-]{subsubsection.1.4.1}{Noise equation: how do we predict expected uncertainties?}{subsection.1.4}% 8
+\BOOKMARK [3][-]{subsubsection.1.4.2}{Error propagation}{subsection.1.4}% 9
+\BOOKMARK [3][-]{subsubsection.1.4.3}{Determining sample parameters: averaging measurements}{subsection.1.4}% 10
+\BOOKMARK [3][-]{subsubsection.1.4.4}{Random errors vs systematic errors}{subsection.1.4}% 11
+\BOOKMARK [1][-]{section.2}{Effects of the earth's atmosphere}{}% 12
+\BOOKMARK [2][-]{subsection.2.1}{Night sky emission}{section.2}% 13
+\BOOKMARK [2][-]{subsection.2.2}{Transmission of atmosphere}{section.2}% 14
+\BOOKMARK [3][-]{subsubsection.2.2.1}{Sources of extinction}{subsection.2.2}% 15
+\BOOKMARK [3][-]{subsubsection.2.2.2}{Airmass and zenith distance dependence}{subsection.2.2}% 16
+\BOOKMARK [3][-]{subsubsection.2.2.3}{How much light is lost going through the atmosphere?}{subsection.2.2}% 17
+\BOOKMARK [2][-]{subsection.2.3}{Atmospheric Refraction}{section.2}% 18
+\BOOKMARK [2][-]{subsection.2.4}{Seeing: theory and practice}{section.2}% 19
+\BOOKMARK [3][-]{subsubsection.2.4.1}{Other sources of seeing}{subsection.2.4}% 20
+\BOOKMARK [3][-]{subsubsection.2.4.2}{What does seeing cause the image to look like?}{subsection.2.4}% 21
+\BOOKMARK [1][-]{section.3}{Astronomical Optics}{}% 22
+\BOOKMARK [2][-]{subsection.3.1}{Single surface optics and definitions}{section.3}% 23
+\BOOKMARK [2][-]{subsection.3.2}{Multi-surface systems}{section.3}% 24
+\BOOKMARK [3][-]{subsubsection.3.2.1}{A lens \(has two surfaces\)}{subsection.3.2}% 25
+\BOOKMARK [3][-]{subsubsection.3.2.2}{plane-parallel plate}{subsection.3.2}% 26
+\BOOKMARK [3][-]{subsubsection.3.2.3}{Two-mirror telescopes}{subsection.3.2}% 27
+\BOOKMARK [3][-]{subsubsection.3.2.4}{Definitions for multi-surface system: stops and pupils}{subsection.3.2}% 28
+\BOOKMARK [2][-]{subsection.3.3}{Aberrations}{section.3}% 29
+\BOOKMARK [3][-]{subsubsection.3.3.1}{Surface requirements for unaberrated images}{subsection.3.3}% 30
+\BOOKMARK [3][-]{subsubsection.3.3.2}{Aberrations: general description and low-order aberrations}{subsection.3.3}% 31
+\BOOKMARK [3][-]{subsubsection.3.3.3}{Aberration compensation and different telescope types}{subsection.3.3}% 32
+\BOOKMARK [2][-]{subsection.3.4}{Sources of aberrations}{section.3}% 33
+\BOOKMARK [2][-]{subsection.3.5}{Ray tracing}{section.3}% 34
+\BOOKMARK [2][-]{subsection.3.6}{Physical \(diffraction\) optics}{section.3}% 35
+\BOOKMARK [2][-]{subsection.3.7}{Adaptive optics}{section.3}% 36
+\BOOKMARK [2][-]{subsection.3.8}{AO Examples}{section.3}% 37
+\BOOKMARK [1][-]{section.4}{Telescopes}{}% 38
+\BOOKMARK [2][-]{subsection.4.1}{Mirror coatings}{section.4}% 39
+\BOOKMARK [2][-]{subsection.4.2}{Telescope mounts}{section.4}% 40
+\BOOKMARK [2][-]{subsection.4.3}{Using telescopes}{section.4}% 41
+\BOOKMARK [2][-]{subsection.4.4}{Planning observing}{section.4}% 42
+\BOOKMARK [1][-]{section.5}{Instrumentation}{}% 43
+\BOOKMARK [2][-]{subsection.5.1}{Location of optics}{section.5}% 44
+\BOOKMARK [2][-]{subsection.5.2}{Refractive optics and chromatic aberration}{section.5}% 45
+\BOOKMARK [2][-]{subsection.5.3}{Field Flatteners}{section.5}% 46
+\BOOKMARK [2][-]{subsection.5.4}{Focal plane reimagers}{section.5}% 47
+\BOOKMARK [2][-]{subsection.5.5}{Pupil reimagers}{section.5}% 48
+\BOOKMARK [2][-]{subsection.5.6}{Filters}{section.5}% 49
+\BOOKMARK [2][-]{subsection.5.7}{Fabry-Perot Interferometer}{section.5}% 50
+\BOOKMARK [2][-]{subsection.5.8}{Spectrographs}{section.5}% 51
+\BOOKMARK [2][-]{subsection.5.9}{Astronomical spectrographs}{section.5}% 52
+\BOOKMARK [2][-]{subsection.5.10}{Dispersing elements}{section.5}% 53
+\BOOKMARK [3][-]{subsubsection.5.10.1}{Prisms}{subsection.5.10}% 54
+\BOOKMARK [3][-]{subsubsection.5.10.2}{Gratings}{subsection.5.10}% 55
+\BOOKMARK [3][-]{subsubsection.5.10.3}{Grisms}{subsection.5.10}% 56
+\BOOKMARK [2][-]{subsection.5.11}{Operational items: using a spectrograph}{section.5}% 57
+\BOOKMARK [2][-]{subsection.5.12}{Non-dispersive spectroscopy}{section.5}% 58
+\BOOKMARK [1][-]{section.6}{Detectors}{}% 59
+\BOOKMARK [2][-]{subsection.6.1}{Basic Principles and Properties}{section.6}% 60
+\BOOKMARK [3][-]{subsubsection.6.1.1}{Digitization}{subsection.6.1}% 61
+\BOOKMARK [3][-]{subsubsection.6.1.2}{Dynamic range}{subsection.6.1}% 62
+\BOOKMARK [3][-]{subsubsection.6.1.3}{Determining gain and readout noise}{subsection.6.1}% 63
+\BOOKMARK [2][-]{subsection.6.2}{CCDs}{section.6}% 64
+\BOOKMARK [2][-]{subsection.6.3}{IR detectors}{section.6}% 65
+\BOOKMARK [2][-]{subsection.6.4}{UV and other detectors}{section.6}% 66
+\BOOKMARK [1][-]{section.7}{Data reduction: details and subtleties}{}% 67
+\BOOKMARK [1][-]{section.8}{Photometry}{}% 68
+\BOOKMARK [2][-]{subsection.8.1}{Aperture photometry}{section.8}% 69
+\BOOKMARK [2][-]{subsection.8.2}{Crowding}{section.8}% 70
+\BOOKMARK [3][-]{subsubsection.8.2.1}{Finding stars}{subsection.8.2}% 71
+\BOOKMARK [3][-]{subsubsection.8.2.2}{Finding the PSF}{subsection.8.2}% 72
+\BOOKMARK [3][-]{subsubsection.8.2.3}{Grouping stars}{subsection.8.2}% 73
+\BOOKMARK [3][-]{subsubsection.8.2.4}{Fitting stars}{subsection.8.2}% 74
+\BOOKMARK [3][-]{subsubsection.8.2.5}{Subleties}{subsection.8.2}% 75
+\BOOKMARK [2][-]{subsection.8.3}{Atmospheric extinction}{section.8}% 76
+\BOOKMARK [2][-]{subsection.8.4}{Standard stars}{section.8}% 77
+\BOOKMARK [2][-]{subsection.8.5}{Photometric systems}{section.8}% 78
