@@ -1,81 +1,84 @@
 \contentsline {section}{\numberline {1}Properties of light, magnitudes, errors,\\ and error analysis}{4}{section.1}
 \contentsline {subsection}{\numberline {1.1}Light}{4}{subsection.1.1}
-\contentsline {subsection}{\numberline {1.2}Magnitudes and photometric systems}{7}{subsection.1.2}
-\contentsline {subsubsection}{\numberline {1.2.1}Colors}{10}{subsubsection.1.2.1}
-\contentsline {subsubsection}{\numberline {1.2.2}UBVRI magnitudes-flux conversion}{11}{subsubsection.1.2.2}
-\contentsline {subsection}{\numberline {1.3}Observed fluxes and the count equation}{12}{subsection.1.3}
-\contentsline {subsection}{\numberline {1.4}Uncertainties in photon rates}{14}{subsection.1.4}
-\contentsline {subsubsection}{\numberline {1.4.1}Noise equation: how do we predict expected uncertainties?}{19}{subsubsection.1.4.1}
-\contentsline {subsubsection}{\numberline {1.4.2}Error propagation}{24}{subsubsection.1.4.2}
-\contentsline {subsubsection}{\numberline {1.4.3}Determining sample parameters: averaging measurements}{26}{subsubsection.1.4.3}
-\contentsline {subsubsection}{\numberline {1.4.4}Random errors vs systematic errors}{29}{subsubsection.1.4.4}
-\contentsline {section}{\numberline {2}Effects of the earth's atmosphere}{31}{section.2}
-\contentsline {subsection}{\numberline {2.1}Night sky emission}{31}{subsection.2.1}
-\contentsline {subsection}{\numberline {2.2}Transmission of atmosphere}{33}{subsection.2.2}
-\contentsline {subsubsection}{\numberline {2.2.1}Sources of extinction}{34}{subsubsection.2.2.1}
-\contentsline {subsubsection}{\numberline {2.2.2}Airmass and zenith distance dependence}{35}{subsubsection.2.2.2}
-\contentsline {subsubsection}{\numberline {2.2.3}How much light is lost going through the atmosphere?}{35}{subsubsection.2.2.3}
-\contentsline {subsection}{\numberline {2.3}Atmospheric Refraction}{37}{subsection.2.3}
-\contentsline {subsection}{\numberline {2.4}Seeing: theory and practice}{39}{subsection.2.4}
-\contentsline {subsubsection}{\numberline {2.4.1}Other sources of seeing}{43}{subsubsection.2.4.1}
-\contentsline {subsubsection}{\numberline {2.4.2}What does seeing cause the image to look like?}{43}{subsubsection.2.4.2}
-\contentsline {section}{\numberline {3}Astronomical Optics}{46}{section.3}
-\contentsline {subsection}{\numberline {3.1}Single surface optics and definitions}{46}{subsection.3.1}
-\contentsline {subsection}{\numberline {3.2}Multi-surface systems}{49}{subsection.3.2}
-\contentsline {subsubsection}{\numberline {3.2.1}A lens (has two surfaces)}{49}{subsubsection.3.2.1}
-\contentsline {subsubsection}{\numberline {3.2.2}plane-parallel plate}{50}{subsubsection.3.2.2}
-\contentsline {subsubsection}{\numberline {3.2.3}Two-mirror telescopes}{50}{subsubsection.3.2.3}
-\contentsline {subsubsection}{\numberline {3.2.4}Definitions for multi-surface system: stops and pupils}{53}{subsubsection.3.2.4}
-\contentsline {subsection}{\numberline {3.3}Aberrations}{54}{subsection.3.3}
-\contentsline {subsubsection}{\numberline {3.3.1}Surface requirements for unaberrated images}{54}{subsubsection.3.3.1}
-\contentsline {subsubsection}{\numberline {3.3.2}Aberrations: general description and low-order aberrations}{56}{subsubsection.3.3.2}
-\contentsline {subsubsection}{\numberline {3.3.3}Aberration compensation and different telescope types}{61}{subsubsection.3.3.3}
-\contentsline {subsection}{\numberline {3.4}Sources of aberrations}{63}{subsection.3.4}
-\contentsline {subsection}{\numberline {3.5}Ray tracing}{64}{subsection.3.5}
-\contentsline {subsection}{\numberline {3.6}Physical (diffraction) optics}{65}{subsection.3.6}
-\contentsline {subsection}{\numberline {3.7}Adaptive optics}{68}{subsection.3.7}
-\contentsline {subsection}{\numberline {3.8}AO Examples}{73}{subsection.3.8}
-\contentsline {section}{\numberline {4}Telescopes}{73}{section.4}
-\contentsline {subsection}{\numberline {4.1}Mirror coatings}{75}{subsection.4.1}
-\contentsline {subsection}{\numberline {4.2}Telescope mounts}{75}{subsection.4.2}
-\contentsline {subsection}{\numberline {4.3}Using telescopes}{77}{subsection.4.3}
-\contentsline {subsection}{\numberline {4.4}Planning observing}{78}{subsection.4.4}
-\contentsline {section}{\numberline {5}Instrumentation}{78}{section.5}
-\contentsline {subsection}{\numberline {5.1}Location of optics}{78}{subsection.5.1}
-\contentsline {subsection}{\numberline {5.2}Refractive optics and chromatic aberration}{78}{subsection.5.2}
-\contentsline {subsection}{\numberline {5.3}Field Flatteners}{79}{subsection.5.3}
-\contentsline {subsection}{\numberline {5.4}Focal plane reimagers}{79}{subsection.5.4}
-\contentsline {subsection}{\numberline {5.5}Pupil reimagers}{80}{subsection.5.5}
-\contentsline {subsection}{\numberline {5.6}Filters}{81}{subsection.5.6}
-\contentsline {subsection}{\numberline {5.7}Fabry-Perot Interferometer}{82}{subsection.5.7}
-\contentsline {subsection}{\numberline {5.8}Spectrographs}{82}{subsection.5.8}
-\contentsline {paragraph}{Dispersion}{83}{section*.2}
-\contentsline {paragraph}{Resolution}{84}{section*.3}
-\contentsline {subsection}{\numberline {5.9}Astronomical spectrographs}{85}{subsection.5.9}
-\contentsline {subsection}{\numberline {5.10}Dispersing elements}{85}{subsection.5.10}
-\contentsline {subsubsection}{\numberline {5.10.1}Prisms}{85}{subsubsection.5.10.1}
-\contentsline {subsubsection}{\numberline {5.10.2}Gratings}{86}{subsubsection.5.10.2}
-\contentsline {subsubsection}{\numberline {5.10.3}Grisms}{89}{subsubsection.5.10.3}
-\contentsline {subsection}{\numberline {5.11}Operational items: using a spectrograph}{89}{subsection.5.11}
-\contentsline {subsection}{\numberline {5.12}Non-dispersive spectroscopy}{90}{subsection.5.12}
-\contentsline {section}{\numberline {6}Detectors}{92}{section.6}
-\contentsline {subsection}{\numberline {6.1}Basic Principles and Properties}{92}{subsection.6.1}
-\contentsline {subsubsection}{\numberline {6.1.1}Digitization}{96}{subsubsection.6.1.1}
-\contentsline {paragraph}{Gain:}{96}{section*.4}
-\contentsline {subsubsection}{\numberline {6.1.2}Dynamic range}{97}{subsubsection.6.1.2}
-\contentsline {subsubsection}{\numberline {6.1.3}Determining gain and readout noise}{98}{subsubsection.6.1.3}
-\contentsline {subsection}{\numberline {6.2}CCDs}{98}{subsection.6.2}
-\contentsline {subsection}{\numberline {6.3}IR detectors}{98}{subsection.6.3}
-\contentsline {subsection}{\numberline {6.4}UV and other detectors}{98}{subsection.6.4}
-\contentsline {section}{\numberline {7}Data reduction: details and subtleties}{98}{section.7}
-\contentsline {section}{\numberline {8}Photometry}{98}{section.8}
-\contentsline {subsection}{\numberline {8.1}Aperture photometry}{98}{subsection.8.1}
-\contentsline {subsection}{\numberline {8.2}Crowding}{100}{subsection.8.2}
-\contentsline {subsubsection}{\numberline {8.2.1}Finding stars}{101}{subsubsection.8.2.1}
-\contentsline {subsubsection}{\numberline {8.2.2}Finding the PSF}{101}{subsubsection.8.2.2}
-\contentsline {subsubsection}{\numberline {8.2.3}Grouping stars}{101}{subsubsection.8.2.3}
-\contentsline {subsubsection}{\numberline {8.2.4}Fitting stars}{101}{subsubsection.8.2.4}
-\contentsline {subsubsection}{\numberline {8.2.5}Subleties}{101}{subsubsection.8.2.5}
-\contentsline {subsection}{\numberline {8.3}Atmospheric extinction}{102}{subsection.8.3}
-\contentsline {subsection}{\numberline {8.4}Standard stars}{103}{subsection.8.4}
-\contentsline {subsection}{\numberline {8.5}Photometric systems}{106}{subsection.8.5}
+\contentsline {subsection}{\numberline {1.2}Magnitudes and photometric systems}{6}{subsection.1.2}
+\contentsline {subsubsection}{\numberline {1.2.1}Colors}{9}{subsubsection.1.2.1}
+\contentsline {subsubsection}{\numberline {1.2.2}UBVRI magnitudes-flux conversion}{9}{subsubsection.1.2.2}
+\contentsline {subsection}{\numberline {1.3}Observed fluxes and the count equation}{10}{subsection.1.3}
+\contentsline {subsection}{\numberline {1.4}Uncertainties in photon rates}{12}{subsection.1.4}
+\contentsline {subsubsection}{\numberline {1.4.1}Noise equation: how do we predict expected uncertainties?}{16}{subsubsection.1.4.1}
+\contentsline {subsubsection}{\numberline {1.4.2}Error propagation}{20}{subsubsection.1.4.2}
+\contentsline {subsubsection}{\numberline {1.4.3}Determining sample parameters: averaging measurements}{22}{subsubsection.1.4.3}
+\contentsline {subsubsection}{\numberline {1.4.4}Random errors vs systematic errors}{24}{subsubsection.1.4.4}
+\contentsline {section}{\numberline {2}Effects of the earth's atmosphere}{26}{section.2}
+\contentsline {subsection}{\numberline {2.1}Night sky emission}{26}{subsection.2.1}
+\contentsline {paragraph}{Optical}{27}{paragraph*.1}
+\contentsline {paragraph}{IR}{27}{paragraph*.2}
+\contentsline {subsection}{\numberline {2.2}Transmission of atmosphere (absorption/scattering)}{28}{subsection.2.2}
+\contentsline {subsubsection}{\numberline {2.2.1}Sources of extinction}{28}{subsubsection.2.2.1}
+\contentsline {subsubsection}{\numberline {2.2.2}Airmass and zenith distance dependence}{29}{subsubsection.2.2.2}
+\contentsline {paragraph}{How much light is lost going through the atmosphere?}{30}{paragraph*.3}
+\contentsline {subsection}{\numberline {2.3}Atmospheric Refraction}{31}{subsection.2.3}
+\contentsline {paragraph}{Importance of understanding refraction}{32}{paragraph*.4}
+\contentsline {subsection}{\numberline {2.4}Seeing: theory and practice}{33}{subsection.2.4}
+\contentsline {subsubsection}{\numberline {2.4.1}Other sources of seeing}{36}{subsubsection.2.4.1}
+\contentsline {subsubsection}{\numberline {2.4.2}What does seeing cause the image to look like?}{36}{subsubsection.2.4.2}
+\contentsline {section}{\numberline {3}Astronomical Optics}{39}{section.3}
+\contentsline {subsection}{\numberline {3.1}Single surface optics and definitions}{39}{subsection.3.1}
+\contentsline {subsection}{\numberline {3.2}Multi-surface systems}{41}{subsection.3.2}
+\contentsline {subsubsection}{\numberline {3.2.1}A lens (has two surfaces)}{41}{subsubsection.3.2.1}
+\contentsline {subsubsection}{\numberline {3.2.2}plane-parallel plate}{42}{subsubsection.3.2.2}
+\contentsline {subsubsection}{\numberline {3.2.3}Two-mirror telescopes}{42}{subsubsection.3.2.3}
+\contentsline {subsubsection}{\numberline {3.2.4}Definitions for multi-surface system: stops and pupils}{44}{subsubsection.3.2.4}
+\contentsline {subsection}{\numberline {3.3}Aberrations}{45}{subsection.3.3}
+\contentsline {subsubsection}{\numberline {3.3.1}Surface requirements for unaberrated images}{45}{subsubsection.3.3.1}
+\contentsline {subsubsection}{\numberline {3.3.2}Aberrations: general description and low-order aberrations}{47}{subsubsection.3.3.2}
+\contentsline {subsubsection}{\numberline {3.3.3}Aberration compensation and different telescope types}{52}{subsubsection.3.3.3}
+\contentsline {subsection}{\numberline {3.4}Sources of aberrations}{53}{subsection.3.4}
+\contentsline {subsection}{\numberline {3.5}Ray tracing}{54}{subsection.3.5}
+\contentsline {subsection}{\numberline {3.6}Physical (diffraction) optics}{54}{subsection.3.6}
+\contentsline {subsection}{\numberline {3.7}Adaptive optics}{57}{subsection.3.7}
+\contentsline {subsection}{\numberline {3.8}AO Examples}{60}{subsection.3.8}
+\contentsline {section}{\numberline {4}Telescopes}{61}{section.4}
+\contentsline {subsection}{\numberline {4.1}Mirror coatings}{62}{subsection.4.1}
+\contentsline {subsection}{\numberline {4.2}Telescope mounts}{62}{subsection.4.2}
+\contentsline {subsection}{\numberline {4.3}Using telescopes}{64}{subsection.4.3}
+\contentsline {subsection}{\numberline {4.4}Planning observing}{64}{subsection.4.4}
+\contentsline {section}{\numberline {5}Instrumentation}{64}{section.5}
+\contentsline {subsection}{\numberline {5.1}Location of optics}{64}{subsection.5.1}
+\contentsline {subsection}{\numberline {5.2}Refractive optics and chromatic aberration}{64}{subsection.5.2}
+\contentsline {subsection}{\numberline {5.3}Field Flatteners}{65}{subsection.5.3}
+\contentsline {subsection}{\numberline {5.4}Focal plane reimagers}{65}{subsection.5.4}
+\contentsline {subsection}{\numberline {5.5}Pupil reimagers}{65}{subsection.5.5}
+\contentsline {subsection}{\numberline {5.6}Filters}{66}{subsection.5.6}
+\contentsline {subsection}{\numberline {5.7}Fabry-Perot Interferometer}{67}{subsection.5.7}
+\contentsline {subsection}{\numberline {5.8}Spectrographs}{67}{subsection.5.8}
+\contentsline {paragraph}{Dispersion:}{68}{paragraph*.5}
+\contentsline {paragraph}{Resolution}{69}{paragraph*.6}
+\contentsline {subsection}{\numberline {5.9}Astronomical spectrographs}{70}{subsection.5.9}
+\contentsline {subsection}{\numberline {5.10}Dispersing elements}{70}{subsection.5.10}
+\contentsline {subsubsection}{\numberline {5.10.1}Prisms}{70}{subsubsection.5.10.1}
+\contentsline {subsubsection}{\numberline {5.10.2}Gratings}{70}{subsubsection.5.10.2}
+\contentsline {subsubsection}{\numberline {5.10.3}Grisms}{73}{subsubsection.5.10.3}
+\contentsline {subsection}{\numberline {5.11}Operational items: using a spectrograph}{74}{subsection.5.11}
+\contentsline {subsection}{\numberline {5.12}Non-dispersive spectroscopy}{74}{subsection.5.12}
+\contentsline {section}{\numberline {6}Detectors}{76}{section.6}
+\contentsline {subsection}{\numberline {6.1}Basic Principles and Properties}{76}{subsection.6.1}
+\contentsline {subsubsection}{\numberline {6.1.1}Digitization}{79}{subsubsection.6.1.1}
+\contentsline {paragraph}{Gain:}{79}{paragraph*.7}
+\contentsline {subsubsection}{\numberline {6.1.2}Dynamic range}{80}{subsubsection.6.1.2}
+\contentsline {subsubsection}{\numberline {6.1.3}Determining gain and readout noise}{80}{subsubsection.6.1.3}
+\contentsline {subsection}{\numberline {6.2}CCDs}{80}{subsection.6.2}
+\contentsline {subsection}{\numberline {6.3}IR detectors}{80}{subsection.6.3}
+\contentsline {subsection}{\numberline {6.4}UV and other detectors}{80}{subsection.6.4}
+\contentsline {section}{\numberline {7}Data reduction: details and subtleties}{80}{section.7}
+\contentsline {section}{\numberline {8}Photometry}{80}{section.8}
+\contentsline {subsection}{\numberline {8.1}Aperture photometry}{80}{subsection.8.1}
+\contentsline {subsection}{\numberline {8.2}Crowding}{82}{subsection.8.2}
+\contentsline {subsubsection}{\numberline {8.2.1}Finding stars}{82}{subsubsection.8.2.1}
+\contentsline {subsubsection}{\numberline {8.2.2}Finding the PSF}{83}{subsubsection.8.2.2}
+\contentsline {subsubsection}{\numberline {8.2.3}Grouping stars}{83}{subsubsection.8.2.3}
+\contentsline {subsubsection}{\numberline {8.2.4}Fitting stars}{83}{subsubsection.8.2.4}
+\contentsline {subsubsection}{\numberline {8.2.5}Subleties}{83}{subsubsection.8.2.5}
+\contentsline {subsection}{\numberline {8.3}Atmospheric extinction}{83}{subsection.8.3}
+\contentsline {subsection}{\numberline {8.4}Standard stars}{84}{subsection.8.4}
+\contentsline {subsection}{\numberline {8.5}Photometric systems}{86}{subsection.8.5}

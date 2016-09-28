@@ -1,45 +1,63 @@
 \documentclass[12pt]{article}
-\usepackage[margin=1.5in]{geometry}
+\usepackage[margin=1in]{geometry}
+%\usepackage[margin=1.5in]{geometry}
 \setlength{\parindent}{0em}
 \setlength{\parskip}{0.5em}
 \usepackage{setspace} % spacing between toc items
 \usepackage{graphicx}
 \usepackage{amsmath}
-
 \usepackage{xcolor}
+\definecolor{cadmiumgreen}{rgb}{0.0, 0.42, 0.24}
 \definecolor{darkpowderblue}{rgb}{0.0, 0.2, 0.6}
+
+%\usepackage[compact]{titlesec}
+%   [<shape>]{<format>}{<label>}{<sep>}{<before-code>}[<after-code>]
+\usepackage{titlesec}
+\titleformat{\section}%
+  %{\fontsize{16}{18}\selectfont\bfseries\color{myblue}}
+  {\fontsize{16}{18}\selectfont\bfseries}
+  {\arabic{section}\color{black}}
+  {1em}{}
+\titleformat{\paragraph}%
+  {\bfseries}
+  {Unit }
+  {1em}{}
+\titlespacing*{\section}{-0.75in}{0ex}{0ex}
+\titlespacing*{\subsection}{-0.5in}{0ex}{0ex}
+\titlespacing*{\paragraph}{0in}{0.5ex}{-1ex}
 
 \usepackage{enumitem}
 \setlist[itemize]{noitemsep}
 \setlist[enumerate]{noitemsep}
 \setlist[description]{%
     noitemsep,
-    labelindent=4em,
+    labelindent=1em,
     topsep=-1ex,
-    font={\sffamily\bfseries\color{darkpowderblue}}
+    font={\sffamily\bfseries\color{cadmiumgreen}}
 }
 
 \usepackage{hyperref}
 \hypersetup{colorlinks=true,urlcolor=darkpowderblue, linkcolor=black}
 \urlstyle{same}
 
-\definecolor{date}{HTML}{5F0087}
-\definecolor{myBlue}{rgb}{0.2,0.2,0.6}
 \definecolor{myGreen}{rgb}{0.0,0.26,0.15}
 \definecolor{om}{rgb}{0.4,0.19,0.28} % om - old mauve
 
+\definecolor{myBlue}{rgb}{0.2,0.2,0.6}
 \newcommand{\mynotes}[1]{\textcolor{myBlue}{#1}}
 
 \definecolor{hl}{rgb}{0.61, 0.87, 1.0}
 \newcommand{\test}[1]{%
     \begin{center}
-        \colorbox{hl}{\parbox{0.9\textwidth}{\textit{\centering #1}}}
+        {\parbox{0.9\textwidth}{\textit{\small#1}}}
     \end{center}}
 
+\definecolor{date}{HTML}{5F0087}
 \newcommand{\mydate}[1]{
-    \rule{\textwidth}{0.4pt}
-
-    {\vspace{-1ex}\small\hfill\textit{#1}}}
+    \begin{flushright}
+        \rule{\textwidth}{0.4pt} %{\vspace{-1ex}
+        \small\hfill\textit{#1}
+    \end{flushright}}
 
 
 \title{\vspace{-0.75in}ASTR 535 Lecture Notes}
@@ -106,7 +124,7 @@ Quantities of light:
         away from the normal to the surface element, and $\phi$ is the
         azimuthal angle.
         To calculate SB, just divide the flux by the angle subtended
-        by the object [rad$^2$]. At a larger distance, the flux will
+        by the object [rad$^{2}$]. At a larger distance, the flux will
         be smaller, but so will the angle subtended by the object, so
         SB is independent of distance unless considering cosmological
         scales, where the curvature of spacetime has an effect.
@@ -131,7 +149,7 @@ Quantities of light:
         $intrinsic$ energy emitted by the source per
         second ($\sim$ power). For an isotropically emitting source,
         \begin{equation}
-            L = 4 \pi d^2 F
+            L = 4 \pi d^{2} F
         \end{equation}
         where $d$ = distance to source (so L can only be calculated if
         the distance is known). Also known as radiant flux.
@@ -156,13 +174,13 @@ Questions:
 \end{itemize}
 \emph{specific} flux: per unit wavelength (or frequency).
 Using $\lambda=\frac{c}{\nu} \rightarrow
-\frac{\textrm{d}\lambda}{\textrm{d}\nu} = \frac{-c}{\nu^2}$
+\frac{\textrm{d}\lambda}{\textrm{d}\nu} = \frac{-c}{\nu^{2}}$
 \begin{align*}
     \int F_{\nu} \textrm{d} \nu &= -\int F_{\lambda} \textrm{d} \lambda\\
     F_{\nu} \textrm{d} \nu &= -F_{\lambda} \textrm{d} \lambda\\
     F_{\nu} &= -F_{\lambda} \frac{\textrm{d} \lambda}{\textrm{d}\nu}\\
-    &= F_{\lambda} \frac{c}{\nu^2}\\
-    &= F_{\lambda} \frac{\lambda^2}{c}\\
+    &= F_{\lambda} \frac{c}{\nu^{2}}\\
+    &= F_{\lambda} \frac{\lambda^{2}}{c}\\
 \end{align*}
 The negative comes from frequency and wavelength increasing in
 opposite directions.
@@ -591,7 +609,7 @@ $p(x)dx \equiv$ probability of event occuring in $x + \textrm{d}x$:
         $$ \int p(x)\textrm{d}x = 1 $$
 Some definitions relating to values that characterize a distribution:
 $$    \textrm{mean} \equiv \mu = \int xp(x)\textrm{d}x $$
-$$    \textrm{variance} \equiv \sigma^2 = \int (x-\mu)^2 p(x)\textrm{d}x $$
+$$    \textrm{variance} \equiv \sigma^{2} = \int (x-\mu)^{2} p(x)\textrm{d}x $$
 $$    \textrm{standard\ deviation} \equiv \sigma =
         \sqrt{\textrm{variance}} $$
 $$    \frac{ \int_{-\infty}^{x_{median}} p(x)\textrm{d}x }
@@ -613,8 +631,8 @@ approaches infinity, but for small samples, they may differ.
 The sample quantities are derived from:
 $$\textrm{sample\ mean:\ } \bar{x} \equiv \frac{\sum x_i}{N}$$
 $$\textrm{sample\ variance:\ } \equiv
-  \frac{\sum (x_i-\bar{x})^2}{N-1} =
-  \frac{\sum x_i^2-(\sum x_i)^2/N}{N-1}$$
+  \frac{\sum (x_i-\bar{x})^{2}}{N-1} =
+  \frac{\sum x_i^{2}-(\sum x_i)^{2}/N}{N-1}$$
 
 \textbf{\emph{the binomial distribution}}
 
@@ -631,8 +649,8 @@ under the assumption that all events are independent of each other
 (e.g., when rolling dice, the result of the second roll is independent
 of the result of the first). For the binomial distribution:
    $$ \textrm{mean} \equiv \mu \equiv \int xp(x)\textrm{d}x = np $$
-   $$ \textrm{variance} \equiv \sigma^2 \equiv
-      \int (x-\mu)^2p(x)\textrm{d}x = np(1-p) $$
+   $$ \textrm{variance} \equiv \sigma^{2} \equiv
+      \int (x-\mu)^{2}p(x)\textrm{d}x = np(1-p) $$
 
 \textcolor{om}{\emph{Understand the concept of probability
 distribution functions and basic quantities used to describe them:
@@ -656,7 +674,7 @@ In this limit, the binomial distribution asymtotically approaches the
    $$  P(x,\mu) = \frac{\mu^x e^{-\mu}}{x!} $$
 From the expressions for the binomial distribution in this limit, the
 mean of the distribution is $\mu$, and the variance is given by:
-  $$  \sigma^{2} = \sum_x [(x-\mu)^2p(x,\mu)] $$
+  $$  \sigma^{2} = \sum_x [(x-\mu)^{2}p(x,\mu)] $$
   $$  \sigma^{2} = np = \mu  $$
 
 In other words, the standard deviation, $\sigma$, is the square root
@@ -681,7 +699,7 @@ distribution is related to the mean of the distribution.}}
 For large $\mu$, the Poisson distribution is
 well-approximated around the peak by a Gaussian distribution:
     $$ P(x,\mu,\sigma) = \frac{1}{\sigma\sqrt{2\pi}}
-        e^{ -\frac{1}{2} (\frac{x-\mu}{\sigma})^2 }  $$
+        e^{ -\frac{1}{2} (\frac{x-\mu}{\sigma})^{2} }  $$
 This allows us to use ``simple'' least squares
 techniques to fit observational data, which is normally distributed.
 However, in the \emph{tails of the distribution},
@@ -763,17 +781,17 @@ perhaps your measurements are correlated with each other).
 For a series of measurements, one can calculate the
 $\chi^{2}$ statistic, and determine how probable this value is,
 given the number of points.
-    $$ \chi^2 = \sum [(observed(i)-model(i))^2/\sigma_i^2]  $$
+    $$ \chi^{2} = \sum [(observed(i)-model(i))^{2}/\sigma_i^{2}]  $$
 A quick estimate of the consistency of the model with the observed
 data points can be made using reduced $\chi^{2}$, defined as
 $\chi^{2}$ divided by the \emph{degrees of freedom} (number of data points
 minus number of parameters).
 
 \textcolor{myBlue}{%
-    $$  \chi^2 = \sum_N \frac{(y_i-y(x_i))^2}{\sigma_i^2} $$
+    $$  \chi^{2} = \sum_N \frac{(y_i-y(x_i))^{2}}{\sigma_i^{2}} $$
 for $N$ data points. If every point was 1$\sigma$ off,
-$\chi^2 \sim$ number of data points. Can calculate the probability
-distribution of $\chi^2$. If $\chi^2$ = 98, what's the confidence
+$\chi^{2} \sim$ number of data points. Can calculate the probability
+distribution of $\chi^{2}$. If $\chi^{2}$ = 98, what's the confidence
 interval? Will only get 98 one in a million times? Not a good model.
 Is the data consistent with the model?
 }
@@ -799,7 +817,7 @@ often, the inverse of this, referred
 to as the signal-to-noise ratio, is used. Given an estimate the number
 of photons expected from an object in an observation, we can calulate
 the signal-to-noise ratio:
-    $$ \frac{S}{N} = \frac{S}{\sqrt{\sigma^2}} $$
+    $$ \frac{S}{N} = \frac{S}{\sqrt{\sigma^{2}}} $$
 which is the inverse of the predicted fractional error ($N/S$).
 
 Consider an object with observed photon flux, $S^{\prime}$
@@ -808,7 +826,7 @@ leading to a signal, $S = S^{\prime}Tt$.
 In the simplest case (i.e.\ perfect
 instruments), the only noise
 source is Poisson statistics from the source, in which case:
-    $$ \sigma^2 = S = S^{\prime}Tt $$
+    $$ \sigma^{2} = S = S^{\prime}Tt $$
     $$ \frac{S}{N} = \sqrt{S} = \sqrt{S^{\prime}Tt} $$
 In other words, $S/N$ increases as the square root of the object
 brightness, telescope area, efficiency, or exposure time. Note that $S$
@@ -853,14 +871,14 @@ photons from the source ($S$), and phtons from the background ($AB$):
     $$ O = S + AB = (S^{\prime} + AB^{\prime})Tt $$
 The variance of the total observed counts, from Poisson statistics,
 is:
-    $$ \sigma^2_O = O =  S + AB = (S^{\prime} + AB^{\prime})Tt $$
+    $$ \sigma^{2}_O = O =  S + AB = (S^{\prime} + AB^{\prime})Tt $$
 To get the desired signal from the object only, we will need to
 measure separately the total signal and the background signal to
 estimate:
     $$ S \equiv S^{\prime}Tt = O-A <B> $$
 where $<B>$ is some estimate we have obtained of the background
 surface brightness. The noise in the measurement is
-    $$ \sigma^2_S \approx \sigma^2_O =
+    $$ \sigma^{2}_S \approx \sigma^{2}_O =
     S + AB = (S^{\prime} + AB^{\prime})Tt $$
 where the approximation is accurate if the background is determined to
 high accuracy, which one can do if one measures the background over a
@@ -889,7 +907,7 @@ Limiting regimes:
 \textcolor{myBlue}{starlight dominates by factor of 1000 for
 m$_* = 12.5$ and m$_{BG} = 20$ ($\Delta m = 7.5
 = -2.5\log\frac{b_{BG}}{b_*}
-\rightarrow 10^3$)\\\\
+\rightarrow 10^{3}$)\\\\
 \large$\odot$: \normalsize little circle around star to reduce sky
 background noise. Depends on how blurry the star is; determined by
 seeing.
@@ -932,7 +950,7 @@ spread:
 Can change magnification of optics, but there is a balance. Might have
 two stars five arcsec apart. Maxiumum resolution is not always the
 best! readout noise is very important when the background is very low.
-$N_{pix}\sigma_{rn}^2$ compared to $BA$. rn more important for
+$N_{pix}\sigma_{rn}^{2}$ compared to $BA$. rn more important for
 spectroscopy applications than imaging.
 }
 
@@ -942,11 +960,11 @@ example of this that is applicable for CCD detectors is readout noise,
 which is additive \emph{noise} (with zero mean) that comes from the detector
 and is independent of signal level. For a detector whose readout noise
 is characterized by $\sigma_{rn}$,
-$$ \frac{S}{N} = \frac{S}{\sqrt{S+BA_{pix}+\sigma^2_{rn}}} $$
+$$ \frac{S}{N} = \frac{S}{\sqrt{S+BA_{pix}+\sigma^{2}_{rn}}} $$
 if a measurement is made in a single pixel. If an object is spread
 over $N_{pix}$ pixels, then
 $$ \boxed{
- \frac{S}{N} = \frac{S}{\sqrt{S+BA+N_{pix}\sigma^2_{rn}}}
+ \frac{S}{N} = \frac{S}{\sqrt{S+BA+N_{pix}\sigma^{2}_{rn}}}
  } $$
 \textcolor{myBlue}{This is the key equation!}
 For large $\sigma_{rn}$, the behavior is the same as the
@@ -970,17 +988,17 @@ background dominated, and readout noise dominated.
 
 Three sources of uncertainty:
 \begin{enumerate}
-    \item Possion statistics from source: $\sigma^2 = S$;
+    \item Possion statistics from source: $\sigma^{2} = S$;
         $\sigma = \sqrt{S}$. $S$ is the same as $\mu$.
     \item Poisson statistics from sky/background:
         $<B>$ is mean background rate.
     \item Non-poisson statistics from instrumentation:
         aka readout noise. $\mu=0$ (no exposure time).
         Smear around $\mu$. $\sigma = \sigma_{rn}$ per pixel.
-        $\sigma^2 = N_{pix}\sigma_{rn}^2$;
-        $\sigma = \sqrt{N_{pix}\sigma_{rn}^2}$
+        $\sigma^{2} = N_{pix}\sigma_{rn}^{2}$;
+        $\sigma = \sqrt{N_{pix}\sigma_{rn}^{2}}$
 \end{enumerate}
-Noise, $N = \sqrt{S+BA+N_{pix}\sigma_{rn}^2}$
+Noise, $N = \sqrt{S+BA+N_{pix}\sigma_{rn}^{2}}$
 (source + sky + instrument).
 
 \textcolor{om}{\emph{}}
@@ -1024,17 +1042,17 @@ amount by which the input quantity depends on other quantities.
 Possible class example involving
 S=100, B=10, A=10, and $\sigma_{rn}=10\ldots$?
 The \emph{sample variance} (by definition, see above notes) is}
-    $$ \sigma_x^2 = lim(N \rightarrow \infty)\frac{1}{N}
-       \sum(x_i - <x>)^2 $$
-    $$ = \sigma_u^2\left(\frac{\partial x}{\partial u}\right)^2
-       + \sigma_v^2\left(\frac{\partial x}{\partial v}\right)^2
-       + 2\sigma_{uv}^2\frac{\partial x}{\partial u}
+    $$ \sigma_x^{2} = lim(N \rightarrow \infty)\frac{1}{N}
+       \sum(x_i - <x>)^{2} $$
+    $$ = \sigma_u^{2}\left(\frac{\partial x}{\partial u}\right)^{2}
+       + \sigma_v^{2}\left(\frac{\partial x}{\partial v}\right)^{2}
+       + 2\sigma_{uv}^{2}\frac{\partial x}{\partial u}
          \frac{\partial x}{\partial v} + \ldots $$
 The last term is the \emph{covariance}, which relates to whether
 errors are \emph{correlated}.
 \textcolor{myBlue}{Covarience is the dgree to which the uncertainty
 in one quantity might be correlated (or not) with another quantity}.
-    $$ \sigma_{uv}^2 = lim(N \rightarrow\infty)\frac{1}{N}
+    $$ \sigma_{uv}^{2} = lim(N \rightarrow\infty)\frac{1}{N}
        \sum(u_i - <u>)(v_i - <v>)  $$
 If errors are uncorrelated, then $\sigma_{uv} = 0$ because there's
 equal chance of getting opposite signs on $v_i$ for any given $u_i$.
@@ -1049,20 +1067,20 @@ Examples for \emph{uncorrelated} errrors:
 \begin{itemize}
     \item addition/subtraction:
         $$ x = u + v $$
-        $$ \sigma_x^2 = \sigma_u^2\left(\frac{\partial x}
-        {\partial u}\right)^2
-        + \sigma_v^2\left(\frac{\partial x}{\partial v}\right)^2 $$
+        $$ \sigma_x^{2} = \sigma_u^{2}\left(\frac{\partial x}
+        {\partial u}\right)^{2}
+        + \sigma_v^{2}\left(\frac{\partial x}{\partial v}\right)^{2} $$
         Both derivatives = 1, so
-        $$ \sigma_x^2 = \sigma_u^2 + \sigma_v^2 $$
+        $$ \sigma_x^{2} = \sigma_u^{2} + \sigma_v^{2} $$
         In this case, errors are said to \emph{add in quadrature}.
     \item multiplication/division:
         $$ x = uv $$
-        $$ \sigma_x^2 = v^2\sigma_u^2 + u^2\sigma_v^2 $$
-        $$ \frac{\sigma_x^2}{v^2u^2} =
-        \frac{\sigma_u^2}{u^2} + \frac{\sigma_v^2}{v^2}$$
+        $$ \sigma_x^{2} = v^{2}\sigma_u^{2} + u^{2}\sigma_v^{2} $$
+        $$ \frac{\sigma_x^{2}}{v^{2}u^{2}} =
+        \frac{\sigma_u^{2}}{u^{2}} + \frac{\sigma_v^{2}}{v^{2}}$$
     \item logs:
         $$ x = \ln u $$
-        $$ \sigma_x^2 = \frac{\sigma_u^2}{u^2} $$
+        $$ \sigma_x^{2} = \frac{\sigma_u^{2}}{u^{2}} $$
         Note that when dealing with logarithmic quantities, errors in
         the log correspond to \emph{fractional} errors in the raw
         quantity.
@@ -1106,22 +1124,22 @@ the sample mean:
     $$ \bar{x} = \frac{\sum x_i}{N} $$
 Using error propagation, the estimate of the error in the sample mean
 is given by:
-    $$ \sigma_{\bar{x}}^2 = \sum\frac{\sigma_i^2}{N^2}
-       = \frac{\sigma^2}{N}$$
+    $$ \sigma_{\bar{x}}^{2} = \sum\frac{\sigma_i^{2}}{N^{2}}
+       = \frac{\sigma^{2}}{N}$$
 But what if errors on each observation aren't equal, say for example
 we have observations made with several different exposure times? Then
 the optimal determination of the mean is using a:
-    $$ \textrm{weighted\ mean} = \frac{\sum\frac{x_i}{\sigma_i^2}}
-       {\sum\frac{1}{\sigma_i^2}} $$
+    $$ \textrm{weighted\ mean} = \frac{\sum\frac{x_i}{\sigma_i^{2}}}
+       {\sum\frac{1}{\sigma_i^{2}}} $$
 \textcolor{myBlue}{which can be derived from maximum liklihood.
 Large weight means small error}.
 The estimated error in this value is given by:
-    $$ \sigma_{\mu}^2 = \sum\frac{\frac{\sigma_i^2}{\sigma_i^4}}
-       {(\sum\frac{1}{\sigma_i^2})^2}
-       = \frac{1}{\sum\frac{1}{\sigma_i^2}}$$
+    $$ \sigma_{\mu}^{2} = \sum\frac{\frac{\sigma_i^{2}}{\sigma_i^{4}}}
+       {(\sum\frac{1}{\sigma_i^{2}})^{2}}
+       = \frac{1}{\sum\frac{1}{\sigma_i^{2}}}$$
 where the $\sigma_i$'s are individual weights/errors
 (people often talk about the \emph{weight} of an observation, i.e.
-$\frac{1}{\sigma_i^2}$: large weight means small error.
+$\frac{1}{\sigma_i^{2}}$: large weight means small error.
 
 This is a standard result for determining sample means from a set of
 observations with different weights.
@@ -1198,16 +1216,16 @@ Consider the object with photon flux $S'$,
 background surface brightness $B'$, and detector
 with readout noise $\sigma_{rn}$. A single short exposure of
 time $t$ has a variance:
-    $$ \sigma_S^2 = S'Tt + B'ATt + N_{pix}\sigma_{rn}^2 $$
+    $$ \sigma_S^{2} = S'Tt + B'ATt + N_{pix}\sigma_{rn}^{2} $$
 If $N$ exposures are summed, the resulting variance will be
-    $$ \sigma_N^2 = N\sigma_S^2 $$
+    $$ \sigma_N^{2} = N\sigma_S^{2} $$
 If a single long exposure of length Nt is taken, we get
-    $$ \sigma_L^2 = S'TNt + B'ATNt + N_{pix}\sigma_{rn}^2 $$
+    $$ \sigma_L^{2} = S'TNt + B'ATNt + N_{pix}\sigma_{rn}^{2} $$
 The ratio of the noises, or the inverse ratio of the S/N (since the
 total signal measured is the same in both cases), is
     $$ \frac{\sigma_N}{\sigma_L} = \sqrt{\frac
-    {S'TNt + B'ATNt + NN_{pix}\sigma_{rn}^2 }
-    {S'TNt + B'ATNt + N_{pix}\sigma_{rn}^2}
+    {S'TNt + B'ATNt + NN_{pix}\sigma_{rn}^{2} }
+    {S'TNt + B'ATNt + N_{pix}\sigma_{rn}^{2}}
     }$$
 The only difference is in the readout noise term.
 In the signal- or background-limited regimes, exposures can be added
@@ -1236,7 +1254,7 @@ splitting exposures leads to reduced $S/N$.
     If you're signal-limited though, this doesn't matter.
     How do you figure out the minimum amount of time to expose?
     Need to be above the readout noise. If [rn?] = 10, then
-    $S_{min}$ = 100 (10$^2$). $\sigma_{rn}$ is not dependent on $t$.
+    $S_{min}$ = 100 (10$^{2}$). $\sigma_{rn}$ is not dependent on $t$.
     ``Readout noise limited''.
 }
 
@@ -1279,7 +1297,7 @@ errors, plot residuals vs.\ everything
     measurement of the count equation [counts]. Use the count
     equation to derive the zeropoint.
     If the error bars are smaller than the scatter of the data points
-    themselves, there's a problem. $\chi^2$ would be much [larger?]
+    themselves, there's a problem. $\chi^{2}$ would be much [larger?]
     than one.
     A possible issue is the pixel senstivity isn't uniform across a
     ccd. Stars at the bottom of the chip could be fainter than the
@@ -1297,7 +1315,6 @@ propagation!}
 %--------------Part 2--------------------------------------------------%
 \newpage
 \section{Effects of the earth's atmosphere}
-
 Four effects:
 \begin{enumerate}
     \item Emission
@@ -1309,29 +1326,31 @@ Four effects:
 \end{enumerate}
 
 \subsection{Night sky emission}
-(brightness as function of wavelength)
+Emission from the sky is given as brightness as function of wavelength.
 
 Sources
-(many of which are emission line sources, not continuum
-sources, as shown in this
-\href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/skyemiss.htm}
-{\textcolor{blue}{plot}}):
+(many of which are emission \emph{line} sources, not continuum
+sources, as shown in this \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/skyemiss.htm}
+{plot}):
 \begin{itemize}
-    \item \textbf{air glow:} thermally excited molecules (by sunlight).
+    \item \textbf{air glow:} Molecules are thermally excited by sunlight.
         Emission takes time, so this continues into the night.
-        OH lines. Lines are pretty bright.
+        Mainly OH lines, which are pretty bright and fluctuate (``dance around'').
     \item \textbf{zodiacal light:}
-        (outside of our atmosphere), caused by dust in the solar system,
-        and emits in the optical regime.
-        Brightness: $m_V \sim$ 22.2 - 23.5 [magnitudes arcsec$^{-2}$],
-        depending on ecliptic latitude
-        (and to a lesser degree on ecliptic longitude)
-        Note that this exists even in Earth orbit.
-        When brightness of observed objects drop to 21-22 mag,
-        go from signal-limited to background-limited.
+        \begin{itemize}
+            \item outside of our atmosphere
+            \item caused by dust in the solar system
+            \item emits in the optical regime.
+            \item  Brightness: $m_{V} \sim$ 22.2 - 23.5
+                [magnitudes arcsec$^{-2}$], depending on
+                ecliptic latitude (and to a lesser degree on ecliptic longitude).
+        \end{itemize}
+        Note that this exists even in Earth orbit. When brightness of observed
+        objects drop to 21-22 mag, go from signal-limited to
+        background-limited.
     \item \textbf{sunlight:} Brightness is
-        small away from twilight, depending on distance sun is below horizon. Note that there are
-        Different definitions of twilight:
+        small away from twilight, depending on distance sun is below horizon.
+        Note that there are different definitions of twilight:
         \begin{itemize}
             \item civil (6 degrees)
             \item nautical (12 degrees; ``pretty dang dark''),
@@ -1341,29 +1360,33 @@ sources, as shown in this
         from sunlight, but much useful observing can be done before this.
     \item \textbf{moonlight:} Brightness is variable; can be very bright.
         $\sim$ 10 times brighter at full moon (compared to what?).
+        \begin{center}
+            \begin{tabular}{c c c c c c}
+                lunar age [days] & U & B & V & R & I\\
+                0 & 22.0 & 22.7 & 21.8 & 20.9 & 19.9\\
+                3 & 21.5 & 22.4 & 21.7 & 20.8 & 19.9\\
+                7 & 19.9 & 21.6 & 21.4 & 20.6 & 19.7\\
+                10 & 18.5 & 20.7 & 20.7 & 20.3 & 19.5\\
+                14 & 17.0 & 19.5 & 20.0 & 19.9 & 19.2\\
+            \end{tabular}
+        \end{center}
     \item \textbf{aurorae:} line emission
     \item \textbf{light pollution:} Strong (bright) in distinct lines
-    \item \textbf{unresolved stars and galaxies:}
-        (outside of our solar system)
+    \item \textbf{unresolved stars and galaxies}
     \item \textbf{thermal emission:} IR emission from sky,
         telescope, and dome.
         T$_{atm} \rightarrow$ blackbody emission.
 \end{itemize}
 
-\textbf{Optical:}
-
-For broadband work, for example in the V band, $m_{sky}\sim$ 22
-mag/arcsec at good site,
-so $S/N$ becomes background limited around m=22 for good image quality,
-and m=20 for poorer image quality.
-Consequently, image quality matters for faint objects.
-Moonlight is very significant, hence faint optical imaging requires
-dark time.
-\textcolor{myBlue}
-{Readout noise of zodiacal light (m$_{\textrm{sky}}$) really important.
-Be careful when splitting exposures;
-can become readoutnoise limited.
-Consider the minimum exposure time needed (context?)}
+\paragraph{Optical}
+\emph{broadband work} for example in the V band, $m_{sky}\sim$ 22 mag/arcsec at
+good site, so $S/N$ becomes background limited around m=22 for good image
+quality, and m=20 for poorer image quality. Consequently, image quality matters
+for faint objects. Moonlight is very significant, hence faint optical imaging
+requires dark time.
+\mynotes {Readout noise of zodiacal light (m$_{\textrm{sky}}$) really
+important. Be careful when splitting exposures; can become readout-noise
+limited. Consider the minimum exposure time needed (context?)}
 
 \emph{Optical spectroscopy:} sky emission is generally not much of a problem
 (except around lines) so long as moon is down (or work on bright objects);
@@ -1371,35 +1394,27 @@ low dispersion observations can be background-limited for long exposures,
 but at higher dispersion or shorter exposures,
 spectroscopy is often readout-noise limited.
 
-\textbf{IR:}
-
+\paragraph{IR}
 Most ($\sim$ 90\%) of the emission in the near-IR is from
 vibrational and rotational transition emission lines of the OH molecule,
 the so-called ``OH forest.''
 For broadband work:
 \begin{itemize}
-    \item H band: $m\sim$ 13.5 mag arcsec$^{-1}$
-    \item K band: $m\sim$ 12.5 mag arcsec$^{-1}$.
+    \item H band: $m\sim$ 13.5 mag arcsec$^{-2}$
+    \item K band: $m\sim$ 12.5 mag arcsec$^{-2}$.
 \end{itemize}
 ($\sim$ surface brightness);
-So for all except bright objects, we're background limited.
-This leads to some
-fundamental differences in data acquisition and analysis between the
-near-IR and the optical. For infrared spectra, it's harder to estimate
-$S/N$: depends on where your feature is located. Moonlight is not very
-significant, hence much IR work is done in bright time.
+So for all except bright objects, we're background limited. This leads to some
+fundamental differences in data acquisition and analysis between the near-IR
+and the optical. For infrared spectra, it's harder to estimate $S/N$: depends
+on where your feature is located. Moonlight is not very significant, hence much
+IR work is done in bright time.
 
-\textcolor{date}{Wednesday, February 17}
-
-\textcolor{myBlue}{\textbf{Unsorted notes}: IR surface brightness
-    $\sim$ 12.13 mag (1000$\times$ brighter than optical).
-    Optical surface brightness $\sim$ 21-22 mag.
-    Surface brightness varies and fluctuates, esp OH lines.
-    Local conditions in atmosphere scales on the order of degrees.
-    Movie: OH lines ``dancing around''.
-    6000\AA{} $\rightarrow$ 9000\AA{} brighter. Floor set by zodiacal
-    light with added stuff by moonlight.
-}
+\mydate{Wednesday, February 17}
+\mynotes{Emission measured as a ``surface brightness''.
+Local conditions in atmosphere scales on the order of degrees.
+6000\AA{} $\rightarrow$ 9000\AA{} brighter. Floor set by zodiacal
+light with added stuff by moonlight.}
 
 Farther in the IR (5 $\mu$ +), thermal emission from the sky dominates
 and is extremely bright. In fact, when working at wavelengths with thermal
@@ -1413,14 +1428,36 @@ observations, and if your observations don't distinguish object from
 sky, you'd better measure sky close by in location and in time:
 especially critical in the IR\@. See some
 %\href{}
-{\textcolor{blue}{IR movies}} (really important!);
+{IR movies} (really important!);
 %\href{}
-{\textcolor{blue}{spectral movie from ESO/Paranal}} see
+{spectral movie from ESO/Paranal} see
 \href{https://www.astro.uni-bonn.de/theli/gui/aboutbackground.html}
-{\textcolor{blue}{here}}.
+{here}.
 
-%----------------------------------------------------------------------%
-\subsection{Transmission of atmosphere}
+\subsection{Transmission of atmosphere (absorption/scattering)}
+
+
+Earth's atmosphere doesn't transmit 100\% of light. Various things
+contribute to the absorption of light:
+\begin{itemize}
+    \item scattering, e.g., Rayleigh scattering off molecules.
+        \mynotes{(scattered light has same wavelength as incident light)}
+    \item aerosols: scattering off larger particles (e.g.\ natural
+    aerosols like fog, forest exudates, and geyser steam, and
+    artificial aerosols like haze, dust, particulate air pollutants
+    and smoke). Particle size $\sim$ 1 $\mu m$.
+    \item variety of molecules:
+    \begin{itemize}
+        \item ozone
+        \item $H_2O$
+        \item $O_2$
+        \item $CO_2$
+        \item $N_2O$
+        \item $CH_4$
+    \end{itemize}
+    All of these have a $\lambda$ dependency.
+\end{itemize}
+All are functions of wavelength, time (to some extent), and position in sky.
 
 \textcolor{myBlue}{\textbf{More unorganized notes:}
     Extinction: mostly from scattering and aerosols. SHOULD REVIEW
@@ -1445,101 +1482,67 @@ especially critical in the IR\@. See some
         {\textrm{amt\ of\ air\ through\ zenith}}$$
     So looking at zenith, no matter where you are, airmass = 1.
 }
-
-Earth's atmosphere doesn't transmit 100\% of light. Various things
-contribute to the absorption of light:
-\begin{itemize}
-    \item scattering, e.g., Rayleigh scattering off molecules.
-    \item aerosols: scattering off larger particles (e.g.\ natural
-    aerosols like fog, forest exudates, and geyser steam, and
-    artificial aerosols like haze, dust, particulate air pollutants
-    and smoke). Particle size $\sim$ 1 $\mu m$.
-    \item variety of molecules:
-    \begin{itemize}
-        \item ozone
-        \item $H_2O$
-        \item $O_2$
-        \item $CO_2$
-        \item $N_2O$
-        \item $CH_4$
-    \end{itemize}
-    All of these have a $\lambda$ dependency.
-\end{itemize}
-All are functions of wavelength, time to some extent, and position in
-sky.
-
 \subsubsection{Sources of extinction}
-In the optical part of the spectrum, extinction is a roughly smooth
-function of wavelength and arises from a combination of ozone,
-Rayleigh scattering, and aerosols, as shown in
-\href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/extinct.htm}
-{\textcolor{blue}{this plot}}.
+In the optical part of the spectrum, extinction is a roughly smooth function of
+wavelength and arises from a combination of ozone, Rayleigh scattering, and
+aerosols, as shown in \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/extinct.htm}
+{this plot}.
 The optical extinction can vary from night to night
-or season to season, as shown in
-\href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/tauvar.htm}
-{\textcolor{blue}{this plot}}.
-Of course, this is showing the variation over a set of
-photometric nights; if there are clouds, then the level of variation
-is much higher. Because of this variation, you must determine the
-amount of extinction on each night separately if you want accuracy
-better than a few percent (even for photometric nights). Generally,
-the \emph{shape} of the extinction curve as a function of wavelength probably
-varies less than the amplitude at any given wavelength. Because of
-this, one commonly uses \emph{mean extinction coefficients} when doing
-spectroscopy where one often only cares about \emph{relative} fluxes. To
-first order, the extinction from clouds is ``gray'', i.e.\ not a
-function of wavelength, so relative fluxes can be obtained even with
-some clouds present.
+or season to season, as shown in \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/tauvar.htm}
+{this plot}.
+Of course, this is showing the variation over a set of photometric nights; if
+there are clouds, then the level of variation is much higher. Because of this
+variation, you must determine the amount of extinction on each night separately
+if you want accuracy better than a few percent (even for photometric nights).
+Generally, the \emph{shape} of the extinction curve as a function of wavelength
+probably varies less than the amplitude at any given wavelength. Because of
+this, it is common to use \textit{mean extinction coefficients} when doing
+spectroscopy when often only the \emph{relative} fluxes are important. To first
+order, the extinction from clouds is ``gray'', i.e.\ not a function of
+wavelength, so relative fluxes can be obtained even with some clouds present.
 
 There is significant molecular absorption in the far-red part of the
-optical spectrum, in particular, note the A (7600) and B (6800)
-atmospheric bands from O$_2$.
-(Historical note: The `A' and `B' nomenclature comes from the
-Fraunhofer lines, which were labeled alphabetically with increasing
-(decreasing?) frequency when first
-discovered in the sun's spectrum in the 1800s. Originally they were
-not recognized as absorption lines. C is H$\alpha$, D is the sodium D
-line, CaII H and K lines, etc.
+optical spectrum, in particular, note the A (7600) and B (6800) atmospheric
+bands from O$_{2}$.
 
-In the infrared, the extinction does not vary so smoothly with
-wavelength because of the effect of molecular absorption. In fact,
-significant absorption bands define the so-called infrared windows
-(yJHKLM), as shown in the near IR in
-\href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/mandbell.htm}
-{\textcolor{blue}{this plot}}.
-At longer wavelengths,
-the broad absoprtion band behavior continues, as shown in
-\href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/allen1.htm}
-{\textcolor{blue}{this plot}}.
-In this figure, \emph{transmission} = $f(b_{\lambda}l$) where $l$
+\mynotes{Historical note: The `A' and `B' nomenclature comes from
+the Fraunhofer lines, which were labeled alphabetically with increasing
+(decreasing?) frequency when first discovered in the sun's spectrum in the
+1800s. Originally they were not recognized as absorption lines. C is H$\alpha$,
+D is the sodium D line, CaII H and K lines, etc.}
+
+In the infrared, the extinction does not vary so smoothly with wavelength
+because of the effect of molecular absorption. In fact, significant absorption
+bands define the so-called infrared windows
+(yJHKLM), as shown in the near IR in \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/mandbell.htm}
+{this plot}. At longer wavelengths, the broad absoprtion band behavior
+continues, as shown in \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/allen1.htm}
+{this plot}. In this figure, \emph{transmission} = $f(b_{\lambda}l$) where $l$
 is path length (units of airmass):
 
-\begin{table}[h]
-\centering
-\begin{tabular}{c l}
-$b_{\lambda}l$ & $f$\\
-\hline\hline
--3  & 1\\
--2  & 0.97\\
--1  & 0.83\\
-0   & 0.5\\
-1   & 0.111\\
-2   & 0.000\\
-\hline
-\end{tabular}
-\end{table}
+\begin{center}
+    \begin{tabular}{c l}
+        $b_{\lambda}l$ & $f$\\
+        \hline\hline
+        -3  & 1\\
+        -2  & 0.97\\
+        -1  & 0.83\\
+        0   & 0.5\\
+        1   & 0.111\\
+        2   & 0.000\\
+        \hline
+    \end{tabular}
+\end{center}
 
-The L band is at 3.5 $\mu$, M band at 5 $\mu$.
+The L band is at 3.5 $\mu$m, M band at 5 $\mu$m.
 
-Note that even within the IR ``windows'', there can still be
-significant telluric (terrestrial) absorption features,
-e.g.\ from CO$_2$, H$_2$O, and CH$_4$.
-When doing IR spectroscopy, one needs to be aware of these and
-possibly attempt to correct for them, taking care not to confuse them
-with real stellar features.
+Note that even within the IR ``windows'', there can still be significant
+telluric (terrestrial) absorption features, e.g.\ from CO$_{2}$, H$_{2}$O, and
+CH$_{4}$. When doing IR spectroscopy, one needs to be aware of these and
+possibly attempt to correct for them, taking care not to confuse them with real
+stellar features.
 
 \subsubsection{Airmass and zenith distance dependence}
-
 Clearly, if the light has to pass through a larger path in the Earth's
 atmosphere, more light will be scattered/absorbed; hence one expects
 the least amount of absorption directly overhead (zenith), increasing
@@ -1548,172 +1551,199 @@ as one looks down towards the horizon.
 Definition of airmass: path length that light takes through atmosphere
 relative to length at zenith: X $\equiv$ 1 vertically (at $z$ = 0).
 Given the zenith distance, $z$, which can be computed from:
-    $$ \sec z = \left(\sin\phi\sin\delta +
-                 \cos\phi\cos\delta\cos h\right)^{-1} $$
+\[
+    \sec z = \left(\sin\phi\sin\delta +
+    \cos\phi\cos\delta\cos h\right)^{-1}
+    \]
 where $\phi$ is the latitude of the observatory location,
 $\delta$ is the declination, and $h$ is
 the hour angle ($h$ = local sidereal time - $\alpha$, where $\alpha$ is
 the right ascenstion), we have
-    $$ X \sim \sec z $$
-which is exactly true in the case of a plane parallel atmosphere. Since
-the earth's atmosphere is not a plane, the plane parallel
-approximation breaks down for larger airmasses. For $X>2$, a more
-precise formula is needed, the following gives a higher order
-approximation:
-    $$ X = \sec z - 0.0018167(\sec z-1)
-                  - 0.002875(\sec z-1)^2
-                  - 0.0008083(\sec z-1)^3 $$
+\[
+    X \sim \sec z
+    \]
+which is exactly true in the case of a plane parallel atmosphere. But since the
+earth's atmosphere is not a plane, the plane parallel approximation breaks down
+for larger airmasses. For $X>2$, a more precise formula is needed; the
+following gives a higher order approximation:
+\[
+    X = \sec z - 0.0018167(\sec z-1)
+    - 0.002875(\sec z-1)^{2} - 0.0008083(\sec z-1)^{3}
+    \]
 
-\subsubsection{How much light is lost going through the atmosphere?}
+\paragraph{How much light is lost going through the atmosphere?}
 Consider a thin sheet of atmosphere, with incident flux $F$, and
-outgoing flux $F + \textrm{d}F$.
-Let the thin sheet have opacity $\kappa = N\sigma$,
-where $N$ is the number density of absorbers/scatterers, and
+outgoing flux $F + \mathrm{d}F$.
+Let the thin sheet have opacity $\kappa = n\sigma$,
+where $n$ is the number density of absorbers/scatterers, and
 $\sigma$ is the cross-section/absorber-scatterer.
-    $$ \textrm{d}F = -\kappa F \textrm{d}x $$
-    $$ F = F_{\textrm{top}}e^{-\int\kappa\textrm{d}x}
-         \equiv F_{\textrm{top}}e^{-\tau} $$
+\[
+    \mathrm{d}F = -\kappa F \mathrm{d}x
+     \]
+\[
+    F = F_{\mathrm{top}} \exp \left[ -\int\kappa\mathrm{d}x \right]
+     \equiv F_{\mathrm{top}} \exp \left[ -\tau \right]
+     \]
 where $\tau$ is the \emph{optical depth} of the atmosphere, which
 parameterizes how much light is lost.
-\textcolor{myBlue}{Density and cross-section determine the fraction
-    of light that is lost (opacity). For example, 2$\kappa \rightarrow
-    e^{-\tau}$ more absorption (not twice as much).
-    Light lost $\sim e^{-\tau}$.
-    Total $\tau$ is increased by the airmass.
-}
+
+Density and cross-section determine the fraction
+of light that is lost. For example, twice the opacity leads to
+a factor of $e^{-\tau}$ more absorption (not a factor of 2).
+\[
+    e^{-2\tau} = \left[ e^{-\tau} \right]^{2} = e^{-\tau} e^{-\tau}
+    \]
+Total $\tau$ is increased by the airmass.
 
 If the optical depth through the atmosphere is just proportional to
 the physical path length (true if same atmospheric structure is
 sampled in different directions), then
-    $$ \tau(X) \sim \tau_0X $$
-where $\tau_0$ is the optical depth at the zenith.
-    $$ F = F_{\textrm{top}}e^{-\tau_0X} $$
+\[
+    \tau(X) \sim \tau_{0}X
+    \]
+where $\tau_{0}$ is the optical depth at the zenith.
+\[
+     F = F_{\textrm{top}}e^{-\tau_{0}X}
+    \]
 Expressing things in magnitudes, we have:
-    $$ m = m_0 + 1.086\tau_0X $$
-Define the \emph{extinction coefficient} $k_{\lambda}$ [magnitudes of
+\[
+     m = m_{0} + 1.086\tau_{0}X
+    \]
+Define the \textit{extinction coefficient} $k_{\lambda}$ [magnitudes of
 absorption per airmass, I think]:
-    $$ m_0 = m + k_{\lambda}X $$
-    $$ k_{\lambda} \equiv -1.086\tau_0 $$
-(m$_0$ - top of atmosphere)
-so the amount of light lost in magnitudes can be specified by a set of
-extinction coefficients. Note by this definition, the extinction
-coefficient will be negative; others may use the opposite sign
-convention (e.g.\ defining $m_0 = m - k_{\lambda}X$). Of
-course, use of the scaling of $\tau$ or $k$ with airmass assumes
-\emph{photometric weather}.
+\[
+     m_{0} = m + k_{\lambda}X
+    \]
+\[
+     k_{\lambda} \equiv -1.086\tau_{0}
+    \]
+($m_{0}$ - top of atmosphere, $m$ - measured).
+so the amount of light lost in magnitudes can be specified by a \emph{set} of
+extinction coefficients. Note by this definition, the extinction coefficient
+will be negative; others may use the opposite sign convention (e.g.\ defining
+$m_{0} = m - k_{\lambda}X$). Of course, use of the scaling of $\tau$ or $k$
+with airmass assumes \emph{photometric weather}.
 
-We will talk later about some details of determining extinction
-coefficient, but the basic idea is that you can determine the
-extinction by monitoring the brightness of a star (or a set of stars
-of known brightness) at a range of different airmasses. This needs to
-be done as a function of wavelength, i.e., for each filter you observe
-in.
+The basic idea is that extinction can be determined by monitoring the
+brightness of a star (or a set of stars of known brightness) at a range of
+different airmasses. This needs to be done as a function of wavelength, i.e.,
+for each filter you observe in.
 
-\textcolor{myBlue}{Instrumental mag - what you measure, given
-    equipment, sky conditions, etc. (as opposed to official, recorded
-    magnitude, I think). $k_{\lambda}$ has to be measured in each
-    bandpass as it's $\lambda$-dependent.
-}
-
-\textcolor{myBlue}{Random thoughts: what's the difference between
-    error, standard deviation, uncertainty, etc.?
-    Stddev is a way to ``describe the uncertainty''. Errors are
-    something we ``can control'', like instrumental stuff.
-}
-
-%----------------------------------------------------------------------%
+\mydate{Monday, February 22}
 \subsection{Atmospheric Refraction}
-\textcolor{date}{Monday, February 22}
 
-\textcolor{myBlue}{Amount of refraction depends on where you're looking
-zenith: = 0}.
+\mynotes{Amount of refraction depends on where you're looking: zenith = 0}.
 
 The direction of light as it passes through the atmosphere is also
 changed because of refraction since the index of refraction changes
 through the atmosphere. The amount of change is characterized by
 Snell's law:
-    $$ \mu_1\sin\theta_1 = \mu_2\sin\theta_2 $$
-Let $z_0$ be the true zenith distance (relative to how much
+\[
+     \mu_{1}\sin\theta_{1} = \mu_{2}\sin\theta_{2}
+     \]
+Let $z_{0}$ be the true zenith distance (relative to how much
 star moves), $z$ be the observed zenith
-distance, $z_n$ by the observed zenith distance at layer $n$ in the
+distance, $z_{n}$ by the observed zenith distance at layer $n$ in the
 atmosphere, $\mu$ be the index of refraction at the surface, and
-$\mu_n$ be the index of refraction at layer $n$. At the top of the
+$\mu_{n}$ be the index of refraction at layer $n$. At the top of the
 atmosphere:
-    $$ \frac{\sin z_0}{\sin z_N} = \frac{\mu_N}{1} $$
+\[
+     \frac{\sin z_{0}}{\sin z_{N}} = \frac{\mu_{N}}{1}
+     \]
 At each infinitessimal layer:
-    $$ \frac{\sin z_n}{\sin z_{n-1}} = \frac{\mu_{n-1}}{\mu_n}  $$
+\[
+     \frac{\sin z_{n}}{\sin z_{n-1}} = \frac{\mu_{n-1}}{\mu_{n}}
+     \]
 and so on for each layer down to the lowest layer:
-    $$ \frac{\sin z_1}{\sin z} = \frac{\mu}{\mu_1}  $$
+\[
+     \frac{\sin z_{1}}{\sin z} = \frac{\mu}{\mu_{1}}
+     \]
 Multiply these to get:
-    $$ \sin z_0 = \mu\sin z  $$
+\[
+     \sin z_{0} = \mu\sin z
+     \]
 from which we can see that the refraction depends
 \emph{only on the index of refraction near the earth's surface}.
 
 We define astronomical refraction, $r$, to be the angular amount that
 the object is displaced by the refraction of the Earth's atmosphere:
-    $$ \sin(z+r) = \mu\sin z $$
+\[
+    \sin(z+r) = \mu\sin{z}
+    \]
 In cases where $r$ is small (pretty much always):
-    $$ \sin z + r\cos z = \mu\sin z $$
-    $$ r = (\mu-1) \tan z $$
-    $$ \approx R\tan z $$
-where we have defined $R$, known as the ``constant of refraction''.
+\[
+    \sin{z} + r\cos{z} = \mu\sin{z}
+    \]
+\[
+    r = (\mu-1) \tan{z} \equiv R\tan{z}
+    \]
+$R \equiv$ ``constant of refraction''.
 
 A typical value of the index of refraction is $\mu \sim 1.00029$, which
 gives $R = 60$ arcsec (red light).
 
-The direction of refraction is that a star apparently moves
-\emph{towards}
-the zenith. Consequently in most cases, star moves in both RA and DEC:
-    $$ r_{\alpha} = r\sin q $$
-    $$ r_{\delta} = r\cos q $$
-where $q$ is the \emph{parallactic} angle, the angle between $N$ and
+Refraction has the effect of making a star appear to move \emph{toward} the
+zenith. Consequently in most cases, star moves in both RA and DEC:
+\[
+    r_{\alpha} = r\sin{q}
+    \]
+\[
+    r_{\delta} = r\cos{q}
+    \]
+where $q$ is the \textit{parallactic} angle, the angle between $N$ and
 the zenith:
-    $$ \sin q = \cos\phi\frac{\sin h}{\sin z} $$
+\[
+    \sin{q} = \cos\phi\frac{\sin{h}}{\sin{z}}
+    \]
 Note that the expression for $r$ is only accurate for small zenith
 distances ($z < \sim 45$). At larger $z$, can't use plane parallel
 approximation. Observers have empirically found:
-    $$ r = A\tan z + B\tan^3z $$
-    $$ A = (\mu - 1) + B $$
-    $$ B \sim -0.07'' $$
+\[
+    r = A\tan{z} + B\tan^{3}z
+    \]
+\[
+    A = (\mu - 1) + B
+    \]
+\[
+    B \sim -0.07''
+    \]
 but these vary with time, so for precise measurements, you would have
 to determine $A$ and $B$ on your specific night of observations.
 
-Why is it important to understand refraction? Clearly, it's relevant
-for pointing a telescope, but this is generally always automatically
-handled in the telescope pointing software. If you're just taking
-images, then the stars are just a tiny bit moved relative to each
-other, but who really cares? One key issue today is the use of
-multiobject spectrographs, where slits or fibers need to be placed on
-objects to accuracies of a fraction of an arcsec. For small fields,
-refraction isn't too much of an issue, but for large fields, it can be
-$\ldots$ note SDSS plates.
+\paragraph{Importance of understanding refraction}
+Refraction is relevant for pointing a telescope, but this is generally always
+automatically handled in the telescope pointing software. If you're just taking
+images, then the stars are moved by only a tiny amount relative to each other.
+One key issue today is the use of multiobject spectrographs, where slits or
+fibers need to be placed on objects to accuracies of a fraction of an arcsec.
+For small fields, refraction isn't too much of an issue, but for large fields,
+it can be $\ldots$ note SDSS plates.
 
 The other \emph{extremely} important effect of refraction arises because the
-index of refraction varies with wavelength, so the astronomical
-refraction also depends on wavelength:
-\begin{table}[h]
-    \centering
+index of refraction is wavelength dependent, therefore the astronomical
+refraction is also wavelength dependent:
+\begin{center}
     \begin{tabular}{c c}
-    \hline\hline
-    $\lambda$ & R\\
-    \hline
-    3000 & 63.4\\
-    4000 & 61.4\\
-    5000 & 60.6\\
-    6000 & 60.2\\
-    7000 & 59.9\\
-    10000 & 59.6\\
-    40000 & 59.3\\
-    \hline
+        \hline\hline
+        $\lambda$ & R\\
+        \hline
+        3000 & 63.4\\
+        4000 & 61.4\\
+        5000 & 60.6\\
+        6000 & 60.2\\
+        7000 & 59.9\\
+        10000 & 59.6\\
+        40000 & 59.3\\
+        \hline
     \end{tabular}
-\end{table}
-This gives rise to the phenomenon of \emph{atmospheric dispersion}, or
-\emph{differential refraction}. Because of the variation of index of
-refraction with wavelenth, every object actually appears as a little
-spectrum with the blue end towards the zenith. The spread in object
-position is proportional to tan $z$.
+\end{center}
+This gives rise to the phenomenon of \textit{atmospheric dispersion}, or
+\textit{differential refraction}. Because of the variation of index of
+refraction with wavelength, every object actually appears as a little spectrum
+with the blue end towards the zenith. The spread in object position is
+proportional to $\tan{z}$.
 
-\textcolor{myBlue}{Measuring rotation curve of galaxy. Not at parallactic
+\mynotes{Measuring rotation curve of galaxy. Not at parallactic
 angle? Not getting all the light, just at wavelength used to
 position the slit (?)
 Instrument: atmospheric dispersion corrector.
@@ -1721,103 +1751,94 @@ No rainbow straight up above gets bigger as you move down.
 \underline{Two} prisms that move relative to each other
 (APO doesn't have this.)}
 
-\textcolor{myBlue}{1. emission, 2. transmission, 3. refraction,
+\mynotes{1. emission, 2. transmission, 3. refraction,
 4. seeing:theory and practice. Adaptive optics - deformable mirrors
 that move really fast}.
 
-This effect is critical to understand for spectroscopy when using a
-slit or a fiber, since the location of an object in the sky depends on
-the wavelength. If you point to the location at one wavelength, you
-can miss another wavelength
-\textcolor{myBlue}{(depending on how big your fiber is)}
-and the relative amount of flux you
-collect will be a function of wavelength, something you may want to
-take into account if you're interested in the relative flux (continuum
-shape) over a broad wavelength range. Note the consequent importance
-of the relation between the orientation slit orientation and the
-parallactic angle: a slit aligned with the parallactic angle will not
-lose light as a function of wavelength, but otherwise it will.
-However, for a slit at the parallactic angle, be careful about
-matching up flux at different wavelengths for extended objects.
-%----------------------------------------------------------------------%
+This effect is critical to understand for spectroscopy when using a slit or a
+fiber, since the location of an object in the sky depends on the wavelength. If
+you point to the location at one wavelength, you can miss another wavelength
+\mynotes{(depending on how big your fiber is)} and the relative amount of flux
+you collect will be a function of wavelength, something you may want to take
+into account if you're interested in the relative flux (continuum shape) over a
+broad wavelength range. Note the consequent importance of the relation between
+the orientation slit orientation and the parallactic angle: a slit aligned with
+the parallactic angle will not lose light as a function of wavelength, but
+otherwise it will. However, for a slit at the parallactic angle, be careful
+about matching up flux at different wavelengths for extended objects.
+
+\test{Understand the concept of atmospheric refraction and know its dependence
+on airmass and approximate amplitude. Understand differential refraction and
+its effect on slit/fiber spectroscopy and how it can be mitigated in slit
+spectroscopy by aligning the slit with the parallactic angle.}
+
 \subsection{Seeing: theory and practice}
-References: Coulson, ARAA 23,19; Beckers, ARAA 31, 13; Schroeder
-16.II.
+References: Coulson, ARAA 23,19; Beckers, ARAA 31, 13; Schroeder 16.II.
 
 Generally, a perfect astronomical optical system will make a perfect
-(diffraction-limited) image for an incoming plane wavefront of light.
-The plane will focus to a nice point.
-The Earth's atmosphere is turbulent and variations in the index of
-refraction cause the plane wavefront from distant objects to be
-\href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/seeing.htm}
-{\textcolor{blue}{distorted}}.
-These cause several astronomical effects:
-\begin{itemize}
-    \item scintillation, which is amplitude variations, which
-        typically vary over scales of cm: generally very small for larger
-        apertures. \textcolor{myBlue}{``twinkling'', small aperture
-        (e.g.\ eye) prevents from getting below a fraction of a \% in
-        brightness$\ldots$ something. Planets don't twinkle because they're
-        bigger}
-    \item seeing: positional changes and image quality
-        changes. The effect of seeing depends on aperture size: for small
-        apertures, one sees a diffraction pattern moving around, while for
-        large apertures, one sees a set of diffraction patterns (speckles)
-        \href{https://en.wikipedia.org/wiki/Speckle_imaging#/media/File:Eps_aql_movie_not_2000.gif}
-        {\textcolor{blue}{moving around}}
-        on scale of $\sim$ 1 arcsec. These observations
-        imply:
+(diffraction-limited) image for an incoming plane wavefront of light. The
+Earth's atmosphere is turbulent and variations in the index of refraction
+cause the plane wavefront from distant objects to be \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/seeing.htm}
+{distorted}. These cause several astronomical effects:
+\begin{description}
+    \item [scintillation:] amplitude variations, which typically vary over
+        scales of cm. Generally very small for larger apertures.
+        \mynotes{``twinkling'', small aperture (e.g.\ eye) prevents from
+        getting below a fraction of a \% in brightness$\ldots$ something.
+        Planets don't twinkle because they're bigger}
+    \item [seeing:] changes in position and image quality. The effect of seeing
+        depends on aperture size: for small apertures, one sees a diffraction
+        pattern moving around, while for large apertures, one sees a set of
+        diffraction patterns (speckles) \href{https://en.wikipedia.org/wiki/Speckle_imaging#/media/File:Eps_aql_movie_not_2000.gif}
+        {moving around} on scale of $\sim$ 1 arcsec. These observations imply:
         \begin{itemize}
             \item local wavefront curvatures flat on scales of small apertures
             \item instantaneous slopes vary by $\sim$ an arcsec
         \end{itemize}
-\end{itemize}
-The time variation scales are
-\textcolor{myGreen}{several milliseconds} and up.
+\end{description}
+The time variation scales are \emph{several milliseconds} and up.
 
-\textcolor{myBlue}{star actually moves around: A/B, where A is the aperture
-size and B is the size of wiggles in the wavefront. Comparing 8'' telescope
-to 4-m telescope (See handwritten diagrams).
-Both telescopes produced the same end resutl, but how it got there is different
-for each one. Difference? Aperture size compared to length of [curve] $\sim$
-6-8 inches (size scale of wavefront pieces) approx.\ same as waveplane front.}
+\mynotes{star actually moves around: A/B, where A is the aperture size and B is
+the size of wiggles in the wavefront. Comparing 8'' telescope to 4-m telescope
+(See handwritten diagrams). Both telescopes produced the same end result, but
+how it got there is different for each one. Difference? Aperture size compared
+to length of [curve] $\sim$ 6-8 inches (size scale of wavefront pieces)
+approx.\ same as waveplane front.}
 
+\mydate{Wednesday, February 24}
 
+\mynotes{Cells in the atmosphere each have a different index of refraction. All
+we have are statistical descriptions of turbulence. Difference of squares:
+average over all points. E.g.\ at 1 cm rms [something] = x, at 0.5 cm rms = y,
+etc.}
 
-\textcolor{date}{Wednesday, February 24}
-
-\textcolor{myBlue}{Cells in the atmosphere each have a different
-index of refraction. All we have are statistical descriptions of
-turbulence. Difference of squares: average over all points.
-E.g.\ at 1 cm rms [something] = x, at 0.5 cm rms = y, etc.}
-
-The effect of seeing can be derived from theories of atmospheric
-turbulence, worked out originally by Kolmogorov, Tatarski, Fried.
-Here are some pertinent results, without derivation:
+The effect of seeing can be derived from theories of atmospheric turbulence,
+worked out originally by Kolmogorov, Tatarski, Fried. Here are some pertinent
+results, without derivation:
 
 A turbulent field can be described statistically by a \emph{structure
 function}:
-    $$ D_N(x) = = <|N(r+x)-N(r)|^2>  $$
+\[
+    D_{N}(x) = = \langle | N(r+x) - N(r) | ^{2} \rangle
+    \]
 where $x$ is the separation of points, $N$ is any variable (e.g.\
 temperature, index of refraction, etc.), and $r$ is position.
 This describes how the ``quantity'' changes as a function of separation
 between the two points.
-\textcolor{myBlue}{Quantity of$\ldots$ turbulence?
+\mynotes{Quantity of$\ldots$ turbulence?
 Translate N to phase change of wave (determine image quality).}
 
 The structure function of a velocity field can be described as the
 difference between the values of the flow velocity between two points
-with coordinates $r$ and $r+x$. See
-\href{http://jetp.ac.ru/cgi-bin/dn/e_082_03_0580.pdf}
-{\textcolor{blue}{this paper}}.
+with coordinates $r$ and $r+x$. See \href{http://jetp.ac.ru/cgi-bin/dn/e_082_03_0580.pdf}
+{this paper}.
 
 Komogorov turbulence gives:
 \[
-    D_{n}(x) = C_{n}^2x^{2/3}
+    D_{n}(x) = C_{n}^{2}x^{2/3}
     \]
-where $C_{n}$ is the refractive index structure constant.
-From this, one can derive the phase structure function at the
-telescope aperture:
+where $C_{n}$ is the refractive index structure constant. From this, one can
+derive the phase structure function at the telescope aperture:
 \[
     D_{\phi}(x) = 6.88\left(\frac{x}{r_{0}}\right)^{5/3}
     \]
@@ -1839,48 +1860,47 @@ seeing:
     d \sim \lambda/r_{0}
     \]
 as compared with the image size from diffraction-limited images:
-    $$ d \sim \lambda/D $$
+\[
+    d \sim \lambda/D
+    \]
 Seeing dominates when $r_{0} < D$; a larger $r_{0}$ means better seeing.
 
-Seeing is more important than diffraction at shorter wavelengths (and
-for larger apertures); diffraction is more important at longer
-wavelengths (and for smaller apertures); the effects of diffraction
-and seeing cross over in the IR for most astronomical-sized telescopes
-($\sim$5 microns for 4m); the crossover falls at a shorter wavelength
-for smaller telescope or better seeing.
+Seeing is more important than diffraction at shorter wavelengths (and for
+larger apertures); diffraction is more important at longer wavelengths (and for
+smaller apertures); the effects of diffraction and seeing cross over in the IR
+for most astronomical-sized telescopes ($\sim$5 microns for 4m); the crossover
+falls at a shorter wavelength for smaller telescope or better seeing.
 
-\textcolor{myBlue}{Image size from seeing is almost the same,
-regardless of $\lambda$ (\emph{little} better toward the IR, but not
-much). Diffraction swamps seeing at \emph{really} long wavelengths.
-Bigger telescopes are seeing-limited. $r_{0}$ has $\lambda$ in it, hence
-the lack of $\lambda$ dependence. Crossover in the micron regime.
-}
+\mynotes{Image size from seeing is almost the same, regardless of $\lambda$
+(\emph{little} better toward the IR, but not much). Diffraction swamps seeing
+at \emph{really} long wavelengths. Bigger telescopes are seeing-limited.
+$r_{0}$ has $\lambda$ in it, hence the lack of $\lambda$ dependence. Crossover
+in the micron regime.}
 
-The meat of $r_{0}$ is in $\int\left(C_n^2\textrm{d}h\right)$;
+The meat of $r_{0}$ is in $\int\left(C_{n}^{2}\textrm{d}h\right)$;
 as you might expect, this varies from site to site and also in time.
 At most sites, there seems to be three regimes of ``surface layer''
 (wind-surface interactions and manmade seeing),
 ``planetary boundary layer'' (influenced by diurnal heating), and
 ``free atmosphere'' (10 km is tropopause: high wind shears),
-as seen in
-\href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/beckers2.htm}
-{\textcolor{blue}{this plot}}.
-A typical astronomical site has $r_{0} \sim$ 10 cm at 5000\AA{}.
+as seen in \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/beckers2.htm}
+{this plot}. A typical astronomical site has $r_{0} \sim$ 10 cm at 5000\AA{}.
 
-We also want to consider the coherence of the same turbulence pattern
-over the sky: this coherence angle is called the
-\emph{isoplanatic angle},
-and the region over which the turbulence pattern is the same is called
-the \emph{isoplanatic patch}. This is relevant to adaptive optics, where we
-will try to correct for the differences across the telescope aperture;
-if we do a single correction, how large a field of view will be
-corrected?
-    $$ \theta \sim 0.314r_{0}/H $$
+We also want to consider the coherence of the same turbulence pattern over the
+sky: this coherence angle is called the \textit{isoplanatic angle}, and the
+region over which the turbulence pattern is the same is called the
+\textit{isoplanatic patch}. This is relevant to adaptive optics, where we will
+try to correct for the differences across the telescope aperture; if we do a
+single correction, how large a field of view will be corrected?
+\[
+    \theta \sim 0.314r_{0}/H
+    \]
 where $H$ is the average distance of the seeing layer:
-    $$ H = \sec z\left[
-    \frac{\int\left(C_n^2h^{5/3}\textrm{d}h\right)}
-    {\int\left(C_n^2\textrm{d}h\right)}
-    \right]^{3/5} $$
+\[
+    H = \sec z \left[ \frac{\int \left( C_{n}^{2}h^{5/3}\textrm{d}h\right)}
+    {\int\left(C_{n}^{2}\textrm{d}h\right)}
+    \right]^{3/5}
+\]
 For $r_{0}$ = 10 cm, $H \sim$ 5000 m, $\theta \sim$ 1.3 arcsec.
 In the IR, $r_{0}$ = 70 cm, $H \sim$ 5000 m, $\theta \sim$ 9 arcsec.
 
@@ -1890,17 +1910,16 @@ $\theta_{kin}$ = 50 arcsec. This is relevant for low-order
 atmosphereic correction, i.e.\ tip-tilt, where one is doing
 \emph{partial} correction of the effect of the atmosphere.
 
-\textcolor{myBlue}{Want the isoplanatic patch to be big.
-Area where wiggles, wavefronts are the same. Smaller patch if $H$
-(height in atmosphere) is bigger. $H$ is bigger at top of atm than at
-bottom. Take out seeing entirely: correction in one area doesn't work
-in another area. Space telescopes get wider FOV\@. Adaptive optics:
-multiple corrections for different angles (complicated). Better in IR
-(bigger $r_{0}$). 1/2' or 1' patch. Most adaptive optics in NIR\@.
-Partial correction: coherent over larger angular scale, but not down
-to diffraction-limited. Wobbly wavelength front; can correct
-\emph{some} spatial area. Measure \emph{mean} tilt and correct for
-that $\rightarrow$ \emph{active} optics (or tip-tilt system)}.
+\mynotes{Want the isoplanatic patch to be big. Area where wiggles, wavefronts
+are the same. Smaller patch if $H$ (height in atmosphere) is bigger. $H$ is
+bigger at top of atm than at bottom. Take out seeing entirely: correction in
+one area doesn't work in another area. Space telescopes get wider FOV\@.
+Adaptive optics: multiple corrections for different angles (complicated).
+Better in IR (bigger $r_{0}$). 1/2' or 1' patch. Most adaptive optics in NIR\@.
+Partial correction: coherent over larger angular scale, but not down to
+diffraction-limited. Wobbly wavelength front; can correct \emph{some} spatial
+area. Measure \emph{mean} tilt and correct for that $\rightarrow$ \emph{active}
+optics (or tip-tilt system)}.
 
 \subsubsection{Other sources of seeing}
 Although the Earth's atmosphere provides a limit on the quality of
@@ -1908,125 +1927,121 @@ images that can be obtained, at many observatories, there are other
 factors that can dominate the image quality budget. These have been
 recognized over the past several decades to be significant effects.
 \begin{itemize}
-    \item Dome seeing: arises from turbulence pattern around the
-    dome and the interface between inside the dome and outside the dome.
-    Even small temperature differences can lead to significant
-    image degradataion. \textcolor{myBlue}{$T_{out} = T$, $T_{in} = T
-    + \Delta T$. Could open dome early, climate control during the
-    day, get rid of it completely (roll-off roof!). This tends to be
-    worse for smaller domes.}
-    \item Mirror seeing: arises from turbulence right above the
-    surface of the mirror, which can arise if the mirror temperature
-    differs from that of the air above it. \textcolor{myBlue}{%
-    Thinner mirrors are better; less mass, or thermal
-    something-or-other}.
-    \item Wind shake of the telescope. \textcolor{myBlue}{%
-    Maybe getting rid of the dome isn't such a good idea$\ldots$
-    Good idea to put telescopes on mountain on edge facing the wind.
-    As the wind goes up over where the telescope is, the turbulence
-    happens later, on the other side, as it flows down the less-steep
-    side of the mountain. Minimizeing turbulence from wind laminar
-    flow, or something like that.}
+    \item Dome seeing: arises from turbulence pattern around the dome and the
+        interface between inside the dome and outside the dome. Even small
+        temperature differences can lead to significant image degradataion.
+        \textcolor{myBlue}{$T_{out} = T$, $T_{in} = T + \Delta T$. Could open
+        dome early, climate control during the day, get rid of it completely
+        (roll-off roof!). This tends to be worse for smaller domes.}
+    \item Mirror seeing: arises from turbulence right above the surface of the
+        mirror, which can arise if the mirror temperature differs from that of
+        the air above it. \textcolor{myBlue}{% Thinner mirrors are better; less
+        mass, or thermal something-or-other}.
+    \item Wind shake of the telescope. \mynotes{Maybe getting rid
+        of the dome isn't such a good idea$\ldots$ Good idea to put
+        telescopes on mountain on edge facing the wind. As the wind goes up
+        over where the telescope is, the turbulence happens later, on the
+        other side, as it flows down the less-steep side of the mountain.
+        Minimizeing turbulence from wind laminar flow, or something like
+        that.}
     \item Poor telescope tracking.
-    \item Design, quality, and alignment of the telescope
-    optics: (In general, however,
-    telescope design is done such that the image degradation from
-    telescope design is significantly smaller than that arising from
-    seeing).
-    \item (lack of) effect of clouds. \textcolor{myBlue}{Cause
-    decreased \emph{transparency}, but don't actaully make the images
-    blurry. The seeing can atually be better with thin haze.}
+    \item Design, quality, and alignment of the telescope optics: (In general,
+        however, telescope design is done such that the image degradation from
+        telescope design is significantly smaller than that arising from
+        seeing).
+    \item (lack of) effect of clouds. \mynotes{Cause decreased
+        \emph{transparency}, but don't actaully make the images blurry. The
+        seeing can atually be better with thin haze.}
 \end{itemize}
+\test{Understand the multiple ``man-made'' sources of seeing.}
 
+\mydate{Monday, February 29}
 \subsubsection{What does seeing cause the image to look like?}
-\textcolor{date}{Monday, February 29}
 
 The ``quality'' of an image can be described in many different ways.
 The overall shape of the distribution of light from a point source is
-specified by the \emph{point spread function} (PSF). Diffraction gives a basic
+specified by the \textit{point spread function} (PSF). Diffraction gives a basic
 limit to the quality of the PSF, but seeing, aberrations, or image
 motion add to structure/broadening of the PSF\@. For a good ground-based
 telescope, seeing is generally the dominant component of the PSF.
 
-There is no equation for seeing;
-the most common way of describing the seeing is by specifying
-the full-width-half-maximum (FWHM) of the image, which may be
-estimated either by direct inspection or by fitting a function
-(usually a Gaussian, where $FWHM = 2\sigma\sqrt{2\ln{2}} \approx 2.354\sigma$)
-However, the sampled PSF is integrated over pixels;
-not the PSF\@. The FWHM doesn't fully specify a PSF,
-so always consider how applicable the quantity is.
+\textbf{There is no equation for seeing};
+the most common way of describing the seeing is by specifying the
+full-width-half-maximum (FWHM) of the image, which may be estimated either by
+direct inspection or by fitting a function (usually a Gaussian, where $FWHM =
+2\sigma\sqrt{2\ln{2}} \approx 2.354\sigma$) However, the sampled PSF is
+integrated over pixels; not the PSF\@. The FWHM doesn't fully specify a PSF, so
+always consider how applicable the quantity is.
 
 Another way of describing the quality of an image is to specify its
-\emph{modulation transfer function} (MTF). The MTF and PSF are a Fourier
-transform pair,
-\textcolor{myBlue}
-{thin gaussian $\leftarrow$\small FT\normalsize$\rightarrow$ fat gaussian}
-so the MTF gives the \emph{power} in an image on various
-\emph{spatial} scales. Turbulence theory makes a prediction for the MTF from
+\textit{modulation transfer function} (MTF). The MTF and PSF are a Fourier
+transform pair, \mynotes{thin gaussian $\leftarrow$\small
+FT\normalsize$\rightarrow$ fat gaussian} so the MTF gives the \textit{power} in
+an image on various \textit{spatial} scales. Turbulence theory makes a
+prediction for the MTF from
 seeing:
-    $$ MTF(\nu) = \exp\left[-3.44\left(\frac{\lambda\nu}{r_o}\right)
-    ^{5/3}\right] $$
+\[
+    MTF(\nu) = \exp\left[-3.44\left(\frac{\lambda\nu}{r_o}\right)
+    ^{5/3}\right]
+    \]
 where $\nu$ is the spatial frequency,
-\textcolor{myBlue}{$\xi = \frac{1}{\lambda}$ [cycles per cm].
+\mynotes{$\xi = \frac{1}{\lambda}$ [cycles per cm].
 (Aside: wavenumber $k = \frac{2\pi}{\lambda} = 2\pi\xi$)
 \begin{itemize}
     \item MTF: power as function of spatial frequency
     \item PSF: intensity as function of position
 \end{itemize}}
-
-Note that a gaussian goes as $e^{-\nu^2}$, so this is close to a gaussian.
+Note that a gaussian goes as $e^{-\nu^{2}}$, so this is close to a gaussian.
 The shape of seeing-limited images is roughly Gaussian in core but has more
 \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/racine2.htm}
-{\textcolor{blue}{extended wings}}.
+{{extended wings}}.
 This is relevant because the seeing
 is often described by fitting a Gaussian to a stellar profile.
-\textcolor{myBlue}{Note that the stellar profile is the same for all
+\mynotes{Note that the stellar profile is the same for all
 stars, and doesn't depend on the brightness of the star.
 They all get lost in the noise eventually$\ldots$ sooner for fainter
 stars, which look smaller.
 In case the wings are needed, fitting to a Gaussian won't work;}
 a potentially better empirical fitting function is a
 \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/racine3.htm}
-{\textcolor{blue}{Moffat function}}:
-    $$  I=p_1\left[
-    1+\frac{\left(x-p_2\right)^2}{p_4^2} +
-      \frac{\left(y-p_3\right)^2}{p_5^2}\right]^{-p_6} $$
+{Moffat function}:
+\[
+    I = p_{1} \left[
+        1 + \frac{ \left( x-p_{2} \right) ^{2}}{p_{4}^{2}} +
+        \frac{ \left( y-p_{3} \right) ^{2}}{p_{5}^{2}} \right] ^{-p_{6}}
+    \]
 ``Nothing special, six parameters, more accurate.''
 
 Ways of characterizing the PSF:
-\begin{itemize}
-    \item \emph{encircled energy} as a function of radius,
-        or at some specified radius. The encircled energy is just the
-        cumulative integral of the PSF\@. Encircled energy requirements
-        are often used for specifying optical tolerances.
-    \item Strehl ratio: more commonly used in
-        adaptive optics applications \textcolor{myBlue}{not for
-        ``normal observing''}. The Strehl ratio is
-        the ratio between the peak amplitude of the PSF and the peak amplitude
-        expected in the presence of diffraction only. With normal atmospheric
-        seeing, the Strehl ratio is \emph{very} low. However, the Strehl ratio is
-        often used when discussing the performance of adaptive optics
-        systems. \textcolor{myBlue}{Ratio of how good the actual image is to
-        the best that could be obtained (pure diffraction-limited).
-        A really good adaptive optics system would have a Strehl ratio
-        of about 1/2. Seeing of a big telescope is nowhere close to
-        diffraction-limited$\ldots$ fraction of a \%.}
-        From Nancy's solutions: the Strehl ratio is the ratio of the
-        amoutn of light actually delivered by the optical system into
-        the Airy disk to the theoretical maximum at the diffraction limit.
-
-\end{itemize}
+\begin{description}
+    \item [encircled energy (EE)] as a function of radius, or at some specified
+        radius. The encircled energy is just the cumulative integral of the
+        PSF\@. Encircled energy requirements are often used for specifying
+        optical tolerances.
+    \item [Strehl ratio] = ratio
+        between the peak amplitude of the PSF and the peak amplitude expected
+        in the presence of diffraction only. With normal atmospheric seeing,
+        the Strehl ratio is \emph{very} low. However, the Strehl ratio is often
+        used when discussing the performance of adaptive optics systems.
+        \mynotes{Ratio of how good the actual image is to the best that could
+        be obtained (pure diffraction-limited). A really good adaptive optics
+        system would have a Strehl ratio of about 1/2. Seeing of a big
+        telescope is nowhere close to diffraction-limited$\ldots$ fraction of a
+        \%. (From Nancy's solutions): the Strehl ratio is the ratio of the
+        amount of light actually delivered by the optical system into the Airy
+        disk to the theoretical maximum at the diffraction limit.}
+\end{description}
 
 \newpage
 \section{Astronomical Optics}
 A 20th magnitude star gives $\sim$ 0.01 photons s$^{-1}$ cm$^{-2}$
 at 5000 \AA{} through a 1000 \AA{} filter, which gives 1200
 photons s$^{-1}$ at a 4-meter telescope.
+
 \subsection{Single surface optics and definitions}
-By definition, an optical system collects light
-and (usually) makes images. This requires the bending
-of light rays, which is accomplished using \emph{curved surfaces}:
+By definition, an optical system collects light and (usually) makes images.
+This requires the bending of light rays, which is accomplished using
+\textit{curved surfaces}:
 \begin{itemize}
     \item lenses (refraction)
     \item mirrors (reflection)
@@ -2036,82 +2051,88 @@ instruments often have lenses.
 
 The operation of refractive optical systems is given by Snell's law
 of refraction:
-    $$ n\sin{i} = n'\sin{i'} $$
+\[
+    n\sin{i} = n'\sin{i'}
+    \]
 where $n$ and $n'$ are the indices of refraction and $i$ and $i'$ are the
 angles of incidence relative to the normal to the surface. For
 reflection:
-    $$ i' = -i $$
-An optical element takes a source at $s$ and makes an image at $s'$.
-The image can be \emph{real} or \emph{virtual}.
-A real image exists at some point in
-space; a virtual image is formed where light rays apparently emanate
-from or converge to, but at a location where no light actually
-appears. For example, in a Cassegrain telescope, the image formed by
-the primary is virtual, because the secondary intercepts the light and
-redirects it before light gets to the focus of the primary
-(see figure {\ref{cassegrain}}).
+\[
+    i' = -i
+    \]
+An optical element takes a source at $s$ and makes an image at $s'$. The image
+can be \textit{real} or \textit{virtual}. A real image exists at some point in
+space; a virtual image is formed where light rays apparently emanate from or
+converge to, but at a location where no light actually appears. For example, in
+a Cassegrain telescope, the image formed by the primary is virtual, because the
+secondary intercepts the light and redirects it before light gets to the focus
+of the primary (see figure {\ref{cassegrain}}).
 \begin{figure}[h]
     \centering
     \includegraphics{cassegrain.png}
     \caption{Diagram showing the optical arrangement of the Cassegrain.}
     \label{cassegrain}
 \end{figure}
-The image will not necessarily be a perfect image: all rays regardless
-of height $y$ at the surface (``surface'' refers to the lens or mirror),
-might not cross at the same point. This
-is the subject of \emph{aberrations} (see \S{}~{\ref{ab}}).
-For a ``smooth'' surface, the amount of aberration will depend on how much
-the different rays differ in $y$, which depends on the shape of the
-surface:
-\begin{itemize}
-    \item \emph{paraxial} rays are near the center of the aperture.
-    \item \emph{marginal} rays are on the edge of the aperture.
-    \item the \emph{chief} ray passes through the center of the aperture.
-\end{itemize}
-To define nominal (unaberrated) quantities, we consider the
-\emph{paraxial regime}, a small region near the optical axis surrounding the
-chief ray. In this regime, all angles are small, aberrations vanish
-(everything converges to a point),
-and a surface can be wholly specified by its radius of curvature, $R$
+The image will not necessarily be a perfect image: all rays regardless of
+height $y$ at the surface (``surface'' refers to the lens or mirror), might not
+cross at the same point. This is the subject of \textit{aberrations} (see
+\S{}~{\ref{ab}}). For a ``smooth'' surface, the amount of aberration will
+depend on how much the different rays differ in $y$, which depends on the shape
+of the surface:
+\begin{description}
+    \item [paraxial rays] are near the center of the aperture.
+    \item [marginal rays] are on the edge of the aperture.
+    \item [chief ray] passes through the center of the aperture.
+\end{description}
+To define nominal (unaberrated) quantities, we consider the \textit{paraxial
+regime}, a small region near the optical axis surrounding the chief ray. In
+this regime, all angles are small, aberrations vanish (everything converges to
+a point), and a surface can be wholly specified by its radius of curvature, $R$
 (where the image is at the center of a ``circle'' with radius $R$).
 
-The \emph{field angle} is formed when receiving light
-off-axis by some angular amount.
-It is not necessarily zero in the paraxial regime.
+The \textit{field angle} is formed when receiving light off-axis by some
+angular amount. It is not necessarily zero in the paraxial regime.
 
-For the time being, we are ignoring \emph{diffraction}
-and considering \emph{geometric} optics, where spatial scales are
-much larger than the wavelength ($x > \sim\lambda$).
+For the time being, we are ignoring \textit{diffraction} and considering
+\textit{geometric} optics, where spatial scales are much larger than the
+wavelength ($x > \sim\lambda$).
 
-The basic relation between the object location at $s$ and
-the image location at $s'$ can be derived as a function of a
-surface where the index of
-refraction changes (Schroeder, chapter 2).
-$$  \frac{n'}{s'}-\frac{n}{s} = \frac{(n'-n)}{R}  $$
+The basic relation between the object location at $s$ and the image location at
+$s'$ can be derived as a function of a surface where the index of refraction
+changes (Schroeder, chapter 2).
+\[
+    \frac{n'}{s'}-\frac{n}{s} = \frac{(n'-n)}{R}
+    \]
 where $n$ and $n'$ are the index of refraction where the light is coming from
-and in the lens, respectively.
-The points at $s$ and $s'$ are called \emph{conjugate} (if one is known,
-the other can be calculated). If either $s$
-or $s'$ is at infinity (true for astronomical sources at $s$), the
-other distance is defined as the \emph{focal length}, $f$, of the
-optical element, and is where the light is focused.
-For $s=\infty$, $f=s'$.
+and in the lens, respectively. The points at $s$ and $s'$ are called
+\emph{conjugate} (if one is known, the other can be calculated). If either $s$
+or $s'$ is at infinity (true for astronomical sources at $s$), the other
+distance is defined as the \emph{focal length}, $f$, of the optical element,
+and is where the light is focused. For $s=\infty$, $f=s'$.
 
-The quantity on the right side of the equation, which
-depends only on the surface parameters (not the image or object
-locations), is defined as the \emph{power}, $P$, of the surface:
-    $$ P \equiv \frac{(n'-n)}{R} = \frac{n'}{f'} = \frac{n}{f} $$
+The quantity on the right side of the equation, which depends only on the
+surface parameters (not the image or object locations), is defined as the
+\emph{power}, $P$, of the surface:
+\[
+     P \equiv \frac{(n'-n)}{R} = \frac{n'}{f'} = \frac{n}{f}
+    \]
 A similar derivation can be made for the case of reflection:
-    $$ \frac{1}{s'} + \frac{1}{s} = \frac{2}{R}  $$
+\[
+     \frac{1}{s'} + \frac{1}{s} = \frac{2}{R}
+    \]
 This shows that $f = R/2$ for a mirror.
 
 The same result is obtained when considering reflection as
 refraction with
 $n' = -n$ (same amplitude, opposite sign):
-$$  \frac{n'}{s'}+\frac{n'}{s} = \frac{(n'+n')}{R}  $$
+\[
+  \frac{n'}{s'}+\frac{n'}{s} = \frac{(n'+n')}{R}
+\]
 
 The \emph{focal ratio} (or \emph{F-number}) is defined as
-$$ f/ = \frac{f}{A}$$
+\[
+    f/ = \frac{f}{A}
+    \]
 where $A$ is the aperture diameter and $f/$ denotes the focal ratio.
 For example, a 3.5-m telescope with a focal ratio of $f /10$
 has a focal length of 35 meters.
@@ -2125,9 +2146,11 @@ beam to the image is wide. Systems with small focal ratios are called
 {\small\hfill\textcolor{date}{Wednesday, March 2}}
 
 The \emph{magnification} of a system gives the ratio of the image height to
-the object height:{$$
+the object height:
+\[
     \frac{h'}{h} = \frac{s'-R}{s-R} = \frac{ns'}{n's}
-$$}The magnification is negative for both inverted images and for
+    \]
+The magnification is negative for both inverted images and for
 reflection ($n' = -n$).
 Magnification is an important quantity for \emph{multi-element} systems
 (see \S{}~\ref{?}).
@@ -2148,7 +2171,7 @@ a \emph{larger} scale, i.e.\ more light in a patch of fixed physical size.
 These are ``faster'' systems.
 
 Example:
-$\alpha = \frac{1}{35m} = \frac{1}{35\times10^3} = 2.86\times10^{-5}$
+$\alpha = \frac{1}{35m} = \frac{1}{35\times10^{3}} = 2.86\times10^{-5}$
 radians $ = 5.98''$/mm (there are 206265 arcseconds per radian).
 
 \subsection{Multi-surface systems}
@@ -2384,24 +2407,24 @@ use this shape.
 Concave mirror with both conjugates at finite distances: Ellipse}}
 \par Sample application: Gregorian secondary looking at image formed by primary.
 Again, this is perfect only for field angle = 0.{$$
-    \frac{(z-a)^2}{a^2} + \frac{y^2}{b^2} = 1 $$ $$
+    \frac{(z-a)^{2}}{a^{2}} + \frac{y^{2}}{b^{2}} = 1 $$ $$
     y^{2} - \frac{2zb^{2}}{a} + \frac{z^{2}b^{2}}{a^{2}} = 0
 $$}where{$$
     a = \frac{s+s'}{2} $$ $$
     b = \sqrt{(ss')} $$ $$
-    R = \frac{ss'}{s+s'} = \frac{2b^2}{a}
+    R = \frac{ss'}{s+s'} = \frac{2b^{2}}{a}
 $$}
 \textbf{\emph{%
 Convex mirror with both conjugates at finite distance: Hyperbola}}
 \par Sample application: Cassegrain secondary looking at
 image formed by primary:{$$
-    \frac{(z-a)^2}{a^2} - \frac{y^2}{b^2} = 1 $$ $$
-    y^2 + \frac{2zb^2}{a} - \frac{z^2b^2}{a^2} = 0
+    \frac{(z-a)^{2}}{a^{2}} - \frac{y^{2}}{b^{2}} = 1 $$ $$
+    y^{2} + \frac{2zb^{2}}{a} - \frac{z^{2}b^{2}}{a^{2}} = 0
 $$}where{$$
     a = \frac{s+s'}{2} $$ $$
-    b^2 = \sqrt{(-ss')}
+    b^{2} = \sqrt{(-ss')}
 $$}($s$ is negative){$$
-    R = -\frac{2b^2}{a}
+    R = -\frac{2b^{2}}{a}
 $$}Let secondary ``relax'' to get perfect image. Most telescopes adjust
 both surfaces, which allows for more freedom to get perfect images on
 and off-axis.
@@ -2412,15 +2435,15 @@ Convex mirror with one conjugate at infinity: Parabola}}
 \textbf{\emph{2D to 3D}}
 \par So far all cases have considered a one-dimensional surface.
 Generalize to 2D surfaces by rotating around the z-axis.
-For the equations, simply replace $y^2$ with $(x^2 + y^2)$.
+For the equations, simply replace $y^{2}$ with $(x^{2} + y^{2})$.
 
 \textbf{\emph{Conic sections}}
 \par All of these figures are
 \emph{conic sections}, described by a single equation:{$$
-    \rho^2 - 2Rz + (1+K)z^2 = 0
-$$}where $ \rho^2 = x^2 + y^2 $
+    \rho^{2} - 2Rz + (1+K)z^{2} = 0
+$$}where $ \rho^{2} = x^{2} + y^{2} $
 and $R$ is the radius of curvature at the mirror vertex,
-$K$ is called the conic constant ($K = -e^2$, where $e$ is the eccentricity for
+$K$ is called the conic constant ($K = -e^{2}$, where $e$ is the eccentricity for
 an ellipse, $e(b, a)$).
 \begin{description}
     \item [$K > 0$] prolate ellipsoid
@@ -2477,7 +2500,7 @@ derivatives with respect to $x$ or $y$ instead of $\rho$.
 section. Consider where rays land as $f(\rho)$, and derive
 the effective focal length, $f_{e}(\rho)$, for an arbitrary conic
 section [figure here]:{$$
-    z_0 = \frac{\rho}{\tan(2\phi)} = \frac{\rho(1-(\tan\phi)^2)}{2\tan\phi}$$ $$
+    z_0 = \frac{\rho}{\tan(2\phi)} = \frac{\rho(1-(\tan\phi)^{2})}{2\tan\phi}$$ $$
     \tan\phi = \frac{\textrm{d}z}{\textrm{d}\rho}
 $$}from the conic equation:{$$
     \rho^{2} - 2Rz + (1+K)z^{2} = 0 $$ $$
@@ -2568,7 +2591,7 @@ for the optical path difference between an arbitrary ray and the chief
 ray, and in doing this, we can also include the possibility of an
 off-axis image, and get{$$
     OPD = OPL - OPL(chiefray) $$ $$
-    OPD = A_0y + A_1y^2 + A_1'x^2 + A_2y^3 + A_2'x^2y + A_3\rho^4
+    OPD = A_0y + A_1y^{2} + A_1'x^{2} + A_2y^{3} + A_2'x^{2}y + A_3\rho^{4}
 $$}where we've kept terms only to fourth order and chosen our coordinate
 system such that the object lies in the y-z plane. The coefficients,
 $A$, depend on lots of things, such as ($\theta, K, n, R, s, s'$).
@@ -2591,11 +2614,11 @@ $$}
 From the general expression, we can derive the angular or the
 transverse aberrations in either the $x$ or $y$ direction. Considering the
 aberrations in the two separate directions, we find:{$$
-    AA_y = 2A_1y + A_2(x^2+3y^2) + 4A_3y\rho^2  $$$$
-    AA_x = 2A_1'x + 2A_2xy + 4A_3x\rho^2
+    AA_y = 2A_1y + A_2(x^{2}+3y^{2}) + 4A_3y\rho^{2}  $$$$
+    AA_x = 2A_1'x + 2A_2xy + 4A_3x\rho^{2}
 $$}The first term is proportional to $\theta^{2}y$ and is called
 \emph{astigmatism}. The second term is proportional to
-$ \theta(x^2 +3y^2)$
+$ \theta(x^{2} +3y^{2})$
 and is called \emph{coma}. The final term, proportional to
 $y\rho^{2}$
 is \emph{spherical aberration}, which we've already discussed (note for
@@ -2682,7 +2705,7 @@ For example, given a conic constant of the primary mirror, we can use
 the aberration relations to determine $K_2$ such that spherical
 aberration is zero; this will give us perfect images on-axis. We find
 that:{$$
-    K_2 = \left(\frac{m+1}{m-1}\right)^2 +
+    K_2 = \left(\frac{m+1}{m-1}\right)^{2} +
     \frac{m^{3}}{k\left(m-1\right)^{3}}\left(K_{1}+1\right)
 $$}satisfies this criterion.  If we set the primary to be a parabola
 ($K_{1} = -1$), this gives the conic constant of the secondary we must use to
@@ -4156,8 +4179,8 @@ where G is the (inverse) gain and C is the number of detected counts.
 Consequently, the noise in electrons is $ \sqrt{{GC}}$, and in units
 of counts is given by  $ \sqrt{{C/G}}$. This is apart from readout
 noise; the latter is usually specified in units of electrons, giving a
-total noise in electrons of  $ \sqrt{{GC+\sigma_{rn}^2}}$, or, in
-units of counts, by  $ \sqrt{{C/G+\sigma_{rn}^2/G^2}}$.
+total noise in electrons of  $ \sqrt{{GC+\sigma_{rn}^{2}}}$, or, in
+units of counts, by  $ \sqrt{{C/G+\sigma_{rn}^{2}/G^{2}}}$.
 
 A/D converters can only measure a positive incoming signal. At low
 light levels, the true input signal can be negative in the presence of
