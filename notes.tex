@@ -22,8 +22,8 @@
   {\bfseries}
   {Unit }
   {1em}{}
-\titlespacing*{\section}{-0.75in}{0ex}{0ex}
-\titlespacing*{\subsection}{-0.5in}{0ex}{0ex}
+\titlespacing*{\section}{-0.5in}{0ex}{0ex}
+\titlespacing*{\subsection}{-0.25in}{0ex}{0ex}
 \titlespacing*{\paragraph}{0in}{0.5ex}{-1ex}
 
 \usepackage{enumitem}
@@ -59,6 +59,7 @@
         \small\hfill\textit{#1}
     \end{flushright}}
 
+\newcommand{\dd}{\;\mathrm{d}}
 
 \title{\vspace{-0.75in}ASTR 535 Lecture Notes}
 \author{Jon Holtzman}
@@ -1312,7 +1313,6 @@ errors, plot residuals vs.\ everything
 propagation!}
 }
 
-%--------------Part 2--------------------------------------------------%
 \newpage
 \section{Effects of the earth's atmosphere}
 Four effects:
@@ -1326,17 +1326,15 @@ Four effects:
 \end{enumerate}
 
 \subsection{Night sky emission}
-Emission from the sky is given as brightness as function of wavelength.
-
-Sources
-(many of which are emission \emph{line} sources, not continuum
+Emission from the sky is given as brightness as a function of wavelength.
+Many of the following sources are emission \emph{line} sources, not continuum
 sources, as shown in this \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/skyemiss.htm}
-{plot}):
-\begin{itemize}
-    \item \textbf{air glow:} Molecules are thermally excited by sunlight.
+{plot}:
+\begin{description}
+    \item [air glow:] Molecules are thermally excited by sunlight.
         Emission takes time, so this continues into the night.
         Mainly OH lines, which are pretty bright and fluctuate (``dance around'').
-    \item \textbf{zodiacal light:}
+    \item [zodiacal light:]
         \begin{itemize}
             \item outside of our atmosphere
             \item caused by dust in the solar system
@@ -1348,7 +1346,7 @@ sources, as shown in this \href{http://astronomy.nmsu.edu/holtz/a535/html/diagra
         Note that this exists even in Earth orbit. When brightness of observed
         objects drop to 21-22 mag, go from signal-limited to
         background-limited.
-    \item \textbf{sunlight:} Brightness is
+    \item [sunlight:] Brightness is
         small away from twilight, depending on distance sun is below horizon.
         Note that there are different definitions of twilight:
         \begin{itemize}
@@ -1358,7 +1356,7 @@ sources, as shown in this \href{http://astronomy.nmsu.edu/holtz/a535/html/diagra
         \end{itemize}
         By astronomical twilight, there is essentially no contribution
         from sunlight, but much useful observing can be done before this.
-    \item \textbf{moonlight:} Brightness is variable; can be very bright.
+    \item [moonlight:] Brightness is variable; can be very bright.
         $\sim$ 10 times brighter at full moon (compared to what?).
         \begin{center}
             \begin{tabular}{c c c c c c}
@@ -1370,35 +1368,34 @@ sources, as shown in this \href{http://astronomy.nmsu.edu/holtz/a535/html/diagra
                 14 & 17.0 & 19.5 & 20.0 & 19.9 & 19.2\\
             \end{tabular}
         \end{center}
-    \item \textbf{aurorae:} line emission
-    \item \textbf{light pollution:} Strong (bright) in distinct lines
-    \item \textbf{unresolved stars and galaxies}
-    \item \textbf{thermal emission:} IR emission from sky,
+    \item [aurorae:] line emission
+    \item [light pollution:] Strong (bright) in distinct lines
+    \item [unresolved stars and galaxies]
+    \item [thermal emission:] IR emission from sky,
         telescope, and dome.
         T$_{atm} \rightarrow$ blackbody emission.
-\end{itemize}
+\end{description}
 
 \paragraph{Optical}
-\emph{broadband work} for example in the V band, $m_{sky}\sim$ 22 mag/arcsec at
-good site, so $S/N$ becomes background limited around m=22 for good image
-quality, and m=20 for poorer image quality. Consequently, image quality matters
-for faint objects. Moonlight is very significant, hence faint optical imaging
-requires dark time.
-\mynotes {Readout noise of zodiacal light (m$_{\textrm{sky}}$) really
-important. Be careful when splitting exposures; can become readout-noise
-limited. Consider the minimum exposure time needed (context?)}
+For \textit{broadband work}, for example in the V band, $m_{sky}\sim$ 22
+mag/arcsec at good site, so $S/N$ becomes background limited around $m=22$ for
+good image quality, and $m=20$ for poorer image quality. Consequently, image
+quality matters for faint objects. Moonlight is very significant, hence faint
+optical imaging requires dark time. \mynotes {Readout noise of zodiacal light
+(m$_{\mathrm{sky}}$) really important. Be careful when splitting exposures; can
+become readout-noise limited. Consider the minimum exposure time needed
+(context?)}
 
-\emph{Optical spectroscopy:} sky emission is generally not much of a problem
-(except around lines) so long as moon is down (or work on bright objects);
-low dispersion observations can be background-limited for long exposures,
-but at higher dispersion or shorter exposures,
-spectroscopy is often readout-noise limited.
+For \textit{Optical spectroscopy}, sky emission is generally not much of a
+problem (except around lines) as long as the moon is down (or if you're working on
+bright objects); low dispersion observations can be background-limited for long
+exposures, but at higher dispersion or shorter exposures, spectroscopy is often
+readout-noise limited.
 
 \paragraph{IR}
-Most ($\sim$ 90\%) of the emission in the near-IR is from
-vibrational and rotational transition emission lines of the OH molecule,
-the so-called ``OH forest.''
-For broadband work:
+Most ($\sim$ 90\%) of the emission in the near-IR is from vibrational and
+rotational transition emission lines of the OH molecule, the so-called ``OH
+forest.'' For \textit{broadband work}:
 \begin{itemize}
     \item H band: $m\sim$ 13.5 mag arcsec$^{-2}$
     \item K band: $m\sim$ 12.5 mag arcsec$^{-2}$.
@@ -1419,24 +1416,23 @@ light with added stuff by moonlight.}
 Farther in the IR (5 $\mu$ +), thermal emission from the sky dominates
 and is extremely bright. In fact, when working at wavelengths with thermal
 background, the exposure time is often limited by the time it takes to
-saturate the detector with background (sky) light, in seconds or less.
+saturate the detector with background (sky) light, in a few seconds or less.
 
-Sky brightness from most sources \emph{varies} with time and position in the
-sky in an \emph{irregular} fashion. Consqeuently, it's essentially impossible
-to estimate the sky \emph{a priori}: sky must be determined from your
-observations, and if your observations don't distinguish object from
-sky, you'd better measure sky close by in location and in time:
-especially critical in the IR\@. See some
-%\href{}
-{IR movies} (really important!);
-%\href{}
-{spectral movie from ESO/Paranal} see
-\href{https://www.astro.uni-bonn.de/theli/gui/aboutbackground.html}
+Sky brightness from most sources varies with time and position in the sky in an
+irregular fashion. Consqeuently, it's essentially impossible to estimate the
+sky \emph{a priori}: sky must be determined from your observations, and if your
+observations don't distinguish object from sky, you'd better measure sky close
+by in location and in time: especially critical in the IR\@. See some %\href{}
+{IR movies} (really important!); %\href{}
+{spectral movie from ESO/Paranal} see \href{https://www.astro.uni-bonn.de/theli/gui/aboutbackground.html}
 {here}.
 
+\test{Know the spectral energy distribution of the main sources of sky emission.
+Know roughly how bright these sources are in a broadband measurement.
+Understand the effect of moonlight on observations in the optical vs. those in
+the NIR.}
+
 \subsection{Transmission of atmosphere (absorption/scattering)}
-
-
 Earth's atmosphere doesn't transmit 100\% of light. Various things
 contribute to the absorption of light:
 \begin{itemize}
@@ -1449,63 +1445,58 @@ contribute to the absorption of light:
     \item variety of molecules:
     \begin{itemize}
         \item ozone
-        \item $H_2O$
-        \item $O_2$
-        \item $CO_2$
-        \item $N_2O$
-        \item $CH_4$
+        \item $H_{2}O$
+        \item $O_{2}$
+        \item $CO_{2}$
+        \item $N_{2}O$
+        \item $CH_{4}$
     \end{itemize}
-    All of these have a $\lambda$ dependency.
 \end{itemize}
 All are functions of wavelength, time (to some extent), and position in sky.
 
-\textcolor{myBlue}{\textbf{More unorganized notes:}
-    Extinction: mostly from scattering and aerosols. SHOULD REVIEW
-    EXTINCTION FROM ISM\@! Mean extinction curve (individual observatories)
-    subtracted for optical spectroscopy. A and B bands (nomenclature
-    from Fraunhofer - discovered solar liens $\sim$ 1800s.
-    Absorption lines were labeled alphabetically in $\nu$. A and B bands
-    were actually from O$_2$. C from H$\alpha$, D from sodium (the
-    ``sodium D line''), and H and K were two lines of ionized calcium
-    (the CaII H and K lines)).
-    Water vapor is the dominant absorber in the IR\@.
-    Windows in Earth's atmosphere: YJHK are the filters that fit inside
-    these windows, which are carved out by water absorption.
-    This defines the bandpasses. But water vapor changes too,
-    so absorption strength changes a lot. The bandpass itself
-    changes! High peaks [from some video or plot?] are oqaque;
-    transparent toward the bottom. Still molecular absorption in
-    these windows that could show up in spectrum, e.g.\ the H-band.
-    Have to correct for this. More atmosphere = more light lost.
-    How much more? Airmass is defined locally:
-    $$ \textrm{airmass} = \frac{\textrm{amt\ of air\ looking\ at}}
-        {\textrm{amt\ of\ air\ through\ zenith}}$$
+\mynotes{\textbf{More unorganized notes:}
+    Extinction: mostly from scattering and aerosols. SHOULD REVIEW EXTINCTION
+    FROM ISM\@! Mean extinction curve (individual observatories) subtracted for
+    optical spectroscopy. A and B bands (nomenclature from Fraunhofer -
+    discovered solar liens $\sim$ 1800s. Absorption lines were labeled
+    alphabetically in $\nu$. A and B bands were actually from O$_{2}$. C from
+    H$\alpha$, D from sodium (the ``sodium D line''), and H and K were two
+    lines of ionized calcium (the CaII H and K lines)). Water vapor is the
+    dominant absorber in the IR\@. Windows in Earth's atmosphere: YJHK are the
+    filters that fit inside these windows, which are carved out by water
+    absorption. This defines the bandpasses. But water vapor changes too, so
+    absorption strength changes a lot. The bandpass itself changes! High peaks
+    [from some video or plot?] are oqaque; transparent toward the bottom. Still
+    molecular absorption in these windows that could show up in spectrum, e.g.\
+    the H-band. Have to correct for this. More atmosphere = more light lost.
+    How much more? Airmass is defined locally as the amount of air you're
+    looking at divided by the amount of air through the zenith.
     So looking at zenith, no matter where you are, airmass = 1.
 }
+
 \subsubsection{Sources of extinction}
 In the optical part of the spectrum, extinction is a roughly smooth function of
 wavelength and arises from a combination of ozone, Rayleigh scattering, and
 aerosols, as shown in \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/extinct.htm}
-{this plot}.
-The optical extinction can vary from night to night
-or season to season, as shown in \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/tauvar.htm}
-{this plot}.
-Of course, this is showing the variation over a set of photometric nights; if
-there are clouds, then the level of variation is much higher. Because of this
-variation, you must determine the amount of extinction on each night separately
-if you want accuracy better than a few percent (even for photometric nights).
-Generally, the \emph{shape} of the extinction curve as a function of wavelength
-probably varies less than the amplitude at any given wavelength. Because of
-this, it is common to use \textit{mean extinction coefficients} when doing
-spectroscopy when often only the \emph{relative} fluxes are important. To first
-order, the extinction from clouds is ``gray'', i.e.\ not a function of
-wavelength, so relative fluxes can be obtained even with some clouds present.
+{this plot}. The optical extinction can vary from night to night or season to
+season, as shown in \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/tauvar.htm}
+{this plot}. Of course, this is showing the variation over a set of photometric
+nights; if there are clouds, then the level of variation is much higher.
+Because of this variation, you must determine the amount of extinction on each
+night separately if you want accuracy better than a few percent (even for
+photometric nights). Generally, the \emph{shape} of the extinction curve as a
+function of wavelength probably varies less than the amplitude at any given
+wavelength. Because of this, it is common to use \textit{mean extinction
+coefficients} when doing spectroscopy when often only the \emph{relative}
+fluxes are important. To first order, the extinction from clouds is ``gray'',
+i.e.\ not a function of wavelength, so relative fluxes can be obtained even
+with some clouds present.
 
 There is significant molecular absorption in the far-red part of the
-optical spectrum, in particular, note the A (7600) and B (6800) atmospheric
+optical spectrum, in particular, note the $A$ (7600) and $B$ (6800) atmospheric
 bands from O$_{2}$.
 
-\mynotes{Historical note: The `A' and `B' nomenclature comes from
+\mynotes{Historical note: The $A$ and $B$ nomenclature comes from
 the Fraunhofer lines, which were labeled alphabetically with increasing
 (decreasing?) frequency when first discovered in the sun's spectrum in the
 1800s. Originally they were not recognized as absorption lines. C is H$\alpha$,
@@ -1513,8 +1504,7 @@ D is the sodium D line, CaII H and K lines, etc.}
 
 In the infrared, the extinction does not vary so smoothly with wavelength
 because of the effect of molecular absorption. In fact, significant absorption
-bands define the so-called infrared windows
-(yJHKLM), as shown in the near IR in \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/mandbell.htm}
+bands define the so-called infrared windows (yJHKLM), as shown in the near IR in \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/mandbell.htm}
 {this plot}. At longer wavelengths, the broad absoprtion band behavior
 continues, as shown in \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/allen1.htm}
 {this plot}. In this figure, \emph{transmission} = $f(b_{\lambda}l$) where $l$
@@ -1534,13 +1524,16 @@ is path length (units of airmass):
     \end{tabular}
 \end{center}
 
-The L band is at 3.5 $\mu$m, M band at 5 $\mu$m.
+The $L$ band is at 3.5 $\mu$m, $M$ band at 5 $\mu$m.
 
 Note that even within the IR ``windows'', there can still be significant
-telluric (terrestrial) absorption features, e.g.\ from CO$_{2}$, H$_{2}$O, and
-CH$_{4}$. When doing IR spectroscopy, one needs to be aware of these and
-possibly attempt to correct for them, taking care not to confuse them with real
-stellar features.
+telluric absorption features, e.g.\ from CO$_{2}$, H$_{2}$O, and CH$_{4}$. When
+doing IR spectroscopy, one needs to be aware of these and possibly attempt to
+correct for them, taking care not to confuse them with real stellar features.
+
+\test{Know the spectral energy distribution of the main sequence of telluric
+absorption. Understand how H$_{2}$O absorption leads to ``windows'' in the
+NIR.}
 
 \subsubsection{Airmass and zenith distance dependence}
 Clearly, if the light has to pass through a larger path in the Earth's
@@ -1552,19 +1545,18 @@ Definition of airmass: path length that light takes through atmosphere
 relative to length at zenith: X $\equiv$ 1 vertically (at $z$ = 0).
 Given the zenith distance, $z$, which can be computed from:
 \[
-    \sec z = \left(\sin\phi\sin\delta +
-    \cos\phi\cos\delta\cos h\right)^{-1}
+    \sec z = \left( \sin\phi\sin\delta +
+    \cos\phi\cos\delta\cos h \right)^{-1}
     \]
-where $\phi$ is the latitude of the observatory location,
-$\delta$ is the declination, and $h$ is
-the hour angle ($h$ = local sidereal time - $\alpha$, where $\alpha$ is
-the right ascenstion), we have
+where $\phi$ is the latitude of the observatory location, $\delta$ is the
+declination, and $h$ is the hour angle ($h$ = local sidereal time - $\alpha$,
+where $\alpha$ is the right ascenstion), we have
 \[
     X \sim \sec z
     \]
-which is exactly true in the case of a plane parallel atmosphere. But since the
-earth's atmosphere is not a plane, the plane parallel approximation breaks down
-for larger airmasses. For $X>2$, a more precise formula is needed; the
+which is exactly true in the case of a plane parallel atmosphere. However, the
+earth's atmosphere is not a plane. The plane parallel approximation breaks down
+for larger airmasses; for $X>2$, a more precise formula is needed. The
 following gives a higher order approximation:
 \[
     X = \sec z - 0.0018167(\sec z-1)
@@ -1572,32 +1564,31 @@ following gives a higher order approximation:
     \]
 
 \paragraph{How much light is lost going through the atmosphere?}
-Consider a thin sheet of atmosphere, with incident flux $F$, and
-outgoing flux $F + \mathrm{d}F$.
-Let the thin sheet have opacity $\kappa = n\sigma$,
-where $n$ is the number density of absorbers/scatterers, and
-$\sigma$ is the cross-section/absorber-scatterer.
+Consider a thin sheet of atmosphere, with incident flux $F$, and outgoing flux
+$F + \mathrm{d}F$. Let the thin sheet have opacity $\kappa = n\sigma$, where
+$n$ is the number density of absorbers/scatterers, and $\sigma$ is the
+cross-section/absorber-scatterer.
 \[
-    \mathrm{d}F = -\kappa F \mathrm{d}x
+    \dd{F} = -\kappa F \dd{x}
      \]
 \[
-    F = F_{\mathrm{top}} \exp \left[ -\int\kappa\mathrm{d}x \right]
-     \equiv F_{\mathrm{top}} \exp \left[ -\tau \right]
+    F = F_{\mathrm{top}} e^{-\int\kappa\mathrm{d}x}
+     \equiv F_{\mathrm{top}} e^{-\tau}
      \]
-where $\tau$ is the \emph{optical depth} of the atmosphere, which
+where $\tau$ is the \textit{optical depth} of the atmosphere, which
 parameterizes how much light is lost.
 
-Density and cross-section determine the fraction
+\mynotes{Density and cross-section determine the fraction
 of light that is lost. For example, twice the opacity leads to
 a factor of $e^{-\tau}$ more absorption (not a factor of 2).
 \[
     e^{-2\tau} = \left[ e^{-\tau} \right]^{2} = e^{-\tau} e^{-\tau}
     \]
-Total $\tau$ is increased by the airmass.
+Total $\tau$ is increased by the airmass.}
 
-If the optical depth through the atmosphere is just proportional to
-the physical path length (true if same atmospheric structure is
-sampled in different directions), then
+If the optical depth through the atmosphere is just proportional to the
+physical path length (true if same atmospheric structure is sampled in
+different directions), then
 \[
     \tau(X) \sim \tau_{0}X
     \]
@@ -1609,44 +1600,45 @@ Expressing things in magnitudes, we have:
 \[
      m = m_{0} + 1.086\tau_{0}X
     \]
-Define the \textit{extinction coefficient} $k_{\lambda}$ [magnitudes of
-absorption per airmass, I think]:
+($m_{0}$ - top of atmosphere, $m$ - measured).
+The \textit{extinction coefficient} $k_{\lambda}$ [magnitudes of
+absorption per airmass, I think] is defined as:
 \[
-     m_{0} = m + k_{\lambda}X
-    \]
-\[
+     m_{0} = m + k_{\lambda}X ;\quad
      k_{\lambda} \equiv -1.086\tau_{0}
     \]
-($m_{0}$ - top of atmosphere, $m$ - measured).
-so the amount of light lost in magnitudes can be specified by a \emph{set} of
-extinction coefficients. Note by this definition, the extinction coefficient
-will be negative; others may use the opposite sign convention (e.g.\ defining
-$m_{0} = m - k_{\lambda}X$). Of course, use of the scaling of $\tau$ or $k$
-with airmass assumes \emph{photometric weather}.
+so the amount of light lost in magnitudes can be specified by a \emph{set of
+extinction coefficients}. Note that by this definition, the extinction
+coefficient will be negative; others may use the opposite sign convention
+(e.g.\ defining $m_{0} = m - k_{\lambda}X$). Of course, use of the scaling of
+$\tau$ or $k$ with airmass assumes \textit{photometric weather}.
 
 The basic idea is that extinction can be determined by monitoring the
 brightness of a star (or a set of stars of known brightness) at a range of
 different airmasses. This needs to be done as a function of wavelength, i.e.,
 for each filter you observe in.
 
+\test{Know what airmass is. Know the functional dependence of atmospheric
+transmission (flux and magnitudes) and what typical values of the extinction
+coefficient are.}
+
 \mydate{Monday, February 22}
 \subsection{Atmospheric Refraction}
-
-\mynotes{Amount of refraction depends on where you're looking: zenith = 0}.
-
-The direction of light as it passes through the atmosphere is also
-changed because of refraction since the index of refraction changes
-through the atmosphere. The amount of change is characterized by
-Snell's law:
+The direction of light as it passes through the atmosphere is also changed
+because of refraction since the index of refraction changes through the
+atmosphere. The amount of change is characterized by Snell's law:
 \[
      \mu_{1}\sin\theta_{1} = \mu_{2}\sin\theta_{2}
      \]
-Let $z_{0}$ be the true zenith distance (relative to how much
-star moves), $z$ be the observed zenith
-distance, $z_{n}$ by the observed zenith distance at layer $n$ in the
-atmosphere, $\mu$ be the index of refraction at the surface, and
-$\mu_{n}$ be the index of refraction at layer $n$. At the top of the
-atmosphere:
+\begin{itemize}
+    \item $z_{0}$ = true zenith distance (relative to how much star moves)
+    \item $z$ = observed zenith distance
+    \item $z_{n}$ = observed zenith distance at layer $n$ in the
+        atmosphere
+    \item $\mu$ = index of refraction at the surface
+    \item $\mu_{n}$ = index of refraction at layer $n$
+\end{itemize}
+At the top of the atmosphere:
 \[
      \frac{\sin z_{0}}{\sin z_{N}} = \frac{\mu_{N}}{1}
      \]
@@ -1663,9 +1655,9 @@ Multiply these to get:
      \sin z_{0} = \mu\sin z
      \]
 from which we can see that the refraction depends
-\emph{only on the index of refraction near the earth's surface}.
+only on the index of refraction near the earth's surface.
 
-We define astronomical refraction, $r$, to be the angular amount that
+The astronomical refraction, $r$, is defined to be the angular amount that
 the object is displaced by the refraction of the Earth's atmosphere:
 \[
     \sin(z+r) = \mu\sin{z}
@@ -1680,7 +1672,7 @@ In cases where $r$ is small (pretty much always):
 $R \equiv$ ``constant of refraction''.
 
 A typical value of the index of refraction is $\mu \sim 1.00029$, which
-gives $R = 60$ arcsec (red light).
+gives $R = 60''$ (red light).
 
 Refraction has the effect of making a star appear to move \emph{toward} the
 zenith. Consequently in most cases, star moves in both RA and DEC:
@@ -1690,7 +1682,7 @@ zenith. Consequently in most cases, star moves in both RA and DEC:
 \[
     r_{\delta} = r\cos{q}
     \]
-where $q$ is the \textit{parallactic} angle, the angle between $N$ and
+where $q$ is the \textit{parallactic} angle, the angle between north and
 the zenith:
 \[
     \sin{q} = \cos\phi\frac{\sin{h}}{\sin{z}}
@@ -1711,15 +1703,15 @@ but these vary with time, so for precise measurements, you would have
 to determine $A$ and $B$ on your specific night of observations.
 
 \paragraph{Importance of understanding refraction}
-Refraction is relevant for pointing a telescope, but this is generally always
-automatically handled in the telescope pointing software. If you're just taking
-images, then the stars are moved by only a tiny amount relative to each other.
+Refraction is relevant for pointing a telescope, but this is generally
+automatically handled in the telescope pointing software. When taking
+images, the stars are moved only a tiny amount relative to each other.
 One key issue today is the use of multiobject spectrographs, where slits or
 fibers need to be placed on objects to accuracies of a fraction of an arcsec.
 For small fields, refraction isn't too much of an issue, but for large fields,
 it can be $\ldots$ note SDSS plates.
 
-The other \emph{extremely} important effect of refraction arises because the
+The other \emph{extremely} important effect is that the
 index of refraction is wavelength dependent, therefore the astronomical
 refraction is also wavelength dependent:
 \begin{center}
@@ -1743,17 +1735,11 @@ refraction with wavelength, every object actually appears as a little spectrum
 with the blue end towards the zenith. The spread in object position is
 proportional to $\tan{z}$.
 
-\mynotes{Measuring rotation curve of galaxy. Not at parallactic
-angle? Not getting all the light, just at wavelength used to
-position the slit (?)
-Instrument: atmospheric dispersion corrector.
-No rainbow straight up above gets bigger as you move down.
-\underline{Two} prisms that move relative to each other
-(APO doesn't have this.)}
-
-\mynotes{1. emission, 2. transmission, 3. refraction,
-4. seeing:theory and practice. Adaptive optics - deformable mirrors
-that move really fast}.
+\mynotes{Measuring rotation curve of galaxy. Not at parallactic angle? Not
+getting all the light, just at wavelength used to position the slit (?)
+Instrument: atmospheric dispersion corrector. No rainbow straight up above gets
+bigger as you move down. \underline{Two} prisms that move relative to each
+other (APO doesn't have this.)}
 
 This effect is critical to understand for spectroscopy when using a slit or a
 fiber, since the location of an object in the sky depends on the wavelength. If
@@ -1816,22 +1802,21 @@ The effect of seeing can be derived from theories of atmospheric turbulence,
 worked out originally by Kolmogorov, Tatarski, Fried. Here are some pertinent
 results, without derivation:
 
-A turbulent field can be described statistically by a \emph{structure
+A turbulent field can be described statistically by a \textit{structure
 function}:
 \[
     D_{N}(x) = = \langle | N(r+x) - N(r) | ^{2} \rangle
     \]
-where $x$ is the separation of points, $N$ is any variable (e.g.\
-temperature, index of refraction, etc.), and $r$ is position.
-This describes how the ``quantity'' changes as a function of separation
-between the two points.
-\mynotes{Quantity of$\ldots$ turbulence?
-Translate N to phase change of wave (determine image quality).}
-
+where $x$ is the separation of points, $N$ is any variable (e.g.\ temperature,
+index of refraction, etc.), and $r$ is position.
+\mynotes{This describes how the
+``quantity'' changes as a function of separation between the two points.
+Quantity of$\ldots$ turbulence?
+Translate N to phase change of wave (determine image quality).
 The structure function of a velocity field can be described as the
 difference between the values of the flow velocity between two points
 with coordinates $r$ and $r+x$. See \href{http://jetp.ac.ru/cgi-bin/dn/e_082_03_0580.pdf}
-{this paper}.
+{this paper}.}
 
 Komogorov turbulence gives:
 \[
@@ -1840,10 +1825,9 @@ Komogorov turbulence gives:
 where $C_{n}$ is the refractive index structure constant. From this, one can
 derive the phase structure function at the telescope aperture:
 \[
-    D_{\phi}(x) = 6.88\left(\frac{x}{r_{0}}\right)^{5/3}
+    D_{\phi}(x) = 6.88 \left( \frac{x}{r_{0}} \right) ^{5/3}
     \]
-where the coherence length $r_{0}$ (also known as the Fried parameter)
-is:
+where the coherence length $r_{0}$ (also known as the Fried parameter) is:
 \[
     r_{0} = 0.185\left( \lambda^{6/5} \right)
     \left( \cos^{3/5}z \right)
@@ -1851,7 +1835,7 @@ is:
     \]
 where $z$ is the zenith angle and $\lambda$ is the wavelength.
 Using optics theory, one can convert $D_{\phi}$ into an image shape.
-\textcolor{myBlue}{Bigger $r_{0}$ is better; integral is over the height
+\mynotes{Bigger $r_{0}$ is better; integral is over the height
 of the atmosphere. $r_{0}$ same size as telescope$\ldots$?}
 
 Physically, $r_{0}$ is (roughly) proportional to the image size from
@@ -1877,7 +1861,7 @@ at \emph{really} long wavelengths. Bigger telescopes are seeing-limited.
 $r_{0}$ has $\lambda$ in it, hence the lack of $\lambda$ dependence. Crossover
 in the micron regime.}
 
-The meat of $r_{0}$ is in $\int\left(C_{n}^{2}\textrm{d}h\right)$;
+The meat of $r_{0}$ is in $\int\left(C_{n}^{2}\dd{h} \right)$;
 as you might expect, this varies from site to site and also in time.
 At most sites, there seems to be three regimes of ``surface layer''
 (wind-surface interactions and manmade seeing),
@@ -1904,11 +1888,10 @@ where $H$ is the average distance of the seeing layer:
 For $r_{0}$ = 10 cm, $H \sim$ 5000 m, $\theta \sim$ 1.3 arcsec.
 In the IR, $r_{0}$ = 70 cm, $H \sim$ 5000 m, $\theta \sim$ 9 arcsec.
 
-Note however, that the ``isoplanatic patch for image motion'' (not
-wavefront) is $\sim 0.3 D/H$. For $D$ = 4 m, $H \sim$ 5000 m,
-$\theta_{kin}$ = 50 arcsec. This is relevant for low-order
-atmosphereic correction, i.e.\ tip-tilt, where one is doing
-\emph{partial} correction of the effect of the atmosphere.
+Note however, that the ``isoplanatic patch for image motion'' (not wavefront)
+is $\sim 0.3 D/H$. For $D$ = 4 m, $H \sim$ 5000 m, $\theta_{kin}$ = 50 arcsec.
+This is relevant for low-order atmosphereic correction, i.e.\ tip-tilt, where
+one is doing \emph{partial} correction of the effect of the atmosphere.
 
 \mynotes{Want the isoplanatic patch to be big. Area where wiggles, wavefronts
 are the same. Smaller patch if $H$ (height in atmosphere) is bigger. $H$ is
@@ -1920,6 +1903,10 @@ Partial correction: coherent over larger angular scale, but not down to
 diffraction-limited. Wobbly wavelength front; can correct \emph{some} spatial
 area. Measure \emph{mean} tilt and correct for that $\rightarrow$ \emph{active}
 optics (or tip-tilt system)}.
+
+\test{Understand the basic concept of scintiallation and seeing. Know the
+terminology of the coherence length ($r_{0}$) and the isoplanatic patch,
+and know what typical values are.}
 
 \subsubsection{Other sources of seeing}
 Although the Earth's atmosphere provides a limit on the quality of
@@ -1953,11 +1940,11 @@ recognized over the past several decades to be significant effects.
         \emph{transparency}, but don't actaully make the images blurry. The
         seeing can atually be better with thin haze.}
 \end{itemize}
+
 \test{Understand the multiple ``man-made'' sources of seeing.}
 
 \mydate{Monday, February 29}
 \subsubsection{What does seeing cause the image to look like?}
-
 The ``quality'' of an image can be described in many different ways.
 The overall shape of the distribution of light from a point source is
 specified by the \textit{point spread function} (PSF). Diffraction gives a basic
@@ -1981,8 +1968,8 @@ an image on various \textit{spatial} scales. Turbulence theory makes a
 prediction for the MTF from
 seeing:
 \[
-    MTF(\nu) = \exp\left[-3.44\left(\frac{\lambda\nu}{r_o}\right)
-    ^{5/3}\right]
+    MTF(\nu)
+    = \exp \left[ -3.44 \left( \frac{\lambda\nu}{r_{o}} \right) ^{5/3} \right]
     \]
 where $\nu$ is the spatial frequency,
 \mynotes{$\xi = \frac{1}{\lambda}$ [cycles per cm].
@@ -1991,19 +1978,16 @@ where $\nu$ is the spatial frequency,
     \item MTF: power as function of spatial frequency
     \item PSF: intensity as function of position
 \end{itemize}}
+
 Note that a gaussian goes as $e^{-\nu^{2}}$, so this is close to a gaussian.
-The shape of seeing-limited images is roughly Gaussian in core but has more
-\href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/racine2.htm}
-{{extended wings}}.
-This is relevant because the seeing
-is often described by fitting a Gaussian to a stellar profile.
-\mynotes{Note that the stellar profile is the same for all
-stars, and doesn't depend on the brightness of the star.
-They all get lost in the noise eventually$\ldots$ sooner for fainter
-stars, which look smaller.
-In case the wings are needed, fitting to a Gaussian won't work;}
-a potentially better empirical fitting function is a
-\href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/racine3.htm}
+The shape of seeing-limited images is roughly Gaussian in core but has more \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/racine2.htm}
+{extended wings}. This is relevant because the seeing
+is often described by fitting a Gaussian to a stellar profile. \mynotes{Note
+that the stellar profile is the same for all stars, and doesn't depend on the
+brightness of the star. They all get lost in the noise eventually$\ldots$
+sooner for fainter stars, which look smaller. In case the wings are needed,
+fitting to a Gaussian won't work;} a potentially better empirical fitting
+function is a \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/racine3.htm}
 {Moffat function}:
 \[
     I = p_{1} \left[
@@ -2031,6 +2015,10 @@ Ways of characterizing the PSF:
         amount of light actually delivered by the optical system into the Airy
         disk to the theoretical maximum at the diffraction limit.}
 \end{description}
+
+\test{Know the terminology: FWHM, PSF, MTF, EE, and Strehl ratio.
+Understand how the PSF extends to large distances and does not depend on
+the brightness of the star, although your ability to recognize it might.}
 
 \newpage
 \section{Astronomical Optics}
@@ -2080,8 +2068,8 @@ cross at the same point. This is the subject of \textit{aberrations} (see
 depend on how much the different rays differ in $y$, which depends on the shape
 of the surface:
 \begin{description}
-    \item [paraxial rays] are near the center of the aperture.
-    \item [marginal rays] are on the edge of the aperture.
+    \item [paraxial rays] pass near the center of the aperture.
+    \item [marginal rays] pass on the edge of the aperture.
     \item [chief ray] passes through the center of the aperture.
 \end{description}
 To define nominal (unaberrated) quantities, we consider the \textit{paraxial
@@ -2090,8 +2078,9 @@ this regime, all angles are small, aberrations vanish (everything converges to
 a point), and a surface can be wholly specified by its radius of curvature, $R$
 (where the image is at the center of a ``circle'' with radius $R$).
 
-The \textit{field angle} is formed when receiving light off-axis by some
-angular amount. It is not necessarily zero in the paraxial regime.
+The \textit{field angle} is the angle between the chief ray and the z-axis,
+formed when receiving light off-axis. It is not necessarily zero in the
+paraxial regime.
 
 For the time being, we are ignoring \textit{diffraction} and considering
 \textit{geometric} optics, where spatial scales are much larger than the
@@ -2105,133 +2094,142 @@ changes (Schroeder, chapter 2).
     \]
 where $n$ and $n'$ are the index of refraction where the light is coming from
 and in the lens, respectively. The points at $s$ and $s'$ are called
-\emph{conjugate} (if one is known, the other can be calculated). If either $s$
+\textit{conjugate} (if one is known, the other can be calculated). If either $s$
 or $s'$ is at infinity (true for astronomical sources at $s$), the other
-distance is defined as the \emph{focal length}, $f$, of the optical element,
+distance is defined as the \textit{focal length}, $f$, of the optical element,
 and is where the light is focused. For $s=\infty$, $f=s'$.
 
 The quantity on the right side of the equation, which depends only on the
 surface parameters (not the image or object locations), is defined as the
-\emph{power}, $P$, of the surface:
+\textit{power}, $P$, of the surface:
 \[
      P \equiv \frac{(n'-n)}{R} = \frac{n'}{f'} = \frac{n}{f}
     \]
-A similar derivation can be made for the case of reflection:
+A similar derivation can be made for reflection:
 \[
      \frac{1}{s'} + \frac{1}{s} = \frac{2}{R}
     \]
 This shows that $f = R/2$ for a mirror.
 
-The same result is obtained when considering reflection as
-refraction with
-$n' = -n$ (same amplitude, opposite sign):
+The same result is obtained when considering reflection as refraction with $n'
+= -n$ (same amplitude, opposite sign):
 \[
-  \frac{n'}{s'}+\frac{n'}{s} = \frac{(n'+n')}{R}
-\]
-
-The \emph{focal ratio} (or \emph{F-number}) is defined as
+    \frac{n'}{s'}+\frac{n'}{s} = \frac{(n'+n')}{R}
+    \]
+The \textit{focal ratio} (or \textit{F-number}) is defined as
 \[
     f/ = \frac{f}{A}
     \]
-where $A$ is the aperture diameter and $f/$ denotes the focal ratio.
-For example, a 3.5-m telescope with a focal ratio of $f /10$
-has a focal length of 35 meters.
-The focal ratio gives the beam ``width''; systems with a small focal ratio
-have a short focal length compared with $A$, and hence the imcoming
-beam to the image is wide. Systems with small focal ratios are called
-``fast'' systems; systems with large focal ratios are called ``slow'' systems.
+where $A$ is the aperture diameter and $f/$ denotes the focal ratio. For
+example, a 3.5-m telescope with a focal ratio of $f /10$ has a focal length of
+35 meters. The focal ratio gives the beam ``width''; systems with a small focal
+ratio have a short focal length compared with $A$, and hence the imcoming beam
+to the image is wide. Systems with small focal ratios are called ``fast''
+systems; systems with large focal ratios are called ``slow'' systems.
 
-\rule{\textwidth}{0.4pt}
+\mydate{Wednesday, March 2}
 
-{\small\hfill\textcolor{date}{Wednesday, March 2}}
-
-The \emph{magnification} of a system gives the ratio of the image height to
+The \textit{magnification} of a system gives the ratio of the image height to
 the object height:
 \[
     \frac{h'}{h} = \frac{s'-R}{s-R} = \frac{ns'}{n's}
     \]
-The magnification is negative for both inverted images and for
-reflection ($n' = -n$).
-Magnification is an important quantity for \emph{multi-element} systems
-(see \S{}~\ref{?}).
+The magnification is negative for both inverted images and for reflection
+($n' = -n$). Magnification is an important quantity for
+\textit{multi-element} systems.
 
-The \emph{plate scale} is defined as the
-``motion'' of an image for given beam from infinity.
-From a consideration of the chief rays
-for objects on-axis and at field angle $\alpha$: {$$
+The \textit{plate scale} is defined as the ``motion'' of an image for given
+beam from infinity. From a consideration of the chief rays for objects on-axis
+and at field angle $\alpha$:
+\[
     \tan{\alpha} \approx \alpha = \frac{x}{f}
-$$} or {$$
+    \]
+or
+\[
     \textrm{scale} \equiv \frac{\alpha}{x} = \frac{1}{f}
-$$}In other words, the scale, in units of angular motion (arcsec)
-per physical motion in the focal plane ($x$), is given by $1/f$
-(\textcolor{red}{important!})
-For a fixed aperture
-diameter, systems with a small $f/$ (smaller $f$) have
-a \emph{larger} scale, i.e.\ more light in a patch of fixed physical size.
-These are ``faster'' systems.
+    \]
+In other words, the scale, in units of angular motion (arcsec) per physical
+motion in the focal plane ($x$), is given by $1/f$
+(\textcolor{red}{important!}) For a fixed aperture diameter, systems with a
+small focal ratio (smaller focal length) have a \emph{larger} scale, i.e.\ more
+light in a patch of fixed physical size. These are ``faster'' systems.
 
 Example:
 $\alpha = \frac{1}{35m} = \frac{1}{35\times10^{3}} = 2.86\times10^{-5}$
 radians $ = 5.98''$/mm (there are 206265 arcseconds per radian).
 
 \subsection{Multi-surface systems}
-To combine surfaces, the image from the first surface becomes the
-source for the second surface, and so on for each surface in the system.
-The basic parameters of multi-surface systems can generally be described by
-equivalent single-surface parameters.
-For example, the \emph{effective} focal length
-(the focal length of the first element multiplied by the magnification of
-each subsequent element) of a multi-surface system
-can be defined as the focal length of some
-equivalent single-surface system.
-The two systems (single and multi) are
-equivalent in the paraxial approximation ONLY\@.
+To combine surfaces, the image from the first surface becomes the source for
+the second surface, and so on for each surface in the system. The basic
+parameters of multi-surface systems can generally be described by equivalent
+single-surface parameters. For example, the \textit{effective} focal length
+(the focal length of the first element multiplied by the magnification of each
+subsequent element) of a multi-surface system can be defined as the focal
+length of some equivalent single-surface system. The two systems (single and
+multi) are equivalent in the paraxial approximation ONLY\@.
 
 \subsubsection{A lens (has two surfaces)}
-Consider a lens in air ($n \sim 1$). The first surface gives:{$$
+Consider a lens in air ($n \sim 1$). The first surface gives:
+\[
     \frac{n}{s_{1}'}-\frac{1}{s_{1}} = \frac{n-1}{R_{1}}=P_{1}
-$$}The second surface gives:{$$
+    \]
+The second surface gives:
+\[
     \frac{1}{s_{2}'}-\frac{n}{s_{2}} = \frac{n-1}{R_{2}}=P_{2}
-$$}but we have $s_{2} = s_{1}'-d$ (remember we have to use the plane of the
+    \]
+but we have $s_{2} = s_{1}'-d$ (remember we have to use the plane of the
 second surface to measure distances for the second surface).
 
 The effective focal length from the center of the lens
-is given (after some algebra) by:{$$
-    P=\frac{1}{f'}=P_{1}+P_{2}-\frac{d}{n}P_{1}P_{2} $$ $$
+is given (after some algebra) by:
+\[
+    P=\frac{1}{f'}=P_{1}+P_{2}-\frac{d}{n}P_{1}P_{2}
+    \]
+\[
     P=\frac{(n-1)}{R_{1}}+\frac{(1-n)}{R_{2}}-\frac{d}{n}
     \frac{(n-1)(1-n)}{R_{1}R_{2}}
-$$}From this, we derive the \emph{thin lens} formula:{$$
-    P=\frac{1}{f'} = \frac{(n-1)}{R_{1}}+\frac{(1-n)}{R_{2}} =
-    (n-1)\left( \frac{1}{R_1} - \frac{1}{R_2}\right)  $$ $$
+    \]
+From this, we derive the \textit{thin lens} formula:
+\[
+    P
+    = \frac{1}{f'}
+    = \frac{(n-1)}{R_{1}}+\frac{(1-n)}{R_{2}}
+    = (n-1) \left[ \frac{1}{R_{1}} - \frac{1}{R_{2}} \right]
+    \]
+\[
     \frac{1}{f'} = \frac{1}{f_{1}} + \frac{1}{f_{2}}
-$$}
+    \]
+
 \subsubsection{plane-parallel plate}
-Zero power, but moves image laterally:{$$
-    \Delta = d\left[1-\left(\frac{1}{n}\right)\right]
-$$}Application to filters: variation of focus. If the focal length
+Zero power, but moves image laterally:
+\[
+    \Delta = d \left[ 1 - \left( \frac{1}{n} \right) \right]
+    \]
+Application to filters: variation of focus.
+\mynotes{If the focal length
 changes, the scale changes; need to be careful when changing filters.
 The focus may need to be shifted a bit. The filter width doesn't matter
-but the index of refraction does. Holographic grating.
+but the index of refraction does. Holographic grating.}
+
 \subsubsection{Two-mirror telescopes}
 In astronomy, most telescopes are two-mirror telescopes of Newtonian,
-Cassegrain, or Gregorian design. All 3 types have a concave primary.
-The Newtonian has a flat secondary, the Cassegrain a convex secondary,
-and the Gregorian a concave secondary. The Cassegrain is the most
-common for research; it is more compact than a Gregorian and
-allows for magnification by the secondary. Basic parameters are
-outlined \href{%
-http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/cassegra.htm}{%
-    \textcolor{blue}{here}}.
-Each of these telescope types defines a \emph{family} of
-telescopes with different first-order performances. From the
-usage/instrumentation point of view, important quantities are:
+Cassegrain, or Gregorian design. All 3 types have a concave primary. The
+Newtonian has a flat secondary, the Cassegrain a convex secondary, and the
+Gregorian a concave secondary. The Cassegrain is the most common for research;
+it is more compact than a Gregorian and allows for magnification by the
+secondary. Basic parameters are outlined \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/cassegra.htm}
+{here}.Each of these telescope types defines a \textit{family} of telescopes
+with different first-order performances. From the usage/instrumentation point
+of view, important quantities are:
 \begin{itemize}
     \item the diameter of the primary, which defines the light
         collecting power
     \item the scale of the telescope, which is related to the focal
-        length of the primary and the magnification of the secondary:{$$
+        length of the primary and the magnification of the secondary:
+        \[
             f_{\textrm{eff}} = f_{1}m
-        $$}(alternatively, the focal ratio of the telescope, which gives
+            \]
+        (alternatively, the focal ratio of the telescope, which gives
         the effective focal length with the diameter)
     \item the back focal distance, which is the distance of the focal
         plane behind the telescope.
@@ -2245,90 +2243,101 @@ The relation between the usage and design parameters can be derived
 from simple geometry. Some basic definitions:
 \begin{itemize}
     \item ratio of focal lengths, $\rho$:
-        $$ \rho = \frac{R_2}{R_1} = \frac{f_2}{f_1}  $$
+        \[
+            \rho = \frac{R_{2}}{R_{1}} = \frac{f_{2}}{f_{1}}
+            \]
     \item magnification of the secondary, $m$ (be aware that $s_{2}'$ is
         \emph{negative} for a Cassegrain):
-        $$ m = -\frac{s_2'}{s_2} $$
-    \item \emph{back focal distance},
-        the distance from the primary vertex to
-        the focal plane (often expressed in units of the primary focal
-        length, or primary diameter):
-        $$ f_{1}\beta = D\eta  $$
+        \[
+            m = -\frac{s_{2}'}{s_{2}}
+            \]
+    \item \textit{back focal distance}, the distance from the primary vertex to
+        the focal plane (often expressed in units of the primary focal length,
+        or primary diameter):
+        \[
+            f_{1}\beta = D\eta
+            \]
     \item primary focal ratio, $F_{1}$:
-        $$ F_{1} = \frac{f_{1}}{D} $$
+        \[
+            F_{1} = \frac{f_{1}}{D}
+            \]
     \item ratio of marginal ray heights, $k$:
-        $$ k = \frac{y_{2}}{y_{1}}  $$
+        \[
+            k = \frac{y_{2}}{y_{1}}
+            \]
 \end{itemize}
 Using some geometry, some basic relations between these quantities
-can be derived, in particular:{$$
+can be derived, in particular:
+\[
     \rho = \frac{mk}{(m-1)}
-$$}and{$$
+    \]
+and
+\[
     (1+\beta) = k(m+1)
-$$}$\beta$ in units of primary mirror focal length.
-Usually, $f_{1}$ is limited by technology/cost, in which case
-$m$ can be chosen to match the
-desired scale. $k$ is directly related to separation of mirrors, and is a
-compromise between a shorter telescope and blocking out more
-light vs.\ a longer telescope and blocking less light.
-In either case, the focal plane has to be kept behind the primary.
+    \]
+\mynotes{where $\beta$ is in units of primary mirror focal length.} Usually,
+$f_{1}$ is limited by technology/cost, in which case $m$ can be chosen to match
+the desired scale. $k$ is directly related to separation of mirrors, and is a
+compromise between a shorter telescope and blocking out more light vs.\ a
+longer telescope and blocking less light. In either case, the focal plane has
+to be kept behind the primary.
 
-\textcolor{myBlue}{%
+\mynotes{%
 Want telescope to match detector: how many arcseconds per pixel?
 Straightforward in paraxial regime. Need to tune magnification of secondary.
 How far apart do the mirrors need to be\ldots}
 
 One final thing to note is how to focus a Cassegrain telescope. Most
-instruments are placed at a fixed location behind the primary.
-Ideally, this will be at the back focal distance, and everything
-should be set as designed. However, sometimes the instrument may not
-be exactly at the correct back focal distance, or it might move
-slightly because of thermal expansion/contraction. In this case,
-focussing is usually then done by moving the secondary mirror
-(not the detector).
+instruments are placed at a fixed location behind the primary. Ideally, this
+will be at the back focal distance, and everything should be set as designed.
+However, sometimes the instrument may not be exactly at the correct back focal
+distance, or it might move slightly because of thermal expansion/contraction.
+In this case, focussing is usually then done by moving the secondary mirror
+\mynotes{(not the detector)}.
 
-The amount of image motion for a given secondary motion is given by:{$$
-    \frac{\textrm{d}\beta}{\textrm{d}k} =
-    \frac{\textrm{d}}{\textrm{d}k}k\left(m+1\right)-1
-$$}Working through the relations above, this gives:{$$
-    \frac{\textrm{d}\beta}{\textrm{d}k} = m^{2}+1
-$$}where $m^{2}$ is the magnification of the secondary mirror.
-So the amount of focal plane motion ($f_{1}\textrm{d}\beta$)
+The amount of image motion for a given secondary motion is given by:
+\[
+    \frac{\mathrm{d}\beta}{\mathrm{d}k}
+    = \frac{\mathrm{d}}{\mathrm{d}k} k \left( m + 1 \right) - 1
+    \]
+Working through the relations above, this gives:
+\[
+    \frac{\mathrm{d}\beta}{\mathrm{d}k} = m^{2} + 1
+    \]
+where $m^{2}$ is the magnification of the secondary mirror.
+So the amount of focal plane motion ($f_{1}\mathrm{d}\beta$)
 for a given amount of secondary motion ($f_{1}dk$) depends on the
 magnification of the system.
 
-If the secondary is moved, $k$ is changed. Since $\rho$ is fixed by the
-mirror shapes, the magnification can be changed as the secondary is
-moved. This is expected since the system focal length is being changed:
-$f = mf_{1}$. So it's possible that a given
-instrument could have a slightly varying scale if its position is not
-perfectly fixed relative to the primary.
-Alternatively, if you need to independently focus and set the scale
-(SDSS for example), then two things need to be moved.
+If the secondary is moved, $k$ is changed. Since $\rho$ is fixed by the mirror
+shapes, the magnification can be changed as the secondary is moved. This is
+expected since the system focal length is being changed: $f = mf_{1}$. So it's
+possible that a given instrument could have a slightly varying scale if its
+position is not perfectly fixed relative to the primary. Alternatively, if you
+need to independently focus and set the scale (SDSS for example), then two
+things need to be moved.
 
-Note that even if the instrument is right at the back focal
-distance, movement of the secondary is required to account for
-mechanical changing of spacing between the primary and secondary as a
-result of thermal expansion/contraction.
+Note that even if the instrument is right at the back focal distance, movement
+of the secondary is required to account for mechanical changing of spacing
+between the primary and secondary as a result of thermal expansion/contraction.
 
-\rule{\textwidth}{0.4pt}
-
-{\small\hfill\emph{Monday, March 7, 2016}}
+\mydate{Monday, March 7, 2016}
 \subsubsection{Definitions for multi-surface system: stops and pupils}
-\begin{itemize}
-    \item aperture stop: determines the amount of light reaching an
+\begin{description}
+    \item [aperture stop:] determines the amount of light reaching an
         image (usually the primary mirror).
-    \item field stop: determines the angular size of the field. This
+    \item [field stop:] determines the angular size of the field. This
         is usually the detector, but for a large enough detector, it
         could be the secondary.
-    \item pupil: location where rays from all field angles fill the
+    \item [pupil:] location where rays from all field angles fill the
         same aperture. Image of the primary mirror (not formed by
         the primary mirror). Number of elements in system = number
         of pupils.
-    \item entrance pupil: image of aperture stop as seen from source
+    \item [entrance pupil:] image of aperture stop as seen from source
         object (usually the primary).
-    \item exit pupil: image of aperture stop formed by all subsequent
-        optical elements.
-\end{itemize}
+    \item [exit pupil:] image of aperture stop formed by all subsequent
+        optical elements
+\end{description}
 Stops are relevent for correcting aberrations.
 In a two-mirror telescope, the location of the exit pupil is where the
 image of the primary is formed by the secondary. This can be calculated
@@ -2337,34 +2346,36 @@ mirrors), then with the reflection equation, we can solve for $s'$
 which gives the location of the exit pupil relative to the secondary
 mirror. If one defines the quantity $\delta$, such that $f_{1}\delta$
 is the distance between the exit pupil and the focal plane,
-then (algebra not shown):{$$
+then (algebra not shown):
+\[
     \delta = \frac{m^{2}k}{m+k-1} = \frac{m^{2}(1+\beta)}{m^{2}+\beta}
-$$}This pupil is generally not accessible, so access to a pupil is
+    \]
+This pupil is generally not accessible, so if access to a pupil is
 needed, additional optics are used.
 
-The exit pupil is an important concept. For aberrations, it is
-the total wavefront error at the exit pupil which gives the system aberration.
-Pupils are important for aberration compensation. They can also be used to
-put light at a location that is independent of pointing errors.
+The exit pupil is an important concept. For aberrations, it is the total
+wavefront error at the exit pupil which gives the system aberration. Pupils are
+important for aberration compensation. They can also be used to put light at a
+location that is independent of pointing errors.
 
 \subsection{Aberrations}\label{ab}
 \subsubsection{Surface requirements for unaberrated images}
-Next consider \emph{non}-paraxial rays. The surface
-required to make an unaberrated image can be derived using
-\emph{Fermat's principle}, which
+Next consider \emph{non}-paraxial rays. The surface required to make an
+unaberrated image can be derived using \textit{Fermat's principle}, which
 states that light travels in the path such that infinitesimally small
 variations in the path doesn't change the travel time to first order:
-$\textrm{d}t/\textrm{d}l$
-is a minimum.
-For a single surface, this reduces to
-the statement that light travels the path which takes the least time.
-An alternate way of stating Fermat's principle is that the \emph{optical path
+$\mathrm{d}t/\mathrm{d}l$ is a minimum. For a single surface, this reduces to
+the statement that light travels the path which takes the least time. An
+alternate way of stating Fermat's principle is that the \emph{optical path
 length} (OPL) is unchanged to first order for a small change in path. The OPL
-is given by:{$$
-    OPL = \int{c\textrm{d}t} =
-    \int{\frac{c}{v}v\textrm{d}t} =
-    \int{n\textrm{d}s}
-$$}Fermat's principle has a physical interpretation when one considers the
+is given by:
+\[
+    OPL
+    = \int{c\mathrm{d}t}
+    = \int{\frac{c}{v}v\mathrm{d}t}
+    = \int{n\mathrm{d}s}
+    \]
+Fermat's principle has a physical interpretation when one considers the
 wave nature of light. It is clear that around a stationary point of the
 optical path light, the maximum amount of light can be accumulated over
 different paths with a minimum of destructive interference. By the wave
@@ -2386,62 +2397,75 @@ Instead of using Fermat's principle, we could solve for the parameters
 of a perfect surface using analytic geometry, but this would require an
 inspired guess for the correct functional form of the surface.
 
-The perfect surface depends on whether the
-light comes from a source at finite or infinite distance, and whether
-the mirror is concave or convex.
-The z-axis is the optical axis, perpendicular to the y-axis.
-The goal is to figure out the shape of the surface, $y(z)$, that gives
+The perfect surface depends on whether the light comes from a source at finite
+or infinite distance, and whether the mirror is concave or convex. In the
+following various cases, the z-axis is the optical axis, perpendicular to the
+y-axis. The goal is to figure out the shape of the surface, $y(z)$, that gives
 a perfect image.
 
-\textbf{\emph{%
-Concave mirror with one conjugate at infinity: Parabola}}
-\par Sample application: primary mirror of telescope looking at stars.
-Fermat's principle gives:{$$
+\paragraph{Concave mirror with one conjugate at infinity: Parabola}
+Sample application: primary mirror of telescope looking at stars.
+Fermat's principle gives:
+\[
     y^{2} = 2R_{z}
-$$}where $R = 2f$, the radius of curvature at the mirror vertex.
-Note, however, that a prabola makes a perfect image
-only for \emph{on}-axis images (field angle = 0), which is why we don't always
-use this shape.
+    \]
+where $R = 2f$, the radius of curvature at the mirror vertex. Note, however,
+that a prabola makes a perfect image only for \emph{on}-axis images (field
+angle = 0), which is why we don't always use this shape.
 
-\textbf{\emph{%
-Concave mirror with both conjugates at finite distances: Ellipse}}
-\par Sample application: Gregorian secondary looking at image formed by primary.
-Again, this is perfect only for field angle = 0.{$$
-    \frac{(z-a)^{2}}{a^{2}} + \frac{y^{2}}{b^{2}} = 1 $$ $$
+\paragraph{Concave mirror with both conjugates at finite distances: Ellipse}
+Sample application: Gregorian secondary looking at image formed by primary.
+Again, this is perfect only for field angle = 0.
+\[
+    \frac{(z-a)^{2}}{a^{2}} + \frac{y^{2}}{b^{2}} = 1
+    \]
+\[
     y^{2} - \frac{2zb^{2}}{a} + \frac{z^{2}b^{2}}{a^{2}} = 0
-$$}where{$$
-    a = \frac{s+s'}{2} $$ $$
-    b = \sqrt{(ss')} $$ $$
-    R = \frac{ss'}{s+s'} = \frac{2b^{2}}{a}
-$$}
-\textbf{\emph{%
-Convex mirror with both conjugates at finite distance: Hyperbola}}
-\par Sample application: Cassegrain secondary looking at
-image formed by primary:{$$
-    \frac{(z-a)^{2}}{a^{2}} - \frac{y^{2}}{b^{2}} = 1 $$ $$
+    \]
+where
+\begin{align*}
+    a &= \frac{s+s'}{2}\\
+    b &= \sqrt{(ss')}\\
+    R &= \frac{ss'}{s+s'} = \frac{2b^{2}}{a}\\
+\end{align*}
+
+\paragraph{Convex mirror with both conjugates at finite distance: Hyperbola}
+Sample application: Cassegrain secondary looking at
+image formed by primary:
+\[
+    \frac{(z-a)^{2}}{a^{2}} - \frac{y^{2}}{b^{2}} = 1
+    \]
+\[
     y^{2} + \frac{2zb^{2}}{a} - \frac{z^{2}b^{2}}{a^{2}} = 0
-$$}where{$$
-    a = \frac{s+s'}{2} $$ $$
-    b^{2} = \sqrt{(-ss')}
-$$}($s$ is negative){$$
+    \]
+where
+\begin{align*}
+    a &= \frac{s+s'}{2}\\
+    b^{2} &= \sqrt{(-ss')}\\
+\end{align*}
+($s$ is negative)
+\[
     R = -\frac{2b^{2}}{a}
-$$}Let secondary ``relax'' to get perfect image. Most telescopes adjust
+    \]
+Let secondary ``relax'' to get perfect image. Most telescopes adjust
 both surfaces, which allows for more freedom to get perfect images on
 and off-axis.
-\textbf{\emph{%
-Convex mirror with one conjugate at infinity: Parabola}}
-\par\ldots but this has no astronomical applications.
 
-\textbf{\emph{2D to 3D}}
-\par So far all cases have considered a one-dimensional surface.
+\paragraph{Convex mirror with one conjugate at infinity: Parabola}
+\ldots but this has no astronomical applications.
+
+\paragraph{2D to 3D}
+So far all cases have considered a one-dimensional surface.
 Generalize to 2D surfaces by rotating around the z-axis.
 For the equations, simply replace $y^{2}$ with $(x^{2} + y^{2})$.
 
-\textbf{\emph{Conic sections}}
-\par All of these figures are
-\emph{conic sections}, described by a single equation:{$$
+\paragraph{Conic sections}
+All of these figures are
+\emph{conic sections}, described by a single equation:
+\[
     \rho^{2} - 2Rz + (1+K)z^{2} = 0
-$$}where $ \rho^{2} = x^{2} + y^{2} $
+    \]
+where $ \rho^{2} = x^{2} + y^{2} $
 and $R$ is the radius of curvature at the mirror vertex,
 $K$ is called the conic constant ($K = -e^{2}$, where $e$ is the eccentricity for
 an ellipse, $e(b, a)$).
@@ -2453,73 +2477,87 @@ an ellipse, $e(b, a)$).
     \item [$K < - 1$] hyperboloid
 \end{description}
 
-\rule{\textwidth}{0.4pt}
-
+\mydate{Wednesday, March 23}
 \subsubsection{Aberrations: general description and low-order aberrations}
-
-{\small\hfill\emph{Wednesday, March 23}}
-
-Now consider what happens for surfaces that are \emph{not} perfect, e.g.\ for
-a field angle $\neq$ 0 in the cases discussed above
-(since only a sphere is symmetric for all field angles),
-or for field angle $=$ 0 for a conic
-surface that doesn't give a perfect image.
-
-This is where \emph{aberrations} arise;
-the light from all locations in the aperture
-does not land at any common point.
+Now consider what happens for surfaces that are \emph{not} perfect, e.g.\ for a
+field angle $\neq$ 0 in the cases discussed above (since only a sphere is
+symmetric for all field angles), or for field angle $=$ 0 for a conic surface
+that doesn't give a perfect image. This is where \textit{aberrations} arise;
+the light from all locations in the aperture does not land at any common point.
 
 Aberrations can be considered in either of two ways:
 \begin{itemize}
     \item All rays don't land at a common point.
     \item Wavefront deviates from a spherical wavefront.
 \end{itemize}
-These two descriptions are equivalent. The former refers to
-\emph{transverse} aberrations (the distance by which the
-rays miss the paraxial focus), or \emph{angular} aberrations
-(the angle by which the rays deviate from the perfect ray which will hit
-paraxial focus). The latter refers to the wavefront error
-(the deviation of the wavefront from a spherical wavefront as a
-function of location in the exit pupil).
+These two descriptions are equivalent. The former refers to \textit{transverse}
+aberrations (the distance by which the rays miss the paraxial focus), or
+\textit{angular} aberrations (the angle by which the rays deviate from the
+perfect ray which will hit paraxial focus). The latter refers to the wavefront
+error (the deviation of the wavefront from a spherical wavefront as a function
+of location in the exit pupil).
 
 In general, the angular and transverse aberrations can be determined
 from the optical path difference between a given ray and that of a
-spherical wavefront. The relations are given by:{$$
-    \textrm{angular aberration} =
-    \frac{\textrm{d}\left(2\Delta{z}\right)}{\textrm{d}\rho}$$ $$
-    \textrm{transverse aberration} =
-    s'\frac{\textrm{d}\left(\Delta{z}\right)}{\textrm{d}\rho}
-$$}$s'$ is the focal length.
-If the aberrations are not symmetric in the pupil, then
-define angular and transverse $x$ and $y$ aberrations separately by taking
+spherical wavefront. The relations are given by:
+\begin{itemize}
+    \item angular aberration =
+        $\cfrac{\mathrm{d} \left( 2\Delta{z} \right) }{\mathrm{d}\rho}$
+    \item transverse aberration =
+        $s'\cfrac{\mathrm{d} \left( 2\Delta{z} \right) }{\mathrm{d}\rho}$
+\end{itemize}
+$s'$ is the focal length. If the aberrations are not symmetric in the pupil,
+then define angular and transverse $x$ and $y$ aberrations separately by taking
 derivatives with respect to $x$ or $y$ instead of $\rho$.
 
-\textbf{\emph{Spherical aberration}}
-\par First, consider the axisymmetric case of looking at an object on axis
+\paragraph{Spherical aberration}
+First, consider the axisymmetric case of looking at an object on axis
 (field angle $=$ zero) with an optical element that is a conic
 section. Consider where rays land as $f(\rho)$, and derive
 the effective focal length, $f_{e}(\rho)$, for an arbitrary conic
-section [figure here]:{$$
-    z_0 = \frac{\rho}{\tan(2\phi)} = \frac{\rho(1-(\tan\phi)^{2})}{2\tan\phi}$$ $$
-    \tan\phi = \frac{\textrm{d}z}{\textrm{d}\rho}
-$$}from the conic equation:{$$
-    \rho^{2} - 2Rz + (1+K)z^{2} = 0 $$ $$
-    z = \frac{R}{(1+K)}\left[1-\left(1-\frac{\rho^{2}}{R^{2}}
-    \left(1+K\right)\right)^{1/2}\right] $$ $$
-    z \approx \frac{\rho^{2}}{2R}+(1+K)\frac{\rho^{4}}{8R^{3}} +
-    (1+K)^{2}\frac{\rho^{6}}{16R^{5}} + \ldots $$ $$
-    \frac{\textrm{d}z}{\textrm{d}\rho} =
-    \frac{\rho}{\left(R-\left(1-K\right)z\right)} $$ $$
+section [figure here]:
+\[
+    z_{0} = \frac{\rho}{\tan(2\phi)} = \frac{\rho(1-(\tan\phi)^{2})}{2\tan\phi}
+    \]
+\[
+    \tan\phi = \frac{\mathrm{d}z}{\mathrm{d}\rho}
+    \]
+from the conic equation:
+\[
+    \rho^{2} - 2Rz + (1+K)z^{2} = 0
+    \]
+\[
+    z = \frac{R}{(1+K)} \left[ 1 - \left( 1 - \frac{\rho^{2}}{R^{2}}
+    \left( 1 + K \right) \right) ^{1/2} \right]
+    \]
+\[
+    z \approx \frac{\rho^{2}}{2R} + (1 + K)\frac{\rho^{4}}{8R^{3}} +
+    (1+K)^{2}\frac{\rho^{6}}{16R^{5}} + \ldots
+    \]
+\[
+    \frac{\mathrm{d}z}{\mathrm{d}\rho} =
+    \frac{\rho}{\left(R-\left(1-K\right)z\right)}
+    \]
+\[
     z_{0} = \frac{\rho}{2}
-    \left[\frac{R-(1+K)z}{\rho} - \frac{\rho}{R-(1+K)z}\right] $$ $$
-    f_{e} = z + z_{0} $$ $$
-    f_{e} = \frac{R}{2} + \frac{(1-K)z}{2} - \frac{\rho^{2}}{2(R-(1+K)z)}$$ $$
-    f_{e} = \frac{R}{2} - (1+K)\frac{\rho^{2}}{4R} - (1+K)(3+K)\frac{\rho^{4}}{16R^{3}} - \ldots $$ $$
+    \left[\frac{R-(1+K)z}{\rho} - \frac{\rho}{R-(1+K)z}\right]
+    \]
+\[
+    f_{e} = z + z_{0}
+    \]
+\[
+    f_{e} = \frac{R}{2} + \frac{(1-K)z}{2} - \frac{\rho^{2}}{2(R-(1+K)z)}
+    \]
+\[
+    f_{e} = \frac{R}{2} - (1+K)\frac{\rho^{2}}{4R} -
+    (1+K)(3+K)\frac{\rho^{4}}{16R^{3}} - \ldots
+    \]
+\[
     \Delta{f} = f_{e} - \frac{R}{2}
-$$}
+    \]
 Note that $f_{e}$ is independent of $z$ only for $K=-1$, a parabola.
 Also note that $\Delta{f}$ is symmetric with respect to $\rho$.
-\textcolor{myBlue}{%
+\mynotes{%
     $R/2$: paraxial focus. Spherical aberration is different from
     focusing\ldots can't just move focal plane around to get a perfect image.
     Where's the best place to focus to minimize aberrations?
@@ -2528,54 +2566,71 @@ Also note that $\Delta{f}$ is symmetric with respect to $\rho$.
     conic section equations.
 }
 
-Spherical aberration is defined as the aberration resulting from
-$K\neq-1$ ($K+1 = 0$ for parabola).
-Rays from different radial positions in the entrance
+Spherical aberration is defined as the aberration resulting from $K\neq-1$
+($K+1 = 0$ for parabola). Rays from different radial positions in the entrance
 aperture focus at different locations. It is an aberration which is
-present on axis as seen \href{%
-http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/spher.htm}
-{\textcolor{blue}{here}}. Spherical aberration is symmetric in
-the pupil. There is no location in space where all rays focus at a
-point. Note that the behavior (image size) as a function of focal
-position is not symmetric. One can define several criteria for where
-the ``best focus'' might be, leading to the terminology paraxial
-focus, marginal focus, diffraction focus, and the circle of least
-confusion.
+present on axis as seen \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/spher.htm}
+{here}. Spherical aberration is symmetric in the pupil. There is no location in
+space where all rays focus at a point. Note that the behavior (image size) as a
+function of focal position is not symmetric. One can define several criteria
+for where the ``best focus'' might be, leading to the terminology paraxial
+focus, marginal focus, diffraction focus, and the circle of least confusion.
 
-The asymmetric nature of spherical aberration as a function of focal
-position distinguishes it from other aberrations and is a useful
-diagnostic for whether a system has this aberration. This is shown in this
-\href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/z11.htm}
-{\textcolor{blue}{figure}} which shows a sequence of images at different focal
-positions in the presence of spherical aberration.
-A \emph{transverse spherical aberration} (TSA) is the image size at paraxial
-focus. This is not the location of the minimum image size.\\
-(figure here){$$
-    \frac{\textrm{TSA}}{\Delta{f}} = \frac{\rho}{f-z(\rho)} $$ $$
-    \textrm{TSA} = -(1+K)\frac{\rho^{3}}{2R^{2}} -
+The asymmetric nature of spherical aberration as a function of focal position
+distinguishes it from other aberrations and is a useful diagnostic for whether
+a system has this aberration. This is shown in this \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/z11.htm}
+{figure} which shows a sequence of images at different focal positions in the
+presence of spherical aberration. A \textit{transverse spherical aberration}
+(TSA) is the image size at paraxial focus. This is not the location of the
+minimum image size.
+
+(figure here)
+\[
+    \frac{{TSA}}{\Delta{f}} = \frac{\rho}{f-z(\rho)}
+    \]
+\[
+    {TSA} = -(1+K)\frac{\rho^{3}}{2R^{2}} -
     3(1+K)(3+K)\frac{\rho^{5}}{8R^{4}} + \ldots
-$$}The difference in angle between the ``perfect'' ray from the parabola
-and the actual ray is called the \emph{angular aberration}, in this case
-\emph{angular spherical aberration} (ASA).\\
-(figure here){$$
-    \textrm{ASA} = 2(\phi_{P}-\phi) \approx
-    \frac{\textrm{d}}{\textrm{d}\rho}(2\Delta{z}) \approx
+    \]
+The difference in angle between the ``perfect'' ray from the parabola
+and the actual ray is called the \textit{angular aberration}, in this case
+\textit{angular spherical aberration} (ASA).
+
+(figure here)
+\[
+    {ASA} = 2(\phi_{P}-\phi) \approx
+    \frac{\mathrm{d}}{\mathrm{d}\rho}(2\Delta{z}) \approx
     -(1+K)\frac{\rho^{3}}{R^{3}}
-$$}where $2\Delta{z}$ gives the optical path difference between the two rays.
+    \]
+where $2\Delta{z}$ gives the optical path difference between the two rays.
 
-This is simply related to the transverse aberration:{$$
-    \textrm{TSA} = \frac{R}{2}\textrm{ASA}
-$$}We can also consider aberration as the difference between our
-wavefront and a spherical wavefront, which in this case is the
-wavefront given by a parabolic surface.\\
-(figure here){$$
-    \Delta{z} = z_{\textrm{parabola}}-z\left(K\right) =
-    -\frac{\rho^{4}}{8R^{3}}\left(1+K\right) + \ldots
-$$}
-\textcolor{red}{More stuff here, but pretty sure it's a repeat.}
+This is simply related to the transverse aberration:
+\[
+    {TSA} = \frac{R}{2}{ASA}
+    \]
+We can also consider aberration as the difference between our wavefront and a
+spherical wavefront, which in this case is the wavefront given by a parabolic
+surface.
 
-\textbf{\emph{General aberration description}}
-\par\textcolor{myBlue}{%
+(figure here)
+\[
+    \Delta{z} = z_{\mathrm{parabola}} - z \left( K \right) =
+    -\frac{\rho^{4}}{8R^{3}} \left( 1+K \right) + \ldots
+    \]
+
+This result can be generalized to any sort of aberration: the angular
+and transverse aberrations can be determined from the optical path difference
+between a given ray and that of a spherical wavefront. The relations are given
+by:
+\begin{itemize}
+    \item angular aberration =
+        $\cfrac{\mathrm{d}(2\Delta{z})}{\mathrm{d}\rho}$
+    \item transverse aberration =
+        $s' \cfrac{\mathrm{d}(2\Delta{z})}{\mathrm{d}\rho}$
+\end{itemize}
+
+\paragraph{General aberration description}
+\mynotes{%
     Surface described by polynomial, optical path difference, low
     order\ldots something, OPD (last term doesn't have field angle
     dependence). Restrict to third-order aberrations (fourth order
@@ -2585,143 +2640,142 @@ $$}
     $\theta$ - coma (linear), $y\rho^{2}$ - spherical aberration
     (no $\theta$).
 }
-\par We can describe deviations from a spherical wavefront generally. Since
+
+We can describe deviations from a spherical wavefront generally. Since
 all we care about are optical path differences, we write an expression
 for the optical path difference between an arbitrary ray and the chief
 ray, and in doing this, we can also include the possibility of an
-off-axis image, and get{$$
-    OPD = OPL - OPL(chiefray) $$ $$
-    OPD = A_0y + A_1y^{2} + A_1'x^{2} + A_2y^{3} + A_2'x^{2}y + A_3\rho^{4}
-$$}where we've kept terms only to fourth order and chosen our coordinate
+off-axis image, and get
+\[
+    OPD = OPL - OPL_{\mathrm{chief\;ray}}
+    \]
+\[
+    OPD
+    = A_{0}y + A_{1}y^{2} + A_{1}'x^{2} + A_{2}y^{3}
+    + A_{2}'x^{2}y + A_{3}\rho^{4}
+    \]
+where we've kept terms only to fourth order and chosen our coordinate
 system such that the object lies in the y-z plane. The coefficients,
 $A$, depend on lots of things, such as ($\theta, K, n, R, s, s'$).
 
-Note that rays along the y-axis are called \emph{tangential} rays,
-while rays along the x-axis are called \emph{sagittal} rays.
+Note that rays along the y-axis are called \textit{tangential} rays,
+while rays along the x-axis are called \textit{sagittal} rays.
 
-Analytically, generally restricted to
-\emph{third-order} aberrations, which are fourth-order
-(in powers of $x, y, \rho$, or $\theta$) in the optical path
-difference, because of the derivative we take to get transverse or
-angular aberrations. In the third-order limit,
-$A2 = A2'$, and $A1 = -A1'$. Working
-out the geometry, we find for a mirror that:{$$
-    A_{0} = 0 $$$$
-    A_{1} = \frac{n\theta^{2}}{R}$$$$
-    A_{2} = -\frac{n\theta}{R^{2}}\left(\frac{m+1}{m-1}\right)$$$$
-    A_{3} = \frac{n}{4R^{3}}\left[K+\left(\frac{m+1}{m-1}\right)^{2}\right]
-$$}
+Analytically, generally restricted to \textit{third-order} aberrations, which
+are fourth-order (in powers of $x, y, \rho$, or $\theta$) in the optical path
+difference, because of the derivative we take to get transverse or angular
+aberrations. In the third-order limit, $A2 = A2'$, and $A1 = -A1'$. Working out
+the geometry, we find for a mirror that:
+\begin{itemize}
+    \item $A_{0} = 0 $
+    \item $A_{1} = \cfrac{n\theta^{2}}{R}$
+    \item $A_{2} = -\cfrac{n\theta}{R^{2}}\left(\cfrac{m+1}{m-1}\right)$
+    \item $A_{3} = \cfrac{n}{4R^{3}}\left[K+\left(\cfrac{m+1}{m-1}\right)^{2}\right]$
+\end{itemize}
 From the general expression, we can derive the angular or the
 transverse aberrations in either the $x$ or $y$ direction. Considering the
-aberrations in the two separate directions, we find:{$$
-    AA_y = 2A_1y + A_2(x^{2}+3y^{2}) + 4A_3y\rho^{2}  $$$$
-    AA_x = 2A_1'x + 2A_2xy + 4A_3x\rho^{2}
-$$}The first term is proportional to $\theta^{2}y$ and is called
-\emph{astigmatism}. The second term is proportional to
-$ \theta(x^{2} +3y^{2})$
-and is called \emph{coma}. The final term, proportional to
-$y\rho^{2}$
-is \emph{spherical aberration}, which we've already discussed (note for
-spherical, $AA_x = AA_y$ and in fact the $AA$ in any direction is equal,
-hence the aberration is circularly symmetric).
+aberrations in the two separate directions, we find:
+\[
+    AA_{y} = 2A_{1}y + A_{2}(x^{2}+3y^{2}) + 4A_{3}y\rho^{2}
+    \]
+\[
+    AA_{x} = 2A_{1}'x + 2A_{2}xy + 4A_{3}x\rho^{2}
+    \]
+The first term is proportional to $\theta^{2}y$ and is called
+\textit{astigmatism}. The second term is proportional to $ \theta(x^{2}
++3y^{2})$ and is called \textit{coma}. The final term, proportional to
+$y\rho^{2}$ is \textit{spherical aberration}, which we've already discussed
+(note for spherical, $AA_{x} = AA_{y}$ and in fact the $AA$ in any direction is
+equal, hence the aberration is circularly symmetric).
 
-\textbf{\emph{Astigmatism}}
-\par For astigmatism, rays from opposite sides of the pupil focus in
-different locations relative to the paraxial rays. At the paraxial
-focus, we end up with a circular image. As you move away from this
-image location, you move towards the tangential focus in one
-direction and the sagittal focus in the other direction. At either of
-these locations, the astigmatic image looks like a elongated ellipse.
-Astigmatism goes as $\theta^{2}$, and consequently looks the same
-for opposite field angles. Astigmatism is characterized in the image
-plane by the \emph{transverse} or \emph{angular} astigmatism (TAS or AAS), which
-refer to the height of the marginal rays at the paraxial focus.
-Astigmatism is symmetric around zero field angle.
-\textcolor{myBlue}{%
+\paragraph{Astigmatism}
+For astigmatism, rays from opposite sides of the pupil focus in different
+locations relative to the paraxial rays. At the paraxial focus, we end up with
+a circular image. As you move away from this image location, you move towards
+the tangential focus in one direction and the sagittal focus in the other
+direction. At either of these locations, the astigmatic image looks like a
+elongated ellipse. Astigmatism goes as $\theta^{2}$, and consequently looks the
+same for opposite field angles. Astigmatism is characterized in the image plane
+by the \textit{transverse} or \textit{angular} astigmatism (TAS or AAS), which
+refer to the height of the marginal rays at the paraxial focus. Astigmatism is
+symmetric around zero field angle.
+\mynotes{%
     elliptical shape $\rightarrow$ circle $\rightarrow$ ellipse again.
     Need to consider tangential rays and sagittal rays. ``Useful'':
     look for where T changes to S.
 }
 This \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/astig.htm}
-{\textcolor{blue}{figure}} shows the rays in the presence of astigmatism.
-This \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/z5.htm}
-{\textcolor{blue}{figure}}
-shows the behavior of astigmatism as one passes through paraxial focus.
+{figure} shows the rays in the presence of astigmatism. This \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/z5.htm}
+{figure} shows the behavior of astigmatism as one passes through paraxial focus.
 
-\textbf{\emph{Coma}}
-
-\textcolor{myBlue}{%
+\paragraph{Coma}
+\mynotes{%
     Looks like a comet! Same distance from pupil, not same distance
     from focal plane. Can't tell which side of (?) you're on.
 }
-For coma, rays from opposite sides of the pupil focus at the same
-focal distance. However, the tangential rays focus at a different
-location than the sagittal rays, and neither of these focus at the
-paraxial focus. The net effect is to make an image that vaguely looks
-like a comet, hence the name coma. Coma goes as $\theta$, so the
-direction of the comet flips sign for opposite field angles. Coma is
-characterized by either the \emph{tangential} or \emph{sagittal
-transverse/angular coma} (TTC, TSC, ATC, ASC) which describe the
-height/angle of either the tangential or sagittal marginal rays at the
-paraxial focus: $TTC = 3TSC$.
+For coma, rays from opposite sides of the pupil focus at the same focal
+distance. However, the tangential rays focus at a different location than the
+sagittal rays, and neither of these focus at the paraxial focus. The net effect
+is to make an image that vaguely looks like a comet, hence the name coma. Coma
+goes as $\theta$, so the direction of the comet flips sign for opposite field
+angles. Coma is characterized by either the \textit{tangential} or \textit{sagittal
+transverse/angular coma} (TTC, TSC, ATC, ASC) which describe the height/angle
+of either the tangential or sagittal marginal rays at the paraxial focus: $TTC
+= 3TSC$.
 
 This \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/coma.htm}
-{\textcolor{blue}{figure}} shows the rays in the presence of coma.
-This \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/z7.htm}
-{\textcolor{blue}{figure}} shows the behavior of coma as one passes
-through paraxial focus.
-In fact, there are two more third-order aberrations:
-\textit{distortion} and \textit{field curvature},
+{figure} shows the rays in the presence of coma. This \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/z7.htm}
+{figure} shows the behavior of coma as one passes through paraxial focus. In
+fact, there are two more third-order aberrations: \textit{distortion} and
+\textit{field curvature},
 \mynotes{``field flattener''}.
-Neither affects image quality, only location;
-\mynotes{the images go off-axis} (unless
-you are forced to use a flat image plane). Field curvature gives a
-curved focal plane: if imaging onto a flat detector, this will lead to
-focus deviations as one goes off-axis. Distortion affects the location
-of images in the focal plance, and goes as $\theta^{3}$.
-The amount of field curvature and distortion can be derived from the
-aberration coefficients and the mirror parameters.
+Neither affects image quality, only location; \mynotes{the images go off-axis}
+(unless you are forced to use a flat image plane). Field curvature gives a
+curved focal plane: if imaging onto a flat detector, this will lead to focus
+deviations as one goes off-axis. Distortion affects the location of images in
+the focal plance, and goes as $\theta^{3}$. The amount of field curvature and
+distortion can be derived from the aberration coefficients and the mirror
+parameters.
 
-We can also determine the relevant coefficients for a surface with a
-displaced stop (Schroeder p 77), or for a surface with a decentered
-pupil (Schroeder p89-90); it's just more geometry and algebra. With
-all these realtions, we can determine the optical path differences for
-an entire system: for a multi-surface system, we just add the OPD's as
-we go from surface to surface. The final aberrations can be determined
-from the system OPD.
+We can also determine the relevant coefficients for a surface with a displaced
+stop (Schroeder p 77), or for a surface with a decentered pupil (Schroeder
+p89-90); it's just more geometry and algebra. With all these realtions, we can
+determine the optical path differences for an entire system: for a
+multi-surface system, we just add the OPD's as we go from surface to surface.
+The final aberrations can be determined from the system OPD.
 
-\rule{\textwidth}{0.4pt}
-
-{\small\hfill\emph{Wednesday, March 30}}
-
+\mydate{Wednesday, March 30}
 \subsubsection{Aberration compensation and different telescope types}
-
 Using the techniques above, we can write expressions for the system
 aberrations as a function of the surface figures (and field angles).
 If we give ourselves the freedom to choose surface figures, we can
 eliminate one (or more) aberrations.
 
 For example, given a conic constant of the primary mirror, we can use
-the aberration relations to determine $K_2$ such that spherical
+the aberration relations to determine $K_{2}$ such that spherical
 aberration is zero; this will give us perfect images on-axis. We find
-that:{$$
-    K_2 = \left(\frac{m+1}{m-1}\right)^{2} +
-    \frac{m^{3}}{k\left(m-1\right)^{3}}\left(K_{1}+1\right)
-$$}satisfies this criterion.  If we set the primary to be a parabola
-($K_{1} = -1$), this gives the conic constant of the secondary we must use to
-avoid spherical aberration. This type of telescope is called a
-\emph{classical} telescope. Using the aberration relations, we can determine
-the amount of astigmatism and coma for such telescopes, and we find
-that coma gives significantly larger aberrations than astigmatism.
+that:
+\[
+    K_{2} =
+    - \left( \frac{m+1}{m-1} \right) ^{2}
+    + \frac{m^{3}}{k \left( m - 1 \right) ^{3}} \left( K_{1} + 1 \right)
+    \]
+satisfies this criterion.  If we set the primary to be a parabola ($K_{1} =
+-1$), this gives the conic constant of the secondary we must use to avoid
+spherical aberration. This type of telescope is called a \textit{classical}
+telescope. Using the aberration relations, we can determine the amount of
+astigmatism and coma for such telescopes, and we find that coma gives
+significantly larger aberrations than astigmatism.
 
-If we allow ourselves the freedom to choose both $K_1$ and $K_2$,
-we can eliminate both spherical aberration and coma.
-Designs of this sort are called \emph{aplanatic}.
-The relevant expression, in terms of the magnification and
-back focal distance (we could use the relations discussed earlier to
-present these in terms of other paraxial parameters), is:{$$
+If we allow ourselves the freedom to choose both $K_{1}$ and $K_{2}$, we can
+eliminate both spherical aberration and coma. Designs of this sort are called
+\textit{aplanatic}. The relevant expression, in terms of the magnification and
+back focal distance (we could use the relations discussed earlier to present
+these in terms of other paraxial parameters), is:
+\[
     K_{1} = -1 - \frac{2(1+\beta)}{m^{2}(m-\beta)}
-$$}We can only eliminate two aberrations with two mirrors, so even this
+    \]
+We can only eliminate two aberrations with two mirrors, so even this
 telescope will be left with astigmatism.
 
 There are two different classes of two-mirror telescopes that allow
@@ -2733,79 +2787,75 @@ secondary is hyperbolic, whereas for a Gregorian it is ellipsoidal
 and concave mirrors with finite conjugates). For the aplanatic
 design, the Cassegrain telescope has two hyperbolic mirrors, while
 the Gregorian telescope has two ellipsoidal mirrors. An aplanatic
-Cassegrain telescope is called a \emph{Ritchey-Chretien} telescope.
+Cassegrain telescope is called a \textit{Ritchey-Chretien} telescope.
 
 The following table gives some characteristics of ``typical''
 telescopes. Aberrations are given at a field angle of 18 arc-min in
 units of arc-seconds. Coma is given in terms of tangential coma.
 
 \begin{table}[h]
-\centering
-\begin{tabular}{c r r r r}
-Parameter & CC & CG & RC & AG\\
-\hline\hline
-m & 4.00 & -4.00 & 4.00 & -4.00\\
-k & 0.25 & -0.417 & 0.25 & -0.417\\
-1-k & 0.75 & 1.417 & 0.75 & 1.417\\
-mk & 1.000 & 1.667 & 1.000 & 1.667\\
-ATC & 2.03 & 2.03 & 0.00 & 0.00\\
-AAS & 0.92 & 0.92 & 1.03 & 0.80\\
-ADI & 0.079 & 0.061 & 0.075 & 0.056\\
-$\kappa_{m}R_{1}$ & 7.25 & -4.75 & 7.625 & -5.175\\
-$\kappa_{P}R_{1}$ & 4.00 & -8.00 & 4.00 & -8.00\\
-\hline
-\end{tabular}
-\caption{Characteristics of Two-Mirror Telescopes}
+    \centering
+    \begin{tabular}{c r r r r}
+        Parameter & CC & CG & RC & AG\\
+        \hline\hline
+        m & 4.00 & -4.00 & 4.00 & -4.00\\
+        k & 0.25 & -0.417 & 0.25 & -0.417\\
+        1-k & 0.75 & 1.417 & 0.75 & 1.417\\
+        mk & 1.000 & 1.667 & 1.000 & 1.667\\
+        ATC & 2.03 & 2.03 & 0.00 & 0.00\\
+        AAS & 0.92 & 0.92 & 1.03 & 0.80\\
+        ADI & 0.079 & 0.061 & 0.075 & 0.056\\
+        $\kappa_{m}R_{1}$ & 7.25 & -4.75 & 7.625 & -5.175\\
+        $\kappa_{P}R_{1}$ & 4.00 & -8.00 & 4.00 & -8.00\\
+        \hline
+    \end{tabular}
+    \caption{Characteristics of Two-Mirror Telescopes}
 \end{table}
 
-The image quality is clearly better for the aplanatic designs than for
-the classical designs, as expected because coma dominates off-axis in
-the classical design. In the aplanatic design, the Gregorian is
-slightly better. However, when considerations other than just optical
-quality are considered, the Cassegrain usually is favored: for the
-same primary mirror, the Cassegrain is considerably shorter and thus
-it is less costly to build an enclosure and telescope structure. To
-keep the physical length the same, the Gregorian would have to have a
-faster primary mirror, which are more difficult (i.e.\ costly) to
-fabricate, and which will result in a greater sensitivity to alignment
+The image quality is clearly better for the aplanatic designs than for the
+classical designs, as expected because coma dominates off-axis in the classical
+design. In the aplanatic design, the Gregorian is slightly better. However,
+when considerations other than just optical quality are considered, the
+Cassegrain usually is favored: for the same primary mirror, the Cassegrain is
+considerably shorter and thus it is less costly to build an enclosure and
+telescope structure. To keep the physical length the same, the Gregorian would
+have to have a faster primary mirror, which are more difficult (i.e.\ costly)
+to fabricate, and which will result in a greater sensitivity to alignment
 errors. Both types of telescopes have a \emph{curved} focal plane.
 
 \subsection{Sources of aberrations}
-So far, we have been discussing aberrations which arise from the
-optical design of a system when we have a limited number of elements.
-However, it is important to realize that aberrations can arise from
-other sources as well. These other sources can give additional
-third-order aberrations, as well as higher order aberrations. Some
-possible sources include:
-\begin{itemize}
-    \item misfigured (a slightly harsh term)
-        or imperfectly figured optics: rarely is an element made
-        exactly to specification.
-    \item misalignments. If the mirrors in a multiple-element system are not
-        perfectly aligned, aberrations will result. The centers must be
-        lined up. These can be derived
-        (third-order) from the aberration expressions for decentered elements.
-        For two mirror systems, decentering or tilting the
-        secondary introduces a constant amount of coma over the field. Coma
-        dominates astigmatism for a misaligned telescope.
-        The Ritchey-Chretian has a ``high'' tolerance for this (not much
-        wiggle room).
-    \item mechanical/support problems. When the mirrors are mounted in mirror
+So far, we have been discussing aberrations which arise from the optical design
+of a system when we have a limited number of elements. However, it is important
+to realize that aberrations can arise from other sources as well. These other
+sources can give additional third-order aberrations, as well as higher order
+aberrations. Some possible sources include:
+\begin{description}
+    \item [misfigured, or imperfectly figured optics:]
+        \mynotes{(``misfigured'' is a slightly harsh term)}, but
+        rarely is an element made exactly to specification.
+    \item [misalignments:] if the mirrors in a multiple-element system are not
+        perfectly aligned, aberrations will result. The centers must be lined
+        up. These can be derived (third-order) from the aberration expressions
+        for decentered elements. For two mirror systems, decentering or tilting
+        the secondary introduces a constant amount of coma over the field. Coma
+        dominates astigmatism for a misaligned telescope. The Ritchey-Chretian
+        has a ``high'' tolerance for this (not much wiggle room).
+    \item [mechanical/support problems:] When the mirrors are mounted in mirror
         cells the weight of the mirror is distributed over some support
         structures. Because the mirrors are not infinitely stiff, some
         distortion of the mirror shape will occur. Generally, such distortion
         will probably change as a function of which way the telescope is
-        pointing. Separate from this, becuase the telescope structure itself
-        is not perfectly stiff, one expects some flexure which gives a
-        different secondary (mis)alignment as a function of where one is
-        pointing. Finally, one might expect the spacing between the primary
-        and secondary to vary with temperature, if the telescope structure is
-        made of materials which have non-zero coefficients of expansion.
-    \item chromatic aberration. Generally, we've only been discussing mirrors
+        pointing. Separate from this, becuase the telescope structure itself is
+        not perfectly stiff, one expects some flexure which gives a different
+        secondary (mis)alignment as a function of where one is pointing.
+        Finally, one might expect the spacing between the primary and secondary
+        to vary with temperature, if the telescope structure is made of
+        materials which have non-zero coefficients of expansion.
+    \item [chromatic aberration:] Generally, we've only been discussing mirrors
         since this is what is used in telescopes. However, astronomers often
         put additional optics (e.g., cameras or spectrographs) behind
-        telescopes which may use refractive elements rather than mirrors.
-        There are aberration relations for refractive elements just as we've
+        telescopes which may use refractive elements rather than mirrors. There
+        are aberration relations for refractive elements just as we've
         discussed, but these have additional dependences on the indices of
         refraction of the optical elements. For most refractive elements, the
         index of refraction varies with wavelength, so one will get
@@ -2813,90 +2863,80 @@ possible sources include:
         can be minimized by good choices of materials or by using combinations
         of different materials for different elements; however, it is an
         additional source of aberration.
-    \item seeing. This is the only natural source of aberration (the one
-        we can't control).
-        The earth's atmosphere introduces optical path differences
-        between the rays across the aperture of the telescope. This is
-        generally the \textbf{dominant} source of image degradation from a ground-based
-        telescope. Consequently, one builds telescopes in good sites, and as
-        far as design and other sources of image degradation are concerned,
-        one is generally only interested in getting these errors small when
-        compared with the smallest expected seeing errors.
-\end{itemize}
+    \item [seeing:] This is the only natural source of aberration (the one we
+        can't control). The earth's atmosphere introduces optical path
+        differences between the rays across the aperture of the telescope. This
+        is generally the \textbf{dominant} source of image degradation from a
+        ground-based telescope. Consequently, one builds telescopes in good
+        sites, and as far as design and other sources of image degradation are
+        concerned, one is generally only interested in getting these errors
+        small when compared with the smallest expected seeing errors.
+\end{description}
 
 \subsection{Ray tracing}
+For a fully general calculation of image quality, one does not wish to be
+limited to third-order aberrations, nor does one often wish to work out all of
+the relations for the complex set of aberrations which result from all of the
+sources of aberration mentioned above. Real world situations also have to deal
+with \textit{vignetting} in optical systems, in which certain rays may be blocked
+by something and never reach the image plane (e.g., in a two-mirror telescope,
+the central rays are blocked by the secondary).
 
-For a fully general calculation of image quality, one does not wish
-to be limited to third-order aberrations, nor does one often wish to
-work out all of the relations for the complex set of aberrations
-which result from all of the sources of aberration mentioned above.
-Real world situations also have to deal with \emph{vignetting} in optical
-systems, in which certain rays may be blocked by something and never
-reach the image plane (e.g., in a two-mirror telescope, the central
-rays are blocked by the secondary).
+Because of these and other considerations, analysis of optical systems is
+usually done using \textit{ray tracing}, in which the parameters of an optical
+system are entered into a computer, and the computer calculates the expected
+images on the basis of geometric optics. Many programs exist with many
+features: one can produce \textit{spot} diagrams which show the location of
+rays from across the aperture at an image plane (or any other location), plots
+of transverse aberrations, plots of optical path differences, etc.
+\texttt{zmacs} is a ray-tracing program.
 
-Because of these and other considerations, analysis of optical
-systems is usually done using \emph{ray tracing}, in which the parameters of
-an optical system are entered into a computer, and the computer
-calculates the expected images on the basis of geometric optics. Many
-programs exist with many features: one can produce \emph{spot} diagrams
-which show the location of rays from across the aperture at an image
-plane (or any other location), plots of transverse aberrations, plots
-of optical path differences, etc. \texttt{zmacs} is a ray-tracing
-program.
-
-(Demo ray trace program. Start with on-axis object, single mirror.
-Where is focus? What will image look like with spherical mirror? What
-do we need to do to make it perfect? How does it depend on aperture
-size? Now how do off-axis images look like? spot diagrams, through
-focus, ray fan, opd plots, etc. Now introduce second mirror. What
-determines where focus will be? Magnification? What shape to make a
-perfect on-axis image? What do off-axis images look like? How do we
-make them better? Now how is performance? Real 3.5m and 1m
+(Demo ray trace program. Start with on-axis object, single mirror. Where is
+focus? What will image look like with spherical mirror? What do we need to do
+to make it perfect? How does it depend on aperture size? Now how do off-axis
+images look like? spot diagrams, through focus, ray fan, opd plots, etc. Now
+introduce second mirror. What determines where focus will be? Magnification?
+What shape to make a perfect on-axis image? What do off-axis images look like?
+How do we make them better? Now how is performance? Real 3.5m and 1m
 prescriptions. Issue: guider.)
 
 \subsection{Physical (diffraction) optics}
-
-Up until now, we have avoided considering the wave nature of light
-which introduces \textit{diffraction} from interference of light coming from
-different parts of the aperture. Because of diffraction, images of a
-point source will be slightly blurred. From simple geometric arguments,
-we can estimate the size of the blur introduced from diffraction:
-(figure here)
+Up until now, we have avoided considering the wave nature of light which
+introduces \textit{diffraction} from interference of light coming from
+different parts of the aperture. Because of diffraction, images of a point
+source will be slightly blurred. From simple geometric arguments, we can
+estimate the size of the blur introduced from diffraction: (figure here)
 
 We find that:
 \[
     \theta \sim \frac{\lambda}{D}
     \]
 Using this, we find that the diffraction blur is smaller than the blur
-introduced by seeing for $D > 0.2$ meters at 5500 \AA{}, even for the
-excellent seeing conditions of 0.5 arcsecond images. However, the
-study of diffraction has become important recently because of several
-reasons: 1) the existence of the Hubble Space Telescope, which is
-diffraction limited (no seeing), 2) the increasing use of infrared
-observations, where diffraction is more important than in the optical,
-and 3) the development of adaptive optics, which attempts to remove
-some of the distortions caused by seeing. Consequently, it's now
+introduced by seeing for $D > 0.2$ meters at 5500 \AA{}, even for the excellent
+seeing conditions of 0.5 arcsecond images. However, the study of diffraction
+has become important recently because of several reasons: 1) the existence of
+the Hubble Space Telescope, which is diffraction limited (no seeing), 2) the
+increasing use of infrared observations, where diffraction is more important
+than in the optical, and 3) the development of adaptive optics, which attempts
+to remove some of the distortions caused by seeing. Consequently, it's now
 worthwhile to understand some details about diffraction.
 
-To work out in detail the shape of the images formed from diffraction
-involves understanding wave propagation. Basically, one integrates
-over all of the source points in the aperture (or exit pupil for an
-optical system), determining the contribution of each point at each
-place in the image plane. The contributions are all summed taking into
-account phase differences at each image point, which causes
-reinforcment at some points and cancellation at others. The expression
-which sums all of the individual source points is called the
-\textit{diffraction integral}. When the details are worked out,
-the intensity in the image plane is related to the intensity and phase
-at the exit pupil. In fact the wavefront is described at any plane by
-the \textit{optical transfer function}, which gives the intensity and phase of
-the wave at all locations in that plane. The OTF at the pupil plane
-and at the image plane are a Fourier transform pair. Consequently, we
-can determine the light distribution in the image plane by taking the
-Fourier transform of the pupil plane; the light distribution, or point
-spread function, is just the modulus-squared of the OTF at the image
-plane. Symbolically, we have
+To work out in detail the shape of the images formed from diffraction involves
+understanding wave propagation. Basically, one integrates over all of the
+source points in the aperture (or exit pupil for an optical system),
+determining the contribution of each point at each place in the image plane.
+The contributions are all summed taking into account phase differences at each
+image point, which causes reinforcment at some points and cancellation at
+others. The expression which sums all of the individual source points is called
+the \textit{diffraction integral}. When the details are worked out, the
+intensity in the image plane is related to the intensity and phase at the exit
+pupil. In fact the wavefront is described at any plane by the \textit{optical
+transfer function}, which gives the intensity and phase of the wave at all
+locations in that plane. The OTF at the pupil plane and at the image plane are
+a Fourier transform pair. Consequently, we can determine the light distribution
+in the image plane by taking the Fourier transform of the pupil plane; the
+light distribution, or point spread function, is just the modulus-squared of
+the OTF at the image plane. Symbolically, we have
 \[
     PSF = \left\vert{FT(OTF(pupil))}\right\vert^{2}
     \]
@@ -2905,15 +2945,14 @@ where $FT$ represents a Fourier transform, and
     OTF(pupil) = P(x,y)e^{ik\phi(x,y)}
     \]
 $P(x,y)$ is the \textit{pupil function}, which gives the transmission
-properties of the pupil, and usually consists of ones and zeros for
-locations where light is either transmitted or blocked (e.g., for a
-circular lens, the pupil function is unity within the radius of lens,
-and zero outside; for a typical telescope the pupil function includes
-obscuration by the secondary and secondary support structure).
-$\phi$ is the phase in the pupil. More relevantly, $\phi$ can be
-taken to be the optical path difference in the pupil with some
-fiducial phase, since only OPDs matter, not the absolute phase.
-Finally the wavenumber $k$ is just $\frac{2\pi}{\lambda}$.
+properties of the pupil, and usually consists of ones and zeros for locations
+where light is either transmitted or blocked (e.g., for a circular lens, the
+pupil function is unity within the radius of lens, and zero outside; for a
+typical telescope the pupil function includes obscuration by the secondary and
+secondary support structure). $\phi$ is the phase in the pupil. More
+relevantly, $\phi$ can be taken to be the optical path difference in the pupil
+with some fiducial phase, since only OPDs matter, not the absolute phase.
+Finally the wavenumber $k$ is just $2\pi/\lambda$.
 
 For the simple case of a plane wave with \textbf{no phase errors}, the
 diffraction integral can be solved analytically. The result for a
@@ -2933,83 +2972,75 @@ where $J_{1}$ is a first order Bessel function, $r$ is the distance in the
 image plane, $\lambda$ is the wavelength, and $F$ is the focal ratio
 ($F=f/D$).
 
-This expression gives the so-called \textit{Airy pattern} (the solution?)
-which has a central disk surrounded by concentric dark and bright rings.
-The radius of the first dark ring is at the physical distance
-$r = 1.22\lambda F$, or alternatively, the angular distance
-$\theta = 1.22\lambda/D$. This gives the size of the \textit{Airy disk}.
+This expression gives the so-called \textit{Airy pattern}
+\mynotes{(the solution?)}
+which has a central disk surrounded by concentric dark and bright rings. The
+radius of the first dark ring is at the physical distance $r = 1.22\lambda F$,
+or alternatively, the angular distance $\theta = 1.22\lambda/D$. This gives the
+size of the \textit{Airy disk}.
 \mynotes{For the APO 3.5 m, $\theta \sim 0.02''$, but we get $\sim 1''$
 because we're \textit{seeing dominated}.}
 
-For more \textbf{complex cases}, the diffraction integral is solved
-numerically by doing a \textit{Fourier transform}. The pupil function is often
-more complex than a simple circle, because of additional
-items which block light in the pupil, such as the support structures
-for the secondary mirror.
+For more \textbf{complex cases}, the diffraction integral is solved numerically
+by doing a \textit{Fourier transform}. The pupil function is often more complex
+than a simple circle, because of additional items which block light in the
+pupil, such as the support structures for the secondary mirror.
 
 This \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/airy.htm}
 {figure} shows the Airy pattern, both without obscurations,
 and with a central obscuration and spiders in a setup typical of a telescope.
 
 In addition, there may be \textit{phase errors} in the exit pupil, because of
-the existence of any one of the sources of aberration discussed
-above. For general use, $\phi$ is often expressed as an series,
-where the expansion is over a set of orthogonal polynomials for the
-aperture which is being used. For circular apertures with (or
-without) a central obscuration (the case most often found in
-astronomy), the appropriate polynomials are called \textit{Zernike}
-polynomials. The lowest order terms are just uniform slopes of phase
-across the pupil, called tilt, and simply correspond to motion in the
-image plane. The next terms correspond to the expressions for the OPD
-which we found above for focus, astigmatism, coma, and spherical
-aberration, generalized to allow any orientation of the phase errors
-in the pupil. Higher order terms correspond to higher order
-aberrations. \mynotes{Zernike polynomials: expansion, each tilted in
-different direction and/or parabolic}.
+the existence of any one of the sources of aberration discussed above. For
+general use, $\phi$ is often expressed as an series, where the expansion is
+over a set of orthogonal polynomials for the aperture which is being used. For
+circular apertures with (or without) a central obscuration (the case most often
+found in astronomy), the appropriate polynomials are called \textit{Zernike}
+polynomials. The lowest order terms are just uniform slopes of phase across the
+pupil, called tilt, and simply correspond to motion in the image plane. The
+next terms correspond to the expressions for the OPD which we found above for
+focus, astigmatism, coma, and spherical aberration, generalized to allow any
+orientation of the phase errors in the pupil. Higher order terms correspond to
+higher order aberrations. \mynotes{Zernike polynomials: expansion, each tilted
+in different direction and/or parabolic}.
 
 This \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/zernike.htm}
-{figure} shows the form of some of the low order Zernike terms:
-the first corresponds to focus aberration, the next two to
-astigmatism, the next two to coma, the next two to trefoil
-aberration, and the last to spherical aberration.
+{figure} shows the form of some of the low order Zernike terms: the first
+corresponds to focus aberration, the next two to astigmatism, the next two to
+coma, the next two to trefoil aberration, and the last to spherical aberration.
 
 A wonderful example of the application of all of this stuff was in the
-diagnosis of spherical aberration in the Hubble Space Telescope, which
-has been corrected in subsequent instruments in the telescope, which
-introduce spherical aberration of the opposite sign. To perform this
-correction, however, required and accurate understanding of the
-amplitude of the aberration. This was derived from analysis of
-on-orbit images, as shown in this
-\href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/hstspher.htm}
-{figure}.
-Note that it is possible in
-some cases to try to recover the phase errors from analysis of images.
-This is called \textit{phase retrieval}. There are several ways of trying to do
-this, some of which are complex, so we won't go into them, but it's
-good to know that it is possible. But an accurate amplitude of
-spherical aberration was derived from these images. This derived value
-was later found to correspond almost exactly to the error expected
-from an error which was made in the testing facility for the HST
-primary mirror, and the agreement of these two values allowed the
-construction of new corrective optics to proceed\ldots
+diagnosis of spherical aberration in the Hubble Space Telescope, which has been
+corrected in subsequent instruments in the telescope, which introduce spherical
+aberration of the opposite sign. To perform this correction, however, required
+and accurate understanding of the amplitude of the aberration. This was derived
+from analysis of on-orbit images, as shown in this \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/hstspher.htm}
+{figure}. Note that it is possible in some cases to try to recover the phase
+errors from analysis of images. This is called \textit{phase retrieval}. There
+are several ways of trying to do this, some of which are complex, so we won't
+go into them, but it's good to know that it is possible. But an accurate
+amplitude of spherical aberration was derived from these images. This derived
+value was later found to correspond almost exactly to the error expected from
+an error which was made in the testing facility for the HST primary mirror, and
+the agreement of these two values allowed the construction of new corrective
+optics to proceed\ldots
 
 \test{Understand the principles of diffraction optics and, in particular,
 how diffraction scales with wavelength and aperture diameter. Know the
 terminology: optical transfer function, pupil function, and how phase
 errors across the pupil can be decomposed into a series of Zernike polynomials.}
 
-\subsection{Adaptive optics}
 \mydate{Monday, April 4}
-
-\textbf{The goal of \textit{adaptive optics} is to partially or entirely remove
-the effects of atmospheric seeing.} This is different from \textit{active}
-optics, which works at lower frequencies ($\ll$ 1 Hz), whereas adaptive optics
-must work at 10 to 1000 Hz.  At low frequencies, the active optics can be done
-with actuators on the primary and secondary mirrors themselves.  At the high
-frequencies reqiured for adaptive optics, however, these large mirrors cannot
-respond fast enough, so it is required to form a pupil on a smaller mirror
-which can be rapidly adjusted; hence adaptive optics systems are really
-separate astronomical instruments.
+\subsection{Adaptive optics}
+The goal of adaptive optics is to partially or entirely remove the effects of
+atmospheric seeing. This is different from \textit{active} optics, which works
+at lower frequencies ($\ll$ 1 Hz), whereas adaptive optics must work at 10 to
+1000 Hz.  At low frequencies, the active optics can be done with actuators on
+the primary and secondary mirrors themselves.  At the high frequencies required
+for adaptive optics, however, these large mirrors cannot respond fast enough,
+so it is required to form a pupil on a smaller mirror which can be rapidly
+adjusted; hence adaptive optics systems are really separate astronomical
+instruments.
 
 \mynotes{Camera behind, make image of primary mirror.
 Actuators ``push me pull you'' on back of mirror.
@@ -3032,22 +3063,20 @@ three parts to an adaptive optics system:
 There are several methods used for wavefront sensing. Two that are in
 fairly common use today are
 \begin{enumerate}
-    \item \href{%
-        http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/beckers3.htm}
+    \item \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/beckers3.htm}
         {Shack-Hartmann sensors}
     \item wavefront curvature sensing devices
 \end{enumerate}
 In a Shack-Hartmann sensor,
 \mynotes{(determine wiggly wavefront; uses image of primary)}, an array of
 lenslets \mynotes{(lots of little telescopes in exit pupil)}
-is put in a pupil plane and each
-lenslet images a small part of the pupil. Measuring image shifts between each
-of the images gives a measure of the local wavefront tilts. Wavefront curvature
-devices look at the intensity distribution in out-of focus images. Other
-wavefront sensing techniques include pyramid wavefront sensors and phase
-diversity techniques. Usually, a star is used as the source, but this is not
-required for some wavefront sensors (in other words, an extended source can be
-used).
+is put in a pupil plane and each lenslet images a small part of the pupil.
+Measuring image shifts between each of the images gives a measure of the local
+wavefront tilts. Wavefront curvature devices look at the intensity distribution
+in out-of focus images. Other wavefront sensing techniques include pyramid
+wavefront sensors and phase diversity techniques. Usually, a star is used as
+the source, but this is not required for some wavefront sensors (in other
+words, an extended source can be used).
 
 To correct wavefront errors, a deformable mirror is used. These can be
 generically split into two categories: segmented and continuous faceplate
@@ -3058,26 +3087,25 @@ wavefront correction.
 
 In general, it is very difficult to achieve complete correction even for ideal
 performance, and the effectiveness of different adaptive optics systems needs
-to be considered.  This effectiveness depends on the size of the aperture, the
+to be considered. This effectiveness depends on the size of the aperture, the
 wavelength, the number of resolution elements on the deformable mirror, and the
-quality of the site.  Clearly, more resolution elements are needed for larger
-apertures.  Equivalently, the effectiveness of a system will decrease as the
+quality of the site. Clearly, more resolution elements are needed for larger
+apertures. Equivalently, the effectiveness of a system will decrease as the
 aperture is increased for a fixed number of resolution elements.  The return
 can be considered as a function of Zernike order corrected and aperture size.
-(\mynotes{uh, do hwut?}) For large telescopes, you'll only get
+For large telescopes, you'll only get
 partial correction unless a very large number of resolution elements on the
 deformable mirror are available. The following table gives the mean square
 amplitude, $\Delta_{j}$, for Kolmogorov turbulence after removal of the first
 $j$ terms; the rms phase variation is just
 $ \frac{\sqrt{\Delta_{j}}}{2\pi} $.
-
 \mynotes{$\Delta_{j}$ - rms around wavefront error; comes down even
 for lower order.}
-
 For small apertures, you can make significant gains with removal of just low
 order terms, but for large apertures you need very high order terms. Note
 various criteria for quality of imaging, e.g.\ $\lambda/4$, etc.
 \newpage
+%\samepage
 \begin{table}[th]
 \centering
 \begin{tabular}{c c c c c c c}
@@ -3117,20 +3145,13 @@ sorts of detectors that are needed in the wavefront sensors (fast readout and
 little to no readout noise).
 
 \mynotes{4/06/16 Another challenge: wavefront sensing. Need one subcell for
-each $r_{0}$. How much light does each element collect? Not much\ldots
-Exposure time needs to be short enough that atmosphere doesn't change during
-that time. \underline{Isoplanatic patch}: same blurring pattern;
-size scale: $\theta \sim$ arcsec - 1 arcmin.
-Following table:
-Typical $r_{0}$ values [cm] and typical timescales ($\tau_{0}$) [seconds].
-$V_{lim}$ - subaperture of
-$r_{0}$,
-integrate at time
-$\tau_{0}$,
-Limiting V-magnitude.
-$V_{wind}$ - m/sec (?)
-Taken from some book, ap. not that important.
-}
+each $r_{0}$. How much light does each element collect? Not much\ldots Exposure
+time needs to be short enough that atmosphere doesn't change during that time.
+\underline{Isoplanatic patch}: same blurring pattern; size scale: $\theta \sim$
+arcsec - 1 arcmin. Following table: Typical $r_{0}$ values [cm] and typical
+timescales ($\tau_{0}$) [seconds]. $V_{lim}$ - subaperture of $r_{0}$,
+integrate at time $\tau_{0}$, Limiting V-magnitude. $V_{wind}$ - m/sec (?)
+Taken from some book, ap. not that important. }
 
 \begin{table}[th]
 \centering
@@ -3168,27 +3189,25 @@ because of reference star vs.\ target wavefront differences, adaptive
 optics works in the partially correcting regime. This typically gives
 PSFs with a sharp core, but still with extended wings.
 
-The problem of sky coverage can be avoided by using so-called \textit{laser guide
-stars}. The idea is to create a ``star'' by shining a laser up into the
+The problem of sky coverage can be avoided by using so-called \textit{laser
+guide stars}. The idea is to create a ``star'' by shining a laser up into the
 atmosphere. To date, two generic classes of lasers have been used:
-\textit{Rayleigh beacons} and \textit{sodium beacons}. The Rayleigh beacons scatter
-off a layer roughly 30 km above the Earth's surface; the sodium beacons scatter
-off a layer roughly 90 km above the Earth's surface.
-\mynotes{Better to be higher up, most distortion is high in the atmosphere.}
-Laser guide stars still
-have some limitations: the path through the atmosphere that the laser traverses
-does not exactly correspond to the path that light from a star traverses,
-because the latter comes from an essentially infinite distance; this leads to
-the effect called \textit{focal anoisoplanatism}. In addition, laser guide
-stars cannot generally be used to track image motion since the laser passes up
-and down through the same atmosphere and image motion is cancelled out. To
-correct for image motion, separate tip-tilt tracking is required. Note that
-even with perfect correction, one is still limited by the isoplanatic patch
-size. As one moves further and further away from the reference object, the
-correction will gradually degrade.
-\mynotes{Laser guide star - not a perfect star, expensive, tracked on
-same platform as telescope (tip-tilt, tracking - still need natural
-star for these).}
+\textit{Rayleigh beacons} and \textit{sodium beacons}. The Rayleigh beacons
+scatter off a layer roughly 30 km above the Earth's surface; the sodium beacons
+scatter off a layer roughly 90 km above the Earth's surface. \mynotes{Better to
+be higher up, most distortion is high in the atmosphere.} Laser guide stars
+still have some limitations: the path through the atmosphere that the laser
+traverses does not exactly correspond to the path that light from a star
+traverses, because the latter comes from an essentially infinite distance; this
+leads to the effect called \textit{focal anoisoplanatism}. In addition, laser
+guide stars cannot generally be used to track image motion since the laser
+passes up and down through the same atmosphere and image motion is cancelled
+out. To correct for image motion, separate tip-tilt tracking is required. Note
+that even with perfect correction, one is still limited by the isoplanatic
+patch size. As one moves further and further away from the reference object,
+the correction will gradually degrade. \mynotes{Laser guide star - not a
+perfect star, expensive, tracked on same platform as telescope (tip-tilt,
+tracking - still need natural star for these).}
 
 In principle, correction over a wider field of view is possible with
 \emph{multiple} deformable mirrors and multiple reference objects, giving rise
@@ -3224,15 +3243,11 @@ necessary, one can consider thermally controlling the mirror, e.g.,
 with heating or air conditioning.
 
 In the large mirror regime, there are currently three leading technologies.
-\begin{itemize}
-    \item Borosilicate honeycomb -
-        \textcolor{myBlue}{%
-        large thermal mass, need to keep daytime
-        temp as close to observing temp as possible. University of Arizona
-        (Tucson) doing this under a football stadium.}
-        The first is the construction of a single large mirror
+\begin{description}
+    \item [Borosilicate honeycomb]
+        The first design is the construction of a single large mirror
         (monolithic) made from borosilicate glass, but having large hollowed
-        out regions to keep the weight down. This borosilicate honeycomb
+        out regions to keep the weight down. This
         design has been pioneered by Roger Angel at the Mirror Lab of the
         University of Arizona. This type of mirror has been successfully cast
         in a 3.5m size (used in the ARC 3.5m (APO), WIYN 3.5m (KPNO), and the
@@ -3240,11 +3255,11 @@ In the large mirror regime, there are currently three leading technologies.
         format for the MMT conversion (Mt. Hopkins, AZ) and the Magellan (Las
         Campanas Observatory, Chile) telescopes; they have also been made in
         an 8m format (x2) for the Large Binocular Telescope (Mt. Graham, AZ).
-    \item \textcolor{myBlue}{Thin mirrors - lightweight, better for TE, but not as stiff, uses
-        an active support system (changing gravity load during tracking,
-        timescales of minutes or hours, not like adaptive optics).
-        \emph{Active} optics - operates on longer timescales, structural
-        mechanical stuff. Gemini was a big deal. VLT (Europe).}
+        \mynotes{%
+        large thermal mass, need to keep daytime temp as close to observing
+        temp as possible. University of Arizona (Tucson) doing this under a
+        football stadium.}
+    \item [Thin mirrors]
         The second design is also monolithic but has a mirror which is
         significantly thinner than the borosilicate mirror. These thin mirrors
         are being built primarly by two companies, Corning (USA) and Schott
@@ -3254,139 +3269,130 @@ In the large mirror regime, there are currently three leading technologies.
         telescope (Mauna Kea, Hawaii), the two 8m Gemini telescopes (Mauna Kea
         and Cerro Pachon, Chile), and ESO's Very Large Telescopes (4 8m's on
         Cerro Paranal).
-    \item \textcolor{myBlue}{Segmented - lots of little mirrors, each element needs its own correct
-            shape (overall shape is hyperbola).}
-        Finally, the third design make use of segmented
-        mirrors, in which a large mirror is made by combining many small
-        mirrors. This design is currently operational in the 10m Keck
-        telescope (Mauna Kea), the 11m Hobby-Eberly Telescope, the 11m SALT
-        telescope, and the 10m Gran Telescopio de las Canarias. Future 30m
-        class telescopes: TMT, GMT, and E-ELT.
-\end{itemize}
+        \mynotes{Thin mirrors - lightweight, better for TE, but not as stiff, uses
+        an active support system (changing gravity load during tracking,
+        timescales of minutes or hours, not like adaptive optics).
+        \emph{Active} optics - operates on longer timescales, structural
+        mechanical stuff. Gemini was a big deal. VLT (Europe).}
+    \item Finally, the third design make use of segmented mirrors, in which a
+        large mirror is made by combining many small mirrors. This design is
+        currently operational in the 10m Keck telescope (Mauna Kea), the 11m
+        Hobby-Eberly Telescope, the 11m SALT telescope, and the 10m Gran
+        Telescopio de las Canarias. Future 30m class telescopes: TMT, GMT, and
+        E-ELT.
+        \mynotes{Segmented - lots of little mirrors, each element needs its own
+        correct shape (overall shape is hyperbola).}
+\end{description}
 \href{http://astro.nineplanets.org/bigeyes.html}{Tabular summary}
 of the world's telescopes!
 
-The borosilicate mirrors have the advantage that they are stiffer than
-the other designs, so the mirror support is less complicated. For thin
-mirrors, the support system must be activated to allow for changing
-shape as a function of telescope pointing. For segmented mirrors, each
-segment must be controlled to make sure the entire surface is smooth.
-The thick mirror is also less susceptible to wind shake, which can
-adversely affect image quality. The thin and segmented mirrors have
-the advantage of better thermal properties since they contain less
-total material.
+The borosilicate mirrors have the advantage that they are stiffer than the
+other designs, so the mirror support is less complicated. For thin mirrors, the
+support system must be activated to allow for changing shape as a function of
+telescope pointing. For segmented mirrors, each segment must be controlled to
+make sure the entire surface is smooth. The thick mirror is also less
+susceptible to wind shake, which can adversely affect image quality. The thin
+and segmented mirrors have the advantage of better thermal properties since
+they contain less total material.
 
-The choice of a primary mirror technology can be complicated. In
-designing a large telescope, one generally first decides on an optical
-prescription which is chosen considering the main scientific goals for
-the project (e.g., large field, IR, good image quality, etc.). The
-primary mirror choice is made considering the choice of site (e.g, are
-there large temperature changes, lots of wind, etc.), availability,
-issues of engineering complexity, and, especially, cost (and
-politics). The choice of a mount and control system to use is
-basically a cost and operations issue.
-
+The choice of a primary mirror technology can be complicated. In designing a
+large telescope, one generally first decides on an optical prescription which
+is chosen considering the main scientific goals for the project (e.g., large
+field, IR, good image quality, etc.). The primary mirror choice is made
+considering the choice of site (e.g, are there large temperature changes, lots
+of wind, etc.), availability, issues of engineering complexity, and,
+especially, cost (and politics). The choice of a mount and control system to
+use is basically a cost and operations issue.
 
 \subsection{Mirror coatings}
-\textcolor{myBlue}{Mercury - highly reflective liquid :)
-Aluminum usually highest choice. Silver and gold better at longer wavelengths,
-but go back at shorter ones; mostly used for telescopes that work primarily
-in the IR\@.}
+\mynotes{Mercury - highly reflective liquid :) Aluminum usually highest choice.
+Silver and gold better at longer wavelengths, but go back at shorter ones;
+mostly used for telescopes that work primarily in the IR\@.}
 
-Aluminum, silver, gold most commonly used. See, e.g.\
-\href{http://www.optiforms.com/optical-coatings/}
-{here} for relative reflectances as a function of wavelength, also
-\href{https://en.wikipedia.org/wiki/Reflectance}{here}.
+Aluminum, silver, gold most commonly used. See, e.g.\ \href{http://www.optiforms.com/optical-coatings/}
+{here} for relative reflectances as a function of wavelength, also \href{https://en.wikipedia.org/wiki/Reflectance}
+{here}.
 
 Issues with mirror cleaning and recoating.
 
 \subsection{Telescope mounts}
-We've talked about the optics that go into telescopes. However, it's
-clear that these optics need to be supported in some structure and
-kept in alignment with each other. The support structures needed are
-really an engineering issue (and a challenging one for large
-telescopes), and we won't disucss it here. In addition to supporting
-the optics, the structure also needs to be capable of tracking
-astronomical objects as they move across the sky because of the
+We've talked about the optics that go into telescopes. However, it's clear that
+these optics need to be supported in some structure and kept in alignment with
+each other. The support structures needed are really an engineering issue (and
+a challenging one for large telescopes), and we won't disucss it here. In
+addition to supporting the optics, the structure also needs to be capable of
+tracking astronomical objects as they move across the sky because of the
 rotation of the earth.
 
-There are two main different sorts of telescope mounts found in
-observatories: the \emph{equatorial} mount and the
-\emph{altitude-azimuth (alt-az)}
-mount. The equatorial mount is by far the most common for older
-telescopes, but the alt-az design is being used more frequently for
-newer, especially larger, telescopes. In the equatorial design, the
-telescope move along axes which are parallel and perpendicular to the
-polar axis, which is the direction parallel to the earth's rotation
-axis. In such a mount, tracking the earth's rotation only requires
-motion along one axis, the one perpendicular to the polar axis, and
-the tracking motion is at a uniform rate. In the alt-az mount, the
-telescope moves along axes which are perpendicular and parallel to the
-local vertical axis. With this mount, however, tracking of celestial
-objects requires motions of variable speed along both axes. An
-additional complication of an alt-az mount is the fact that, for a
-detector which is fixed to the back of the telescope, the image field
-rotates as the telescope tracks an object. Note, however, that the
-telescope pupil does not rotate with the object.
+There are two main different sorts of telescope mounts found in observatories:
+the \textit{equatorial} mount and the \textit{altitude-azimuth (alt-az)} mount.
+The equatorial mount is by far the most common for older telescopes, but the
+alt-az design is being used more frequently for newer, especially larger,
+telescopes. In the equatorial design, the telescope move along axes which are
+parallel and perpendicular to the polar axis, which is the direction parallel
+to the earth's rotation axis. In such a mount, tracking the earth's rotation
+only requires motion along one axis, the one perpendicular to the polar axis,
+and the tracking motion is at a uniform rate. In the alt-az mount, the
+telescope moves along axes which are perpendicular and parallel to the local
+vertical axis. With this mount, however, tracking of celestial objects requires
+motions of variable speed along both axes. An additional complication of an
+alt-az mount is the fact that, for a detector which is fixed to the back of the
+telescope, the image field rotates as the telescope tracks an object. Note,
+however, that the telescope pupil does not rotate with the object.
 
-An equatorial mount is much easier to control for pointing and
-tracking. However, from an engineering point of view, it is much more
-demanding to construct, especially for large telescopes which have
-significant weight. The engineering complications generally result in
-a significantly larger cost (for large telescopes) than for an alt-az
-design. An alt-az telescope, however, has a significantly more complex
-control system, and must have an image rotator for the instruments.
+An equatorial mount is much easier to control for pointing and tracking.
+However, from an engineering point of view, it is much more demanding to
+construct, especially for large telescopes which have significant weight. The
+engineering complications generally result in a significantly larger cost (for
+large telescopes) than for an alt-az design. An alt-az telescope, however, has
+a significantly more complex control system, and must have an image rotator for
+the instruments.
 
-Regardless of mount type, the mount is never built absolutely
-perfectly, i.e.\ with axes exactly perpendicular, exactly aligned as
-they should be, totally round surfaces, optics aligned with mechanics,
-etc. As a result, a telescope does not generally point perfectly.
-However, many effects of an imperfect telescope are quite repeatable,
-so they can be corrected for. This corrrection is done by something
-called a pointing model, which records the difference in true position
-from prediction position over the sky, and, once derived, the pointing
-model can be implemented to significantly improve pointing. A good
-telescope points to within a few arcseconds after implementation of a
-good pointing model.
+Regardless of mount type, the mount is never built absolutely perfectly, i.e.\
+with axes exactly perpendicular, exactly aligned as they should be, totally
+round surfaces, optics aligned with mechanics, etc. As a result, a telescope
+does not generally point perfectly. However, many effects of an imperfect
+telescope are quite repeatable, so they can be corrected for. This corrrection
+is done by something called a pointing model, which records the difference in
+true position from prediction position over the sky, and, once derived, the
+pointing model can be implemented to significantly improve pointing. A good
+telescope points to within a few arcseconds after implementation of a good
+pointing model.
 
-Related to pointing is tracking performance. The issue here is how
-long the telescope can stay pointed at a given target. You can
-consider this question as how well the telescope can point over the
-area of the sky through which your object will drift. Since your
-required pointing stability should be significantly less than one
-arcsec, so that tracking does not degrade the image quality
-significantly, almost no telescopes have sufficiently good pointing to
-track to within an arcsecond for an arbitrarily long time. Most
-telescopes can track sucessfully for several minutes, but will give
-significant image degradation for exposures longer than this.
-Consequently, most telescopes/instruments are equipped with
-\emph{guide cameras}, which are used to continually correct the pointing by
-observing an object somewhere in the field of view of the telescope
-(possibly the object you are interested in, but usually not, since
-that's where your detector is looking). These days, most guiders are
-\emph{autoguiders}, meaning that they automatically find the position of the
-guide object, compute the pointing offsets needed to keep this object
-in one position, and send these offsets as commands to the telescope.
-The observer generally just has to choose a guide object for the
-autoguider to use, though they also may have to adjust the guide
-camera sensitivity or gain to insure that the guide star has a strong
-signal. These days, many autoguiders can automatically find guide
-stars in the field or from some on-line catalog (e.g., the HST Guide
-Star Catalog, which catalogs stars down to V 14). However, if one is
-taking long exposures and knows that they'll need to use guide stars,
-make sure to find out whether such a facility is available ; if not,
-it may still be possible to find guide stars in advance of your
-observing run, e.g., from the sky survey. If so, you should seriously
-consider doing so, as it can take a frustratingly long amount of time
-to search for a guide star at the telescope in real time. Since
-telescope time is heavily oversubscribed at most facilities, you
-really want to maximize your efficiency, and doing so is a large part
-of what will make you a ``expert'' observer.
+Related to pointing is tracking performance. The issue here is how long the
+telescope can stay pointed at a given target. You can consider this question as
+how well the telescope can point over the area of the sky through which your
+object will drift. Since your required pointing stability should be
+significantly less than one arcsec, so that tracking does not degrade the image
+quality significantly, almost no telescopes have sufficiently good pointing to
+track to within an arcsecond for an arbitrarily long time. Most telescopes can
+track sucessfully for several minutes, but will give significant image
+degradation for exposures longer than this. Consequently, most
+telescopes/instruments are equipped with \textit{guide cameras}, which are used
+to continually correct the pointing by observing an object somewhere in the
+field of view of the telescope (possibly the object you are interested in, but
+usually not, since that's where your detector is looking). These days, most
+guiders are \textit{autoguiders}, meaning that they automatically find the
+position of the guide object, compute the pointing offsets needed to keep this
+object in one position, and send these offsets as commands to the telescope.
+The observer generally just has to choose a guide object for the autoguider to
+use, though they also may have to adjust the guide camera sensitivity or gain
+to insure that the guide star has a strong signal. These days, many autoguiders
+can automatically find guide stars in the field or from some on-line catalog
+(e.g., the HST Guide Star Catalog, which catalogs stars down to V 14). However,
+if one is taking long exposures and knows that they'll need to use guide stars,
+make sure to find out whether such a facility is available ; if not, it may
+still be possible to find guide stars in advance of your observing run, e.g.,
+from the sky survey. If so, you should seriously consider doing so, as it can
+take a frustratingly long amount of time to search for a guide star at the
+telescope in real time. Since telescope time is heavily oversubscribed at most
+facilities, you really want to maximize your efficiency, and doing so is a
+large part of what will make you a ``expert'' observer.
 
 Note guiding in spectrographs is often done off of the slit with a
 slit-viewing camera.
 
-\textcolor{myBlue}{Axes of machine$\ldots$
+\mynotes{Axes of machine$\ldots$
 \begin{itemize}
     \item equatorial: simpler, don't have to track dec, just RA\@. Rotation rate
         of Earth is used, so it's fixed.
@@ -3410,14 +3416,10 @@ for a well-built telescope. Called \emph{pointing models}.}
 \subsection{Planning observing}
 (skipped over this in class)
 
-\rule{\textwidth}{0.4pt}
-
-{\small\hfill\emph{Monday, April 18, 2016}}
+\mydate{Monday, April 18, 2016}
 \section{Instrumentation}
-\textcolor{myBlue}{%
-\underline{Review:}
-Different angles have different wavefronts. Multi-conjugate
-$\rightarrow$ multiple deformable mirror.}
+\mynotes{ \underline{Review:} Different angles have different wavefronts.
+Multi-conjugate $\rightarrow$ multiple deformable mirror.}
 
 Often, astronomers use additional optics between the telescope and
 their detector. These, in conjunction with a detector, make up an
@@ -3440,7 +3442,7 @@ angles similarly, and will have an effect on the image quality.
 In many instruments, lenses are used rather than mirrors; they can be
 cheaper and lead to more compact designs. Recall, however, that when
 lenses are used, chromatic effects will arise because the index of
-refraction of glasses changes with wavelength. While they can often be
+refraction of glass changes with wavelength. While they can often be
 minimized by the use of use of multiple elements to make achromatic
 combinations, they are not always negligible. In particular, if an
 instrument is used at multiple wavelengths, some refocussing may be
@@ -3472,9 +3474,11 @@ beam (note that the focal ratio of the collimating lens itself will be
 larger than that of the telescope so that the beam underfills the lens
 to allow for off-axis light as well). The camera lens then refocuses
 the light with the desired focal ratio. The magnification of the
-system is given by:{$$
+system is given by:
+\[
     m = \frac{f_{camera}}{f_{collimator}}
-$$}Consequently, the scale in the image plane of the focal reimager is
+    \]
+Consequently, the scale in the image plane of the focal reimager is
 just the scale in the telescope focal plane multiplied by the ratio of
 the focal ratio of the camera to that of the telescope.
 
@@ -3489,7 +3493,7 @@ Note that it is possible to do focal reduction/expansion
 \emph{without} reimaging, i.e., by putting optics in the converging beam.
 
 \subsection{Pupil reimagers}
-Often, an additional lens, called a \emph{field lens} is placed in or near
+Often, an additional lens, called a \textit{field lens} is placed in or near
 the telescope focal plane. This does not affect the focal reduction
 but is used to reimage the telescope pupil somewhere in the reimager.
 One reason this may be done is to minimize the size that the
@@ -3497,19 +3501,17 @@ collimator lens needs to be to get off-axis images. The size of the
 field lens itself depends on the desired size of the field that one
 wishes to reimage.
 
-Another use of reimaging the pupil is when building a
-\emph{coronagraph}, an imaging system designed to observe faint sources
-near bright ones. Scattered light, diffraction, and sometimes detector effects
-(e.g., charge bleeding in a CCD)
-can all contribute to the difficulty in seeing the
-faint source. A partial solution is to put an occulting spot in
-the telescope focal plane which removes most of the light from the
-bright object. However, the diffraction structure is still a problem.
-It turns out you can remove this by reimaging the pupil after the
-occulting spot and putting a mask in around the edges which are the
-source of the diffraction; this mask is called a \emph{Lyot stop}.
-The resulting image in the focal plane of the focal reducer is free of
-both bright source and diffraction structure.
+Another use of reimaging the pupil is when building a \textit{coronagraph}, an
+imaging system designed to observe faint sources near bright ones. Scattered
+light, diffraction, and sometimes detector effects (e.g., charge bleeding in a
+CCD) can all contribute to the difficulty in seeing the faint source. A partial
+solution is to put an occulting spot in the telescope focal plane which removes
+most of the light from the bright object. However, the diffraction structure is
+still a problem. It turns out you can remove this by reimaging the pupil after
+the occulting spot and putting a mask in around the edges which are the source
+of the diffraction; this mask is called a \emph{Lyot stop}. The resulting image
+in the focal plane of the focal reducer is free of both bright source and
+diffraction structure.
 
 Note that for really high contrast imaging, you also need to consider
 other sources of far-field light including light scattered from
@@ -3518,20 +3520,18 @@ seeing. Minimizing the former required very smooth optics, while
 minimizing the latter requires high-performance adaptive optics (e.g.
 ``extreme-AO'').
 
-\mynotes{Wednesday, April 20}
+\mydate{Wednesday, April 20}
 
-Pupil reimagers are also widely used in IR systems to reduce emission
-via cold pupil stops. The issue here is that the telescope itself
-contributes infrared emission which acts as additional background in
-the observations. There is little that can be done about emission from the
-primary, since you need to see light from the primary to see your
-object. However, emission can be blocked from regions of the pupils
-that are obscured already, such as the secondary and/or
-secondary support structures, by putting a mask in the pupil plane.
-However, the mask needs to be colder than the
-telescope itself or else the mask would contribute the background, so
-it is usually placed within the dewar that contains the detector and
-camera optics.
+Pupil reimagers are also widely used in IR systems to reduce emission via cold
+pupil stops. The issue here is that the telescope itself contributes infrared
+emission which acts as additional background in the observations. There is
+little that can be done about emission from the primary, since you need to see
+light from the primary to see your object. However, emission can be blocked
+from regions of the pupils that are obscured already, such as the secondary
+and/or secondary support structures, by putting a mask in the pupil plane.
+However, the mask needs to be colder than the telescope itself or else the mask
+would contribute the background, so it is usually placed within the dewar that
+contains the detector and camera optics.
 
 \subsection{Filters}
 Filters are used in optical systems (usually imaging systems) to
@@ -3544,23 +3544,22 @@ filters are \emph{loosely} classified with widths of:
     \item narrow band ($1 < \sim 100$ \AA{}).
 \end{itemize}
 
-Perhaps a better distinction between different filters is by
-how they work.
-Many broad band filters use \emph{colored
-glass}, which has pigments that absorb certain wavelengths of light
-and let others pass. Bandpasses can be constructed by using multiple
-types of colored glass. These are generally the most inexpensive
-filters.
+Perhaps a better distinction between different filters is by how they work.
+Many broadband filters use colored glass, which has pigments that absorb
+certain wavelengths of light and let others pass. Bandpasses can be constructed
+by using multiple types of colored glass. These are generally the most
+inexpensive filters.
 
-\emph{Interference filters} use the principle of \emph{interference},
-and are made by using two
-partially reflecting plates separated by a distance $d$.
-The principle is fairly simple:
-when light from the different paths
-combines constructively, light is transmitted; when it combines
-destructively, it is not. Simple geometry gives:{$$
+\textit{Interference filters} use the principle of interference, and are made
+by using two partially reflecting plates separated by a distance $d$
+\href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/intfilt.htm}
+{(diagram)}. The principle is fairly simple: when light from the different
+paths combines constructively, light is transmitted; when it combines
+destructively, it is not. Simple geometry gives:
+\[
     m\lambda = 2dn\cos\theta
-$$}It is clear from this expression that the passband of the filter will
+    \]
+It is clear from this expression that the passband of the filter will
 depend on the angle of incidence. Consequently, narrowband filters will
 have variable bandpasses across the field if they are located in a
 collimated beam; this can cause great difficulties in interpretation.
@@ -3568,8 +3567,6 @@ However, if the filter is located in a focal plane or a converging beam,
 the mix of incident angles will broaden the filter bandpass.
 This can be a serious effect in a fast beam. Bandpasses of
 interference filters can also be affected by the temperature.
-\par\href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/intfilt.htm}
-{Interference filter diagram}
 
 Since interference filters will pass light at integer multiples of the
 wavelength, the extra orders often must be blocked. This can be done
@@ -3589,17 +3586,18 @@ one needs to consider these issues when deciding on the location of
 filters in an optical system.
 
 \subsection{Fabry-Perot Interferometer}
-A \emph{Fabry-Perot} system makes use of a tunable interference filter. The
-filter is tuned in wavelength by adjusting one of the:
+A \textit{Fabry-Perot} system makes use of a tunable interference filter. The
+filter is tuned in wavelength by adjusting one of the following:
 \begin{itemize}
     \item spacing
     \item index of refraction (usually by changing the pressure)
     \item tilt of the interference filter
 \end{itemize}
-A tunable interference filter is called an \emph{etalon}.
+A tunable interference filter is called an \textit{etalon}.
 Often, etalons are
 made to provide very narrow bandpasses, on the order of 1 \AA{}.
-\par A picture taken with a Fabry-Perot system covers multiple wavelengths
+
+A picture taken with a Fabry-Perot system covers multiple wavelengths
 because the etalon is located in the collimated beam between the two
 elements of the focal reducer. At each etalon setting, one observes an
 image which has rings of constant wavelength. By tuning the etalon to
@@ -3651,99 +3649,125 @@ elements can be characterized by the angular dispersion, d$\theta$/d$\lambda$,
 or alternatively, the reciprocal angular dispersion, d$\lambda$/d$\theta$. In
 practice, we are often interested in the linear dispersion, d$x$/d$\lambda$ =
 $f_{2}d\theta$/d$\lambda$ or the reciprocal linear dispersion, d$\lambda$/d$x$
-= $\frac{1}{f_{2}}$d$\lambda$/d$\theta$ where the latter is often referred to
+= $(1/f_{2})$d$\lambda$/d$\theta$ where the latter is often referred to
 simply as the dispersion in astronomical contexts, and is usually specified in
 \AA{}/mm or \AA{}/pixel.
 
-If the source being viewed is extended, it is clear that any light which comes
-from regions parallel to the dispersion direction will overlap in wavelength
-with other light, leading to a very confused image to interpret. For this
-reason, spectrographs are usually used with slits or apertures in the focal
-plane to restrict the incoming light. Note that one dimension of spatial
-information can be retained, leading to so-called \textit{long-slit}
-spectroscopy. If there is a single dominant point source in the image plane, or
-if they are spaced far enough (usually in combination with a low dispersion)
-that spectra will not overlap, spectroscopy can be done in \textit{slitless}
-mode. However, note that in slitless mode, there can be a significant impact
-from sky emission.
+When viewing an extended source, any light that comes from regions parallel to
+the dispersion direction will overlap in wavelength with other light, leading
+to a very confusing image to interpret. For this reason, spectrographs are
+usually used with slits or apertures in the focal plane to restrict the
+incoming light. Note that one dimension of spatial information can be retained,
+leading to so-called \textit{long-slit} spectroscopy. If there is a single
+dominant point source in the image plane, or if they are spaced far enough
+(usually in combination with a low dispersion) that spectra will not overlap,
+spectroscopy can be done in \textit{slitless} mode. However, note that in
+slitless mode, there can be a significant impact from sky emission.
 
 \paragraph{Resolution}
 \mynotes{Can two wavelengths be distinguished?}
-The resolution depends on the width of the slit or on
-the size of the image in slitless mode, because all a spectrograph does is
-create an image of the focal plane after dispersing the light. The ``width'' of
-a spectral line will be given by the width of the slit or the image, whichever
-is smaller. In reality, the spectral line width is a convolution of the
-slit/image profile with diffraction. The spatial resolution of the detector may
-also be important.
+The resolution depends on the width of the slit or on the size of the image in
+slitless mode, because all a spectrograph does is create an image of the focal
+plane after dispersing the light. The ``width'' of a spectral line will be
+given by the width of the slit or the image, whichever is smaller. In reality,
+the spectral line width is a convolution of the slit/image profile with
+diffraction. The spatial resolution of the detector may also be important.
 
 Note that \textit{throughput} may also depend on the slit width, depending on
 the seeing, so maximizing resolution may come at the expense of
-throughput. Throughput = seeing + slit width.
+throughput. \mynotes{Throughput = seeing + slit width}
 
 Given the width, $\omega$, and height, $h$, of a linear slit,
-we can get an \emph{image} of the slit with width $\omega'$ and
+we can get an image of the slit with width $\omega'$ and
 height $h'$:
 \[
     h' = h\frac{f_{2}}{f_{1}}
     \]
 Or for an angular width, $\phi = \omega/f$,
-(where $f$ is the focal length of the telescope) and height:
+(where $f$ is the focal length of the telescope) and height,
 $\phi' = h/f$:
-$$ \omega' = r\omega\frac{f_{2}}{f_{1}} $$
+\[
+\omega' = r\omega\frac{f_{2}}{f_{1}}
+    \]
 where we have allowed that the dispersing element might
 magnify/demagnify the image in the direction of dispersion by a factor
 $r$, which is called the anamorphic magnification.
 
 Using this, we can derive the difference in wavelength between two
 monochromatic sources which are separable by the system.
-$$ \delta\lambda = \omega'\frac{\textrm{d}\lambda}{\textrm{d}x} $$
-$$ \delta\lambda = r\omega\frac{f_{2}}{f_{1}}\frac{\textrm{d}\lambda}{\textrm{d}x} $$
+\[
+    \delta\lambda
+    = \omega'\frac{\textrm{d}\lambda}{\textrm{d}x}
+    = r\omega\frac{f_{2}}{f_{1}}\frac{\textrm{d}\lambda}{\textrm{d}x}
+    \]
 The bigger the slit, the lower the resolving power.
-The resolution is often characterized in dimensionless form by{$$
+The resolution is often characterized in dimensionless form by
+\[
     R \equiv \frac{\lambda}{\delta\lambda} =
     \frac{\lambda{f_{1}}}{r\omega{f_{2}}\left(
-        \textrm{d}\lambda/\textrm{d}x\right)}
-$$}Note that there is a maximum resolution allowed by diffraction. This
-resolution is given aproximately by noting that minimum angles which
-can be separated is given by approximately $\lambda/d_{2}$,
-where $d_{2}$ is
-the width of the beam at the camera lens, from which the minimum
-distance which can be separated is:{$$
+    \textrm{d}\lambda/\textrm{d}x\right)}
+        \]
+Note that there is a maximum resolution allowed by diffraction. This resolution
+is given aproximately by noting that minimum angles which can be separated is
+given by approximately $\lambda/d_{2}$, where $d_{2}$ is the width of the beam
+at the camera lens, from which the minimum distance which can be separated is:
+\[
     \omega_{min} = f_{2}\frac{\lambda}{d_{2}}
-$$}The slit width which corresponds to this limit is given by:{$$
+    \]
+The slit width which corresponds to this limit is given by:
+\[
     \omega' = r\omega\frac{f_{2}}{f_{1}} = f_{2}\frac{\lambda}{d_{2}}
-$$}or{$$
+    \]
+or
+\[
     \omega = \frac{f_{1}}{r}\frac{\lambda}{d_{2}}
-$$}and the maximum resolution is{$$
+    \]
+and the maximum resolution is
+\[
     R_{max} =
-    \frac{d_{2}}{f_{2}\left(\textrm{d}\lambda/\textrm{d}x\right)} =
-    d_{2}\frac{\textrm{d}\theta}{\textrm{d}\lambda}
-$$}
+    \frac{d_{2}}{f_{2}\left(\mathrm{d}\lambda/\mathrm{d}x\right)} =
+    d_{2}\frac{\mathrm{d}\theta}{\mathrm{d}\lambda}
+    \]
 \subsection{Astronomical spectrographs}
-\begin{itemize}
-    \item Slitless spectographs.
-    \item Long slit spectrographs
-    \item Image slicers: preserving resolution and flux.
-    \item Fiber spectrographs: multiobject data.
-    \item Slitlets: multiobject data.
-    \item Integral field spectrographs.
-\end{itemize}
+\begin{description}
+    \item [Slitless spectographs:]
+        Generally need to work at low dispersion (or narrow spectral range)
+        to avoid spectrum overlap. Issue with background: since light from
+        all field angles is included, this effectively disperses object
+        light, but not background.
+    \item [Long slit spectrographs:] Standard spectrograph as discussed above.
+        Avoids spectrum overlap by limiting spectra to a line in the sky.
+    \item [Image slicers:] preserving resolution and flux
+    \item [Fiber spectrographs:] Multiobject data; use fibers to select
+        objects, then line up the other ends of fibers into a pseudo-slit.
+    \item [Slitlets:] Multiobject data; break up single long slit into
+        individual slitlets, avoiding overlap by the slitmask design. Note
+        that each slitlet will have its own wavelength calibration.
+    \item [Integral field spectrographs:] Get spectra information over 2D
+        field. Either use fibers to accomplish, or optical configuration,
+        e.g. with lenslets.
+\end{description}
 
 \subsection{Dispersing elements}
 \subsubsection{Prisms}
 Perhaps the simplest conceptual dispersing element is a prism, which
 disperses light because the index of refraction of many glasses is a
-function of wavelength. From Snell's law, one finds that:{$$
-    \frac{\textrm{d}\theta}{\textrm{d}\lambda} =
-    \frac{t}{d}\frac{\textrm{d}n}{\textrm{d}\lambda} $$
-}where $t$ is the base length, and $d$ is the beamwidth. Note that prisms
+function of wavelength. From Snell's law, one finds that:
+\[
+    \frac{\mathrm{d}\theta}{\mathrm{d}\lambda}
+    = \frac{t}{d}\frac{\mathrm{d}n}{\mathrm{d}\lambda}
+    \]
+where $t$ is the base length, and $d$ is the beamwidth. Note that prisms
 do not have anamorphic magnification ($r=1$). The limiting resolution
-of a prism, from above is:{$$
-    R_{max} = \frac{d_{2}}{f_{2}(\textrm{d}\lambda/\textrm{d}x)} =
-    d_{2}\frac{\textrm{d}\theta}{\textrm{d}\lambda} $$$$
-    R_{max} = t\frac{\textrm{d}n}{\textrm{d}\lambda}
-$$}For many glasses, $\textrm{d}n/\textrm{d}\lambda \propto \lambda^{-3}$.
+of a prism, from above is:
+\[
+    R_{max} = \frac{d_{2}}{f_{2}(\mathrm{d}\lambda/\mathrm{d}x)} =
+    d_{2}\frac{\mathrm{d}\theta}{\mathrm{d}\lambda}
+    \]
+\[
+    R_{max} = t\frac{\mathrm{d}n}{\mathrm{d}\lambda}
+    \]
+For many glasses, $\mathrm{d}n/\mathrm{d}\lambda \propto \lambda^{-3}$.
 \begin{figure}
     \centering
     \includegraphics[width=0.8\textwidth]{curves.png}
@@ -3755,108 +3779,120 @@ size. Typically, prisms have $R < 1000$. Consequently, prisms are rarely
 used as the primary dispersive element in astronomical spectrographs.
 They are occasionally used as cross-dispersing elements.
 
-\subsubsection{Gratings}
-Diffraction gratings work using the principle of multi-slit
-interference. A diffraction grating is just an optical element with
+\subsubsection{Gratings} Diffraction gratings work using the principle of
+multi-slit interference. A diffraction grating is just an optical element with
 multiple grooves, or slits (not to be confused with the slit in the
-spectrograph). Diffraction gratings may be either transmissive or
-reflective. Bright regions are formed where light of a given
-wavelength from the different grooves constructively interferes.
+spectrograph). Diffraction gratings may be either transmissive or reflective.
+Bright regions are formed where light of a given wavelength from the different
+grooves constructively interferes.
 \begin{figure}[ht]
     \centering
     \includegraphics[width=0.6\textwidth]{angle.png}
 \end{figure}
 The location of bright images is given by the
-\emph{grating equation}:{$$
+\textit{grating equation}:
+{$$
     m\lambda = \sigma\left(\sin\theta + \sin\alpha\right)
-$$}for a reflection grating, where
+$$}
+for a reflection grating, where
 \begin{itemize}
-    \item $\sigma$ is the groove spacing
-    \item $m$ is the order
-    \item $\alpha$ is the angle of incidence
-    \item $\theta$ ($\beta$ in picture above) is the angle of diffraction
+    \item $\sigma$ = groove spacing
+    \item $m$ = order
+    \item $\alpha$ = angle of incidence
+    \item $\theta$ ($\beta$ in picture above) = angle of diffraction
 \end{itemize}
 $\alpha$ and $\theta$ are measured relative to the normal to the grating surface.
 
-The dispersion of a grating can then be derived:{$$
-    \frac{\textrm{d}\theta}{\textrm{d}\lambda} =
-    \frac{m}{\sigma\cos\theta} $$
-}The dispersion is larger at higher order, and for a
-finer ruled grating. The equation can be rewritten as{$$
-    \frac{\textrm{d}\theta}{\textrm{d}\lambda} =
-    \frac{\sin\theta + \sin\alpha}{\lambda\cos\theta} $$
-}from which it can be seen that high dispersion can also be achieved by
-operating at large values of $\alpha$ and $\theta$. This is the
-principle of an echelle grating, which has large $\sigma$, and
-operates at high $m$, $\alpha$ and $\theta$, and gives high dispersion
-and resolution. An advantage of this is that one can get a large
-fraction of the light over a broad bandpass in a series of adjacent
-orders.
+The dispersion of a grating can then be derived:
+{$$
+    \frac{\mathrm{d}\theta}{\mathrm{d}\lambda} =
+    \frac{m}{\sigma\cos\theta}
+$$}
+The dispersion is larger at higher order, and for a
+finer ruled grating. The equation can be rewritten as
+{$$
+    \frac{\mathrm{d}\theta}{\mathrm{d}\lambda} =
+    \frac{\sin\theta + \sin\alpha}{\lambda\cos\theta}
+$$}
+from which it can be seen that high dispersion can also be achieved by
+operating at large values of $\alpha$ and $\theta$. This is the principle of an
+\textit{echelle grating}, which has large $\sigma$, operates at high $m$,
+$\alpha$ and $\theta$, and gives high dispersion and resolution. An advantage
+of this is that one can get a large fraction of the light over a broad bandpass
+in a series of adjacent orders.
 
 Typical gratings have groove densities between 300 and 1200 lines/mm.
 Echelle gratings have groove densities between 30 and 300 lines/mm.
 
 The anamorphic magnification for a grating can be derived by looking
-at how $\theta$ changes with $\alpha$ at fixed $\lambda$:{$$
-    r = \frac{\textrm{d}\theta}{\textrm{d}\alpha} =
+at how $\theta$ changes as $\alpha$ changes at fixed $\lambda$:
+\[
+    r = \frac{\mathrm{d}\theta}{\mathrm{d}\alpha} =
     \frac{\cos\alpha}{\cos\theta} =
-    \frac{d_{1}}{d_{2}} $$
-}where the $d$'s are the beam diameters. Note that higher resolution
+    \frac{d_{1}}{d_{2}}
+    \]
+where the $d$'s are the beam diameters. Note that higher resolution
 occurs when $r < 1$, or $\theta < \alpha$.
 
 (insert figure here)
 
-The limiting resolution can be derived:{$$
-    R_{max} = \frac{d_{2}}{f_{2}\left(\textrm{d}\lambda/\textrm{d}x\right)} =
-    d_{2}\frac{\textrm{d}\theta}{\textrm{d}\lambda} $$$$
-    R_{max} = \frac{d_{2}m}{\sigma\cos\theta} = \frac{mW}{\sigma} = mN $$
-}where $W$ is the width of the grating ($=d_{2}/\cos\theta$), and $N$ is
+The limiting resolution can be derived:
+\[
+    R_{max}
+    = \frac{d_{2}}{f_{2}\left(\mathrm{d}\lambda/\mathrm{d}x\right)}
+    = d_{2}\frac{\mathrm{d}\theta}{\mathrm{d}\lambda}
+    \]
+\[
+    R_{max}
+    = \frac{d_{2}m}{\sigma\cos\theta}
+    = \frac{mW}{\sigma}
+    = mN
+    \]
+where $W$ is the width of the grating ($=d_{2}/\cos\theta$), and $N$ is
 the total number of lines in the grating.
 
 Note that light from different orders can fall at the same location,
-which can be confusing. This occurs when:{$$
-    m\lambda' = (m_1)\lambda $$
-}or{$$
-    \lambda' - \lambda = \frac{\lambda}{m} $$
-}The order overlap can be avoided using either an \emph{order-blocking filter}
+which can be confusing. This occurs when
+\[
+    m\lambda' = (m + 1)\lambda
+    \]
+or
+\[
+    \lambda' - \lambda = \frac{\lambda}{m}
+    \]
+The order overlap can be avoided using either an \textit{order-blocking filter}
 or by using a cross-disperser. The former is more common for small $m$, the
-latter for large $m$.
+latter is more common for large $m$.
 
-Comparison between gratings operating in low order, gratings operating in
-high order, and prisms shows that higher resolution is
-available from gratings, and that echelles offer higher resolution
-than typical low-order gratings.
+Comparison between gratings operating in low order, gratings operating in high
+order, and prisms shows that higher resolution is available from gratings, and
+that echelles offer higher resolution than typical low-order gratings.
 
-\emph{Grating efficiency} is the fraction of incident light
-directed into a given diffracted order. For a
-simple grating, less light is diffracted into higher orders. However,
-a grating that maximizes the light put into any desired order can be
-constructed by \emph{blazing} the grating, which involves tilting each
-facet of the grating by some blaze angle. The blaze angle is chosen to
-maximize the efficiency at some particular wavelength in some
-particular order; it is set so that the angle of diffraction for this
-order and wavelength is equal to the angle of reflection from the
-grating surface. The \emph{blaze function} gives the efficiency as a function
-of wavelength.
+\textit{Grating efficiency} is the fraction of incident light directed into a
+given diffracted order. For a simple grating, less light is diffracted into
+higher orders. However, a grating that maximizes the light put into any desired
+order can be constructed by \textit{blazing} the grating, which involves
+tilting each facet of the grating by some blaze angle. The blaze angle is
+chosen to maximize the efficiency at some particular wavelength in some
+particular order; it is set so that the angle of diffraction for this order and
+wavelength is equal to the angle of reflection from the grating surface. The
+\textit{blaze function} gives the efficiency as a function of wavelength.
 
 A special case of high efficiency is when the angle of incidence
 equals the angle of diffraction, i.e.\ the diffracted light at the
 desired wavelength comes back to the same direction of in the incoming
-light. This is called the Littrow configuration; high efficiency
+light. This is called the \textit{Littrow configuration}; high efficiency
 spectrographs often try to work close to this configuration.
 
 (insert figure here)
 
-Typical peak efficiencies of reflective diffraction gratings are of
-order 50-80\%. Recently, a new technology for making diffraction
-gratings, volume phase holographic
-(\href{http://www.kosi.com/Holographic_Gratings/vph_ht_overview.php}
-{VPH}) gratings, as been developed,
-and these are attractive because they offer the possibility of very
-high efficiencies ($>$ 90\% peak efficiency).
+Typical peak efficiencies of reflective diffraction gratings are of order
+50-80\%. Recently, a new technology for making diffraction gratings, volume
+phase holographic (\href{http://www.kosi.com/Holographic_Gratings/vph_ht_overview.php}
+{VPH}) gratings, as been developed, and these are attractive because they offer
+the possibility of very high efficiencies ($>$ 90\% peak efficiency).
 
 \subsubsection{Grisms}
-
 A grism is a combination of a prism and a diffraction grating. These
 are combined such that light is dispersed, but light at a chosen
 central wavelength passed through the grism with direction unchanged.
@@ -3864,10 +3900,8 @@ This feature allows grisms to be placed in an imaging system (e.g., in
 a filter wheel) to provide a spectroscopic (usually low resolution)
 capability.
 
-\rule{\textwidth}{0.4pt}
+\mydate{date?}
 \subsection{Operational items: using a spectrograph}
-{\small\hfill\textcolor{date}{Date?}}
-
 Choice of dispersion: wavelength coverage vs.\ dispersion/resolution,
 available gratings, etc. Using grating tilt to select wavelength
 range.
@@ -3900,7 +3934,6 @@ Examples of typical spectra: line lamps, flat fields, stellar spectra,
 galaxy spectra. Night sky emission.
 
 \subsection{Non-dispersive spectroscopy}
-
 It is also possible to use interference effects to measure spectral
 energy distributions instead of a dispersing element. The Fabry-Perot
 is an example of such a type of instrument, although it does not
@@ -3908,8 +3941,8 @@ record all wavelengths simultaneously.
 
 (insert figure here)
 
-Another instrument which uses interference to infer spectroscopy
-information is the Fourier Transform Spectrometer (FTS), which is
+Another instrument that uses interference to infer spectroscopy
+information is the \textit{Fourier Transform Spectrometer} (FTS), which is
 basically a scanning Michaelson interferometer. The light from the
 source is split into two parts using a beamsplitter. One part of light
 is reflected off a fixed flat mirror and the other is reflected off a
@@ -3917,14 +3950,18 @@ mirror which can be moved laterally. The two images are combined to
 form fringes. The fringe pattern changes as the path length of the
 second beam is changed. The intensity modulation for a given
 wavelength ($\lambda$) or wavenumber ($k = 2\pi/\lambda$) is
-given by:{$$
-    T\left(k,\Delta{x}\right) = \frac{T_{max}}{2}
-    \left[a + \cos\left(2k\Delta{x}\right)\right]
-$$}and the flux after integrating over all wavelengths is:{$$
-    F\left(\Delta{x}\right) =
-    C\int{I(k)T(k,\Delta{x})\textrm{d}k} =
-    C\int{I(k)\cos(2k\Delta{x})\textrm{d}k}
-$$}where $I(k)$ is the input spectrum. Consequently it is possible to
+given by:
+\[
+    T \left( k,\Delta{x} \right)
+    = \frac{T_{max}}{2} \left[ a + \cos \left( 2k\Delta{x} \right) \right]
+    \]
+and the flux after integrating over all wavelengths is:
+\[
+    F \left( \Delta{x}\right)
+    = C \int{ I(k) T (k,\Delta{x}) \mathrm{d}k}
+    = C \int{ I(k) \cos (2k\Delta{x}) \mathrm{d}k}
+    \]
+where $I(k)$ is the input spectrum. Consequently it is possible to
 recover the input spectrum by taking the Fourier cosine transform of
 the recorded intensity. In practice, a discrete Fourier transform is
 used.
