@@ -1,10 +1,12 @@
 \documentclass[12pt]{article}
 \usepackage[margin=1in]{geometry}
+\renewcommand\familydefault{\sfdefault}
 %\usepackage[margin=1.5in]{geometry}
 \setlength{\parindent}{0em}
 \setlength{\parskip}{0.5em}
 \usepackage{setspace} % spacing between toc items
 \usepackage{graphicx}
+\usepackage{framed}  %\begin[end]{framed} to put box around text
 \usepackage{amsmath}
 \usepackage{xcolor}
 \definecolor{cadmiumgreen}{rgb}{0.0, 0.42, 0.24}
@@ -27,18 +29,12 @@
 \titlespacing*{\paragraph}{0in}{0.5ex}{-1ex}
 
 \usepackage{enumitem}
-\setlist[itemize]{noitemsep}
-\setlist[enumerate]{noitemsep}
-\setlist[description]{%
-    noitemsep,
-    labelindent=1em,
-    topsep=-1ex,
-    font={\sffamily\bfseries\color{cadmiumgreen}}
-}
-
-\usepackage{hyperref}
-\hypersetup{colorlinks=true,urlcolor=darkpowderblue, linkcolor=black}
-\urlstyle{same}
+%\setlist[itemize]{noitemsep}
+%\setlist[enumerate]{noitemsep}
+%\setlist[description]{% noitemsep, labelindent=1em, topsep=-1ex, font={\sffamily\bfseries\color{cadmiumgreen}} }
+\setitemize{noitemsep}
+\setenumerate{noitemsep}
+\setdescription{noitemsep, labelindent=1em, topsep=-1ex, font={\sffamily\bfseries\color{cadmiumgreen}} }
 
 \definecolor{myGreen}{rgb}{0.0,0.26,0.15}
 \definecolor{om}{rgb}{0.4,0.19,0.28} % om - old mauve
@@ -53,13 +49,23 @@
     \end{center}}
 
 \definecolor{date}{HTML}{5F0087}
+
+%\newcommand{\mydate}[1]{
+%    \rule{\textwidth}{0.4pt}
+%
+%    {\vspace{-1ex}\small\hfill\textit{#1}}}
+
 \newcommand{\mydate}[1]{
     \begin{flushright}
         \rule{\textwidth}{0.4pt} %{\vspace{-1ex}
-        \small\hfill\textit{#1}
+        \footnotesize\hfill\textit{#1}
     \end{flushright}}
 
 \newcommand{\dd}{\;\mathrm{d}}
+
+\usepackage{hyperref}
+\hypersetup{colorlinks=true,urlcolor=darkpowderblue, linkcolor=black}
+\urlstyle{same}
 
 \title{\vspace{-0.75in}ASTR 535 Lecture Notes}
 \author{Jon Holtzman}
@@ -419,9 +425,8 @@ magnitude, and recognize how colors expressed in magnitude are related
 to the shape of the underlying spectrum, with differences for
 different magnitude systems.}}
 
-%-----------------------------------------------------------------%
 \subsubsection{UBVRI magnitudes-flux conversion}
-\textcolor{date}{Wednesday, January 27}
+\mydate{Wednesday, January 27}
 
 To \textcolor{red}{convert Vega-based magnitudes to fluxes},
 just look up the flux of Vega at the center of the passband.
@@ -464,449 +469,469 @@ behavior for very faint objects (near the detection threshold). See
 {\textcolor{blue}{Lupton, Gunn, \& Szalay 1999 AJ 118, 1406}}
 for details.
 
-%---------------------------------------------------------------%
 \subsection{Observed fluxes and the count equation}
-If you are measuring flux with an actual instrument,
-the \emph{intrinsic} photon flux from the source is not
-trivial to determine from the number of photons that you count.
-To get the number of photons that you count in an observation,
-you need to take into account
+If you are measuring flux with an actual instrument, the \emph{intrinsic}
+photon flux from the source is not trivial to determine from the number of
+photons that you count. To get the number of photons that you count in an
+observation, you need to take into account:
 \begin{itemize}
     \item The area of your photon collector (telescope)
-    \item Photon losses and gains from the Earth's atmosphere
-    (which change with conditions)
-    \item The efficiency of your collection/detection
-    apparatus (which can change with time).
+    \item Photon losses and gains from the Earth's atmosphere (which change
+        with conditions)
+    \item The efficiency of your collection/detection apparatus (which can
+        change with time).
 \end{itemize}
 Generally, the astronomical signal (which might be a flux or a
 surface brightness, depending on whether the object is resolved)
-can be written in the form of the \emph{\textbf{count equation:}}
-    $$ S = Tt \int \frac{F_{\lambda}}
+can be written in the form of the \textit{count equation:}
+\[
+    S = Tt \int \frac{F_{\lambda}}
     {\left(\frac{hc}{\lambda}\right)}q_{\lambda}
-    a_{\lambda}\textrm{d}\lambda \equiv TtS' $$
-    \begin{itemize}
-        \item $S$: total number of photons observed (the ``signal'')
-        \item $S'$: observed flux rate [photons s$^{-1}$ cm$^{-2}$],
-            with all of the real details of the observing system included.
-        \item $a_{\lambda}$: atmospheric transmission
-            (or \emph{throughput}), the fraction of photons that
-            make it to the detector.
-            A typical value is about 0.9, or $\sim$90\% of the photons.
-            Variable in both space and time.
-        \item $q_{\lambda}$: system efficiency
-            (telescope, instrument, filters, and detector). Can be
-            time-variable.
-        \item $T$: telescope collecting area
-        \item $t$: integration time
-            (total amount of time spent collecting photons).
-        \item $\frac{F_{\lambda}}{\left(hc/\lambda\right)}$:
-            flux divided by the energy per photon;
-            gives the number of photons per second per square cm.
-    \end{itemize}
-$T$ and $t$ are the \emph{only} terms that do not depend on
+    a_{\lambda}\mathrm{d}\lambda \equiv TtS'
+    \]
+\begin{itemize}
+    \item $S$ = total number of photons observed (the ``signal'')
+    \item $S'$ = observed flux rate [photons s$^{-1}$ cm$^{-2}$],
+        with all of the real details of the observing system included.
+    \item $a_{\lambda}$ = atmospheric transmission
+        (or \emph{throughput}), the fraction of photons that
+        make it to the detector.
+        A typical value is about 0.9, or $\sim$90\% of the photons.
+        Variable in both space and time.
+    \item $q_{\lambda}$ = system efficiency
+        (telescope, instrument, filters, and detector). Can be
+        time-variable.
+    \item $T$ = telescope collecting area
+    \item $t$ = integration time
+        (total amount of time spent collecting photons).
+    \item $\frac{F_{\lambda}}{\left(hc/\lambda\right)}$ =
+        flux divided by the energy per photon;
+        gives the number of photons per second per square cm.
+\end{itemize}
+$T$ and $t$ are the only terms that do \emph{not} depend on
 the wavelength (or frequency).
 
-Most of this information isn't needed to go
-backward from $S$ to $F_{\lambda}$, since
-the terms can be very difficult to measure precisely.
-Instead, most observations are performed differentially to a
-set of other stars of well-known brightness. If the stars of known
-brightness are observed in the same observation, then the atmospheric
-term is (approximately) the same for all stars.
-This is known as
-\emph{differential photometry}.
-From the photon flux of the object with known brightness,
-an ``exposure efficiency'' or an ``effective area'' for this
-exposure can be determined.
-Equivalently, and more commonly, an
-\emph{instrumental magnitude} can be calculated:
-    $$  m = -2.5 \log \frac{S}{t} $$
-Normalize by the exposure time, $t$, to get counts s$^{-1}$,
-(although this is not strictly necessary).
-Then determine the \emph{zeropoint}, $z$ (which describes the
-throughput of the system).
-Adding $z$ to the instrumental magnitude gives the
-\emph{calibrated} magnitude, $M$
-(which is still an \emph{apparent} magnitude).
-    $$ M = m + z $$
-Note that in the real world, one has to also consider possible
+Most of this information isn't needed to go backward from $S$ to $F_{\lambda}$,
+since the terms can be very difficult to measure precisely. Instead, most
+observations are performed differentially to a set of other stars of known
+brightness. If the stars of known brightness are observed in the same
+observation, then the atmospheric term is (approximately) the same for all
+stars. This is known as \textit{differential photometry}. From the photon flux
+of the object with known brightness, an ``exposure efficiency'' or an
+``effective area'' for this exposure can be determined. Equivalently, and more
+commonly, an \textit{instrumental magnitude} can be calculated:
+\[
+    m = -2.5 \log \frac{S}{t}
+    \]
+i.e., normalize by the exposure time, $t$, to get counts s$^{-1}$, (although
+this is not strictly necessary). Then determine the \textit{zeropoint}, $z$
+\mynotes{(which describes the throughput of the system)}. Adding $z$ to the
+instrumental magnitude gives the \textit{calibrated} magnitude, $M$ (which is
+still an apparent magnitude).
+\[
+    M = m + z
+    \]
+Note that in the real world, possible
 differences between a given experimental setup and the setup used to
-measure the reference brightnesses, so this is only a first
+measure the reference brightnesses need to be considered.
+So this is only a first
 approximation (i.e., the zeropoint may be different for different
-stars with different spectral properties). If using instrumental mags
-including exposure time normalization, the zeropoint gives the
+stars with different spectral properties). For instrumental mags
+that include exposure time normalization, the zeropoint gives the
 magnitude of a star that will give 1 count s$^{-1}$.
-    $$ M = -2.5\log\frac{S}{t}+z $$
-
-Example: to go from observed to emitted $\rightarrow$,
-take an additional observation of an object with known brightness
-(SDSS has list of these).
-A star that is 10 times fainter than one with g=18 has g=20.5.
-    $$ m = -2.5 \log(qF)$$
-    $$ m = -2.5 \log F - 2.5\log q $$
-the quantity `$-2.5\log q$' is the zeropoint.
-
-If there is no nearby star, $q$ is still the same, but changes in $a$,
-effects of the atmosphere, need to be calibrated.
-This is known as \emph{all-sky}, or absolute, photometry.
-This requires that the sky is ``well-behaved'',
-i.e., the atmospheric throughput as a function of position can be
-accurately predicted, which requires \emph{photometric} weather
-(no clouds).
-Differential photometry can be done in non-photometric weather,
-hence it is much simpler. It is always possible to obtain
-differential photometry, then later obtain absolute
-photometry of the reference stars.
+\[
+    M = -2.5\log\frac{S}{t} + z
+    \]
+\begin{framed}
+    \underline{Example}: to go from observed to emitted $\rightarrow$,
+    take an additional observation of an object with known brightness
+    (SDSS has list of these).
+    A star that is 10 times fainter than one with g=18 has g=20.5.
+    \[
+        m = -2.5 \log(qF)
+        \]
+    \[
+        m = -2.5 \log F - 2.5\log q 
+        \]
+    The quantity `$-2.5\log q$' is the zeropoint.
+\end{framed}
+If there are no stars of known brightness in the same observation, then
+calibration must be done against stars in other observations. \mynotes{($q$ is
+still the same, but changes in $a$, effects of the atmosphere, need to be
+calibrated.)} This is known as \textit{all-sky photometry} (or
+\textit{absolute} photometry). This requires that the sky is ``well-behaved'',
+i.e., the atmospheric throughput as a function of position can be accurately
+predicted, which requires \textit{photometric} weather (no clouds).
+Differential photometry can be done in non-photometric weather, hence it is
+much simpler. Of course, it is always possible to obtain differential
+photometry, then later obtain absolute photometry of the reference stars.
 
 To figure out what the fluxes of the calibrating stars actually are
 requires understanding all of the terms in the count equation.
 This is challenging, and often absolute calibration of a system is
 uncertain to a couple of percent.
 
-It is common to stop with differential photometry when studying
-variable objects, where only the \emph{change} in brightness is
-important. In this case, the brightness of the target needs to be
-referenced relative to another object (or ensemble of objects)
-in the field that are \emph{non}-variable.
+It is common to stop with differential photometry when studying variable
+objects, where only the \emph{change} in brightness is important. In this case,
+the brightness of the target needs to be referenced relative to another object
+(or ensemble of objects) in the field that are \emph{non}-variable.
 
-While the count equation isn't usually used for calibration,
-it is very commonly used for computing the approximate number of
-photons you will receive from a given source in a given amount of time
-for a given observational setup. This number is critical to know in
-order to estimate your expected errors and exposure times in observing
-proposals, observing runs, etc. Understanding errors in absolutely
-critical in all sciences, and maybe even more so in astronomy, where
-objects are faint, photons are scarce, and errors are not at all
-insignificant. The count equation provides the basis for
-\textbf\emph{exposure time calculator} (ETC) programs,
-because it gives $N_{\textrm{photons}}(t)$.
-As we will see shortly, this provides the information we need to
-calculate the \emph{uncertainty} in the measurement
-as a function of exposure time.
+While the count equation isn't usually used for calibration, it is very
+commonly used for computing the approximate number of photons you will receive
+from a given source in a given amount of time for a given observational setup.
+This number is critical to know in order to estimate your expected errors and
+exposure times in observing proposals, observing runs, etc. Understanding
+errors is absolutely critical in all sciences, and maybe even more so in
+astronomy, where objects are faint, photons are scarce, and errors are not at
+all insignificant. The count equation provides the basis for exposure time
+calculator (ETC) programs, because it gives $N_{\textrm{photons}}(t)$. As we
+will see shortly, this provides the information we need to calculate the
+\textit{uncertainty} in the measurement as a function of exposure time.
 
-Random note: The field of view (FOV) is usually in arcminute scales.
+\mynotes{Random note: The field of view (FOV) is usually in arcminute scales.}
 
-\textcolor{om}{\emph{Understand the count equation and the terms in
-it. Understand the distinction between estimating count rates from an
-understanding of all the terms in the count equation vs.\ measuring the
-overall throughput (zeropoint) by observing stars of known brightness.
-Know instrumental magnitudes and zeropoints are.}}
-%-----------------------------------------------------------------------%
+\test{Understand the count equation and the terms in it. Understand the
+distinction between estimating count rates from an understanding of all the
+terms in the count equation vs.\ measuring the overall throughput (zeropoint)
+by observing stars of known brightness. Know what instrumental magnitudes and
+zeropoints are.}
+
 \subsection{Uncertainties in photon rates}
-Useful reference:
-\href{http://users.wfu.edu/ecarlson/skeptic/statistics.pdf}
-{\textcolor{blue}{Statistics}}
+Useful reference on statistics: \url{http://users.wfu.edu/ecarlson/skeptic/statistics.pdf}
 
 For a given rate of \emph{emitted} photons, there's a probability function
-which gives the rate of \emph{detected} photons.
-Even assuming 100\% detection efficiency, there are still
-\emph{statistical} uncertainties, and possibly \emph{instrumental}
-uncertainties.
+which gives the rate of \emph{detected} photons. Even assuming 100\% detection
+efficiency, there are still statistical uncertainties, and possibly
+instrumental uncertainties.
 
-\textbf{\emph{General probability distributions and their
-characteristics}}
+\subsubsection{General probability distributions and their characteristics}
 
-$p(x)dx \equiv$ probability of event occuring in $x + \textrm{d}x$:
-        $$ \int p(x)\textrm{d}x = 1 $$
+$p(x)dx \equiv$ probability of event occuring in $x + \mathrm{d}x$:
+\[
+    \int{ p(x) \;\mathrm{d}x } = 1
+    \]
 Some definitions relating to values that characterize a distribution:
-$$    \textrm{mean} \equiv \mu = \int xp(x)\textrm{d}x $$
-$$    \textrm{variance} \equiv \sigma^{2} = \int (x-\mu)^{2} p(x)\textrm{d}x $$
-$$    \textrm{standard\ deviation} \equiv \sigma =
-        \sqrt{\textrm{variance}} $$
-$$    \frac{ \int_{-\infty}^{x_{median}} p(x)\textrm{d}x }
-      { \int_{-\infty}^{\infty} p(x)\textrm{d}x }
-      = \frac{1}{2} $$
-mode: most probable value (peak in plot).
+\begin{itemize}
+    \item mean $ \equiv \mu = \int xp(x)\mathrm{d}x $
+    \item variance $ \equiv \sigma^{2} = \int (x-\mu)^{2} p(x)\mathrm{d}x $
+    \item standard deviation $\equiv \sigma = \sqrt{\mathrm{variance}} $ 
+    \item median = mid-point value =
+        \[
+            \frac{ \int_{-\infty}^{x_{median}} p(x)\mathrm{d}x }
+              { \int_{-\infty}^{\infty} p(x)\mathrm{d}x }
+              = \frac{1}{2} 
+              \]
+    \item mode = most probable value (peak in plot).
+\end{itemize}
 
-\textcolor{date}{Monday, February 1}
+\mydate{Monday, February 1}
 
-Note that the geometric interpretation of the above (well-defined)
-quantities depends on the nature of the distribution.
-There is a difference between the \emph{sample} quantities
-and the \emph{population} quantities. The latter apply
-to the true distribution, while the former are \emph{estimates} of the latter
-from some finite sample ($N$ measurements) of the population.
-The sample values approach the true ones as $N$
-approaches infinity, but for small samples, they may differ.
+Note that the geometric interpretation of the above (well-defined) quantities
+depends on the nature of the distribution. Although we all carry around the
+picture of the mean and the variance for a Gaussian distribution, these
+pictures are not applicable to other distributions, but the quantities are
+still well-defined.
+
+There is a difference between the \emph{sample} quantities and the
+\emph{population} quantities. The latter apply to the true distribution, while
+the former are \emph{estimates} of the latter from some finite sample ($N$
+measurements) of the population. The sample values approach the true ones as
+$N$ approaches infinity, but note that, especially for small samples, the
+estimated quantities may differ from their true (population) values (more
+below).
 
 The sample quantities are derived from:
-$$\textrm{sample\ mean:\ } \bar{x} \equiv \frac{\sum x_i}{N}$$
-$$\textrm{sample\ variance:\ } \equiv
-  \frac{\sum (x_i-\bar{x})^{2}}{N-1} =
-  \frac{\sum x_i^{2}-(\sum x_i)^{2}/N}{N-1}$$
+\[
+    \mathrm{sample\ mean:\ } \bar{x} \equiv \frac{\sum x_i}{N}
+    \]
+\[
+    \mathrm{sample\ variance:\ } \equiv
+    \frac{\sum (x_i-\bar{x})^{2}}{N-1} =
+    \frac{\sum x_i^{2}-(\sum x_i)^{2}/N}{N-1}
+    \]
 
-\textbf{\emph{the binomial distribution}}
-
-For astronomical observations, the photon distribution can be derived from the
-\emph{binomial} distribution:
-   $$ P(x,n,p) = \frac{n!p^x(1-p)^{n-x}}{x!(n-x)!}  $$
-where
+For astronomical observations, the appropriate photon distribution can be derived from the
+\textit{binomial} distribution:
+\[
+    P(x,n,p) = \frac{n!p^{x}(1-p)^{n-x}}{x!(n-x)!}
+    \]
+which gives the probability of observing $x$ given $n$ and $p$.
 \begin{itemize}
     \item $x$: number of photons in a single event
     \item $n$: total number of events
     \item $p$: probability of observing $x$
 \end{itemize}
-under the assumption that all events are independent of each other
-(e.g., when rolling dice, the result of the second roll is independent
-of the result of the first). For the binomial distribution:
-   $$ \textrm{mean} \equiv \mu \equiv \int xp(x)\textrm{d}x = np $$
-   $$ \textrm{variance} \equiv \sigma^{2} \equiv
-      \int (x-\mu)^{2}p(x)\textrm{d}x = np(1-p) $$
+\mynotes{(under the assumption that all events are independent of each other,
+e.g., when rolling dice, the result of the second roll is independent of the
+result of the first).} For the binomial distribution:
+\begin{itemize}
+    \item mean $ \equiv \mu \equiv \int{ xp(x) \;\mathrm{d}x} = np $
+    \item variance $ \equiv \sigma^{2} \equiv
+        \int{ (x - \mu)^{2} p(x) \;\mathrm{d}x = np(1-p) }$
+\end{itemize}
 
-\textcolor{om}{\emph{Understand the concept of probability
-distribution functions and basic quantities used to describe them:
-mean, variance, standard deviation, median, and mode. Understand the
-difference between population quantities and sample quantities.}}
+\test{Understand the concept of probability distribution functions and basic
+quantities used to describe them: mean, variance, standard deviation, median,
+and mode. Understand the difference between population quantities and sample
+quantities.}
 
-\textbf{\emph{The Poisson distribution}}
-
-Unlike a gaussian, a poisson distribution is not
-symmetric about the mean (you can't detect a negative number of
-photons); it cuts off at zero.
-
+\subsubsection{The Poisson distribution}
 For photon detection, $n$ is the total number of
 photons emitted, and $p$ is the probability of detecting a
 single photon out of the total emitted during the observation.
 We don't know either of these numbers, but we do know that
-\textcolor{red}{p$<<$1} and we can estimate the mean number detected:
-  $$  \mu = np $$
+$ p \ll 1 $ and we can estimate the mean number detected:
+\[
+    \mu = np
+    \]
 In this limit, the binomial distribution asymtotically approaches the
-\emph{Poisson} distribution:
-   $$  P(x,\mu) = \frac{\mu^x e^{-\mu}}{x!} $$
+\textit{Poisson} distribution:
+\[
+    P(x,\mu) = \frac{\mu^x e^{-\mu}}{x!}
+    \]
 From the expressions for the binomial distribution in this limit, the
 mean of the distribution is $\mu$, and the variance is given by:
-  $$  \sigma^{2} = \sum_x [(x-\mu)^{2}p(x,\mu)] $$
-  $$  \sigma^{2} = np = \mu  $$
+\[
+    \sigma^{2} = \sum_x [(x-\mu)^{2}p(x,\mu)]
+    \]
+\[
+    \sigma^{2} = np = \mu
+    \]
+\mynotes{In other words, the standard deviation, $\sigma$, is the square root
+of the mean.}
+\textbf{This is an \emph{important result}}.
 
-In other words, the standard deviation, $\sigma$, is the square root
-of the mean.
-\textcolor{red}{\textbf{This is an \emph{important result}}}.
+Note that the Poisson distribution is generally the appropriate distribution
+for \emph{any} sort of counting experiment where a series of events occurs with
+a known average rate, and are independent of time since the last event.
 
-Note that the Poisson distribution is generally the
-appropriate distribution for \emph{any} sort of counting experiment
-where a series of events occurs with a known average rate,
-and are independent of time since the last event.
+\mynotes{Unlike a gaussian, a Poisson distribution is not symmetric about the
+mean (you can't detect a negative number of photons); it cuts off at zero.}
 
-\href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/poisson.htm}
-{\textcolor{blue}{Plots}} of what the Poisson distribution looks like
+See some \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/poisson.htm}
+{Plots} of what the Poisson distribution looks like
 for $\mu$ = 2, $\mu$ = 10, $\mu$ = 10000.
 
-\textcolor{om}{\emph{Understand the Poisson distribution and when it
-applies. Know how the variance/standard deviation of the Poisson
-distribution is related to the mean of the distribution.}}
+\test{Understand the Poisson distribution and when it applies. Know how the
+variance/standard deviation of the Poisson distribution is related to the mean
+of the distribution.}
 
-\textbf{\emph{The normal, or Gaussian, distribution}}
+\subsubsection{The Gaussian distribution}
+The \textit{Gaussian}, or normal distribution is given by
+\[
+    P(x,\mu,\sigma) = \frac{1}{\sigma\sqrt{2\pi}}
+    e^{ -\frac{1}{2} (\frac{x-\mu}{\sigma})^{2} }
+    \]
+For large mean rates ($\mu$), the Poisson distribution is well-approximated
+around the peak by a Gaussian. This is important because it allows
+observational data to be fit by ``simple'' least squares techniques, which
+generally assume normally distributed data. However, in the \emph{tails} of the
+distribution, and at low $\mu$, the Poisson can differ significantly from a
+Gaussian. In these cases, least-squares may not be appropriate to model
+observational data; instead, \textit{maximum likelihood} techniques may need to
+be considered.
 
-For large $\mu$, the Poisson distribution is
-well-approximated around the peak by a Gaussian distribution:
-    $$ P(x,\mu,\sigma) = \frac{1}{\sigma\sqrt{2\pi}}
-        e^{ -\frac{1}{2} (\frac{x-\mu}{\sigma})^{2} }  $$
-This allows us to use ``simple'' least squares
-techniques to fit observational data, which is normally distributed.
-However, in the \emph{tails of the distribution},
-and at \emph{low mean rates}, the Poisson can
-differ significantly from a Gaussian. In these cases,
-least-squares may not be appropriate to model observational data,
-maximum likelihood techniques need to be considered.
+The normal distribution is also important because many physical variables seem
+to be distributed accordingly. This may be a result of the \textit{central
+limit theorem}, which states that if a quantity depends on a number of
+independent random variables with ANY distribution, the quantity itself will be
+distributed normally (see statistics texts). In observations, we encounter the
+normal distribution because \textit{readout noise} is distributed normally.
+\mynotes{(Normal distributions occur often in nature.)}
 
-\emph{central limit theorem}: if a quantity
-depends on a number of independent random variables with ANY
-distribution, the quantity itself will be distributed normally (see
-statistics texts). In observations, we encounter the normal
-distribution because \emph{readout} noise is distributed normally.
-Normal distributions occur often in nature.
+\test{Know what a Gaussian is, including the full functional form. Understand
+under what circumstances the Poisson distribution is similar to a normal
+distribution.}
 
-\textcolor{om}{\emph{Know what a Gaussian is, including the full
-functional form. Understand under what circumstances the Poisson
-distribution is similar to a normal distribution.}}
+\subsubsection{Importance of error distribution analysis}
 
-\textbf{\emph{Importance of error distribution analysis}}
-
-The expected uncertainties in observations need to be understood in
-order to:
+The expected uncertainties in observations need to be understood in order to:
 \begin{itemize}
     \item predict the amount of observing time needed to get
-        uncertainties as small as they need to be.
+        uncertainties as small as they need to be
     \item Figure out if the scatter in the observed data is consistent
-        with expected uncertainties. If not, then
-        you've either learned some astrophysics or you don't understand
-        something about your observations. This is especially important in
-        astronomy where objects are faint and many projects are pushing
-        down into the noise as far as possible. This can usually only
-        be answered probabilistically. Generally, tests compute the
-        probability that the observations are consistent with an expected
-        distribution (the null hypothesis). If it is low, the null
+        with expected uncertainties. If not, then you've either learned some
+        astrophysics or you don't understand something about your observations.
+        This is especially important in astronomy where objects are faint and
+        many projects are pushing down into the noise as far as possible. This
+        can usually only be answered probabilistically. Generally, tests
+        compute the probability that the observations are consistent with an
+        expected distribution (the null hypothesis). If it is low, the null
         hypothesis can be rejected.
     \item interpret your results in the context of a scientific prediction
 \end{itemize}
 
-\textbf{\emph{Confidence levels}}
+\subsubsection{Confidence levels}
+\underline{Example}: say we want to know whether some single point is
+consistent with expectations, e.g., we see a bright point in multiple
+measurements of a star, and want to know whether the star flared. Say we have a
+time sequence with known mean and variance, and we obtain a new point, and want
+to know whether it is consistent with known distribution?
 
-For example, say we want to know whether some single point
-is consistent with expectations, e.g., we see a bright point in
-multiple measurements of a star, and want to know whether the star
-flared. Say we have a time sequence with known mean and variance, and
-we obtain a new point, and want to know whether it is consistent with
-known distribution?
+If the form of the probability distribution is known, then you can calculate
+the probability of getting a measurement more than some observed distance from
+the mean. In the case where the observed distribution is Gaussian (or
+approximately so), this is done using the \textit{error function} (sometimes
+called $erf(x)$), which is the integral of a gaussian from some starting value.
 
-If the form of the probability distribution is known, then
-you can calculate the probability of getting a measurement more than
-some observed distance from the mean. In the case where the observed
-distribution is Gaussian (or approximately so), this is done using the
-\emph{error function} (sometimes called $erf(x)$), which is the integral of a
-gaussian from some starting value.
+Some simple guidelines to keep in mind follow (the actual situation often
+requires more sophisticated statistical tests). First, for Gaussian
+distributions, you can calculate that 68\% of the points should fall within
+$\pm 1\sigma$ from the mean, and 95.3\% should fall within $\pm 2\sigma$ from
+the mean. Thus, if you have a time line of photon fluxes for a star, with $N$
+observed points, and a photon noise $\sigma$ on each measurement, you can test
+whether the number of points deviating more than 2$\sigma$ from the mean is
+much larger than expected. To decide whether any single point is really
+significantly different, you might want to use more stringent criterion, e.g.,
+5$\sigma$ rather than a 2$\sigma$ criterion; a 5$\sigma$ has much higher level
+of significance. On the other hand, if you have far more points in the range
+$2-4\sigma$ brighter or fainter than you would expect, you may also have a
+significant detection of intensity variations (provided you really understand
+your uncertainties on the measurements).
 
-Some simple guidelines to keep in mind follow (the actual
-situation often requires more sophisticated statistical tests). First,
-for Gaussian distributions, you can calculate that 68\% of the points
-should fall within $\pm 1\sigma$ from the mean, and 95.3\%
-should fall within $\pm 2\sigma$ from the mean. Thus, if you have a
-time line of photon fluxes for a star, with $N$ observed points, and a
-photon noise $\sigma$ on each measurement, you can test whether the
-number of points deviating more than 2$\sigma$ from the mean is much
-larger than expected. To decide whether any single point is really
-significantly different, you might want to use more stringent
-criterion, e.g., 5$\sigma$ rather than a 2$\sigma$ criterion;
-a 5$\sigma$ has much higher level of significance. On the other hand, if
-you have far more points in the range $2-4\sigma$ brighter or
-fainter than you would expect, you may also have a significant
-detection of intensity variations (provided you really understand your
-uncertainties on the measurements).
+Also, note that your observed distribution should be consistent with your
+uncertainty estimates given the above guidelines. If you have a whole set of
+points that all fall within 1$\sigma$ of each other, something is wrong with
+your uncertainty estimates (or perhaps your measurements are correlated with
+each other).
 
-Also, note that your observed distribution should be
-consistent with your uncertainty estimates given the above guidelines.
-If you have a whole set of points, that all fall within 1$\sigma$ of
-each other, something is wrong with your uncertainty estimates (or
-perhaps your measurements are correlated with each other).
-
-For a series of measurements, one can calculate the
-$\chi^{2}$ statistic, and determine how probable this value is,
-given the number of points.
-    $$ \chi^{2} = \sum [(observed(i)-model(i))^{2}/\sigma_i^{2}]  $$
+For a series of measurements, one can calculate the $\chi^{2}$ statistic, and
+determine how probable this value is, given the number of points.
+\[
+    \chi^{2} = \sum \left[ \frac{y_{i} - y(x_{i})}{\sigma_{i}} \right]^{2}
+    = (observed(i)-model(i))^{2}/\sigma_i^{2}
+    \]
 A quick estimate of the consistency of the model with the observed
-data points can be made using reduced $\chi^{2}$, defined as
-$\chi^{2}$ divided by the \emph{degrees of freedom} (number of data points
-minus number of parameters).
+data points can be made using \textit{reduced} $\chi^{2}$, defined as
+$\chi^{2}$ divided by the \textit{degrees of freedom}, $\nu$
+(number of data points minus number of parameters).
 
-\textcolor{myBlue}{%
-    $$  \chi^{2} = \sum_N \frac{(y_i-y(x_i))^{2}}{\sigma_i^{2}} $$
-for $N$ data points. If every point was 1$\sigma$ off,
-$\chi^{2} \sim$ number of data points. Can calculate the probability
-distribution of $\chi^{2}$. If $\chi^{2}$ = 98, what's the confidence
-interval? Will only get 98 one in a million times? Not a good model.
-Is the data consistent with the model?
-}
+\mynotes{
+(class notes): If every point was 1$\sigma$ off, $\chi^{2} \sim$ number of data
+points. Can calculate the probability distribution of $\chi^{2}$. If $\chi^{2}$
+= 98, what's the confidence interval? Will only get 98 one in a million times?
+Not a good model. Is the data consistent with the model? }
 
-\textcolor{date}{Wednesday, February 3}
-\subsubsection{Noise equation: how do we predict expected
-uncertainties?}
-\emph{Signal-to-noise}
+\mydate{Wednesday, February 3}
+\subsubsection{Noise equation}
+How do we predict expected uncertainties?
 
-\textcolor{myBlue}{%
+\paragraph{Signal-to-noise}
+\mynotes{
 Shape parameterized by stddev which = $\sqrt{\mu}$
 $\rightarrow$ Fundamental! E.g.\ source emitting 1000 photons has
 uncertainty of 100, etc.\ (telescope, brightness of source, etc.\ don't
 matter$\ldots$ only number of photons, no matter how you got them).
-    $$ \frac{S}{N} = \frac{S}{\sqrt{S}} = \sqrt{S} $$
-How does $S/N$ change for a given object?
-}
+\[
+    \frac{S}{N} = \frac{S}{\sqrt{S}} = \sqrt{S}
+    \]
+How does $S/N$ change for a given object? }
 
 Astronomers often describe uncertainties in terms of the fractional
 error, e.g.\ the amplitude of the uncertainty divided by the amplitude
 of the quantity being measured (the signal);
 often, the inverse of this, referred
 to as the signal-to-noise ratio, is used. Given an estimate the number
-of photons expected from an object in an observation, we can calulate
+of photons expected from an object in an observation, we can calculate
 the signal-to-noise ratio:
-    $$ \frac{S}{N} = \frac{S}{\sqrt{\sigma^{2}}} $$
+\[
+    \frac{S}{N} = \frac{S}{\sqrt{\sigma^{2}}} 
+    \]
 which is the inverse of the predicted fractional error ($N/S$).
 
-Consider an object with observed photon flux, $S^{\prime}$
-[cm$^{-2}$ s$^{-1}$],
-leading to a signal, $S = S^{\prime}Tt$.
-In the simplest case (i.e.\ perfect
-instruments), the only noise
-source is Poisson statistics from the source, in which case:
-    $$ \sigma^{2} = S = S^{\prime}Tt $$
-    $$ \frac{S}{N} = \sqrt{S} = \sqrt{S^{\prime}Tt} $$
-In other words, $S/N$ increases as the square root of the object
-brightness, telescope area, efficiency, or exposure time. Note that $S$
-is directly observable, so one can calculate $S/N$ for an
-observation without knowing the telescope area or exposure time.
-We've just broken $S$ down so that you can specifically see the dependence on
-telescope area and/or exposure time.
+Consider an object with observed photon flux, $S'$
+[cm$^{-2}$ s$^{-1}$], leading to a signal, $S = S'Tt$.
+In the simplest case (i.e.\ perfect instruments), the only noise source is
+Poisson statistics from the source, in which case:
+\[
+    \sigma^{2} = S = S'Tt 
+    \]
+\[
+    \frac{S}{N} = \sqrt{S} = \sqrt{S'Tt} 
+    \]
+In other words, $S/N$ increases as the square root of the object brightness,
+telescope area, efficiency, or exposure time. Note that $S$ is directly
+observable, so one can calculate $S/N$ for an observation without knowing the
+telescope area or exposure time. We've just broken $S$ down so that you can
+specifically see the dependence on telescope area and/or exposure time.
 
-\textcolor{om}{\emph{}}
+\test{Understand the concept of $S/N$ and fractional error. Know how $S/N$
+depends on the signal for the Poisson-limited case.}
 
-\emph{Background noise}
+\paragraph{Background noise}
+\mynotes{Rayleigh scattering}
 
-\textcolor{myBlue}{Rayleigh scattering}
+A more realistic case includes the noise contributed from Poisson statistics of
+``background'' light, $B'$, which has units of flux per area on the sky, (i.e.\
+a surface brightness\ldots not flux per area on the detector).
+\[
+    B' = \int{ \frac{B_{\lambda}}{\frac{hc}{\lambda}}
+    q_{\lambda} \;\mathrm{d}\lambda }
+    \]
+Note that this is also usually given in magnitudes.
 
-A more realistic case includes the noise contributed from Poisson
-statistics of ``background'' light, $B^{\prime}$,
-which has units of flux per area
-on the \emph{sky}, not the detector
-(i.e.\ a surface brightness); note that this is also usually
-given in magnitudes (more on the physical nature of
-this later).
-
-    $$ B^{\prime} = \int \frac{B_{\lambda}}{\frac{hc}{\lambda}}
-       q_{\lambda}\textrm{d}\lambda $$
-
-\textcolor{myBlue}{$B_{\lambda}$ is the sky brightness at $\lambda
-\ldots$? And $B^{\prime}$ is the observed flux from the background.
+\mynotes{$B_{\lambda}$ is the sky brightness at $\lambda
+\ldots$? And $B'$ is the observed flux from the background.
 So $B$ vs. $B'$ is the same as $S$ vs. $S'$.}
 
-The amount of background in our measurement depends on
-how much sky area we observe. Say we just
-use an aperture with area, $A$, so the total observed background counts
-is
-    $$ AB = AB^{\prime}Tt $$
-
-Again, $B^{\prime}Tt$ is the directly observable quantity,
-but we split it into the quantities on which it depends to understand
-what factors are important in determining $S/N$.
+The amount of background in our measurement depends on how much sky area we
+observe. Say we use an aperture with area, $A$, so that the total observed
+background counts is
+\[
+    AB = AB'Tt
+    \]
+Again, $B'Tt$ is the directly observable quantity, but it is split into the
+quantities on which it depends in order to understand what factors are
+important in determining $S/N$.
 
 The total number of photons observed, $O$, is a combination of
-photons from the source ($S$), and phtons from the background ($AB$):
-    $$ O = S + AB = (S^{\prime} + AB^{\prime})Tt $$
-The variance of the total observed counts, from Poisson statistics,
-is:
-    $$ \sigma^{2}_O = O =  S + AB = (S^{\prime} + AB^{\prime})Tt $$
-To get the desired signal from the object only, we will need to
-measure separately the total signal and the background signal to
-estimate:
-    $$ S \equiv S^{\prime}Tt = O-A <B> $$
-where $<B>$ is some estimate we have obtained of the background
+photons from the source ($S$), and photons from the background ($AB$):
+\[
+    O = S + AB = (S' + AB')Tt 
+    \]
+The variance of the total observed counts, from Poisson statistics, is:
+\[
+    \sigma^{2}_{O} = O =  S + AB = (S' + AB')Tt 
+    \]
+To get the desired signal from the object only, we will need to measure
+separately the total signal and the background signal to estimate:
+\[
+    S \equiv S'Tt = O - A \langle B \rangle
+    \]
+where $ \langle B \rangle $ is some estimate we have obtained of the background
 surface brightness. The noise in the measurement is
-    $$ \sigma^{2}_S \approx \sigma^{2}_O =
-    S + AB = (S^{\prime} + AB^{\prime})Tt $$
-where the approximation is accurate if the background is determined to
-high accuracy, which one can do if one measures the background over a
-large area, thus getting a large number of background counts (with
-correspondingly small fractional error in the measurement).
+\[
+    \sigma^{2}_{S} \approx \sigma^{2}_{O} = S + AB = (S' + AB')Tt
+    \]
+where the approximation is accurate if the background is determined to high
+accuracy, which one can do if one measures the background over a large area,
+thus getting a large number of background counts (with correspondingly small
+fractional error in the measurement).
 
-This leads to a common form of the \emph{noise equation}:
-    $$ \frac{S}{N} = \frac{S}{\sqrt{S+AB}}  $$
-Breaking out the dependence on exposure time and telescope area, this
-is:
-    $$ \frac{S}{N} = \frac{S^{\prime}}
-    {\sqrt{S^{\prime}+AB^{\prime}}}
-    \sqrt{T}\sqrt{t}$$
+This leads to a common form of the \textit{noise equation}:
+\[
+    \frac{S}{N} = \frac{S}{\sqrt{S+AB}}  
+    \]
+Breaking out the dependence on exposure time and telescope area, this is:
+\[
+    \frac{S}{N} = \frac{S'}{\sqrt{S'+AB'}} \sqrt{T}\sqrt{t}
+    \]
 
 Limiting regimes:
 \begin{itemize}
-    \item \emph{signal-limited} case: $S^{\prime}\gg B^{\prime}A$,
+    \item \textit{signal-limited} case: $S'\gg B'A$,
         the background goes away and we get
-         $$ \frac{S}{N} = \sqrt{S} = \sqrt{S^{\prime}tT} $$
-    \item \emph{background-limited} case: $B^{\prime}A\gg S^{\prime}$
-        and
-        $$ \frac{S}{N} = \frac{S}{\sqrt{BA}} =
-        \frac{S^{\prime}}{\sqrt{B^{\prime}A}}\sqrt{tT} $$
+        \[
+             \frac{S}{N} = \sqrt{S} = \sqrt{S'tT} 
+             \]
+    \item \textit{background-limited} case: $B'A \gg S'$ and
+        \[
+            \frac{S}{N} = \frac{S}{\sqrt{BA}} = \frac{S'}{\sqrt{B'A}}\sqrt{tT}
+            \]
 \end{itemize}
 
-\textcolor{myBlue}{starlight dominates by factor of 1000 for
-m$_* = 12.5$ and m$_{BG} = 20$ ($\Delta m = 7.5
+\mynotes{starlight dominates by factor of 1000 for
+$m_{*} = 12.5$ and $m_{BG} = 20$ ($\Delta{m} = 7.5
 = -2.5\log\frac{b_{BG}}{b_*}
 \rightarrow 10^{3}$)\\\\
 \large$\odot$: \normalsize little circle around star to reduce sky
@@ -919,25 +944,30 @@ seeing.
 \end{itemize}
 }
 
-As one goes to fainter objects, the S/N drops, and it drops faster
-when you're background limited. This illustrates the importance of
-dark-sky sites, and also the importance of good image quality.
+For fainter objects, $S/N$ decreases, and it decreases even faster when you're
+background limited. This illustrates the importance of dark-sky sites, and also
+the importance of good image quality.
 
-Consider two telescopes of collecting area, $T_1$ and $T_2$.
+Consider two telescopes of collecting area, $T_{1}$ and $T_{2}$.
 If we observe for the same exposure time on each and want to know how
-much fainter we can see with the larger telescope at a given $S/N$, we
-find this for a signal-limited case:
-$$ S_2 = \frac{T_1}{T_2}S_1 $$
-but find \emph{this} for the background-limited case:
-$$ S_2 = \sqrt{\frac{T_1}{T_2}}S_1  $$
+much fainter we can see with the larger telescope at a given $S/N$,
+the signal-limited case gives:
+\[
+    S_{2} = \frac{T_{1}}{T_{2}}S_{1} 
+    \]
+and the background-limited case gives:
+\[
+    S_{2} = \sqrt{\frac{T_{1}}{T_{2}}}S_{1}  
+    \]
 
+\test{Understand how Poisson uncertainties in the background contributes to the
+$S/N$ of an object, and how the background contribution depends on both the
+brightness of the background object and on the image quality because of the
+amount of background included in the measurement.}
 
-\textcolor{om}{\emph{}}
-
-\emph{Instrumental noise}
-
-\textcolor{myBlue}{Most common:readout noise. Gaussian, not poisson.
-$\mu$ = 0, $\sigma$ = readout noise (depends on detector, e.g. 10
+\paragraph{Instrumental noise}
+\mynotes{Most common: readout noise. Gaussian, not Poisson.
+$\mu$ = 0, $\sigma$ = readout noise; depends on detector, e.g. 10
 electrons ($\sim$ photons create photoelectrons). Get a smear of 10 no
 matter how many photons are coming in. Represented by range around
 zero with no exposure time. Mean is zero, so can't subtract it out, it
@@ -955,37 +985,37 @@ $N_{pix}\sigma_{rn}^{2}$ compared to $BA$. rn more important for
 spectroscopy applications than imaging.
 }
 
-In addition to the errors from Poisson statistics (statistical noise),
-there may be additional terms from instrumental errors. A common
-example of this that is applicable for CCD detectors is readout noise,
-which is additive \emph{noise} (with zero mean) that comes from the detector
-and is independent of signal level. For a detector whose readout noise
-is characterized by $\sigma_{rn}$,
-$$ \frac{S}{N} = \frac{S}{\sqrt{S+BA_{pix}+\sigma^{2}_{rn}}} $$
-if a measurement is made in a single pixel. If an object is spread
-over $N_{pix}$ pixels, then
-$$ \boxed{
- \frac{S}{N} = \frac{S}{\sqrt{S+BA+N_{pix}\sigma^{2}_{rn}}}
- } $$
-\textcolor{myBlue}{This is the key equation!}
-For large $\sigma_{rn}$, the behavior is the same as the
-background-limited case. This makes it clear that if you have readout
-noise, image quality (and/or proper optics to keep an object from
-covering too many pixels) is important for maximizing $S/N$. It is
-also clear that it is critical to have minimum read-noise for low
-background applications (e.g., spectroscopy).
+In addition to the errors from Poisson statistics (statistical noise), there
+may be additional terms from instrumental errors. A common example of this that
+is applicable for CCD detectors is \textit{readout noise}, which is additive
+noise (with zero mean) that comes from the detector and is independent of
+signal level. For a detector whose readout noise is characterized by
+$\sigma_{rn}$, the $S/N$ (for a single pixel) is given by:
+\[
+    \frac{S}{N} = \frac{S}{\sqrt{S+BA_{pix}+\sigma^{2}_{rn}}}
+    \]
+If an object is spread over $N_{pix}$ pixels, then $S/N$ is given by:
+\[
+    \boxed{
+    \frac{S}{N} = \frac{S}{\sqrt{S+BA+N_{pix}\sigma^{2}_{rn}}} }
+    \]
+\mynotes{\textbf{This is the key equation!}}
+For large $\sigma_{rn}$, the behavior is the same as the background-limited
+case. This makes it clear that if you have readout noise, image quality (and/or
+proper optics to keep an object from covering too many pixels) is important for
+maximizing $S/N$. It is also clear that it is critical to have minimum
+read-noise for low background applications (e.g., spectroscopy).
 
-There are other possible additional terms in the noise equation,
-arising from things like dark current, digitization noise, errors in
-sky determination, errors from photometric technique, etc. (we'll
-discuss some of these later on), but in most applications, the three
-sources discussed so far - signal noise, background noise, and readout
-noise - are the dominant noise sources.
+There are other possible additional terms in the noise equation, arising from
+things like dark current, digitization noise, errors in sky determination,
+errors from photometric technique, etc. (we'll discuss some of these later on),
+but in most applications, the three sources discussed so far - signal noise,
+background noise, and readout noise - are the dominant noise sources.
 
 Note the applications where one is likely to be signal dominated,
 background dominated, and readout noise dominated.
 
-\textcolor{myBlue}{\large \underline{Review}}\normalsize
+\mynotes{{\large\underline{Review}}}
 
 Three sources of uncertainty:
 \begin{enumerate}
@@ -1002,61 +1032,77 @@ Three sources of uncertainty:
 Noise, $N = \sqrt{S+BA+N_{pix}\sigma_{rn}^{2}}$
 (source + sky + instrument).
 
-\textcolor{om}{\emph{}}
+\test{Understand readout noise and how it is represented by a normal distribution
+with zero mean. Know under what circumstances readout noise is an important
+contributer to the total noise.}
 
-%---------------------------------------------------------------%
+\mydate{Monday, February 8}
 \subsubsection{Error propagation}
-\textcolor{date}{Monday, February 8}
+Why are the three uncertainty terms in the noise equation added in quadrature?
+The measured quantity ($S$) is a sum of
+$S + B -  \langle  B  \rangle  +  \langle  R \rangle $,
+where $\langle  R  \rangle  = 0$
+since readout noise has zero mean. The uncertainty in a summed series is
+computed by addding the individual errors in quadature; in the equation above,
+we have neglected the uncertainty in $\langle  B  \rangle$. To understand why they add in
+quadrature, let's consider general error propagation.
 
-So now we know how to estimate uncertainties of observed count rates.
+\mynotes{So now we know how to estimate uncertainties of observed count rates.
 Let's say we want to make some calculations (e.g., calibration, unit
 conversion, averaging, conversion to magnitudes, calculation of
 colors, etc.) using these observations: we need to be able to estimate
 the uncertainties in the calculated quantities that depend on our
-measured quantities.
+measured quantities.}
 
-\textcolor{myBlue}{%
-Total signal: $ S=S+B-<B>+O $. There are uncertainties from all
-four terms, but $<B> \sim 0$ ($\sigma_{<B>}=0$), so there are
-actually only three. $S+BA$: total \underline{inside} aperture;
-$<B>A$: total \underline{outside} aperture (with mean background).}
+\mynotes{Total signal: $ S=S+B- \langle B \rangle +O $. There are uncertainties
+from all four terms, but $ \langle B \rangle  \sim 0$ ($\sigma_{ \langle B
+\rangle }=0$), so there are actually only three. $S+BA$: total
+\underline{inside} aperture; $ \langle B \rangle A$: total \underline{outside}
+aperture (with mean background).}
 
-Consider what happens if you have several independently measured
-known quantities with known
-error distributions and you combine these into some new quantity: we
-wish to know what the error is in the new quantity.
-    $$ x = f(u, v, \ldots) $$
+Consider what happens if you have several independently measured known
+quantities with known error distributions and you combine these into some new
+quantity. We wish to know what the error is in the new quantity.
+\[
+    x = f(u, v, \ldots) 
+    \]
 The question is, what is $\sigma_x$ if we know
 $\sigma_u$, $\sigma_v$, etc.?
-\textcolor{myBlue}{In other words, how do the individual uncertainties
+\mynotes{In other words, how do the individual uncertainties
 \emph{propogate} onto the uncertainty of the resultant quantity?}
 
 As long as errors are small:
-    $$ x_i - <x> \ \sim \
-        (u_i - <u>)\left(\frac{\partial x}{\partial u}\right)
-       + (v_i - <v>)\left( \frac{\partial x}{\partial v}  \right)
-       + \ldots  $$
-where $var_i - <var>$ is the uncertainty, and the derivatives are the
+\[
+    x_{i} -  \langle x \rangle  \ \sim \
+    (u_{i} -  \langle u \rangle )\left(\frac{\partial x}{\partial u}\right)
+    + (v_{i} -  \langle v \rangle )\left( \frac{\partial x}{\partial v}  \right)
+    + \ldots
+    \]
+where $var_{i} -  \langle var \rangle $ is the uncertainty, and the derivatives are the
 amount by which the input quantity depends on other quantities.
 
-\textcolor{myBlue}{%
-Possible class example involving
+\mynotes{Possible class example involving
 S=100, B=10, A=10, and $\sigma_{rn}=10\ldots$?
 The \emph{sample variance} (by definition, see above notes) is}
-    $$ \sigma_x^{2} = lim(N \rightarrow \infty)\frac{1}{N}
-       \sum(x_i - <x>)^{2} $$
-    $$ = \sigma_u^{2}\left(\frac{\partial x}{\partial u}\right)^{2}
-       + \sigma_v^{2}\left(\frac{\partial x}{\partial v}\right)^{2}
-       + 2\sigma_{uv}^{2}\frac{\partial x}{\partial u}
-         \frac{\partial x}{\partial v} + \ldots $$
-The last term is the \emph{covariance}, which relates to whether
-errors are \emph{correlated}.
-\textcolor{myBlue}{Covarience is the dgree to which the uncertainty
+\[
+    \sigma_{x}^{2} = lim(N \rightarrow \infty)\frac{1}{N} \sum(x_{i} - <x>)^{2}
+    \]
+\[
+    = \sigma_u^{2}\left(\frac{\partial x}{\partial u}\right)^{2}
+    + \sigma_v^{2}\left(\frac{\partial x}{\partial v}\right)^{2}
+    + 2\sigma_{uv}^{2}\frac{\partial x}{\partial u}
+    \frac{\partial x}{\partial v} + \ldots
+    \]
+The last term is the \textit{covariance}, which relates to whether errors are
+\textit{correlated}.
+\mynotes{Covarience is the dgree to which the uncertainty
 in one quantity might be correlated (or not) with another quantity}.
-    $$ \sigma_{uv}^{2} = lim(N \rightarrow\infty)\frac{1}{N}
-       \sum(u_i - <u>)(v_i - <v>)  $$
+\[
+    \sigma_{uv}^{2} = lim(N \rightarrow\infty)\frac{1}{N}
+    \sum(u_{i} -  \langle u \rangle )(v_{i} -  \langle v \rangle )
+    \]
 If errors are uncorrelated, then $\sigma_{uv} = 0$ because there's
-equal chance of getting opposite signs on $v_i$ for any given $u_i$.
+equal chance of getting opposite signs on $v_{i}$ for any given $u_{i}$.
 When working out errors, make sure to consider whether there are
 correlated errors. If there are, you \emph{may} be able to reformulate
 quantities so that they have independent errors: this can be very
@@ -1091,12 +1137,10 @@ Examples for \emph{uncorrelated} errrors:
 
 \textcolor{myBlue}{$N \equiv \sigma_S$}
 
-\textcolor{myBlue}{Reasons for adding in quadrature: important!
-Also don't overestimate errors. This is just as bad as
-underestimating them.}
+\mynotes{Reasons for adding in quadrature: important! Also don't overestimate
+errors. This is just as bad as underestimating them.}
 
-\emph{Distribution of resultant errors}
-
+\paragraph{Distribution of resultant errors}
 When propagating errors, even though you can calculate the variances
 in the new variables, the distribution of errors in the new variables
 is not, in general, the same as the distribution of errors in the
@@ -1106,62 +1150,63 @@ normally distributed, errors in output variable is not necessarily.
 When two variables are added, however, the output is normally
 distributed.
 
-
-\textcolor{om}{\emph{}}
-
+\test{Know the error propagation formula and how to apply it.}
 
 \subsubsection{Determining sample parameters: averaging measurements}
-We've covered errors in single measurements ($\sigma_i$).
-Next we turn to averaging measurements.
-Say we have multiple observations and want the best
+We've covered errors in single measurements ($\sigma_{i}$). Next we turn to
+averaging measurements. Say we have multiple observations and want the best
 estimate of the mean and variance of the population, e.g.\ multiple
-measurements of stellar brightness. Here we'll define the best
-estimate of the mean as the value which maximizes the likelihood that
-our estimate equals the true parent population mean.
+measurements of stellar brightness. Here we'll define the best estimate of the
+mean as the value which maximizes the likelihood that our estimate equals the
+true parent population mean.
 
-For equal errors (simplest case),
-this estimate just gives our normal expression for
-the sample mean:
-    $$ \bar{x} = \frac{\sum x_i}{N} $$
+For equal errors (simplest case), this estimate just gives our normal
+expression for the sample mean:
+\[
+    \bar{x} = \frac{\sum x_{i}}{N} 
+    \]
 Using error propagation, the estimate of the error in the sample mean
 is given by:
-    $$ \sigma_{\bar{x}}^{2} = \sum\frac{\sigma_i^{2}}{N^{2}}
-       = \frac{\sigma^{2}}{N}$$
+\[
+     \sigma_{\bar{x}}^{2} = \sum\frac{\sigma_{i}^{2}}{N^{2}}
+       = \frac{\sigma^{2}}{N}
+       \]
 But what if errors on each observation aren't equal, say for example
 we have observations made with several different exposure times? Then
-the optimal determination of the mean is using a:
-    $$ \textrm{weighted\ mean} = \frac{\sum\frac{x_i}{\sigma_i^{2}}}
-       {\sum\frac{1}{\sigma_i^{2}}} $$
-\textcolor{myBlue}{which can be derived from maximum liklihood.
-Large weight means small error}.
+the optimal determination of the mean is using a \textit{weighted mean}:
+\[
+     \mu_{weighted} = \frac{\sum\frac{x_{i}}{\sigma_{i}^{2}}}
+       {\sum\frac{1}{\sigma_{i}^{2}}} 
+       \]
+\mynotes{which can be derived from maximum likelihood.}
 The estimated error in this value is given by:
-    $$ \sigma_{\mu}^{2} = \sum\frac{\frac{\sigma_i^{2}}{\sigma_i^{4}}}
-       {(\sum\frac{1}{\sigma_i^{2}})^{2}}
-       = \frac{1}{\sum\frac{1}{\sigma_i^{2}}}$$
-where the $\sigma_i$'s are individual weights/errors
-(people often talk about the \emph{weight} of an observation, i.e.
-$\frac{1}{\sigma_i^{2}}$: large weight means small error.
+\[
+    \sigma_{\mu}^{2} = \sum\frac{\frac{\sigma_{i}^{2}}{\sigma_{i}^{4}}}
+       {(\sum\frac{1}{\sigma_{i}^{2}})^{2}}
+       = \frac{1}{\sum\frac{1}{\sigma_{i}^{2}}}
+       \]
+where the $\sigma_{i}$ values are individual weights/errors
+(Commonly used nomenclature is the \emph{weight} of an observation, i.e.
+$\frac{1}{\sigma_{i}^{2}}$: large weight means small error).
 
 This is a standard result for determining sample means from a set of
 observations with different weights.
 
-However, there can sometimes be a subtlety in applying this formula,
-which has to do with the question: how do we go about choosing the
-weights/errors, $\sigma_i$? We know we can \emph{estimate} $\sigma$
-using Poisson statistics for a given count rate, but remember that
-this is a sample variance (which may be based on a single
-observation) not the true population variance. This can lead to
-biases.
+However, there can sometimes be a subtlety in applying this formula, which has
+to do with the question: how do we go about choosing the weights/errors,
+$\sigma_{i}$? We know we can \emph{estimate} $\sigma$ using Poisson statistics
+for a given count rate, but remember that this is a sample variance (which may
+be based on a single observation) not the true population variance. This can
+lead to biases.
 
-Consider observations of a star made on three nights, with
-measurements of 40, 50, and 60 photons. It's clear that the mean
-observation is 50 photons. However, beware of the being trapped by
-your error \emph{estimates}. From each observation alone, you would estimate
-errors of $\sqrt{40}$, $\sqrt{50}$, and $\sqrt{60}$. If you
-plug these error estimates into a computation of the weighted mean,
-you'll get a mean rate of $<x>=48.64$.
+Consider observations of a star made on three nights, with measurements of 40,
+50, and 60 photons. It's clear that the mean observation is 50 photons.
+However, beware of the being trapped by your error \emph{estimates}. From each
+observation alone, you would estimate errors of $\sqrt{40}$, $\sqrt{50}$, and
+$\sqrt{60}$. If you plug these error estimates into a computation of the
+weighted mean, you'll get a mean rate of $ \langle x \rangle =48.64$.
 
-\textcolor{myBlue}{Imagine 10,000 measurements; 50 is the \emph{true}
+\mynotes{Imagine 10,000 measurements; 50 is the \emph{true}
 population mean. $\sigma$ is really $\sqrt{50}$ for all 3 observations
 above$\ldots$ \underline{estimation} of true uncertainties.
 Avoid by: revised mean: $50 \rightarrow 48.64 \ldots
