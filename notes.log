@@ -1,4 +1,4 @@
-This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2015.11.14)  17 OCT 2016 16:26
+This is pdfTeXk, Version 3.141592-1.40.3 (Web2C 7.5.6) (format=pdflatex 2015.11.14)  19 OCT 2016 17:15
 entering extended mode
  %&-line parsing enabled.
 **notes.tex
@@ -213,24 +213,24 @@ Package hyperref Info: Link coloring OFF on input line 3122.
 File: hpdftex.def 2007/02/07 v6.75r Hyperref driver for pdfTeX
 \Fld@listcount=\count109
 )
-Package hyperref Info: Option `colorlinks' set `true' on input line 67.
+Package hyperref Info: Option `colorlinks' set `true' on input line 65.
  (./notes.aux)
 \openout1 = `notes.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 74.
-LaTeX Font Info:    ... okay on input line 74.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 72.
+LaTeX Font Info:    ... okay on input line 72.
 -------------------- Geometry parameters
 paper: class default
 landscape: --
@@ -270,7 +270,7 @@ driver: pdftex
 
 (1in=72.27pt, 1cm=28.45pt)
 -----------------------
-Package hyperref Info: Link coloring ON on input line 74.
+Package hyperref Info: Link coloring ON on input line 72.
 
 (/usr/share/texmf/tex/latex/hyperref/nameref.sty
 Package: nameref 2006/12/27 v2.28 Cross-referencing by name of section
@@ -280,19 +280,19 @@ Package: refcount 2006/02/20 v3.0 Data extraction from references (HO)
 )
 \c@section@level=\count110
 )
-LaTeX Info: Redefining \ref on input line 74.
-LaTeX Info: Redefining \pageref on input line 74.
+LaTeX Info: Redefining \ref on input line 72.
+LaTeX Info: Redefining \pageref on input line 72.
  (./notes.out) (./notes.out)
 \@outlinefile=\write3
 \openout3 = `notes.out'.
 
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/n' in size <16> not available
-(Font)              size <17.28> substituted on input line 80.
+(Font)              size <17.28> substituted on input line 78.
 
 
 LaTeX Font Warning: Font shape `OT1/cmss/bx/n' in size <16> not available
-(Font)              size <17.28> substituted on input line 80.
+(Font)              size <17.28> substituted on input line 78.
 
 (./notes.toc [1
 
@@ -304,74 +304,71 @@ LaTeX Font Warning: Font shape `OT1/cmss/bx/n' in size <16> not available
 [3]
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <10> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 87.
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 85.
 
 
 Package hyperref Warning: Token not allowed in a PDFDocEncoded string,
-(hyperref)                removing `\\' on input line 89.
-
-LaTeX Font Info:    Try loading font information for OMS+cmss on input line 94.
-
-LaTeX Font Info:    No file OMScmss.fd. on input line 94.
-
-LaTeX Font Warning: Font shape `OMS/cmss/m/n' undefined
-(Font)              using `OMS/cmsy/m/n' instead
-(Font)              for symbol `textbullet' on input line 94.
+(hyperref)                removing `\\' on input line 87.
 
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <12> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 126.
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 124.
 
 
 [4] [5] [6] [7] [8] [9] [10] [11]
 
 LaTeX Font Warning: Font shape `OT1/cmss/m/it' in size <10.95> not available
-(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 597.
+(Font)              Font shape `OT1/cmss/m/sl' tried instead on input line 595.
 
 
 [12] [13]
 
 LaTeX Font Warning: Font shape `OT1/cmss/bx/it' undefined
-(Font)              using `OT1/cmss/bx/n' instead on input line 702.
+(Font)              using `OT1/cmss/bx/n' instead on input line 700.
 
 [14] [15] [16] [17]
-Overfull \hbox (0.42719pt too wide) in paragraph at lines 945--945
+Overfull \hbox (0.42719pt too wide) in paragraph at lines 943--943
 [][]\OT1/cmss/m/n/12 starlight dom-i-nates by fac-tor of 1000 for $\OML/cmm/m/i
 t/12 m[] \OT1/cmr/m/n/12 = 12\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 5$ \OT1/cmss/m/n
 /12 and $\OML/cmm/m/it/12 m[] \OT1/cmr/m/n/12 = 20$ \OT1/cmss/m/n/12 ($\OT1/cmr
 /m/n/12 ^^A\OML/cmm/m/it/12 m \OT1/cmr/m/n/12 = 7\OML/cmm/m/it/12 :\OT1/cmr/m/n
-/12 5 = \OMS/cmss/m/n/12 ^^@\OT1/cmr/m/n/12 2\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 
-5 [] [] \OMS/cmss/m/n/12 !
+/12 5 = \OMS/cmsy/m/n/12 ^^@\OT1/cmr/m/n/12 2\OML/cmm/m/it/12 :\OT1/cmr/m/n/12 
+5 [] [] \OMS/cmsy/m/n/12 !
  []
 
 
-Underfull \hbox (badness 10000) in paragraph at lines 945--945
+Underfull \hbox (badness 10000) in paragraph at lines 943--943
 
  []
 
 [18] [19] [20] [21] [22] [23] [24] [25] [26] [27] [28] [29] [30] [31] [32]
-[33] [34] [35] [36] [37] [38]
-<cassegrain.png, id=633, 378.41376pt x 156.585pt>
+[33] [34] [35] [36] [37] <cassegrain.png, id=636, 378.41376pt x 156.585pt>
 File: cassegrain.png Graphic file (type png)
- <use cassegrain.png> [39 <./cassegrain.png>] [40] [41] [42] [43] [44] [45] [46
-] [47] [48] [49] [50] [51]
-[52]
-Overfull \hbox (2.15207pt too wide) in paragraph at lines 2880--2882
+
+<use cassegrain.png>
+LaTeX Font Info:    Try loading font information for OMS+cmss on input line 209
+9.
+LaTeX Font Info:    No file OMScmss.fd. on input line 2099.
+
+
+LaTeX Font Warning: Font shape `OMS/cmss/m/n' undefined
+(Font)              using `OMS/cmsy/m/n' instead
+(Font)              for symbol `textsection' on input line 2099.
+
+[38 <./cassegrain.png>] [39] [40] [41] [42] [43] [44] [45] [46] [47] [48]
+[49] [50]
+Overfull \hbox (2.15207pt too wide) in paragraph at lines 2866--2868
 [][]\OT1/cmss/m/n/12 (``misfigured'' is a slightly harsh term)[], but rarely
  []
 
-[53] [54] [55] [56] [57] [58] [59] [60] [61] [62] [63] [64] [65]
-<slit2.png, id=781, 952.55875pt x 308.15125pt>
-File: slit2.png Graphic file (type png)
- <use slit2.png> [66 <./slit2.png>] [67] [68] <curves.png, id=798, 507.8975pt x
- 501.875pt>
+[51] [52] [53] [54] [55] [56] [57] [58] [59] [60] [61] [62] [63] [64] [65]
+[66] [67] [68] <curves.png, id=806, 507.8975pt x 501.875pt>
 File: curves.png Graphic file (type png)
  <use curves.png>
-[69 <./curves.png>] <angle.png, id=804, 599.23875pt x 217.81375pt>
+<angle.png, id=807, 599.23875pt x 217.81375pt>
 File: angle.png Graphic file (type png)
-
-<use angle.png> [70 <./angle.png>] [71] [72] [73]
-Underfull \hbox (badness 10000) detected at line 4031
+ <use angle.png> [69] [70 <./curves.png>] [71 <./angle.png>] [72] [73]
+Underfull \hbox (badness 10000) detected at line 4033
 [] [][]\OT1/cmss/bx/n/12 Photon collecter[][][]
  []
 
@@ -385,13 +382,13 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
  ) 
 Here is how much of TeX's memory you used:
- 4599 strings out of 256214
- 60609 string characters out of 1916999
- 130367 words of memory out of 1500000
- 7638 multiletter control sequences out of 10000+200000
+ 4600 strings out of 256214
+ 60618 string characters out of 1916999
+ 131348 words of memory out of 1500000
+ 7634 multiletter control sequences out of 10000+200000
  14639 words of font info for 52 fonts, out of 1200000 for 2000
  645 hyphenation exceptions out of 8191
- 27i,11n,35p,246b,472s stack positions out of 5000i,500n,6000p,200000b,15000s
+ 27i,11n,35p,246b,477s stack positions out of 5000i,500n,6000p,200000b,15000s
 </usr/share/texmf/fonts/type1/bluesky/cm/cmex10.pfb></usr/share/texmf/fonts/t
 ype1/bluesky/cm/cmmi10.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmmi12.pfb>
 </usr/share/texmf/fonts/type1/bluesky/cm/cmmi6.pfb></usr/share/texmf/fonts/type
@@ -406,9 +403,9 @@ texmf/fonts/type1/bluesky/cm/cmsy10.pfb></usr/share/texmf/fonts/type1/bluesky/c
 m/cmsy6.pfb></usr/share/texmf/fonts/type1/bluesky/cm/cmsy8.pfb></usr/share/texm
 f/fonts/type1/bluesky/cm/cmtt12.pfb></usr/share/texmf/fonts/type1/public/cmex/f
 mex8.pfb>
-Output written on notes.pdf (84 pages, 677305 bytes).
+Output written on notes.pdf (84 pages, 615588 bytes).
 PDF statistics:
- 985 PDF objects out of 1000 (max. 8388607)
- 209 named destinations out of 1000 (max. 131072)
- 693 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 994 PDF objects out of 1000 (max. 8388607)
+ 215 named destinations out of 1000 (max. 131072)
+ 696 words of extra memory for PDF output out of 10000 (max. 10000000)
 

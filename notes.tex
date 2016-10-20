@@ -3,7 +3,6 @@
 \renewcommand\familydefault{\sfdefault}
 %\usepackage[margin=1.5in]{geometry}
 \setlength{\parindent}{0em}
-\setlength{\parskip}{0.5em}
 \usepackage{setspace} % spacing between toc items
 \usepackage{graphicx}
 \usepackage{framed}  %\begin[end]{framed} to put box around text
@@ -16,24 +15,23 @@
 %   [<shape>]{<format>}{<label>}{<sep>}{<before-code>}[<after-code>]
 \usepackage{titlesec}
 \titleformat{\section}%
-  %{\fontsize{16}{18}\selectfont\bfseries\color{myblue}}
   {\fontsize{16}{18}\selectfont\bfseries}
   {\arabic{section}\color{black}}
   {1em}{}
 \titleformat{\paragraph}%
   {\bfseries}
-  {Unit }
-  {1em}{}
-\titlespacing*{\section}{-0.5in}{0ex}{0ex}
-\titlespacing*{\subsection}{-0.25in}{0ex}{0ex}
-\titlespacing*{\paragraph}{0in}{0.5ex}{-1ex}
+  {}{}{}
+\titlespacing*{\section}{-0.25in}{0ex}{2ex}
+\titlespacing*{\subsection}{-0.15in}{2ex}{1ex}
+\titlespacing*{\subsubsection}{-0.10in}{2ex}{1ex}
+\titlespacing*{\paragraph}{-0.05in}{0.5ex}{-1ex}
 
 \usepackage{enumitem}
 %\setlist[itemize]{noitemsep}
 %\setlist[enumerate]{noitemsep}
 %\setlist[description]{% noitemsep, labelindent=1em, topsep=-1ex, font={\sffamily\bfseries\color{cadmiumgreen}} }
-\setitemize{noitemsep}
-\setenumerate{noitemsep}
+\setitemize{noitemsep, label=$\vcenter{\hbox{\footnotesize$\bullet$}}$}
+\setenumerate{noitemsep, topsep=0.5ex}
 \setdescription{noitemsep, labelindent=1em, topsep=-1ex, font={\sffamily\bfseries\color{cadmiumgreen}} }
 
 \definecolor{myGreen}{rgb}{0.0,0.26,0.15}
@@ -74,16 +72,16 @@
 \begin{document}
 \maketitle
 
-course website: \url{http://astronomy.nmsu.edu/holtz/a535}
+Course website: \url{http://astronomy.nmsu.edu/holtz/a535}
 
-\renewcommand{\baselinestretch}{0.5}\normalsize
+\setlength{\parskip}{0ex}
 \tableofcontents
-\renewcommand{\baselinestretch}{1.0}\normalsize
 
-%\addtocontents{toc}{\protect\setstretch{0.1}}
-%\tableofcontents
+%\renewcommand{\baselinestretch}{0.5}\normalsize
+%\renewcommand{\baselinestretch}{1.0}\normalsize
 
 \newpage
+\setlength{\parskip}{1ex}
 \mydate{Friday, January 22}
 \section{Properties of light, magnitudes, errors,\\
 and error analysis}
@@ -1217,35 +1215,33 @@ measurements.}
 Using the individual estimates of the variances, we'll bias values to
 lower rates, since these will have estimated higher $S/N$.
 
-Note that it's pretty obvious from this example that you should just
-weight all observations equally. However, note that this certainly
-isn't always the right thing to do. For example, consider the
-situation in which you have three exposures of different exposure
-times. Here you probably want to give the longer exposures higher
-weight (at least, if they are signal or background limited). In this
-case, you again don't want to use the individual error estimates or
-you'll introduce a bias. There is a simple solution here also: just
-weight the observations by the exposure time. However, while this
-works fine for Poisson errors (variances proportional to count rate),
-it isn't strictly correct if there are instrumental errors as well
-which don't scale with exposure time. For example, the presence of
-readout noise can have this effect; if all exposures are readout
-noise dominated, then one would want to weight them equally, if
-readout noise dominates the shorter but not the longer exposures,
-once would want to weight the longer exposures even higher than
-expected for the exposure time ratios! The only way to properly
-average measurements in this case is to estimate a sample mean, then
-use this value scaled to the appropriate exposure times as the input
-for the Poisson errors.
+Note that it's pretty obvious from this example that you should just weight all
+observations equally. However, note that this certainly isn't always the right
+thing to do. For example, consider the situation in which you have three
+exposures of different exposure times. Here you probably want to give the
+longer exposures higher weight (at least, if they are signal or background
+limited). In this case, you again don't want to use the individual error
+estimates or you'll introduce a bias. There is a simple solution here also:
+just weight the observations by the exposure time. However, while this works
+fine for Poisson errors (variances proportional to count rate), it isn't
+strictly correct if there are instrumental errors as well which don't scale
+with exposure time. For example, the presence of readout noise can have this
+effect; if all exposures are readout noise dominated, then one would want to
+weight them equally, if readout noise dominates the shorter but not the longer
+exposures, once would want to weight the longer exposures even higher than
+expected for the exposure time ratios. The only way to properly average
+measurements in this case is to estimate a sample mean, then use this value
+scaled to the appropriate exposure times as the input for the Poisson errors.
 
 Another subtlety: averaging counts and converting to magnitudes is
 not the same as averaging magnitudes.
 
-\textcolor{om}{\emph{}}
+\test{Understand how the distinction between sample variance and true variance
+can lead to biases when calculating a weighted mean, and how to overcome this.}
 
-\textcolor{date}{Wednesday, February 10}
+\mydate{Wednesday, February 10}
 
-\emph{Can you split exposures?}
+\paragraph{Can you split exposures?}
 
 Although from $S/N$ considerations, one can determine the required
 number of counts you need (exposure time) to do your science, when
@@ -1262,23 +1258,30 @@ Consider the object with photon flux $S'$,
 background surface brightness $B'$, and detector
 with readout noise $\sigma_{rn}$. A single short exposure of
 time $t$ has a variance:
-    $$ \sigma_S^{2} = S'Tt + B'ATt + N_{pix}\sigma_{rn}^{2} $$
+\[
+    \sigma_{S}^{2} = S'Tt + B'ATt + N_{pix}\sigma_{rn}^{2}
+    \]
 If $N$ exposures are summed, the resulting variance will be
-    $$ \sigma_N^{2} = N\sigma_S^{2} $$
+\[
+    \sigma_{N}^{2} = N\sigma_{S}^{2}
+    \]
 If a single long exposure of length Nt is taken, we get
-    $$ \sigma_L^{2} = S'TNt + B'ATNt + N_{pix}\sigma_{rn}^{2} $$
+\[
+    \sigma_{L}^{2} = S'TNt + B'ATNt + N_{pix}\sigma_{rn}^{2}
+    \]
 The ratio of the noises, or the inverse ratio of the S/N (since the
 total signal measured is the same in both cases), is
-    $$ \frac{\sigma_N}{\sigma_L} = \sqrt{\frac
+\[
+    \frac{\sigma_{N}}{\sigma_{L}} = \sqrt{\frac
     {S'TNt + B'ATNt + NN_{pix}\sigma_{rn}^{2} }
-    {S'TNt + B'ATNt + N_{pix}\sigma_{rn}^{2}}
-    }$$
-The only difference is in the readout noise term.
-In the signal- or background-limited regimes, exposures can be added
-with no loss of $S/N$. However, if readout noise is significant, then
-splitting exposures leads to reduced $S/N$.
+    {S'TNt + B'ATNt + N_{pix}\sigma_{rn}^{2}}}
+    \]
+The only difference is in the readout noise term. In the signal- or
+background-limited regimes, exposures can be added with no loss of $S/N$.
+However, if readout noise is significant, then splitting exposures leads to
+reduced $S/N$.
 
-\textcolor{myBlue}{If the desired $S/N$ reguires one hour of exposure,
+\mynotes{If the desired $S/N$ reguires one hour of exposure,
     is it better to have, e.g.\ 3600 1-second exposure, 1800 2-second
     exposures, 300 12-second exposures$\ldots$
     Pros of lots of short exposures:
@@ -1304,12 +1307,15 @@ splitting exposures leads to reduced $S/N$.
     ``Readout noise limited''.
 }
 
-\textcolor{om}{\emph{}}
+\test{Understand under what circumstances you can split exposures without
+a noise penalty, and under what circumstances you cannot.
+Understand some of the reasons why you might want to split an exposure
+into shorter pieces.}
 
 \subsubsection{Random errors vs systematic errors}
-So far, we've been discussing \emph{random} errors.
+So far, we've been discussing \textit{random} errors.
 There is an additional,
-usually more troublesome, type of errors known as \emph{systematic} errors.
+usually more troublesome, type of errors known as \textit{systematic} errors.
 These don't occur randomly but rather are correlated with some,
 possibly unknown, variable relating to your observations.
 
@@ -1328,35 +1334,28 @@ Note that error analysis from expected random errors may be the only
 clue you get to discovering systematic errors. To discover systematic
 errors, plot residuals vs.\ everything
 
-\textcolor{om}{\emph{}}
 
-\textcolor{myBlue}{Important to deal with random errors correctly;
+\mynotes{Important to deal with random errors correctly;
     don't overestimate error bars.
     Flat fielding: uniform brightness $\rightarrow$ non-uniformity in
     sensitivity. To what \% accuracy is something ``flat''?
 }
 
-\textcolor{date}{Monday, February 15}
+\mydate{Monday, February 15}
 
-\textcolor{myBlue}{zeropoint, $z$, bundles count equation into one
-    number for a \emph{particular bandpass}. This is an empirical
-    measurement of the count equation [counts]. Use the count
-    equation to derive the zeropoint.
-    If the error bars are smaller than the scatter of the data points
-    themselves, there's a problem. $\chi^{2}$ would be much [larger?]
-    than one.
-    A possible issue is the pixel senstivity isn't uniform across a
-    ccd. Stars at the bottom of the chip could be fainter than the
-    ones at the top. CCDs in space telescope. (CCDs are read
-    by moving charge through chip $\rightarrow$ \emph{grating}.)
-    Something about charge-transfer efficiency$\ldots$ observation
-    scatter larger than expected scatter.
-    See handwritten notes for diagrams and more on this.
-}
+\textcolor{myBlue}{zeropoint, $z$, bundles count equation into one number for a
+\emph{particular bandpass}. This is an empirical measurement of the count
+equation [counts]. Use the count equation to derive the zeropoint. If the error
+bars are smaller than the scatter of the data points themselves, there's a
+problem. $\chi^{2}$ would be much [larger?] than one. A possible issue is the
+pixel senstivity isn't uniform across a ccd. Stars at the bottom of the chip
+could be fainter than the ones at the top. CCDs in space telescope. (CCDs are
+read by moving charge through chip $\rightarrow$ \emph{grating}.) Something
+about charge-transfer efficiency$\ldots$ observation scatter larger than
+expected scatter. See handwritten notes for diagrams and more on this. }
 
 \textcolor{red}{\textbf{Important to know the equation for error
-propagation!}
-}
+propagation!} }
 
 \newpage
 \section{Effects of the earth's atmosphere}
@@ -1370,30 +1369,25 @@ Four effects:
         over a large aperture)
 \end{enumerate}
 
-\subsection{Night sky emission}
+\subsection{Night sky (emission)}
 Emission from the sky is given as brightness as a function of wavelength.
 Many of the following sources are emission \emph{line} sources, not continuum
-sources, as shown in this \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/skyemiss.htm}
-{plot}:
-\begin{description}
-    \item [air glow:] Molecules are thermally excited by sunlight.
+sources, as shown in \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/skyemiss.htm}
+{this plot}:
+\begin{description}[style=nextline]
+    \item [air glow] Molecules are thermally excited by sunlight.
         Emission takes time, so this continues into the night.
         Mainly OH lines, which are pretty bright and fluctuate (``dance around'').
-    \item [zodiacal light:]
-        \begin{itemize}
-            \item outside of our atmosphere
-            \item caused by dust in the solar system
-            \item emits in the optical regime.
-            \item  Brightness: $m_{V} \sim$ 22.2 - 23.5
-                [magnitudes arcsec$^{-2}$], depending on
-                ecliptic latitude (and to a lesser degree on ecliptic longitude).
-        \end{itemize}
-        Note that this exists even in Earth orbit. When brightness of observed
-        objects drop to 21-22 mag, go from signal-limited to
-        background-limited.
-    \item [sunlight:] Brightness is
-        small away from twilight, depending on distance sun is below horizon.
-        Note that there are different definitions of twilight:
+    \item [zodiacal light]
+        Exists outside of our atmosphere and is caused by dust in the solar
+        system. This is emission in the optical regime. Brightness: $m_{V}
+        \sim$ 22.2 - 23.5 [magnitudes arcsec$^{-2}$], depending on ecliptic
+        latitude (and to a lesser degree on ecliptic longitude). Note that this
+        exists even in Earth orbit. When brightness of observed objects drop to
+        21-22 mag, go from signal-limited to background-limited.
+    \item [sunlight] Brightness is low away from twilight, depending on
+        distance sun is below horizon. Note that there are different definitions of
+        twilight:
         \begin{itemize}
             \item civil (6 degrees)
             \item nautical (12 degrees; ``pretty dang dark''),
@@ -1401,7 +1395,7 @@ sources, as shown in this \href{http://astronomy.nmsu.edu/holtz/a535/html/diagra
         \end{itemize}
         By astronomical twilight, there is essentially no contribution
         from sunlight, but much useful observing can be done before this.
-    \item [moonlight:] Brightness is variable; can be very bright.
+    \item [moonlight] Brightness is variable; can be very bright.
         $\sim$ 10 times brighter at full moon (compared to what?).
         \begin{center}
             \begin{tabular}{c c c c c c}
@@ -1413,10 +1407,10 @@ sources, as shown in this \href{http://astronomy.nmsu.edu/holtz/a535/html/diagra
                 14 & 17.0 & 19.5 & 20.0 & 19.9 & 19.2\\
             \end{tabular}
         \end{center}
-    \item [aurorae:] line emission
-    \item [light pollution:] Strong (bright) in distinct lines
+    \item [aurorae] line emission
+    \item [light pollution] Strong (bright) in distinct lines
     \item [unresolved stars and galaxies]
-    \item [thermal emission:] IR emission from sky,
+    \item [thermal emission] IR emission from sky,
         telescope, and dome.
         T$_{atm} \rightarrow$ blackbody emission.
 \end{description}
@@ -1458,18 +1452,17 @@ Local conditions in atmosphere scales on the order of degrees.
 6000\AA{} $\rightarrow$ 9000\AA{} brighter. Floor set by zodiacal
 light with added stuff by moonlight.}
 
-Farther in the IR (5 $\mu$ +), thermal emission from the sky dominates
+Farther in the IR (5$\mu$ +), thermal emission from the sky dominates
 and is extremely bright. In fact, when working at wavelengths with thermal
 background, the exposure time is often limited by the time it takes to
 saturate the detector with background (sky) light, in a few seconds or less.
 
 Sky brightness from most sources varies with time and position in the sky in an
 irregular fashion. Consqeuently, it's essentially impossible to estimate the
-sky \emph{a priori}: sky must be determined from your observations, and if your
+sky \textit{a priori}: sky must be determined from your observations, and if your
 observations don't distinguish object from sky, you'd better measure sky close
-by in location and in time: especially critical in the IR\@. See some %\href{}
-{IR movies} (really important!); %\href{}
-{spectral movie from ESO/Paranal} see \href{https://www.astro.uni-bonn.de/theli/gui/aboutbackground.html}
+by in location and in time: especially critical in the IR\@. See some
+IR movies (really important!), spectral movie from ESO/Paranal, and \href{https://www.astro.uni-bonn.de/theli/gui/aboutbackground.html}
 {here}.
 
 \test{Know the spectral energy distribution of the main sources of sky emission.
@@ -1479,48 +1472,35 @@ the NIR.}
 
 \subsection{Transmission of atmosphere (absorption/scattering)}
 Earth's atmosphere doesn't transmit 100\% of light. Various things
-contribute to the absorption of light:
+contribute to this:
 \begin{itemize}
-    \item scattering, e.g., Rayleigh scattering off molecules.
-        \mynotes{(scattered light has same wavelength as incident light)}
-    \item aerosols: scattering off larger particles (e.g.\ natural
-    aerosols like fog, forest exudates, and geyser steam, and
-    artificial aerosols like haze, dust, particulate air pollutants
-    and smoke). Particle size $\sim$ 1 $\mu m$.
-    \item variety of molecules:
-    \begin{itemize}
-        \item ozone
-        \item $H_{2}O$
-        \item $O_{2}$
-        \item $CO_{2}$
-        \item $N_{2}O$
-        \item $CH_{4}$
-    \end{itemize}
+    \item Absorption by a variety of molecules:
+        \begin{itemize}
+            \item ozone
+            \item $H_{2}O$
+            \item $O_{2}$
+            \item $CO_{2}$
+            \item $N_{2}O$
+            \item $CH_{4}$
+        \end{itemize}
+    \item Scattering
+        \begin{itemize}
+            \item Rayleigh scattering off molecules
+                \mynotes{(scattered light has same wavelength as incident light)}
+            \item Aerosols: scattering off larger particles (e.g.\ natural
+                aerosols like fog, forest exudates, and geyser steam, and
+                artificial aerosols like haze, dust, particulate air pollutants
+                and smoke). Particle size $\sim$ 1 $\mu m$.
+        \end{itemize}
 \end{itemize}
 All are functions of wavelength, time (to some extent), and position in sky.
 
-\mynotes{\textbf{More unorganized notes:}
-    Extinction: mostly from scattering and aerosols. SHOULD REVIEW EXTINCTION
-    FROM ISM\@! Mean extinction curve (individual observatories) subtracted for
-    optical spectroscopy. A and B bands (nomenclature from Fraunhofer -
-    discovered solar liens $\sim$ 1800s. Absorption lines were labeled
-    alphabetically in $\nu$. A and B bands were actually from O$_{2}$. C from
-    H$\alpha$, D from sodium (the ``sodium D line''), and H and K were two
-    lines of ionized calcium (the CaII H and K lines)). Water vapor is the
-    dominant absorber in the IR\@. Windows in Earth's atmosphere: YJHK are the
-    filters that fit inside these windows, which are carved out by water
-    absorption. This defines the bandpasses. But water vapor changes too, so
-    absorption strength changes a lot. The bandpass itself changes! High peaks
-    [from some video or plot?] are oqaque; transparent toward the bottom. Still
-    molecular absorption in these windows that could show up in spectrum, e.g.\
-    the H-band. Have to correct for this. More atmosphere = more light lost.
-    How much more? Airmass is defined locally as the amount of air you're
-    looking at divided by the amount of air through the zenith.
-    So looking at zenith, no matter where you are, airmass = 1.
-}
 
 \subsubsection{Sources of extinction}
-In the optical part of the spectrum, extinction is a roughly smooth function of
+\paragraph{Optical}
+\mynotes{ Mean extinction curve (individual observatories) subtracted for optical
+    spectroscopy.}
+Extinction is a roughly smooth function of
 wavelength and arises from a combination of ozone, Rayleigh scattering, and
 aerosols, as shown in \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/extinct.htm}
 {this plot}. The optical extinction can vary from night to night or season to
@@ -1529,10 +1509,10 @@ season, as shown in \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a53
 nights; if there are clouds, then the level of variation is much higher.
 Because of this variation, you must determine the amount of extinction on each
 night separately if you want accuracy better than a few percent (even for
-photometric nights). Generally, the \emph{shape} of the extinction curve as a
-function of wavelength probably varies less than the amplitude at any given
+photometric nights). Generally, the overall \emph{shape} of the extinction curve as a
+function of wavelength probably varies less than the \emph{amplitude} at any given
 wavelength. Because of this, it is common to use \textit{mean extinction
-coefficients} when doing spectroscopy when often only the \emph{relative}
+coefficients} when doing spectroscopy since often only the \emph{relative}
 fluxes are important. To first order, the extinction from clouds is ``gray'',
 i.e.\ not a function of wavelength, so relative fluxes can be obtained even
 with some clouds present.
@@ -1541,19 +1521,27 @@ There is significant molecular absorption in the far-red part of the
 optical spectrum, in particular, note the $A$ (7600) and $B$ (6800) atmospheric
 bands from O$_{2}$.
 
-\mynotes{Historical note: The $A$ and $B$ nomenclature comes from
-the Fraunhofer lines, which were labeled alphabetically with increasing
-(decreasing?) frequency when first discovered in the sun's spectrum in the
-1800s. Originally they were not recognized as absorption lines. C is H$\alpha$,
-D is the sodium D line, CaII H and K lines, etc.}
+\mynotes{Historical note: The $A$ and $B$ nomenclature comes from the
+Fraunhofer lines, which were labeled alphabetically with frequency when first
+discovered in the sun's spectrum in the 1800s. Originally they were not
+recognized as absorption lines. A and B bands were actually from O$_{2}$. C is
+H$\alpha$, D is the sodium D line, CaII H and K lines, etc.}
+\mynotes{ Water vapor is the dominant absorber in the IR\@.
+    Windows are
+    carved out by water absorption. This defines the bandpasses. But water
+    vapor changes too, so absorption strength changes a lot, leading to changes
+    in the bandpasses themselves. High peaks [from some video or plot?] are
+    opaque; transparent toward the bottom. Still molecular absorption in these
+    windows that could show up in spectrum, e.g.\ the H-band. Have to correct
+    for this. More atmosphere = more light lost. How much more?}
 
 In the infrared, the extinction does not vary so smoothly with wavelength
 because of the effect of molecular absorption. In fact, significant absorption
 bands define the so-called infrared windows (yJHKLM), as shown in the near IR in \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/mandbell.htm}
-{this plot}. At longer wavelengths, the broad absoprtion band behavior
+{this plot}. At longer wavelengths, the broad absorption band behavior
 continues, as shown in \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/allen1.htm}
 {this plot}. In this figure, \emph{transmission} = $f(b_{\lambda}l$) where $l$
-is path length (units of airmass):
+is path length (units of airmass), (and $b_{\lambda}$ = \ldots ?):
 
 \begin{center}
     \begin{tabular}{c l}
@@ -1595,7 +1583,7 @@ Given the zenith distance, $z$, which can be computed from:
     \]
 where $\phi$ is the latitude of the observatory location, $\delta$ is the
 declination, and $h$ is the hour angle ($h$ = local sidereal time - $\alpha$,
-where $\alpha$ is the right ascenstion), we have
+where $\alpha$ is the right ascension), we have
 \[
     X \sim \sec z
     \]
@@ -1629,7 +1617,7 @@ a factor of $e^{-\tau}$ more absorption (not a factor of 2).
 \[
     e^{-2\tau} = \left[ e^{-\tau} \right]^{2} = e^{-\tau} e^{-\tau}
     \]
-Total $\tau$ is increased by the airmass.}
+    }
 
 If the optical depth through the atmosphere is just proportional to the
 physical path length (true if same atmospheric structure is sampled in
@@ -1638,24 +1626,22 @@ different directions), then
     \tau(X) \sim \tau_{0}X
     \]
 where $\tau_{0}$ is the optical depth at the zenith.
+The functional dependence of atmospheric transmission on airmass, in flux and
+magnitudes, is given by:
 \[
-     F = F_{\textrm{top}}e^{-\tau_{0}X}
+     F = F_{\mathrm{top}}e^{-\tau_{0}X} \qquad
+     m = m_{\mathrm{top}} + 1.086\tau_{0}X
     \]
-Expressing things in magnitudes, we have:
-\[
-     m = m_{0} + 1.086\tau_{0}X
-    \]
-($m_{0}$ - top of atmosphere, $m$ - measured).
 The \textit{extinction coefficient} $k_{\lambda}$ [magnitudes of
-absorption per airmass, I think] is defined as:
+absorption per airmass] is defined as:
 \[
      m_{0} = m + k_{\lambda}X ;\quad
      k_{\lambda} \equiv -1.086\tau_{0}
     \]
 so the amount of light lost in magnitudes can be specified by a \emph{set of
-extinction coefficients}. Note that by this definition, the extinction
-coefficient will be negative; others may use the opposite sign convention
-(e.g.\ defining $m_{0} = m - k_{\lambda}X$). Of course, use of the scaling of
+extinction coefficients} (note that by this definition, the extinction
+coefficient will be negative; others may use the opposite sign convention,
+e.g., defining $m_{0} = m - k_{\lambda}X$). Use of the scaling of
 $\tau$ or $k$ with airmass assumes \textit{photometric weather}.
 
 The basic idea is that extinction can be determined by monitoring the
@@ -1747,11 +1733,12 @@ approximation. Observers have empirically found:
 but these vary with time, so for precise measurements, you would have
 to determine $A$ and $B$ on your specific night of observations.
 
-\paragraph{Importance of understanding refraction}
+\subsubsection{Importance of understanding refraction}
 Refraction is relevant for pointing a telescope, but this is generally
 automatically handled in the telescope pointing software. When taking
 images, the stars are moved only a tiny amount relative to each other.
-One key issue today is the use of multiobject spectrographs, where slits or
+
+One key issue today is the use of \textit{multiobject spectrographs}, where slits or
 fibers need to be placed on objects to accuracies of a fraction of an arcsec.
 For small fields, refraction isn't too much of an issue, but for large fields,
 it can be $\ldots$ note SDSS plates.
@@ -1811,15 +1798,15 @@ Generally, a perfect astronomical optical system will make a perfect
 Earth's atmosphere is turbulent and variations in the index of refraction
 cause the plane wavefront from distant objects to be \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/seeing.htm}
 {distorted}. These cause several astronomical effects:
-\begin{description}
-    \item [scintillation:] amplitude variations, which typically vary over
+\begin{description}[style=nextline]
+    \item [scintillation] amplitude variations, which typically vary over
         scales of cm. Generally very small for larger apertures.
         \mynotes{``twinkling'', small aperture (e.g.\ eye) prevents from
         getting below a fraction of a \% in brightness$\ldots$ something.
         Planets don't twinkle because they're bigger}
-    \item [seeing:] changes in position and image quality. The effect of seeing
-        depends on aperture size: for small apertures, one sees a diffraction
-        pattern moving around, while for large apertures, one sees a set of
+    \item [seeing] changes in position and image quality. The effect of seeing
+        depends on aperture size: for small apertures, there is a diffraction
+        pattern moving around, while for large apertures, there is a set of
         diffraction patterns (speckles) \href{https://en.wikipedia.org/wiki/Speckle_imaging#/media/File:Eps_aql_movie_not_2000.gif}
         {moving around} on scale of $\sim$ 1 arcsec. These observations imply:
         \begin{itemize}
@@ -1909,7 +1896,7 @@ in the micron regime.}
 The meat of $r_{0}$ is in $\int\left(C_{n}^{2}\dd{h} \right)$;
 as you might expect, this varies from site to site and also in time.
 At most sites, there seems to be three regimes of ``surface layer''
-(wind-surface interactions and manmade seeing),
+(wind-surface interactions and man-made seeing),
 ``planetary boundary layer'' (influenced by diurnal heating), and
 ``free atmosphere'' (10 km is tropopause: high wind shears),
 as seen in \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/beckers2.htm}
@@ -1990,33 +1977,32 @@ recognized over the past several decades to be significant effects.
 
 \mydate{Monday, February 29}
 \subsubsection{What does seeing cause the image to look like?}
-The ``quality'' of an image can be described in many different ways.
-The overall shape of the distribution of light from a point source is
-specified by the \textit{point spread function} (PSF). Diffraction gives a basic
-limit to the quality of the PSF, but seeing, aberrations, or image
-motion add to structure/broadening of the PSF\@. For a good ground-based
-telescope, seeing is generally the dominant component of the PSF.
+The ``quality'' of an image can be described in many different ways. The
+overall shape of the distribution of light from a point source is specified by
+the \textit{point spread function} (PSF). Diffraction gives a basic limit to
+the quality of the PSF, but seeing, aberrations, or image motion add to
+structure/broadening of the PSF\@. For a good ground-based telescope, seeing is
+generally the dominant component of the PSF.
 
 \textbf{There is no equation for seeing};
 the most common way of describing the seeing is by specifying the
 full-width-half-maximum (FWHM) of the image, which may be estimated either by
 direct inspection or by fitting a function (usually a Gaussian, where $FWHM =
-2\sigma\sqrt{2\ln{2}} \approx 2.354\sigma$) However, the sampled PSF is
-integrated over pixels; not the PSF\@. The FWHM doesn't fully specify a PSF, so
+2\sigma\sqrt{2\ln{2}} \approx 2.354\sigma$). However, the sampled PSF is actually
+integrated over pixels; not the actual PSF\@. The FWHM doesn't fully specify a PSF, so
 always consider how applicable the quantity is.
 
 Another way of describing the quality of an image is to specify its
 \textit{modulation transfer function} (MTF). The MTF and PSF are a Fourier
-transform pair, \mynotes{thin gaussian $\leftarrow$\small
-FT\normalsize$\rightarrow$ fat gaussian} so the MTF gives the \textit{power} in
+transform pair, \mynotes{thin Gaussian $\leftarrow$\small
+FT\normalsize$\rightarrow$ fat Gaussian} so the MTF gives the \textit{power} in
 an image on various \textit{spatial} scales. Turbulence theory makes a
-prediction for the MTF from
-seeing:
+prediction for the MTF from seeing:
 \[
     MTF(\nu)
     = \exp \left[ -3.44 \left( \frac{\lambda\nu}{r_{o}} \right) ^{5/3} \right]
     \]
-where $\nu$ is the spatial frequency,
+where $\nu$ is the \emph{spatial} frequency (not energy frequency),
 \mynotes{$\xi = \frac{1}{\lambda}$ [cycles per cm].
 (Aside: wavenumber $k = \frac{2\pi}{\lambda} = 2\pi\xi$)
 \begin{itemize}
@@ -2024,14 +2010,15 @@ where $\nu$ is the spatial frequency,
     \item PSF: intensity as function of position
 \end{itemize}}
 
-Note that a gaussian goes as $e^{-\nu^{2}}$, so this is close to a gaussian.
-The shape of seeing-limited images is roughly Gaussian in core but has more \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/racine2.htm}
-{extended wings}. This is relevant because the seeing
-is often described by fitting a Gaussian to a stellar profile. \mynotes{Note
-that the stellar profile is the same for all stars, and doesn't depend on the
-brightness of the star. They all get lost in the noise eventually$\ldots$
-sooner for fainter stars, which look smaller. In case the wings are needed,
-fitting to a Gaussian won't work;} a potentially better empirical fitting
+Note that a Gaussian goes as $e^{-\nu^{2}}$, so this is close to a Gaussian.
+The shape of seeing-limited images is roughly Gaussian in core but has more
+\href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/racine2.htm}
+{extended wings}. This is relevant because the seeing is often described by
+fitting a Gaussian to a stellar profile. \mynotes{Note that the stellar profile
+is the same for all stars, and doesn't depend on the brightness of the star.
+They all get lost in the noise eventually$\ldots$ sooner for fainter stars,
+which look smaller. In case the wings are needed, fitting to a Gaussian won't
+work;} a potentially better empirical fitting
 function is a \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/racine3.htm}
 {Moffat function}:
 \[
@@ -2041,9 +2028,9 @@ function is a \href{http://astronomy.nmsu.edu/holtz/a535/html/diagrams/a535/raci
     \]
 ``Nothing special, six parameters, more accurate.''
 
-Ways of characterizing the PSF:
+Other ways of characterizing the PSF:
 \begin{description}
-    \item [encircled energy (EE)] as a function of radius, or at some specified
+    \item [Encircled energy (EE)] as a function of radius, or at some specified
         radius. The encircled energy is just the cumulative integral of the
         PSF\@. Encircled energy requirements are often used for specifying
         optical tolerances.
@@ -3461,45 +3448,48 @@ for a well-built telescope. Called \emph{pointing models}.}
 \subsection{Planning observing}
 (skipped over this in class)
 
+\newpage
 \mydate{Monday, April 18, 2016}
 \section{Instrumentation}
-\mynotes{ \underline{Review:} Different angles have different wavefronts.
+\mynotes{\underline{Review:} Different angles have different wavefronts.
 Multi-conjugate $\rightarrow$ multiple deformable mirror.}
 
 Often, astronomers use additional optics between the telescope and
 their detector. These, in conjunction with a detector, make up an
-\emph{instrument}.
+\textit{instrument}.
 
 \subsection{Location of optics}
 Before going into specifics, consider the effect of placing optics at
 different locations within an optical system, like a telescope.
 
-Optics placed in or near a focal plane will affect images at different
-field angles differently. Optics in a focal plane will not affect the
-image quality at any given field angle; however, such optics might be
-used to control the location of an image of the \emph{pupil} of the
-telescope.
+Optics placed in or near a focal plane will affect images at different field
+angles differently. Optics in a focal plane will not affect the image quality
+at any given field angle; however, such optics might be used to control the
+location of an image of the \textit{pupil} of the telescope.
 
 Optics placed in or near a pupil plane will affect images at all field
 angles similarly, and will have an effect on the image quality.
 
+\mynotes{Pupil - all field angles overlapping in the same place. The focal
+plane is not a pupil!}
+
+\test{Understand the implications of putting optics in different locations.}
+
 \subsection{Refractive optics and chromatic aberration}
-In many instruments, lenses are used rather than mirrors; they can be
-cheaper and lead to more compact designs. Recall, however, that when
-lenses are used, chromatic effects will arise because the index of
-refraction of glass changes with wavelength. While they can often be
-minimized by the use of use of multiple elements to make achromatic
-combinations, they are not always negligible. In particular, if an
-instrument is used at multiple wavelengths, some refocussing may be
-required.
+In many instruments, lenses are used rather than mirrors; they can be cheaper
+and lead to more compact designs. Recall, however, that when lenses are used,
+chromatic effects will arise because the index of refraction of glass changes
+with wavelength. While they can often be minimized by the use of use of
+multiple elements to make achromatic combinations, they are not always
+negligible. In particular, if an instrument is used at multiple wavelengths,
+some refocussing may be required.
 
 \subsection{Field Flatteners}
-As we've discussed, all standard two-mirror telescopes have curved
-focal planes, so the image locations are in a curved plane.
-It is possible to make a simple lens to correct the
-field curvature. We know that a plane-parallel plate will shift an
-image laterally, depending on the thickness of the plate. If we don't
-want to affect the image quality, only the location, we want the
+As we've discussed, all standard two-mirror telescopes have curved focal
+planes, so the image locations are in a curved plane. It is possible to make a
+simple lens to correct the field curvature. We know that a plane-parallel plate
+will shift an image laterally, depending on the thickness of the plate. If we
+don't want to affect the image quality, only the location, we want the
 correcting element to be located near the focal plane.
 
 Consequently, we can put a lens right near the telescope focal plane to
@@ -3536,6 +3526,9 @@ the lower the total throughput is.
 
 Note that it is possible to do focal reduction/expansion
 \emph{without} reimaging, i.e., by putting optics in the converging beam.
+
+\test{Understand the basic design and effect of a focal plane reimager.
+Be able to draw some rays and to determine if a reimager magnifies or demagnifies.}
 
 \subsection{Pupil reimagers}
 Often, an additional lens, called a \textit{field lens} is placed in or near
@@ -3578,11 +3571,23 @@ However, the mask needs to be colder than the telescope itself or else the mask
 would contribute the background, so it is usually placed within the dewar that
 contains the detector and camera optics.
 
+\mynotes{Have to cool things down; optical - detector only, IR - everything is
+cooled, need cold pupil mask. Lots of stuff glows in the IR. Telescope is both
+collecting \emph{and} emitting light. To sum up:
+\begin{enumerate}
+    \item Minimize camera size
+    \item Coronagraph
+    \item IR instruments
+\end{enumerate}}
+
+\test{Understand why one might want to access a pupil in an instrument.
+Know the principles of how a coronagraph works.}
+
 \subsection{Filters}
-Filters are used in optical systems (usually imaging systems) to
-restrict the observed wavelength range. Using multiple filters thus
-provides color information on the object being studied. Generally,
-filters are \emph{loosely} classified with widths of:
+Filters are used in optical systems (usually imaging systems) to restrict the
+observed wavelength range. Using multiple filters thus provides color
+information on the object being studied. Generally, filters are \emph{loosely}
+classified with widths of:
 \begin{itemize}
     \item broadband ($ > \sim 1000$ \AA{}),
     \item medium band ($100 < \sim 1000$ \AA{}), or
@@ -3604,92 +3609,88 @@ destructively, it is not. Simple geometry gives:
 \[
     m\lambda = 2dn\cos\theta
     \]
-It is clear from this expression that the passband of the filter will
-depend on the angle of incidence. Consequently, narrowband filters will
-have variable bandpasses across the field if they are located in a
-collimated beam; this can cause great difficulties in interpretation.
-However, if the filter is located in a focal plane or a converging beam,
-the mix of incident angles will broaden the filter bandpass.
-This can be a serious effect in a fast beam. Bandpasses of
+It is clear from this expression that the passband of the filter will depend on
+the angle of incidence. Consequently, narrowband filters will have variable
+bandpasses across the field if they are located in a collimated beam; this can
+cause great difficulties in interpretation. However, if the filter is located
+in a focal plane or a converging beam, the mix of incident angles will broaden
+the filter bandpass. This can be a serious effect in a fast beam. Bandpasses of
 interference filters can also be affected by the temperature.
 
 Since interference filters will pass light at integer multiples of the
-wavelength, the extra orders often must be blocked. This can be done
-fairly easily with colored glass.
+wavelength, the extra orders often must be blocked. This can be done fairly
+easily with colored glass.
 
-The width of the bandpass of a narrowband filter is determined by the
-amount of reflection at each surface. Both the wavelength center and
-the width can be tuned by using multiple cavities and/or multiple
-reflecting layers, and most filters in use in astronomy are of this
-more complex type.
+The width of the bandpass of a narrowband filter is determined by the amount of
+reflection at each surface. Both the wavelength center and the width can be
+tuned by using multiple cavities and/or multiple reflecting layers, and most
+filters in use in astronomy are of this more complex type.
 
 The same principles by which interference filters are made are used to
 make antireflection coatings.
 
-Note filters can introduce aberrations, dust spots, reflections, etc;
-one needs to consider these issues when deciding on the location of
-filters in an optical system.
+Note that filters can introduce aberrations, dust spots, reflections, etc.
+These issues need to be considered when deciding on the location of filters in
+an optical system.
+
+\test{Understand how filters work and the difference bewteen a colored glass
+filter and an interference filter. Understand how the optical configuration
+can modify the bandpass of an interference filter.}
 
 \subsection{Fabry-Perot Interferometer}
-A \textit{Fabry-Perot} system makes use of a tunable interference filter. The
-filter is tuned in wavelength by adjusting one of the following:
+A \textit{Fabry-Perot} system makes use of a \textit{tunable} interference
+filter. The filter is tuned in wavelength by adjusting one of the following:
 \begin{itemize}
     \item spacing
     \item index of refraction (usually by changing the pressure)
     \item tilt of the interference filter
 \end{itemize}
-A tunable interference filter is called an \textit{etalon}.
-Often, etalons are
+A tunable interference filter is called an \textit{etalon}. Often, etalons are
 made to provide very narrow bandpasses, on the order of 1 \AA{}.
 
-A picture taken with a Fabry-Perot system covers multiple wavelengths
-because the etalon is located in the collimated beam between the two
-elements of the focal reducer. At each etalon setting, one observes an
-image which has rings of constant wavelength. By tuning the etalon to
-give different wavelengths at each location, one build up a ``data
-cube'', through which observations at a constant wavelength carve some
-surface. Consequently, to extract constant wavelength information from
-the Fabry-Perot takes some reasonably sophisticated reduction
-techniques. It is further complicated by the fact that to get accurate
-quantitative information, one requires that the atmospheric conditions
-be stable over the entire time when the data cube is being taken.
+A picture taken with a Fabry-Perot system covers multiple wavelengths because
+the etalon is located in the collimated beam between the two elements of the
+focal reducer. At each etalon setting, an image is observed that has rings of
+constant wavelength. By tuning the etalon to give different wavelengths at each
+location, a ``data cube'' is built up, through which observations at a constant
+wavelength carve some surface. Consequently, to extract constant wavelength
+information from the Fabry-Perot takes some reasonably sophisticated reduction
+techniques. It is further complicated because in order to get accurate
+quantitative information, the atmospheric conditions are required to be stable
+over the entire time when the data cube is being taken.
+
+\test{Know what a Fabry-Perot system is.}
 
 \subsection{Spectrographs}
 \mynotes{Re-images the field, at different location. Every image turns into
 a spectrum. Grating is a one-dimensional thing (linear, not circle).
 The \textbf{slit} is an important part of the spectrograph. Nothing
 to do with diffraction, just a mask. Not to be confused with the
-diffraction grating, e.g.\ multi-slit interference.}
+diffraction \emph{grating}, e.g.\ multi-slit interference.}
 
-A spectrograph is an instrument which separates different wavelengths
-of light so they can be measured independently. Most spectrographs
-work by using a \textit{dispersive} element, which directs light of different
-wavelengths in different directions.
-\begin{figure}
-    \centering
-    \includegraphics[width=0.8\textwidth]{slit2.png}
-\end{figure}
+A spectrograph separates different wavelengths of light so they can be measured
+independently. Most work by using a \textit{dispersive} element, which directs
+light of different wavelengths in different directions.
+
 A conventional spectrograph has each of the following:
 \begin{itemize}
     \item collimator
     \item dispersive element
         \begin{itemize}
             \item prism
-            \item diffraciton grating (most common in astronomy)
+            \item diffraction grating (most common in astronomy)
         \end{itemize}
     \item camera to refocus the light
     \item detector
 \end{itemize}
-The performance of a spectrograph is characterized by the \textit{dispersion},
-which gives the amount that different wavelengths are separated, and the
-\textit{resolution}, which gives the smallest difference in wavelength that two
-different monochromatic sources can be separated.
+The performance of a spectrograph is characterized by the \textit{dispersion}
+and the \textit{resolution}.
 
 \mydate{Monday, April 25}
 
 \paragraph{Dispersion:}
-\mynotes{How much are different wavelengths separated?}
-The dispersion depends on the characteristic of the dispersing element. Various
+Dispersion quantifies the wavelength separation and
+depends on the characteristics of the dispersing element. Various
 elements can be characterized by the angular dispersion, d$\theta$/d$\lambda$,
 or alternatively, the reciprocal angular dispersion, d$\lambda$/d$\theta$. In
 practice, we are often interested in the linear dispersion, d$x$/d$\lambda$ =
@@ -3698,33 +3699,34 @@ $f_{2}d\theta$/d$\lambda$ or the reciprocal linear dispersion, d$\lambda$/d$x$
 simply as the dispersion in astronomical contexts, and is usually specified in
 \AA{}/mm or \AA{}/pixel.
 
-When viewing an extended source, any light that comes from regions parallel to
+When viewing an \emph{extended source}, any light that comes from regions parallel to
 the dispersion direction will overlap in wavelength with other light, leading
 to a very confusing image to interpret. For this reason, spectrographs are
 usually used with slits or apertures in the focal plane to restrict the
-incoming light. Note that one dimension of spatial information can be retained,
-leading to so-called \textit{long-slit} spectroscopy. If there is a single
-dominant point source in the image plane, or if they are spaced far enough
-(usually in combination with a low dispersion) that spectra will not overlap,
-spectroscopy can be done in \textit{slitless} mode. However, note that in
-slitless mode, there can be a significant impact from sky emission.
+incoming light. One dimension of spatial information can be retained, leading
+to \textit{long-slit} spectroscopy.
+
+If there is a single dominant \emph{point source} in the image plane, or if they are
+spaced far enough (usually in combination with a low dispersion) that spectra
+will not overlap, spectroscopy can be done in \textit{slitless} mode, though
+there can be a significant impact from sky emission.
 
 \paragraph{Resolution}
-\mynotes{Can two wavelengths be distinguished?}
-The resolution depends on the width of the slit or on the size of the image in
-slitless mode, because all a spectrograph does is create an image of the focal
-plane after dispersing the light. The ``width'' of a spectral line will be
-given by the width of the slit or the image, whichever is smaller. In reality,
-the spectral line width is a convolution of the slit/image profile with
-diffraction. The spatial resolution of the detector may also be important.
+Resolution gives the smallest difference in wavelength that two different
+monochromatic sources can be separated, and depends on either the width of the
+slit or on the size of the image if in slitless mode. All a spectrograph does
+is create an image of the focal plane after dispersing the light. The ``width''
+of a spectral line will be given by the width of the slit or the image,
+whichever is smaller. In reality, the spectral line width is a convolution of
+the slit/image profile with diffraction. The spatial resolution of the detector
+may also be important.
 
-Note that \textit{throughput} may also depend on the slit width, depending on
+\textit{Throughput} may also depend on the slit width, depending on
 the seeing, so maximizing resolution may come at the expense of
 throughput. \mynotes{Throughput = seeing + slit width}
 
-Given the width, $\omega$, and height, $h$, of a linear slit,
-we can get an image of the slit with width $\omega'$ and
-height $h'$:
+Given the width, $\omega$, and height, $h$, of a linear slit, we can get an
+image of the slit with width $\omega'$ and height $h'$:
 \[
     h' = h\frac{f_{2}}{f_{1}}
     \]
@@ -3747,13 +3749,14 @@ monochromatic sources which are separable by the system.
     \]
 The bigger the slit, the lower the resolving power.
 The resolution is often characterized in dimensionless form by
+the \textit{resolving power}:
 \[
     R \equiv \frac{\lambda}{\delta\lambda} =
     \frac{\lambda{f_{1}}}{r\omega{f_{2}}\left(
     \textrm{d}\lambda/\textrm{d}x\right)}
         \]
 Note that there is a maximum resolution allowed by diffraction. This resolution
-is given aproximately by noting that minimum angles which can be separated is
+is given approximately by noting that minimum angles which can be separated is
 given by approximately $\lambda/d_{2}$, where $d_{2}$ is the width of the beam
 at the camera lens, from which the minimum distance which can be separated is:
 \[
