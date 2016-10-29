@@ -31,8 +31,9 @@
 %\setlist[enumerate]{noitemsep}
 %\setlist[description]{% noitemsep, labelindent=1em, topsep=-1ex, font={\sffamily\bfseries\color{cadmiumgreen}} }
 \setitemize{noitemsep, label=$\vcenter{\hbox{\footnotesize$\bullet$}}$}
-\setenumerate{noitemsep, topsep=0.5ex}
-\setdescription{noitemsep, labelindent=1em, topsep=-1ex, font={\sffamily\bfseries\color{cadmiumgreen}} }
+\setenumerate{noitemsep, topsep=0ex}
+\setdescription{noitemsep, labelindent=1em, topsep=0ex,
+font={\sffamily\bfseries\color{black}} }
 
 \definecolor{myGreen}{rgb}{0.0,0.26,0.15}
 \definecolor{om}{rgb}{0.4,0.19,0.28} % om - old mauve
@@ -549,7 +550,7 @@ magnitude of a star that will give 1 count s$^{-1}$.
         m = -2.5 \log(qF)
         \]
     \[
-        m = -2.5 \log F - 2.5\log q 
+        m = -2.5 \log F - 2.5\log q
         \]
     The quantity `$-2.5\log q$' is the zeropoint.
 \end{framed}
@@ -612,12 +613,12 @@ Some definitions relating to values that characterize a distribution:
 \begin{itemize}
     \item mean $ \equiv \mu = \int xp(x)\mathrm{d}x $
     \item variance $ \equiv \sigma^{2} = \int (x-\mu)^{2} p(x)\mathrm{d}x $
-    \item standard deviation $\equiv \sigma = \sqrt{\mathrm{variance}} $ 
+    \item standard deviation $\equiv \sigma = \sqrt{\mathrm{variance}} $
     \item median = mid-point value =
         \[
             \frac{ \int_{-\infty}^{x_{median}} p(x)\mathrm{d}x }
               { \int_{-\infty}^{\infty} p(x)\mathrm{d}x }
-              = \frac{1}{2} 
+              = \frac{1}{2}
               \]
     \item mode = most probable value (peak in plot).
 \end{itemize}
@@ -833,7 +834,7 @@ to as the signal-to-noise ratio, is used. Given an estimate the number
 of photons expected from an object in an observation, we can calculate
 the signal-to-noise ratio:
 \[
-    \frac{S}{N} = \frac{S}{\sqrt{\sigma^{2}}} 
+    \frac{S}{N} = \frac{S}{\sqrt{\sigma^{2}}}
     \]
 which is the inverse of the predicted fractional error ($N/S$).
 
@@ -842,10 +843,10 @@ Consider an object with observed photon flux, $S'$
 In the simplest case (i.e.\ perfect instruments), the only noise source is
 Poisson statistics from the source, in which case:
 \[
-    \sigma^{2} = S = S'Tt 
+    \sigma^{2} = S = S'Tt
     \]
 \[
-    \frac{S}{N} = \sqrt{S} = \sqrt{S'Tt} 
+    \frac{S}{N} = \sqrt{S} = \sqrt{S'Tt}
     \]
 In other words, $S/N$ increases as the square root of the object brightness,
 telescope area, efficiency, or exposure time. Note that $S$ is directly
@@ -885,11 +886,11 @@ important in determining $S/N$.
 The total number of photons observed, $O$, is a combination of
 photons from the source ($S$), and photons from the background ($AB$):
 \[
-    O = S + AB = (S' + AB')Tt 
+    O = S + AB = (S' + AB')Tt
     \]
 The variance of the total observed counts, from Poisson statistics, is:
 \[
-    \sigma^{2}_{O} = O =  S + AB = (S' + AB')Tt 
+    \sigma^{2}_{O} = O =  S + AB = (S' + AB')Tt
     \]
 To get the desired signal from the object only, we will need to measure
 separately the total signal and the background signal to estimate:
@@ -908,7 +909,7 @@ fractional error in the measurement).
 
 This leads to a common form of the \textit{noise equation}:
 \[
-    \frac{S}{N} = \frac{S}{\sqrt{S+AB}}  
+    \frac{S}{N} = \frac{S}{\sqrt{S+AB}}
     \]
 Breaking out the dependence on exposure time and telescope area, this is:
 \[
@@ -920,7 +921,7 @@ Limiting regimes:
     \item \textit{signal-limited} case: $S'\gg B'A$,
         the background goes away and we get
         \[
-             \frac{S}{N} = \sqrt{S} = \sqrt{S'tT} 
+             \frac{S}{N} = \sqrt{S} = \sqrt{S'tT}
              \]
     \item \textit{background-limited} case: $B'A \gg S'$ and
         \[
@@ -951,11 +952,11 @@ If we observe for the same exposure time on each and want to know how
 much fainter we can see with the larger telescope at a given $S/N$,
 the signal-limited case gives:
 \[
-    S_{2} = \frac{T_{1}}{T_{2}}S_{1} 
+    S_{2} = \frac{T_{1}}{T_{2}}S_{1}
     \]
 and the background-limited case gives:
 \[
-    S_{2} = \sqrt{\frac{T_{1}}{T_{2}}}S_{1}  
+    S_{2} = \sqrt{\frac{T_{1}}{T_{2}}}S_{1}
     \]
 
 \test{Understand how Poisson uncertainties in the background contributes to the
@@ -1062,7 +1063,7 @@ Consider what happens if you have several independently measured known
 quantities with known error distributions and you combine these into some new
 quantity. We wish to know what the error is in the new quantity.
 \[
-    x = f(u, v, \ldots) 
+    x = f(u, v, \ldots)
     \]
 The question is, what is $\sigma_x$ if we know
 $\sigma_u$, $\sigma_v$, etc.?
@@ -1161,7 +1162,7 @@ true parent population mean.
 For equal errors (simplest case), this estimate just gives our normal
 expression for the sample mean:
 \[
-    \bar{x} = \frac{\sum x_{i}}{N} 
+    \bar{x} = \frac{\sum x_{i}}{N}
     \]
 Using error propagation, the estimate of the error in the sample mean
 is given by:
@@ -1174,7 +1175,7 @@ we have observations made with several different exposure times? Then
 the optimal determination of the mean is using a \textit{weighted mean}:
 \[
      \mu_{weighted} = \frac{\sum\frac{x_{i}}{\sigma_{i}^{2}}}
-       {\sum\frac{1}{\sigma_{i}^{2}}} 
+       {\sum\frac{1}{\sigma_{i}^{2}}}
        \]
 \mynotes{which can be derived from maximum likelihood.}
 The estimated error in this value is given by:
@@ -3662,68 +3663,87 @@ over the entire time when the data cube is being taken.
 \test{Know what a Fabry-Perot system is.}
 
 \subsection{Spectrographs}
-\mynotes{Re-images the field, at different location. Every image turns into
-a spectrum. Grating is a one-dimensional thing (linear, not circle).
-The \textbf{slit} is an important part of the spectrograph. Nothing
-to do with diffraction, just a mask. Not to be confused with the
-diffraction \emph{grating}, e.g.\ multi-slit interference.}
+\mynotes{Re-images the field, at different location. Every image turns into a
+spectrum. Grating is a one-dimensional thing (linear, not circle). The
+\textit{slit} is an important part of the spectrograph. Nothing to do with
+diffraction, just a mask. Not to be confused with the diffraction
+\emph{grating}, e.g.\ multi-slit interference. Match slit size to seeing!}
 
 A spectrograph separates different wavelengths of light so they can be measured
 independently. Most work by using a \textit{dispersive} element, which directs
-light of different wavelengths in different directions.
+light of different wavelengths in different directions. All a spectrograph does
+is create an image of the focal plane after dispersing the light. When viewing
+an extended source, any light that comes from regions parallel to the
+dispersion direction will overlap in wavelength with other light, leading to a
+very confusing image to interpret. For this reason, spectrographs are usually
+used with slits or apertures in the focal plane to restrict the incoming light.
 
 A conventional spectrograph has each of the following:
 \begin{itemize}
-    \item collimator
-    \item dispersive element
+    \item collimator: Makes light rays at different angles of incidence run
+        parallel to each other
+    \item dispersive element: Sort lights relative to angle of incidence
         \begin{itemize}
             \item prism
+            \item grism
             \item diffraction grating (most common in astronomy)
         \end{itemize}
     \item camera to refocus the light
     \item detector
 \end{itemize}
-The performance of a spectrograph is characterized by the \textit{dispersion}
-and the \textit{resolution}.
+
+\paragraph{Types of astronomical spectrographs}
+\begin{description}
+    \item [Slitless spectographs:] If there is a single dominant point source
+        in the image plane, or if there are multiple sources spaced far enough
+        that spectra will not overlap spectroscopy can be done in
+        \textit{slitless} mode. There can be a significant impact from sky
+        emission, so generally need to work at low dispersion (or narrow
+        spectral range) to avoid spectrum overlap. Since light from all field
+        angles is included, this effectively disperses object light, but not
+        background.
+    \item [Long slit spectrographs:]
+        One dimension of spatial information can be retained, leading to
+        \textit{long-slit} spectroscopy.
+    \item [Image slicers:] preserving resolution and flux
+    \item [Fiber spectrographs:] Multiobject data; use fibers to select
+        objects, then line up the other ends of fibers into a pseudo-slit.
+    \item [Slitlets:] Multiobject data; break up single long slit into
+        individual slitlets, avoiding overlap by the slitmask design. Note
+        that each slitlet will have its own wavelength calibration.
+    \item [Integral field spectrographs:] Get spectra information over 2D
+        field. Either use fibers to accomplish, or optical configuration,
+        e.g. with lenslets.
+\end{description}
 
 \mydate{Monday, April 25}
 
-\paragraph{Dispersion:}
-Dispersion quantifies the wavelength separation and
-depends on the characteristics of the dispersing element. Various
-elements can be characterized by the angular dispersion, d$\theta$/d$\lambda$,
-or alternatively, the reciprocal angular dispersion, d$\lambda$/d$\theta$. In
+The performance of a spectrograph is characterized by the \textit{dispersion}
+and the \textit{resolution}.
+
+\paragraph{Dispersion}
+Dispersion quantifies the wavelength separation and depends on the
+characteristics of the dispersing element. Various elements can be
+characterized by the angular dispersion, d$\theta$/d$\lambda$, or
+alternatively, the reciprocal angular dispersion, d$\lambda$/d$\theta$. In
 practice, we are often interested in the linear dispersion, d$x$/d$\lambda$ =
 $f_{2}d\theta$/d$\lambda$ or the reciprocal linear dispersion, d$\lambda$/d$x$
-= $(1/f_{2})$d$\lambda$/d$\theta$ where the latter is often referred to
-simply as the dispersion in astronomical contexts, and is usually specified in
-\AA{}/mm or \AA{}/pixel.
-
-When viewing an \emph{extended source}, any light that comes from regions parallel to
-the dispersion direction will overlap in wavelength with other light, leading
-to a very confusing image to interpret. For this reason, spectrographs are
-usually used with slits or apertures in the focal plane to restrict the
-incoming light. One dimension of spatial information can be retained, leading
-to \textit{long-slit} spectroscopy.
-
-If there is a single dominant \emph{point source} in the image plane, or if they are
-spaced far enough (usually in combination with a low dispersion) that spectra
-will not overlap, spectroscopy can be done in \textit{slitless} mode, though
-there can be a significant impact from sky emission.
+= $(1/f_{2})$d$\lambda$/d$\theta$, which is often referred to simply as the
+dispersion in astronomical contexts, and is usually specified in \AA{}/mm or
+\AA{}/pixel.
 
 \paragraph{Resolution}
 Resolution gives the smallest difference in wavelength that two different
 monochromatic sources can be separated, and depends on either the width of the
-slit or on the size of the image if in slitless mode. All a spectrograph does
-is create an image of the focal plane after dispersing the light. The ``width''
-of a spectral line will be given by the width of the slit or the image,
-whichever is smaller. In reality, the spectral line width is a convolution of
-the slit/image profile with diffraction. The spatial resolution of the detector
-may also be important.
+slit or on the size of the image if in slitless mode. The ``width'' of a
+spectral line will be given by the width of the slit or the image, whichever is
+smaller. In reality, the spectral line width is a convolution of the slit/image
+profile with diffraction. The spatial resolution of the detector may also be
+important.
 
 \textit{Throughput} may also depend on the slit width, depending on
 the seeing, so maximizing resolution may come at the expense of
-throughput. \mynotes{Throughput = seeing + slit width}
+throughput. \mynotes{Throughput = seeing + slit width.}
 
 Given the width, $\omega$, and height, $h$, of a linear slit, we can get an
 image of the slit with width $\omega'$ and height $h'$:
@@ -3736,9 +3756,11 @@ $\phi' = h/f$:
 \[
 \omega' = r\omega\frac{f_{2}}{f_{1}}
     \]
-where we have allowed that the dispersing element might
-magnify/demagnify the image in the direction of dispersion by a factor
-$r$, which is called the anamorphic magnification.
+where we have allowed that the dispersing element might magnify/demagnify the
+image in the direction of dispersion by a factor $r$, which is called the
+\textit{anamorphic magnification}.
+
+\mynotes{Magnification of camera is proportional to $f_{coll}/f_{camera}$.}
 
 Using this, we can derive the difference in wavelength between two
 monochromatic sources which are separable by the system.
@@ -3747,14 +3769,16 @@ monochromatic sources which are separable by the system.
     = \omega'\frac{\textrm{d}\lambda}{\textrm{d}x}
     = r\omega\frac{f_{2}}{f_{1}}\frac{\textrm{d}\lambda}{\textrm{d}x}
     \]
-The bigger the slit, the lower the resolving power.
+
 The resolution is often characterized in dimensionless form by
 the \textit{resolving power}:
 \[
-    R \equiv \frac{\lambda}{\delta\lambda} =
-    \frac{\lambda{f_{1}}}{r\omega{f_{2}}\left(
-    \textrm{d}\lambda/\textrm{d}x\right)}
-        \]
+    R \equiv \frac{\lambda}{\delta\lambda}
+    = \frac{\lambda{f_{1}}}{r\omega{f_{2}}\left(
+    \mathrm{d}\lambda/\textrm{d}x\right)}
+    \]
+
+The bigger the slit, the lower the resolving power.
 Note that there is a maximum resolution allowed by diffraction. This resolution
 is given approximately by noting that minimum angles which can be separated is
 given by approximately $\lambda/d_{2}$, where $d_{2}$ is the width of the beam
@@ -3776,50 +3800,29 @@ and the maximum resolution is
     \frac{d_{2}}{f_{2}\left(\mathrm{d}\lambda/\mathrm{d}x\right)} =
     d_{2}\frac{\mathrm{d}\theta}{\mathrm{d}\lambda}
     \]
-\subsection{Astronomical spectrographs}
-\begin{description}
-    \item [Slitless spectographs:]
-        Generally need to work at low dispersion (or narrow spectral range)
-        to avoid spectrum overlap. Issue with background: since light from
-        all field angles is included, this effectively disperses object
-        light, but not background.
-    \item [Long slit spectrographs:] Standard spectrograph as discussed above.
-        Avoids spectrum overlap by limiting spectra to a line in the sky.
-    \item [Image slicers:] preserving resolution and flux
-    \item [Fiber spectrographs:] Multiobject data; use fibers to select
-        objects, then line up the other ends of fibers into a pseudo-slit.
-    \item [Slitlets:] Multiobject data; break up single long slit into
-        individual slitlets, avoiding overlap by the slitmask design. Note
-        that each slitlet will have its own wavelength calibration.
-    \item [Integral field spectrographs:] Get spectra information over 2D
-        field. Either use fibers to accomplish, or optical configuration,
-        e.g. with lenslets.
-\end{description}
 
-\subsection{Dispersing elements}
-\subsubsection{Prisms}
-Perhaps the simplest conceptual dispersing element is a prism, which
-disperses light because the index of refraction of many glasses is a
-function of wavelength. From Snell's law, one finds that:
+\test{Understand\ldots}
+
+\subsubsection{Dispersing elements}
+\paragraph{Prisms}
+The simplest conceptual dispersing element is a prism, which disperses light
+due to the wavelength dependence of the index of refraction of many glasses.
+From Snell's law:
 \[
     \frac{\mathrm{d}\theta}{\mathrm{d}\lambda}
-    = \frac{t}{d}\frac{\mathrm{d}n}{\mathrm{d}\lambda}
+    = \frac{t}{d} \frac{\mathrm{d}n}{\mathrm{d}\lambda}
     \]
 where $t$ is the base length, and $d$ is the beamwidth. Note that prisms
 do not have anamorphic magnification ($r=1$). The limiting resolution
 of a prism, from above is:
 \[
-    R_{max} = \frac{d_{2}}{f_{2}(\mathrm{d}\lambda/\mathrm{d}x)} =
-    d_{2}\frac{\mathrm{d}\theta}{\mathrm{d}\lambda}
-    \]
-\[
-    R_{max} = t\frac{\mathrm{d}n}{\mathrm{d}\lambda}
+    R_{max}
+    = \frac{d_{2}}{f_{2}(\mathrm{d}\lambda/\mathrm{d}x)}
+    = d_{2}\frac{\mathrm{d}\theta}{\mathrm{d}\lambda}
+    = t\frac{\mathrm{d}n}{\mathrm{d}\lambda}
     \]
 For many glasses, $\mathrm{d}n/\mathrm{d}\lambda \propto \lambda^{-3}$.
-\begin{figure}
-    \centering
-    \includegraphics[width=0.8\textwidth]{curves.png}
-\end{figure}
+
 So dispersion and resolution are a function of wavelength for a prism.
 In addition, the resolution offered by a prism is relatively low
 compared with other dispersive elements (e.g.\ gratings) of the same
@@ -3827,62 +3830,56 @@ size. Typically, prisms have $R < 1000$. Consequently, prisms are rarely
 used as the primary dispersive element in astronomical spectrographs.
 They are occasionally used as cross-dispersing elements.
 
-\subsubsection{Gratings} Diffraction gratings work using the principle of
-multi-slit interference. A diffraction grating is just an optical element with
-multiple grooves, or slits (not to be confused with the slit in the
-spectrograph). Diffraction gratings may be either transmissive or reflective.
-Bright regions are formed where light of a given wavelength from the different
-grooves constructively interferes.
-\begin{figure}[ht]
-    \centering
-    \includegraphics[width=0.6\textwidth]{angle.png}
-\end{figure}
-The location of bright images is given by the
+\paragraph{Gratings}
+Diffraction gratings work using the principle of multi-slit interference. A
+diffraction grating is just an optical element with multiple grooves, or slits
+(not to be confused with the slit in the spectrograph). Diffraction gratings
+may be either transmissive or reflective. Bright regions are formed where light
+of a given wavelength from the different grooves constructively interferes.
+
+For a reflection grating, the location of bright images is given by the
 \textit{grating equation}:
-{$$
+\[
     m\lambda = \sigma\left(\sin\theta + \sin\alpha\right)
-$$}
-for a reflection grating, where
-\begin{itemize}
-    \item $\sigma$ = groove spacing
-    \item $m$ = order
-    \item $\alpha$ = angle of incidence
-    \item $\theta$ ($\beta$ in picture above) = angle of diffraction
-\end{itemize}
-$\alpha$ and $\theta$ are measured relative to the normal to the grating surface.
+    \]
+\begin{description}[align=right, labelindent=0.5in]
+    \item [$\sigma$] = groove spacing
+    \item [$m$] = order
+    \item [$\alpha$] = angle of incidence
+    \item [$\theta$] = angle of diffraction
+\end{description}
+$\alpha$ and $\theta$ are measured relative to the normal to the grating
+surface.
 
 The dispersion of a grating can then be derived:
-{$$
+\[
     \frac{\mathrm{d}\theta}{\mathrm{d}\lambda} =
     \frac{m}{\sigma\cos\theta}
-$$}
+    \]
 The dispersion is larger at higher order, and for a
 finer ruled grating. The equation can be rewritten as
-{$$
+\[
     \frac{\mathrm{d}\theta}{\mathrm{d}\lambda} =
     \frac{\sin\theta + \sin\alpha}{\lambda\cos\theta}
-$$}
+    \]
 from which it can be seen that high dispersion can also be achieved by
 operating at large values of $\alpha$ and $\theta$. This is the principle of an
 \textit{echelle grating}, which has large $\sigma$, operates at high $m$,
 $\alpha$ and $\theta$, and gives high dispersion and resolution. An advantage
 of this is that one can get a large fraction of the light over a broad bandpass
-in a series of adjacent orders.
-
-Typical gratings have groove densities between 300 and 1200 lines/mm.
-Echelle gratings have groove densities between 30 and 300 lines/mm.
+in a series of adjacent orders. Typical gratings have groove densities between
+300 and 1200 lines/mm. Echelle gratings have groove densities between 30 and
+300 lines/mm.
 
 The anamorphic magnification for a grating can be derived by looking
-at how $\theta$ changes as $\alpha$ changes at fixed $\lambda$:
+at how $\theta$ changes with $\alpha$ at fixed $\lambda$:
 \[
     r = \frac{\mathrm{d}\theta}{\mathrm{d}\alpha} =
     \frac{\cos\alpha}{\cos\theta} =
     \frac{d_{1}}{d_{2}}
     \]
-where the $d$'s are the beam diameters. Note that higher resolution
-occurs when $r < 1$, or $\theta < \alpha$.
-
-(insert figure here)
+where $d_{1}$ and $d_{2}$ are the diameters of the two beams.
+Note that higher resolution occurs when $r < 1$, or $\theta < \alpha$.
 
 The limiting resolution can be derived:
 \[
@@ -3896,16 +3893,12 @@ The limiting resolution can be derived:
     = \frac{mW}{\sigma}
     = mN
     \]
-where $W$ is the width of the grating ($=d_{2}/\cos\theta$), and $N$ is
-the total number of lines in the grating.
-
-Note that light from different orders can fall at the same location,
-which can be confusing. This occurs when
+where $W$ is the width of the grating ($=d_{2}/\cos\theta$), and $N$ is the
+total number of lines in the grating. Note that light from different orders can
+fall at the same location, which can be confusing. This occurs when
 \[
     m\lambda' = (m + 1)\lambda
-    \]
-or
-\[
+    \qquad \mathrm{or} \qquad
     \lambda' - \lambda = \frac{\lambda}{m}
     \]
 The order overlap can be avoided using either an \textit{order-blocking filter}
@@ -3926,13 +3919,11 @@ particular order; it is set so that the angle of diffraction for this order and
 wavelength is equal to the angle of reflection from the grating surface. The
 \textit{blaze function} gives the efficiency as a function of wavelength.
 
-A special case of high efficiency is when the angle of incidence
-equals the angle of diffraction, i.e.\ the diffracted light at the
-desired wavelength comes back to the same direction of in the incoming
-light. This is called the \textit{Littrow configuration}; high efficiency
-spectrographs often try to work close to this configuration.
-
-(insert figure here)
+A special case of high efficiency is when the angle of incidence equals the
+angle of diffraction, i.e.\ the diffracted light at the desired wavelength
+comes back to the same direction of in the incoming light. This is called the
+\textit{Littrow configuration}; high efficiency spectrographs often try to work
+close to this configuration.
 
 Typical peak efficiencies of reflective diffraction gratings are of order
 50-80\%. Recently, a new technology for making diffraction gratings, volume
@@ -3940,16 +3931,15 @@ phase holographic (\href{http://www.kosi.com/Holographic_Gratings/vph_ht_overvie
 {VPH}) gratings, as been developed, and these are attractive because they offer
 the possibility of very high efficiencies ($>$ 90\% peak efficiency).
 
-\subsubsection{Grisms}
-A grism is a combination of a prism and a diffraction grating. These
-are combined such that light is dispersed, but light at a chosen
-central wavelength passed through the grism with direction unchanged.
-This feature allows grisms to be placed in an imaging system (e.g., in
-a filter wheel) to provide a spectroscopic (usually low resolution)
-capability.
+\paragraph{Grisms}
+A grism is a combination of a prism and a diffraction grating. These are
+combined such that light is dispersed, but light at a chosen central wavelength
+passed through the grism with direction unchanged. This feature allows grisms
+to be placed in an imaging system (e.g., in a filter wheel) to provide a
+spectroscopic (usually low resolution) capability.
 
 \mydate{date?}
-\subsection{Operational items: using a spectrograph}
+\subsubsection{Operational items: using a spectrograph}
 Choice of dispersion: wavelength coverage vs.\ dispersion/resolution,
 available gratings, etc. Using grating tilt to select wavelength
 range.
@@ -3981,24 +3971,21 @@ Relative fluxes along slit: slit width variations.
 Examples of typical spectra: line lamps, flat fields, stellar spectra,
 galaxy spectra. Night sky emission.
 
-\subsection{Non-dispersive spectroscopy}
+\subsubsection{Non-dispersive spectroscopy}
 It is also possible to use interference effects to measure spectral
 energy distributions instead of a dispersing element. The Fabry-Perot
 is an example of such a type of instrument, although it does not
 record all wavelengths simultaneously.
 
-(insert figure here)
-
-Another instrument that uses interference to infer spectroscopy
-information is the \textit{Fourier Transform Spectrometer} (FTS), which is
-basically a scanning Michaelson interferometer. The light from the
-source is split into two parts using a beamsplitter. One part of light
-is reflected off a fixed flat mirror and the other is reflected off a
-mirror which can be moved laterally. The two images are combined to
-form fringes. The fringe pattern changes as the path length of the
-second beam is changed. The intensity modulation for a given
-wavelength ($\lambda$) or wavenumber ($k = 2\pi/\lambda$) is
-given by:
+Another instrument that uses interference to infer spectroscopy information is
+the \textit{Fourier Transform Spectrometer} (FTS), which is basically a
+scanning Michaelson interferometer. The light from the source is split into two
+parts using a beamsplitter. One part of light is reflected off a fixed flat
+mirror and the other is reflected off a mirror which can be moved laterally.
+The two images are combined to form fringes. The fringe pattern changes as the
+path length of the second beam is changed. The intensity modulation for a given
+wavelength ($\lambda$), here as a function of wavenumber ($k = 2\pi/\lambda$),
+is given by:
 \[
     T \left( k,\Delta{x} \right)
     = \frac{T_{max}}{2} \left[ a + \cos \left( 2k\Delta{x} \right) \right]
@@ -4006,13 +3993,12 @@ given by:
 and the flux after integrating over all wavelengths is:
 \[
     F \left( \Delta{x}\right)
-    = C \int{ I(k) T (k,\Delta{x}) \mathrm{d}k}
-    = C \int{ I(k) \cos (2k\Delta{x}) \mathrm{d}k}
+    = C \int{ I(k) T (k,\Delta{x}) \;\mathrm{d}k}
+    = C \int{ I(k) \cos (2k\Delta{x}) \;\mathrm{d}k}
     \]
-where $I(k)$ is the input spectrum. Consequently it is possible to
-recover the input spectrum by taking the Fourier cosine transform of
-the recorded intensity. In practice, a discrete Fourier transform is
-used.
+where $I(k)$ is the input spectrum. Consequently it is possible to recover the
+input spectrum by taking the Fourier cosine transform of the recorded
+intensity. In practice, a discrete Fourier transform is used.
 
 The FTS requires scanning in path spacing. But unlike the Fabry-Perot,
 it yields information on intensity at all wavelengths simultaneously.
@@ -4021,9 +4007,8 @@ it yields information on intensity at all wavelengths simultaneously.
 \mydate{Monday, May 2, 2016}
 \section{Detectors}
 \subsection{Basic Principles and Properties}
-Detectors work because they are made of material that interacts
-with photons. Three general types, based on what is generated
-by the photon:
+Detectors work because they are made of material that interacts with photons.
+Three general types, based on what is generated by the photon:
 \begin{description}[labelwidth=10em, leftmargin=12em]
     \item [Photographic detector] chemical reaction
     \item [Photomultiplier/photon counter] event, usually detected
